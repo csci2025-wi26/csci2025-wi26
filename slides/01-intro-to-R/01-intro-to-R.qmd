@@ -1,0 +1,90 @@
+---
+title: R Basics
+subtitle: Lecture 1
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+auto-stretch: false
+---
+
+# Introduction to R
+
+## What is R?
+
+-  R is a statistical programming language
+    +  Inspired by the S programming language developed at Bell Labs in the 1970s
+    +  Created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand in the early 1990s for teaching statistics
+    +  Now one of the most popular programming languages for data science and statistics
+-  R is free and open source
+    +  Anyone can download and use R for free
+    +  Anyone can contribute to the development of R and its packages
+
+## R is not the same as R Studio, R Markdown, or Positron
+
+-   R is the programming language
+-   R Studio (now Positron) is an integrated development environment (IDE) for R
+    +   Provides a user-friendly interface for writing and running R code
+
+![Source: [Statistical Inference via Data Science](https://moderndive.com/1-getting-started.html)](images/r_vs_rstudio_1.png){fig-align="center"}
+
+# Working with R
+
+## Writing Scripts in R
+
+- Let's open up a script and run some R code!
+    + Running R from the console
+    + Running R from a script file
+
+## R Packages
+
+- R has a rich ecosystem of packages that extend its functionality
+    + You can install packages using `install.packages("package_name")` (only do this once)
+    + Load packages into your R session using `library(package_name)` (do this every time you start a new R session)
+- An importnat package for this class:
+    + `tidyverse`: A collection of packages for data manipulation, visualization, and modeling
+        + `ggplot2`: A package for creating graphics using the Grammar of Graphics
+        + `dplyr`: A package for data manipulation
+- Let's install and load `tidyverse`
+
+## Palmer Penguins Dataset
+
+- Install the `palmerpenguins` package
+- Contains dataset on the famous Palmer Penguins:
+ penguin species, island in Palmer Archipelago, size (flipper length, body mass, bill dimensions), and sex.
+- Explore more with `?penguins`
+
+## Important Vocabulary
+
+-  **Data frame**: A table-like structure in R that holds data (`penguins`)
+    + In the `tidyverse` data frames are referred to as `tibbles`
+-  **Variable**: is a quantity, quality, or property that you can measure (e.g. `species`, `bill_length_mm`, `island`)
+-  **Observation** or **Data point**: a single object that has been measured (e.g. one of the penguins in the data set)
+-  **Value**: the entry for a particular variable and observation (e.g. for the first penguin, the value of `species` is "Adelie", the value of `bill_length_mm` is 39.1)
+-  **Tabular Data**: data organized in rows and columns (like a spreadsheet or data frame)
+-  **Tidy Data**: tabular data where each observation is a row, and each type of observational unit forms a table
+
+## Taking a quick look at `penguins`
+
+- `glimpse` gives a quick overview of the data frame
+- `head` shows the first few rows of the data frame
+- `tail` shows the last few rows of the data frame
+
+# Wrap up
+
+## Disclaimer
+
+I have a class in the next period in Bio Sci, so I will be rushing out of class each time. I'm always available on Slack and in office hours and happy to make appointments as well!
+
+## This week's tasks
+
+1.  Create a GitHub account if you don't have one
+
+2.  Read the [syllabus](https://www.vizdata.org/syllabus.html)
+
+3.  Make sure you can login in to RStudio and reserve a container for STA 313: [cmgr.oit.duke.edu/containers](https://cmgr.oit.duke.edu/containers)
+
+4.  Complete the *Getting to know you* survey on Canvas -- to be posted
+
+5.  Complete the readings
