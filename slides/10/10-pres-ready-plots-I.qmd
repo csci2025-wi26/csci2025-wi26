@@ -1,0 +1,790 @@
+---
+title: Presentation ready plots I
+subtitle: Lecture 10
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+editor_options: 
+  chunk_output_type: console
+---
+
+# Warm up
+
+## Announcements {.smaller}
+
+-   HW 3 is posted, not due till after project but get started early!
+-   RQ 3 is due next Tuesday
+-   Project 1 due next Wednesday
+
+## Setup
+
+```{r}
+#| label: setup
+#| message: false
+
+# load packages
+library(countdown)
+library(tidyverse)
+library(ggrepel)
+library(patchwork)
+library(tidytext)
+library(hrbrthemes)
+library(scales)
+library(textdata)
+
+# set theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
+
+# no plot sizing defaults for this slide deck
+```
+
+# Telling a story
+
+## Multiple ways of telling a story
+
+-   Sequential plots: Motivation, then resolution
+
+-   A single plot: Resolution, and hidden in it motivation
+
+::: {.callout-note appearance="minimal"}
+**Project note:** you're asked to create two plots per question. One possible approach: Start with a plot showing the raw data, and show derived quantities (e.g. percent increases, averages, coefficients of fitted models) in the subsequent plot.
+:::
+
+## Simplicity vs. complexity
+
+> When you're trying to show too much data at once you may end up not showing anything.
+
+-   Never assume your audience can rapidly process complex visual displays
+
+-   Don't add variables to your plot that are tangential to your story
+
+-   Don't jump straight to a highly complex figure; first show an easily digestible subset (e.g., show one facet first)
+
+-   Aim for memorable, but clear
+
+::: {.callout-note appearance="minimal"}
+**Project note:** Make sure to leave time to iterate on your plots after you practice your presentation. If certain plots are getting too wordy to explain, take time to simplify them!
+:::
+
+## Consistency vs. repetitiveness
+
+> Be consistent but don't be repetitive.
+
+-   Use consistent features throughout plots (e.g., same color represents same level on all plots)
+
+-   Aim to use a different type of visualization for each distinct analysis
+
+::: aside
+**Project note:** If possible, ask a friend who is not in the class to listen to your presentation and then ask them what they remember. Then, ask yourself: is that what you wanted them to remember?
+:::
+
+# Designing effective visualizations
+
+## Keep it simple
+
+::: columns
+::: {.column width="40%"}
+![](images/pie.jpg)
+:::
+
+::: {.column width="60%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-asp: 0.618
+
+d <- tribble(
+  ~category,                     ~value,
+  "Cutting tools"                , 0.03,
+  "Buildings and administration" , 0.22,
+  "Labor"                        , 0.31,
+  "Machinery"                    , 0.27,
+  "Workplace materials"          , 0.17
+)
+ggplot(d, aes(y = fct_reorder(category, value), x = value)) +
+  geom_col() +
+  labs(x = NULL, y = NULL)
+```
+:::
+:::
+
+## Judging relative area
+
+![](images/pie-areas.png){fig-align="center" width="800"}
+
+. . .
+
+![](images/bar-areas.png){fig-align="center" width="800"}
+
+::: aside
+From Data to Viz caveat collection - [The issue with pie chart](https://www.data-to-viz.com/caveat/pie.html)
+:::
+
+## Use color to draw attention
+
+<br/> <br/>
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-asp: 0.618
+
+d |>
+  mutate(category = str_replace(category, " ", "\n")) |>
+  ggplot(aes(x = category, y = value, fill = category)) +
+    geom_col() +
+    labs(x = NULL, y = NULL) +
+    theme(legend.position = "none")
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-asp: 0.618
+
+d |>
+  mutate(category = str_replace(category, " ", "\n")) |>
+  ggplot(aes(y = fct_reorder(category, value), x = value, fill = category)) +
+  geom_col() +
+  labs(x = NULL, y = NULL) +
+  scale_fill_manual(values = c("red", rep("gray", 4))) +
+  theme(legend.position = "none")
+```
+:::
+:::
+
+## Tell a story
+
+::: columns
+::: {.column width="50%"}
+![](images/duke-hires-1.png){fig-align="center"}
+:::
+
+::: {.column width="50%"}
+![](images/duke-hires-2.png){fig-align="center"}
+:::
+:::
+
+::: aside
+*Credit*: Angela Zoss and Eric Monson, Duke DVS
+:::
+
+## Leave out non-story details
+
+::: columns
+::: {.column width="50%"}
+![](images/too-many-details.png){fig-align="center"}
+:::
+
+::: {.column width="50%"}
+![](images/fewer-details.png){fig-align="center"}
+:::
+:::
+
+::: aside
+*Credit*: Angela Zoss and Eric Monson, Duke DVS
+:::
+
+## Order matters
+
+::: columns
+::: {.column width="50%"}
+![](images/unordered.png){fig-align="center"}
+:::
+
+::: {.column width="50%"}
+![](images/ordered.png){fig-align="center"}
+:::
+:::
+
+::: aside
+*Credit*: Angela Zoss and Eric Monson, Duke DVS
+:::
+
+## Clearly indicate missing data
+
+![](images/missing-data.png){fig-align="center"}
+
+::: aside
+http://ivi.sagepub.com/content/10/4/271, Angela Zoss and Eric Monson, Duke DVS
+:::
+
+## Reduce cognitive load
+
+![](images/cognitive-load.png){fig-align="center"}
+
+::: aside
+http://www.storytellingwithdata.com/2012/09/some-finer-points-of-data-visualization.html
+:::
+
+## Use descriptive titles
+
+::: columns
+::: {.column width="50%"}
+![](images/title-non-descriptive.png){fig-align="center"}
+:::
+
+::: {.column width="50%"}
+![](images/title-descriptive.png){fig-align="center"}
+:::
+:::
+
+::: aside
+Credit: Angela Zoss and Eric Monson, Duke DVS
+:::
+
+## Annotate figures
+
+```{r}
+#| echo: false
+#| message: false
+#| fig-width: 7
+#| fig-asp: 0.5
+#| out-width: "100%"
+
+# Load dataset from github
+ts_data <- read_delim("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered.csv", delim = " ")
+
+# plot
+ ggplot(ts_data, aes(x = date, y = value)) +
+   geom_hline(yintercept = 5000, color = "orange", linewidth = 1, linetype = "dotted") +
+   annotate(
+     geom = "point", 
+     x = ymd("2017-12-17"), y = 20089, size = 10, shape = 21, 
+     fill = "transparent", color = "orange", stroke = 1
+   ) +
+   geom_line(color = "#69b3a2") +
+   annotate(
+     geom = "text", x = ymd("2017-07-01"), y = 20089,
+     label = "Bitcoin price reached 20k $\nat the end of 2017",
+     hjust = 1,
+     color = "gray20"
+   ) +
+   scale_y_continuous(limits = c(0, 22000), labels = label_dollar(scale = 1/1000, suffix = "K")) +
+   theme_ipsum() +
+   labs(x = "Date", y = "Bitcoin price (in $)", title = "Bitcoin price over time")
+```
+
+::: aside
+Inspiration: <https://r-graph-gallery.com/line_chart_annotation.html>
+:::
+
+# Project workflow overview
+
+## Demo {.smaller}
+
+`project-1`
+
+-   Rendering individual documents
+-   Write-up:
+    -   Cross referencing
+    -   Citations
+-   Presentation:
+    -   Pauses
+    -   Smaller text
+-   Website: `https://vizdata-s24.github.io/project-1-YOUR_TEAM_NAME/`
+    -   Rendering site
+    -   Making sure your website reflects your latest changes
+    -   Customizing the look of your website
+
+# Plot layout
+
+## Sample plots
+
+```{r}
+#| fig-show: hide
+
+p_hist <- ggplot(mtcars, aes(x = mpg)) +
+  geom_histogram(binwidth = 2)
+p_box <- ggplot(mtcars, aes(x = factor(vs), y = mpg)) +
+  geom_boxplot()
+p_scatter <- ggplot(mtcars, aes(x = disp, y = mpg)) +
+  geom_point()
+p_text <- mtcars |>
+  rownames_to_column() |>
+  ggplot(aes(x = disp, y = mpg)) +
+  geom_text_repel(aes(label = rowname)) +
+  coord_cartesian(clip = "off")
+```
+
+## Slide with single plot, little text
+
+The plot will fill the empty space in the slide.
+
+```{r}
+p_hist
+```
+
+## Slide with single plot, lots of text
+
+-   If there is more text on the slide
+
+-   The plot will shrink
+
+-   To make room for the text
+
+```{r}
+p_hist
+```
+
+## Small `fig-width`
+
+For a zoomed-in look
+
+```{r}
+#| echo: fenced
+#| fig-width: 3
+#| fig-asp: 0.618
+
+p_hist
+```
+
+## Large `fig-width`
+
+For a zoomed-out look
+
+```{r}
+#| echo: fenced
+#| fig-width: 10
+#| fig-asp: 0.618
+
+p_hist
+```
+
+## `fig-width` affects text size
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 5
+#| fig-asp: 0.618
+
+p_text +
+  labs(title = "fig.width = 5")
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-width: 10
+#| fig-asp: 0.618
+
+p_text +
+  labs(title = "fig.width = 10")
+```
+:::
+:::
+
+## Multiple plots on a slide
+
+::: {.callout-warning appearance="minimal"}
+First, ask yourself, must you include multiple plots on a slide? For example, is your narrative about comparing results from two plots?
+:::
+
+-   If no, then don't! Move the second plot to to the next slide!
+
+-   If yes,
+
+    -   Insert columns using the Insert anything tool
+
+    -   Use `layout-ncol` chunk option
+
+    -   Use the patchwork package
+
+    -   Possibly, use pivoting to reshape your data and then use facets
+
+## Columns
+
+> Insert \> Slide Columns
+
+Quarto will automatically resize your plots to fit side-by-side.
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-width: 5
+#| fig-asp: 0.618
+
+p_hist
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-width: 5
+#| fig-asp: 0.618
+
+p_scatter
+```
+:::
+:::
+
+## `layout-ncol`
+
+```{r}
+#| echo: fenced
+#| fig-width: 5
+#| fig-asp: 0.618
+#| layout-ncol: 2
+
+p_hist
+p_scatter
+```
+
+## patchwork
+
+```{r}
+#| echo: fenced
+#| fig-width: 7
+#| fig-asp: 0.4
+
+p_hist + p_scatter
+```
+
+## patchwork layout I
+
+```{r}
+#| warning: false
+
+(p_hist + p_box) /
+  (p_scatter + p_text)
+```
+
+## patchwork layout II
+
+```{r}
+#| warning: false
+
+p_text / (p_hist + p_box + p_scatter)
+```
+
+## patchwork layout III
+
+```{r}
+#| warning: false
+
+p_text + p_hist + p_box + p_scatter + 
+  plot_annotation(title = "mtcars", tag_levels = c("A"))
+```
+
+## patchwork layout IV {.smaller}
+
+```{r}
+#| warning: false
+
+p_text + {
+  p_hist + {
+    p_box + p_scatter + plot_layout(ncol = 1) + plot_layout(tag_level = 'new')
+  }
+} + 
+  plot_layout(ncol = 1) +
+  plot_annotation(tag_levels = c("1","a"), tag_prefix = "Fig ")
+```
+
+## More patchwork
+
+<br>
+
+Learn more at [https://patchwork.data-imaginist.com](https://patchwork.data-imaginist.com/).
+
+## Want to replicate something you saw in my slides?
+
+<br>
+
+Look into the source code at <https://github.com/vizdata-s24/vizdata-s24/tree/main/slides>.
+
+# Take a sad plot, and make it better
+
+## Opinion pieces from The Chronicle {.smaller}
+
+```{r}
+#| message: false
+
+chronicle <- read_csv("data/chronicle.csv")
+chronicle
+```
+
+## Step 1 {.smaller}
+
+```{r}
+#| output-location: slide
+#| code-line-numbers: "|2-4|5-11|12|13-14|15-19"
+
+chronicle_to_plot <- chronicle |>
+  tidytext::unnest_tokens(word, abstract) |>
+  anti_join(tidytext::stop_words) |>
+  left_join(tidytext::get_sentiments("afinn")) |> 
+  group_by(author, title) |>
+  summarize(total_sentiment = sum(value, na.rm = TRUE), .groups = "drop") |>
+  group_by(author) |>
+  summarize(
+    n_articles = n(),
+    avg_sentiment = mean(total_sentiment, na.rm = TRUE),
+  ) |>
+  filter(n_articles > 1 & !is.na(author)) |>
+  arrange(desc(avg_sentiment)) |>
+  slice(c(1:10, 49:58)) |>
+  mutate(
+    author = fct_reorder(author, avg_sentiment),
+    neg_pos = if_else(avg_sentiment < 0, "neg", "pos"),
+    label_position = if_else(neg_pos == "neg", 0.25, -0.25)
+  )
+
+chronicle_to_plot
+```
+
+## Step 2 {.smaller}
+
+::: panel-tabset
+## Plot
+
+```{r}
+#| output-location: fragment
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col()
+```
+
+## Question
+
+::: task
+How would you improve this visualization?
+:::
+
+```{=html}
+<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/SJERMI?from=status-bar?" width="100%"></iframe>
+```
+:::
+
+## Step 3 {.smaller}
+
+```{r}
+#| output-location: fragment
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos))
+```
+
+## Step 4 {.smaller}
+
+```{r}
+#| output-location: fragment
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos), show.legend = FALSE)
+```
+
+## Step 5 {.smaller}
+
+```{r}
+#| output-location: fragment
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos), show.legend = FALSE) +
+  scale_fill_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91"))
+```
+
+## Step 6 {.smaller}
+
+```{r}
+#| output-location: slide
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos), show.legend = FALSE) +
+  geom_text(
+    aes(x = label_position, label = author, color = neg_pos),
+    hjust = c(rep(1,10), rep(0, 10)),
+    show.legend = FALSE,
+    fontface = "bold"
+  ) +
+  scale_fill_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_color_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91"))
+```
+
+## Step 7 {.smaller}
+
+```{r}
+#| output-location: slide
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos), show.legend = FALSE) +
+  geom_text(
+    aes(x = label_position, label = author, color = neg_pos),
+    hjust = c(rep(1,10), rep(0, 10)),
+    show.legend = FALSE,
+    fontface = "bold"
+  ) +
+  geom_text(
+    aes(label = round(avg_sentiment, 1)),
+    hjust = c(rep(1.25,10), rep(-0.25, 10)),
+    color = "white",
+    fontface = "bold"
+  ) +
+  scale_fill_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_color_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91"))
+```
+
+## Step 8 {.smaller}
+
+```{r}
+#| output-location: slide
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos), show.legend = FALSE) +
+  geom_text(
+    aes(x = label_position, label = author, color = neg_pos),
+    hjust = c(rep(1,10), rep(0, 10)),
+    show.legend = FALSE,
+    fontface = "bold"
+  ) +
+  geom_text(
+    aes(label = round(avg_sentiment, 1)),
+    hjust = c(rep(1.25,10), rep(-0.25, 10)),
+    color = "white",
+    fontface = "bold"
+  ) +
+  scale_fill_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_color_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_x_continuous(breaks = -5:5, minor_breaks = NULL) +
+  scale_y_discrete(breaks = NULL) +
+  coord_cartesian(xlim = c(-5, 5))
+```
+
+## Step 9 {.smaller}
+
+```{r}
+#| output-location: slide
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos), show.legend = FALSE) +
+  geom_text(
+    aes(x = label_position, label = author, color = neg_pos),
+    hjust = c(rep(1,10), rep(0, 10)),
+    show.legend = FALSE,
+    fontface = "bold"
+  ) +
+  geom_text(
+    aes(label = round(avg_sentiment, 1)),
+    hjust = c(rep(1.25,10), rep(-0.25, 10)),
+    color = "white",
+    fontface = "bold"
+  ) +
+  scale_fill_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_color_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_x_continuous(breaks = -5:5, minor_breaks = NULL) +
+  scale_y_discrete(breaks = NULL) +
+  coord_cartesian(xlim = c(-5, 5)) +
+  labs(
+    x = "negative  ←     Average sentiment score (AFINN)     →  positive",
+    y = NULL,
+    title = "The Chronicle - Opinion pieces\nAverage sentiment scores of abstracts by author",
+    subtitle = "Top 10 average positive and negative scores",
+    caption = "Source: Data scraped from The Chronicle on Feb 21, 2024"
+  )
+```
+
+## Step 10 {.smaller}
+
+```{r}
+#| output-location: slide
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos), show.legend = FALSE) +
+  geom_text(
+    aes(x = label_position, label = author, color = neg_pos),
+    hjust = c(rep(1,10), rep(0, 10)),
+    show.legend = FALSE,
+    fontface = "bold"
+  ) +
+  geom_text(
+    aes(label = round(avg_sentiment, 1)),
+    hjust = c(rep(1.25,10), rep(-0.25, 10)),
+    color = "white",
+    fontface = "bold"
+  ) +
+  scale_fill_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_color_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_x_continuous(breaks = -5:5, minor_breaks = NULL) +
+  scale_y_discrete(breaks = NULL) +
+  coord_cartesian(xlim = c(-5, 5)) +
+  labs(
+    x = "negative  ←     Average sentiment score (AFINN)     →  positive",
+    y = NULL,
+    title = "The Chronicle - Opinion pieces\nAverage sentiment scores of abstracts by author",
+    subtitle = "Top 10 average positive and negative scores",
+    caption = "Source: Data scraped from The Chronicle on Feb 21, 2024"
+  ) +
+  theme_void(base_size = 16) +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5, margin = unit(c(0.5, 0, 1, 0), "lines")),
+    axis.text.y = element_blank(),
+    plot.caption = element_text(color = "gray30")
+  )
+```
+
+## Step 11 {.smaller}
+
+```{r}
+#| echo: fenced
+#| output-location: slide
+#| code-line-numbers: "|4-6"
+#| fig-width: 8
+#| fig-asp: 0.75
+#| fig-align: center
+
+chronicle_to_plot |>
+  ggplot(aes(y = author, x = avg_sentiment)) +
+  geom_col(aes(fill = neg_pos), show.legend = FALSE) +
+  geom_text(
+    aes(x = label_position, label = author, color = neg_pos),
+    hjust = c(rep(1,10), rep(0, 10)),
+    show.legend = FALSE,
+    fontface = "bold"
+  ) +
+  geom_text(
+    aes(label = round(avg_sentiment, 1)),
+    hjust = c(rep(1.25,10), rep(-0.25, 10)),
+    color = "white",
+    fontface = "bold"
+  ) +
+  scale_fill_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_color_manual(values = c("neg" = "#4d4009", "pos" = "#FF4B91")) +
+  scale_x_continuous(breaks = -5:5, minor_breaks = NULL) +
+  scale_y_discrete(breaks = NULL) +
+  coord_cartesian(xlim = c(-5, 5)) +
+  labs(
+    x = "negative  ←     Average sentiment score (AFINN)     →  positive",
+    y = NULL,
+    title = "The Chronicle - Opinion pieces\nAverage sentiment scores of abstracts by author",
+    subtitle = "Top 10 average positive and negative scores",
+    caption = "Source: Data scraped from The Chronicle on Feb 21, 2024"
+  ) +
+  theme_void(base_size = 16) +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5, margin = unit(c(0.5, 0, 1, 0), "lines")),
+    axis.text.y = element_blank(),
+    plot.caption = element_text(color = "gray30")
+  )
+```

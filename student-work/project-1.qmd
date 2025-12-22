@@ -1,0 +1,160 @@
+---
+title: "Project 1 outputs"
+---
+
+The assignment for Project 1 can be found [here](/project/project-1.html).
+
+Below are projects the teams produced.
+
+::: project
+[**Taylor Swift (Soon-to-be Kelce)**](https://vizdata-s24.github.io/project-1-team_robots/) by Team Robots
+
+------------------------------------------------------------------------
+
+[![Energy of Taylor Swift songs vs. albums.](images/project-1/team_robots.png){width="640"}](https://vizdata-s24.github.io/project-1-team_robots/)
+
+------------------------------------------------------------------------
+
+Answer two key questions:
+
+1.  How do Taylor Swift's single releases differ from the songs on the full albums?
+2.  How have Taylor Swift's songs changed over time?
+
+[*Read more.*](https://vizdata-s24.github.io/project-1-team_robots/)
+:::
+
+::: project
+[**Tackling Tornado Trends**](https://vizdata-s24.github.io/project-1-team_two/) by Team Two
+
+------------------------------------------------------------------------
+
+[![Average Tornado Magnitude and Fatalities by season and decade.](images/project-1/team_two.png){width="640"}](https://vizdata-s24.github.io/project-1-team_two/)
+
+------------------------------------------------------------------------
+
+Answer two key questions:
+
+1.  How may the nature of tornadoes vary by the location they occur in?
+2.  How may the nature of tornadoes vary by the season they occur in and over time?
+
+[*Read more.*](https://vizdata-s24.github.io/project-1-team_two/)
+:::
+
+::: project
+[**Teardrops on my GitR: A statistical exploration of musicality in Taylor Swift’s discography**](https://vizdata-s24.github.io/project-1-tear/) by Tear
+
+------------------------------------------------------------------------
+
+[![Average Tornado Magnitude and Fatalities by season and decade.](images/project-1/team_tear.png){width="640"}](https://vizdata-s24.github.io/project-1-tear/)
+
+------------------------------------------------------------------------
+
+Answer two key questions:
+
+1.  Is there a relationship between an album’s average energy level and its critical reception?
+2.  How do bonus tracks differ from album tracks? Do the two groups show different trends from the other songs on their respective albums?
+
+[*Read more.*](https://vizdata-s24.github.io/project-1-tear/)
+:::
+
+::: project
+[**Energy Consumption and Production in the US vs. China**](https://vizdata-s24.github.io/project-1-team_rgb/) by Team RGB
+
+------------------------------------------------------------------------
+
+[![US v. China Renewable Energy Production.](images/project-1/team_rgb.png){width="640"}](https://vizdata-s24.github.io/project-1-team_rgb/)
+
+------------------------------------------------------------------------
+
+Answer two key questions:
+
+1.  How has energy production differed between the United States and China?
+2.  How has energy consumption changed in the United States, China, and globally since 1995?
+
+[*Read more.*](https://vizdata-s24.github.io/project-1-team_rgb/)
+:::
+
+::: project
+[**UFO Sightings in the US**](https://vizdata-s24.github.io/project-1-tidy_team_3/) by Tidy Team 3
+
+------------------------------------------------------------------------
+
+[![Distribution of UFO Sightings and Military Bases in California](images/project-1/tidy_team_3.png){width="640"}](https://vizdata-s24.github.io/project-1-tidy_team_3/)
+
+------------------------------------------------------------------------
+
+Answer two key questions:
+
+1.  Is there a correlation between UFO sightings and military bases across the US?
+2.  How have UFO sightings changed over time? Why?
+
+[*Read more.*](https://vizdata-s24.github.io/project-1-tidy_team_3/)
+:::
+
+::: project
+[**Squirrelytics: Central Park Squirrels**](https://vizdata-s24.github.io/project-1-team_arthur/) by Team Arthur
+
+------------------------------------------------------------------------
+
+[![Squirrel Locations in Central Park, New York City](images/project-1/team_arthur.png){width="640"}](https://vizdata-s24.github.io/project-1-team_arthur/)
+
+------------------------------------------------------------------------
+
+Answer two key questions:
+
+1.  Where do different colors and ages of squirrels reside in Central Park?
+2.  How are squirrel activities affected by the time of day or interactions with humans?
+
+[*Read more.*](https://vizdata-s24.github.io/project-1-team_arthur/)
+:::
+
+::: project
+[**London Marathon Winners Since 1981**](https://vizdata-s24.github.io/project-1-team_ryan/) by Team Ryan
+
+------------------------------------------------------------------------
+
+[![London Marathon Acceptance Rates Since 1981](images/project-1/team_ryan.png){width="640"}](https://vizdata-s24.github.io/project-1-team_ryan/)
+
+------------------------------------------------------------------------
+
+Answer two key questions:
+
+1.  How does performance differ across race categories over time in relationship to the weather?
+2.  How have the marathon acceptance and race completion rates changed over time?
+
+[*Read more.*](https://vizdata-s24.github.io/project-1-team_ryan/)
+:::
+
+::: project
+[**Unveiling the Mysteries Above: Exploring UFO Sightings in the United States**](https://vizdata-s24.github.io/project-1-gggang/) by Team gggang
+
+------------------------------------------------------------------------
+
+[![UFO sightings relative to population density in the United States](images/project-1/gggang.png){width="640"}](https://vizdata-s24.github.io/project-1-gggang/)
+
+------------------------------------------------------------------------
+
+Answer two key questions:
+
+1.  Where are the UFOs?
+2.  When do people see UFOs?
+
+[*Read more.*](https://vizdata-s24.github.io/project-1-gggang/)
+:::
+
+::: project
+[**Exploring Regional Socioeconomic Dynamics: Childcare, Income, Unemployment, and Poverty Insights**](https://vizdata-s24.github.io/project-1-statistical_six/) by Statistical Six
+
+------------------------------------------------------------------------
+
+[![Median Household Income and Childcare Costs by US Region](images/project-1/statistical_six.png){width="640"}](https://vizdata-s24.github.io/project-1-statistical_six/)
+
+------------------------------------------------------------------------
+
+Answer two key questions:
+
+1.  In 2018, how does the relationship between median household income and median annual childcare costs differ across regions of the United States and between Family- vs Center-Based Care?
+2.  From 2008 to 2018, how does the poverty rate and the unemployment rate change across regions of the United States?
+
+[*Read more.*](https://vizdata-s24.github.io/project-1-statistical_six/)
+:::
