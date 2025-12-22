@@ -11,38 +11,19 @@ auto-stretch: false
 
 # Course Details
 
-## Teaching team
+## Instructor
 
-::: columns
-::: {.column width="50%"}
-### Instructor
+Dr. Eric Friedlander
 
-Dr. Mine Çetinkaya-Rundel
+Boone 126B
 
-Old Chem 213
-
-[mc301\@duke.edu](mailto:mc301@duke.edu)
-:::
-
-::: {.column width="50%"}
-### Teaching assistants
-
--   Eli Gnesin - Head TA + Lab 2 TA
--   Glenn Palmer
--   Holly Cui - Lab 1 TA
--   Kelsey Brod - Project lead + Lecture TA (Thursdays)
--   Shelby Tisdale - Project support + Lecture TA (Tuesdays)
-:::
-:::
+[efriedlander@collegeofidaho.edu](mailto:efriedlander@collegeofidaho.edu)
 
 ## Timetable
 
 -   Lectures (weekly)
-    -   Tuesdays, 10:05 - 11:45 pm - LSRC D106
-    -   Thursdays, 10:05 - 11:45 pm - LSRC D106
--   Labs (weekly)
-    -   Lab 1: Wednesdays, 1:25 - 2:40 pm - Link Classroom 5
-    -   Lab 2: Wednesdays, 3:05 - 4:20 pm - Link Classroom 5
+    -   M-TH 1-3pm - CML 105
+-   Office Hours: TBD
 
 ## Themes: what, why, and how {.smaller}
 
