@@ -1,0 +1,110 @@
+---
+title: First Transformations
+subtitle: Lecture 3
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+---
+
+## This lesson
+
+-   Introduce data transformation with `dplyr`
+-   Work through two scenarios involving transforming a single data frame
+
+## Data: `nycflights13`
+
+-   Install `nycflights13` package if you haven't already
+-   Load `tidyverse` and `nycflights13`
+-   `nycflights113` contains on-time data for all flights that departed NYC in 2013
+-   Let's take a quick look at the data set!
+
+## Setup {.smaller}
+
+```{r}
+#| label: setup
+#| message: false
+
+# load packages
+library(tidyverse)
+library(nycflights13)
+```
+
+
+## dplyr 101
+
+-  `dplyr` is a package in the `tidyverse`, designed for data manipulation
+-  Provides a set of functions (verbs) that help you transform data frames
+-  Common properties of a `dplyr` verb:
+    +  Takes a data frame as the first argument
+    +  Returns a data frame as output
+    +  Additional arguments specify how to options for that verb
+-  In practice: want to chain together lots of verbs to perform complex transformations
+-  Use the pipe operator (`|>`) to chain together multiple verbs
+
+## Chaining with the pipe operator
+
+-  The pipe operator (`|>`) takes the output of one expression and "pipes" it as the first argument to the next expression
+    +  When reading code with pipes use the phrase "and then" to understand the sequence of operations
+-  More on this in a bit
+
+## Types of verbs
+
+`dplyr` verbs can be grouped into a few categories based on what they do to the data frame:
+  -  Rows
+  -  Columns
+  -  Groups
+  -  Tables (not today)
+
+## Verbs that act on rows
+
+-  `filter()`: keep rows that meet certain criteria
+  + +  You can use `>`, `<`, `==`, `!=`, `>=`, `<=`, `%in%` for comparisons
+    +  You can also use `&` (and), `|` (or), and `!` (not) to combine multiple conditions
+-  `arrange()`: reorder rows
+-  `distinct()`: keep only unique rows
+-  `slice_` function: `slice_head()`, `slice_tail()`, `slice_sample()`, `slice_min()`, `slice_max()`
+
+## Practice
+
+Let's do the following:
+
+-  Use `filter` to keep only flight in January
+-  Use `arrange` to sort by `dep_delay` (departure delay)
+-  Use `distinct` to keep only unique `carrier` values
+-  Let's work through Exercise 1 from the textbook
+
+##  Verbs that act on columns
+
+-  `mutate()`: create new columns or modify and combine existing columns
+-  `select()`: keep only specified columns
+-  `rename()`: rename columns
+
+## Practice
+
+Let's do the following:
+
+-  Use `mutate` to create a new column `speed` (distance / air_time * 60)
+-  Use `select` to drop the `tailnum` column
+-  Use `select` to keep only `flight`, `carrier`, and `speed`
+-  Use `rename` to rename `speed` to `avg_speed`
+-  Use `relocate` to move `avg_speed` to be the first column
+-  Let's work through Exercise 1 from the textbook
+
+## Aggregating data: verbs that act on groups
+
+-  What you frequently want to do is summarize data by groups
+    -  `group_by()`: specify one or more columns to group by
+        +  Creates a new data frame where rows are grouped by unique combinations of the grouping columns
+        +  Subsequent verbs will operate on each group separately
+        +  Use `ungroup()` to remove grouping
+    -  `summarize()`: compute summary statistics for each group
+
+## Practice
+
+- Let's do the following:
+    +  Use `group_by` to group by `carrier`
+    +  Use `summarize` to compute the average `dep_delay` for each carrier
+    +  Arrange the results in descending order of average departure delay
+    +  Let's work through Exercise 3 from the textbook

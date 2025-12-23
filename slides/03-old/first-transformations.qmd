@@ -1,5 +1,5 @@
 ---
-title: Data wrangling + tidying - I
+title: First Transformations
 subtitle: Lecture 3
 title-slide-attributes:
   data-background-image: ../vizdata-bg.png
@@ -8,53 +8,16 @@ title-slide-attributes:
 format: revealjs
 ---
 
-# Warm up
+## This lesson
 
-## Announcements
+-   Introduce data transformation with `dplyr`
+-   Work through two scenarios involving transforming a single data frame
 
--   Project 1 due date move to one 1 week later to accommodate a change in schedule in the library visit / historical data visualizations unit.
--   HW 1 is posted, you will be working on it in lab tomorrow, due on Tue, Jan 30 at 5 pm. To submit, simply push your work to your GitHub repository.
+## Data: `nycflights13`
 
-## From RQ reflections {.smaller}
-
-::: incremental
--   More on the following upcoming in the class:
-
-    -   Scales (e.g., 400000 to 400K), themes and theme features (e.g., moving plot title), faceting
-    -   Plot sizing for including in a report, slide deck, etc.
-
--   Which plots to use for numerical vs. categorical variables
-
--   Strategies for figuring out which function to use
-
--   Why do we need to set a seed for `geom_jitter()`?
-
--   How to choose between `fill` and `color`?
-
--   Review more examples of "bad graphs" with less obvious reasons as to why they are bad -- bring your (good and bad) plots to school!
-
--   Suggestion: Time for random plotting/coding questions during/end of class
-:::
-
-## Today's focus
-
-::: columns
-::: {.column width="50%"}
--   Dive into data wrangling and tidying (for better/easier visualization) within a single data frame
-
--   Peek at one more layer: statistics
-
-    -   So far we've reviewed data, aesthetics, geometries
-
-    -   We'll soon review facets and themes
-
-    -   In your HW you'll revisit coordinates
-:::
-
-::: {.column width="50%"}
-![](images/gglayers.png)
-:::
-:::
+-   Install `nycflights13` package if you haven't already
+-   Load `tidyverse` and `nycflights13`
+-   `nycflights113` contains on-time data for all flights that departed NYC in 2013
 
 ## Setup {.smaller}
 
@@ -64,6 +27,7 @@ format: revealjs
 
 # load packages
 library(tidyverse)
+library(nycflights13)
 library(countdown)
 library(scales)
 library(ggthemes)
