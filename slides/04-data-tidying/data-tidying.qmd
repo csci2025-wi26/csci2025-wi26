@@ -1,0 +1,170 @@
+---
+title: Data Tidying
+subtitle: "From messy to tidy"
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+---
+
+## This lesson
+
+-   Define "tidy data"
+-   Learn how to use `tidyr` to make data tidy
+    -   `pivot_longer()` for lengthening data
+    -   `pivot_wider()` for widening data
+
+## What is tidy data?
+
+Tidy data is a consistent way of structuring datasets that makes them easier to work with. A dataset is tidy if it follows three rules:
+
+1.  **Each variable has its own column.**
+2.  **Each observation has its own row.**
+3.  **Each value has its own cell.**
+
+This structure is a standard in the `tidyverse`.
+
+## Setup {.smaller}
+
+We will be using functions from the `tidyr` package, which is part of the `tidyverse`.
+
+```{r}
+#| label: setup
+#| message: false
+
+# load packages
+library(tidyverse)
+```
+
+## Lengthening data with `pivot_longer()` {.smaller}
+
+-  **Wide Format**: column names are actually values of a variable:
+
+```{r}
+#| echo: true
+relig_income |> head()
+```
+
+This is not tidy. The income brackets are variable names, not a variable.
+
+## Using `pivot_longer()` {.smaller}
+
+:::: columns
+::: column
+-   Goal: transform this so we have three columns: `religion`, `income`, and `count`.
+-   Use `pivot_longer()` to do this.
+
+```{r}
+#| echo: true
+#| ouput:
+tidy_relig_income <- relig_income |> 
+  pivot_longer(
+    cols = !religion, 
+    names_to = "income", 
+    values_to = "count"
+  )
+
+tidy_relig_income |> head()
+```
+:::
+
+::: column
+-   `cols`: The columns to pivot into longer format. `!religion` means all columns *except* `religion`.
+-   `names_to`: The name of the new column that will contain the names of the original columns.
+-   `values_to`: The name of the new column that will contain the values from the original columns.
+:::
+::::
+
+
+
+## Another `pivot_longer()` example: `billboard`
+
+The `billboard` dataset has chart rankings for 2000.
+
+```{r}
+#| echo: true
+billboard |> head()
+```
+
+The `wk1`, `wk2`, ... columns are values of a "week" variable.
+
+## Tidying `billboard`
+
+:::: columns
+::: column
+```{r}
+#| echo: true
+billboard |>
+  pivot_longer(
+    cols = starts_with("wk"),
+    names_to = "week",
+    values_to = "rank",
+    values_drop_na = TRUE
+  ) |> head()
+```
+:::
+
+::: column
+- We use `starts_with("wk")` to select the columns to pivot.
+- `values_drop_na = TRUE` removes rows where the rank is `NA`.
+:::
+::::
+
+
+
+## Widening data with `pivot_wider()` {.smaller}
+
+`pivot_wider()` is the opposite of `pivot_longer()`. It's used when an observation is scattered across multiple rows.
+
+```{r}
+#| echo: true
+fish_encounters |> head()
+```
+
+-  One observation = one fishing station
+-  `fish_encounters` has two rows for each station: one for when a fish was seen and one for when it wasn't
+-  `station` column contains variable names
+-  `seen` column contains(`0`/`1`) values
+
+## Using `pivot_wider()` {.smaller}
+
+Goal: one row per station, with columns indicating whether fish was seen or not.
+
+```{r}
+#| echo: true
+fish_encounters |>
+  pivot_wider(
+    names_from = station,
+    values_from = seen
+  ) |> 
+    head()
+```
+
+Problem: `NA` values where there shoiuld be zeros, can fix this with `values_fill`.
+
+
+## Using `pivot_wider()` with `values_fill` {.smaller}
+
+```{r}
+#| echo: true
+fish_encounters |>
+  pivot_wider(
+    names_from = station,
+    values_from = seen,
+    values_fill = 0
+  ) |> 
+    head()
+```
+- `names_from`: The column to get the new column names from.
+- `values_from`: The column to get the cell values from.
+- `values_fill`: A value to replace `NA`s with.
+
+## Summary
+
+-   **Tidy data** is a standard format that makes data analysis easier.
+-   Use `pivot_longer()` when your column names are actually values of a variable (to make data longer and narrower).
+-   Use `pivot_wider()` when an observation is scattered across multiple rows (to make data wider and shorter).
+-   You will often need to use `pivot_longer()` and `pivot_wider()` when preparing data for plotting
+
+These two functions are the foundation of data tidying in R.
