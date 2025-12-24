@@ -1,6 +1,6 @@
 ---
 title: Data Tidying
-subtitle: "From messy to tidy"
+subtitle: "Lecture 4"
 title-slide-attributes:
   data-background-image: ../vizdata-bg.png
   data-background-size: stretch

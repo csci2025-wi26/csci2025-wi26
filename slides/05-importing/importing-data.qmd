@@ -1,0 +1,153 @@
+---
+title: Importing Data
+subtitle: "Lecture 5"
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+---
+
+## This lesson
+
+-   Learn how to import data into R using the `readr` package.
+-   Understand how `readr` parses files and how to control it.
+-   Learn how to write data from R back to a file.
+-   Become aware of other packages for importing different file types.
+
+## The `readr` package
+
+-   Part of the `tidyverse`, `readr` provides functions for reading rectangular data from delimited files (like CSVs).
+-   It's fast, consistent, and produces `tibble`s.
+-   It provides detailed information about how files were parsed.
+
+## Setup
+
+We'll use functions from `readr`, which is loaded with the `tidyverse`.
+
+```{r}
+#| label: setup
+#| message: false
+
+library(tidyverse)
+```
+
+## Reading delimited data
+
+The most common function is `read_csv()` for comma-separated values.
+
+```{r}
+#| echo: true
+students <- read_csv("
+  student_id, name, major
+  1, 'Alice', 'Statistics'
+  2, 'Bob', 'Computer Science'
+  3, 'Charlie', 'Data Science'
+")
+students
+```
+`read_csv()` prints the column specification, which is its guess for each column's type.
+
+## Other delimiters
+
+`readr` provides functions for other common delimiters:
+- `read_csv2()`: For semicolon-separated files. Common in European countries.
+- `read_tsv()`: For tab-separated files.
+- `read_delim()`: For files with any delimiter.
+
+## Parsing & Column Specification
+
+`readr` tries to be clever and guess column types by looking at the first 1000 rows. Sometimes, it guesses wrong.
+
+Consider this file where a numeric code should be a character string:
+```{r}
+#| echo: true
+challenge <- read_csv("
+  x,y
+  1,A
+  2,B
+  03,C
+")
+challenge
+```
+The leading zero in `03` is dropped because `x` was parsed as a number.
+
+## Manually specifying column types
+
+You can override `readr`'s guesses using the `col_types` argument.
+
+You can use a compact string:
+- `c` = character
+- `d` = double
+- `i` = integer
+- `l` = logical
+- `f` = factor
+- `_` = skip column
+
+```{r}
+#| echo: true
+challenge_fixed <- read_csv("
+  x,y
+  1,A
+  2,B
+  03,C
+", col_types = "cc") # Treat both columns as character
+challenge_fixed
+```
+
+## Other common import options
+
+- `skip = n`: Skip the first `n` lines (useful for files with metadata at the top).
+- `comment = "#"`: Drop all lines that start with `#`.
+- `col_names = FALSE`: If your file has no column headers. `readr` will label them `X1`, `X2`, etc.
+- `na = "..."`: Specify which strings should be treated as missing values (e.g., `na = "N/A"`).
+
+Example with `skip`:
+```{r}
+#| echo: true
+read_csv("
+  This is metadata
+  That we want to skip
+  x,y
+  1,2
+", skip = 2)
+```
+
+## Writing to a file
+
+To save a data frame back to a file, use `write_csv()`.
+
+```{r}
+#| echo: true
+#| eval: false
+write_csv(students, "students.csv")
+```
+- `write_csv()` is fast and efficient.
+- It encodes strings in UTF-8.
+- It does **not** write row names, which is a common source of error with base R's `write.csv()`.
+
+## Saving and loading R objects
+
+For saving intermediate R objects, `write_csv()` is not ideal because it loses type information (e.g., factors become characters).
+
+It's better to use `write_rds()` and `read_rds()` to save and load a single R object in R's native RDS format.
+```{r}
+#| eval: false
+write_rds(students, "students.rds")
+restored_students <- read_rds("students.rds")
+```
+
+## Other data sources
+
+The `tidyverse` ecosystem has packages for many other data types:
+- **`readxl`**: For Excel files (`.xls`, `.xlsx`).
+- **`haven`**: For other statistical formats (SPSS, Stata, SAS).
+- **`DBI`**: To interface with relational databases.
+- **`arrow`**: For high-performance binary formats like Parquet and Feather.
+
+## Summary
+
+-   `read_csv()` is your go-to for reading delimited text files.
+-   **Always** check the column specifications that `readr` prints. If they're wrong, fix them with `col_types`.
+-   Use `write_csv()` to save your data frames to CSV files for sharing.
+-   Use `write_rds()` to save R objects for later use in R.
