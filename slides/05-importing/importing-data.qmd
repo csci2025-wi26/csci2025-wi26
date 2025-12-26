@@ -38,62 +38,107 @@ The most common function is `read_csv()` for comma-separated values.
 
 ```{r}
 #| echo: true
-students <- read_csv("
-  student_id, name, major
-  1, 'Alice', 'Statistics'
-  2, 'Bob', 'Computer Science'
-  3, 'Charlie', 'Data Science'
-")
+#| eval: false
+students <- read_csv("path-to-file.csv")
 students
 ```
+
 `read_csv()` prints the column specification, which is its guess for each column's type.
+
+## Paths and Organizing Your Computer
+
+-  Think of your computer like a file cabinet
+-  When working on a project in R, put it in a folder and make that folder a "workspace" or "project" in Positron, RStudio, or VSCode
+
+## Example
+
+```text
+project-name/
+├── project-name.code-workspace
+├── README.md             <- Overview of the project and how to run it.
+├── data/
+│   ├── raw/              <- Original data (never edit these files).
+│   └── processed/        <- Cleaned data ready for analysis (RDS or CSV).
+├── R/                    <- Folder for reusable functions and source code.
+├── scripts/              <- Analysis scripts (e.g., 01_cleanup.R, 02_model.R).
+├── output/               <- Plots, tables, and exported results.
+└── docs/                 <- Quarto or RMarkdown reports.
+```
+
+## Where to put this
+
+-  Good practice: use Github
+-  DON'T PUT FOLDER IN DOWNLOADS!
+-  Organize your computer
+-  Let's look through Dr. F's organization
+-  Avoid putting in Dropbox, OneDrive, Google Drive, folders if using github and writing code
+
+## Practice {.smaller}
+
+-  Download Star Formation data from Canvas
+-  Create a new folder on your computer called StarFormation (don't put it in your Downloads folder)
+-  Create the following folder structure
+
+```text
+StarFormation/
+├── project-name.code-workspace 
+├── README.md             
+├── data/
+│   ├── raw/              
+│   │   ├── MIRION_meta_all_1.csv
+│   │   ├── MIRION_meta_din_1.csv
+│   │   └── MIRION_spec_1.csv              
+│   └── processed/        
+├── scripts/              
+│   └── loading_the_data.R
+├── output/               
+└── docs/                 
+    └── Tables-for-CSCI2040.txt
+```
+
+## Paths
+
+- Root directory: Highest level folder of your project or computer (sometimes the same)
+- Working directory: The folder R is currently "looking at"
+- Making a project in RStudio/Positron automatically sets the working directory to the project folder
+- Two types of Paths:
+  - Absolute paths: Full path from the root of your computer
+  - Relative paths: Path from your working directory
+
+## Practice
+
+-  In our `loading_the_data.R` script, let's use `read_csv` to load the three data sets into R
 
 ## Other delimiters
 
-`readr` provides functions for other common delimiters:
-- `read_csv2()`: For semicolon-separated files. Common in European countries.
-- `read_tsv()`: For tab-separated files.
-- `read_delim()`: For files with any delimiter.
+- `readr` provides functions for other common delimiters:
+  - `read_csv2()`: For semicolon-separated files. Common in European countries.
+  - `read_tsv()`: For tab-separated files.
+  - `read_delim()`: For files with any delimiter.
+
+## Data Types in R
+
+-  There are a variety of data types in R. Some common ones include:
+  -   **Character**: Text data (e.g., names, categories).
+  -   **Numeric**: Decimal numbers (e.g., 3.14, -2.5).
+  -   **Integer**: Whole numbers (e.g., 1, 42).
+  -   **Logical**: Boolean values (`TRUE` or `FALSE`).
+  -   **Factor**: Categorical data with a fixed set of levels (e.g., "low", "medium", "high").
+-  More on this later in the course!
+-  For now: Understanding data types is crucial for data analysis and manipulation in R.
 
 ## Parsing & Column Specification
 
-`readr` tries to be clever and guess column types by looking at the first 1000 rows. Sometimes, it guesses wrong.
-
-Consider this file where a numeric code should be a character string:
-```{r}
-#| echo: true
-challenge <- read_csv("
-  x,y
-  1,A
-  2,B
-  03,C
-")
-challenge
-```
-The leading zero in `03` is dropped because `x` was parsed as a number.
+-  `readr` tries to be clever and guess column types by looking at the first 1000 rows. Sometimes, it guesses wrong.
+-  Common issues:
+  -   Leading zeros in numeric columns (R reads them as characters).
+  -   Mixed types in a column (e.g., numbers and text).
+  -   Units included in numeric columns (e.g., "10 kg").
+  
 
 ## Manually specifying column types
 
-You can override `readr`'s guesses using the `col_types` argument.
-
-You can use a compact string:
-- `c` = character
-- `d` = double
-- `i` = integer
-- `l` = logical
-- `f` = factor
-- `_` = skip column
-
-```{r}
-#| echo: true
-challenge_fixed <- read_csv("
-  x,y
-  1,A
-  2,B
-  03,C
-", col_types = "cc") # Treat both columns as character
-challenge_fixed
-```
+You can override `readr`'s guesses using the `col_types` argument. More on this later in the course.
 
 ## Other common import options
 
@@ -120,11 +165,14 @@ To save a data frame back to a file, use `write_csv()`.
 ```{r}
 #| echo: true
 #| eval: false
-write_csv(students, "students.csv")
+write_csv(file-name, "path-to-file.csv")
 ```
-- `write_csv()` is fast and efficient.
-- It encodes strings in UTF-8.
-- It does **not** write row names, which is a common source of error with base R's `write.csv()`.
+
+## Practice with reading and writing
+
+-  Read `MIRION_spec_1.csv` into R
+-  Put data in tidy format
+-  Save the tidy data to `data/processed/MIRION_spec_tidy.csv`
 
 ## Saving and loading R objects
 
@@ -133,8 +181,8 @@ For saving intermediate R objects, `write_csv()` is not ideal because it loses t
 It's better to use `write_rds()` and `read_rds()` to save and load a single R object in R's native RDS format.
 ```{r}
 #| eval: false
-write_rds(students, "students.rds")
-restored_students <- read_rds("students.rds")
+write_rds(file, "path-to-file.rds")
+restored_file <- read_rds("path-to-file.rds")
 ```
 
 ## Other data sources
