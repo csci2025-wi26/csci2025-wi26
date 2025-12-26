@@ -9,7 +9,7 @@ format:
     slide-number: true
     chalkboard: true
     highlight-style: a11y-dark
-editor: visual
+editor: source
 execute:
   freeze: auto
   echo: true
