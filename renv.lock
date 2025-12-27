@@ -140,6 +140,30 @@
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
       "Repository": "CRAN"
     },
+    "airports": {
+      "Package": "airports",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Title": "Data on Airports",
+      "Authors@R": "person(given = \"Mine\", family = \"Çetinkaya-Rundel\", role = c(\"aut\", \"cre\"), email = \"cetinkaya.mine@gmail.com\", comment = c(ORCID = \"0000-0001-6452-2420\"))",
+      "Description": "Geographic, use, and property related data on airports.",
+      "License": "GPL-3",
+      "Encoding": "UTF-8",
+      "LazyData": "true",
+      "RoxygenNote": "7.1.0",
+      "URL": "https://github.com/OpenIntroStat/airports",
+      "BugReports": "https://github.com/OpenIntroStat/airports/issues",
+      "Depends": [
+        "R (>= 2.10)"
+      ],
+      "Suggests": [
+        "testthat"
+      ],
+      "NeedsCompilation": "no",
+      "Author": "Mine Çetinkaya-Rundel [aut, cre] (<https://orcid.org/0000-0001-6452-2420>)",
+      "Maintainer": "Mine Çetinkaya-Rundel <cetinkaya.mine@gmail.com>",
+      "Repository": "CRAN"
+    },
     "askpass": {
       "Package": "askpass",
       "Version": "1.2.1",
@@ -581,6 +605,31 @@
       "Maintainer": "Jennifer Bryan <jenny@stat.ubc.ca>",
       "Repository": "CRAN"
     },
+    "cherryblossom": {
+      "Package": "cherryblossom",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Title": "Cherry Blossom Run Race Results",
+      "Authors@R": "person(given = \"Mine\", family = \"Çetinkaya-Rundel\", role = c(\"aut\", \"cre\"), email = \"cetinkaya.mine@gmail.com\", comment = c(ORCID = \"0000-0001-6452-2420\"))",
+      "Description": "Race results of the Cherry Blossom Run, which is an annual road race that takes place in Washington, DC.",
+      "License": "GPL-3",
+      "Suggests": [
+        "ggplot2",
+        "testthat"
+      ],
+      "Encoding": "UTF-8",
+      "LazyData": "true",
+      "RoxygenNote": "7.1.0",
+      "URL": "https://github.com/OpenIntroStat/cherryblossom",
+      "BugReports": "https://github.com/OpenIntroStat/cherryblossom/issues",
+      "Depends": [
+        "R (>= 2.10)"
+      ],
+      "NeedsCompilation": "no",
+      "Author": "Mine Çetinkaya-Rundel [aut, cre] (<https://orcid.org/0000-0001-6452-2420>)",
+      "Maintainer": "Mine Çetinkaya-Rundel <cetinkaya.mine@gmail.com>",
+      "Repository": "CRAN"
+    },
     "cli": {
       "Package": "cli",
       "Version": "3.6.5",
@@ -694,6 +743,35 @@
       "NeedsCompilation": "no",
       "Author": "Hadley Wickham [aut, cre], RStudio [cph, fnd]",
       "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
+      "Repository": "CRAN"
+    },
+    "countdown": {
+      "Package": "countdown",
+      "Version": "0.6.0",
+      "Source": "Repository",
+      "Title": "A Countdown Timer for HTML Presentations, Documents, and Web Apps",
+      "Authors@R": "person(\"Garrick\", \"Aden-Buie\", , \"garrick@adenbuie.com\", role = c(\"aut\", \"cre\", \"cph\"), comment = c(ORCID = \"0000-0002-7111-0077\"))",
+      "Description": "A simple countdown timer for slides and HTML documents written in 'R Markdown' or 'Quarto'. Integrates fully into 'Shiny' apps. Countdown to something amazing.",
+      "License": "MIT + file LICENSE",
+      "URL": "https://pkg.garrickadenbuie.com/countdown/, https://github.com/gadenbuie/countdown",
+      "BugReports": "https://github.com/gadenbuie/countdown/issues",
+      "Imports": [
+        "htmltools",
+        "prismatic (>= 1.1.0)",
+        "utils"
+      ],
+      "Suggests": [
+        "rmarkdown",
+        "shiny",
+        "testthat (>= 3.0.0)"
+      ],
+      "Config/Needs/website": "callr, xaringan, xaringanthemer, xaringanExtra",
+      "Config/testthat/edition": "3",
+      "Encoding": "UTF-8",
+      "RoxygenNote": "7.3.3",
+      "NeedsCompilation": "no",
+      "Author": "Garrick Aden-Buie [aut, cre, cph] (ORCID: <https://orcid.org/0000-0002-7111-0077>)",
+      "Maintainer": "Garrick Aden-Buie <garrick@adenbuie.com>",
       "Repository": "CRAN"
     },
     "cpp11": {
@@ -2178,6 +2256,81 @@
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
       "Repository": "CRAN"
     },
+    "nycflights13": {
+      "Package": "nycflights13",
+      "Version": "1.0.2",
+      "Source": "Repository",
+      "Title": "Flights that Departed NYC in 2013",
+      "Authors@R": "c(person(given = \"Hadley\", family = \"Wickham\", role = c(\"aut\", \"cre\"), email = \"hadley@rstudio.com\"), person(given = \"RStudio\", role = \"cph\"))",
+      "Description": "Airline on-time data for all flights departing NYC in 2013. Also includes useful 'metadata' on airlines, airports, weather, and planes.",
+      "License": "CC0",
+      "URL": "https://github.com/hadley/nycflights13",
+      "BugReports": "https://github.com/hadley/nycflights13/issues",
+      "Depends": [
+        "R (>= 3.2)"
+      ],
+      "Imports": [
+        "tibble"
+      ],
+      "Suggests": [
+        "dplyr"
+      ],
+      "Encoding": "UTF-8",
+      "LazyData": "true",
+      "LazyDataCompression": "bzip2",
+      "RoxygenNote": "7.1.1",
+      "NeedsCompilation": "no",
+      "Author": "Hadley Wickham [aut, cre], RStudio [cph]",
+      "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
+      "Repository": "CRAN"
+    },
+    "openintro": {
+      "Package": "openintro",
+      "Version": "2.5.0",
+      "Source": "Repository",
+      "Title": "Datasets and Supplemental Functions from 'OpenIntro' Textbooks and Labs",
+      "Authors@R": "c( person(\"Mine\", \"\\u00C7etinkaya-Rundel\", email = \"cetinkaya.mine@gmail.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0001-6452-2420\")), person(\"David\", \"Diez\", email = \"david.m.diez@gmail.com\", role = c(\"aut\")), person(\"Andrew\", \"Bray\", email = \"andrew.bray@gmail.com\", role = c(\"aut\")), person(\"Albert Y.\", \"Kim\", email = \"albert.ys.kim@gmail.com\", role = c(\"aut\"), comment = c(ORCID = \"0000-0001-7824-306X\")), person(\"Ben\", \"Baumer\", email = \"ben.baumer@gmail.com\", role = c(\"aut\")), person(\"Chester\", \"Ismay\", email = \"chester.ismay@gmail.com\", role = c(\"aut\")), person(\"Nick\", \"Paterno\", email = \"nicholas.paterno@gmail.com\", role = c(\"aut\")), person(\"Christopher\", \"Barr\", role = c(\"aut\")) )",
+      "Description": "Supplemental functions and data for 'OpenIntro' resources, which  includes open-source textbooks and resources for introductory statistics  (<https://www.openintro.org/>). The package contains datasets used in our  open-source textbooks along with custom plotting functions for reproducing  book figures. Note that many functions and examples include color  transparency; some plotting elements may not show up properly (or at all)  when run in some versions of Windows operating system.",
+      "License": "GPL-3",
+      "Encoding": "UTF-8",
+      "LazyData": "true",
+      "LazyDataCompression": "xz",
+      "RoxygenNote": "7.3.1",
+      "Suggests": [
+        "broom",
+        "dplyr",
+        "forcats",
+        "knitr",
+        "lubridate",
+        "scales",
+        "testthat (>= 3.0.0)",
+        "tidyr",
+        "tidytext",
+        "stringr",
+        "maps"
+      ],
+      "Imports": [
+        "ggplot2 (>= 2.2.1)",
+        "graphics",
+        "readr",
+        "rmarkdown",
+        "tibble"
+      ],
+      "Depends": [
+        "R (>= 2.10)",
+        "airports",
+        "cherryblossom",
+        "usdata"
+      ],
+      "URL": "http://openintrostat.github.io/openintro/, https://github.com/OpenIntroStat/openintro/",
+      "BugReports": "https://github.com/OpenIntroStat/openintro/issues",
+      "VignetteBuilder": "knitr",
+      "Config/testthat/edition": "3",
+      "NeedsCompilation": "no",
+      "Author": "Mine Çetinkaya-Rundel [aut, cre] (<https://orcid.org/0000-0001-6452-2420>), David Diez [aut], Andrew Bray [aut], Albert Y. Kim [aut] (<https://orcid.org/0000-0001-7824-306X>), Ben Baumer [aut], Chester Ismay [aut], Nick Paterno [aut], Christopher Barr [aut]",
+      "Maintainer": "Mine Çetinkaya-Rundel <cetinkaya.mine@gmail.com>",
+      "Repository": "CRAN"
+    },
     "openssl": {
       "Package": "openssl",
       "Version": "2.3.4",
@@ -2209,6 +2362,50 @@
       "NeedsCompilation": "yes",
       "Author": "Jeroen Ooms [aut, cre] (ORCID: <https://orcid.org/0000-0002-4035-0289>), Oliver Keyes [ctb]",
       "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
+      "Repository": "CRAN"
+    },
+    "patchwork": {
+      "Package": "patchwork",
+      "Version": "1.3.2",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "The Composer of Plots",
+      "Authors@R": "person(given = \"Thomas Lin\", family = \"Pedersen\", role = c(\"cre\", \"aut\"), email = \"thomasp85@gmail.com\", comment = c(ORCID = \"0000-0002-5147-4711\"))",
+      "Maintainer": "Thomas Lin Pedersen <thomasp85@gmail.com>",
+      "Description": "The 'ggplot2' package provides a strong API for sequentially  building up a plot, but does not concern itself with composition of multiple plots. 'patchwork' is a package that expands the API to allow for  arbitrarily complex composition of plots by, among others, providing  mathematical operators for combining multiple plots. Other packages that try  to address this need (but with a different approach) are 'gridExtra' and  'cowplot'.",
+      "License": "MIT + file LICENSE",
+      "Encoding": "UTF-8",
+      "Imports": [
+        "ggplot2 (>= 3.0.0)",
+        "gtable (>= 0.3.6)",
+        "grid",
+        "stats",
+        "grDevices",
+        "utils",
+        "graphics",
+        "rlang (>= 1.0.0)",
+        "cli",
+        "farver"
+      ],
+      "RoxygenNote": "7.3.2",
+      "URL": "https://patchwork.data-imaginist.com, https://github.com/thomasp85/patchwork",
+      "BugReports": "https://github.com/thomasp85/patchwork/issues",
+      "Suggests": [
+        "knitr",
+        "rmarkdown",
+        "gridGraphics",
+        "gridExtra",
+        "ragg",
+        "testthat (>= 2.1.0)",
+        "vdiffr",
+        "covr",
+        "png",
+        "gt (>= 0.11.0)"
+      ],
+      "VignetteBuilder": "knitr",
+      "Config/Needs/website": "gifski",
+      "NeedsCompilation": "no",
+      "Author": "Thomas Lin Pedersen [cre, aut] (ORCID: <https://orcid.org/0000-0002-5147-4711>)",
       "Repository": "CRAN"
     },
     "pillar": {
@@ -2315,6 +2512,37 @@
       "NeedsCompilation": "no",
       "Author": "Gabor Csardi [aut, cre], Bill Denney [ctb] (<https://orcid.org/0000-0002-5759-428X>), Christophe Regouby [ctb]",
       "Maintainer": "Gabor Csardi <csardi.gabor@gmail.com>",
+      "Repository": "CRAN"
+    },
+    "prismatic": {
+      "Package": "prismatic",
+      "Version": "1.1.2",
+      "Source": "Repository",
+      "Title": "Color Manipulation Tools",
+      "Authors@R": "person(\"Emil\", \"Hvitfeldt\", , \"emilhhvitfeldt@gmail.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-0679-1945\"))",
+      "Description": "Manipulate and visualize colors in a intuitive, low-dependency and functional way.",
+      "License": "MIT + file LICENSE",
+      "URL": "https://emilhvitfeldt.github.io/prismatic/, https://github.com/EmilHvitfeldt/prismatic",
+      "BugReports": "https://github.com/EmilHvitfeldt/prismatic/issues",
+      "Depends": [
+        "R (>= 3.2)"
+      ],
+      "Imports": [
+        "graphics",
+        "farver (>= 2.0.1)",
+        "grDevices"
+      ],
+      "Suggests": [
+        "covr",
+        "cli",
+        "testthat (>= 3.0.0)"
+      ],
+      "Encoding": "UTF-8",
+      "RoxygenNote": "7.3.1",
+      "Config/testthat/edition": "3",
+      "NeedsCompilation": "no",
+      "Author": "Emil Hvitfeldt [aut, cre] (<https://orcid.org/0000-0002-0679-1945>)",
+      "Maintainer": "Emil Hvitfeldt <emilhhvitfeldt@gmail.com>",
       "Repository": "CRAN"
     },
     "processx": {
@@ -3577,6 +3805,38 @@
       "NeedsCompilation": "yes",
       "Author": "Davis Vaughan [aut, cre], Howard Hinnant [cph] (Author of the included date library), Posit Software, PBC [cph, fnd]",
       "Maintainer": "Davis Vaughan <davis@posit.co>",
+      "Repository": "CRAN"
+    },
+    "usdata": {
+      "Package": "usdata",
+      "Version": "0.3.1",
+      "Source": "Repository",
+      "Title": "Data on the States and Counties of the United States",
+      "Authors@R": "c( person(given = \"Mine\", family = \"Çetinkaya-Rundel\", email = \"cetinkaya.mine@gmail.com\",  role = c(\"aut\", \"cre\"),  comment = c(ORCID = \"0000-0001-6452-2420\")), person(given = \"David\",  family = \"Diez\",  email = \"david@openintro.org\",  role = c(\"aut\")), person(given = \"Leah\",  family = \"Dorazio\",  email = \"leah.dorazio@sfuhs.org\",  role = c(\"aut\"))     )",
+      "Description": "Demographic data on the United States at the county and state levels spanning multiple years.",
+      "License": "GPL-3",
+      "Encoding": "UTF-8",
+      "LazyData": "true",
+      "RoxygenNote": "7.3.1",
+      "URL": "https://github.com/OpenIntroStat/usdata, https://openintrostat.github.io/usdata/",
+      "BugReports": "https://github.com/OpenIntroStat/usdata/issues",
+      "Suggests": [
+        "dplyr",
+        "ggplot2",
+        "maps",
+        "lubridate",
+        "sf",
+        "testthat"
+      ],
+      "Imports": [
+        "tibble"
+      ],
+      "Depends": [
+        "R (>= 2.10)"
+      ],
+      "NeedsCompilation": "no",
+      "Author": "Mine Çetinkaya-Rundel [aut, cre] (<https://orcid.org/0000-0001-6452-2420>), David Diez [aut], Leah Dorazio [aut]",
+      "Maintainer": "Mine Çetinkaya-Rundel <cetinkaya.mine@gmail.com>",
       "Repository": "CRAN"
     },
     "utf8": {

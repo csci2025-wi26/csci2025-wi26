@@ -1,0 +1,268 @@
+---
+title: "ggplot2 layers"
+subtitle: "Lecture 6"
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| echo: false
+
+# load packages
+library(tidyverse)
+library(nycflights13)
+library(countdown)
+
+# set theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
+
+# set figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 7,        # 7" width
+  fig.asp = 0.618,      # the golden ratio
+  fig.retina = 3,       # dpi multiplier for displaying HTML output on retina
+  fig.align = "center", # center align figures
+  dpi = 300             # higher dpi, sharper image
+)
+```
+
+# The layered grammar of graphics
+
+## Data: Flights from NYC in 2013
+
+We will be using the `nycflights13::flights` dataset. This dataset contains information about all flights that departed from New York City (EWR, LGA, JFK) in 2013.
+
+```{r}
+glimpse(flights)
+```
+
+## A simple scatterplot {.smaller}
+
+```{r}
+#| label: simple-plot
+
+ggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +
+  geom_point()
+```
+
+
+## Adding layers
+
+A plot is composed of layers. Each layer has:
+
+- A **geom**: The geometric object that represents the data (e.g., points, lines, bars).
+- An **aesthetic mapping**: How variables are mapped to visual properties.
+- A **stat**: A statistical transformation (e.g., counting, summarizing).
+- A **position adjustment**: How to arrange elements that would otherwise overlap.
+
+## Adding a layer: Trend line with `geom_smooth()` {.smaller}
+
+```{r}
+#| label: smooth-plot
+
+ggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +
+  geom_point(alpha = 0.1) +
+  geom_smooth()
+```
+
+# Aesthetic Mappings
+
+## Global vs. Local Mappings
+
+-  Aesthetic mappings can be: 
+  - Global: specify in `ggplot()` so they apply to all layers
+  - Local: specify in each `geom_*()` so they apply only to that layer
+
+## Using `color` as a local aesthetic
+
+```{r}
+#| label: local-aes-plot
+
+ggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +
+  geom_point(mapping = aes(color = origin), alpha = 0.1) +
+  geom_smooth()
+```
+
+## Why isn't this plot blue?
+
+```{r}
+# This is probably not what you want
+ggplot(flights, aes(x = dep_delay, y = arr_delay)) +
+  geom_point(aes(color = "blue"))
+```
+
+## Setting vs. Mapping
+
+- To apply a constant property to all points, set it outside of `aes()`
+
+```{r}
+ggplot(flights, aes(x = dep_delay, y = arr_delay)) +
+  geom_point(color = "blue", alpha = 0.1)
+```
+
+# Geoms
+
+## Common geoms
+
+- `geom_point()`: Scatterplots
+- `geom_line()`: Line charts
+- `geom_bar()`: Bar charts
+- `geom_histogram()`: Histograms
+- `geom_boxplot()`: Boxplots
+- `geom_smooth()`: Trend lines
+- `geom_density()`: Density plots
+- [Many more!](ttps://ggplot2.tidyverse.org/reference/index.html#geom)
+
+
+# Statistical Transformations
+
+## `geom_bar` vs `geom_col`
+
+- `geom_bar()` uses `stat_count()` by default to count the number of observations for each category
+
+```{r}
+#| label: bar-chart
+
+ggplot(data = flights, mapping = aes(x = carrier)) +
+  geom_bar()
+```
+
+## Changing the `stat` argument
+
+- You can change the statistical transformation used by a geom with the `stat` argument...
+
+```{r}
+carrier_counts <- flights |>
+  count(carrier) |> 
+  ggplot(mapping = aes(x = carrier, y = n)) +
+    geom_bar(stat = "identity")
+```
+
+## Changing the stat
+
+- Using `after_stat()` to modify computed variables from a stat
+
+```{r}
+ggplot(data = flights) +
+  geom_bar(mapping = aes(x = carrier, y = after_stat(prop), group = 1)) +
+  labs(y = "Proportion")
+```
+
+## Practice
+
+Let's try to overlay a density plot on top of a histogram of `dep_delay`...
+
+
+# Position Adjustments
+
+## Overplotting
+
+- Overplotting: When many points overlap in a scatterplot, making it hard to see the distribution of points
+- Common solution: Use transparency with `alpha` aesthetic
+- Another solution: Use position adjustments to spread out points
+
+## Jittering points
+
+```{r}
+#| warning: false
+#| message: false
+
+library(patchwork)
+p1 <- ggplot(flights, aes(x = month, y = dep_delay)) +
+  geom_point(alpha = 0.01)
+p2 <- ggplot(flights, aes(x = month, y = dep_delay)) +
+  geom_jitter(alpha = 0.01)
+p1 + p2
+```
+
+
+## Bar chart adjustments
+
+For bar charts, you can use `position` to change how bars are arranged.
+- `stack` (default): Stack bars on top of each other.
+- `fill`: Stack bars, but standardize to have the same height. Good for comparing proportions.
+- `dodge`: Place bars next to each other.
+
+## Bar chart adjustments
+
+```{r}
+p1 <- ggplot(flights, aes(x = carrier, fill = origin)) +
+  geom_bar(position = "stack")
+p2 <- ggplot(flights, aes(x = carrier, fill = origin)) +
+  geom_bar(position = "fill") +
+  labs(y = "Proportion")
+p3 <- ggplot(flights, aes(x = carrier, fill = origin)) +
+  geom_bar(position = "dodge")
+p1 + p2 + p3
+```
+
+
+# Facets
+
+## `facet_wrap`
+
+- Facets allow you to break your plot into subplots based on a categorical variable.
+
+```{r}
+#| label: facet-plot
+
+ggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +
+  geom_point(alpha = 0.1) +
+  facet_wrap(~ origin, nrow = 1)
+```
+
+## Adding a trend line to facets
+
+```{r}
+#| label: facet-smooth-plot
+
+ggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +
+  geom_point(alpha = 0.1) +
+  geom_smooth() +
+  facet_wrap(~ origin, nrow = 1)
+```
+
+## Facet Grids
+
+```{r}
+#| label: facet-smooth-plot-2
+
+ggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +
+  geom_point(alpha = 0.1) +
+  geom_smooth() +
+  facet_grid(carrier ~ origin)
+```
+
+# Coordinate Systems
+
+## Flipping coordinates
+
+```{r}
+p1 <- ggplot(data = flights, mapping = aes(x = carrier)) +
+  geom_bar()
+
+p2 <- ggplot(data = flights, mapping = aes(x = carrier)) +
+  geom_bar() +
+  coord_flip()
+p1 + p2
+```
+
+
+## The layered grammar in summary
+
+```r
+#| eval: false
+`ggplot(data = <DATA>) +`
+`  <GEOM_FUNCTION>(`
+`    mapping = aes(<AESTHETIC_MAPPINGS>),`
+`    stat = <STAT>,`
+`    position = <POSITION>`
+`  ) +`
+`  <COORDINATE_SYSTEM> +`
+`  <FACET_FUNCTION>`
+```
