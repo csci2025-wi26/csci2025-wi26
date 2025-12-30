@@ -46,7 +46,7 @@ knitr::opts_chunk$set(
 
 # Creating Date-Times
 
-## From Strings
+## From Strings {.smaller}
 
 - `lubridate` has helper functions that parse dates by identifying the order of year, month, and day components.
 - Functions are named after the order of components: `ymd()`, `mdy()`, `dmy()`, etc.
@@ -164,3 +164,7 @@ x1 <- ymd_hms("2024-06-01 12:00:00", tz = "America/New_York")
 with_tz(x1, "Europe/Paris")
 force_tz(x1, "Europe/Paris")
 ```
+
+## Practice!
+
+Let's do some practice!
