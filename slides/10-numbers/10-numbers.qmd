@@ -60,6 +60,8 @@ parse_number("55%")
 - `dplyr::count()` is a quick way to count the number of rows for each unique value of a variable.
 - It's a shortcut for `group_by()` and `summarize(n = n())`.
 
+## Example
+
 ```{r}
 #| echo: true
 # Count flights per destination
@@ -70,6 +72,8 @@ flights |> count(dest, sort = TRUE)
 
 - You can provide a weight to `count()` to sum up a variable instead of just counting rows.
 - This is useful for summarizing pre-counted data.
+
+## Example
 
 ```{r}
 #| echo: true
@@ -84,12 +88,18 @@ df <- tribble(
 df |> count(group, wt = n)
 ```
 
+## Practice
+
+Let's do some practice!
+
 # Arithmetic
 
 ## Basic Operators
 
 - R provides the standard arithmetic operators: `+`, `-`, `*`, `/`, `^`.
 - `%%` (remainder) and `%/%` (integer division) are useful for modular arithmetic.
+
+## Example
 
 ```{r}
 #| echo: true
@@ -99,7 +109,8 @@ flights |>
   select(dep_time) |>
   mutate(
     hour = dep_time %/% 100,
-    minute = dep_time %% 100
+    minute = dep_time %% 100,
+    total_minutes = hour * 60 + minute
   )
 ```
 
@@ -172,6 +183,12 @@ x <- c(2, 5, 11, 20)
 # Difference between each element and the previous one
 x - lag(x)
 ```
+
+
+## Practice!
+
+Let's practice some arithmetic operations and trasnformations!
+
 
 # Numeric Summaries
 
