@@ -95,3 +95,24 @@ df |> complete(group, year)
 - `NaN` ("Not a Number") is a special numeric value that can arise from invalid mathematical operations, like `0/0`.
 - `is.nan()` tests for `NaN`.
 - `NaN` is also considered `NA`, so `is.na(NaN)` is `TRUE`.
+
+# Thinking about missing values
+
+## Missingness in Data Analysis
+
+- Be careful about removing missing values without understanding why they are missing
+- Sometimes missing values aren't missing at all
+- Sometimes non-missing values are actually missing
+- Sometimes there is a pattern to missing data (call this structured missingness)
+- Not undersanding missingness can lead to biased results!
+
+## Missing Data Mechanisms
+
+- Missing Completely at Random (MCAR): Missingness is unrelated to any data.
+- Missing at Random (MAR): Missingness is related to observed data.
+- Missing Not at Random (MNAR): Missingness is related to unobserved data.
+- Understanding the mechanism helps in choosing appropriate handling methods.
+
+## Practice!
+
+Let's practice!
