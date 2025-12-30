@@ -16,6 +16,7 @@ format: revealjs
 # load packages
 library(tidyverse)
 library(countdown)
+library(patchwork)
 
 # set theme for ggplot2
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
@@ -40,7 +41,14 @@ EDA is an iterative cycle. You:
 2.  Search for answers by visualizing, transforming, and modelling your data.
 3.  Use what you learn to refine your questions and/or generate new questions.
 
+## Fun Quotes
+
 > "There are no routine statistical questions, only questionable statistical routines." — Sir David Cox
+
+. . .
+
+> “Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.” — John Tukey
+
 
 ## Guiding Questions
 
@@ -50,6 +58,13 @@ Two main types of questions to ask:
 
 2.  What type of covariation occurs between my variables?
 
+## Data: `diamonds`
+
+- We will use the `diamonds` dataset from the `ggplot2` package.
+- It contains information about the prices and attributes of almost 54,000 diamonds.
+```{r}
+glimpse(diamonds)
+```
 
 # Variation
 
@@ -60,40 +75,23 @@ Two main types of questions to ask:
 - Every variable has its own pattern of variation, which can reveal interesting information.
 - The best way to understand that pattern is to visualize the variable’s distribution.
 
-## Categorical Variables {.smaller}
+## Questions
 
-- For a categorical variable, use a bar chart with `geom_bar()`
+- Which values are the most common? *Why?*
 
-```{r}
-ggplot(diamonds, aes(x = cut)) +
-  geom_bar()
-```
+- Which values are rare? *Why?* Does that match your expectations?
 
-## Continuous Variables {.smaller}
+- Can you see any unusual patterns? *What might explain them?*
 
-- For a continuous variable, use a histogram with `geom_histogram()`
+## Recall: Univarite Plots
 
-```{r}
-ggplot(diamonds, aes(x = carat)) +
-  geom_histogram(binwidth = 0.5)
-```
+- Categorical variables: bar charts
+- Numerical variables: histograms, boxplots
 
-## Binwidth
+## Practice
 
-- The `binwidth` of a histogram can reveal different patterns.
-- Experiment with different binwidths to find the best one for your data.
-
-```{r}
-#| fig-width: 10
-#| echo: false
-p1 <- ggplot(diamonds, aes(x = carat)) +
-  geom_histogram(binwidth = 0.1) + 
-  labs(title = "binwidth = 0.1")
-p2 <- ggplot(diamonds, aes(x = carat)) +
-  geom_histogram(binwidth = 0.01) + 
-  labs(title = "binwidth = 0.01")
-p1 + p2
-```
+- Let's practice exploring the `diamonds` data set
+  - The `binwidth` of a histogram can reveal different patterns.
 
 # Unusual Values
 
@@ -106,41 +104,30 @@ p1 + p2
 
 - If they are data entry errors, try to fix them or remove them.
 - If they are genuine, their presence is important information.
+- Neither of these conclusions can be made without understanding the context of the data and looking deeply at the observations
 
-You can zoom in on the data to see more detail:
+## More Practice
 
-```{r}
-ggplot(diamonds, aes(x = y)) +
-  geom_histogram(binwidth = 0.5) +
-  coord_cartesian(ylim = c(0, 50))
-```
-
+- Let's look for outliers in the `diamonds` dataset.
+- Let's also work through some of the exercises in the chapter.
 
 # Covariation
 
 ## Visualizing Relationships
 
-**Covariation** is the tendency for the values of two or more variables to vary together in a related way.
+- **Covariation**: how do two variables change together? What is their relationship?
+- Visualizing covariation helps you understand relationships between variables
+- You need to think and plan carefully about how to display multiple distributions in a single plot
 
-- The best way to spot covariation is to visualize the relationship between two or more variables.
+## Recall: Three general cases
 
-## A Categorical and a Continuous Variable {.smaller}
+- Categorical + Categorical
+  + Boxplots
+- Categorical + Numerical
+  + Boxplots, jitter plots, faceted histograms
+- Numerical + Numerical
+  + Scatterplots, jitter plots
 
-- We can use `geom_freqpoly()` to see the distribution of a continuous variable for each category.
-
-```{r}
-ggplot(diamonds, aes(x = price, color = cut)) +
-  geom_freqpoly(binwidth = 500)
-```
-
-## Boxplots {.smaller}
-
-- `geom_boxplot()` is a great way to see the distribution of a continuous variable for each category.
-
-```{r}
-ggplot(diamonds, aes(x = cut, y = price)) +
-  geom_boxplot()
-```
 
 ## Reordering Categories
 
@@ -152,72 +139,68 @@ ggplot(diamonds, aes(x = fct_reorder(cut, price, .fun = median), y = price)) +
   labs(x = "cut")
 ```
 
-## Two Categorical Variables {.smaller}
+## Some new plots
 
-- To visualize the covariation between two categorical variables, count the number of observations for each combination.
+- Categorical + Categorical
+  + Mosaic plots, count plots, tile plots
+- Categorical + Numerical
+  + Violin plots, sina plots, ridgeline plots, frequency polygons
+- Numerical + Numerical
+  + 2D-Histogram/heatmap of counts, hexbin plots
 
-```{r}
-#| warning: false
-diamonds |>
-  count(color, cut) |>  
-  ggplot(aes(x = color, y = cut)) +
-  geom_tile(aes(fill = n))
-```
 
-## Two Continuous Variables {.smaller}
+## Practice
 
-- Scatterplots (`geom_point`) are the standard for visualizing two continuous variables.
+- Let's practice exploring covariation in the `diamonds` dataset.
+- Techniques to try:
+  - Reordering categories
+  - New plot types
+  - Dealing with overplotting
+  - Changing aesthetics (color, size, shape)
+  - Filtering and mutating data
 
-```{r}
-ggplot(diamonds, aes(x = carat, y = price)) +
-  geom_point()
-```
+# Patterns
 
-## Overplotting
-
-- When you have a lot of data, points can overlap. This is called **overplotting**.
-- You can use `alpha` to make points transparent.
-
-```{r}
-ggplot(diamonds, aes(x = carat, y = price)) +
-  geom_point(alpha = 1 / 100)
-```
-
-## Binning
-
-- You can also use `geom_bin2d()` or `geom_hex()` to bin the data into 2D bins.
-
-```{r}
-#| warning: false
-ggplot(diamonds, aes(x = carat, y = price)) +
-  geom_bin2d()
-```
-
-# Patterns and Models
-
-## Removing Patterns
+## Patterns
 
 - Patterns in your data hint at relationships. If you can spot a pattern, ask yourself:
   - Could this pattern be due to coincidence?
   - How can you describe the relationship implied by the pattern?
   - How strong is the relationship implied by the pattern?
+  - What other variables might affect the relationship?
+  - Does the relationship change if you look at individual subgroups of the data?
 - Models can help you extract the strong patterns and leave the weaker ones.
 
-## Example: Residuals {.smaller}
+## Transformations
 
-```{r}
-#| message: false
-library(modelr)
+- Transformations can help you see patterns more clearly.
+- Common transformations include:
+  - Logarithms
+  - Logarithms
+  - Logarithms
+  - Square roots
+  - Logarithms
+  - Standardization (z-scores)
+  - Logarithms
 
-mod <- lm(log(price) ~ log(carat), data = diamonds)
+## The power `emo::ji("man_facepalming")` of logs
 
-diamonds2 <- diamonds |> 
-  add_residuals(mod) |> 
-  mutate(resid = exp(resid))
+- Power law: when $y = ax^k$
+  + Taking the log of both sides gives: $\log(y) = \log(a) + k\log(x)$
+  + Intuitively: multiplying `x` by a constant multiplies `y` by a constant.
+- Power law's are extremely common in nature: 
+  + Paretto principle (80/20 rule)
+  + City sizes
+  + Earthquake magnitudes
+  + Wealth distributions
+  + Bacteria growth
 
-ggplot(diamonds2, aes(x = carat, y = resid)) + 
-  geom_point(alpha = 1/100)
-```
+## Practice
+
+- Let's practice looking for patterns in the `diamonds` dataset.
+- Techniques to try:
+  - Transformations (logs, square roots)
+  - Modeling and residuals
 
 # Summary
 
@@ -227,5 +210,4 @@ ggplot(diamonds2, aes(x = carat, y = resid)) +
 - Start by looking at the variation of each variable.
 - Then, explore the covariation between variables.
 - Use `ggplot2` to create a wide range of plots to help you understand your data.
-
-Good luck exploring!
+- **DON'T FORGET TO THINK!**
