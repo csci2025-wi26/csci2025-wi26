@@ -1,0 +1,166 @@
+---
+title: "Dates and Times"
+subtitle: "Lecture 14"
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| echo: false
+
+# load packages
+library(tidyverse)
+library(countdown)
+library(lubridate)
+library(nycflights13)
+
+# set theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
+
+# set figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 7,        # 7" width
+  fig.asp = 0.618,      # the golden ratio
+  fig.retina = 3,       # dpi multiplier for displaying HTML output on retina
+  fig.align = "center", # center align figures
+  dpi = 300             # higher dpi, sharper image
+)
+```
+
+# Introduction
+
+## Working with Dates and Times
+
+- Dates and times can be complex due to leap years, daylight saving time (DST), and time zones.
+- The `lubridate` package in R makes working with dates and times easier.
+
+## `lubridate`
+
+- Part of the core `tidyverse`.
+- Provides functions for parsing, manipulating, and performing arithmetic with date-time data.
+
+# Creating Date-Times
+
+## From Strings
+
+- `lubridate` has helper functions that parse dates by identifying the order of year, month, and day components.
+- Functions are named after the order of components: `ymd()`, `mdy()`, `dmy()`, etc.
+
+```{r}
+#| echo: true
+ymd("2017-01-31")
+mdy("January 31st, 2017")
+dmy("31-Jan-2017")
+```
+
+- For date-times, add `_hms`, `_hm`, or `_h`.
+```{r}
+#| echo: true
+ymd_hms("2017-01-31 20:11:59")
+```
+
+## From Components
+
+- Use `make_date()` for dates and `make_datetime()` for date-times from individual components.
+
+```{r}
+#| echo: true
+#| code-fold: true
+flights |> 
+  select(year, month, day, hour, minute) |> 
+  mutate(departure = make_datetime(year, month, day, hour, minute))
+```
+
+# Date-Time Components
+
+## Accessing Components
+
+- Functions like `year()`, `month()`, `mday()`, `wday()`, `hour()`, `minute()`, and `second()` extract components.
+
+```{r}
+#| echo: true
+datetime <- ymd_hms("2026-07-08 12:34:56")
+year(datetime)
+month(datetime, label = TRUE)
+wday(datetime, label = TRUE, abbr = FALSE)
+```
+
+## Modifying Components
+
+- You can also set components using the same accessor functions.
+
+```{r}
+#| echo: true
+datetime <- ymd_hms("2026-07-08 12:34:56")
+year(datetime) <- 2030
+datetime
+```
+
+- `update()` can modify multiple components.
+```{r}
+#| echo: true
+update(datetime, year = 2030, month = 2, mday = 2)
+```
+
+# Time Spans
+
+## Durations
+
+- Represent an exact number of seconds.
+- Created with functions like `dseconds()`, `dminutes()`, `dhours()`, `ddays()`.
+
+```{r}
+#| echo: true
+ddays(1)
+dyears(1)
+```
+
+- Adding a duration of a day can sometimes lead to unexpected results due to DST.
+
+## Periods
+
+- Represent human units like weeks and months.
+- More intuitive for arithmetic.
+
+```{r}
+#| echo: true
+one_am <- ymd_hms("2026-03-08 01:00:00", tz = "America/New_York")
+one_am + ddays(1) # duration
+one_am + days(1)  # period
+```
+
+## Intervals
+
+- Represent a start and end point.
+- Useful for calculating the exact length of a time span in human units.
+
+```{r}
+#| echo: true
+y2024 <- ymd("2024-01-01") %--% ymd("2025-01-01")
+y2024 / days(1)
+```
+
+# Time Zones
+
+## IANA Time Zones
+
+- R uses IANA time zones, like `"America/New_York"`.
+- `Sys.timezone()` gives your current time zone.
+- `OlsonNames()` lists all available time zone names.
+
+## Changing Time Zones
+
+- `with_tz()`: changes how a time is displayed without changing the instant.
+- `force_tz()`: changes the instant in time.
+
+```{r}
+#| echo: true
+x1 <- ymd_hms("2024-06-01 12:00:00", tz = "America/New_York")
+with_tz(x1, "Europe/Paris")
+force_tz(x1, "Europe/Paris")
+```

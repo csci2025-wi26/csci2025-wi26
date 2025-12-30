@@ -1,0 +1,155 @@
+---
+title: "Regular Expressions"
+subtitle: "Lecture 12"
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| echo: false
+
+# load packages
+library(tidyverse)
+library(countdown)
+library(stringr)
+
+# set theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
+
+# set figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 7,        # 7" width
+  fig.asp = 0.618,      # the golden ratio
+  fig.retina = 3,       # dpi multiplier for displaying HTML output on retina
+  fig.align = "center", # center align figures
+  dpi = 300             # higher dpi, sharper image
+)
+```
+
+# Introduction
+
+## Regular Expressions (Regex)
+
+- A powerful tool for describing patterns in strings.
+- Used for finding, extracting, and replacing text.
+- `stringr` provides a consistent interface for working with regex.
+
+# Key Functions
+
+## `str_detect()`
+
+- `str_detect()` returns `TRUE` if a pattern is found in a string, `FALSE` otherwise.
+
+```{r}
+#| echo: true
+x <- c("apple", "banana", "pear")
+str_detect(x, "an")
+```
+
+## `str_count()`
+
+- `str_count()` counts the number of matches in a string.
+
+```{r}
+#| echo: true
+str_count("banana", "a")
+```
+
+## `str_extract()` and `str_extract_all()`
+
+- `str_extract()` extracts the first match.
+- `str_extract_all()` extracts all matches.
+
+```{r}
+#| echo: true
+str_extract(c("a-b", "c-d-e"), "[a-z]+")
+str_extract_all("banana", "an")
+```
+
+## `str_replace()` and `str_replace_all()`
+
+- Replaces the first or all matches with a new string.
+
+```{r}
+#| echo: true
+x <- c("one", "two", "three")
+str_replace(x, "[aeiou]", "-")
+str_replace_all(x, "[aeiou]", "-")
+```
+
+# Pattern Components
+
+## Anchors
+
+- `^` matches the start of the string.
+- `$` matches the end of the string.
+
+```{r}
+#| echo: true
+x <- c("apple", "banana", "pear")
+str_detect(x, "^a")
+str_detect(x, "a$")
+```
+
+## Character Classes
+
+- `.` matches any character except a newline.
+- `\d` matches any digit.
+- `\s` matches any whitespace.
+- `[abc]` matches a, b, or c.
+- `[^abc]` matches anything except a, b, or c.
+
+## Repetition
+
+- `?`: 0 or 1 time.
+- `+`: 1 or more times.
+- `*`: 0 or more times.
+- `{n}`: exactly n times.
+- `{n,}`: n or more times.
+- `{n,m}`: between n and m times.
+
+# Grouping and Backreferences
+
+## `()` for Grouping
+
+- Parentheses create a "capturing group" to extract parts of a match.
+
+```{r}
+#| echo: true
+str_match("apple, banana, pear", "([a-z]+), ([a-z]+)")
+```
+
+## Backreferences
+
+- `\1`, `\2`, etc. refer to previously captured groups.
+
+```{r}
+#| echo: true
+str_replace("abab", "(a)(b)", "\\2\\1")
+```
+
+# Other Tools
+
+## `tidyr::separate_wider_regex()`
+
+- Separates a column into multiple columns using regex with capture groups.
+
+```{r}
+#| echo: true
+df <- tibble(x = "123-abc")
+df |> separate_wider_regex(x, c(num = "\\d+", "-", chr = "[a-z]+"))
+```
+
+## `fixed()`
+
+- Use `fixed()` to match a literal string without interpreting it as a regex.
+
+```{r}
+#| echo: true
+str_detect("a.b", fixed("."))
+```

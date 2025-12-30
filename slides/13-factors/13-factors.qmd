@@ -1,0 +1,148 @@
+---
+title: "Factors"
+subtitle: "Lecture 13"
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| echo: false
+
+# load packages
+library(tidyverse)
+library(countdown)
+library(forcats)
+library(gss_cat)
+
+# set theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
+
+# set figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 7,        # 7" width
+  fig.asp = 0.618,      # the golden ratio
+  fig.retina = 3,       # dpi multiplier for displaying HTML output on retina
+  fig.align = "center", # center align figures
+  dpi = 300             # higher dpi, sharper image
+)
+```
+
+# Introduction
+
+## Categorical Data and Factors
+
+- Factors are R's data structure for categorical variables.
+- The `forcats` package (part of `tidyverse`) provides a suite of tools for working with factors.
+- Useful for reordering and relabeling for better visualizations.
+
+# Creating Factors
+
+## `factor()` and `fct()`
+
+- Create factors from a character vector.
+- `levels()` shows the categories of the factor.
+
+```{r}
+#| echo: true
+x <- c("Male", "Female", "Female", "Male")
+f <- factor(x)
+f
+levels(f)
+```
+
+## `gss_cat` dataset
+
+- We'll use the `gss_cat` dataset, which contains data from the General Social Survey, for examples.
+
+# Modifying Factor Order
+
+## `fct_reorder()`
+
+- Reorders a factor by another variable, useful for plots.
+- For example, ordering bars in a bar chart.
+
+```{r}
+#| echo: true
+#| fig-show: hide
+gss_cat |>
+  filter(rincome != "Not applicable") |>
+  group_by(rincome) |>
+  summarize(age = mean(age, na.rm = TRUE)) |>
+  mutate(rincome = fct_reorder(rincome, age)) |>
+  ggplot(aes(x = age, y = rincome)) +
+  geom_point()
+```
+
+## `fct_infreq()`
+
+- Reorders a factor by the frequency of its values.
+
+```{r}
+#| echo: true
+gss_cat |>
+  count(race) |>
+  mutate(race = fct_infreq(race)) |> 
+  ggplot(aes(x = n, y = race)) +
+  geom_col()
+```
+
+## `fct_relevel()`
+
+- Manually move levels to the front.
+
+```{r}
+#| echo: true
+fct_relevel(gss_cat$partyid, "Independent")
+```
+
+# Modifying Factor Levels
+
+## `fct_recode()`
+
+- Changes the names of factor levels.
+
+```{r}
+#| echo: true
+gss_cat |>
+  mutate(partyid = fct_recode(partyid,
+    "Republican, strong"    = "Strong republican",
+    "Republican, weak"      = "Not str republican",
+    "Independent, near rep" = "Ind,near rep",
+    "Independent, near dem" = "Ind,near dem",
+    "Democrat, weak"        = "Not str democrat",
+    "Democrat, strong"      = "Strong democrat"
+  )) |>
+  count(partyid)
+```
+
+## `fct_collapse()`
+
+- Combines several levels into one.
+
+```{r}
+#| echo: true
+gss_cat |>
+  mutate(partyid = fct_collapse(partyid,
+    other = c("No answer", "Don't know", "Other party"),
+    rep = c("Strong republican", "Not str republican"),
+    ind = c("Ind,near rep", "Independent", "Ind,near dem"),
+    dem = c("Not str democrat", "Strong democrat")
+  )) |>
+  count(partyid)
+```
+
+## `fct_lump_*()`
+
+- `fct_lump_n()` and `fct_lump_prop()` lump together the least/most frequent levels into an "Other" category.
+
+```{r}
+#| echo: true
+gss_cat |>
+  mutate(relig = fct_lump_n(relig, n = 5)) |>
+  count(relig)
+```
