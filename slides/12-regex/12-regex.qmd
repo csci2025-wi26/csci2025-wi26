@@ -47,7 +47,7 @@ knitr::opts_chunk$set(
 
 ```{r}
 #| echo: true
-x <- c("apple", "banana", "pear")
+x <- c("apple", "banana", "pear", "pineapple", "naartjie")
 str_detect(x, "an")
 ```
 
@@ -67,7 +67,7 @@ str_count("banana", "a")
 
 ```{r}
 #| echo: true
-str_extract(c("a-b", "c-d-e"), "[a-z]+")
+str_extract("banana", "an")
 str_extract_all("banana", "an")
 ```
 
@@ -77,9 +77,20 @@ str_extract_all("banana", "an")
 
 ```{r}
 #| echo: true
-x <- c("one", "two", "three")
-str_replace(x, "[aeiou]", "-")
-str_replace_all(x, "[aeiou]", "-")
+x <- c("Dr_Eric_Friedlander", "Dr_Brandy_Wiegers", "Anthony_Campitelli")
+str_replace(x, "_", " ")
+str_replace_all(x, " ", " ")
+```
+
+## Regex
+
+Instead of inputting literal strings, you can use regex patterns to describe more complex matches.
+
+```{r}
+#| echo: true
+x <- c("Dr_Eric_Friedlander", "Dr_Brandy_Wiegers", "Anthony_Campitelli")
+# remove all vowels
+str_replace_all(x, "[aeiouAEIOU]", "")
 ```
 
 # Pattern Components
@@ -113,6 +124,10 @@ str_detect(x, "a$")
 - `{n,}`: n or more times.
 - `{n,m}`: between n and m times.
 
+## Practice!
+
+Let's do some practice!
+
 # Grouping and Backreferences
 
 ## `()` for Grouping
@@ -132,6 +147,10 @@ str_match("apple, banana, pear", "([a-z]+), ([a-z]+)")
 #| echo: true
 str_replace("abab", "(a)(b)", "\\2\\1")
 ```
+
+## Practice!
+
+Let's do some practice!
 
 # Other Tools
 
@@ -153,3 +172,7 @@ df |> separate_wider_regex(x, c(num = "\\d+", "-", chr = "[a-z]+"))
 #| echo: true
 str_detect("a.b", fixed("."))
 ```
+
+## Practice!
+
+Let's do some practice!
