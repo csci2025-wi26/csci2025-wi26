@@ -1,0 +1,219 @@
+---
+title: "Numbers"
+subtitle: "Lecture 10"
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| echo: false
+
+# load packages
+library(tidyverse)
+library(nycflights13)
+
+# set theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
+
+# set figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 7,
+  fig.asp = 0.618,
+  fig.retina = 3,
+  fig.align = "center",
+  dpi = 300
+)
+```
+
+# Introduction
+
+## Working with Numbers
+
+- Numeric data is the most common type of data you'll work with.
+- This lecture covers creating, transforming, and summarizing numeric vectors.
+- We'll use functions from base R and `dplyr`.
+
+# Creating Numbers
+
+## Parsing Numbers
+
+- Sometimes numbers are stored as text (strings).
+- `readr::parse_double()` converts strings to numbers, assuming they are just numbers.
+- `readr::parse_number()` is more flexible and can extract numbers from strings with other text.
+
+```{r}
+#| echo: true
+parse_double("1.23")
+parse_number("$1,234.50")
+parse_number("55%")
+```
+
+# Counts
+
+## `count()`
+
+- `dplyr::count()` is a quick way to count the number of rows for each unique value of a variable.
+- It's a shortcut for `group_by()` and `summarize(n = n())`.
+
+```{r}
+#| echo: true
+# Count flights per destination
+flights |> count(dest, sort = TRUE)
+```
+
+## Weighted Counts
+
+- You can provide a weight to `count()` to sum up a variable instead of just counting rows.
+- This is useful for summarizing pre-counted data.
+
+```{r}
+#| echo: true
+df <- tribble(
+  ~group, ~subgroup, ~n,
+  "a",    "1",       2,
+  "a",    "2",       5,
+  "b",    "1",       3
+)
+
+# Sum of `n` for each `group`
+df |> count(group, wt = n)
+```
+
+# Arithmetic
+
+## Basic Operators
+
+- R provides the standard arithmetic operators: `+`, `-`, `*`, `/`, `^`.
+- `%%` (remainder) and `%/%` (integer division) are useful for modular arithmetic.
+
+```{r}
+#| echo: true
+#| code-fold: true
+# Break down departure time into hour and minute
+flights |> 
+  select(dep_time) |>
+  mutate(
+    hour = dep_time %/% 100,
+    minute = dep_time %% 100
+  )
+```
+
+# Transformations
+
+## Logarithms
+
+- Logarithms (`log()`, `log2()`, `log10()`) are useful for data that spans multiple orders of magnitude.
+- They help turn exponential growth into linear growth, which is often easier to model.
+
+```{r}
+#| echo: true
+#| code-fold: true
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_point(alpha = 0.1) +
+  scale_x_log10() +
+  scale_y_log10() +
+  labs(title = "Price vs. Carat (log-log scale)")
+```
+
+## Rounding
+
+- `round(x)`: rounds to the nearest integer.
+- `floor(x)`: always rounds down.
+- `ceiling(x)`: always rounds up.
+
+```{r}
+#| echo: true
+x <- c(1.2, 1.5, 1.8)
+round(x)
+floor(x)
+ceiling(x)
+```
+
+## Cutting
+
+- `cut()` divides a numeric vector into a set of discrete bins (a factor).
+- You can specify the `breaks` for the bins.
+
+```{r}
+#| echo: true
+x <- c(1, 2, 5, 7, 10, 12)
+cut(x, breaks = c(0, 5, 10, 15))
+```
+
+# Ranks & Offsets
+
+## Ranks
+
+- `dplyr::min_rank()` gives ranks, handling ties by giving them the same rank.
+- Use `desc()` to rank from highest to lowest.
+- `row_number()` is similar but gives each row a unique rank.
+
+```{r}
+#| echo: true
+x <- c(5, 1, 3, 2, 2)
+min_rank(x)
+row_number(x)
+```
+
+## Offsets
+
+- `dplyr::lag()` gets the previous value in a vector.
+- `dplyr::lead()` gets the next value.
+- Useful for computing differences or finding changes.
+
+```{r}
+#| echo: true
+x <- c(2, 5, 11, 20)
+# Difference between each element and the previous one
+x - lag(x)
+```
+
+# Numeric Summaries
+
+## Center
+
+- `mean()`: the average value. Can be sensitive to outliers.
+- `median()`: the middle value. More robust to outliers.
+
+```{r}
+#| echo: true
+#| code-fold: true
+# Comparing mean and median delay
+flights |>
+  filter(!is.na(dep_delay)) |>
+  summarize(
+    mean_delay = mean(dep_delay),
+    median_delay = median(dep_delay)
+  )
+```
+
+## Spread
+
+- `sd()`: standard deviation, measures how spread out the data is around the mean.
+- `IQR()`: interquartile range (`Q3 - Q1`), measures the spread of the middle 50% of the data.
+
+## Position
+
+- `min()` and `max()`: the minimum and maximum values.
+- `quantile(x, p)`: finds the value that is greater than `p`% of the data.
+  - `quantile(x, 0.25)` is the 25th percentile (Q1).
+  - `median(x)` is a shortcut for `quantile(x, 0.5)`.
+
+# Practice
+
+Let's practice working with numbers!
+
+# Summary
+
+## Numbers
+
+- Create with `parse_number()`.
+- Transform with arithmetic, logs, rounding, and `cut()`.
+- `count()` is a powerful tool for quick exploration.
+- Use ranks (`min_rank`) and offsets (`lag`, `lead`) for more complex analysis.
+- Summarize with measures of center (`mean`, `median`), spread (`sd`, `IQR`), and position (`min`, `max`, `quantile`).

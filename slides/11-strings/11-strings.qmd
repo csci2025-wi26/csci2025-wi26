@@ -1,0 +1,187 @@
+---
+title: "Strings"
+subtitle: "Lecture 11"
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| echo: false
+
+# load packages
+library(tidyverse)
+library(babynames)
+
+# set theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
+
+# set figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 7,
+  fig.asp = 0.618,
+  fig.retina = 3,
+  fig.align = "center",
+  dpi = 300
+)
+```
+
+# Introduction
+
+## Working with Strings
+
+- Text data, or "strings", are very common.
+- The `stringr` package, part of the `tidyverse`, provides a modern and consistent interface for working with strings.
+- All functions in `stringr` start with `str_`.
+
+# Creating Strings
+
+## Basics
+
+- You can create strings with single (`'`) or double (`"`) quotes.
+- To include a literal quote in your string, you need to "escape" it with a `\`.
+
+```{r}
+#| echo: true
+string1 <- "This is a string."
+string2 <- 'If I want to include a "quote", I can.'
+string3 <- "Or I can escape it with a \\\"."
+
+str_view(c(string1, string2, string3))
+```
+
+## Combining Strings: `str_c()`
+
+- `str_c()` combines multiple vectors into a single character vector.
+- It's like `paste0()` from base R, but with more consistent `NA` handling.
+
+```{r}
+#| echo: true
+str_c("x", "y", "z")
+str_c("x", "y", c("a", "b"))
+```
+
+## Gluing Strings: `str_glue()`
+
+- `str_glue()` from the `glue` package is great for embedding R code inside a string.
+- Wrap your R code in `{}`.
+
+```{r}
+#| echo: true
+#| code-fold: true
+name <- "Fred"
+age <- 50
+anniversary <- as.Date("2025-12-30")
+
+str_glue(
+  "My name is {name}, ",
+  "my age is {age}, ",
+  "and my anniversary is {format(anniversary, '%A, %B %d, %Y')}."
+)
+```
+
+# Extracting Data
+
+## Separating into Columns
+
+- `tidyr::separate_wider_delim()` splits a column into multiple new columns based on a delimiter.
+- You must provide names for the new columns.
+
+```{r}
+#| echo: true
+df <- tibble(x = c("a_b_1", "c_d_2", "e_f_3"))
+df |> separate_wider_delim(
+  x,
+  delim = "_",
+  names = c("first", "second", "third")
+)
+```
+
+## Separating into Rows
+
+- `tidyr::separate_longer_delim()` splits a column into multiple new rows.
+- Useful when each cell contains a varying number of items.
+
+```{r}
+#| echo: true
+df <- tibble(x = 1:2, y = c("a,b", "c,d,e"))
+df |> separate_longer_delim(y, delim = ",")
+```
+
+# Working with Letters
+
+## Length
+
+- `str_length()` gives you the number of characters in a string.
+
+```{r}
+#| echo: true
+str_length(c("a", "R for data science", NA))
+```
+
+## Subsetting
+
+- `str_sub()` extracts a part of a string.
+- You provide the `start` and `end` positions (inclusive).
+- Negative numbers count from the end of the string.
+
+```{r}
+#| echo: true
+x <- c("Apple", "Banana", "Pear")
+str_sub(x, 1, 3)
+str_sub(x, -2, -1)
+```
+
+## Case
+
+- `str_to_lower()`: convert to lowercase.
+- `str_to_upper()`: convert to uppercase.
+- `str_to_title()`: convert to title case.
+
+```{r}
+#| echo: true
+str_to_lower("I am shouting.")
+str_to_title("a tale of two cities")
+```
+
+## Whitespace
+
+- `str_trim()` removes whitespace from the start and end of a string.
+- `str_squish()` also removes whitespace from the start and end, and reduces any internal whitespace to a single space.
+
+```{r}
+#| echo: true
+text <- "  this   has  a lot of   whitespace   "
+str_trim(text)
+str_squish(text)
+```
+
+# Pattern Matching
+
+- The real power of `stringr` comes from pattern matching with **regular expressions**.
+- We'll cover these in the next lecture!
+- Functions include:
+  - `str_detect()`: find if a pattern exists.
+  - `str_count()`: count the number of matches.
+  - `str_replace()`: replace matches with a new string.
+  - `str_extract()`: pull out the matching text.
+
+# Practice
+
+Let's practice working with strings!
+
+# Summary
+
+## Strings
+
+- The `stringr` package provides a consistent set of tools for working with strings.
+- Create strings with `str_c()` and `str_glue()`.
+- Extract data with `tidyr::separate_*()` functions.
+- Manipulate letters with `str_length()`, `str_sub()`, `str_to_*()`, and `str_trim()`/`str_squish()`.
+- The next step is to master pattern matching with regular expressions.
+
+```
