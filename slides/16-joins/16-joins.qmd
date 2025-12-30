@@ -47,6 +47,18 @@ knitr::opts_chunk$set(
 - A **foreign key** is a variable (or set of variables) in one table that corresponds to a primary key in another table.
 - Keys are what link tables together.
 
+## Dataset 1: `flights`
+
+```{r}
+glimpse(flights)
+```
+
+## Dataset 2: `airlines`
+
+```{r}
+glimpse(airlines)
+```
+
 # Mutating Joins
 
 ## `left_join()`
@@ -54,11 +66,15 @@ knitr::opts_chunk$set(
 - `left_join()` is the most commonly used join.
 - It returns all rows from the left table (`x`), and all columns from both tables (`x` and `y`).
 - Rows in `x` with no match in `y` will have `NA` values in the new columns.
+- Rows in `y` with no match in `x` are ignored.
+- Rows in `y` that match multiple rows in `x` will result in duplicated rows in the output (and vice versa).
+
+## Example
 
 ```{r}
 #| echo: true
 flights2 <- flights |> select(year:day, hour, origin, dest, tailnum, carrier)
-flights2 |> left_join(airlines)
+flights2 |> left_join(airlines, by = "carrier") |> glimpse()
 ```
 
 ## Other Mutating Joins
@@ -74,6 +90,8 @@ flights2 |> left_join(airlines)
 - `semi_join()` keeps all rows from the left table (`x`) that have a match in the right table (`y`).
 - It does not add any columns from `y`.
 
+## Example
+
 ```{r}
 #| echo: true
 top_dest <- flights |>
@@ -88,9 +106,16 @@ flights |> semi_join(top_dest)
 - `anti_join()` returns all rows from `x` that do **not** have a match in `y`.
 - Useful for finding observations that don't have a match.
 
+## Example
+
 ```{r}
 #| echo: true
 flights |>
   anti_join(planes, by = "tailnum") |>
   count(tailnum, sort = TRUE)
 ```
+
+
+## Practice!
+
+Let's practice joins!
