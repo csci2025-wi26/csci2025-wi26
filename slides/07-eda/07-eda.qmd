@@ -1,0 +1,231 @@
+---
+title: "Exploratory Data Analysis"
+subtitle: "Lecture 7"
+title-slide-attributes:
+  data-background-image: ../vizdata-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| echo: false
+
+# load packages
+library(tidyverse)
+library(countdown)
+
+# set theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
+
+# set figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 7,        # 7" width
+  fig.asp = 0.618,      # the golden ratio
+  fig.retina = 3,       # dpi multiplier for displaying HTML output on retina
+  fig.align = "center", # center align figures
+  dpi = 300             # higher dpi, sharper image
+)
+```
+
+# What is EDA?
+
+## Exploratory Data Analysis
+
+EDA is an iterative cycle. You:
+
+1.  Generate questions about your data.
+2.  Search for answers by visualizing, transforming, and modelling your data.
+3.  Use what you learn to refine your questions and/or generate new questions.
+
+> "There are no routine statistical questions, only questionable statistical routines." — Sir David Cox
+
+## Guiding Questions
+
+Two main types of questions to ask:
+
+1.  What type of variation occurs within my variables?
+
+2.  What type of covariation occurs between my variables?
+
+
+# Variation
+
+## Visualizing Distributions
+
+**Variation** is the tendency of the values of a variable to change from measurement to measurement.
+
+- Every variable has its own pattern of variation, which can reveal interesting information.
+- The best way to understand that pattern is to visualize the variable’s distribution.
+
+## Categorical Variables {.smaller}
+
+- For a categorical variable, use a bar chart with `geom_bar()`
+
+```{r}
+ggplot(diamonds, aes(x = cut)) +
+  geom_bar()
+```
+
+## Continuous Variables {.smaller}
+
+- For a continuous variable, use a histogram with `geom_histogram()`
+
+```{r}
+ggplot(diamonds, aes(x = carat)) +
+  geom_histogram(binwidth = 0.5)
+```
+
+## Binwidth
+
+- The `binwidth` of a histogram can reveal different patterns.
+- Experiment with different binwidths to find the best one for your data.
+
+```{r}
+#| fig-width: 10
+#| echo: false
+p1 <- ggplot(diamonds, aes(x = carat)) +
+  geom_histogram(binwidth = 0.1) + 
+  labs(title = "binwidth = 0.1")
+p2 <- ggplot(diamonds, aes(x = carat)) +
+  geom_histogram(binwidth = 0.01) + 
+  labs(title = "binwidth = 0.01")
+p1 + p2
+```
+
+# Unusual Values
+
+## Outliers
+
+- Outliers are observations that are unusual; points that don’t seem to fit the pattern.
+- Sometimes they are data entry errors; other times they are genuinely important.
+
+## Handling Outliers
+
+- If they are data entry errors, try to fix them or remove them.
+- If they are genuine, their presence is important information.
+
+You can zoom in on the data to see more detail:
+
+```{r}
+ggplot(diamonds, aes(x = y)) +
+  geom_histogram(binwidth = 0.5) +
+  coord_cartesian(ylim = c(0, 50))
+```
+
+
+# Covariation
+
+## Visualizing Relationships
+
+**Covariation** is the tendency for the values of two or more variables to vary together in a related way.
+
+- The best way to spot covariation is to visualize the relationship between two or more variables.
+
+## A Categorical and a Continuous Variable {.smaller}
+
+- We can use `geom_freqpoly()` to see the distribution of a continuous variable for each category.
+
+```{r}
+ggplot(diamonds, aes(x = price, color = cut)) +
+  geom_freqpoly(binwidth = 500)
+```
+
+## Boxplots {.smaller}
+
+- `geom_boxplot()` is a great way to see the distribution of a continuous variable for each category.
+
+```{r}
+ggplot(diamonds, aes(x = cut, y = price)) +
+  geom_boxplot()
+```
+
+## Reordering Categories
+
+- You can reorder the categorical variable to make the plot easier to read.
+
+```{r}
+ggplot(diamonds, aes(x = fct_reorder(cut, price, .fun = median), y = price)) +
+  geom_boxplot() +
+  labs(x = "cut")
+```
+
+## Two Categorical Variables {.smaller}
+
+- To visualize the covariation between two categorical variables, count the number of observations for each combination.
+
+```{r}
+#| warning: false
+diamonds |>
+  count(color, cut) |>  
+  ggplot(aes(x = color, y = cut)) +
+  geom_tile(aes(fill = n))
+```
+
+## Two Continuous Variables {.smaller}
+
+- Scatterplots (`geom_point`) are the standard for visualizing two continuous variables.
+
+```{r}
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_point()
+```
+
+## Overplotting
+
+- When you have a lot of data, points can overlap. This is called **overplotting**.
+- You can use `alpha` to make points transparent.
+
+```{r}
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_point(alpha = 1 / 100)
+```
+
+## Binning
+
+- You can also use `geom_bin2d()` or `geom_hex()` to bin the data into 2D bins.
+
+```{r}
+#| warning: false
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_bin2d()
+```
+
+# Patterns and Models
+
+## Removing Patterns
+
+- Patterns in your data hint at relationships. If you can spot a pattern, ask yourself:
+  - Could this pattern be due to coincidence?
+  - How can you describe the relationship implied by the pattern?
+  - How strong is the relationship implied by the pattern?
+- Models can help you extract the strong patterns and leave the weaker ones.
+
+## Example: Residuals {.smaller}
+
+```{r}
+#| message: false
+library(modelr)
+
+mod <- lm(log(price) ~ log(carat), data = diamonds)
+
+diamonds2 <- diamonds |> 
+  add_residuals(mod) |> 
+  mutate(resid = exp(resid))
+
+ggplot(diamonds2, aes(x = carat, y = resid)) + 
+  geom_point(alpha = 1/100)
+```
+
+# Summary
+
+## EDA in a nutshell
+
+- EDA is about asking questions and using visualizations to find answers.
+- Start by looking at the variation of each variable.
+- Then, explore the covariation between variables.
+- Use `ggplot2` to create a wide range of plots to help you understand your data.
+
+Good luck exploring!
