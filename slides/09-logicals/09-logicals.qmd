@@ -108,17 +108,25 @@ is.na(x)
 - `filter()` only includes rows where the condition is `TRUE`. It excludes `FALSE` and `NA` values.
 - If you want to include missing values in your filter, you must ask for them explicitly.
 
+## Example
+
 ```{r}
 #| echo: true
 #| code-fold: true
 df <- tibble(x = c(1, NA, 3))
 
 # This only keeps the row where x > 1 is TRUE
-filter(df, x > 1)
+df |> 
+  filter(x > 1)
 
 # To keep NA values, you have to say so
-filter(df, x > 1 | is.na(x))
+df |>
+  filter(x > 1 | is.na(x))
 ```
+
+## Practice!
+
+Let's do some practice!
 
 # Boolean Algebra
 
@@ -129,14 +137,24 @@ filter(df, x > 1 | is.na(x))
   - `|` (or)
   - `!` (not)
 
+## Example 1
+
 ```{r}
 #| echo: true
 #| code-fold: true
 # Flights in January or February
-filter(flights, month == 1 | month == 2)
+flights |>
+  filter(month == 1 | month == 2)
+```
 
+## Example 2
+
+```{r}
+#| echo: true
+#| code-fold: true
 # Flights not delayed (on departure or arrival)
-filter(flights, !(dep_delay > 0 | arr_delay > 0))
+flights |> 
+filter(!(dep_delay > 0 | arr_delay > 0))
 ```
 
 ## `%in%`
@@ -144,12 +162,19 @@ filter(flights, !(dep_delay > 0 | arr_delay > 0))
 - A useful shortcut for `x == a | x == b | x == c` is `x %in% c(a, b, c)`.
 - It checks if each value in the left vector is present in the right vector.
 
+## Example
+
 ```{r}
 #| echo: true
 #| code-fold: true
 # Flights in November or December
-filter(flights, month %in% c(11, 12))
+flights |>
+  filter(month %in% c(11, 12))
 ```
+
+## Practice!
+
+Let's do some practice!
 
 # Summarizing Logicals
 
@@ -181,6 +206,10 @@ sum(flights$arr_delay > 60, na.rm = TRUE)
 # What proportion of flights were delayed?
 mean(flights$arr_delay > 0, na.rm = TRUE)
 ```
+
+## Practice!
+
+Let's do some practice!
 
 # Conditional Transformations
 
