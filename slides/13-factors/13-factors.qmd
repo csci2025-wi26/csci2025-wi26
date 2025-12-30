@@ -17,7 +17,7 @@ format: revealjs
 library(tidyverse)
 library(countdown)
 library(forcats)
-library(gss_cat)
+library(patchwork)
 
 # set theme for ggplot2
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
@@ -75,7 +75,21 @@ gss_cat |>
   summarize(age = mean(age, na.rm = TRUE)) |>
   mutate(rincome = fct_reorder(rincome, age)) |>
   ggplot(aes(x = age, y = rincome)) +
-  geom_point()
+  geom_col()
+```
+
+## Example
+
+```{r}
+#| echo: true
+#| code-fold: true
+gss_cat |>
+  filter(rincome != "Not applicable") |>
+  group_by(rincome) |>
+  summarize(age = mean(age, na.rm = TRUE)) |>
+  mutate(rincome = fct_reorder(rincome, age)) |>
+  ggplot(aes(x = age, y = rincome)) +
+  geom_col()
 ```
 
 ## `fct_infreq()`
@@ -97,8 +111,21 @@ gss_cat |>
 
 ```{r}
 #| echo: true
-fct_relevel(gss_cat$partyid, "Independent")
+p1 <- gss_cat |> 
+  ggplot(aes(x = partyid)) +
+  geom_bar()
+
+p2 <- gss_cat |> 
+  mutate(partyid = fct_relevel(partyid, "Independent")) |> 
+  ggplot(aes(x = partyid)) +
+  geom_bar()
+
+p1 + p2
 ```
+
+## Practice!
+
+Let's do some practice!
 
 # Modifying Factor Levels
 
@@ -117,7 +144,8 @@ gss_cat |>
     "Democrat, weak"        = "Not str democrat",
     "Democrat, strong"      = "Strong democrat"
   )) |>
-  count(partyid)
+  ggplot(aes(y = partyid)) +
+  geom_bar()
 ```
 
 ## `fct_collapse()`
@@ -133,7 +161,8 @@ gss_cat |>
     ind = c("Ind,near rep", "Independent", "Ind,near dem"),
     dem = c("Not str democrat", "Strong democrat")
   )) |>
-  count(partyid)
+  ggplot(aes(y = partyid)) +
+  geom_bar()
 ```
 
 ## `fct_lump_*()`
@@ -144,5 +173,10 @@ gss_cat |>
 #| echo: true
 gss_cat |>
   mutate(relig = fct_lump_n(relig, n = 5)) |>
-  count(relig)
+  ggplot(aes(y = relig)) +
+  geom_bar()
 ```
+
+## Practice!
+
+Let's do some practice!
