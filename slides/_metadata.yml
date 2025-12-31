@@ -4,7 +4,7 @@ title-slide-attributes:
   data-background-image: ../title-bg.png
   data-background-size: stretch
   data-slide-number: none
-footer: "[🔗 vizdata.org](https://vizdata.org/)"
+footer: "[🔗 https://csci2025wi26.netlify.app/](https://csci2025wi26.netlify.app/)"
 logo: "../logo.png"
 format:
   revealjs:

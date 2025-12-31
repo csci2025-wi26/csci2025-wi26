@@ -5,9 +5,9 @@ website:
   page-navigation: true
   title: "CSCI 2025"
   description: "Homepage for MATH 2025 - Data Manipulation and Visualization at the College of Idaho, Winter 2026."
-  site-url: "https://vizdata.org/"
+  site-url: "https://csci2025wi26.netlify.app/"
 
-  repo-url: https://github.com/vizdata-s24/vizdata-s24/
+  repo-url: https://github.com/csci2025-wi26/csci2025-wi26
   repo-actions: [edit, issue]
 
   open-graph: true
@@ -22,10 +22,10 @@ website:
     align: center
     tools:
       - icon: github
-        href: https://github.com/vizdata-s24
+        href: https://github.com/csci2025-wi26/csci2025-wi26
         text: "GitHub organization"
       - icon: code-square
-        href: https://cmgr.oit.duke.edu/containers
+        href: https://github.com/csci2025-wi26
         text: "RStudio Containers"
       - icon: person-fill
         href: https://canvas.duke.edu/courses/27066
@@ -94,7 +94,7 @@ website:
           
   page-footer:
     right: "This page is built with 💛 and [Quarto](https://quarto.org/)."
-    left: "&copy; Copyright 2024, Mine Çetinkaya-Rundel"
+    left: "&copy; Copyright 2026, Eric Friedlander"
     background: "#FFCB70" # Goldenrod
     
 format:

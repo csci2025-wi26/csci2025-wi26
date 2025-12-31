@@ -1,1 +1,1 @@
-Sitemap: https://vizdata.org/sitemap.xml
+Sitemap: https://csci2025wi26.netlify.app/sitemap.xml
