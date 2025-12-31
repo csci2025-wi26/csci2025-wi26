@@ -1,5 +1,9 @@
 institute: "College of Idaho <br> CSCI 2025 - Winter 2026"
 author: "Dr. Eric Friedlander"
+title-slide-attributes:
+  data-background-image: ../title-bg.png
+  data-background-size: stretch
+  data-slide-number: none
 footer: "[🔗 vizdata.org](https://vizdata.org/)"
 logo: "../logo.png"
 format:

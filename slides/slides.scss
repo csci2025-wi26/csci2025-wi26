@@ -7,9 +7,9 @@
 
 $font-family-sans-serif: "Atkinson Hyperlegible", sans-serif;
 $font-family-monospace: "Source Code Pro", monospace;
-$presentation-heading-color: #866fa3; /* Pantone Midnight - Fall 2022 */
-$link-color: #866fa3;
-$code-color: #866fa3;
+$presentation-heading-color: #543A61; /* Pantone Midnight - Fall 2022 */
+$link-color: #543A61;
+$code-color: #543A61;
 $code-block-font-size: 0.7em;
 $presentation-h2-font-size: 1.4em !default;
 $presentation-font-size-root: 36px !default;
@@ -21,22 +21,24 @@ details>summary {
 }
 
 #title-slide .subtitle {
-  color: #464a53;
+  color: #543A61;
   font-weight: bold;
   text-align: center;
 }
 
 #title-slide .title {
   text-align: center;
-  color: #464a53;
+  color: #543A61;
 }
 
 #title-slide .author {
   text-align: center;
+  color: #543A61;
 }
 
 #title-slide .institute {
   text-align: center;
+  color: #543A61;
   padding-bottom: 200px;
 }
 
@@ -79,12 +81,30 @@ details>summary {
 .reveal pre code {
   width: 1200px;
 }
-
-.reveal .quarto-title-block .quarto-title-authors .quarto-title-author {
-  background-color: white;
+/* Target the title slide container specifically */
+#title-slide {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
+/* Use margin-top: auto to push everything below the title/subtitle to the bottom */
+.reveal .quarto-title-block .quarto-title-authors {
+  margin-top: auto; 
+  position: relative; 
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-bottom: 20px; /* Space from the very bottom edge */
+}
+
+/* Ensure the individual author styling remains */
+.reveal .quarto-title-block .quarto-title-authors .quarto-title-author {
+  background-color: transparent;
+  color: #543A61;
+}
 .reveal .footer a {
-  color: #866fa3;
-  background-color: white;
+  color: #543A61;
+  background-color: transparent;
 }

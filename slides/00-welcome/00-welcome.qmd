@@ -1,10 +1,6 @@
 ---
 title: Welcome to CSCI 2025
 subtitle: Lecture 0
-title-slide-attributes:
-  data-background-image: ../vizdata-bg.png
-  data-background-size: stretch
-  data-slide-number: none
 format: revealjs
 auto-stretch: false
 ---
