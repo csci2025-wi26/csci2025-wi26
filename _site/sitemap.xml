@@ -1,12 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://vizdata.org/slides/05-importing/importing-data.html</loc>
-    <lastmod>2025-12-26T22:15:10.498Z</lastmod>
+    <loc>https://vizdata.org/course-syllabus.html</loc>
+    <lastmod>2025-12-26T20:52:50.150Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/computing/computing-cheatsheets.html</loc>
+    <lastmod>2025-12-26T20:52:50.149Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/GEMINI.html</loc>
+    <lastmod>2025-12-26T20:52:49.017Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/course-faq.html</loc>
+    <lastmod>2025-12-26T20:52:50.149Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/project/project-2.html</loc>
+    <lastmod>2025-12-26T20:52:50.210Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/about.html</loc>
+    <lastmod>2025-12-26T20:52:50.134Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/12-regex/12-regex.html</loc>
+    <lastmod>2025-12-30T22:09:13.859Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/14-datetimes/14-datetimes.html</loc>
+    <lastmod>2025-12-30T22:24:42.747Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/04-data-tidying/04-data-tidying.html</loc>
+    <lastmod>2025-12-26T20:52:50.296Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/00-welcome/00-welcome.html</loc>
+    <lastmod>2025-12-31T20:35:56.120Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/13-factors/13-factors.html</loc>
+    <lastmod>2025-12-30T22:22:02.696Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/15-missing-values/15-missing-values.html</loc>
+    <lastmod>2025-12-30T22:57:21.214Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/11-strings/11-strings.html</loc>
+    <lastmod>2025-12-30T21:32:36.511Z</lastmod>
   </url>
   <url>
     <loc>https://vizdata.org/slides/05-importing/05-importing-data.html</loc>
     <lastmod>2025-12-26T22:29:51.851Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/course-team.html</loc>
+    <lastmod>2025-12-26T20:52:50.150Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/course-overview.html</loc>
+    <lastmod>2025-12-31T20:48:51.631Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/hw/hw-0.html</loc>
+    <lastmod>2025-12-26T20:52:50.152Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/hw/hw-3.html</loc>
+    <lastmod>2025-12-26T20:52:50.152Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/hw/hw-4.html</loc>
+    <lastmod>2025-12-26T20:52:50.152Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/student-work/ugly-plot.html</loc>
+    <lastmod>2025-12-26T20:52:50.762Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/student-work/project-2.html</loc>
+    <lastmod>2025-12-26T20:52:50.762Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/course-links.html</loc>
+    <lastmod>2025-12-26T20:52:50.149Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/student-work/thank-you.html</loc>
+    <lastmod>2025-12-26T20:52:50.762Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/student-work/project-1.html</loc>
+    <lastmod>2025-12-26T20:52:50.762Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/hw/hw-5.html</loc>
+    <lastmod>2025-12-26T20:52:50.152Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/hw/hw-6.html</loc>
+    <lastmod>2025-12-26T20:52:50.153Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/hw/hw-2.html</loc>
+    <lastmod>2025-12-26T20:52:50.152Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/hw/hw-1.html</loc>
+    <lastmod>2025-12-26T20:52:50.152Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/index.html</loc>
+    <lastmod>2025-12-26T20:52:50.210Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/16-joins/16-joins.html</loc>
+    <lastmod>2025-12-30T23:03:36.342Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/09-logicals/09-logicals.html</loc>
+    <lastmod>2025-12-30T19:29:18.559Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/03-data-transformation/03-first-transformations.html</loc>
+    <lastmod>2025-12-26T20:52:50.295Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/10-numbers/10-numbers.html</loc>
+    <lastmod>2025-12-30T19:45:06.938Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/01-intro-to-R/01-intro-to-R.html</loc>
+    <lastmod>2025-12-26T20:52:50.261Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vizdata.org/slides/02-first-viz/02-first-viz.html</loc>
+    <lastmod>2025-12-26T20:52:50.286Z</lastmod>
   </url>
   <url>
     <loc>https://vizdata.org/slides/06-layers/06-layers.html</loc>
@@ -21,43 +153,23 @@
     <lastmod>2025-12-30T18:12:42.246Z</lastmod>
   </url>
   <url>
-    <loc>https://vizdata.org/slides/01-old/01-layers-I.html</loc>
-    <lastmod>2025-12-30T18:14:28.980Z</lastmod>
+    <loc>https://vizdata.org/project/project-tips-resources.html</loc>
+    <lastmod>2025-12-26T20:52:50.210Z</lastmod>
   </url>
   <url>
-    <loc>https://vizdata.org/slides/09-logicals/09-logicals.html</loc>
-    <lastmod>2025-12-30T19:29:18.559Z</lastmod>
+    <loc>https://vizdata.org/project/project-1.html</loc>
+    <lastmod>2025-12-26T20:52:50.210Z</lastmod>
   </url>
   <url>
-    <loc>https://vizdata.org/slides/10-numbers/10-numbers.html</loc>
-    <lastmod>2025-12-30T19:45:06.938Z</lastmod>
+    <loc>https://vizdata.org/course-support.html</loc>
+    <lastmod>2025-12-26T20:52:50.150Z</lastmod>
   </url>
   <url>
-    <loc>https://vizdata.org/slides/11-strings/11-strings.html</loc>
-    <lastmod>2025-12-30T21:31:47.933Z</lastmod>
+    <loc>https://vizdata.org/computing/computing-access.html</loc>
+    <lastmod>2025-12-26T20:52:50.149Z</lastmod>
   </url>
   <url>
-    <loc>https://vizdata.org/slides/12-regex/12-regex.html</loc>
-    <lastmod>2025-12-30T22:08:14.414Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/slides/13-factors/13-factors.html</loc>
-    <lastmod>2025-12-30T22:22:02.696Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/slides/14-datetimes/14-datetimes.html</loc>
-    <lastmod>2025-12-30T22:24:42.747Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/slides/15-missing-values/15-missing-values.html</loc>
-    <lastmod>2025-12-30T22:57:21.214Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/slides/16-joins/16-joins.html</loc>
-    <lastmod>2025-12-30T23:03:12.769Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vizdata.org/slides/00-welcome/00-welcome.html</loc>
-    <lastmod>2025-12-31T20:35:56.120Z</lastmod>
+    <loc>https://vizdata.org/computing/computing-troubleshooting.html</loc>
+    <lastmod>2025-12-26T20:52:50.149Z</lastmod>
   </url>
 </urlset>
