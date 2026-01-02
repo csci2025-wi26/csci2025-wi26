@@ -2,7 +2,7 @@
 title: R Basics
 subtitle: Lecture 1
 title-slide-attributes:
-  data-background-image: ../vizdata-bg.png
+  data-background-image: ../title-bg.png
   data-background-size: stretch
   data-slide-number: none
 format: revealjs
@@ -11,7 +11,7 @@ auto-stretch: false
 
 # Introduction to R
 
-## What is R?
+## What is R? {.smaller}
 
 -  R is a statistical programming language
     +  Inspired by the S programming language developed at Bell Labs in the 1970s
@@ -21,7 +21,7 @@ auto-stretch: false
     +  Anyone can download and use R for free
     +  Anyone can contribute to the development of R and its packages
 
-## R is not the same as R Studio, R Markdown, or Positron
+## R is not the same as R Studio, R Markdown, or Positron {.smaller}
 
 -   R is the programming language
 -   R Studio (now Positron) is an integrated development environment (IDE) for R
@@ -37,12 +37,12 @@ auto-stretch: false
     + Running R from the console
     + Running R from a script file
 
-## R Packages
+## R Packages {.smaller}
 
 - R has a rich ecosystem of packages that extend its functionality
     + You can install packages using `install.packages("package_name")` (only do this once)
     + Load packages into your R session using `library(package_name)` (do this every time you start a new R session)
-- An importnat package for this class:
+- An important package for this class:
     + `tidyverse`: A collection of packages for data manipulation, visualization, and modeling
         + `ggplot2`: A package for creating graphics using the Grammar of Graphics
         + `dplyr`: A package for data manipulation
@@ -55,7 +55,7 @@ auto-stretch: false
  penguin species, island in Palmer Archipelago, size (flipper length, body mass, bill dimensions), and sex.
 - Explore more with `?penguins`
 
-## Important Vocabulary
+## Important Vocabulary {.smaller}
 
 -  **Data frame**: A table-like structure in R that holds data (`penguins`)
     + In the `tidyverse` data frames are referred to as `tibbles`
@@ -73,17 +73,14 @@ auto-stretch: false
 
 # Wrap up
 
-## Disclaimer
 
-I have a class in the next period in Bio Sci, so I will be rushing out of class each time. I'm always available on Slack and in office hours and happy to make appointments as well!
-
-## This week's tasks
+## Complete the following before next class
 
 1.  Create a GitHub account if you don't have one
 
-2.  Read the [syllabus](https://www.vizdata.org/syllabus.html)
+2.  Read the [syllabus](syllabus.qmd)
 
-3.  Make sure you can login in to RStudio and reserve a container for STA 313: [cmgr.oit.duke.edu/containers](https://cmgr.oit.duke.edu/containers)
+3.  Make sure you can log in to RStudio and reserve a container for STA 313: [cmgr.oit.duke.edu/containers](https://cmgr.oit.duke.edu/containers)
 
 4.  Complete the *Getting to know you* survey on Canvas -- to be posted
 

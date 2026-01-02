@@ -2,12 +2,16 @@
 title: Visualization Basics
 subtitle: Lecture 2
 title-slide-attributes:
-  data-background-image: ../vizdata-bg.png
+  data-background-image: ../title-bg.png
   data-background-size: stretch
   data-slide-number: none
 format: revealjs
 auto-stretch: false
 ---
+
+```{r}
+library(tidyverse)
+```
 
 # Grammar of graphics
 
@@ -95,19 +99,19 @@ glimpse(penguins)
 :::
 :::
 
-# Types of variables
+# Types of variables {.smaller}
 
 -  **Categorical** variables: can take only a small number of values
     +  Typically doesn't make sense to do arithmetic on categorical variables
     +  Types:
-       -  **Nominal** variables: categories with no inherent order (e.g., species, island
+      -  **Nominal** variables: categories with no inherent order (e.g., species, island)
        -  **Ordinal** variables: categories with a natural order (e.g., size: small, medium, large)
 -  **Numerical** variables: makes sense to "do math" with numerical variables
     +  Types:
        -  **Discrete** variables: can take only certain values (e.g., number of penguins)
        -  **Continuous** variables: can take any value in a range (e.g., bill length, body mass)
 
-## Categorical vs. Numerical: A fuzzy line
+## Categorical vs. Numerical: A fuzzy line {.smaller}
 
 -  Many times: categorical vs. numerical is NOT clear-cut 
     -  Number $\neq$ Numerical:
@@ -115,9 +119,9 @@ glimpse(penguins)
     -  Ordinal variables are commonly treated as numerical when they aren't
        +  e.g., Likert scale responses (Strongly Disagree to Strongly Agree)    
 -  Type of variable will depend on type of analysis and visualization
--  Sometimes: better to treat numerical as categorcal (e.g. if you have a very small number of distinct values)
+-  Sometimes: better to treat numerical as categorical (e.g. if you have a very small number of distinct values)
 
-## Visualizing Univarite Data
+## Visualizing Univariate Data
 
 -  Different types of plots for different types of variables
     +  Categorical variables: bar charts, pie charts (ew!)
@@ -140,21 +144,12 @@ glimpse(penguins)
     +  Use aesthetics like color, shape, and size to represent additional variables
     +  Faceting to create multiple plots based on the values of one or more categorical variables
 
-## Goal
+## Goal: Let's create this plot!
 
-::: panel-tabset
-## Plot
-
-```{r}
-#| ref.label: "goal-plot"
-#| echo: false
-```
-
-## Code
 
 ```{r}
 #| label: goal-plot
-#| eval: false
+#| echo: false
 
 ggplot(
   penguins,
@@ -168,23 +163,12 @@ ggplot(
     color = "Species"
   )
 ```
-:::
 
 ## An improved goal {.smaller}
 
-::: panel-tabset
-## Plot
-
-```{r}
-#| ref.label: "improved-goal-plot"
-#| echo: false
-```
-
-## Code
-
 ```{r}
 #| label: improved-goal-plot
-#| eval: false
+#| echo: false
 
 ggplot(
   penguins,
@@ -202,22 +186,17 @@ ggplot(
   ggthemes::scale_color_colorblind()
 ```
 
-## Narrative
+## Narrative {.smaller}
 
-Start with the `penguins` data frame, map bill depth to the x-axis and map bill length to the y-axis.
+- Start with the `penguins` data frame, map bill depth to the x-axis and map bill length to the y-axis.
 
-Represent each observation with a point and map species to the color and shape of each point.
+- Represent each observation with a point and map species to the color and shape of each point.
 
-Title the plot "Bill depth and length", add the subtitle "Dimensions for Adelie, Chinstrap, and Gentoo Penguins", label the x and y axes as "Bill depth (mm)" and "Bill length (mm)", respectively, label the legend "Species", and add a caption for the data source.
+- Title the plot "Bill depth and length", add the subtitle "Dimensions for Adelie, Chinstrap, and Gentoo Penguins", label the x and y axes as "Bill depth (mm)" and "Bill length (mm)", respectively, label the legend "Species", and add a caption for the data source.
 
-Finally, use a discrete color scale that is designed to be perceived by viewers with common forms of color blindness.
-:::
+- Finally, use a discrete color scale that is designed to be perceived by viewers with common forms of color blindness.
 
 # Wrap up
-
-## Disclaimer
-
-I have a class in the next period in Bio Sci, so I will be rushing out of class each time. I'm always available on Slack and in office hours and happy to make appointments as well!
 
 ## This week's tasks
 
@@ -225,7 +204,7 @@ I have a class in the next period in Bio Sci, so I will be rushing out of class 
 
 2.  Read the [syllabus](https://www.vizdata.org/syllabus.html)
 
-3.  Make sure you can login in to RStudio and reserve a container for STA 313: [cmgr.oit.duke.edu/containers](https://cmgr.oit.duke.edu/containers)
+3.  Make sure you can log in to RStudio and reserve a container for STA 313: [cmgr.oit.duke.edu/containers](https://cmgr.oit.duke.edu/containers)
 
 4.  Complete the *Getting to know you* survey on Canvas -- to be posted
 

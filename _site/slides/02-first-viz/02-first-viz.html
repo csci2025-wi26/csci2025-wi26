@@ -194,7 +194,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="../vizdata-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
+<section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
   <h1 class="title">Visualization Basics</h1>
   <p class="subtitle">Lecture 2</p>
 
@@ -209,6 +209,24 @@ Dr.&nbsp;Eric Friedlander
     </div>
 </div>
 
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.6
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.1     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.2
+✔ purrr     1.2.0     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+</div>
 </section>
 <section>
 <section id="grammar-of-graphics" class="title-slide slide level1 center">
@@ -267,16 +285,16 @@ Dr.&nbsp;Eric Friedlander
 <li>Structure of the code for plots can be summarized as</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> [dataset], </span>
-<span id="cb1-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> [x<span class="sc">-</span>variable], <span class="at">y =</span> [y<span class="sc">-</span>variable])) <span class="sc">+</span></span>
-<span id="cb1-3"><a></a>   <span class="fu">geom_xxx</span>() <span class="sc">+</span></span>
-<span id="cb1-4"><a></a>   other options</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> [dataset], </span>
+<span id="cb3-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> [x<span class="sc">-</span>variable], <span class="at">y =</span> [y<span class="sc">-</span>variable])) <span class="sc">+</span></span>
+<span id="cb3-3"><a></a>   <span class="fu">geom_xxx</span>() <span class="sc">+</span></span>
+<span id="cb3-4"><a></a>   other options</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>The ggplot2 package comes with the tidyverse</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>For help with ggplot2, see <a href="http://ggplot2.tidyverse.org/">ggplot2.tidyverse.org</a></li>
@@ -288,7 +306,7 @@ Dr.&nbsp;Eric Friedlander
 <div class="column" style="width:80%;">
 <p>Measurements for penguin species, island in Palmer Archipelago, size (flipper length, body mass, bill dimensions), and sex.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'palmerpenguins'</code></pre>
@@ -298,7 +316,7 @@ Attaching package: 'palmerpenguins'</code></pre>
 
     penguins, penguins_raw</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">glimpse</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">glimpse</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 8
@@ -321,17 +339,14 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div></div>
 </section></section>
 <section>
-<section id="types-of-variables" class="title-slide slide level1 center">
+<section id="types-of-variables" class="title-slide slide level1 smaller center">
 <h1>Types of variables</h1>
 <ul>
 <li><strong>Categorical</strong> variables: can take only a small number of values
 <ul>
 <li>Typically doesn’t make sense to do arithmetic on categorical variables</li>
-<li>Types:
-<ul>
-<li><strong>Nominal</strong> variables: categories with no inherent order (e.g., species, island</li>
-<li><strong>Ordinal</strong> variables: categories with a natural order (e.g., size: small, medium, large)</li>
-</ul></li>
+<li>Types:</li>
+<li><strong>Nominal</strong> variables: categories with no inherent order (e.g., species, island) - <strong>Ordinal</strong> variables: categories with a natural order (e.g., size: small, medium, large)</li>
 </ul></li>
 <li><strong>Numerical</strong> variables: makes sense to “do math” with numerical variables
 <ul>
@@ -343,7 +358,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </ul></li>
 </ul>
 </section>
-<section id="categorical-vs.-numerical-a-fuzzy-line" class="slide level2">
+<section id="categorical-vs.-numerical-a-fuzzy-line" class="slide level2 smaller">
 <h2>Categorical vs.&nbsp;Numerical: A fuzzy line</h2>
 <ul>
 <li>Many times: categorical vs.&nbsp;numerical is NOT clear-cut
@@ -359,11 +374,11 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </ul></li>
 </ul></li>
 <li>Type of variable will depend on type of analysis and visualization</li>
-<li>Sometimes: better to treat numerical as categorcal (e.g.&nbsp;if you have a very small number of distinct values)</li>
+<li>Sometimes: better to treat numerical as categorical (e.g.&nbsp;if you have a very small number of distinct values)</li>
 </ul>
 </section>
-<section id="visualizing-univarite-data" class="slide level2">
-<h2>Visualizing Univarite Data</h2>
+<section id="visualizing-univariate-data" class="slide level2">
+<h2>Visualizing Univariate Data</h2>
 <ul>
 <li>Different types of plots for different types of variables
 <ul>
@@ -399,12 +414,8 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </ul></li>
 </ul>
 </section>
-<section id="goal" class="slide level2">
-<h2>Goal</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Plot</a></li><li><a href="#tabset-1-2">Code</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
+<section id="goal-lets-create-this-plot" class="slide level2">
+<h2>Goal: Let’s create this plot!</h2>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
@@ -413,36 +424,14 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="02-first-viz_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+<p><img data-src="02-first-viz_files/figure-revealjs/goal-plot-1.png" width="960"></p>
 </figure>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-1-2">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb9-2"><a></a>  penguins,</span>
-<span id="cb9-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_depth_mm, <span class="at">y =</span> bill_length_mm, <span class="at">color =</span> species)</span>
-<span id="cb9-4"><a></a>) <span class="sc">+</span></span>
-<span id="cb9-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb9-6"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb9-7"><a></a>    <span class="at">title =</span> <span class="st">"Bill depth and length"</span>,</span>
-<span id="cb9-8"><a></a>    <span class="at">subtitle =</span> <span class="st">"Dimensions for Adelie, Chinstrap, and Gentoo Penguins"</span>,</span>
-<span id="cb9-9"><a></a>    <span class="at">x =</span> <span class="st">"Bill depth (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
-<span id="cb9-10"><a></a>    <span class="at">color =</span> <span class="st">"Species"</span></span>
-<span id="cb9-11"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </div>
 </div>
 </div>
 </section>
 <section id="an-improved-goal" class="slide level2 smaller">
 <h2>An improved goal</h2>
-<div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Plot</a></li><li><a href="#tabset-2-2">Code</a></li><li><a href="#tabset-2-3">Narrative</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1">
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
@@ -451,54 +440,32 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="02-first-viz_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+<p><img data-src="02-first-viz_files/figure-revealjs/improved-goal-plot-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
-</div>
-<div id="tabset-2-2">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb11-2"><a></a>  penguins,</span>
-<span id="cb11-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_depth_mm, <span class="at">y =</span> bill_length_mm, <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
-<span id="cb11-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb11-5"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb11-6"><a></a>    <span class="at">title =</span> <span class="st">"Bill depth and length"</span>,</span>
-<span id="cb11-7"><a></a>    <span class="at">subtitle =</span> <span class="st">"Dimensions for Adelie, Chinstrap, and Gentoo Penguins"</span>,</span>
-<span id="cb11-8"><a></a>    <span class="at">x =</span> <span class="st">"Bill depth (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
-<span id="cb11-9"><a></a>    <span class="at">color =</span> <span class="st">"Species"</span>,</span>
-<span id="cb11-10"><a></a>    <span class="at">shape =</span> <span class="st">"Species"</span>,</span>
-<span id="cb11-11"><a></a>    <span class="at">caption =</span> <span class="st">"Source: Palmer Station LTER / palmerpenguins package"</span></span>
-<span id="cb11-12"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb11-13"><a></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb11-14"><a></a>  ggthemes<span class="sc">::</span><span class="fu">scale_color_colorblind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div id="tabset-2-3">
-<p>Start with the <code>penguins</code> data frame, map bill depth to the x-axis and map bill length to the y-axis.</p>
-<p>Represent each observation with a point and map species to the color and shape of each point.</p>
-<p>Title the plot “Bill depth and length”, add the subtitle “Dimensions for Adelie, Chinstrap, and Gentoo Penguins”, label the x and y axes as “Bill depth (mm)” and “Bill length (mm)”, respectively, label the legend “Species”, and add a caption for the data source.</p>
-<p>Finally, use a discrete color scale that is designed to be perceived by viewers with common forms of color blindness.</p>
-</div>
-</div>
-</div>
+</section>
+<section id="narrative" class="slide level2 smaller">
+<h2>Narrative</h2>
+<ul>
+<li><p>Start with the <code>penguins</code> data frame, map bill depth to the x-axis and map bill length to the y-axis.</p></li>
+<li><p>Represent each observation with a point and map species to the color and shape of each point.</p></li>
+<li><p>Title the plot “Bill depth and length”, add the subtitle “Dimensions for Adelie, Chinstrap, and Gentoo Penguins”, label the x and y axes as “Bill depth (mm)” and “Bill length (mm)”, respectively, label the legend “Species”, and add a caption for the data source.</p></li>
+<li><p>Finally, use a discrete color scale that is designed to be perceived by viewers with common forms of color blindness.</p></li>
+</ul>
 </section></section>
 <section>
 <section id="wrap-up" class="title-slide slide level1 center">
 <h1>Wrap up</h1>
 
 </section>
-<section id="disclaimer" class="slide level2">
-<h2>Disclaimer</h2>
-<p>I have a class in the next period in Bio Sci, so I will be rushing out of class each time. I’m always available on Slack and in office hours and happy to make appointments as well!</p>
-</section>
 <section id="this-weeks-tasks" class="slide level2">
 <h2>This week’s tasks</h2>
 <ol type="1">
 <li><p>Create a GitHub account if you don’t have one</p></li>
 <li><p>Read the <a href="https://www.vizdata.org/syllabus.html">syllabus</a></p></li>
-<li><p>Make sure you can login in to RStudio and reserve a container for STA 313: <a href="https://cmgr.oit.duke.edu/containers">cmgr.oit.duke.edu/containers</a></p></li>
+<li><p>Make sure you can log in to RStudio and reserve a container for STA 313: <a href="https://cmgr.oit.duke.edu/containers">cmgr.oit.duke.edu/containers</a></p></li>
 <li><p>Complete the <em>Getting to know you</em> survey on Canvas – to be posted</p></li>
 <li><p>Complete the readings</p></li>
 </ol>
