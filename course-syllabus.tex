@@ -1,0 +1,537 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Syllabus},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Syllabus}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+
+\subsection{Course Information}\label{course-information}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Course Name}: Data Manipulation and Visualization
+\item
+  \textbf{Course Code}: CSCI-2025
+\end{itemize}
+
+\subsubsection{Class meetings}\label{class-meetings}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1972}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3944}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4085}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Meeting
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Location
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Time
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Lecture & Cruzen-Murray Library, 208 & Mon-Thurs 1 - 3 pm \\
+Office Hours & Boone 126B & Mon-Thurs 10 - 11 am \\
+\end{longtable}
+
+Office hours are also available by appointment, just email me!
+
+\subsubsection{Instructor Information}\label{instructor-information}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Instructor}: Professor Eric Friedlander
+\item
+  \textbf{Office}: Boone 126B
+\item
+  \textbf{Email}:
+  \href{mailto:efriedlander@collegeofidaho.edu}{\nolinkurl{efriedlander@collegeofidaho.edu}}
+\end{itemize}
+
+\subsubsection{Catalog Description}\label{catalog-description}
+
+Methods for cleaning and manipulating data, including grouping,
+split-apply-combine, and moving between long and wide formats, will be
+covered. These techniques will be combined with visualization techniques
+to produce readable, informative graphics of complex, high-dimensional
+datasets. Formerly CSC-285.
+
+\subsubsection{Pre-requisites}\label{pre-requisites}
+
+MATH-2025 or CSCI-1040, grade of C or better
+
+\subsection{Course Learning
+Objectives}\label{course-learning-objectives}
+
+By the end of the semester, you will be able to\ldots{}
+
+\begin{itemize}
+\tightlist
+\item
+  Manipulate and clean data using R and the tidyverse.
+\item
+  Create informative visualizations of complex datasets using ggplot2.
+\item
+  Understand the principles of designing and creating effective data
+  visualizations.
+\item
+  Communicate data analysis results effectively through written reports,
+  dashboards, and presentations.
+\end{itemize}
+
+\subsection{Course community}\label{course-community}
+
+\subsubsection{Communication}\label{communication}
+
+All lecture notes, assignment instructions, an up-to-date schedule, and
+other course materials may be found on the course website,
+\href{https://csci2025wi26.netlify.app}{csci2025wi26.netlify.app}.
+
+Periodic announcements will be sent via email and will also be available
+through Canvas and grades will be stored in the Canvas gradebook. Please
+check your email regularly to ensure you have the latest announcements
+for the course.
+
+\subsubsection{In class agreements}\label{in-class-agreements}
+
+If we discuss/agree to something in class or office hours which requires
+action from me (e.g.~``you may turn in your homework late due to a
+sporting event''), you MUST send me a follow-up message. If you don't, I
+will almost certainly forget, and our agreement will be considered null
+and void.
+
+\subsubsection{Getting help in the
+course}\label{getting-help-in-the-course}
+
+\begin{itemize}
+\tightlist
+\item
+  If you have a question during lecture, feel free to ask it! There are
+  likely other students with the same question, so by asking you will
+  create a learning opportunity for everyone.
+\item
+  I am here to help you be successful in the course. You are encouraged
+  to attend \emph{office hours} to ask questions about the course
+  content and assignments. Many questions are most effectively answered
+  as you discuss them with others, so office hours are a valuable
+  resource. You are encouraged to use them!
+\end{itemize}
+
+\subsubsection{Email}\label{email}
+
+If you have questions about assignment extensions or accommodations,
+please email
+\href{mailto:efriedlander@collegeofidaho.edu}{\nolinkurl{efriedlander@collegeofidaho.edu}}.
+Please see \hyperref[late-work-policy]{Late work policy} for more
+information. Barring extenuating circumstances, I will respond to CSCI
+2025 emails within 48 hours Monday - Friday. Response time may be slower
+for emails sent Friday evening - Sunday.
+
+Check out the \href{support.qmd}{Support} page for more resources.
+
+\subsection{Textbook}\label{textbook}
+
+There is no official textbook for this course. However, readings may be
+assigned from the following texts (all freely available online).
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://r4ds.had.co.nz/}{R for Data Science} by Garret Grolemund
+  and Hadley Wickham
+\end{itemize}
+
+\subsection{Lectures}\label{lectures}
+
+This will be a flipped classroom. Before each lecture, you will be
+assigned readings and videos to prepare you for the material we will
+cover in class. During class time, we will focus on applying the
+concepts you learned in the readings through a variety of activities,
+including coding exercises, discussions, and group work.
+
+You are expected to bring a laptop to each class so that you can
+participate in the in-class exercises. Please make sure your device is
+fully charged before you come to class, as the number of outlets in the
+classroom may not be sufficient to accommodate everyone.
+
+\subsection{Activities \& Assessment}\label{activities-assessment}
+
+You will be assessed based on four components: participation and
+self-evluation, quizzes, a class project, and an indivdual project.
+
+This course will be largely ``ungraded''. That is, you will be
+completing many low-stakes activities that will not be graded. Instead,
+you will self-assess what you have learned and how well you understand
+the material. The purpose of this approach is to help you focus on
+learning the material rather than on earning a grade.
+
+At the end of the semester, Dr.~Friedlander will first determine whether
+you deserve a passing grade. This will be largely be determine by
+looking at your quiz scores and projects. If you pass this hurdle, then
+your final grade will be determined based on your own assessment of the
+overall quality of your work throughout the semester.
+
+\subsubsection{Participation and
+Self-Evaluation}\label{participation-and-self-evaluation}
+
+After each class period, you will be expected to complete a brief
+self-evaluation reflecting on your understanding of the material covered
+in class. These self-evaluations will help you identify areas where you
+need to improve and will also help me understand how well the class is
+grasping the material. After each class period you will be asked to
+response to the following questions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  How well do I understand the material covered in lectures and readings
+  for today's class?
+\item
+  Did I put in a good faith effort to prepare for and participate in
+  today's class?
+\item
+  How would I rate my level of engagement during today's class?
+\item
+  How well did I perform on the in-class activities?
+\item
+  How did I learn and grow from the readings, lectures, and in-class
+  activities today?
+\item
+  What overall grade would I give myself for the work I completed since
+  the end of the last class period?
+\end{enumerate}
+
+\subsubsection{Group Project}\label{group-project}
+
+In the group project the course will work together to develop a data
+dashboard for an external client. More information on this to come.
+
+\subsubsection{Individual Project}\label{individual-project}
+
+The purpose of the individual project is to apply what you've learned
+throughout the semester to analyze an interesting data-driven research
+question or to tell an interesting story using data. The project will be
+completed individually, and each student will present their work through
+a written report and in-class presentation. More information about the
+project will be provided during the semester.
+
+\subsubsection{Quizzes}\label{quizzes}
+
+Dr.~Friedlander will administer short quizzes periodically throughout
+the semester to assess your understanding of the course material. These
+quizzes will take place at the beginning of class, will not be announced
+in advance, and will cover the readings and lectures. The purpose of
+these quizzes is to encourage you to keep up with the course material
+and to provide me with feedback on how well the class is grasping the
+material and to ensure that all students are coming to class ready to
+participate. If you are late to class or absent on a quiz day, you will
+not be able to make up the quiz unless you notify me beforehand that you
+will be missing class for a valid reason (e.g., illness, family
+emergency, school-sponsored event).
+
+\textbf{At the end of the semester, if you receive less than a 60\%
+average on the quizzes, you will not pass the course regardless of your
+performance on other assignments.}
+
+\subsection{Way's to fail this course}\label{ways-to-fail-this-course}
+
+\begin{itemize}
+\tightlist
+\item
+  Receiving less than a 60\% average on the quizzes.
+\item
+  Failing to complete either of the projects.
+\item
+  Missing more than 3 class period without a valid excuse.
+\item
+  Failing to turn in more than 3 self-evaluations.
+\end{itemize}
+
+\subsection{Five tips for success}\label{five-tips-for-success}
+
+Your success in this course depends very much on you and the effort you
+put into it. The course has been organized so that the burden of
+learning is on you. I will help you by providing you with materials and
+answering questions and setting a pace, but for this to work you must do
+the following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Complete all the preparation work before class.
+\item
+  Ask questions. As often as you can. In class, out of class. Ask me,
+  ask your friends, ask the person sitting next to you. This will help
+  you more than anything else. If you get a question wrong on an
+  assessment, ask why. If you're not sure about the homework, ask. If
+  you hear something on the news that sounds related to what we
+  discussed, ask. If the reading is confusing, ask.
+\item
+  Do the readings and work outside of class.
+\item
+  Don't procrastinate. The content builds upon what was taught in
+  previous weeks, so if something is confusing to you on Day 2, Day 3
+  will become more confusing, Day 4 even worse, etc. Don't let the week
+  end with unanswered questions. But if you find yourself falling behind
+  and not knowing where to begin asking, come to office hours and I can
+  help you identify a good (re)starting point.
+\end{enumerate}
+
+\subsection{Course policies}\label{course-policies}
+
+\subsubsection{Academic honesty}\label{academic-honesty}
+
+\textbf{TL;DR: Don't cheat!}
+
+\begin{itemize}
+\item
+  For the projects, collaboration within teams is not only allowed, but
+  expected. Communication between teams at a high level is also allowed
+  however you may not share code or components of the project across
+  teams.
+\item
+  I typically have a very long section about academic honesty in my
+  syllabi. However, since this course is largely ungraded, I will simply
+  say that I expect you to adhere to the College of Idaho Honor Code in
+  all your work for this course. If you have any questions about what
+  constitutes academic dishonesty in this course, please ask me.
+\item
+  \textbf{You are responsible of everything you turn in.} For the most
+  part, you are welcome to use any resources you like to help you
+  complete assignments. However, you are responsible for ensuring that
+  you can not only understand, but explain everything that you turn in.
+  If you can't, you will not receive credit for the assignment.
+\end{itemize}
+
+\subsubsection{Late work policy}\label{late-work-policy}
+
+The due dates for projects are there to help you keep up with the course
+material and to ensure I can provide feedback within a timely manner. I
+understand that things come up periodically that could make it difficult
+to submit an assignment by the deadline.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{School-Sponsored Events/Illness:} If a deadline must be missed
+  due to a school-sponsored event, you must let me know at least a week
+  ahead of time so that we can schedule a time for you to make up the
+  work before you leave. If you must miss a exam or a project
+  presentation due to illness, you must let me know before class that
+  day so that we can schedule a time for you to take a make-up quiz or
+  exam. Failure to adhere to this policy will result in a 35\% penalty
+  on the corresponding assignment.
+\end{itemize}
+
+\subsubsection{College of Idaho Honor
+Code}\label{college-of-idaho-honor-code}
+
+\begin{quote}
+The College of Idaho maintains that academic honesty and integrity are
+essential values in the educational process. Operating under an Honor
+Code philosophy, the College expects conduct rooted in honesty,
+integrity, and understanding, allowing members of a diverse student body
+to live together and interact and learn from one another in ways that
+protect both personal freedom and community standards. Violations of
+academic honesty are addressed primarily by the instructor and may be
+referred to the
+\href{https://collegeofidaho.smartcatalogiq.com/en/current/Undergraduate-Catalog/Policies-and-Procedures/Academic-Misconduct}{Student
+Judicial Board}.
+\end{quote}
+
+By participating in this course, you are agreeing that all your work and
+conduct will be in accordance with the College of Idaho Honor Code.
+
+\subsubsection{Disability Accommodation
+Statement}\label{disability-accommodation-statement}
+
+The College of Idaho seeks to provide an educational environment that is
+accessible to the needs of students with disabilities. The College
+provides reasonable services to enrolled students who have a documented
+permanent or temporary physical, psychological, learning, intellectual,
+or sensory disability that qualifies the student for accommodations
+under the Americans with Disabilities Act or section 504 of the
+Rehabilitation Act of 1973. If you have, or think you may have, a
+disability that impacts your performance as a student in this class, you
+are encouraged to arrange support services and/or accommodations through
+the Department of Accessibility and Learning Excellence located in
+McCain 201B and available via email at
+\href{mailto:accessibility@collegeofidaho.edu}{\nolinkurl{accessibility@collegeofidaho.edu}}.
+Reasonable academic accommodations may be provided to students who
+submit appropriate and current documentation of their disability.
+Accommodations can be arranged only through this process and are not
+retroactively applied. More information can be found on the DALE webpage
+(\url{https://www.collegeofidaho.edu/accessibility}).
+
+
+
+
+\end{document}
