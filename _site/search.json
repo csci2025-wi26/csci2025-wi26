@@ -298,36 +298,36 @@
     "objectID": "slides/12-regex/12-regex.html#regular-expressions-regex",
     "href": "slides/12-regex/12-regex.html#regular-expressions-regex",
     "title": "Regular Expressions",
-    "section": "Regular Expressions (Regex)",
-    "text": "Regular Expressions (Regex)\n\nA powerful tool for describing patterns in strings.\nUsed for finding, extracting, and replacing text.\nstringr provides a consistent interface for working with regex."
+    "section": "",
+    "text": "A powerful tool for describing patterns in strings.\nUsed for finding, extracting, and replacing text.\n\nstringr provides a consistent interface for working with regex."
   },
   {
     "objectID": "slides/12-regex/12-regex.html#str_detect",
     "href": "slides/12-regex/12-regex.html#str_detect",
     "title": "Regular Expressions",
     "section": "str_detect()",
-    "text": "str_detect()\n\nstr_detect() returns TRUE if a pattern is found in a string, FALSE otherwise.\n\n\nx &lt;- c(\"apple\", \"banana\", \"pear\", \"pineapple\", \"naartjie\")\nstr_detect(x, \"an\")\n\n[1] FALSE  TRUE FALSE FALSE FALSE"
+    "text": "str_detect()\n\n\nstr_detect() returns TRUE if a pattern is found in a string, FALSE otherwise.\n\n\nx &lt;- c(\"apple\", \"banana\", \"pear\", \"pineapple\", \"naartjie\")\nstr_detect(x, \"an\")\n\n[1] FALSE  TRUE FALSE FALSE FALSE"
   },
   {
     "objectID": "slides/12-regex/12-regex.html#str_count",
     "href": "slides/12-regex/12-regex.html#str_count",
     "title": "Regular Expressions",
     "section": "str_count()",
-    "text": "str_count()\n\nstr_count() counts the number of matches in a string.\n\n\nstr_count(\"banana\", \"a\")\n\n[1] 3"
+    "text": "str_count()\n\n\nstr_count() counts the number of matches in a string.\n\n\nstr_count(\"banana\", \"a\")\n\n[1] 3"
   },
   {
     "objectID": "slides/12-regex/12-regex.html#str_extract-and-str_extract_all",
     "href": "slides/12-regex/12-regex.html#str_extract-and-str_extract_all",
     "title": "Regular Expressions",
-    "section": "str_extract() and str_extract_all()",
-    "text": "str_extract() and str_extract_all()\n\nstr_extract() extracts the first match.\nstr_extract_all() extracts all matches.\n\n\nstr_extract(\"banana\", \"an\")\n\n[1] \"an\"\n\nstr_extract_all(\"banana\", \"an\")\n\n[[1]]\n[1] \"an\" \"an\""
+    "section": "\nstr_extract() and str_extract_all()\n",
+    "text": "str_extract() and str_extract_all()\n\n\n\nstr_extract() extracts the first match.\n\nstr_extract_all() extracts all matches.\n\n\nstr_extract(\"banana\", \"an\")\n\n[1] \"an\"\n\nstr_extract_all(\"banana\", \"an\")\n\n[[1]]\n[1] \"an\" \"an\""
   },
   {
     "objectID": "slides/12-regex/12-regex.html#str_replace-and-str_replace_all",
     "href": "slides/12-regex/12-regex.html#str_replace-and-str_replace_all",
     "title": "Regular Expressions",
-    "section": "str_replace() and str_replace_all()",
-    "text": "str_replace() and str_replace_all()\n\nReplaces the first or all matches with a new string.\n\n\nx &lt;- c(\"Dr_Eric_Friedlander\", \"Dr_Brandy_Wiegers\", \"Anthony_Campitelli\")\nstr_replace(x, \"_\", \" \")\n\n[1] \"Dr Eric_Friedlander\" \"Dr Brandy_Wiegers\"   \"Anthony Campitelli\" \n\nstr_replace_all(x, \" \", \" \")\n\n[1] \"Dr_Eric_Friedlander\" \"Dr_Brandy_Wiegers\"   \"Anthony_Campitelli\""
+    "section": "\nstr_replace() and str_replace_all()\n",
+    "text": "str_replace() and str_replace_all()\n\n\nReplaces the first or all matches with a new string.\n\n\nx &lt;- c(\"Dr_Eric_Friedlander\", \"Dr_Brandy_Wiegers\", \"Anthony_Campitelli\")\nstr_replace(x, \"_\", \" \")\n\n[1] \"Dr Eric_Friedlander\" \"Dr Brandy_Wiegers\"   \"Anthony Campitelli\" \n\nstr_replace_all(x, \" \", \" \")\n\n[1] \"Dr_Eric_Friedlander\" \"Dr_Brandy_Wiegers\"   \"Anthony_Campitelli\""
   },
   {
     "objectID": "slides/12-regex/12-regex.html#regex",
@@ -341,21 +341,21 @@
     "href": "slides/12-regex/12-regex.html#anchors",
     "title": "Regular Expressions",
     "section": "Anchors",
-    "text": "Anchors\n\n^ matches the start of the string.\n$ matches the end of the string.\n\n\nx &lt;- c(\"apple\", \"banana\", \"pear\")\nstr_detect(x, \"^a\")\n\n[1]  TRUE FALSE FALSE\n\nstr_detect(x, \"a$\")\n\n[1] FALSE  TRUE FALSE"
+    "text": "Anchors\n\n\n^ matches the start of the string.\n\n$ matches the end of the string.\n\n\nx &lt;- c(\"apple\", \"banana\", \"pear\")\nstr_detect(x, \"^a\")\n\n[1]  TRUE FALSE FALSE\n\nstr_detect(x, \"a$\")\n\n[1] FALSE  TRUE FALSE"
   },
   {
     "objectID": "slides/12-regex/12-regex.html#character-classes",
     "href": "slides/12-regex/12-regex.html#character-classes",
     "title": "Regular Expressions",
     "section": "Character Classes",
-    "text": "Character Classes\n\n. matches any character except a newline.\n\\d matches any digit.\n\\s matches any whitespace.\n[abc] matches a, b, or c.\n[^abc] matches anything except a, b, or c."
+    "text": "Character Classes\n\n\n. matches any character except a newline.\n\n\\d matches any digit.\n\n\\s matches any whitespace.\n\n[abc] matches a, b, or c.\n\n[^abc] matches anything except a, b, or c."
   },
   {
     "objectID": "slides/12-regex/12-regex.html#repetition",
     "href": "slides/12-regex/12-regex.html#repetition",
     "title": "Regular Expressions",
     "section": "Repetition",
-    "text": "Repetition\n\n?: 0 or 1 time.\n+: 1 or more times.\n*: 0 or more times.\n{n}: exactly n times.\n{n,}: n or more times.\n{n,m}: between n and m times."
+    "text": "Repetition\n\n\n?: 0 or 1 time.\n\n+: 1 or more times.\n\n*: 0 or more times.\n\n{n}: exactly n times.\n\n{n,}: n or more times.\n\n{n,m}: between n and m times."
   },
   {
     "objectID": "slides/12-regex/12-regex.html#practice",
@@ -368,7 +368,7 @@
     "objectID": "slides/12-regex/12-regex.html#for-grouping",
     "href": "slides/12-regex/12-regex.html#for-grouping",
     "title": "Regular Expressions",
-    "section": "() for Grouping",
+    "section": "\n() for Grouping",
     "text": "() for Grouping\n\nParentheses create a “capturing group” to extract parts of a match.\n\n\nstr_match(\"apple, banana, pear\", \"([a-z]+), ([a-z]+)\")\n\n     [,1]            [,2]    [,3]    \n[1,] \"apple, banana\" \"apple\" \"banana\""
   },
   {
@@ -376,7 +376,7 @@
     "href": "slides/12-regex/12-regex.html#backreferences",
     "title": "Regular Expressions",
     "section": "Backreferences",
-    "text": "Backreferences\n\n\\1, \\2, etc. refer to previously captured groups.\n\n\nstr_replace(\"abab\", \"(a)(b)\", \"\\\\2\\\\1\")\n\n[1] \"baab\""
+    "text": "Backreferences\n\n\n\\1, \\2, etc. refer to previously captured groups.\n\n\nstr_replace(\"abab\", \"(a)(b)\", \"\\\\2\\\\1\")\n\n[1] \"baab\""
   },
   {
     "objectID": "slides/12-regex/12-regex.html#practice-1",
@@ -410,29 +410,29 @@
     "objectID": "slides/14-datetimes/14-datetimes.html#working-with-dates-and-times",
     "href": "slides/14-datetimes/14-datetimes.html#working-with-dates-and-times",
     "title": "Dates and Times",
-    "section": "Working with Dates and Times",
-    "text": "Working with Dates and Times\n\nDates and times can be complex due to leap years, daylight saving time (DST), and time zones.\nThe lubridate package in R makes working with dates and times easier."
+    "section": "",
+    "text": "Dates and times can be complex due to leap years, daylight saving time (DST), and time zones.\nThe lubridate package in R makes working with dates and times easier."
   },
   {
     "objectID": "slides/14-datetimes/14-datetimes.html#lubridate",
     "href": "slides/14-datetimes/14-datetimes.html#lubridate",
     "title": "Dates and Times",
-    "section": "lubridate",
-    "text": "lubridate\n\nPart of the core tidyverse.\nProvides functions for parsing, manipulating, and performing arithmetic with date-time data."
+    "section": "",
+    "text": "Part of the core tidyverse.\nProvides functions for parsing, manipulating, and performing arithmetic with date-time data."
   },
   {
     "objectID": "slides/14-datetimes/14-datetimes.html#from-strings",
     "href": "slides/14-datetimes/14-datetimes.html#from-strings",
     "title": "Dates and Times",
     "section": "From Strings",
-    "text": "From Strings\n\nlubridate has helper functions that parse dates by identifying the order of year, month, and day components.\nFunctions are named after the order of components: ymd(), mdy(), dmy(), etc.\n\n\nymd(\"2017-01-31\")\n\n[1] \"2017-01-31\"\n\nmdy(\"January 31st, 2017\")\n\n[1] \"2017-01-31\"\n\ndmy(\"31-Jan-2017\")\n\n[1] \"2017-01-31\"\n\n\n\nFor date-times, add _hms, _hm, or _h.\n\n\nymd_hms(\"2017-01-31 20:11:59\")\n\n[1] \"2017-01-31 20:11:59 UTC\""
+    "text": "From Strings\n\n\nlubridate has helper functions that parse dates by identifying the order of year, month, and day components.\nFunctions are named after the order of components: ymd(), mdy(), dmy(), etc.\n\n\nymd(\"2017-01-31\")\n\n[1] \"2017-01-31\"\n\nmdy(\"January 31st, 2017\")\n\n[1] \"2017-01-31\"\n\ndmy(\"31-Jan-2017\")\n\n[1] \"2017-01-31\"\n\n\n\nFor date-times, add _hms, _hm, or _h.\n\n\nymd_hms(\"2017-01-31 20:11:59\")\n\n[1] \"2017-01-31 20:11:59 UTC\""
   },
   {
     "objectID": "slides/14-datetimes/14-datetimes.html#from-components",
     "href": "slides/14-datetimes/14-datetimes.html#from-components",
     "title": "Dates and Times",
     "section": "From Components",
-    "text": "From Components\n\nUse make_date() for dates and make_datetime() for date-times from individual components.\n\n\n\nCode\nflights |&gt; \n  select(year, month, day, hour, minute) |&gt; \n  mutate(departure = make_datetime(year, month, day, hour, minute))\n\n\n# A tibble: 336,776 × 6\n    year month   day  hour minute departure          \n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dttm&gt;             \n 1  2013     1     1     5     15 2013-01-01 05:15:00\n 2  2013     1     1     5     29 2013-01-01 05:29:00\n 3  2013     1     1     5     40 2013-01-01 05:40:00\n 4  2013     1     1     5     45 2013-01-01 05:45:00\n 5  2013     1     1     6      0 2013-01-01 06:00:00\n 6  2013     1     1     5     58 2013-01-01 05:58:00\n 7  2013     1     1     6      0 2013-01-01 06:00:00\n 8  2013     1     1     6      0 2013-01-01 06:00:00\n 9  2013     1     1     6      0 2013-01-01 06:00:00\n10  2013     1     1     6      0 2013-01-01 06:00:00\n# ℹ 336,766 more rows"
+    "text": "From Components\n\nUse make_date() for dates and make_datetime() for date-times from individual components.\n\n\nCodeflights |&gt; \n  select(year, month, day, hour, minute) |&gt; \n  mutate(departure = make_datetime(year, month, day, hour, minute))\n\n# A tibble: 336,776 × 6\n    year month   day  hour minute departure          \n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dttm&gt;             \n 1  2013     1     1     5     15 2013-01-01 05:15:00\n 2  2013     1     1     5     29 2013-01-01 05:29:00\n 3  2013     1     1     5     40 2013-01-01 05:40:00\n 4  2013     1     1     5     45 2013-01-01 05:45:00\n 5  2013     1     1     6      0 2013-01-01 06:00:00\n 6  2013     1     1     5     58 2013-01-01 05:58:00\n 7  2013     1     1     6      0 2013-01-01 06:00:00\n 8  2013     1     1     6      0 2013-01-01 06:00:00\n 9  2013     1     1     6      0 2013-01-01 06:00:00\n10  2013     1     1     6      0 2013-01-01 06:00:00\n# ℹ 336,766 more rows"
   },
   {
     "objectID": "slides/14-datetimes/14-datetimes.html#accessing-components",
@@ -446,7 +446,7 @@
     "href": "slides/14-datetimes/14-datetimes.html#modifying-components",
     "title": "Dates and Times",
     "section": "Modifying Components",
-    "text": "Modifying Components\n\nYou can also set components using the same accessor functions.\n\n\ndatetime &lt;- ymd_hms(\"2026-07-08 12:34:56\")\nyear(datetime) &lt;- 2030\ndatetime\n\n[1] \"2030-07-08 12:34:56 UTC\"\n\n\n\nupdate() can modify multiple components.\n\n\nupdate(datetime, year = 2030, month = 2, mday = 2)\n\n[1] \"2030-02-02 12:34:56 UTC\""
+    "text": "Modifying Components\n\nYou can also set components using the same accessor functions.\n\n\ndatetime &lt;- ymd_hms(\"2026-07-08 12:34:56\")\nyear(datetime) &lt;- 2030\ndatetime\n\n[1] \"2030-07-08 12:34:56 UTC\"\n\n\n\n\nupdate() can modify multiple components.\n\n\nupdate(datetime, year = 2030, month = 2, mday = 2)\n\n[1] \"2030-02-02 12:34:56 UTC\""
   },
   {
     "objectID": "slides/14-datetimes/14-datetimes.html#durations",
@@ -474,14 +474,14 @@
     "href": "slides/14-datetimes/14-datetimes.html#iana-time-zones",
     "title": "Dates and Times",
     "section": "IANA Time Zones",
-    "text": "IANA Time Zones\n\nR uses IANA time zones, like \"America/New_York\".\nSys.timezone() gives your current time zone.\nOlsonNames() lists all available time zone names."
+    "text": "IANA Time Zones\n\nR uses IANA time zones, like \"America/New_York\".\n\nSys.timezone() gives your current time zone.\n\nOlsonNames() lists all available time zone names."
   },
   {
     "objectID": "slides/14-datetimes/14-datetimes.html#changing-time-zones",
     "href": "slides/14-datetimes/14-datetimes.html#changing-time-zones",
     "title": "Dates and Times",
     "section": "Changing Time Zones",
-    "text": "Changing Time Zones\n\nwith_tz(): changes how a time is displayed without changing the instant.\nforce_tz(): changes the instant in time.\n\n\nx1 &lt;- ymd_hms(\"2024-06-01 12:00:00\", tz = \"America/New_York\")\nwith_tz(x1, \"Europe/Paris\")\n\n[1] \"2024-06-01 18:00:00 CEST\"\n\nforce_tz(x1, \"Europe/Paris\")\n\n[1] \"2024-06-01 12:00:00 CEST\""
+    "text": "Changing Time Zones\n\n\nwith_tz(): changes how a time is displayed without changing the instant.\n\nforce_tz(): changes the instant in time.\n\n\nx1 &lt;- ymd_hms(\"2024-06-01 12:00:00\", tz = \"America/New_York\")\nwith_tz(x1, \"Europe/Paris\")\n\n[1] \"2024-06-01 18:00:00 CEST\"\n\nforce_tz(x1, \"Europe/Paris\")\n\n[1] \"2024-06-01 12:00:00 CEST\""
   },
   {
     "objectID": "slides/14-datetimes/14-datetimes.html#practice",
@@ -571,15 +571,15 @@
     "objectID": "slides/00-welcome/00-welcome.html#instructor",
     "href": "slides/00-welcome/00-welcome.html#instructor",
     "title": "Welcome to CSCI 2025",
-    "section": "Instructor",
-    "text": "Instructor\nDr. Eric Friedlander\nBoone 126B\nefriedlander@collegeofidaho.edu"
+    "section": "",
+    "text": "Dr. Eric Friedlander\nBoone 126B\nefriedlander@collegeofidaho.edu"
   },
   {
     "objectID": "slides/00-welcome/00-welcome.html#timetable",
     "href": "slides/00-welcome/00-welcome.html#timetable",
     "title": "Welcome to CSCI 2025",
-    "section": "Timetable",
-    "text": "Timetable\n\nLectures (weekly)\n\nM-TH 1-3pm - CML 105\n\nOffice Hours: TBD"
+    "section": "",
+    "text": "Lectures (weekly)\n\nM-TH 1-3pm - CML 105\n\nOffice Hours: TBD"
   },
   {
     "objectID": "slides/00-welcome/00-welcome.html#section",
@@ -747,7 +747,7 @@
     "href": "slides/00-welcome/00-welcome.html#academic-integrity",
     "title": "Welcome to CSCI 2025",
     "section": "Academic integrity",
-    "text": "Academic integrity\n\nTo uphold the Duke Community Standard:\n\n\n\n\nI will not lie, cheat, or steal in my academic endeavors;\nI will conduct myself honorably in all my endeavors; and\nI will act if the Standard is compromised."
+    "text": "Academic integrity\n\nTo uphold the Duke Community Standard:\n\n\n\nI will not lie, cheat, or steal in my academic endeavors;\nI will conduct myself honorably in all my endeavors; and\nI will act if the Standard is compromised."
   },
   {
     "objectID": "slides/00-welcome/00-welcome.html#section-2",
@@ -816,21 +816,21 @@
     "objectID": "slides/13-factors/13-factors.html#categorical-data-and-factors",
     "href": "slides/13-factors/13-factors.html#categorical-data-and-factors",
     "title": "Factors",
-    "section": "Categorical Data and Factors",
-    "text": "Categorical Data and Factors\n\nFactors are R’s data structure for categorical variables.\nThe forcats package (part of tidyverse) provides a suite of tools for working with factors.\nUseful for reordering and relabeling for better visualizations."
+    "section": "",
+    "text": "Factors are R’s data structure for categorical variables.\nThe forcats package (part of tidyverse) provides a suite of tools for working with factors.\nUseful for reordering and relabeling for better visualizations."
   },
   {
     "objectID": "slides/13-factors/13-factors.html#factor-and-fct",
     "href": "slides/13-factors/13-factors.html#factor-and-fct",
     "title": "Factors",
-    "section": "factor() and fct()",
-    "text": "factor() and fct()\n\nCreate factors from a character vector.\nlevels() shows the categories of the factor.\n\n\nx &lt;- c(\"Male\", \"Female\", \"Female\", \"Male\")\nf &lt;- factor(x)\nf\n\n[1] Male   Female Female Male  \nLevels: Female Male\n\nlevels(f)\n\n[1] \"Female\" \"Male\""
+    "section": "\nfactor() and fct()\n",
+    "text": "factor() and fct()\n\n\nCreate factors from a character vector.\n\nlevels() shows the categories of the factor.\n\n\nx &lt;- c(\"Male\", \"Female\", \"Female\", \"Male\")\nf &lt;- factor(x)\nf\n\n[1] Male   Female Female Male  \nLevels: Female Male\n\nlevels(f)\n\n[1] \"Female\" \"Male\""
   },
   {
     "objectID": "slides/13-factors/13-factors.html#gss_cat-dataset",
     "href": "slides/13-factors/13-factors.html#gss_cat-dataset",
     "title": "Factors",
-    "section": "gss_cat dataset",
+    "section": "\ngss_cat dataset",
     "text": "gss_cat dataset\n\nWe’ll use the gss_cat dataset, which contains data from the General Social Survey, for examples."
   },
   {
@@ -845,7 +845,7 @@
     "href": "slides/13-factors/13-factors.html#example",
     "title": "Factors",
     "section": "Example",
-    "text": "Example\n\n\nCode\ngss_cat |&gt;\n  filter(rincome != \"Not applicable\") |&gt;\n  group_by(rincome) |&gt;\n  summarize(age = mean(age, na.rm = TRUE)) |&gt;\n  mutate(rincome = fct_reorder(rincome, age)) |&gt;\n  ggplot(aes(x = age, y = rincome)) +\n  geom_col()"
+    "text": "Example\n\nCodegss_cat |&gt;\n  filter(rincome != \"Not applicable\") |&gt;\n  group_by(rincome) |&gt;\n  summarize(age = mean(age, na.rm = TRUE)) |&gt;\n  mutate(rincome = fct_reorder(rincome, age)) |&gt;\n  ggplot(aes(x = age, y = rincome)) +\n  geom_col()"
   },
   {
     "objectID": "slides/13-factors/13-factors.html#fct_infreq",
@@ -887,7 +887,7 @@
     "href": "slides/13-factors/13-factors.html#fct_lump_",
     "title": "Factors",
     "section": "fct_lump_*()",
-    "text": "fct_lump_*()\n\nfct_lump_n() and fct_lump_prop() lump together the least/most frequent levels into an “Other” category.\n\n\ngss_cat |&gt;\n  mutate(relig = fct_lump_n(relig, n = 5)) |&gt;\n  ggplot(aes(y = relig)) +\n  geom_bar()"
+    "text": "fct_lump_*()\n\n\nfct_lump_n() and fct_lump_prop() lump together the least/most frequent levels into an “Other” category.\n\n\ngss_cat |&gt;\n  mutate(relig = fct_lump_n(relig, n = 5)) |&gt;\n  ggplot(aes(y = relig)) +\n  geom_bar()"
   },
   {
     "objectID": "slides/13-factors/13-factors.html#practice-1",
@@ -900,8 +900,8 @@
     "objectID": "slides/15-missing-values/15-missing-values.html#missing-values",
     "href": "slides/15-missing-values/15-missing-values.html#missing-values",
     "title": "Missing Values",
-    "section": "Missing Values",
-    "text": "Missing Values\n\nReal-world data is often messy and contains missing values.\nR represents missing values with NA.\nThere are explicit and implicit missing values."
+    "section": "",
+    "text": "Real-world data is often messy and contains missing values.\nR represents missing values with NA.\nThere are explicit and implicit missing values."
   },
   {
     "objectID": "slides/15-missing-values/15-missing-values.html#is.na",
@@ -921,8 +921,8 @@
     "objectID": "slides/15-missing-values/15-missing-values.html#coalesce-and-na_if",
     "href": "slides/15-missing-values/15-missing-values.html#coalesce-and-na_if",
     "title": "Missing Values",
-    "section": "coalesce() and na_if()",
-    "text": "coalesce() and na_if()\n\ndplyr::coalesce() replaces NAs with values from another vector.\ndplyr::na_if() replaces a specific value with NA.\n\n\nx &lt;- c(1, 2, NA, 4, -99)\ncoalesce(x, 0)\n\n[1]   1   2   0   4 -99\n\nna_if(x, -99)\n\n[1]  1  2 NA  4 NA"
+    "section": "\ncoalesce() and na_if()\n",
+    "text": "coalesce() and na_if()\n\n\n\ndplyr::coalesce() replaces NAs with values from another vector.\n\ndplyr::na_if() replaces a specific value with NA.\n\n\nx &lt;- c(1, 2, NA, 4, -99)\ncoalesce(x, 0)\n\n[1]   1   2   0   4 -99\n\nna_if(x, -99)\n\n[1]  1  2 NA  4 NA"
   },
   {
     "objectID": "slides/15-missing-values/15-missing-values.html#making-implicit-nas-explicit",
@@ -936,14 +936,14 @@
     "href": "slides/15-missing-values/15-missing-values.html#tidyrcomplete",
     "title": "Missing Values",
     "section": "tidyr::complete()",
-    "text": "tidyr::complete()\n\ncomplete() turns implicit missing values into explicit NAs by completing the full range of data.\n\n\ndf &lt;- tibble(\n  group = c(\"a\", \"a\", \"b\"),\n  year  = c(2020, 2022, 2021),\n  value = 1:3\n)\ndf |&gt; complete(group, year)\n\n# A tibble: 6 × 3\n  group  year value\n  &lt;chr&gt; &lt;dbl&gt; &lt;int&gt;\n1 a      2020     1\n2 a      2021    NA\n3 a      2022     2\n4 b      2020    NA\n5 b      2021     3\n6 b      2022    NA"
+    "text": "tidyr::complete()\n\n\ncomplete() turns implicit missing values into explicit NAs by completing the full range of data.\n\n\ndf &lt;- tibble(\n  group = c(\"a\", \"a\", \"b\"),\n  year  = c(2020, 2022, 2021),\n  value = 1:3\n)\ndf |&gt; complete(group, year)\n\n# A tibble: 6 × 3\n  group  year value\n  &lt;chr&gt; &lt;dbl&gt; &lt;int&gt;\n1 a      2020     1\n2 a      2021    NA\n3 a      2022     2\n4 b      2020    NA\n5 b      2021     3\n6 b      2022    NA"
   },
   {
     "objectID": "slides/15-missing-values/15-missing-values.html#not-a-number-nan",
     "href": "slides/15-missing-values/15-missing-values.html#not-a-number-nan",
     "title": "Missing Values",
     "section": "Not a Number (NaN)",
-    "text": "Not a Number (NaN)\n\nNaN (“Not a Number”) is a special numeric value that can arise from invalid mathematical operations, like 0/0.\nis.nan() tests for NaN.\nNaN is also considered NA, so is.na(NaN) is TRUE."
+    "text": "Not a Number (NaN)\n\n\nNaN (“Not a Number”) is a special numeric value that can arise from invalid mathematical operations, like 0/0.\n\nis.nan() tests for NaN.\n\nNaN is also considered NA, so is.na(NaN) is TRUE."
   },
   {
     "objectID": "slides/15-missing-values/15-missing-values.html#missingness-in-data-analysis",
@@ -970,8 +970,8 @@
     "objectID": "slides/11-strings/11-strings.html#working-with-strings",
     "href": "slides/11-strings/11-strings.html#working-with-strings",
     "title": "Strings",
-    "section": "Working with Strings",
-    "text": "Working with Strings\n\nText data, or “strings”, are very common.\nThe stringr package, part of the tidyverse, provides a modern and consistent interface for working with strings.\nAll functions in stringr start with str_."
+    "section": "",
+    "text": "Text data, or “strings”, are very common.\nThe stringr package, part of the tidyverse, provides a modern and consistent interface for working with strings.\nAll functions in stringr start with str_."
   },
   {
     "objectID": "slides/11-strings/11-strings.html#basics",
@@ -984,57 +984,57 @@
     "objectID": "slides/11-strings/11-strings.html#combining-strings-str_c",
     "href": "slides/11-strings/11-strings.html#combining-strings-str_c",
     "title": "Strings",
-    "section": "Combining Strings: str_c()",
-    "text": "Combining Strings: str_c()\n\nstr_c() combines multiple vectors into a single character vector.\n\n\nstr_c(\"x\", \"y\", \"z\")\n\n[1] \"xyz\"\n\nstr_c(\"x\", \"y\", c(\"a\", \"b\"))\n\n[1] \"xya\" \"xyb\""
+    "section": "Combining Strings: str_c()\n",
+    "text": "Combining Strings: str_c()\n\n\n\nstr_c() combines multiple vectors into a single character vector.\n\n\nstr_c(\"x\", \"y\", \"z\")\n\n[1] \"xyz\"\n\nstr_c(\"x\", \"y\", c(\"a\", \"b\"))\n\n[1] \"xya\" \"xyb\""
   },
   {
     "objectID": "slides/11-strings/11-strings.html#gluing-strings-str_glue",
     "href": "slides/11-strings/11-strings.html#gluing-strings-str_glue",
     "title": "Strings",
-    "section": "Gluing Strings: str_glue()",
-    "text": "Gluing Strings: str_glue()\n\nstr_glue() from the glue package is great for embedding R code inside a string.\nWrap your R code in {}.\n\n\n\nCode\nname &lt;- \"Fred\"\nage &lt;- 50\nanniversary &lt;- as.Date(\"2025-12-30\")\n\nstr_glue(\n  \"My name is {name}, \",\n  \"my age is {age}, \",\n  \"and my anniversary is {format(anniversary, '%A, %B %d, %Y')}.\"\n)\n\n\nMy name is Fred, my age is 50, and my anniversary is Tuesday, December 30, 2025."
+    "section": "Gluing Strings: str_glue()\n",
+    "text": "Gluing Strings: str_glue()\n\n\n\nstr_glue() from the glue package is great for embedding R code inside a string.\nWrap your R code in {}.\n\n\nCodename &lt;- \"Fred\"\nage &lt;- 50\nanniversary &lt;- as.Date(\"2025-12-30\")\n\nstr_glue(\n  \"My name is {name}, \",\n  \"my age is {age}, \",\n  \"and my anniversary is {format(anniversary, '%A, %B %d, %Y')}.\"\n)\n\nMy name is Fred, my age is 50, and my anniversary is Tuesday, December 30, 2025."
   },
   {
     "objectID": "slides/11-strings/11-strings.html#separating-into-columns",
     "href": "slides/11-strings/11-strings.html#separating-into-columns",
     "title": "Strings",
     "section": "Separating into Columns",
-    "text": "Separating into Columns\n\ntidyr::separate_wider_delim() splits a column into multiple new columns based on a delimiter.\nYou must provide names for the new columns.\n\n\ndf &lt;- tibble(x = c(\"a_b_1\", \"c_d_2\", \"e_f_3\"))\ndf |&gt; separate_wider_delim(\n  x,\n  delim = \"_\",\n  names = c(\"first\", \"second\", \"third\")\n)\n\n# A tibble: 3 × 3\n  first second third\n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;\n1 a     b      1    \n2 c     d      2    \n3 e     f      3"
+    "text": "Separating into Columns\n\n\ntidyr::separate_wider_delim() splits a column into multiple new columns based on a delimiter.\nYou must provide names for the new columns.\n\n\ndf &lt;- tibble(x = c(\"a_b_1\", \"c_d_2\", \"e_f_3\"))\ndf |&gt; separate_wider_delim(\n  x,\n  delim = \"_\",\n  names = c(\"first\", \"second\", \"third\")\n)\n\n# A tibble: 3 × 3\n  first second third\n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;\n1 a     b      1    \n2 c     d      2    \n3 e     f      3"
   },
   {
     "objectID": "slides/11-strings/11-strings.html#separating-into-rows",
     "href": "slides/11-strings/11-strings.html#separating-into-rows",
     "title": "Strings",
     "section": "Separating into Rows",
-    "text": "Separating into Rows\n\ntidyr::separate_longer_delim() splits a column into multiple new rows.\nUseful when each cell contains a varying number of items.\n\n\ndf &lt;- tibble(x = 1:2, y = c(\"a,b\", \"c,d,e\"))\ndf |&gt; separate_longer_delim(y, delim = \",\")\n\n# A tibble: 5 × 2\n      x y    \n  &lt;int&gt; &lt;chr&gt;\n1     1 a    \n2     1 b    \n3     2 c    \n4     2 d    \n5     2 e"
+    "text": "Separating into Rows\n\n\ntidyr::separate_longer_delim() splits a column into multiple new rows.\nUseful when each cell contains a varying number of items.\n\n\ndf &lt;- tibble(x = 1:2, y = c(\"a,b\", \"c,d,e\"))\ndf |&gt; separate_longer_delim(y, delim = \",\")\n\n# A tibble: 5 × 2\n      x y    \n  &lt;int&gt; &lt;chr&gt;\n1     1 a    \n2     1 b    \n3     2 c    \n4     2 d    \n5     2 e"
   },
   {
     "objectID": "slides/11-strings/11-strings.html#length",
     "href": "slides/11-strings/11-strings.html#length",
     "title": "Strings",
     "section": "Length",
-    "text": "Length\n\nstr_length() gives you the number of characters in a string.\n\n\nstr_length(c(\"a\", \"R for data science\", NA))\n\n[1]  1 18 NA"
+    "text": "Length\n\n\nstr_length() gives you the number of characters in a string.\n\n\nstr_length(c(\"a\", \"R for data science\", NA))\n\n[1]  1 18 NA"
   },
   {
     "objectID": "slides/11-strings/11-strings.html#subsetting",
     "href": "slides/11-strings/11-strings.html#subsetting",
     "title": "Strings",
     "section": "Subsetting",
-    "text": "Subsetting\n\nstr_sub() extracts a part of a string.\nYou provide the start and end positions (inclusive).\nNegative numbers count from the end of the string.\n\n\nx &lt;- c(\"Apple\", \"Banana\", \"Pear\")\nstr_sub(x, 1, 3)\n\n[1] \"App\" \"Ban\" \"Pea\"\n\nstr_sub(x, -2, -1)\n\n[1] \"le\" \"na\" \"ar\""
+    "text": "Subsetting\n\n\nstr_sub() extracts a part of a string.\nYou provide the start and end positions (inclusive).\nNegative numbers count from the end of the string.\n\n\nx &lt;- c(\"Apple\", \"Banana\", \"Pear\")\nstr_sub(x, 1, 3)\n\n[1] \"App\" \"Ban\" \"Pea\"\n\nstr_sub(x, -2, -1)\n\n[1] \"le\" \"na\" \"ar\""
   },
   {
     "objectID": "slides/11-strings/11-strings.html#case",
     "href": "slides/11-strings/11-strings.html#case",
     "title": "Strings",
     "section": "Case",
-    "text": "Case\n\nstr_to_lower(): convert to lowercase.\nstr_to_upper(): convert to uppercase.\nstr_to_title(): convert to title case.\n\n\nstr_to_lower(\"I am shouting.\")\n\n[1] \"i am shouting.\"\n\nstr_to_title(\"a tale of two cities\")\n\n[1] \"A Tale Of Two Cities\""
+    "text": "Case\n\n\nstr_to_lower(): convert to lowercase.\n\nstr_to_upper(): convert to uppercase.\n\nstr_to_title(): convert to title case.\n\n\nstr_to_lower(\"I am shouting.\")\n\n[1] \"i am shouting.\"\n\nstr_to_title(\"a tale of two cities\")\n\n[1] \"A Tale Of Two Cities\""
   },
   {
     "objectID": "slides/11-strings/11-strings.html#whitespace",
     "href": "slides/11-strings/11-strings.html#whitespace",
     "title": "Strings",
     "section": "Whitespace",
-    "text": "Whitespace\n\nstr_trim() removes whitespace from the start and end of a string.\nstr_squish() also removes whitespace from the start and end, and reduces any internal whitespace to a single space.\n\n\ntext &lt;- \"  this   has  a lot of   whitespace   \"\nstr_trim(text)\n\n[1] \"this   has  a lot of   whitespace\"\n\nstr_squish(text)\n\n[1] \"this has a lot of whitespace\""
+    "text": "Whitespace\n\n\nstr_trim() removes whitespace from the start and end of a string.\n\nstr_squish() also removes whitespace from the start and end, and reduces any internal whitespace to a single space.\n\n\ntext &lt;- \"  this   has  a lot of   whitespace   \"\nstr_trim(text)\n\n[1] \"this   has  a lot of   whitespace\"\n\nstr_squish(text)\n\n[1] \"this has a lot of whitespace\""
   },
   {
     "objectID": "slides/11-strings/11-strings.html#strings",
@@ -1504,7 +1504,7 @@
     "href": "course-overview.html",
     "title": "Course overview",
     "section": "",
-    "text": "This is the homepage for STA 313 - Advanced Data Visualization taught by Dr. Mine Çetinkaya-Rundel in Spring 2024 at Duke University. All course materials will be posted on this site.\nYou can find the course syllabus here and the course schedule here.",
+    "text": "This is the homepage for CSCI 2025 - Data Manipulation and Visualization taught by Dr. Eric Friedlander in the Winter term of 2026 at the College of Idaho. All course materials will be posted on this site.\nYou can find the course syllabus here and the course schedule here.",
     "crumbs": [
       "Course information",
       "Overview"
@@ -1536,8 +1536,8 @@
     "objectID": "slides/16-joins/16-joins.html#combining-datasets",
     "href": "slides/16-joins/16-joins.html#combining-datasets",
     "title": "Joins",
-    "section": "Combining Datasets",
-    "text": "Combining Datasets\n\nJoins are used to combine data from different tables based on a set of common variables (“keys”).\ndplyr provides a family of join functions.\nWe will use data from the nycflights13 package."
+    "section": "",
+    "text": "Joins are used to combine data from different tables based on a set of common variables (“keys”).\n\ndplyr provides a family of join functions.\nWe will use data from the nycflights13 package."
   },
   {
     "objectID": "slides/16-joins/16-joins.html#primary-and-foreign-keys",
@@ -1550,22 +1550,22 @@
     "objectID": "slides/16-joins/16-joins.html#dataset-1-flights",
     "href": "slides/16-joins/16-joins.html#dataset-1-flights",
     "title": "Joins",
-    "section": "Dataset 1: flights",
-    "text": "Dataset 1: flights\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…"
+    "section": "Dataset 1: flights\n",
+    "text": "Dataset 1: flights\n\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…"
   },
   {
     "objectID": "slides/16-joins/16-joins.html#dataset-2-airlines",
     "href": "slides/16-joins/16-joins.html#dataset-2-airlines",
     "title": "Joins",
-    "section": "Dataset 2: airlines",
-    "text": "Dataset 2: airlines\n\nglimpse(airlines)\n\nRows: 16\nColumns: 2\n$ carrier &lt;chr&gt; \"9E\", \"AA\", \"AS\", \"B6\", \"DL\", \"EV\", \"F9\", \"FL\", \"HA\", \"MQ\", \"O…\n$ name    &lt;chr&gt; \"Endeavor Air Inc.\", \"American Airlines Inc.\", \"Alaska Airline…"
+    "section": "Dataset 2: airlines\n",
+    "text": "Dataset 2: airlines\n\n\nglimpse(airlines)\n\nRows: 16\nColumns: 2\n$ carrier &lt;chr&gt; \"9E\", \"AA\", \"AS\", \"B6\", \"DL\", \"EV\", \"F9\", \"FL\", \"HA\", \"MQ\", \"O…\n$ name    &lt;chr&gt; \"Endeavor Air Inc.\", \"American Airlines Inc.\", \"Alaska Airline…"
   },
   {
     "objectID": "slides/16-joins/16-joins.html#left_join",
     "href": "slides/16-joins/16-joins.html#left_join",
     "title": "Joins",
     "section": "left_join()",
-    "text": "left_join()\n\nleft_join() is the most commonly used join.\nIt returns all rows from the left table (x), and all columns from both tables (x and y).\nRows in x with no match in y will have NA values in the new columns.\nRows in y with no match in x are ignored.\nRows in y that match multiple rows in x will result in duplicated rows in the output (and vice versa)."
+    "text": "left_join()\n\n\nleft_join() is the most commonly used join.\nIt returns all rows from the left table (x), and all columns from both tables (x and y).\nRows in x with no match in y will have NA values in the new columns.\nRows in y with no match in x are ignored.\nRows in y that match multiple rows in x will result in duplicated rows in the output (and vice versa)."
   },
   {
     "objectID": "slides/16-joins/16-joins.html#example",
@@ -1579,14 +1579,14 @@
     "href": "slides/16-joins/16-joins.html#other-mutating-joins",
     "title": "Joins",
     "section": "Other Mutating Joins",
-    "text": "Other Mutating Joins\n\ninner_join(): returns only rows that have a match in both tables.\nright_join(): returns all rows from the right table.\nfull_join(): returns all rows from both tables."
+    "text": "Other Mutating Joins\n\n\ninner_join(): returns only rows that have a match in both tables.\n\nright_join(): returns all rows from the right table.\n\nfull_join(): returns all rows from both tables."
   },
   {
     "objectID": "slides/16-joins/16-joins.html#semi_join",
     "href": "slides/16-joins/16-joins.html#semi_join",
     "title": "Joins",
     "section": "semi_join()",
-    "text": "semi_join()\n\nsemi_join() keeps all rows from the left table (x) that have a match in the right table (y).\nIt does not add any columns from y."
+    "text": "semi_join()\n\n\nsemi_join() keeps all rows from the left table (x) that have a match in the right table (y).\nIt does not add any columns from y."
   },
   {
     "objectID": "slides/16-joins/16-joins.html#example-1",
@@ -1600,7 +1600,7 @@
     "href": "slides/16-joins/16-joins.html#anti_join",
     "title": "Joins",
     "section": "anti_join()",
-    "text": "anti_join()\n\nanti_join() returns all rows from x that do not have a match in y.\nUseful for finding observations that don’t have a match."
+    "text": "anti_join()\n\n\nanti_join() returns all rows from x that do not have a match in y.\nUseful for finding observations that don’t have a match."
   },
   {
     "objectID": "slides/16-joins/16-joins.html#example-2",
@@ -1620,22 +1620,22 @@
     "objectID": "slides/09-logicals/09-logicals.html#logical-vectors",
     "href": "slides/09-logicals/09-logicals.html#logical-vectors",
     "title": "Logical Vectors",
-    "section": "Logical Vectors",
-    "text": "Logical Vectors\n\nA logical vector is a vector that contains only TRUE, FALSE, and NA (missing) values.\nThey are rarely in your raw data, but you will create and use them in almost every analysis.\nLogical vectors are the foundation of filtering and conditional transformations."
+    "section": "",
+    "text": "A logical vector is a vector that contains only TRUE, FALSE, and NA (missing) values.\nThey are rarely in your raw data, but you will create and use them in almost every analysis.\nLogical vectors are the foundation of filtering and conditional transformations."
   },
   {
     "objectID": "slides/09-logicals/09-logicals.html#creating-logicals",
     "href": "slides/09-logicals/09-logicals.html#creating-logicals",
     "title": "Logical Vectors",
     "section": "Creating Logicals",
-    "text": "Creating Logicals\n\nYou can create logical vectors with comparison operators:\n\n&gt; (greater than), &lt; (less than)\n&gt;= (greater than or equal to), &lt;= (less than or equal to)\n== (equal to), != (not equal to)\n\n\n\nx &lt;- c(1, 2, 3, 5, 8, 13)\nx &gt; 4\n\n[1] FALSE FALSE FALSE  TRUE  TRUE  TRUE"
+    "text": "Creating Logicals\n\nYou can create logical vectors with comparison operators:\n\n\n&gt; (greater than), &lt; (less than)\n\n&gt;= (greater than or equal to), &lt;= (less than or equal to)\n\n== (equal to), != (not equal to)\n\n\n\n\nx &lt;- c(1, 2, 3, 5, 8, 13)\nx &gt; 4\n\n[1] FALSE FALSE FALSE  TRUE  TRUE  TRUE"
   },
   {
     "objectID": "slides/09-logicals/09-logicals.html#comparisons-with-filter",
     "href": "slides/09-logicals/09-logicals.html#comparisons-with-filter",
     "title": "Logical Vectors",
-    "section": "Comparisons with filter()",
-    "text": "Comparisons with filter()\n\nMost often, you’ll use comparisons inside filter() to select rows.\n\n\n\nCode\n# Flights that departed in January\nfilter(flights, month == 1)\n\n\n# A tibble: 27,004 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            600        -6      812            837\n 6  2013     1     1      554            558        -4      740            728\n 7  2013     1     1      555            600        -5      913            854\n 8  2013     1     1      557            600        -3      709            723\n 9  2013     1     1      557            600        -3      838            846\n10  2013     1     1      558            600        -2      753            745\n# ℹ 26,994 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
+    "section": "Comparisons with filter()\n",
+    "text": "Comparisons with filter()\n\n\nMost often, you’ll use comparisons inside filter() to select rows.\n\n\nCode# Flights that departed in January\nfilter(flights, month == 1)\n\n# A tibble: 27,004 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            600        -6      812            837\n 6  2013     1     1      554            558        -4      740            728\n 7  2013     1     1      555            600        -5      913            854\n 8  2013     1     1      557            600        -3      709            723\n 9  2013     1     1      557            600        -3      838            846\n10  2013     1     1      558            600        -2      753            745\n# ℹ 26,994 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
   },
   {
     "objectID": "slides/09-logicals/09-logicals.html#floating-point-comparison",
@@ -1649,7 +1649,7 @@
     "href": "slides/09-logicals/09-logicals.html#na",
     "title": "Logical Vectors",
     "section": "NA",
-    "text": "NA\n\nNA represents a missing value.\nNA is “contagious”: almost any operation involving NA will produce NA.\nYou can’t use == to find missing values.\n\n\nNA &gt; 5\n\n[1] NA\n\nNA == 10\n\n[1] NA\n\nNA == NA\n\n[1] NA"
+    "text": "NA\n\n\nNA represents a missing value.\n\nNA is “contagious”: almost any operation involving NA will produce NA.\nYou can’t use == to find missing values.\n\n\nNA &gt; 5\n\n[1] NA\n\nNA == 10\n\n[1] NA\n\nNA == NA\n\n[1] NA"
   },
   {
     "objectID": "slides/09-logicals/09-logicals.html#is.na",
@@ -1662,15 +1662,15 @@
     "objectID": "slides/09-logicals/09-logicals.html#filtering-and-na",
     "href": "slides/09-logicals/09-logicals.html#filtering-and-na",
     "title": "Logical Vectors",
-    "section": "Filtering and NA",
-    "text": "Filtering and NA\n\nfilter() only includes rows where the condition is TRUE. It excludes FALSE and NA values.\nIf you want to include missing values in your filter, you must ask for them explicitly."
+    "section": "Filtering and NA\n",
+    "text": "Filtering and NA\n\n\n\nfilter() only includes rows where the condition is TRUE. It excludes FALSE and NA values.\nIf you want to include missing values in your filter, you must ask for them explicitly."
   },
   {
     "objectID": "slides/09-logicals/09-logicals.html#example",
     "href": "slides/09-logicals/09-logicals.html#example",
     "title": "Logical Vectors",
     "section": "Example",
-    "text": "Example\n\n\nCode\ndf &lt;- tibble(x = c(1, NA, 3))\n\n# This only keeps the row where x &gt; 1 is TRUE\ndf |&gt; \n  filter(x &gt; 1)\n\n\n# A tibble: 1 × 1\n      x\n  &lt;dbl&gt;\n1     3\n\n\nCode\n# To keep NA values, you have to say so\ndf |&gt;\n  filter(x &gt; 1 | is.na(x))\n\n\n# A tibble: 2 × 1\n      x\n  &lt;dbl&gt;\n1    NA\n2     3"
+    "text": "Example\n\nCodedf &lt;- tibble(x = c(1, NA, 3))\n\n# This only keeps the row where x &gt; 1 is TRUE\ndf |&gt; \n  filter(x &gt; 1)\n\n# A tibble: 1 × 1\n      x\n  &lt;dbl&gt;\n1     3\n\nCode# To keep NA values, you have to say so\ndf |&gt;\n  filter(x &gt; 1 | is.na(x))\n\n# A tibble: 2 × 1\n      x\n  &lt;dbl&gt;\n1    NA\n2     3"
   },
   {
     "objectID": "slides/09-logicals/09-logicals.html#practice",
@@ -1684,21 +1684,21 @@
     "href": "slides/09-logicals/09-logicals.html#combining-conditions",
     "title": "Logical Vectors",
     "section": "Combining Conditions",
-    "text": "Combining Conditions\n\nYou can combine multiple logical conditions using boolean operators:\n\n& (and)\n| (or)\n! (not)"
+    "text": "Combining Conditions\n\nYou can combine multiple logical conditions using boolean operators:\n\n\n& (and)\n\n| (or)\n\n! (not)"
   },
   {
     "objectID": "slides/09-logicals/09-logicals.html#example-1",
     "href": "slides/09-logicals/09-logicals.html#example-1",
     "title": "Logical Vectors",
     "section": "Example 1",
-    "text": "Example 1\n\n\nCode\n# Flights in January or February\nflights |&gt;\n  filter(month == 1 | month == 2)\n\n\n# A tibble: 51,955 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            600        -6      812            837\n 6  2013     1     1      554            558        -4      740            728\n 7  2013     1     1      555            600        -5      913            854\n 8  2013     1     1      557            600        -3      709            723\n 9  2013     1     1      557            600        -3      838            846\n10  2013     1     1      558            600        -2      753            745\n# ℹ 51,945 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
+    "text": "Example 1\n\nCode# Flights in January or February\nflights |&gt;\n  filter(month == 1 | month == 2)\n\n# A tibble: 51,955 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            600        -6      812            837\n 6  2013     1     1      554            558        -4      740            728\n 7  2013     1     1      555            600        -5      913            854\n 8  2013     1     1      557            600        -3      709            723\n 9  2013     1     1      557            600        -3      838            846\n10  2013     1     1      558            600        -2      753            745\n# ℹ 51,945 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
   },
   {
     "objectID": "slides/09-logicals/09-logicals.html#example-2",
     "href": "slides/09-logicals/09-logicals.html#example-2",
     "title": "Logical Vectors",
     "section": "Example 2",
-    "text": "Example 2\n\n\nCode\n# Flights not delayed (on departure or arrival)\nflights |&gt; \nfilter(!(dep_delay &gt; 0 | arr_delay &gt; 0))\n\n\n# A tibble: 158,900 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      544            545        -1     1004           1022\n 2  2013     1     1      554            600        -6      812            837\n 3  2013     1     1      557            600        -3      709            723\n 4  2013     1     1      557            600        -3      838            846\n 5  2013     1     1      558            600        -2      849            851\n 6  2013     1     1      558            600        -2      853            856\n 7  2013     1     1      558            600        -2      923            937\n 8  2013     1     1      559            559         0      702            706\n 9  2013     1     1      559            600        -1      854            902\n10  2013     1     1      600            600         0      851            858\n# ℹ 158,890 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
+    "text": "Example 2\n\nCode# Flights not delayed (on departure or arrival)\nflights |&gt; \nfilter(!(dep_delay &gt; 0 | arr_delay &gt; 0))\n\n# A tibble: 158,900 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      544            545        -1     1004           1022\n 2  2013     1     1      554            600        -6      812            837\n 3  2013     1     1      557            600        -3      709            723\n 4  2013     1     1      557            600        -3      838            846\n 5  2013     1     1      558            600        -2      849            851\n 6  2013     1     1      558            600        -2      853            856\n 7  2013     1     1      558            600        -2      923            937\n 8  2013     1     1      559            559         0      702            706\n 9  2013     1     1      559            600        -1      854            902\n10  2013     1     1      600            600         0      851            858\n# ℹ 158,890 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
   },
   {
     "objectID": "slides/09-logicals/09-logicals.html#in",
@@ -1712,7 +1712,7 @@
     "href": "slides/09-logicals/09-logicals.html#example-3",
     "title": "Logical Vectors",
     "section": "Example",
-    "text": "Example\n\n\nCode\n# Flights in November or December\nflights |&gt;\n  filter(month %in% c(11, 12))\n\n\n# A tibble: 55,403 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013    11     1        5           2359         6      352            345\n 2  2013    11     1       35           2250       105      123           2356\n 3  2013    11     1      455            500        -5      641            651\n 4  2013    11     1      539            545        -6      856            827\n 5  2013    11     1      542            545        -3      831            855\n 6  2013    11     1      549            600       -11      912            923\n 7  2013    11     1      550            600       -10      705            659\n 8  2013    11     1      554            600        -6      659            701\n 9  2013    11     1      554            600        -6      826            827\n10  2013    11     1      554            600        -6      749            751\n# ℹ 55,393 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
+    "text": "Example\n\nCode# Flights in November or December\nflights |&gt;\n  filter(month %in% c(11, 12))\n\n# A tibble: 55,403 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013    11     1        5           2359         6      352            345\n 2  2013    11     1       35           2250       105      123           2356\n 3  2013    11     1      455            500        -5      641            651\n 4  2013    11     1      539            545        -6      856            827\n 5  2013    11     1      542            545        -3      831            855\n 6  2013    11     1      549            600       -11      912            923\n 7  2013    11     1      550            600       -10      705            659\n 8  2013    11     1      554            600        -6      659            701\n 9  2013    11     1      554            600        -6      826            827\n10  2013    11     1      554            600        -6      749            751\n# ℹ 55,393 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
   },
   {
     "objectID": "slides/09-logicals/09-logicals.html#practice-1",
@@ -1726,14 +1726,14 @@
     "href": "slides/09-logicals/09-logicals.html#logical-summaries",
     "title": "Logical Vectors",
     "section": "Logical Summaries",
-    "text": "Logical Summaries\n\nany(): returns TRUE if there is at least one TRUE.\nall(): returns TRUE if all values are TRUE.\nUse na.rm = TRUE to ignore missing values.\n\n\nx &lt;- c(TRUE, FALSE, NA)\nany(x)\n\n[1] TRUE\n\nall(x, na.rm = TRUE)\n\n[1] FALSE"
+    "text": "Logical Summaries\n\n\nany(): returns TRUE if there is at least one TRUE.\n\nall(): returns TRUE if all values are TRUE.\nUse na.rm = TRUE to ignore missing values.\n\n\nx &lt;- c(TRUE, FALSE, NA)\nany(x)\n\n[1] TRUE\n\nall(x, na.rm = TRUE)\n\n[1] FALSE"
   },
   {
     "objectID": "slides/09-logicals/09-logicals.html#numeric-summaries",
     "href": "slides/09-logicals/09-logicals.html#numeric-summaries",
     "title": "Logical Vectors",
     "section": "Numeric Summaries",
-    "text": "Numeric Summaries\n\nWhen you use a logical vector in a numeric context, TRUE becomes 1 and FALSE becomes 0.\nsum(): counts the number of TRUEs.\nmean(): calculates the proportion of TRUEs.\n\n\n\nCode\n# How many flights were delayed on arrival by more than an hour?\nsum(flights$arr_delay &gt; 60, na.rm = TRUE)\n\n\n[1] 27789\n\n\nCode\n# What proportion of flights were delayed?\nmean(flights$arr_delay &gt; 0, na.rm = TRUE)\n\n\n[1] 0.4063101"
+    "text": "Numeric Summaries\n\nWhen you use a logical vector in a numeric context, TRUE becomes 1 and FALSE becomes 0.\n\nsum(): counts the number of TRUEs.\n\nmean(): calculates the proportion of TRUEs.\n\n\nCode# How many flights were delayed on arrival by more than an hour?\nsum(flights$arr_delay &gt; 60, na.rm = TRUE)\n\n[1] 27789\n\nCode# What proportion of flights were delayed?\nmean(flights$arr_delay &gt; 0, na.rm = TRUE)\n\n[1] 0.4063101"
   },
   {
     "objectID": "slides/09-logicals/09-logicals.html#practice-2",
@@ -1754,14 +1754,14 @@
     "href": "slides/09-logicals/09-logicals.html#case_when",
     "title": "Logical Vectors",
     "section": "case_when()",
-    "text": "case_when()\n\nFor multiple conditions, case_when() is easier to read than nested if_else().\ncase_when(condition1 ~ value1, condition2 ~ value2, ...)\nThe first TRUE condition wins.\n\n\n\nCode\ncase_when(\n  x &lt; 0 ~ \"negative\",\n  x == 0 ~ \"zero\",\n  x &gt; 0 ~ \"positive\"\n)\n\n\n[1] \"negative\" \"negative\" \"zero\"     \"positive\" \"positive\""
+    "text": "case_when()\n\nFor multiple conditions, case_when() is easier to read than nested if_else().\ncase_when(condition1 ~ value1, condition2 ~ value2, ...)\nThe first TRUE condition wins.\n\n\nCodecase_when(\n  x &lt; 0 ~ \"negative\",\n  x == 0 ~ \"zero\",\n  x &gt; 0 ~ \"positive\"\n)\n\n[1] \"negative\" \"negative\" \"zero\"     \"positive\" \"positive\""
   },
   {
     "objectID": "slides/09-logicals/09-logicals.html#example-case_when",
     "href": "slides/09-logicals/09-logicals.html#example-case_when",
     "title": "Logical Vectors",
-    "section": "Example: case_when()",
-    "text": "Example: case_when()\n\nLet’s create a human-readable “season” variable.\n\n\n\nCode\nflights |&gt;\n  mutate(\n    season = case_when(\n      month %in% c(12, 1, 2) ~ \"Winter\",\n      month %in% c(3, 4, 5) ~ \"Spring\",\n      month %in% c(6, 7, 8) ~ \"Summer\",\n      month %in% c(9, 10, 11) ~ \"Fall\"\n    )\n  ) |&gt;\n  select(month, season)\n\n\n# A tibble: 336,776 × 2\n   month season\n   &lt;int&gt; &lt;chr&gt; \n 1     1 Winter\n 2     1 Winter\n 3     1 Winter\n 4     1 Winter\n 5     1 Winter\n 6     1 Winter\n 7     1 Winter\n 8     1 Winter\n 9     1 Winter\n10     1 Winter\n# ℹ 336,766 more rows"
+    "section": "Example: case_when()\n",
+    "text": "Example: case_when()\n\n\nLet’s create a human-readable “season” variable.\n\n\nCodeflights |&gt;\n  mutate(\n    season = case_when(\n      month %in% c(12, 1, 2) ~ \"Winter\",\n      month %in% c(3, 4, 5) ~ \"Spring\",\n      month %in% c(6, 7, 8) ~ \"Summer\",\n      month %in% c(9, 10, 11) ~ \"Fall\"\n    )\n  ) |&gt;\n  select(month, season)\n\n# A tibble: 336,776 × 2\n   month season\n   &lt;int&gt; &lt;chr&gt; \n 1     1 Winter\n 2     1 Winter\n 3     1 Winter\n 4     1 Winter\n 5     1 Winter\n 6     1 Winter\n 7     1 Winter\n 8     1 Winter\n 9     1 Winter\n10     1 Winter\n# ℹ 336,766 more rows"
   },
   {
     "objectID": "slides/09-logicals/09-logicals.html#logical-vectors-1",
@@ -1858,22 +1858,22 @@
     "objectID": "slides/10-numbers/10-numbers.html#working-with-numbers",
     "href": "slides/10-numbers/10-numbers.html#working-with-numbers",
     "title": "Numbers",
-    "section": "Working with Numbers",
-    "text": "Working with Numbers\n\nNumeric data is the most common type of data you’ll work with.\nThis lecture covers creating, transforming, and summarizing numeric vectors.\nWe’ll use functions from base R and dplyr."
+    "section": "",
+    "text": "Numeric data is the most common type of data you’ll work with.\nThis lecture covers creating, transforming, and summarizing numeric vectors.\nWe’ll use functions from base R and dplyr."
   },
   {
     "objectID": "slides/10-numbers/10-numbers.html#parsing-numbers",
     "href": "slides/10-numbers/10-numbers.html#parsing-numbers",
     "title": "Numbers",
     "section": "Parsing Numbers",
-    "text": "Parsing Numbers\n\nSometimes numbers are stored as text (strings).\nreadr::parse_double() converts strings to numbers, assuming they are just numbers.\nreadr::parse_number() is more flexible and can extract numbers from strings with other text.\n\n\nparse_double(\"1.23\")\n\n[1] 1.23\n\nparse_number(\"$1,234.50\")\n\n[1] 1234.5\n\nparse_number(\"55%\")\n\n[1] 55"
+    "text": "Parsing Numbers\n\nSometimes numbers are stored as text (strings).\n\nreadr::parse_double() converts strings to numbers, assuming they are just numbers.\n\nreadr::parse_number() is more flexible and can extract numbers from strings with other text.\n\n\nparse_double(\"1.23\")\n\n[1] 1.23\n\nparse_number(\"$1,234.50\")\n\n[1] 1234.5\n\nparse_number(\"55%\")\n\n[1] 55"
   },
   {
     "objectID": "slides/10-numbers/10-numbers.html#count",
     "href": "slides/10-numbers/10-numbers.html#count",
     "title": "Numbers",
     "section": "count()",
-    "text": "count()\n\ndplyr::count() is a quick way to count the number of rows for each unique value of a variable.\nIt’s a shortcut for group_by() and summarize(n = n())."
+    "text": "count()\n\n\ndplyr::count() is a quick way to count the number of rows for each unique value of a variable.\nIt’s a shortcut for group_by() and summarize(n = n())."
   },
   {
     "objectID": "slides/10-numbers/10-numbers.html#example",
@@ -1908,49 +1908,49 @@
     "href": "slides/10-numbers/10-numbers.html#basic-operators",
     "title": "Numbers",
     "section": "Basic Operators",
-    "text": "Basic Operators\n\nR provides the standard arithmetic operators: +, -, *, /, ^.\n%% (remainder) and %/% (integer division) are useful for modular arithmetic."
+    "text": "Basic Operators\n\nR provides the standard arithmetic operators: +, -, *, /, ^.\n\n%% (remainder) and %/% (integer division) are useful for modular arithmetic."
   },
   {
     "objectID": "slides/10-numbers/10-numbers.html#example-2",
     "href": "slides/10-numbers/10-numbers.html#example-2",
     "title": "Numbers",
     "section": "Example",
-    "text": "Example\n\n\nCode\n# Break down departure time into hour and minute\nflights |&gt; \n  select(dep_time) |&gt;\n  mutate(\n    hour = dep_time %/% 100,\n    minute = dep_time %% 100,\n    total_minutes = hour * 60 + minute\n  )\n\n\n# A tibble: 336,776 × 4\n   dep_time  hour minute total_minutes\n      &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;\n 1      517     5     17           317\n 2      533     5     33           333\n 3      542     5     42           342\n 4      544     5     44           344\n 5      554     5     54           354\n 6      554     5     54           354\n 7      555     5     55           355\n 8      557     5     57           357\n 9      557     5     57           357\n10      558     5     58           358\n# ℹ 336,766 more rows"
+    "text": "Example\n\nCode# Break down departure time into hour and minute\nflights |&gt; \n  select(dep_time) |&gt;\n  mutate(\n    hour = dep_time %/% 100,\n    minute = dep_time %% 100,\n    total_minutes = hour * 60 + minute\n  )\n\n# A tibble: 336,776 × 4\n   dep_time  hour minute total_minutes\n      &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;\n 1      517     5     17           317\n 2      533     5     33           333\n 3      542     5     42           342\n 4      544     5     44           344\n 5      554     5     54           354\n 6      554     5     54           354\n 7      555     5     55           355\n 8      557     5     57           357\n 9      557     5     57           357\n10      558     5     58           358\n# ℹ 336,766 more rows"
   },
   {
     "objectID": "slides/10-numbers/10-numbers.html#logarithms",
     "href": "slides/10-numbers/10-numbers.html#logarithms",
     "title": "Numbers",
     "section": "Logarithms",
-    "text": "Logarithms\n\nLogarithms (log(), log2(), log10()) are useful for data that spans multiple orders of magnitude.\nThey help turn exponential growth into linear growth, which is often easier to model.\n\n\n\nCode\nggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  scale_x_log10() +\n  scale_y_log10() +\n  labs(title = \"Price vs. Carat (log-log scale)\")"
+    "text": "Logarithms\n\nLogarithms (log(), log2(), log10()) are useful for data that spans multiple orders of magnitude.\nThey help turn exponential growth into linear growth, which is often easier to model.\n\n\nCodeggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  scale_x_log10() +\n  scale_y_log10() +\n  labs(title = \"Price vs. Carat (log-log scale)\")"
   },
   {
     "objectID": "slides/10-numbers/10-numbers.html#rounding",
     "href": "slides/10-numbers/10-numbers.html#rounding",
     "title": "Numbers",
     "section": "Rounding",
-    "text": "Rounding\n\nround(x): rounds to the nearest integer.\nfloor(x): always rounds down.\nceiling(x): always rounds up.\n\n\nx &lt;- c(1.2, 1.5, 1.8)\nround(x)\n\n[1] 1 2 2\n\nfloor(x)\n\n[1] 1 1 1\n\nceiling(x)\n\n[1] 2 2 2"
+    "text": "Rounding\n\n\nround(x): rounds to the nearest integer.\n\nfloor(x): always rounds down.\n\nceiling(x): always rounds up.\n\n\nx &lt;- c(1.2, 1.5, 1.8)\nround(x)\n\n[1] 1 2 2\n\nfloor(x)\n\n[1] 1 1 1\n\nceiling(x)\n\n[1] 2 2 2"
   },
   {
     "objectID": "slides/10-numbers/10-numbers.html#cutting",
     "href": "slides/10-numbers/10-numbers.html#cutting",
     "title": "Numbers",
     "section": "Cutting",
-    "text": "Cutting\n\ncut() divides a numeric vector into a set of discrete bins (a factor).\nYou can specify the breaks for the bins.\n\n\nx &lt;- c(1, 2, 5, 7, 10, 12)\ncut(x, breaks = c(0, 5, 10, 15))\n\n[1] (0,5]   (0,5]   (0,5]   (5,10]  (5,10]  (10,15]\nLevels: (0,5] (5,10] (10,15]"
+    "text": "Cutting\n\n\ncut() divides a numeric vector into a set of discrete bins (a factor).\nYou can specify the breaks for the bins.\n\n\nx &lt;- c(1, 2, 5, 7, 10, 12)\ncut(x, breaks = c(0, 5, 10, 15))\n\n[1] (0,5]   (0,5]   (0,5]   (5,10]  (5,10]  (10,15]\nLevels: (0,5] (5,10] (10,15]"
   },
   {
     "objectID": "slides/10-numbers/10-numbers.html#ranks",
     "href": "slides/10-numbers/10-numbers.html#ranks",
     "title": "Numbers",
     "section": "Ranks",
-    "text": "Ranks\n\ndplyr::min_rank() gives ranks, handling ties by giving them the same rank.\nUse desc() to rank from highest to lowest.\nrow_number() is similar but gives each row a unique rank.\n\n\nx &lt;- c(5, 1, 3, 2, 2)\nmin_rank(x)\n\n[1] 5 1 4 2 2\n\nrow_number(x)\n\n[1] 5 1 4 2 3"
+    "text": "Ranks\n\n\ndplyr::min_rank() gives ranks, handling ties by giving them the same rank.\nUse desc() to rank from highest to lowest.\n\nrow_number() is similar but gives each row a unique rank.\n\n\nx &lt;- c(5, 1, 3, 2, 2)\nmin_rank(x)\n\n[1] 5 1 4 2 2\n\nrow_number(x)\n\n[1] 5 1 4 2 3"
   },
   {
     "objectID": "slides/10-numbers/10-numbers.html#offsets",
     "href": "slides/10-numbers/10-numbers.html#offsets",
     "title": "Numbers",
     "section": "Offsets",
-    "text": "Offsets\n\ndplyr::lag() gets the previous value in a vector.\ndplyr::lead() gets the next value.\nUseful for computing differences or finding changes.\n\n\nx &lt;- c(2, 5, 11, 20)\n# Difference between each element and the previous one\nx - lag(x)\n\n[1] NA  3  6  9"
+    "text": "Offsets\n\n\ndplyr::lag() gets the previous value in a vector.\n\ndplyr::lead() gets the next value.\nUseful for computing differences or finding changes.\n\n\nx &lt;- c(2, 5, 11, 20)\n# Difference between each element and the previous one\nx - lag(x)\n\n[1] NA  3  6  9"
   },
   {
     "objectID": "slides/10-numbers/10-numbers.html#practice-1",
@@ -1964,28 +1964,28 @@
     "href": "slides/10-numbers/10-numbers.html#center",
     "title": "Numbers",
     "section": "Center",
-    "text": "Center\n\nmean(): the average value. Can be sensitive to outliers.\nmedian(): the middle value. More robust to outliers.\n\n\n\nCode\n# Comparing mean and median delay\nflights |&gt;\n  filter(!is.na(dep_delay)) |&gt;\n  summarize(\n    mean_delay = mean(dep_delay),\n    median_delay = median(dep_delay)\n  )\n\n\n# A tibble: 1 × 2\n  mean_delay median_delay\n       &lt;dbl&gt;        &lt;dbl&gt;\n1       12.6           -2"
+    "text": "Center\n\n\nmean(): the average value. Can be sensitive to outliers.\n\nmedian(): the middle value. More robust to outliers.\n\n\nCode# Comparing mean and median delay\nflights |&gt;\n  filter(!is.na(dep_delay)) |&gt;\n  summarize(\n    mean_delay = mean(dep_delay),\n    median_delay = median(dep_delay)\n  )\n\n# A tibble: 1 × 2\n  mean_delay median_delay\n       &lt;dbl&gt;        &lt;dbl&gt;\n1       12.6           -2"
   },
   {
     "objectID": "slides/10-numbers/10-numbers.html#spread",
     "href": "slides/10-numbers/10-numbers.html#spread",
     "title": "Numbers",
     "section": "Spread",
-    "text": "Spread\n\nsd(): standard deviation, measures how spread out the data is around the mean.\nIQR(): interquartile range (Q3 - Q1), measures the spread of the middle 50% of the data."
+    "text": "Spread\n\n\nsd(): standard deviation, measures how spread out the data is around the mean.\n\nIQR(): interquartile range (Q3 - Q1), measures the spread of the middle 50% of the data."
   },
   {
     "objectID": "slides/10-numbers/10-numbers.html#position",
     "href": "slides/10-numbers/10-numbers.html#position",
     "title": "Numbers",
     "section": "Position",
-    "text": "Position\n\nmin() and max(): the minimum and maximum values.\nquantile(x, p): finds the value that is greater than p% of the data.\n\nquantile(x, 0.25) is the 25th percentile (Q1).\nmedian(x) is a shortcut for quantile(x, 0.5)."
+    "text": "Position\n\n\nmin() and max(): the minimum and maximum values.\n\nquantile(x, p): finds the value that is greater than p% of the data.\n\n\nquantile(x, 0.25) is the 25th percentile (Q1).\n\nmedian(x) is a shortcut for quantile(x, 0.5)."
   },
   {
     "objectID": "slides/10-numbers/10-numbers.html#numbers",
     "href": "slides/10-numbers/10-numbers.html#numbers",
     "title": "Numbers",
     "section": "Numbers",
-    "text": "Numbers\n\nCreate with parse_number().\nTransform with arithmetic, logs, rounding, and cut().\ncount() is a powerful tool for quick exploration.\nUse ranks (min_rank) and offsets (lag, lead) for more complex analysis.\nSummarize with measures of center (mean, median), spread (sd, IQR), and position (min, max, quantile)."
+    "text": "Numbers\n\nCreate with parse_number().\nTransform with arithmetic, logs, rounding, and cut().\n\ncount() is a powerful tool for quick exploration.\nUse ranks (min_rank) and offsets (lag, lead) for more complex analysis.\nSummarize with measures of center (mean, median), spread (sd, IQR), and position (min, max, quantile)."
   },
   {
     "objectID": "slides/01-intro-to-R/01-intro-to-R.html#what-is-r",
@@ -2299,29 +2299,29 @@
     "objectID": "slides/07-eda/07-eda.html#exploratory-data-analysis",
     "href": "slides/07-eda/07-eda.html#exploratory-data-analysis",
     "title": "Exploratory Data Analysis",
-    "section": "Exploratory Data Analysis",
-    "text": "Exploratory Data Analysis\nEDA is an iterative cycle. You:\n\nGenerate questions about your data.\nSearch for answers by visualizing, transforming, and modelling your data.\nUse what you learn to refine your questions and/or generate new questions."
+    "section": "",
+    "text": "EDA is an iterative cycle. You:\n\nGenerate questions about your data.\nSearch for answers by visualizing, transforming, and modelling your data.\nUse what you learn to refine your questions and/or generate new questions."
   },
   {
     "objectID": "slides/07-eda/07-eda.html#fun-quotes",
     "href": "slides/07-eda/07-eda.html#fun-quotes",
     "title": "Exploratory Data Analysis",
-    "section": "Fun Quotes",
-    "text": "Fun Quotes\n\n“There are no routine statistical questions, only questionable statistical routines.” — Sir David Cox\n\n\n\n“Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.” — John Tukey"
+    "section": "",
+    "text": "“There are no routine statistical questions, only questionable statistical routines.” — Sir David Cox\n\n. . .\n\n“Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.” — John Tukey"
   },
   {
     "objectID": "slides/07-eda/07-eda.html#guiding-questions",
     "href": "slides/07-eda/07-eda.html#guiding-questions",
     "title": "Exploratory Data Analysis",
-    "section": "Guiding Questions",
-    "text": "Guiding Questions\nTwo main types of questions to ask:\n\nWhat type of variation occurs within my variables?\nWhat type of covariation occurs between my variables?"
+    "section": "",
+    "text": "Two main types of questions to ask:\n\nWhat type of variation occurs within my variables?\nWhat type of covariation occurs between my variables?"
   },
   {
     "objectID": "slides/07-eda/07-eda.html#data-diamonds",
     "href": "slides/07-eda/07-eda.html#data-diamonds",
     "title": "Exploratory Data Analysis",
-    "section": "Data: diamonds",
-    "text": "Data: diamonds\n\nWe will use the diamonds dataset from the ggplot2 package.\nIt contains information about the prices and attributes of almost 54,000 diamonds.\n\n\nglimpse(diamonds)\n\nRows: 53,940\nColumns: 10\n$ carat   &lt;dbl&gt; 0.23, 0.21, 0.23, 0.29, 0.31, 0.24, 0.24, 0.26, 0.22, 0.23, 0.…\n$ cut     &lt;ord&gt; Ideal, Premium, Good, Premium, Good, Very Good, Very Good, Ver…\n$ color   &lt;ord&gt; E, E, E, I, J, J, I, H, E, H, J, J, F, J, E, E, I, J, J, J, I,…\n$ clarity &lt;ord&gt; SI2, SI1, VS1, VS2, SI2, VVS2, VVS1, SI1, VS2, VS1, SI1, VS1, …\n$ depth   &lt;dbl&gt; 61.5, 59.8, 56.9, 62.4, 63.3, 62.8, 62.3, 61.9, 65.1, 59.4, 64…\n$ table   &lt;dbl&gt; 55, 61, 65, 58, 58, 57, 57, 55, 61, 61, 55, 56, 61, 54, 62, 58…\n$ price   &lt;int&gt; 326, 326, 327, 334, 335, 336, 336, 337, 337, 338, 339, 340, 34…\n$ x       &lt;dbl&gt; 3.95, 3.89, 4.05, 4.20, 4.34, 3.94, 3.95, 4.07, 3.87, 4.00, 4.…\n$ y       &lt;dbl&gt; 3.98, 3.84, 4.07, 4.23, 4.35, 3.96, 3.98, 4.11, 3.78, 4.05, 4.…\n$ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39, 2.…"
+    "section": "",
+    "text": "We will use the diamonds dataset from the ggplot2 package.\nIt contains information about the prices and attributes of almost 54,000 diamonds.\n\n\nglimpse(diamonds)\n\nRows: 53,940\nColumns: 10\n$ carat   &lt;dbl&gt; 0.23, 0.21, 0.23, 0.29, 0.31, 0.24, 0.24, 0.26, 0.22, 0.23, 0.…\n$ cut     &lt;ord&gt; Ideal, Premium, Good, Premium, Good, Very Good, Very Good, Ver…\n$ color   &lt;ord&gt; E, E, E, I, J, J, I, H, E, H, J, J, F, J, E, E, I, J, J, J, I,…\n$ clarity &lt;ord&gt; SI2, SI1, VS1, VS2, SI2, VVS2, VVS1, SI1, VS2, VS1, SI1, VS1, …\n$ depth   &lt;dbl&gt; 61.5, 59.8, 56.9, 62.4, 63.3, 62.8, 62.3, 61.9, 65.1, 59.4, 64…\n$ table   &lt;dbl&gt; 55, 61, 65, 58, 58, 57, 57, 55, 61, 61, 55, 56, 61, 54, 62, 58…\n$ price   &lt;int&gt; 326, 326, 327, 334, 335, 336, 336, 337, 337, 338, 339, 340, 34…\n$ x       &lt;dbl&gt; 3.95, 3.89, 4.05, 4.20, 4.34, 3.94, 3.95, 4.07, 3.87, 4.00, 4.…\n$ y       &lt;dbl&gt; 3.98, 3.84, 4.07, 4.23, 4.35, 3.96, 3.98, 4.11, 3.78, 4.05, 4.…\n$ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39, 2.…"
   },
   {
     "objectID": "slides/07-eda/07-eda.html#visualizing-distributions",
@@ -2377,14 +2377,14 @@
     "href": "slides/07-eda/07-eda.html#visualizing-relationships",
     "title": "Exploratory Data Analysis",
     "section": "Visualizing Relationships",
-    "text": "Visualizing Relationships\n\nCovariation: how do two variables change together? What is their relationship?\nVisualizing covariation helps you understand relationships between variables\nYou need to think and plan carefully about how to display multiple distributions in a single plot"
+    "text": "Visualizing Relationships\n\n\nCovariation: how do two variables change together? What is their relationship?\nVisualizing covariation helps you understand relationships between variables\nYou need to think and plan carefully about how to display multiple distributions in a single plot"
   },
   {
     "objectID": "slides/07-eda/07-eda.html#recall-three-general-cases",
     "href": "slides/07-eda/07-eda.html#recall-three-general-cases",
     "title": "Exploratory Data Analysis",
     "section": "Recall: Three general cases",
-    "text": "Recall: Three general cases\n\nCategorical + Categorical\n\nBoxplots\n\nCategorical + Numerical\n\nBoxplots, jitter plots, faceted histograms\n\nNumerical + Numerical\n\nScatterplots, jitter plots"
+    "text": "Recall: Three general cases\n\nCategorical + Categorical\n\nBoxplots\n\n\nCategorical + Numerical\n\nBoxplots, jitter plots, faceted histograms\n\n\nNumerical + Numerical\n\nScatterplots, jitter plots"
   },
   {
     "objectID": "slides/07-eda/07-eda.html#reordering-categories",
@@ -2398,7 +2398,7 @@
     "href": "slides/07-eda/07-eda.html#some-new-plots",
     "title": "Exploratory Data Analysis",
     "section": "Some new plots",
-    "text": "Some new plots\n\nCategorical + Categorical\n\nMosaic plots, count plots, tile plots\n\nCategorical + Numerical\n\nViolin plots, sina plots, ridgeline plots, frequency polygons\n\nNumerical + Numerical\n\n2D-Histogram/heatmap of counts, hexbin plots"
+    "text": "Some new plots\n\nCategorical + Categorical\n\nMosaic plots, count plots, tile plots\n\n\nCategorical + Numerical\n\nViolin plots, sina plots, ridgeline plots, frequency polygons\n\n\nNumerical + Numerical\n\n2D-Histogram/heatmap of counts, hexbin plots"
   },
   {
     "objectID": "slides/07-eda/07-eda.html#practice-1",
@@ -2412,7 +2412,7 @@
     "href": "slides/07-eda/07-eda.html#patterns-1",
     "title": "Exploratory Data Analysis",
     "section": "Patterns",
-    "text": "Patterns\n\nPatterns in your data hint at relationships. If you can spot a pattern, ask yourself:\n\nCould this pattern be due to coincidence?\nHow can you describe the relationship implied by the pattern?\nHow strong is the relationship implied by the pattern?\nWhat other variables might affect the relationship?\nDoes the relationship change if you look at individual subgroups of the data?\n\nModels can help you extract the strong patterns and leave the weaker ones."
+    "text": "Patterns\n\nPatterns in your data hint at relationships. If you can spot a pattern, ask yourself:\n\nCould this pattern be due to coincidence?\nHow can you describe the relationship implied by the pattern?\nHow strong is the relationship implied by the pattern?\nWhat other variables might affect the relationship?\nDoes the relationship change if you look at individual subgroups of the data?\n\n\nModels can help you extract the strong patterns and leave the weaker ones."
   },
   {
     "objectID": "slides/07-eda/07-eda.html#transformations",
@@ -2426,7 +2426,7 @@
     "href": "slides/07-eda/07-eda.html#the-power-emojiman_facepalming-of-logs",
     "title": "Exploratory Data Analysis",
     "section": "The power emo::ji(\"man_facepalming\") of logs",
-    "text": "The power emo::ji(\"man_facepalming\") of logs\n\nPower law: when \\(y = ax^k\\)\n\nTaking the log of both sides gives: \\(\\log(y) = \\log(a) + k\\log(x)\\)\nIntuitively: multiplying x by a constant multiplies y by a constant.\n\nPower law’s are extremely common in nature:\n\nParetto principle (80/20 rule)\nCity sizes\nEarthquake magnitudes\nWealth distributions\nBacteria growth"
+    "text": "The power emo::ji(\"man_facepalming\") of logs\n\nPower law: when \\(y = ax^k\\)\n\nTaking the log of both sides gives: \\(\\log(y) = \\log(a) + k\\log(x)\\)\n\nIntuitively: multiplying x by a constant multiplies y by a constant.\n\n\nPower law’s are extremely common in nature:\n\nParetto principle (80/20 rule)\nCity sizes\nEarthquake magnitudes\nWealth distributions\nBacteria growth"
   },
   {
     "objectID": "slides/07-eda/07-eda.html#practice-2",
@@ -2446,8 +2446,8 @@
     "objectID": "slides/08-communication/08-communication.html#communicating-results",
     "href": "slides/08-communication/08-communication.html#communicating-results",
     "title": "Communication",
-    "section": "Communicating Results",
-    "text": "Communicating Results\n\nSo far, we’ve focused on using ggplot2 for exploration.\nNow, we’ll focus on how to use ggplot2 to create explanatory graphics.\nThe goal is to communicate your findings to others.\nWe will learn how to polish your plots for communication."
+    "section": "",
+    "text": "So far, we’ve focused on using ggplot2 for exploration.\nNow, we’ll focus on how to use ggplot2 to create explanatory graphics.\nThe goal is to communicate your findings to others.\nWe will learn how to polish your plots for communication."
   },
   {
     "objectID": "slides/08-communication/08-communication.html#labs",
@@ -2461,14 +2461,14 @@
     "href": "slides/08-communication/08-communication.html#adding-text",
     "title": "Communication",
     "section": "Adding Text",
-    "text": "Adding Text\n\nYou can use geom_text() to add text to your plot.\nIt’s similar to other geoms, but has an label aesthetic.\nggrepel package for making text and labels that repel away from each other to avoid overlapping."
+    "text": "Adding Text\n\nYou can use geom_text() to add text to your plot.\nIt’s similar to other geoms, but has an label aesthetic.\n\nggrepel package for making text and labels that repel away from each other to avoid overlapping."
   },
   {
     "objectID": "slides/08-communication/08-communication.html#example",
     "href": "slides/08-communication/08-communication.html#example",
     "title": "Communication",
     "section": "Example",
-    "text": "Example\n\n\nCode\nbest_in_class &lt;- mpg |&gt;\n  group_by(class) |&gt;\n  filter(row_number(desc(hwy)) == 1)\n\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = class)) +\n  geom_text_repel(data = best_in_class, aes(label = model), nudge_y = 2)"
+    "text": "Example\n\nCodebest_in_class &lt;- mpg |&gt;\n  group_by(class) |&gt;\n  filter(row_number(desc(hwy)) == 1)\n\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = class)) +\n  geom_text_repel(data = best_in_class, aes(label = model), nudge_y = 2)"
   },
   {
     "objectID": "slides/08-communication/08-communication.html#annotate",
@@ -2482,7 +2482,7 @@
     "href": "slides/08-communication/08-communication.html#example-1",
     "title": "Communication",
     "section": "Example",
-    "text": "Example\n\n\nCode\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point() +\n  annotate(\n    \"rect\", \n    xmin = 5, xmax = 7, ymin = 10, ymax = 25, \n    fill = \"red\", alpha = 0.2\n  ) +\n  annotate(\n    \"text\", x = 6, y = 15, label = \"Large engines are inefficient\",\n    color = \"red\", hjust = 0.5\n  )"
+    "text": "Example\n\nCodeggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point() +\n  annotate(\n    \"rect\", \n    xmin = 5, xmax = 7, ymin = 10, ymax = 25, \n    fill = \"red\", alpha = 0.2\n  ) +\n  annotate(\n    \"text\", x = 6, y = 15, label = \"Large engines are inefficient\",\n    color = \"red\", hjust = 0.5\n  )"
   },
   {
     "objectID": "slides/08-communication/08-communication.html#practice",
@@ -2503,42 +2503,42 @@
     "href": "slides/08-communication/08-communication.html#example-ticks",
     "title": "Communication",
     "section": "Example: Ticks",
-    "text": "Example: Ticks\n\n\nCode\nggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  scale_x_continuous(\n    breaks = seq(0, 5, by = 1), \n    labels = c(\"0\", \"1 carat\", \"2 carats\", \"3 carats\", \"4 carats\", \"5 carats\")\n  ) +\n  scale_y_continuous(labels = scales::dollar)"
+    "text": "Example: Ticks\n\nCodeggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  scale_x_continuous(\n    breaks = seq(0, 5, by = 1), \n    labels = c(\"0\", \"1 carat\", \"2 carats\", \"3 carats\", \"4 carats\", \"5 carats\")\n  ) +\n  scale_y_continuous(labels = scales::dollar)"
   },
   {
     "objectID": "slides/08-communication/08-communication.html#legend-layout",
     "href": "slides/08-communication/08-communication.html#legend-layout",
     "title": "Communication",
     "section": "Legend Layout",
-    "text": "Legend Layout\n\nUse theme(legend.position = ...) to move the legend.\n\nValues: \"right\", \"left\", \"top\", \"bottom\", \"none\".\n\nUse guides() to control legend appearance, like the number of rows."
+    "text": "Legend Layout\n\nUse theme(legend.position = ...) to move the legend.\n\nValues: \"right\", \"left\", \"top\", \"bottom\", \"none\".\n\n\nUse guides() to control legend appearance, like the number of rows."
   },
   {
     "objectID": "slides/08-communication/08-communication.html#example-legend",
     "href": "slides/08-communication/08-communication.html#example-legend",
     "title": "Communication",
     "section": "Example: Legend",
-    "text": "Example: Legend\n\n\nCode\nbase &lt;- ggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = class))\n\nbase + \n  theme(legend.position = \"bottom\") +\n  guides(color = guide_legend(nrow = 2, override.aes = list(size = 4)))"
+    "text": "Example: Legend\n\nCodebase &lt;- ggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = class))\n\nbase + \n  theme(legend.position = \"bottom\") +\n  guides(color = guide_legend(nrow = 2, override.aes = list(size = 4)))"
   },
   {
     "objectID": "slides/08-communication/08-communication.html#color-scales",
     "href": "slides/08-communication/08-communication.html#color-scales",
     "title": "Communication",
     "section": "Color Scales",
-    "text": "Color Scales\n\nUse scale_color_*() functions to control color scales.\nscale_color_brewer() uses hand-picked, colorblind-friendly palettes.\nscale_color_viridis_c() is a continuous color scale that is perceptually uniform and colorblind friendly."
+    "text": "Color Scales\n\nUse scale_color_*() functions to control color scales.\n\nscale_color_brewer() uses hand-picked, colorblind-friendly palettes.\n\nscale_color_viridis_c() is a continuous color scale that is perceptually uniform and colorblind friendly."
   },
   {
     "objectID": "slides/08-communication/08-communication.html#example-color-brewer",
     "href": "slides/08-communication/08-communication.html#example-color-brewer",
     "title": "Communication",
     "section": "Example: Color Brewer",
-    "text": "Example: Color Brewer\n\n\nCode\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = drv)) +\n  scale_color_brewer(palette = \"Set1\")"
+    "text": "Example: Color Brewer\n\nCodeggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = drv)) +\n  scale_color_brewer(palette = \"Set1\")"
   },
   {
     "objectID": "slides/08-communication/08-communication.html#manual-color-scale",
     "href": "slides/08-communication/08-communication.html#manual-color-scale",
     "title": "Communication",
     "section": "Manual Color Scale",
-    "text": "Manual Color Scale\n\nWhen you have a predefined mapping between values and colors, use scale_color_manual().\n\n\n\nCode\nggplot(mpg, aes(x = displ, y = hwy, color = drv)) +\n  geom_point() +\n  scale_color_manual(values = c(\"4\" = \"navy\", \"f\" = \"darkred\", \"r\" = \"darkgreen\"))"
+    "text": "Manual Color Scale\n\nWhen you have a predefined mapping between values and colors, use scale_color_manual().\n\n\nCodeggplot(mpg, aes(x = displ, y = hwy, color = drv)) +\n  geom_point() +\n  scale_color_manual(values = c(\"4\" = \"navy\", \"f\" = \"darkred\", \"r\" = \"darkgreen\"))"
   },
   {
     "objectID": "slides/08-communication/08-communication.html#axis-transformations",
@@ -2552,7 +2552,7 @@
     "href": "slides/08-communication/08-communication.html#example-2",
     "title": "Communication",
     "section": "Example",
-    "text": "Example\n\n\n\n\nCode\n# Transformed in aesthetic\nggplot(diamonds, aes(x = log10(carat), y = log10(price))) +\n  geom_bin2d()\n\n\n`stat_bin2d()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nggplot(diamonds, aes(x = carat, y = price)) +\n  geom_bin2d() +\n  scale_x_log10() +\n  scale_y_log10()\n\n\n`stat_bin2d()` using `bins = 30`. Pick better value `binwidth`."
+    "text": "Example\n\n\n\nCode# Transformed in aesthetic\nggplot(diamonds, aes(x = log10(carat), y = log10(price))) +\n  geom_bin2d()\n\n`stat_bin2d()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\n\nCodeggplot(diamonds, aes(x = carat, y = price)) +\n  geom_bin2d() +\n  scale_x_log10() +\n  scale_y_log10()\n\n`stat_bin2d()` using `bins = 30`. Pick better value `binwidth`."
   },
   {
     "objectID": "slides/08-communication/08-communication.html#coord_cartesian",
@@ -2566,7 +2566,7 @@
     "href": "slides/08-communication/08-communication.html#example-3",
     "title": "Communication",
     "section": "Example",
-    "text": "Example\n\n\nCode\np1 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1)\n\np2 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  coord_cartesian(xlim = c(0, 1), ylim = c(0, 5000))\n\np3 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  coord_cartesian(xlim = c(0, 0.5), ylim = c(0, 3000))\n\np1 + p2 + p3"
+    "text": "Example\n\nCodep1 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1)\n\np2 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  coord_cartesian(xlim = c(0, 1), ylim = c(0, 5000))\n\np3 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  coord_cartesian(xlim = c(0, 0.5), ylim = c(0, 3000))\n\np1 + p2 + p3"
   },
   {
     "objectID": "slides/08-communication/08-communication.html#practice-1",
@@ -2580,14 +2580,14 @@
     "href": "slides/08-communication/08-communication.html#built-in-themes",
     "title": "Communication",
     "section": "Built-in Themes",
-    "text": "Built-in Themes\n\nggplot2 comes with several built-in themes: theme_gray(), theme_bw(), theme_minimal(), theme_classic(), theme_light(), and theme_dark().\nYou can set a theme globally with theme_set()."
+    "text": "Built-in Themes\n\n\nggplot2 comes with several built-in themes: theme_gray(), theme_bw(), theme_minimal(), theme_classic(), theme_light(), and theme_dark().\nYou can set a theme globally with theme_set()."
   },
   {
     "objectID": "slides/08-communication/08-communication.html#example-4",
     "href": "slides/08-communication/08-communication.html#example-4",
     "title": "Communication",
     "section": "Example",
-    "text": "Example\n\n\nCode\nggplot(mpg, aes(x = displ, y = hwy, color = class)) +\n  geom_point() +\n  theme_classic()"
+    "text": "Example\n\nCodeggplot(mpg, aes(x = displ, y = hwy, color = class)) +\n  geom_point() +\n  theme_classic()"
   },
   {
     "objectID": "slides/08-communication/08-communication.html#ggthemes",
@@ -2898,5 +2898,93 @@
     "title": "Visualization Basics",
     "section": "Narrative",
     "text": "Narrative\n\nStart with the penguins data frame, map bill depth to the x-axis and map bill length to the y-axis.\nRepresent each observation with a point and map species to the color and shape of each point.\nTitle the plot “Bill depth and length”, add the subtitle “Dimensions for Adelie, Chinstrap, and Gentoo Penguins”, label the x and y axes as “Bill depth (mm)” and “Bill length (mm)”, respectively, label the legend “Species”, and add a caption for the data source.\nFinally, use a discrete color scale that is designed to be perceived by viewers with common forms of color blindness."
+  },
+  {
+    "objectID": "course-overview.html#class-meetings-and-office-hours",
+    "href": "course-overview.html#class-meetings-and-office-hours",
+    "title": "Course overview",
+    "section": "Class meetings and office hours",
+    "text": "Class meetings and office hours\n\n\n\n\n\n\n\n\nMeeting\nLocation\nTime\n\n\n\n\nLecture\nCruzen-Murray Library, 208\nMon-Thurs 1 - 3 pm\n\n\nOffice Hours\nBoone 126B\nMon-Thurs 10 - 11 am",
+    "crumbs": [
+      "Course information",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "slides/07-eda/07-eda.html",
+    "href": "slides/07-eda/07-eda.html",
+    "title": "Exploratory Data Analysis",
+    "section": "",
+    "text": "EDA is an iterative cycle. You:\n\nGenerate questions about your data.\nSearch for answers by visualizing, transforming, and modelling your data.\nUse what you learn to refine your questions and/or generate new questions.\n\n\n“There are no routine statistical questions, only questionable statistical routines.” — Sir David Cox\n\n. . .\n\n“Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.” — John Tukey\n\n\nTwo main types of questions to ask:\n\nWhat type of variation occurs within my variables?\nWhat type of covariation occurs between my variables?\n\n\nWe will use the diamonds dataset from the ggplot2 package.\nIt contains information about the prices and attributes of almost 54,000 diamonds.\n\n\nglimpse(diamonds)\n\nRows: 53,940\nColumns: 10\n$ carat   &lt;dbl&gt; 0.23, 0.21, 0.23, 0.29, 0.31, 0.24, 0.24, 0.26, 0.22, 0.23, 0.…\n$ cut     &lt;ord&gt; Ideal, Premium, Good, Premium, Good, Very Good, Very Good, Ver…\n$ color   &lt;ord&gt; E, E, E, I, J, J, I, H, E, H, J, J, F, J, E, E, I, J, J, J, I,…\n$ clarity &lt;ord&gt; SI2, SI1, VS1, VS2, SI2, VVS2, VVS1, SI1, VS2, VS1, SI1, VS1, …\n$ depth   &lt;dbl&gt; 61.5, 59.8, 56.9, 62.4, 63.3, 62.8, 62.3, 61.9, 65.1, 59.4, 64…\n$ table   &lt;dbl&gt; 55, 61, 65, 58, 58, 57, 57, 55, 61, 61, 55, 56, 61, 54, 62, 58…\n$ price   &lt;int&gt; 326, 326, 327, 334, 335, 336, 336, 337, 337, 338, 339, 340, 34…\n$ x       &lt;dbl&gt; 3.95, 3.89, 4.05, 4.20, 4.34, 3.94, 3.95, 4.07, 3.87, 4.00, 4.…\n$ y       &lt;dbl&gt; 3.98, 3.84, 4.07, 4.23, 4.35, 3.96, 3.98, 4.11, 3.78, 4.05, 4.…\n$ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39, 2.…"
+  },
+  {
+    "objectID": "slides/13-factors/13-factors.html",
+    "href": "slides/13-factors/13-factors.html",
+    "title": "Factors",
+    "section": "",
+    "text": "Factors are R’s data structure for categorical variables.\nThe forcats package (part of tidyverse) provides a suite of tools for working with factors.\nUseful for reordering and relabeling for better visualizations."
+  },
+  {
+    "objectID": "slides/12-regex/12-regex.html",
+    "href": "slides/12-regex/12-regex.html",
+    "title": "Regular Expressions",
+    "section": "",
+    "text": "A powerful tool for describing patterns in strings.\nUsed for finding, extracting, and replacing text.\n\nstringr provides a consistent interface for working with regex."
+  },
+  {
+    "objectID": "slides/11-strings/11-strings.html",
+    "href": "slides/11-strings/11-strings.html",
+    "title": "Strings",
+    "section": "",
+    "text": "Text data, or “strings”, are very common.\nThe stringr package, part of the tidyverse, provides a modern and consistent interface for working with strings.\nAll functions in stringr start with str_."
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html",
+    "href": "slides/10-numbers/10-numbers.html",
+    "title": "Numbers",
+    "section": "",
+    "text": "Numeric data is the most common type of data you’ll work with.\nThis lecture covers creating, transforming, and summarizing numeric vectors.\nWe’ll use functions from base R and dplyr."
+  },
+  {
+    "objectID": "slides/16-joins/16-joins.html",
+    "href": "slides/16-joins/16-joins.html",
+    "title": "Joins",
+    "section": "",
+    "text": "Joins are used to combine data from different tables based on a set of common variables (“keys”).\n\ndplyr provides a family of join functions.\nWe will use data from the nycflights13 package."
+  },
+  {
+    "objectID": "slides/09-logicals/09-logicals.html",
+    "href": "slides/09-logicals/09-logicals.html",
+    "title": "Logical Vectors",
+    "section": "",
+    "text": "A logical vector is a vector that contains only TRUE, FALSE, and NA (missing) values.\nThey are rarely in your raw data, but you will create and use them in almost every analysis.\nLogical vectors are the foundation of filtering and conditional transformations."
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html",
+    "href": "slides/00-welcome/00-welcome.html",
+    "title": "Welcome to CSCI 2025",
+    "section": "",
+    "text": "Dr. Eric Friedlander\nBoone 126B\nefriedlander@collegeofidaho.edu\n\n\n\n\nLectures (weekly)\n\nM-TH 1-3pm - CML 105\n\nOffice Hours: TBD"
+  },
+  {
+    "objectID": "slides/15-missing-values/15-missing-values.html",
+    "href": "slides/15-missing-values/15-missing-values.html",
+    "title": "Missing Values",
+    "section": "",
+    "text": "Real-world data is often messy and contains missing values.\nR represents missing values with NA.\nThere are explicit and implicit missing values."
+  },
+  {
+    "objectID": "slides/14-datetimes/14-datetimes.html",
+    "href": "slides/14-datetimes/14-datetimes.html",
+    "title": "Dates and Times",
+    "section": "",
+    "text": "Dates and times can be complex due to leap years, daylight saving time (DST), and time zones.\nThe lubridate package in R makes working with dates and times easier.\n\n\nPart of the core tidyverse.\nProvides functions for parsing, manipulating, and performing arithmetic with date-time data."
+  },
+  {
+    "objectID": "slides/08-communication/08-communication.html",
+    "href": "slides/08-communication/08-communication.html",
+    "title": "Communication",
+    "section": "",
+    "text": "So far, we’ve focused on using ggplot2 for exploration.\nNow, we’ll focus on how to use ggplot2 to create explanatory graphics.\nThe goal is to communicate your findings to others.\nWe will learn how to polish your plots for communication."
   }
 ]
