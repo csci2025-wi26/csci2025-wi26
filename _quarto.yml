@@ -1,5 +1,9 @@
 project:
   type: website
+  output-dir: _site
+  resources: 
+    - "!offline_pdfs/" 
+  post-render: manage_pdfs.R
 
 website:
   page-navigation: true

@@ -5,7 +5,11 @@ title-slide-attributes:
   data-background-image: ../title-bg.png
   data-background-size: stretch
   data-slide-number: none
-format: revealjs
+format:
+  revealjs: 
+    theme: simple
+  pdf: 
+    documentclass: article # Creates a document/handout version
 auto-stretch: false
 ---
 
@@ -78,7 +82,7 @@ auto-stretch: false
 
 1.  Create a GitHub account if you don't have one
 
-2.  Read the [syllabus](syllabus.qmd)
+2.  Read the [syllabus](/course-syllabus.qmd)
 
 3.  Make sure you can log in to RStudio and reserve a container for STA 313: [cmgr.oit.duke.edu/containers](https://cmgr.oit.duke.edu/containers)
 
