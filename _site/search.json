@@ -200,7 +200,7 @@
     "href": "course-faq.html",
     "title": "FAQ",
     "section": "",
-    "text": "The short answer is, I’d rather you didn’t, to save yourself some headache. But, the long answer is, sure! But you will need to install a specific versions of R and RStudio for everything to work as expected. You will also need to install the R packages we’re using as well as have Git installed on your computer. These are not extremely challenging things to get right, but they are not trivial either, particularly on certain operating systems. Myself and the TAs are always happy to provide help with any computational questions when you’re working in the containers we have provided for you. If you’re working on your local setup, we can’t guarantee being able to resolve your issues, though we’re happy to try.\nIf you want to take this path, here is what you need to do:\n\nDownload and install R 4.2.2: https://cran.r-project.org/\nDownload and install the preview build of RStudio: https://www.rstudio.com/products/rstudio/download/preview-release-notes\nInstall Git: https://happygitwithr.com/install-git.html\nInstall any necessary packages with install.packages(\"___\")\n\nAnd I’d like to reiterate again that successful installation of these software is not a learning goal of this course. So if any of this seems tedious or intimidating in any way, just use the computing environment we have set up for you. More on that here.",
+    "text": "If and when questions are asked… frequently… I will post them here.",
     "crumbs": [
       "Course information",
       "FAQ"
@@ -1991,15 +1991,15 @@
     "objectID": "slides/01-intro-to-R/01-intro-to-R.html#what-is-r",
     "href": "slides/01-intro-to-R/01-intro-to-R.html#what-is-r",
     "title": "R Basics",
-    "section": "What is R?",
-    "text": "What is R?\n\nR is a statistical programming language\n\nInspired by the S programming language developed at Bell Labs in the 1970s\nCreated by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand in the early 1990s for teaching statistics\nNow one of the most popular programming languages for data science and statistics\n\nR is free and open source\n\nAnyone can download and use R for free\nAnyone can contribute to the development of R and its packages"
+    "section": "",
+    "text": "R is a statistical programming language\n\nInspired by the S programming language developed at Bell Labs in the 1970s\nCreated by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand in the early 1990s for teaching statistics\nNow one of the most popular programming languages for data science and statistics\n\nR is free and open source\n\nAnyone can download and use R for free\nAnyone can contribute to the development of R and its packages"
   },
   {
     "objectID": "slides/01-intro-to-R/01-intro-to-R.html#r-is-not-the-same-as-r-studio-r-markdown-or-positron",
     "href": "slides/01-intro-to-R/01-intro-to-R.html#r-is-not-the-same-as-r-studio-r-markdown-or-positron",
     "title": "R Basics",
-    "section": "R is not the same as R Studio, R Markdown, or Positron",
-    "text": "R is not the same as R Studio, R Markdown, or Positron\n\nR is the programming language\nR Studio (now Positron) is an integrated development environment (IDE) for R\n\nProvides a user-friendly interface for writing and running R code\n\n\n\n\n\nSource: Statistical Inference via Data Science"
+    "section": "",
+    "text": "R is the programming language\nR Studio (now Positron) is an integrated development environment (IDE) for R\n\nProvides a user-friendly interface for writing and running R code\n\n\n\n\n\nSource: Statistical Inference via Data Science"
   },
   {
     "objectID": "slides/01-intro-to-R/01-intro-to-R.html#writing-scripts-in-r",
@@ -3165,5 +3165,12 @@
       "Course information",
       "Support"
     ]
+  },
+  {
+    "objectID": "slides/01-intro-to-R/01-intro-to-R.html",
+    "href": "slides/01-intro-to-R/01-intro-to-R.html",
+    "title": "R Basics",
+    "section": "",
+    "text": "R is a statistical programming language\n\nInspired by the S programming language developed at Bell Labs in the 1970s\nCreated by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand in the early 1990s for teaching statistics\nNow one of the most popular programming languages for data science and statistics\n\nR is free and open source\n\nAnyone can download and use R for free\nAnyone can contribute to the development of R and its packages\n\n\n\n\n\n\nR is the programming language\nR Studio (now Positron) is an integrated development environment (IDE) for R\n\nProvides a user-friendly interface for writing and running R code\n\n\n\n\n\nSource: Statistical Inference via Data Science"
   }
 ]
