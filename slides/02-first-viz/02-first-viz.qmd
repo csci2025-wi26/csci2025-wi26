@@ -202,5 +202,5 @@ ggplot(
 
 1. Read [Chapter 1: Data Visualization](https://r4ds.hadley.nz/data-visualize.html) from r4ds.
 2. Open the Recitation Gem and say "Provide me practice problems for Chapter 1" or work through some of the exercises in the text.
-  - Note that you can say "This is too hard. Give me some easier problems."
+    - Note that you can say "This is too hard. Give me some easier problems."
 3. Move on to Lecture 03.
