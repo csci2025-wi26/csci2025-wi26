@@ -1,8 +1,8 @@
 ---
 title: First Transformations
-subtitle: Lecture 3
+subtitle: Lecture 4
 title-slide-attributes:
-  data-background-image: ../vizdata-bg.png
+  data-background-image: ../title-bg.png
   data-background-size: stretch
   data-slide-number: none
 format: revealjs
