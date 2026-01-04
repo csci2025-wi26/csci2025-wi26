@@ -26,7 +26,7 @@ d |>
   mutate(due = as.Date(due)) |>
   gt() |>
   fmt_date(due, date_style = 31) |>
-  sub_missing(columns = c(week, topic, reading, slides), missing_text = "") |>
+  sub_missing(columns = c(week, topic, reading, slides, video), missing_text = "") |>
   cols_align(
     align = "center", 
     columns = c(week)
@@ -37,7 +37,7 @@ d |>
   ) |>
   cols_align(
     align = "left", 
-    columns = c(topic, reading, slides)
+    columns = c(topic, reading, slides, video)
   ) |>
   tab_style(
     style = cell_borders(
@@ -46,18 +46,19 @@ d |>
       style = "solid"
     ),
     locations = cells_body(
-      columns = c(due, type, topic, reading, slides)
+      columns = c(due, type, topic, reading, slides, video)
     )
   ) |>
   fmt_markdown(
-    columns = c(type, topic, reading, slides)
+    columns = c(type, topic, reading, slides, video)
   ) |>
   cols_width(
     week ~ px(45),
     due ~ px(300), 
     reading ~ px(150),
     topic ~ px(300),
-    slides ~ px(300)
+    slides ~ px(300),
+    video ~ px(300)
   ) |>
   cols_label_with(fn = function(x) {
       janitor::make_clean_names(x, case = "title") |>
