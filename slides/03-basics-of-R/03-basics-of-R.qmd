@@ -13,7 +13,7 @@ auto-stretch: false
 
 - [NotebookLM](https://notebooklm.google.com/) is a Google AI tool that helps you learn from your documents.
 - I've created [a notebook](https://gemini.google.com/gem/1dtY23owKnSeen_WhFPxo71Ex3VWzRGvV?usp=sharing) for this course that you can use to ask questions about the material.
-- [Here](https://www.youtube.com/watch?v=lxSHL-FQzCo) is a lecture about Chapter 2 of the text from NotebookLM
+- [Here](https://www.youtube.com/watch?v=MsBylzDJL8Q) is a lecture about Chapter 2 of the text from NotebookLM
 
 # Wrap up
 
