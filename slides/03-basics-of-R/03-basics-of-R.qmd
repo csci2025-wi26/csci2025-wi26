@@ -13,12 +13,12 @@ auto-stretch: false
 
 - [NotebookLM](https://notebooklm.google.com/) is a Google AI tool that helps you learn from your documents.
 - I've created [a notebook](https://gemini.google.com/gem/1dtY23owKnSeen_WhFPxo71Ex3VWzRGvV?usp=sharing) for this course that you can use to ask questions about the material.
+- [Here](https://www.youtube.com/watch?v=lxSHL-FQzCo) is a lecture about Chapter 2 of the text from NotebookLM
 
 # Wrap up
 
 ## Do Next
 
-1. Read [Chapter 1: Data Visualization](https://r4ds.hadley.nz/data-visualize.html) from r4ds.
-2. Open the Recitation Gem and say "Provide me practice problems for Chapter 1" or work through some of the exercises in the text.
-    - Note that you can say "This is too hard. Give me some easier problems."
-3. Move on to Lecture 03.
+1. Read [Chapter 2- Workflow: basics](https://r4ds.hadley.nz/workflow-basics.html) from r4ds.
+2. Open the Recitation Gem and say "Provide me practice problems for Chapter 2" or work through some of the exercises in the text.
+3. Move on to Lecture 04.
