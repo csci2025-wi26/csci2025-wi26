@@ -84,14 +84,8 @@ auto-stretch: false
 # Wrap up
 
 
-## Complete the following before next class
+## Do Next
 
-1.  Create a GitHub account if you don't have one
-
-2.  Read the [syllabus](/course-syllabus.qmd)
-
-3.  Make sure you can log in to RStudio and reserve a container for STA 313: [cmgr.oit.duke.edu/containers](https://cmgr.oit.duke.edu/containers)
-
-4.  Complete the *Getting to know you* survey on Canvas -- to be posted
-
-5.  Complete the readings
+1.  Read the Introduction of [R for Data Science](https://r4ds.had.co.nz/introduction.html)
+2.  Post any question you have to the HW channel in our Team.
+3.  Move on to Lecture 02.

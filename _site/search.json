@@ -1875,11 +1875,11 @@
     "text": "Taking a quick look at penguins\n\nglimpse gives a quick overview of the data frame\nhead shows the first few rows of the data frame\ntail shows the last few rows of the data frame"
   },
   {
-    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#complete-the-following-before-next-class",
-    "href": "slides/01-intro-to-R/01-intro-to-R.html#complete-the-following-before-next-class",
+    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#do-next",
+    "href": "slides/01-intro-to-R/01-intro-to-R.html#do-next",
     "title": "R Basics",
-    "section": "Complete the following before next class",
-    "text": "Complete the following before next class\n\nCreate a GitHub account if you don’t have one\nRead the syllabus\nMake sure you can log in to RStudio and reserve a container for STA 313: cmgr.oit.duke.edu/containers\nComplete the Getting to know you survey on Canvas – to be posted\nComplete the readings"
+    "section": "Do Next",
+    "text": "Do Next\n\nRead the Introduction of R for Data Science\nPost any question you have to the HW channel in our Team.\nMove on to Lecture 02."
   },
   {
     "objectID": "slides/08-communication/08-communication.html#communicating-results",
