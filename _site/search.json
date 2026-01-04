@@ -1080,7 +1080,7 @@
     "href": "index.html",
     "title": "CSCI-2025: Data Manipulation and Visualization",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -2148,11 +2148,11 @@
     "text": "Narrative\n\nStart with the penguins data frame, map bill depth to the x-axis and map bill length to the y-axis.\nRepresent each observation with a point and map species to the color and shape of each point.\nTitle the plot “Bill depth and length”, add the subtitle “Dimensions for Adelie, Chinstrap, and Gentoo Penguins”, label the x and y axes as “Bill depth (mm)” and “Bill length (mm)”, respectively, label the legend “Species”, and add a caption for the data source.\nFinally, use a discrete color scale that is designed to be perceived by viewers with common forms of color blindness."
   },
   {
-    "objectID": "slides/02-first-viz/02-first-viz.html#this-weeks-tasks",
-    "href": "slides/02-first-viz/02-first-viz.html#this-weeks-tasks",
+    "objectID": "slides/02-first-viz/02-first-viz.html#do-next",
+    "href": "slides/02-first-viz/02-first-viz.html#do-next",
     "title": "Visualization Basics",
-    "section": "This week’s tasks",
-    "text": "This week’s tasks\n\nCreate a GitHub account if you don’t have one\nRead the syllabus\nMake sure you can log in to RStudio and reserve a container for STA 313: cmgr.oit.duke.edu/containers\nComplete the Getting to know you survey on Canvas – to be posted\nComplete the readings"
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 1: Data Visualization from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 1” or work through some of the exercises in the text.\n\n\nNote that you can say “This is too hard. Give me some easier problems.”\n\n\nMove on to Lecture 03."
   },
   {
     "objectID": "course-technology.html",
