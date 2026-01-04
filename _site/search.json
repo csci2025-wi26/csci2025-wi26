@@ -338,7 +338,7 @@
     "href": "slides/04-first-transformations/04-first-transformations.html#types-of-verbs",
     "title": "First Transformations",
     "section": "Types of verbs",
-    "text": "Types of verbs\ndplyr verbs can be grouped into a few categories based on what they do to the data frame: - Rows - Columns - Groups - Tables (not today)"
+    "text": "Types of verbs\ndplyr verbs can be grouped into a few categories based on what they do to the data frame:\n\nRows\nColumns\nGroups\nTables (not today)"
   },
   {
     "objectID": "slides/04-first-transformations/04-first-transformations.html#verbs-that-act-on-rows",

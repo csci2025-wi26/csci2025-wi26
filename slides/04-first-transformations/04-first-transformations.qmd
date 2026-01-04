@@ -52,6 +52,7 @@ library(nycflights13)
 ## Types of verbs
 
 `dplyr` verbs can be grouped into a few categories based on what they do to the data frame:
+
   -  Rows
   -  Columns
   -  Groups
