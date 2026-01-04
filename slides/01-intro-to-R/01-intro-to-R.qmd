@@ -12,6 +12,13 @@ format:
 auto-stretch: false
 ---
 
+## Before we start...
+
+-  Make sure you have done the following:
+    -  Downloaded and installed R
+    -  Downloaded and installed Positron (or R Studio)
+    -  Created a Gemini Pro AI account (free for students)
+
 # Introduction to R
 
 ## What is R? {.smaller}

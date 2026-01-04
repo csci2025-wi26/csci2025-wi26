@@ -12,12 +12,26 @@ If you have a question during lecture or lab, feel free to ask it! There are lik
 
 I here to help you be successful in the course. You are encouraged to attend office hours during the times posted on the home page to ask questions about the course content and assignments. A lot of questions are most effectively answered in-person, so office hours are a valuable resource. I encourage each and every one of you to take advantage of this resource! Make a pledge to stop by office hours at least once during the first three weeks of class. If you truly have no questions to ask, just stop by and say hi and introduce yourself.
 
-## Slack
+## Teams
 
-Have a question that can't wait for office hours? Prefer to write out your question in detail rather than asking in person? The course Slack is the best venue for these! There is a chance another student has already asked a similar question, so please check the other posts on Slack before asking a new question. If you know the answer to a question that is posted, I encourage you to respond!
+Have a question that can't wait for office hours? Prefer to write out your question in detail rather than asking in person? The course Team is the best venue for these! There is a chance another student has already asked a similar question, so please check the other posts on Teams before asking a new question. If you know the answer to a question that is posted, I encourage you to respond! Here is a [link](https://teams.microsoft.com/l/team/19%3ALKVycThsd-Ot9LabAgUTyOZBzbThE_4fKwP90PRRn6g1%40thread.tacv2/conversations?groupId=28a6919f-f995-42e6-a764-c6a76c3513ad&tenantId=26ad187c-5352-493b-99e3-b064aca2b3d6) to the course Team (you should already have access).
 
 ## Email
 
 Please refrain from emailing any course content questions (those should go to Slack), and only use email for questions about personal matters that may not be appropriate for the public course forum (e.g., illness, accommodations, etc.). For such matters, you may email Dr. Friedlander at [efriedlander\@collegeofidaho.edu](mailto:efriedlander@collegeofidaho.edu).
 
 If there is a question that's not appropriate for the public forum, you are welcome to email me directly. Barring extenuating circumstances, I will respond to CSCI 2025 emails within 48 hours Monday - Friday. Response time may be slower for emails sent Friday evening - Sunday.
+
+## AI tools
+
+### NotebookLM
+
+The first tool that may be useful is the course NotebookLM. NotebookLM is a really nice took provided by Google that allows you to upload course materials (e.g., lecture slides, assignments, readings) and then ask questions about them in natural language as well as generate things like Mind Maps, Audio Overview, Videos, and Flashcards. You can access the NotebookLM for this course [here](https://notebooklm.google.com/notebook/30d5a466-830e-4387-9d19-c49d9ab679ff). Note that you'll need a Google AI Pro account to access this resource. Don't worry, it's free for a year for students.
+
+### Recitation Leader Gem
+
+Another tool that you will be asked to use is the Recitation Leader Gem. A Gem is kind of like the Gemini Chat but it is specialized for a particular task. The Recitation Leader Gem is designed to help you practice the material from lectures by generating practice problems based on the course material. You can access the Recitation Leader Gem [here](https://gemini.google.com/gem/1dtY23owKnSeen_WhFPxo71Ex3VWzRGvV?usp=sharing). To use the Recitation Leader Gem, simply say "I would like to practice material from Chapter 1" or  "I would like to practice material from the first lecture".
+
+### AI Feedback
+
+Please post any helpful tips or issues with using these AI tools to the AI channel in the course Teams.

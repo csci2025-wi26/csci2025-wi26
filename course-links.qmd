@@ -5,7 +5,9 @@ title: "Useful links"
 +----------------------------+-----------------------------------------------------------------------------+
 | Course GitHub organization | 🔗 on [GitHub](https://github.com/csci2025-wi26)                            |
 +----------------------------+-----------------------------------------------------------------------------+
-| Gradebook                  | 🔗 on [Canvas](https://cofi.instructure.com/courses/18429)                  |
+| Gradebook                  | 🔗 on [Teams](https://teams.microsoft.com/l/team/19%3ALKVycThsd-Ot9LabAgUTyOZBzbThE_4fKwP90PRRn6g1%40thread.tacv2/conversations?groupId=28a6919f-f995-42e6-a764-c6a76c3513ad&tenantId=26ad187c-5352-493b-99e3-b064aca2b3d6)                  |
+| Artificial Intellegence    | 🔗 [Course NotebookLM](https://notebooklm.google.com/notebook/30d5a466-830e-4387-9d19-c49d9ab679ff)                            |
+|                            | 🔗 [Recitation Leader Gem](https://gemini.google.com/gem/1dtY23owKnSeen_WhFPxo71Ex3VWzRGvV?usp=sharing)                            |
 +----------------------------+-----------------------------------------------------------------------------+
 | Texbooks                   | 🔗 [R for Data Science](https://r4ds.hadley.nz/)                            |
 +----------------------------+-----------------------------------------------------------------------------+

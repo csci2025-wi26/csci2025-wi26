@@ -4,7 +4,7 @@ title: "Course overview"
 
 This is the homepage for CSCI 2025 - Data Manipulation and Visualization taught by Dr. Eric Friedlander in the Winter term of 2026 at the College of Idaho. All course materials will be posted on this site.
 
-You can find the course syllabus [here](/syllabus) and the course schedule [here](/).
+You can find the course syllabus [here](/course-syllabus/qmd) and the course schedule [here](/).
 
 ## Class meetings and office hours
 

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://csci2025wi26.netlify.app/course-support.html</loc>
-    <lastmod>2026-01-02T23:54:13.809Z</lastmod>
+    <lastmod>2026-01-04T15:53:22.070Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/GEMINI.html</loc>
@@ -17,55 +17,31 @@
     <lastmod>2025-12-18T22:03:51.407Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/02-first-viz/02-first-viz.html</loc>
-    <lastmod>2026-01-02T19:44:06.631Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/course-overview.html</loc>
+    <lastmod>2026-01-04T15:45:32.006Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/08-communication/08-communication.html</loc>
+    <loc>https://csci2025wi26.netlify.app/slides/07-eda/07-eda.html</loc>
     <lastmod>2026-01-02T18:52:01.794Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/01-intro-to-R/01-intro-to-R.html</loc>
-    <lastmod>2026-01-04T15:22:59.303Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/14-datetimes/14-datetimes.html</loc>
-    <lastmod>2026-01-02T18:52:01.801Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/15-missing-values/15-missing-values.html</loc>
-    <lastmod>2026-01-02T18:52:01.801Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/00-welcome/00-welcome.html</loc>
-    <lastmod>2026-01-02T18:52:01.793Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/06-layers/06-layers.html</loc>
-    <lastmod>2025-12-29T21:19:21.093Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/03-data-transformation/03-first-transformations.html</loc>
+    <loc>https://csci2025wi26.netlify.app/slides/05-importing/05-importing-data.html</loc>
     <lastmod>2025-12-29T21:07:20.887Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/16-joins/16-joins.html</loc>
-    <lastmod>2026-01-02T18:52:01.802Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/13-factors/13-factors.html</loc>
+    <lastmod>2026-01-02T18:52:01.800Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/course-faq.html</loc>
-    <lastmod>2026-01-03T18:32:07.411Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/12-regex/12-regex.html</loc>
+    <lastmod>2026-01-02T18:52:01.800Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/about.html</loc>
-    <lastmod>2026-01-04T15:24:54.141Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/11-strings/11-strings.html</loc>
+    <lastmod>2026-01-02T18:52:01.799Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/index.html</loc>
-    <lastmod>2026-01-03T18:20:24.924Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/09-logicals/09-logicals.html</loc>
+    <loc>https://csci2025wi26.netlify.app/slides/10-numbers/10-numbers.html</loc>
     <lastmod>2026-01-02T18:52:01.799Z</lastmod>
   </url>
   <url>
@@ -73,32 +49,56 @@
     <lastmod>2025-12-29T21:07:20.887Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/10-numbers/10-numbers.html</loc>
+    <loc>https://csci2025wi26.netlify.app/slides/09-logicals/09-logicals.html</loc>
     <lastmod>2026-01-02T18:52:01.799Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/11-strings/11-strings.html</loc>
-    <lastmod>2026-01-02T18:52:01.799Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/index.html</loc>
+    <lastmod>2026-01-03T18:20:24.924Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/12-regex/12-regex.html</loc>
-    <lastmod>2026-01-02T18:52:01.800Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/course-faq.html</loc>
+    <lastmod>2026-01-03T18:32:07.411Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/13-factors/13-factors.html</loc>
-    <lastmod>2026-01-02T18:52:01.800Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/16-joins/16-joins.html</loc>
+    <lastmod>2026-01-02T18:52:01.802Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/05-importing/05-importing-data.html</loc>
+    <loc>https://csci2025wi26.netlify.app/slides/03-data-transformation/03-first-transformations.html</loc>
     <lastmod>2025-12-29T21:07:20.887Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/07-eda/07-eda.html</loc>
+    <loc>https://csci2025wi26.netlify.app/slides/06-layers/06-layers.html</loc>
+    <lastmod>2025-12-29T21:19:21.093Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/00-welcome/00-welcome.html</loc>
+    <lastmod>2026-01-02T18:52:01.793Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/15-missing-values/15-missing-values.html</loc>
+    <lastmod>2026-01-02T18:52:01.801Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/14-datetimes/14-datetimes.html</loc>
+    <lastmod>2026-01-02T18:52:01.801Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/01-intro-to-R/01-intro-to-R.html</loc>
+    <lastmod>2026-01-04T15:45:33.317Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/08-communication/08-communication.html</loc>
     <lastmod>2026-01-02T18:52:01.794Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/course-overview.html</loc>
-    <lastmod>2026-01-02T22:40:47.411Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/02-first-viz/02-first-viz.html</loc>
+    <lastmod>2026-01-02T19:44:06.631Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/course-technology.html</loc>
+    <lastmod>2026-01-04T16:04:39.404Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/computing/computing-troubleshooting.html</loc>
@@ -106,7 +106,7 @@
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/course-links.html</loc>
-    <lastmod>2026-01-02T23:57:57.607Z</lastmod>
+    <lastmod>2026-01-04T15:54:44.966Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/course-syllabus.html</loc>

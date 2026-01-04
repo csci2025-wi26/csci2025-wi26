@@ -37,6 +37,8 @@ website:
             text: Support
           - href: index.qmd
             text: Schedule
+          - href: course-technology.qmd
+            text: Technology
           - href: course-links.qmd
             text: Useful links
           - href: course-faq.qmd
@@ -103,4 +105,4 @@ format:
 execute:
   freeze: auto
 
-editor: visual
+editor: source
