@@ -31,9 +31,5 @@ The following cheatsheets come from <https://posit.co/resources/cheatsheets>. We
 <br>
 
 [![](cheatsheets/factors.png){fig-alt="ggplot2 cheat sheet" fig-align="right" width="300"}](https://raw.githubusercontent.com/rstudio/cheatsheets/main/factors.pdf)
-
-<br>
-
-[![](cheatsheets/rstudio-ide.png){fig-alt="ggplot2 cheat sheet" fig-align="right" width="300"}](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf)
 :::
 :::

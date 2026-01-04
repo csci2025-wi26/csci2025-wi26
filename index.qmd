@@ -22,23 +22,22 @@ d <- read_sheet("https://docs.google.com/spreadsheets/d/1MCjj00m98ARPOm8sfdKC3HI
 
 d |>
   filter(Publish == "x") |>
-  select(-dow, -session, -Publish) |>
-  mutate(date = as.Date(date)) |>
-  relocate(due, .after = materials) |>
+  select(-dow, -Publish) |>
+  mutate(due = as.Date(due)) |>
   gt() |>
-  fmt_date(date, date_style = 31) |>
-  sub_missing(columns = c(week, prepare, topic, materials, due), missing_text = "") |>
+  fmt_date(due, date_style = 31) |>
+  sub_missing(columns = c(week, topic, reading, slides), missing_text = "") |>
   cols_align(
     align = "center", 
     columns = c(week)
   ) |>
   cols_align(
-    align = "right", 
-    columns = c(date)
+    align = "center", 
+    columns = c(due)
   ) |>
   cols_align(
     align = "left", 
-    columns = c(topic, prepare, materials, due)
+    columns = c(topic, reading, slides)
   ) |>
   tab_style(
     style = cell_borders(
@@ -47,19 +46,18 @@ d |>
       style = "solid"
     ),
     locations = cells_body(
-      columns = c(date, topic, prepare, materials)
+      columns = c(due, type, topic, reading, slides)
     )
   ) |>
   fmt_markdown(
-    columns = c(topic, prepare, materials, due)
+    columns = c(type, topic, reading, slides)
   ) |>
   cols_width(
     week ~ px(45),
-    date ~ px(100), 
-    prepare ~ px(100),
+    due ~ px(300), 
+    reading ~ px(150),
     topic ~ px(300),
-    materials ~ px(150),
-    due ~ px(300)
+    slides ~ px(300)
   ) |>
   cols_label_with(fn = function(x) {
       janitor::make_clean_names(x, case = "title") |>
