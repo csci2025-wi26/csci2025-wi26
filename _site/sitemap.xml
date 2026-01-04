@@ -21,31 +21,31 @@
     <lastmod>2026-01-02T18:52:01.794Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/05-importing/05-importing-data.html</loc>
-    <lastmod>2025-12-29T21:07:20.887Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/04-first-transformations/04-first-transformations.html</loc>
+    <lastmod>2026-01-04T21:29:54.622Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/13-factors/13-factors.html</loc>
-    <lastmod>2026-01-02T18:52:01.800Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/01-intro-to-R/01-intro-to-R.html</loc>
+    <lastmod>2026-01-04T17:33:45.342Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/12-regex/12-regex.html</loc>
-    <lastmod>2026-01-02T18:52:01.800Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/14-datetimes/14-datetimes.html</loc>
+    <lastmod>2026-01-02T18:52:01.801Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/11-strings/11-strings.html</loc>
-    <lastmod>2026-01-02T18:52:01.799Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/15-missing-values/15-missing-values.html</loc>
+    <lastmod>2026-01-02T18:52:01.801Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/10-numbers/10-numbers.html</loc>
-    <lastmod>2026-01-02T18:52:01.799Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/00-welcome/00-welcome.html</loc>
+    <lastmod>2026-01-02T18:52:01.793Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/06-layers/06-layers.html</loc>
-    <lastmod>2025-12-29T21:19:21.093Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/03-basics-of-R/03-basics-of-R.html</loc>
+    <lastmod>2026-01-04T21:15:48.287Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/03-data-transformation/03-first-transformations.html</loc>
+    <loc>https://csci2025wi26.netlify.app/slides/04-data-tidying/04-data-tidying.html</loc>
     <lastmod>2025-12-29T21:07:20.887Z</lastmod>
   </url>
   <url>
@@ -65,28 +65,28 @@
     <lastmod>2026-01-02T18:52:01.799Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/04-data-tidying/04-data-tidying.html</loc>
+    <loc>https://csci2025wi26.netlify.app/slides/06-layers/06-layers.html</loc>
+    <lastmod>2025-12-29T21:19:21.093Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/10-numbers/10-numbers.html</loc>
+    <lastmod>2026-01-02T18:52:01.799Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/11-strings/11-strings.html</loc>
+    <lastmod>2026-01-02T18:52:01.799Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/12-regex/12-regex.html</loc>
+    <lastmod>2026-01-02T18:52:01.800Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/13-factors/13-factors.html</loc>
+    <lastmod>2026-01-02T18:52:01.800Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/05-importing/05-importing-data.html</loc>
     <lastmod>2025-12-29T21:07:20.887Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/03-basics-of-R/03-basic-of-R.html</loc>
-    <lastmod>2026-01-04T20:51:32.759Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/00-welcome/00-welcome.html</loc>
-    <lastmod>2026-01-02T18:52:01.793Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/15-missing-values/15-missing-values.html</loc>
-    <lastmod>2026-01-02T18:52:01.801Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/14-datetimes/14-datetimes.html</loc>
-    <lastmod>2026-01-02T18:52:01.801Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/01-intro-to-R/01-intro-to-R.html</loc>
-    <lastmod>2026-01-04T17:33:45.342Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/slides/08-communication/08-communication.html</loc>
@@ -107,9 +107,5 @@
   <url>
     <loc>https://csci2025wi26.netlify.app/course-syllabus.html</loc>
     <lastmod>2026-01-04T15:26:56.485Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/03-basics-of-R/03-basics-of-R.html</loc>
-    <lastmod>2026-01-04T21:15:48.287Z</lastmod>
   </url>
 </urlset>

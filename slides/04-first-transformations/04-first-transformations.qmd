@@ -108,3 +108,11 @@ Let's do the following:
     +  Use `summarize` to compute the average `dep_delay` for each carrier
     +  Arrange the results in descending order of average departure delay
     +  Let's work through Exercise 3 from the textbook
+
+# Wrap up
+
+## Do Next
+
+1. Read [Chapter 3: Data Transformation](https://r4ds.hadley.nz/data-transform.html) from r4ds.
+2. Open the Recitation Gem and say "Provide me practice problems for Chapter 3" or work through some of the exercises in the text.
+3. That's it for today! See you in class!
