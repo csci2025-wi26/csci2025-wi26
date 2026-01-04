@@ -6,8 +6,7 @@ title-slide-attributes:
   data-background-size: stretch
   data-slide-number: none
 format:
-  revealjs: 
-    theme: simple
+  revealjs: default
   pdf: 
     documentclass: article # Creates a document/handout version
 auto-stretch: false
