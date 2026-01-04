@@ -2332,5 +2332,19 @@
       "Course information",
       "Syllabus"
     ]
+  },
+  {
+    "objectID": "slides/03-basics-of-R/03-basics-of-R.html#notebooklm",
+    "href": "slides/03-basics-of-R/03-basics-of-R.html#notebooklm",
+    "title": "R Basics",
+    "section": "NotebookLM",
+    "text": "NotebookLM\n\nNotebookLM is a Google AI tool that helps you learn from your documents.\nI’ve created a notebook for this course that you can use to ask questions about the material."
+  },
+  {
+    "objectID": "slides/03-basics-of-R/03-basics-of-R.html#do-next",
+    "href": "slides/03-basics-of-R/03-basics-of-R.html#do-next",
+    "title": "R Basics",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 1: Data Visualization from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 1” or work through some of the exercises in the text.\n\nNote that you can say “This is too hard. Give me some easier problems.”\n\nMove on to Lecture 03."
   }
 ]
