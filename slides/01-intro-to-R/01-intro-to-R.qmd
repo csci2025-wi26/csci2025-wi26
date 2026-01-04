@@ -73,7 +73,7 @@ auto-stretch: false
 -  **Observation** or **Data point**: a single object that has been measured (e.g. one of the penguins in the data set)
 -  **Value**: the entry for a particular variable and observation (e.g. for the first penguin, the value of `species` is "Adelie", the value of `bill_length_mm` is 39.1)
 -  **Tabular Data**: data organized in rows and columns (like a spreadsheet or data frame)
--  **Tidy Data**: tabular data where each observation is a row, and each type of observational unit forms a table
+-  **Tidy Data**: tabular data where each observation is a row, each variable is a column, and each type of observational unit forms a table
 
 ## Taking a quick look at `penguins`
 

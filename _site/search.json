@@ -1865,7 +1865,7 @@
     "href": "slides/01-intro-to-R/01-intro-to-R.html#important-vocabulary",
     "title": "R Basics",
     "section": "Important Vocabulary",
-    "text": "Important Vocabulary\n\nData frame: A table-like structure in R that holds data (penguins)\n\nIn the tidyverse data frames are referred to as tibbles\n\nVariable: is a quantity, quality, or property that you can measure (e.g. species, bill_length_mm, island)\nObservation or Data point: a single object that has been measured (e.g. one of the penguins in the data set)\nValue: the entry for a particular variable and observation (e.g. for the first penguin, the value of species is “Adelie”, the value of bill_length_mm is 39.1)\nTabular Data: data organized in rows and columns (like a spreadsheet or data frame)\nTidy Data: tabular data where each observation is a row, and each type of observational unit forms a table"
+    "text": "Important Vocabulary\n\nData frame: A table-like structure in R that holds data (penguins)\n\nIn the tidyverse data frames are referred to as tibbles\n\nVariable: is a quantity, quality, or property that you can measure (e.g. species, bill_length_mm, island)\nObservation or Data point: a single object that has been measured (e.g. one of the penguins in the data set)\nValue: the entry for a particular variable and observation (e.g. for the first penguin, the value of species is “Adelie”, the value of bill_length_mm is 39.1)\nTabular Data: data organized in rows and columns (like a spreadsheet or data frame)\nTidy Data: tabular data where each observation is a row, each variable is a column, and each type of observational unit forms a table"
   },
   {
     "objectID": "slides/01-intro-to-R/01-intro-to-R.html#taking-a-quick-look-at-penguins",
