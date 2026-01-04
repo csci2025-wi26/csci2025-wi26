@@ -845,81 +845,348 @@
     "text": "Numbers\n\nCreate with parse_number().\nTransform with arithmetic, logs, rounding, and cut().\ncount() is a powerful tool for quick exploration.\nUse ranks (min_rank) and offsets (lag, lead) for more complex analysis.\nSummarize with measures of center (mean, median), spread (sd, IQR), and position (min, max, quantile)."
   },
   {
-    "objectID": "slides/04-data-tidying/04-data-tidying.html#this-lesson",
-    "href": "slides/04-data-tidying/04-data-tidying.html#this-lesson",
-    "title": "Data Tidying",
+    "objectID": "slides/06-layers/06-layers.html#data-flights-from-nyc-in-2013",
+    "href": "slides/06-layers/06-layers.html#data-flights-from-nyc-in-2013",
+    "title": "ggplot2 layers",
+    "section": "Data: Flights from NYC in 2013",
+    "text": "Data: Flights from NYC in 2013\nWe will be using the nycflights13::flights dataset. This dataset contains information about all flights that departed from New York City (EWR, LGA, JFK) in 2013.\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…"
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#a-simple-scatterplot",
+    "href": "slides/06-layers/06-layers.html#a-simple-scatterplot",
+    "title": "ggplot2 layers",
+    "section": "A simple scatterplot",
+    "text": "A simple scatterplot\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point()\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#adding-layers",
+    "href": "slides/06-layers/06-layers.html#adding-layers",
+    "title": "ggplot2 layers",
+    "section": "Adding layers",
+    "text": "Adding layers\nA plot is composed of layers. Each layer has:\n\nA geom: The geometric object that represents the data (e.g., points, lines, bars).\nAn aesthetic mapping: How variables are mapped to visual properties.\nA stat: A statistical transformation (e.g., counting, summarizing).\nA position adjustment: How to arrange elements that would otherwise overlap."
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#adding-a-layer-trend-line-with-geom_smooth",
+    "href": "slides/06-layers/06-layers.html#adding-a-layer-trend-line-with-geom_smooth",
+    "title": "ggplot2 layers",
+    "section": "Adding a layer: Trend line with geom_smooth()",
+    "text": "Adding a layer: Trend line with geom_smooth()\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(alpha = 0.1) +\n  geom_smooth()\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 9430 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#global-vs.-local-mappings",
+    "href": "slides/06-layers/06-layers.html#global-vs.-local-mappings",
+    "title": "ggplot2 layers",
+    "section": "Global vs. Local Mappings",
+    "text": "Global vs. Local Mappings\n\nAesthetic mappings can be:\nGlobal: specify in ggplot() so they apply to all layers\nLocal: specify in each geom_*() so they apply only to that layer"
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#using-color-as-a-local-aesthetic",
+    "href": "slides/06-layers/06-layers.html#using-color-as-a-local-aesthetic",
+    "title": "ggplot2 layers",
+    "section": "Using color as a local aesthetic",
+    "text": "Using color as a local aesthetic\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(mapping = aes(color = origin), alpha = 0.1) +\n  geom_smooth()\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 9430 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#why-isnt-this-plot-blue",
+    "href": "slides/06-layers/06-layers.html#why-isnt-this-plot-blue",
+    "title": "ggplot2 layers",
+    "section": "Why isn’t this plot blue?",
+    "text": "Why isn’t this plot blue?\n\n# This is probably not what you want\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(aes(color = \"blue\"))\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#setting-vs.-mapping",
+    "href": "slides/06-layers/06-layers.html#setting-vs.-mapping",
+    "title": "ggplot2 layers",
+    "section": "Setting vs. Mapping",
+    "text": "Setting vs. Mapping\n\nTo apply a constant property to all points, set it outside of aes()\n\n\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(color = \"blue\", alpha = 0.1)\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#common-geoms",
+    "href": "slides/06-layers/06-layers.html#common-geoms",
+    "title": "ggplot2 layers",
+    "section": "Common geoms",
+    "text": "Common geoms\n\ngeom_point(): Scatterplots\ngeom_line(): Line charts\ngeom_bar(): Bar charts\ngeom_histogram(): Histograms\ngeom_boxplot(): Boxplots\ngeom_smooth(): Trend lines\ngeom_density(): Density plots\nMany more!"
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#geom_bar-vs-geom_col",
+    "href": "slides/06-layers/06-layers.html#geom_bar-vs-geom_col",
+    "title": "ggplot2 layers",
+    "section": "geom_bar vs geom_col",
+    "text": "geom_bar vs geom_col\n\ngeom_bar() uses stat_count() by default to count the number of observations for each category\n\n\nggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar()"
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#changing-the-stat-argument",
+    "href": "slides/06-layers/06-layers.html#changing-the-stat-argument",
+    "title": "ggplot2 layers",
+    "section": "Changing the stat argument",
+    "text": "Changing the stat argument\n\nYou can change the statistical transformation used by a geom with the stat argument…\n\n\ncarrier_counts &lt;- flights |&gt;\n  count(carrier) |&gt; \n  ggplot(mapping = aes(x = carrier, y = n)) +\n    geom_bar(stat = \"identity\")"
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#changing-the-stat",
+    "href": "slides/06-layers/06-layers.html#changing-the-stat",
+    "title": "ggplot2 layers",
+    "section": "Changing the stat",
+    "text": "Changing the stat\n\nUsing after_stat() to modify computed variables from a stat\n\n\nggplot(data = flights) +\n  geom_bar(mapping = aes(x = carrier, y = after_stat(prop), group = 1)) +\n  labs(y = \"Proportion\")"
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#practice",
+    "href": "slides/06-layers/06-layers.html#practice",
+    "title": "ggplot2 layers",
+    "section": "Practice",
+    "text": "Practice\nLet’s try to overlay a density plot on top of a histogram of dep_delay…"
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#overplotting",
+    "href": "slides/06-layers/06-layers.html#overplotting",
+    "title": "ggplot2 layers",
+    "section": "Overplotting",
+    "text": "Overplotting\n\nOverplotting: When many points overlap in a scatterplot, making it hard to see the distribution of points\nCommon solution: Use transparency with alpha aesthetic\nAnother solution: Use position adjustments to spread out points"
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#jittering-points",
+    "href": "slides/06-layers/06-layers.html#jittering-points",
+    "title": "ggplot2 layers",
+    "section": "Jittering points",
+    "text": "Jittering points\n\nlibrary(patchwork)\np1 &lt;- ggplot(flights, aes(x = month, y = dep_delay)) +\n  geom_point(alpha = 0.01)\np2 &lt;- ggplot(flights, aes(x = month, y = dep_delay)) +\n  geom_jitter(alpha = 0.01)\np1 + p2"
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#bar-chart-adjustments",
+    "href": "slides/06-layers/06-layers.html#bar-chart-adjustments",
+    "title": "ggplot2 layers",
+    "section": "Bar chart adjustments",
+    "text": "Bar chart adjustments\nFor bar charts, you can use position to change how bars are arranged. - stack (default): Stack bars on top of each other. - fill: Stack bars, but standardize to have the same height. Good for comparing proportions. - dodge: Place bars next to each other."
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#bar-chart-adjustments-1",
+    "href": "slides/06-layers/06-layers.html#bar-chart-adjustments-1",
+    "title": "ggplot2 layers",
+    "section": "Bar chart adjustments",
+    "text": "Bar chart adjustments\n\np1 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"stack\")\np2 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"fill\") +\n  labs(y = \"Proportion\")\np3 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"dodge\")\np1 + p2 + p3"
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#facet_wrap",
+    "href": "slides/06-layers/06-layers.html#facet_wrap",
+    "title": "ggplot2 layers",
+    "section": "facet_wrap",
+    "text": "facet_wrap\n\nFacets allow you to break your plot into subplots based on a categorical variable.\n\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(alpha = 0.1) +\n  facet_wrap(~ origin, nrow = 1)\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#adding-a-trend-line-to-facets",
+    "href": "slides/06-layers/06-layers.html#adding-a-trend-line-to-facets",
+    "title": "ggplot2 layers",
+    "section": "Adding a trend line to facets",
+    "text": "Adding a trend line to facets\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(alpha = 0.1) +\n  geom_smooth() +\n  facet_wrap(~ origin, nrow = 1)\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 9430 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#facet-grids",
+    "href": "slides/06-layers/06-layers.html#facet-grids",
+    "title": "ggplot2 layers",
+    "section": "Facet Grids",
+    "text": "Facet Grids\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(alpha = 0.1) +\n  geom_smooth() +\n  facet_grid(carrier ~ origin)\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 9430 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Failed to fit group -1.\nCaused by error in `smooth.construct.cr.smooth.spec()`:\n! x has insufficient unique values to support 10 knots: reduce k.\n\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#flipping-coordinates",
+    "href": "slides/06-layers/06-layers.html#flipping-coordinates",
+    "title": "ggplot2 layers",
+    "section": "Flipping coordinates",
+    "text": "Flipping coordinates\n\np1 &lt;- ggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar()\n\np2 &lt;- ggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar() +\n  coord_flip()\np1 + p2"
+  },
+  {
+    "objectID": "slides/06-layers/06-layers.html#the-layered-grammar-in-summary",
+    "href": "slides/06-layers/06-layers.html#the-layered-grammar-in-summary",
+    "title": "ggplot2 layers",
+    "section": "The layered grammar in summary",
+    "text": "The layered grammar in summary\n#| eval: false\n`ggplot(data = &lt;DATA&gt;) +`\n`  &lt;GEOM_FUNCTION&gt;(`\n`    mapping = aes(&lt;AESTHETIC_MAPPINGS&gt;),`\n`    stat = &lt;STAT&gt;,`\n`    position = &lt;POSITION&gt;`\n`  ) +`\n`  &lt;COORDINATE_SYSTEM&gt; +`\n`  &lt;FACET_FUNCTION&gt;`"
+  },
+  {
+    "objectID": "slides/03-data-transformation/03-first-transformations.html#this-lesson",
+    "href": "slides/03-data-transformation/03-first-transformations.html#this-lesson",
+    "title": "First Transformations",
     "section": "This lesson",
-    "text": "This lesson\n\nDefine “tidy data”\nLearn how to use tidyr to make data tidy\n\npivot_longer() for lengthening data\npivot_wider() for widening data"
+    "text": "This lesson\n\nIntroduce data transformation with dplyr\nWork through two scenarios involving transforming a single data frame"
   },
   {
-    "objectID": "slides/04-data-tidying/04-data-tidying.html#what-is-tidy-data",
-    "href": "slides/04-data-tidying/04-data-tidying.html#what-is-tidy-data",
-    "title": "Data Tidying",
-    "section": "What is tidy data?",
-    "text": "What is tidy data?\nTidy data is a consistent way of structuring datasets that makes them easier to work with. A dataset is tidy if it follows three rules:\n\nEach variable has its own column.\nEach observation has its own row.\nEach value has its own cell.\n\nThis structure is a standard in the tidyverse."
+    "objectID": "slides/03-data-transformation/03-first-transformations.html#data-nycflights13",
+    "href": "slides/03-data-transformation/03-first-transformations.html#data-nycflights13",
+    "title": "First Transformations",
+    "section": "Data: nycflights13",
+    "text": "Data: nycflights13\n\nInstall nycflights13 package if you haven’t already\nLoad tidyverse and nycflights13\nnycflights113 contains on-time data for all flights that departed NYC in 2013\nLet’s take a quick look at the data set!"
   },
   {
-    "objectID": "slides/04-data-tidying/04-data-tidying.html#setup",
-    "href": "slides/04-data-tidying/04-data-tidying.html#setup",
-    "title": "Data Tidying",
+    "objectID": "slides/03-data-transformation/03-first-transformations.html#setup",
+    "href": "slides/03-data-transformation/03-first-transformations.html#setup",
+    "title": "First Transformations",
     "section": "Setup",
-    "text": "Setup\nWe will be using functions from the tidyr package, which is part of the tidyverse.\n\n# load packages\nlibrary(tidyverse)"
+    "text": "Setup\n\n# load packages\nlibrary(tidyverse)\nlibrary(nycflights13)"
   },
   {
-    "objectID": "slides/04-data-tidying/04-data-tidying.html#lengthening-data-with-pivot_longer",
-    "href": "slides/04-data-tidying/04-data-tidying.html#lengthening-data-with-pivot_longer",
-    "title": "Data Tidying",
-    "section": "Lengthening data with pivot_longer()",
-    "text": "Lengthening data with pivot_longer()\n\nWide Format: column names are actually values of a variable:\n\n\nrelig_income |&gt; head()\n\n# A tibble: 6 × 11\n  religion  `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`\n  &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n1 Agnostic       27        34        60        81        76       137        122\n2 Atheist        12        27        37        52        35        70         73\n3 Buddhist       27        21        30        34        33        58         62\n4 Catholic      418       617       732       670       638      1116        949\n5 Don’t kn…      15        14        15        11        10        35         21\n6 Evangeli…     575       869      1064       982       881      1486        949\n# ℹ 3 more variables: `$100-150k` &lt;dbl&gt;, `&gt;150k` &lt;dbl&gt;,\n#   `Don't know/refused` &lt;dbl&gt;\n\n\nThis is not tidy. The income brackets are variable names, not a variable."
+    "objectID": "slides/03-data-transformation/03-first-transformations.html#dplyr-101",
+    "href": "slides/03-data-transformation/03-first-transformations.html#dplyr-101",
+    "title": "First Transformations",
+    "section": "dplyr 101",
+    "text": "dplyr 101\n\ndplyr is a package in the tidyverse, designed for data manipulation\nProvides a set of functions (verbs) that help you transform data frames\nCommon properties of a dplyr verb:\n\nTakes a data frame as the first argument\nReturns a data frame as output\nAdditional arguments specify how to options for that verb\n\nIn practice: want to chain together lots of verbs to perform complex transformations\nUse the pipe operator (|&gt;) to chain together multiple verbs"
   },
   {
-    "objectID": "slides/04-data-tidying/04-data-tidying.html#using-pivot_longer",
-    "href": "slides/04-data-tidying/04-data-tidying.html#using-pivot_longer",
-    "title": "Data Tidying",
-    "section": "Using pivot_longer()",
-    "text": "Using pivot_longer()\n\n\n\nGoal: transform this so we have three columns: religion, income, and count.\nUse pivot_longer() to do this.\n\n\ntidy_relig_income &lt;- relig_income |&gt; \n  pivot_longer(\n    cols = !religion, \n    names_to = \"income\", \n    values_to = \"count\"\n  )\n\ntidy_relig_income |&gt; head()\n\n# A tibble: 6 × 3\n  religion income  count\n  &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt;\n1 Agnostic &lt;$10k      27\n2 Agnostic $10-20k    34\n3 Agnostic $20-30k    60\n4 Agnostic $30-40k    81\n5 Agnostic $40-50k    76\n6 Agnostic $50-75k   137\n\n\n\n\ncols: The columns to pivot into longer format. !religion means all columns except religion.\nnames_to: The name of the new column that will contain the names of the original columns.\nvalues_to: The name of the new column that will contain the values from the original columns."
+    "objectID": "slides/03-data-transformation/03-first-transformations.html#chaining-with-the-pipe-operator",
+    "href": "slides/03-data-transformation/03-first-transformations.html#chaining-with-the-pipe-operator",
+    "title": "First Transformations",
+    "section": "Chaining with the pipe operator",
+    "text": "Chaining with the pipe operator\n\nThe pipe operator (|&gt;) takes the output of one expression and “pipes” it as the first argument to the next expression\n\nWhen reading code with pipes use the phrase “and then” to understand the sequence of operations\n\nMore on this in a bit"
   },
   {
-    "objectID": "slides/04-data-tidying/04-data-tidying.html#another-pivot_longer-example-billboard",
-    "href": "slides/04-data-tidying/04-data-tidying.html#another-pivot_longer-example-billboard",
-    "title": "Data Tidying",
-    "section": "Another pivot_longer() example: billboard",
-    "text": "Another pivot_longer() example: billboard\nThe billboard dataset has chart rankings for 2000.\n\nbillboard |&gt; head()\n\n# A tibble: 6 × 79\n  artist      track date.entered   wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8\n  &lt;chr&gt;       &lt;chr&gt; &lt;date&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 2 Pac       Baby… 2000-02-26      87    82    72    77    87    94    99    NA\n2 2Ge+her     The … 2000-09-02      91    87    92    NA    NA    NA    NA    NA\n3 3 Doors Do… Kryp… 2000-04-08      81    70    68    67    66    57    54    53\n4 3 Doors Do… Loser 2000-10-21      76    76    72    69    67    65    55    59\n5 504 Boyz    Wobb… 2000-04-15      57    34    25    17    17    31    36    49\n6 98^0        Give… 2000-08-19      51    39    34    26    26    19     2     2\n# ℹ 68 more variables: wk9 &lt;dbl&gt;, wk10 &lt;dbl&gt;, wk11 &lt;dbl&gt;, wk12 &lt;dbl&gt;,\n#   wk13 &lt;dbl&gt;, wk14 &lt;dbl&gt;, wk15 &lt;dbl&gt;, wk16 &lt;dbl&gt;, wk17 &lt;dbl&gt;, wk18 &lt;dbl&gt;,\n#   wk19 &lt;dbl&gt;, wk20 &lt;dbl&gt;, wk21 &lt;dbl&gt;, wk22 &lt;dbl&gt;, wk23 &lt;dbl&gt;, wk24 &lt;dbl&gt;,\n#   wk25 &lt;dbl&gt;, wk26 &lt;dbl&gt;, wk27 &lt;dbl&gt;, wk28 &lt;dbl&gt;, wk29 &lt;dbl&gt;, wk30 &lt;dbl&gt;,\n#   wk31 &lt;dbl&gt;, wk32 &lt;dbl&gt;, wk33 &lt;dbl&gt;, wk34 &lt;dbl&gt;, wk35 &lt;dbl&gt;, wk36 &lt;dbl&gt;,\n#   wk37 &lt;dbl&gt;, wk38 &lt;dbl&gt;, wk39 &lt;dbl&gt;, wk40 &lt;dbl&gt;, wk41 &lt;dbl&gt;, wk42 &lt;dbl&gt;,\n#   wk43 &lt;dbl&gt;, wk44 &lt;dbl&gt;, wk45 &lt;dbl&gt;, wk46 &lt;dbl&gt;, wk47 &lt;dbl&gt;, wk48 &lt;dbl&gt;, …\n\n\nThe wk1, wk2, … columns are values of a “week” variable."
+    "objectID": "slides/03-data-transformation/03-first-transformations.html#types-of-verbs",
+    "href": "slides/03-data-transformation/03-first-transformations.html#types-of-verbs",
+    "title": "First Transformations",
+    "section": "Types of verbs",
+    "text": "Types of verbs\ndplyr verbs can be grouped into a few categories based on what they do to the data frame: - Rows - Columns - Groups - Tables (not today)"
   },
   {
-    "objectID": "slides/04-data-tidying/04-data-tidying.html#tidying-billboard",
-    "href": "slides/04-data-tidying/04-data-tidying.html#tidying-billboard",
-    "title": "Data Tidying",
-    "section": "Tidying billboard",
-    "text": "Tidying billboard\n\n\n\nbillboard |&gt;\n  pivot_longer(\n    cols = starts_with(\"wk\"),\n    names_to = \"week\",\n    values_to = \"rank\",\n    values_drop_na = TRUE\n  ) |&gt; head()\n\n# A tibble: 6 × 5\n  artist track                   date.entered week   rank\n  &lt;chr&gt;  &lt;chr&gt;                   &lt;date&gt;       &lt;chr&gt; &lt;dbl&gt;\n1 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk1      87\n2 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk2      82\n3 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk3      72\n4 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk4      77\n5 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk5      87\n6 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk6      94\n\n\n\n\nWe use starts_with(\"wk\") to select the columns to pivot.\nvalues_drop_na = TRUE removes rows where the rank is NA."
+    "objectID": "slides/03-data-transformation/03-first-transformations.html#verbs-that-act-on-rows",
+    "href": "slides/03-data-transformation/03-first-transformations.html#verbs-that-act-on-rows",
+    "title": "First Transformations",
+    "section": "Verbs that act on rows",
+    "text": "Verbs that act on rows\n\nfilter(): keep rows that meet certain criteria\n\nYou can use &gt;, &lt;, ==, !=, &gt;=, &lt;=, %in% for comparisons\nYou can also use & (and), | (or), and ! (not) to combine multiple conditions\n\narrange(): reorder rows\ndistinct(): keep only unique rows\nslice_ function: slice_head(), slice_tail(), slice_sample(), slice_min(), slice_max()"
   },
   {
-    "objectID": "slides/04-data-tidying/04-data-tidying.html#widening-data-with-pivot_wider",
-    "href": "slides/04-data-tidying/04-data-tidying.html#widening-data-with-pivot_wider",
-    "title": "Data Tidying",
-    "section": "Widening data with pivot_wider()",
-    "text": "Widening data with pivot_wider()\npivot_wider() is the opposite of pivot_longer(). It’s used when an observation is scattered across multiple rows.\n\nfish_encounters |&gt; head()\n\n# A tibble: 6 × 3\n  fish  station  seen\n  &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;\n1 4842  Release     1\n2 4842  I80_1       1\n3 4842  Lisbon      1\n4 4842  Rstr        1\n5 4842  Base_TD     1\n6 4842  BCE         1\n\n\n\nOne observation = one fishing station\nfish_encounters has two rows for each station: one for when a fish was seen and one for when it wasn’t\nstation column contains variable names\nseen column contains(0/1) values"
+    "objectID": "slides/03-data-transformation/03-first-transformations.html#practice",
+    "href": "slides/03-data-transformation/03-first-transformations.html#practice",
+    "title": "First Transformations",
+    "section": "Practice",
+    "text": "Practice\nLet’s do the following:\n\nUse filter to keep only flight in January\nUse arrange to sort by dep_delay (departure delay)\nUse distinct to keep only unique carrier values\nLet’s work through Exercise 1 from the textbook"
   },
   {
-    "objectID": "slides/04-data-tidying/04-data-tidying.html#using-pivot_wider",
-    "href": "slides/04-data-tidying/04-data-tidying.html#using-pivot_wider",
-    "title": "Data Tidying",
-    "section": "Using pivot_wider()",
-    "text": "Using pivot_wider()\nGoal: one row per station, with columns indicating whether fish was seen or not.\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1    NA    NA    NA    NA    NA    NA\n5 4847        1     1      1    NA      NA    NA    NA    NA    NA    NA    NA\n6 4848        1     1      1     1      NA    NA    NA    NA    NA    NA    NA\n\n\nProblem: NA values where there shoiuld be zeros, can fix this with values_fill."
+    "objectID": "slides/03-data-transformation/03-first-transformations.html#verbs-that-act-on-columns",
+    "href": "slides/03-data-transformation/03-first-transformations.html#verbs-that-act-on-columns",
+    "title": "First Transformations",
+    "section": "Verbs that act on columns",
+    "text": "Verbs that act on columns\n\nmutate(): create new columns or modify and combine existing columns\nselect(): keep only specified columns\nrename(): rename columns"
   },
   {
-    "objectID": "slides/04-data-tidying/04-data-tidying.html#using-pivot_wider-with-values_fill",
-    "href": "slides/04-data-tidying/04-data-tidying.html#using-pivot_wider-with-values_fill",
-    "title": "Data Tidying",
-    "section": "Using pivot_wider() with values_fill",
-    "text": "Using pivot_wider() with values_fill\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen,\n    values_fill = 0\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1     0     0     0     0     0     0\n5 4847        1     1      1     0       0     0     0     0     0     0     0\n6 4848        1     1      1     1       0     0     0     0     0     0     0\n\n\n\nnames_from: The column to get the new column names from.\nvalues_from: The column to get the cell values from.\nvalues_fill: A value to replace NAs with."
+    "objectID": "slides/03-data-transformation/03-first-transformations.html#practice-1",
+    "href": "slides/03-data-transformation/03-first-transformations.html#practice-1",
+    "title": "First Transformations",
+    "section": "Practice",
+    "text": "Practice\nLet’s do the following:\n\nUse mutate to create a new column speed (distance / air_time * 60)\nUse select to drop the tailnum column\nUse select to keep only flight, carrier, and speed\nUse rename to rename speed to avg_speed\nUse relocate to move avg_speed to be the first column\nLet’s work through Exercise 1 from the textbook"
   },
   {
-    "objectID": "slides/04-data-tidying/04-data-tidying.html#summary",
-    "href": "slides/04-data-tidying/04-data-tidying.html#summary",
-    "title": "Data Tidying",
-    "section": "Summary",
-    "text": "Summary\n\nTidy data is a standard format that makes data analysis easier.\nUse pivot_longer() when your column names are actually values of a variable (to make data longer and narrower).\nUse pivot_wider() when an observation is scattered across multiple rows (to make data wider and shorter).\nYou will often need to use pivot_longer() and pivot_wider() when preparing data for plotting\n\nThese two functions are the foundation of data tidying in R."
+    "objectID": "slides/03-data-transformation/03-first-transformations.html#aggregating-data-verbs-that-act-on-groups",
+    "href": "slides/03-data-transformation/03-first-transformations.html#aggregating-data-verbs-that-act-on-groups",
+    "title": "First Transformations",
+    "section": "Aggregating data: verbs that act on groups",
+    "text": "Aggregating data: verbs that act on groups\n\nWhat you frequently want to do is summarize data by groups\n\ngroup_by(): specify one or more columns to group by\n\nCreates a new data frame where rows are grouped by unique combinations of the grouping columns\nSubsequent verbs will operate on each group separately\nUse ungroup() to remove grouping\n\nsummarize(): compute summary statistics for each group"
+  },
+  {
+    "objectID": "slides/03-data-transformation/03-first-transformations.html#practice-2",
+    "href": "slides/03-data-transformation/03-first-transformations.html#practice-2",
+    "title": "First Transformations",
+    "section": "Practice",
+    "text": "Practice\n\nLet’s do the following:\n\nUse group_by to group by carrier\nUse summarize to compute the average dep_delay for each carrier\nArrange the results in descending order of average departure delay\nLet’s work through Exercise 3 from the textbook"
+  },
+  {
+    "objectID": "slides/16-joins/16-joins.html#combining-datasets",
+    "href": "slides/16-joins/16-joins.html#combining-datasets",
+    "title": "Joins",
+    "section": "Combining Datasets",
+    "text": "Combining Datasets\n\nJoins are used to combine data from different tables based on a set of common variables (“keys”).\ndplyr provides a family of join functions.\nWe will use data from the nycflights13 package."
+  },
+  {
+    "objectID": "slides/16-joins/16-joins.html#primary-and-foreign-keys",
+    "href": "slides/16-joins/16-joins.html#primary-and-foreign-keys",
+    "title": "Joins",
+    "section": "Primary and Foreign Keys",
+    "text": "Primary and Foreign Keys\n\nA primary key is a variable (or set of variables) that uniquely identifies each observation in a table.\nA foreign key is a variable (or set of variables) in one table that corresponds to a primary key in another table.\nKeys are what link tables together."
+  },
+  {
+    "objectID": "slides/16-joins/16-joins.html#dataset-1-flights",
+    "href": "slides/16-joins/16-joins.html#dataset-1-flights",
+    "title": "Joins",
+    "section": "Dataset 1: flights",
+    "text": "Dataset 1: flights\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…"
+  },
+  {
+    "objectID": "slides/16-joins/16-joins.html#dataset-2-airlines",
+    "href": "slides/16-joins/16-joins.html#dataset-2-airlines",
+    "title": "Joins",
+    "section": "Dataset 2: airlines",
+    "text": "Dataset 2: airlines\n\nglimpse(airlines)\n\nRows: 16\nColumns: 2\n$ carrier &lt;chr&gt; \"9E\", \"AA\", \"AS\", \"B6\", \"DL\", \"EV\", \"F9\", \"FL\", \"HA\", \"MQ\", \"O…\n$ name    &lt;chr&gt; \"Endeavor Air Inc.\", \"American Airlines Inc.\", \"Alaska Airline…"
+  },
+  {
+    "objectID": "slides/16-joins/16-joins.html#left_join",
+    "href": "slides/16-joins/16-joins.html#left_join",
+    "title": "Joins",
+    "section": "left_join()",
+    "text": "left_join()\n\nleft_join() is the most commonly used join.\nIt returns all rows from the left table (x), and all columns from both tables (x and y).\nRows in x with no match in y will have NA values in the new columns.\nRows in y with no match in x are ignored.\nRows in y that match multiple rows in x will result in duplicated rows in the output (and vice versa)."
+  },
+  {
+    "objectID": "slides/16-joins/16-joins.html#example",
+    "href": "slides/16-joins/16-joins.html#example",
+    "title": "Joins",
+    "section": "Example",
+    "text": "Example\n\nflights2 &lt;- flights |&gt; select(year:day, hour, origin, dest, tailnum, carrier)\nflights2 |&gt; left_join(airlines, by = \"carrier\") |&gt; glimpse()\n\nRows: 336,776\nColumns: 9\n$ year    &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 20…\n$ month   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ day     &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ hour    &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 6, 6,…\n$ origin  &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\", \"JFK\",…\n$ dest    &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\", \"MCO\",…\n$ tailnum &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N39463\", \"N…\n$ carrier &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"AA\", \"B…\n$ name    &lt;chr&gt; \"United Air Lines Inc.\", \"United Air Lines Inc.\", \"American Ai…"
+  },
+  {
+    "objectID": "slides/16-joins/16-joins.html#other-mutating-joins",
+    "href": "slides/16-joins/16-joins.html#other-mutating-joins",
+    "title": "Joins",
+    "section": "Other Mutating Joins",
+    "text": "Other Mutating Joins\n\ninner_join(): returns only rows that have a match in both tables.\nright_join(): returns all rows from the right table.\nfull_join(): returns all rows from both tables."
+  },
+  {
+    "objectID": "slides/16-joins/16-joins.html#semi_join",
+    "href": "slides/16-joins/16-joins.html#semi_join",
+    "title": "Joins",
+    "section": "semi_join()",
+    "text": "semi_join()\n\nsemi_join() keeps all rows from the left table (x) that have a match in the right table (y).\nIt does not add any columns from y."
+  },
+  {
+    "objectID": "slides/16-joins/16-joins.html#example-1",
+    "href": "slides/16-joins/16-joins.html#example-1",
+    "title": "Joins",
+    "section": "Example",
+    "text": "Example\n\ntop_dest &lt;- flights |&gt;\n  count(dest, sort = TRUE) |&gt;\n  head(10)\n\nflights |&gt; semi_join(top_dest)\n\nJoining with `by = join_by(dest)`\n\n\n# A tibble: 141,145 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      542            540         2      923            850\n 2  2013     1     1      554            600        -6      812            837\n 3  2013     1     1      554            558        -4      740            728\n 4  2013     1     1      555            600        -5      913            854\n 5  2013     1     1      557            600        -3      838            846\n 6  2013     1     1      558            600        -2      753            745\n 7  2013     1     1      558            600        -2      924            917\n 8  2013     1     1      558            600        -2      923            937\n 9  2013     1     1      559            559         0      702            706\n10  2013     1     1      600            600         0      851            858\n# ℹ 141,135 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
+  },
+  {
+    "objectID": "slides/16-joins/16-joins.html#anti_join",
+    "href": "slides/16-joins/16-joins.html#anti_join",
+    "title": "Joins",
+    "section": "anti_join()",
+    "text": "anti_join()\n\nanti_join() returns all rows from x that do not have a match in y.\nUseful for finding observations that don’t have a match."
+  },
+  {
+    "objectID": "slides/16-joins/16-joins.html#example-2",
+    "href": "slides/16-joins/16-joins.html#example-2",
+    "title": "Joins",
+    "section": "Example",
+    "text": "Example\n\nflights |&gt;\n  anti_join(planes, by = \"tailnum\") |&gt;\n  count(tailnum, sort = TRUE)\n\n# A tibble: 722 × 2\n   tailnum     n\n   &lt;chr&gt;   &lt;int&gt;\n 1 &lt;NA&gt;     2512\n 2 N725MQ    575\n 3 N722MQ    513\n 4 N723MQ    507\n 5 N713MQ    483\n 6 N735MQ    396\n 7 N0EGMQ    371\n 8 N534MQ    364\n 9 N542MQ    363\n10 N531MQ    349\n# ℹ 712 more rows"
+  },
+  {
+    "objectID": "slides/16-joins/16-joins.html#practice",
+    "href": "slides/16-joins/16-joins.html#practice",
+    "title": "Joins",
+    "section": "Practice!",
+    "text": "Practice!\nLet’s practice joins!"
+  },
+  {
+    "objectID": "course-faq.html",
+    "href": "course-faq.html",
+    "title": "FAQ",
+    "section": "",
+    "text": "If and when questions are asked… frequently… I will post them here.",
+    "crumbs": [
+      "Course information",
+      "FAQ"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CSCI-2025: Data Manipulation and Visualization",
+    "section": "",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03",
+    "crumbs": [
+      "Course information",
+      "Schedule"
+    ]
   },
   {
     "objectID": "slides/09-logicals/09-logicals.html#logical-vectors",
@@ -1076,348 +1343,95 @@
     "text": "Logical Vectors\n\nCreate with comparisons: &lt;, ==, %in%, is.na().\nCombine with boolean operators: &, |, !.\nSummarize with any(), all(), sum(), mean().\nUse for conditional transformations with if_else() and case_when().\nLogical vectors are a fundamental tool for data manipulation in R."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "CSCI-2025: Data Manipulation and Visualization",
-    "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02",
-    "crumbs": [
-      "Course information",
-      "Schedule"
-    ]
-  },
-  {
-    "objectID": "course-faq.html",
-    "href": "course-faq.html",
-    "title": "FAQ",
-    "section": "",
-    "text": "If and when questions are asked… frequently… I will post them here.",
-    "crumbs": [
-      "Course information",
-      "FAQ"
-    ]
-  },
-  {
-    "objectID": "slides/16-joins/16-joins.html#combining-datasets",
-    "href": "slides/16-joins/16-joins.html#combining-datasets",
-    "title": "Joins",
-    "section": "Combining Datasets",
-    "text": "Combining Datasets\n\nJoins are used to combine data from different tables based on a set of common variables (“keys”).\ndplyr provides a family of join functions.\nWe will use data from the nycflights13 package."
-  },
-  {
-    "objectID": "slides/16-joins/16-joins.html#primary-and-foreign-keys",
-    "href": "slides/16-joins/16-joins.html#primary-and-foreign-keys",
-    "title": "Joins",
-    "section": "Primary and Foreign Keys",
-    "text": "Primary and Foreign Keys\n\nA primary key is a variable (or set of variables) that uniquely identifies each observation in a table.\nA foreign key is a variable (or set of variables) in one table that corresponds to a primary key in another table.\nKeys are what link tables together."
-  },
-  {
-    "objectID": "slides/16-joins/16-joins.html#dataset-1-flights",
-    "href": "slides/16-joins/16-joins.html#dataset-1-flights",
-    "title": "Joins",
-    "section": "Dataset 1: flights",
-    "text": "Dataset 1: flights\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…"
-  },
-  {
-    "objectID": "slides/16-joins/16-joins.html#dataset-2-airlines",
-    "href": "slides/16-joins/16-joins.html#dataset-2-airlines",
-    "title": "Joins",
-    "section": "Dataset 2: airlines",
-    "text": "Dataset 2: airlines\n\nglimpse(airlines)\n\nRows: 16\nColumns: 2\n$ carrier &lt;chr&gt; \"9E\", \"AA\", \"AS\", \"B6\", \"DL\", \"EV\", \"F9\", \"FL\", \"HA\", \"MQ\", \"O…\n$ name    &lt;chr&gt; \"Endeavor Air Inc.\", \"American Airlines Inc.\", \"Alaska Airline…"
-  },
-  {
-    "objectID": "slides/16-joins/16-joins.html#left_join",
-    "href": "slides/16-joins/16-joins.html#left_join",
-    "title": "Joins",
-    "section": "left_join()",
-    "text": "left_join()\n\nleft_join() is the most commonly used join.\nIt returns all rows from the left table (x), and all columns from both tables (x and y).\nRows in x with no match in y will have NA values in the new columns.\nRows in y with no match in x are ignored.\nRows in y that match multiple rows in x will result in duplicated rows in the output (and vice versa)."
-  },
-  {
-    "objectID": "slides/16-joins/16-joins.html#example",
-    "href": "slides/16-joins/16-joins.html#example",
-    "title": "Joins",
-    "section": "Example",
-    "text": "Example\n\nflights2 &lt;- flights |&gt; select(year:day, hour, origin, dest, tailnum, carrier)\nflights2 |&gt; left_join(airlines, by = \"carrier\") |&gt; glimpse()\n\nRows: 336,776\nColumns: 9\n$ year    &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 20…\n$ month   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ day     &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ hour    &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 6, 6,…\n$ origin  &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\", \"JFK\",…\n$ dest    &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\", \"MCO\",…\n$ tailnum &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N39463\", \"N…\n$ carrier &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"AA\", \"B…\n$ name    &lt;chr&gt; \"United Air Lines Inc.\", \"United Air Lines Inc.\", \"American Ai…"
-  },
-  {
-    "objectID": "slides/16-joins/16-joins.html#other-mutating-joins",
-    "href": "slides/16-joins/16-joins.html#other-mutating-joins",
-    "title": "Joins",
-    "section": "Other Mutating Joins",
-    "text": "Other Mutating Joins\n\ninner_join(): returns only rows that have a match in both tables.\nright_join(): returns all rows from the right table.\nfull_join(): returns all rows from both tables."
-  },
-  {
-    "objectID": "slides/16-joins/16-joins.html#semi_join",
-    "href": "slides/16-joins/16-joins.html#semi_join",
-    "title": "Joins",
-    "section": "semi_join()",
-    "text": "semi_join()\n\nsemi_join() keeps all rows from the left table (x) that have a match in the right table (y).\nIt does not add any columns from y."
-  },
-  {
-    "objectID": "slides/16-joins/16-joins.html#example-1",
-    "href": "slides/16-joins/16-joins.html#example-1",
-    "title": "Joins",
-    "section": "Example",
-    "text": "Example\n\ntop_dest &lt;- flights |&gt;\n  count(dest, sort = TRUE) |&gt;\n  head(10)\n\nflights |&gt; semi_join(top_dest)\n\nJoining with `by = join_by(dest)`\n\n\n# A tibble: 141,145 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      542            540         2      923            850\n 2  2013     1     1      554            600        -6      812            837\n 3  2013     1     1      554            558        -4      740            728\n 4  2013     1     1      555            600        -5      913            854\n 5  2013     1     1      557            600        -3      838            846\n 6  2013     1     1      558            600        -2      753            745\n 7  2013     1     1      558            600        -2      924            917\n 8  2013     1     1      558            600        -2      923            937\n 9  2013     1     1      559            559         0      702            706\n10  2013     1     1      600            600         0      851            858\n# ℹ 141,135 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
-  },
-  {
-    "objectID": "slides/16-joins/16-joins.html#anti_join",
-    "href": "slides/16-joins/16-joins.html#anti_join",
-    "title": "Joins",
-    "section": "anti_join()",
-    "text": "anti_join()\n\nanti_join() returns all rows from x that do not have a match in y.\nUseful for finding observations that don’t have a match."
-  },
-  {
-    "objectID": "slides/16-joins/16-joins.html#example-2",
-    "href": "slides/16-joins/16-joins.html#example-2",
-    "title": "Joins",
-    "section": "Example",
-    "text": "Example\n\nflights |&gt;\n  anti_join(planes, by = \"tailnum\") |&gt;\n  count(tailnum, sort = TRUE)\n\n# A tibble: 722 × 2\n   tailnum     n\n   &lt;chr&gt;   &lt;int&gt;\n 1 &lt;NA&gt;     2512\n 2 N725MQ    575\n 3 N722MQ    513\n 4 N723MQ    507\n 5 N713MQ    483\n 6 N735MQ    396\n 7 N0EGMQ    371\n 8 N534MQ    364\n 9 N542MQ    363\n10 N531MQ    349\n# ℹ 712 more rows"
-  },
-  {
-    "objectID": "slides/16-joins/16-joins.html#practice",
-    "href": "slides/16-joins/16-joins.html#practice",
-    "title": "Joins",
-    "section": "Practice!",
-    "text": "Practice!\nLet’s practice joins!"
-  },
-  {
-    "objectID": "slides/03-data-transformation/03-first-transformations.html#this-lesson",
-    "href": "slides/03-data-transformation/03-first-transformations.html#this-lesson",
-    "title": "First Transformations",
+    "objectID": "slides/04-data-tidying/04-data-tidying.html#this-lesson",
+    "href": "slides/04-data-tidying/04-data-tidying.html#this-lesson",
+    "title": "Data Tidying",
     "section": "This lesson",
-    "text": "This lesson\n\nIntroduce data transformation with dplyr\nWork through two scenarios involving transforming a single data frame"
+    "text": "This lesson\n\nDefine “tidy data”\nLearn how to use tidyr to make data tidy\n\npivot_longer() for lengthening data\npivot_wider() for widening data"
   },
   {
-    "objectID": "slides/03-data-transformation/03-first-transformations.html#data-nycflights13",
-    "href": "slides/03-data-transformation/03-first-transformations.html#data-nycflights13",
-    "title": "First Transformations",
-    "section": "Data: nycflights13",
-    "text": "Data: nycflights13\n\nInstall nycflights13 package if you haven’t already\nLoad tidyverse and nycflights13\nnycflights113 contains on-time data for all flights that departed NYC in 2013\nLet’s take a quick look at the data set!"
+    "objectID": "slides/04-data-tidying/04-data-tidying.html#what-is-tidy-data",
+    "href": "slides/04-data-tidying/04-data-tidying.html#what-is-tidy-data",
+    "title": "Data Tidying",
+    "section": "What is tidy data?",
+    "text": "What is tidy data?\nTidy data is a consistent way of structuring datasets that makes them easier to work with. A dataset is tidy if it follows three rules:\n\nEach variable has its own column.\nEach observation has its own row.\nEach value has its own cell.\n\nThis structure is a standard in the tidyverse."
   },
   {
-    "objectID": "slides/03-data-transformation/03-first-transformations.html#setup",
-    "href": "slides/03-data-transformation/03-first-transformations.html#setup",
-    "title": "First Transformations",
+    "objectID": "slides/04-data-tidying/04-data-tidying.html#setup",
+    "href": "slides/04-data-tidying/04-data-tidying.html#setup",
+    "title": "Data Tidying",
     "section": "Setup",
-    "text": "Setup\n\n# load packages\nlibrary(tidyverse)\nlibrary(nycflights13)"
+    "text": "Setup\nWe will be using functions from the tidyr package, which is part of the tidyverse.\n\n# load packages\nlibrary(tidyverse)"
   },
   {
-    "objectID": "slides/03-data-transformation/03-first-transformations.html#dplyr-101",
-    "href": "slides/03-data-transformation/03-first-transformations.html#dplyr-101",
-    "title": "First Transformations",
-    "section": "dplyr 101",
-    "text": "dplyr 101\n\ndplyr is a package in the tidyverse, designed for data manipulation\nProvides a set of functions (verbs) that help you transform data frames\nCommon properties of a dplyr verb:\n\nTakes a data frame as the first argument\nReturns a data frame as output\nAdditional arguments specify how to options for that verb\n\nIn practice: want to chain together lots of verbs to perform complex transformations\nUse the pipe operator (|&gt;) to chain together multiple verbs"
+    "objectID": "slides/04-data-tidying/04-data-tidying.html#lengthening-data-with-pivot_longer",
+    "href": "slides/04-data-tidying/04-data-tidying.html#lengthening-data-with-pivot_longer",
+    "title": "Data Tidying",
+    "section": "Lengthening data with pivot_longer()",
+    "text": "Lengthening data with pivot_longer()\n\nWide Format: column names are actually values of a variable:\n\n\nrelig_income |&gt; head()\n\n# A tibble: 6 × 11\n  religion  `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`\n  &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n1 Agnostic       27        34        60        81        76       137        122\n2 Atheist        12        27        37        52        35        70         73\n3 Buddhist       27        21        30        34        33        58         62\n4 Catholic      418       617       732       670       638      1116        949\n5 Don’t kn…      15        14        15        11        10        35         21\n6 Evangeli…     575       869      1064       982       881      1486        949\n# ℹ 3 more variables: `$100-150k` &lt;dbl&gt;, `&gt;150k` &lt;dbl&gt;,\n#   `Don't know/refused` &lt;dbl&gt;\n\n\nThis is not tidy. The income brackets are variable names, not a variable."
   },
   {
-    "objectID": "slides/03-data-transformation/03-first-transformations.html#chaining-with-the-pipe-operator",
-    "href": "slides/03-data-transformation/03-first-transformations.html#chaining-with-the-pipe-operator",
-    "title": "First Transformations",
-    "section": "Chaining with the pipe operator",
-    "text": "Chaining with the pipe operator\n\nThe pipe operator (|&gt;) takes the output of one expression and “pipes” it as the first argument to the next expression\n\nWhen reading code with pipes use the phrase “and then” to understand the sequence of operations\n\nMore on this in a bit"
+    "objectID": "slides/04-data-tidying/04-data-tidying.html#using-pivot_longer",
+    "href": "slides/04-data-tidying/04-data-tidying.html#using-pivot_longer",
+    "title": "Data Tidying",
+    "section": "Using pivot_longer()",
+    "text": "Using pivot_longer()\n\n\n\nGoal: transform this so we have three columns: religion, income, and count.\nUse pivot_longer() to do this.\n\n\ntidy_relig_income &lt;- relig_income |&gt; \n  pivot_longer(\n    cols = !religion, \n    names_to = \"income\", \n    values_to = \"count\"\n  )\n\ntidy_relig_income |&gt; head()\n\n# A tibble: 6 × 3\n  religion income  count\n  &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt;\n1 Agnostic &lt;$10k      27\n2 Agnostic $10-20k    34\n3 Agnostic $20-30k    60\n4 Agnostic $30-40k    81\n5 Agnostic $40-50k    76\n6 Agnostic $50-75k   137\n\n\n\n\ncols: The columns to pivot into longer format. !religion means all columns except religion.\nnames_to: The name of the new column that will contain the names of the original columns.\nvalues_to: The name of the new column that will contain the values from the original columns."
   },
   {
-    "objectID": "slides/03-data-transformation/03-first-transformations.html#types-of-verbs",
-    "href": "slides/03-data-transformation/03-first-transformations.html#types-of-verbs",
-    "title": "First Transformations",
-    "section": "Types of verbs",
-    "text": "Types of verbs\ndplyr verbs can be grouped into a few categories based on what they do to the data frame: - Rows - Columns - Groups - Tables (not today)"
+    "objectID": "slides/04-data-tidying/04-data-tidying.html#another-pivot_longer-example-billboard",
+    "href": "slides/04-data-tidying/04-data-tidying.html#another-pivot_longer-example-billboard",
+    "title": "Data Tidying",
+    "section": "Another pivot_longer() example: billboard",
+    "text": "Another pivot_longer() example: billboard\nThe billboard dataset has chart rankings for 2000.\n\nbillboard |&gt; head()\n\n# A tibble: 6 × 79\n  artist      track date.entered   wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8\n  &lt;chr&gt;       &lt;chr&gt; &lt;date&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 2 Pac       Baby… 2000-02-26      87    82    72    77    87    94    99    NA\n2 2Ge+her     The … 2000-09-02      91    87    92    NA    NA    NA    NA    NA\n3 3 Doors Do… Kryp… 2000-04-08      81    70    68    67    66    57    54    53\n4 3 Doors Do… Loser 2000-10-21      76    76    72    69    67    65    55    59\n5 504 Boyz    Wobb… 2000-04-15      57    34    25    17    17    31    36    49\n6 98^0        Give… 2000-08-19      51    39    34    26    26    19     2     2\n# ℹ 68 more variables: wk9 &lt;dbl&gt;, wk10 &lt;dbl&gt;, wk11 &lt;dbl&gt;, wk12 &lt;dbl&gt;,\n#   wk13 &lt;dbl&gt;, wk14 &lt;dbl&gt;, wk15 &lt;dbl&gt;, wk16 &lt;dbl&gt;, wk17 &lt;dbl&gt;, wk18 &lt;dbl&gt;,\n#   wk19 &lt;dbl&gt;, wk20 &lt;dbl&gt;, wk21 &lt;dbl&gt;, wk22 &lt;dbl&gt;, wk23 &lt;dbl&gt;, wk24 &lt;dbl&gt;,\n#   wk25 &lt;dbl&gt;, wk26 &lt;dbl&gt;, wk27 &lt;dbl&gt;, wk28 &lt;dbl&gt;, wk29 &lt;dbl&gt;, wk30 &lt;dbl&gt;,\n#   wk31 &lt;dbl&gt;, wk32 &lt;dbl&gt;, wk33 &lt;dbl&gt;, wk34 &lt;dbl&gt;, wk35 &lt;dbl&gt;, wk36 &lt;dbl&gt;,\n#   wk37 &lt;dbl&gt;, wk38 &lt;dbl&gt;, wk39 &lt;dbl&gt;, wk40 &lt;dbl&gt;, wk41 &lt;dbl&gt;, wk42 &lt;dbl&gt;,\n#   wk43 &lt;dbl&gt;, wk44 &lt;dbl&gt;, wk45 &lt;dbl&gt;, wk46 &lt;dbl&gt;, wk47 &lt;dbl&gt;, wk48 &lt;dbl&gt;, …\n\n\nThe wk1, wk2, … columns are values of a “week” variable."
   },
   {
-    "objectID": "slides/03-data-transformation/03-first-transformations.html#verbs-that-act-on-rows",
-    "href": "slides/03-data-transformation/03-first-transformations.html#verbs-that-act-on-rows",
-    "title": "First Transformations",
-    "section": "Verbs that act on rows",
-    "text": "Verbs that act on rows\n\nfilter(): keep rows that meet certain criteria\n\nYou can use &gt;, &lt;, ==, !=, &gt;=, &lt;=, %in% for comparisons\nYou can also use & (and), | (or), and ! (not) to combine multiple conditions\n\narrange(): reorder rows\ndistinct(): keep only unique rows\nslice_ function: slice_head(), slice_tail(), slice_sample(), slice_min(), slice_max()"
+    "objectID": "slides/04-data-tidying/04-data-tidying.html#tidying-billboard",
+    "href": "slides/04-data-tidying/04-data-tidying.html#tidying-billboard",
+    "title": "Data Tidying",
+    "section": "Tidying billboard",
+    "text": "Tidying billboard\n\n\n\nbillboard |&gt;\n  pivot_longer(\n    cols = starts_with(\"wk\"),\n    names_to = \"week\",\n    values_to = \"rank\",\n    values_drop_na = TRUE\n  ) |&gt; head()\n\n# A tibble: 6 × 5\n  artist track                   date.entered week   rank\n  &lt;chr&gt;  &lt;chr&gt;                   &lt;date&gt;       &lt;chr&gt; &lt;dbl&gt;\n1 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk1      87\n2 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk2      82\n3 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk3      72\n4 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk4      77\n5 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk5      87\n6 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk6      94\n\n\n\n\nWe use starts_with(\"wk\") to select the columns to pivot.\nvalues_drop_na = TRUE removes rows where the rank is NA."
   },
   {
-    "objectID": "slides/03-data-transformation/03-first-transformations.html#practice",
-    "href": "slides/03-data-transformation/03-first-transformations.html#practice",
-    "title": "First Transformations",
-    "section": "Practice",
-    "text": "Practice\nLet’s do the following:\n\nUse filter to keep only flight in January\nUse arrange to sort by dep_delay (departure delay)\nUse distinct to keep only unique carrier values\nLet’s work through Exercise 1 from the textbook"
+    "objectID": "slides/04-data-tidying/04-data-tidying.html#widening-data-with-pivot_wider",
+    "href": "slides/04-data-tidying/04-data-tidying.html#widening-data-with-pivot_wider",
+    "title": "Data Tidying",
+    "section": "Widening data with pivot_wider()",
+    "text": "Widening data with pivot_wider()\npivot_wider() is the opposite of pivot_longer(). It’s used when an observation is scattered across multiple rows.\n\nfish_encounters |&gt; head()\n\n# A tibble: 6 × 3\n  fish  station  seen\n  &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;\n1 4842  Release     1\n2 4842  I80_1       1\n3 4842  Lisbon      1\n4 4842  Rstr        1\n5 4842  Base_TD     1\n6 4842  BCE         1\n\n\n\nOne observation = one fishing station\nfish_encounters has two rows for each station: one for when a fish was seen and one for when it wasn’t\nstation column contains variable names\nseen column contains(0/1) values"
   },
   {
-    "objectID": "slides/03-data-transformation/03-first-transformations.html#verbs-that-act-on-columns",
-    "href": "slides/03-data-transformation/03-first-transformations.html#verbs-that-act-on-columns",
-    "title": "First Transformations",
-    "section": "Verbs that act on columns",
-    "text": "Verbs that act on columns\n\nmutate(): create new columns or modify and combine existing columns\nselect(): keep only specified columns\nrename(): rename columns"
+    "objectID": "slides/04-data-tidying/04-data-tidying.html#using-pivot_wider",
+    "href": "slides/04-data-tidying/04-data-tidying.html#using-pivot_wider",
+    "title": "Data Tidying",
+    "section": "Using pivot_wider()",
+    "text": "Using pivot_wider()\nGoal: one row per station, with columns indicating whether fish was seen or not.\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1    NA    NA    NA    NA    NA    NA\n5 4847        1     1      1    NA      NA    NA    NA    NA    NA    NA    NA\n6 4848        1     1      1     1      NA    NA    NA    NA    NA    NA    NA\n\n\nProblem: NA values where there shoiuld be zeros, can fix this with values_fill."
   },
   {
-    "objectID": "slides/03-data-transformation/03-first-transformations.html#practice-1",
-    "href": "slides/03-data-transformation/03-first-transformations.html#practice-1",
-    "title": "First Transformations",
-    "section": "Practice",
-    "text": "Practice\nLet’s do the following:\n\nUse mutate to create a new column speed (distance / air_time * 60)\nUse select to drop the tailnum column\nUse select to keep only flight, carrier, and speed\nUse rename to rename speed to avg_speed\nUse relocate to move avg_speed to be the first column\nLet’s work through Exercise 1 from the textbook"
+    "objectID": "slides/04-data-tidying/04-data-tidying.html#using-pivot_wider-with-values_fill",
+    "href": "slides/04-data-tidying/04-data-tidying.html#using-pivot_wider-with-values_fill",
+    "title": "Data Tidying",
+    "section": "Using pivot_wider() with values_fill",
+    "text": "Using pivot_wider() with values_fill\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen,\n    values_fill = 0\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1     0     0     0     0     0     0\n5 4847        1     1      1     0       0     0     0     0     0     0     0\n6 4848        1     1      1     1       0     0     0     0     0     0     0\n\n\n\nnames_from: The column to get the new column names from.\nvalues_from: The column to get the cell values from.\nvalues_fill: A value to replace NAs with."
   },
   {
-    "objectID": "slides/03-data-transformation/03-first-transformations.html#aggregating-data-verbs-that-act-on-groups",
-    "href": "slides/03-data-transformation/03-first-transformations.html#aggregating-data-verbs-that-act-on-groups",
-    "title": "First Transformations",
-    "section": "Aggregating data: verbs that act on groups",
-    "text": "Aggregating data: verbs that act on groups\n\nWhat you frequently want to do is summarize data by groups\n\ngroup_by(): specify one or more columns to group by\n\nCreates a new data frame where rows are grouped by unique combinations of the grouping columns\nSubsequent verbs will operate on each group separately\nUse ungroup() to remove grouping\n\nsummarize(): compute summary statistics for each group"
+    "objectID": "slides/04-data-tidying/04-data-tidying.html#summary",
+    "href": "slides/04-data-tidying/04-data-tidying.html#summary",
+    "title": "Data Tidying",
+    "section": "Summary",
+    "text": "Summary\n\nTidy data is a standard format that makes data analysis easier.\nUse pivot_longer() when your column names are actually values of a variable (to make data longer and narrower).\nUse pivot_wider() when an observation is scattered across multiple rows (to make data wider and shorter).\nYou will often need to use pivot_longer() and pivot_wider() when preparing data for plotting\n\nThese two functions are the foundation of data tidying in R."
   },
   {
-    "objectID": "slides/03-data-transformation/03-first-transformations.html#practice-2",
-    "href": "slides/03-data-transformation/03-first-transformations.html#practice-2",
-    "title": "First Transformations",
-    "section": "Practice",
-    "text": "Practice\n\nLet’s do the following:\n\nUse group_by to group by carrier\nUse summarize to compute the average dep_delay for each carrier\nArrange the results in descending order of average departure delay\nLet’s work through Exercise 3 from the textbook"
+    "objectID": "slides/03-basics-of-R/03-basic-of-R.html#notebooklm",
+    "href": "slides/03-basics-of-R/03-basic-of-R.html#notebooklm",
+    "title": "R Basics",
+    "section": "NotebookLM",
+    "text": "NotebookLM\n\nNotebookLM is a Google AI tool that helps you learn from your documents.\nI’ve created a notebook for this course that you can use to ask questions about the material."
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#data-flights-from-nyc-in-2013",
-    "href": "slides/06-layers/06-layers.html#data-flights-from-nyc-in-2013",
-    "title": "ggplot2 layers",
-    "section": "Data: Flights from NYC in 2013",
-    "text": "Data: Flights from NYC in 2013\nWe will be using the nycflights13::flights dataset. This dataset contains information about all flights that departed from New York City (EWR, LGA, JFK) in 2013.\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…"
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#a-simple-scatterplot",
-    "href": "slides/06-layers/06-layers.html#a-simple-scatterplot",
-    "title": "ggplot2 layers",
-    "section": "A simple scatterplot",
-    "text": "A simple scatterplot\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point()\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#adding-layers",
-    "href": "slides/06-layers/06-layers.html#adding-layers",
-    "title": "ggplot2 layers",
-    "section": "Adding layers",
-    "text": "Adding layers\nA plot is composed of layers. Each layer has:\n\nA geom: The geometric object that represents the data (e.g., points, lines, bars).\nAn aesthetic mapping: How variables are mapped to visual properties.\nA stat: A statistical transformation (e.g., counting, summarizing).\nA position adjustment: How to arrange elements that would otherwise overlap."
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#adding-a-layer-trend-line-with-geom_smooth",
-    "href": "slides/06-layers/06-layers.html#adding-a-layer-trend-line-with-geom_smooth",
-    "title": "ggplot2 layers",
-    "section": "Adding a layer: Trend line with geom_smooth()",
-    "text": "Adding a layer: Trend line with geom_smooth()\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(alpha = 0.1) +\n  geom_smooth()\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 9430 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#global-vs.-local-mappings",
-    "href": "slides/06-layers/06-layers.html#global-vs.-local-mappings",
-    "title": "ggplot2 layers",
-    "section": "Global vs. Local Mappings",
-    "text": "Global vs. Local Mappings\n\nAesthetic mappings can be:\nGlobal: specify in ggplot() so they apply to all layers\nLocal: specify in each geom_*() so they apply only to that layer"
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#using-color-as-a-local-aesthetic",
-    "href": "slides/06-layers/06-layers.html#using-color-as-a-local-aesthetic",
-    "title": "ggplot2 layers",
-    "section": "Using color as a local aesthetic",
-    "text": "Using color as a local aesthetic\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(mapping = aes(color = origin), alpha = 0.1) +\n  geom_smooth()\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 9430 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#why-isnt-this-plot-blue",
-    "href": "slides/06-layers/06-layers.html#why-isnt-this-plot-blue",
-    "title": "ggplot2 layers",
-    "section": "Why isn’t this plot blue?",
-    "text": "Why isn’t this plot blue?\n\n# This is probably not what you want\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(aes(color = \"blue\"))\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#setting-vs.-mapping",
-    "href": "slides/06-layers/06-layers.html#setting-vs.-mapping",
-    "title": "ggplot2 layers",
-    "section": "Setting vs. Mapping",
-    "text": "Setting vs. Mapping\n\nTo apply a constant property to all points, set it outside of aes()\n\n\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(color = \"blue\", alpha = 0.1)\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#common-geoms",
-    "href": "slides/06-layers/06-layers.html#common-geoms",
-    "title": "ggplot2 layers",
-    "section": "Common geoms",
-    "text": "Common geoms\n\ngeom_point(): Scatterplots\ngeom_line(): Line charts\ngeom_bar(): Bar charts\ngeom_histogram(): Histograms\ngeom_boxplot(): Boxplots\ngeom_smooth(): Trend lines\ngeom_density(): Density plots\nMany more!"
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#geom_bar-vs-geom_col",
-    "href": "slides/06-layers/06-layers.html#geom_bar-vs-geom_col",
-    "title": "ggplot2 layers",
-    "section": "geom_bar vs geom_col",
-    "text": "geom_bar vs geom_col\n\ngeom_bar() uses stat_count() by default to count the number of observations for each category\n\n\nggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar()"
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#changing-the-stat-argument",
-    "href": "slides/06-layers/06-layers.html#changing-the-stat-argument",
-    "title": "ggplot2 layers",
-    "section": "Changing the stat argument",
-    "text": "Changing the stat argument\n\nYou can change the statistical transformation used by a geom with the stat argument…\n\n\ncarrier_counts &lt;- flights |&gt;\n  count(carrier) |&gt; \n  ggplot(mapping = aes(x = carrier, y = n)) +\n    geom_bar(stat = \"identity\")"
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#changing-the-stat",
-    "href": "slides/06-layers/06-layers.html#changing-the-stat",
-    "title": "ggplot2 layers",
-    "section": "Changing the stat",
-    "text": "Changing the stat\n\nUsing after_stat() to modify computed variables from a stat\n\n\nggplot(data = flights) +\n  geom_bar(mapping = aes(x = carrier, y = after_stat(prop), group = 1)) +\n  labs(y = \"Proportion\")"
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#practice",
-    "href": "slides/06-layers/06-layers.html#practice",
-    "title": "ggplot2 layers",
-    "section": "Practice",
-    "text": "Practice\nLet’s try to overlay a density plot on top of a histogram of dep_delay…"
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#overplotting",
-    "href": "slides/06-layers/06-layers.html#overplotting",
-    "title": "ggplot2 layers",
-    "section": "Overplotting",
-    "text": "Overplotting\n\nOverplotting: When many points overlap in a scatterplot, making it hard to see the distribution of points\nCommon solution: Use transparency with alpha aesthetic\nAnother solution: Use position adjustments to spread out points"
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#jittering-points",
-    "href": "slides/06-layers/06-layers.html#jittering-points",
-    "title": "ggplot2 layers",
-    "section": "Jittering points",
-    "text": "Jittering points\n\nlibrary(patchwork)\np1 &lt;- ggplot(flights, aes(x = month, y = dep_delay)) +\n  geom_point(alpha = 0.01)\np2 &lt;- ggplot(flights, aes(x = month, y = dep_delay)) +\n  geom_jitter(alpha = 0.01)\np1 + p2"
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#bar-chart-adjustments",
-    "href": "slides/06-layers/06-layers.html#bar-chart-adjustments",
-    "title": "ggplot2 layers",
-    "section": "Bar chart adjustments",
-    "text": "Bar chart adjustments\nFor bar charts, you can use position to change how bars are arranged. - stack (default): Stack bars on top of each other. - fill: Stack bars, but standardize to have the same height. Good for comparing proportions. - dodge: Place bars next to each other."
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#bar-chart-adjustments-1",
-    "href": "slides/06-layers/06-layers.html#bar-chart-adjustments-1",
-    "title": "ggplot2 layers",
-    "section": "Bar chart adjustments",
-    "text": "Bar chart adjustments\n\np1 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"stack\")\np2 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"fill\") +\n  labs(y = \"Proportion\")\np3 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"dodge\")\np1 + p2 + p3"
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#facet_wrap",
-    "href": "slides/06-layers/06-layers.html#facet_wrap",
-    "title": "ggplot2 layers",
-    "section": "facet_wrap",
-    "text": "facet_wrap\n\nFacets allow you to break your plot into subplots based on a categorical variable.\n\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(alpha = 0.1) +\n  facet_wrap(~ origin, nrow = 1)\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#adding-a-trend-line-to-facets",
-    "href": "slides/06-layers/06-layers.html#adding-a-trend-line-to-facets",
-    "title": "ggplot2 layers",
-    "section": "Adding a trend line to facets",
-    "text": "Adding a trend line to facets\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(alpha = 0.1) +\n  geom_smooth() +\n  facet_wrap(~ origin, nrow = 1)\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 9430 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#facet-grids",
-    "href": "slides/06-layers/06-layers.html#facet-grids",
-    "title": "ggplot2 layers",
-    "section": "Facet Grids",
-    "text": "Facet Grids\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(alpha = 0.1) +\n  geom_smooth() +\n  facet_grid(carrier ~ origin)\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 9430 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Failed to fit group -1.\nCaused by error in `smooth.construct.cr.smooth.spec()`:\n! x has insufficient unique values to support 10 knots: reduce k.\n\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#flipping-coordinates",
-    "href": "slides/06-layers/06-layers.html#flipping-coordinates",
-    "title": "ggplot2 layers",
-    "section": "Flipping coordinates",
-    "text": "Flipping coordinates\n\np1 &lt;- ggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar()\n\np2 &lt;- ggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar() +\n  coord_flip()\np1 + p2"
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#the-layered-grammar-in-summary",
-    "href": "slides/06-layers/06-layers.html#the-layered-grammar-in-summary",
-    "title": "ggplot2 layers",
-    "section": "The layered grammar in summary",
-    "text": "The layered grammar in summary\n#| eval: false\n`ggplot(data = &lt;DATA&gt;) +`\n`  &lt;GEOM_FUNCTION&gt;(`\n`    mapping = aes(&lt;AESTHETIC_MAPPINGS&gt;),`\n`    stat = &lt;STAT&gt;,`\n`    position = &lt;POSITION&gt;`\n`  ) +`\n`  &lt;COORDINATE_SYSTEM&gt; +`\n`  &lt;FACET_FUNCTION&gt;`"
+    "objectID": "slides/03-basics-of-R/03-basic-of-R.html#do-next",
+    "href": "slides/03-basics-of-R/03-basic-of-R.html#do-next",
+    "title": "R Basics",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 1: Data Visualization from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 1” or work through some of the exercises in the text.\n\nNote that you can say “This is too hard. Give me some easier problems.”\n\nMove on to Lecture 03."
   },
   {
     "objectID": "slides/00-welcome/00-welcome.html#instructor",
@@ -2203,7 +2217,7 @@
     "href": "course-links.html",
     "title": "Useful links",
     "section": "",
-    "text": "Course GitHub organization\n🔗 on GitHub\n\n\n\nGradebook Artificial Intellegence\n🔗 on Teams 🔗 Course NotebookLM | 🔗 Recitation Leader Gem |\n\n\n\nTexbooks\n🔗 R for Data Science\n\n\n\nPackage documentation\n🔗 ggplot2: ggplot2.tidyverse.org\n🔗 dplyr: dplyr.tidyverse.org\n🔗 tidyr: tidyr.tidyverse.org\n🔗 forcats: forcats.tidyverse.org\n🔗 stringr: stringr.tidyverse.org\n🔗 lubridate: lubridate.tidyverse.org\n🔗 readr: readr.tidyverse.org",
+    "text": "Course GitHub organization\n🔗 on GitHub\n\n\nGradebook\n🔗 on Teams\n\n\nArtificial Intellegence\n🔗 Course NotebookLM 🔗 Recitation Leader Gem\n\n\nTexbooks\n🔗 R for Data Science\n\n\nPackage documentation\n🔗 ggplot2: ggplot2.tidyverse.org\n🔗 dplyr: dplyr.tidyverse.org\n🔗 tidyr: tidyr.tidyverse.org\n🔗 forcats: forcats.tidyverse.org\n🔗 stringr: stringr.tidyverse.org\n🔗 lubridate: lubridate.tidyverse.org\n🔗 readr: readr.tidyverse.org",
     "crumbs": [
       "Course information",
       "Useful links"

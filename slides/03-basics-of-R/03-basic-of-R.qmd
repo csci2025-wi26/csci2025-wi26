@@ -1,0 +1,24 @@
+---
+title: R Basics
+subtitle: Lecture 3
+title-slide-attributes:
+  data-background-image: ../title-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+auto-stretch: false
+---
+
+## NotebookLM
+
+- [NotebookLM](https://notebooklm.google.com/) is a Google AI tool that helps you learn from your documents.
+- I've created [a notebook](https://gemini.google.com/gem/1dtY23owKnSeen_WhFPxo71Ex3VWzRGvV?usp=sharing) for this course that you can use to ask questions about the material.
+
+# Wrap up
+
+## Do Next
+
+1. Read [Chapter 1: Data Visualization](https://r4ds.hadley.nz/data-visualize.html) from r4ds.
+2. Open the Recitation Gem and say "Provide me practice problems for Chapter 1" or work through some of the exercises in the text.
+    - Note that you can say "This is too hard. Give me some easier problems."
+3. Move on to Lecture 03.
