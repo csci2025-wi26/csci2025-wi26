@@ -10,18 +10,18 @@ Note that you must first install R before installing Positron.
 
 ### R
 
-First install R. You can following the directions for you operating system on the [R Project for Statistical Computing](https://cran.r-project.org/) website.
+First install R. You can follow the directions for your operating system on the [R Project for Statistical Computing](https://cran.r-project.org/) website.
 
 ### Positron
 
-Next install Positron. You can download Positron from the [Positron Download](https://positron.posit.co/install.html) page. Follow the installation instructions for your operating system. If you'd prefer to use RStudio rather than Positrion, that is ok with me, but I recommend Positron for this course.
+Next install Positron. You can download Positron from the [Positron Download](https://positron.posit.co/install.html) page. Follow the installation instructions for your operating system. If you'd prefer to use RStudio rather than Positron, that is ok with me, but I recommend Positron for this course.
 
 ## Google AI Pro
 
-Many of the things in this course require the use of AI products created by Google. Please sign up for a Google AI Pro account (you may use what ever email address you like). Normally this costs $20/month, but Google is offering it free for students for one year. To sign up for Google AI Pro, go to the [Google AI Pro](https://gemini.google/students/) page and follow the instructions to sign up.
+Many of the things in this course require the use of AI products created by Google. Please sign up for a Google AI Pro account (you may use whatever email address you like). Normally this costs $20/month, but Google is offering it free for students for one year. To sign up for Google AI Pro, go to the [Google AI Pro](https://gemini.google/students/) page and follow the instructions to sign up.
 
 ## Git & GitHub
 
-You need to create a [Github](https://github.com/) account. You may want to use this to show-off work to future employers so I recommend using something professional (like your name) as your user name. Once you have done this, email it to Dr. Friedlander. 
+You need to create a [GitHub](https://github.com/) account. You may want to use this to show off work to future employers so I recommend using something professional (like your name) as your username. Once you have done this, email it to Dr. Friedlander. 
 
-Github provides it's pro features free to students. To get these, however, you must be a verified learner. This process requires uploading a picture of your school I'd and can take a few days. Please click the `Get verified` button on [this page](https://github.com/education/students) and complete the verification process.
+GitHub provides its pro features free to students. To get these, however, you must be a verified learner. This process requires uploading a picture of your school ID and can take a few days. Please click the `Get verified` button on [this page](https://github.com/education/students) and complete the verification process.

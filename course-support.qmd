@@ -10,7 +10,7 @@ If you have a question during lecture or lab, feel free to ask it! There are lik
 
 ## Office hours
 
-I here to help you be successful in the course. You are encouraged to attend office hours during the times posted on the home page to ask questions about the course content and assignments. A lot of questions are most effectively answered in-person, so office hours are a valuable resource. I encourage each and every one of you to take advantage of this resource! Make a pledge to stop by office hours at least once during the first three weeks of class. If you truly have no questions to ask, just stop by and say hi and introduce yourself.
+I am here to help you be successful in the course. You are encouraged to attend office hours during the times posted on the home page to ask questions about the course content and assignments. A lot of questions are most effectively answered in-person, so office hours are a valuable resource. I encourage each and every one of you to take advantage of this resource! Make a pledge to stop by office hours at least once during the first three weeks of class. If you truly have no questions to ask, just stop by and say hi and introduce yourself.
 
 ## Teams
 
@@ -20,13 +20,13 @@ Have a question that can't wait for office hours? Prefer to write out your quest
 
 Please refrain from emailing any course content questions (those should go to Slack), and only use email for questions about personal matters that may not be appropriate for the public course forum (e.g., illness, accommodations, etc.). For such matters, you may email Dr. Friedlander at [efriedlander\@collegeofidaho.edu](mailto:efriedlander@collegeofidaho.edu).
 
-If there is a question that's not appropriate for the public forum, you are welcome to email me directly. Barring extenuating circumstances, I will respond to CSCI 2025 emails within 48 hours Monday - Friday. Response time may be slower for emails sent Friday evening - Sunday.
+Barring extenuating circumstances, I will respond to CSCI 2025 emails within 48 hours Monday - Friday. Response time may be slower for emails sent Friday evening - Sunday.
 
 ## AI tools
 
 ### NotebookLM
 
-The first tool that may be useful is the course NotebookLM. NotebookLM is a really nice took provided by Google that allows you to upload course materials (e.g., lecture slides, assignments, readings) and then ask questions about them in natural language as well as generate things like Mind Maps, Audio Overview, Videos, and Flashcards. You can access the NotebookLM for this course [here](https://notebooklm.google.com/notebook/30d5a466-830e-4387-9d19-c49d9ab679ff). Note that you'll need a Google AI Pro account to access this resource. Don't worry, it's free for a year for students.
+The first tool that may be useful is the course NotebookLM. NotebookLM is a really nice tool provided by Google that allows you to upload course materials (e.g., lecture slides, assignments, readings) and then ask questions about them in natural language as well as generate things like Mind Maps, Audio Overview, Videos, and Flashcards. You can access the NotebookLM for this course [here](https://notebooklm.google.com/notebook/30d5a466-830e-4387-9d19-c49d9ab679ff). Note that you'll need a Google AI Pro account to access this resource. Don't worry, it's free for a year for students.
 
 ### Recitation Leader Gem
 

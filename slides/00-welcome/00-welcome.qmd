@@ -75,6 +75,11 @@ Source: [*R for Data Science*](https://r4ds.hadley.nz/)
 
 -   Recordings will be posted before class -- you are expected to watch ahead of time
 
+## Overview of the class
+
+-   Weeks 1 + 2: R, Tidyverse, building visualizations
+-   Week 3: Dashboards and shiny (tentative)
+-   Week 4: Cool s***: (AI, dimensionality reduction, etc...)
 
 ## Announcements
 
@@ -136,7 +141,7 @@ Source: [*R for Data Science*](https://r4ds.hadley.nz/)
 -   You can fail
 -   If I feel that you aren't being honest with your self assessments, I will adjust your grade accordingly
 
-## Way's to fail this class (or get a D)
+## Ways to fail this class (or get a D)
 
 -   Receiving less than a 50% (F) or 60% (D) average on the quizzes.
 -   Failing to achieve a minimum level of quality on either of your projects.
@@ -164,7 +169,7 @@ Starting tomorrow, at the end of each class period, you will answer the followin
 
 -   Project presentations: Late submissions not accepted
 
--   Project write-ups: Late submissions not accepted\above
+-   Project write-ups: Late submissions not accepted
 
 
 ## Academic integrity, AI, Collaboration
@@ -183,7 +188,7 @@ Starting tomorrow, at the end of each class period, you will answer the followin
 
 -   T: 3-5PM
 
--   Lot's of resources on the website
+-   Lots of resources on the website
 
 ## Course Technology
 
@@ -204,7 +209,8 @@ In Teams, send me a Chat with answers to the following questions:
 3. What is your experience with R or programming in general?
 4. How are you with group work?
 5. Is there anything you want me to know about you (e.g. accommodations, sports, preferred pronouns, etc.)?
-6. Give me some songs for the class playlist.
+6. We'll be using a lot of data sets in this class. Are there any topics you find interesting that you'd like to look at data on?
+7. Give me some songs for the class playlist?
 
 
 # Wrap up

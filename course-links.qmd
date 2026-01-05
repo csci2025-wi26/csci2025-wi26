@@ -7,10 +7,11 @@ title: "Useful links"
 +----------------------------+-----------------------------------------------------------------------------+
 | Gradebook                  | 🔗 on [Teams](https://tinyurl.com/csci2025wi26-teams)                       |
 +----------------------------+-----------------------------------------------------------------------------+
-| Artificial Intellegence    | 🔗 [Course NotebookLM](https://tinyurl.com/csci2025wi26-notebooklm)         |
+| Artificial Intelligence    | 🔗 [Course NotebookLM](https://tinyurl.com/csci2025wi26-notebooklm)         |
+|                            |                                                                             |
 |                            | 🔗 [Recitation Leader Gem](https://tinyurl.com/csci2025-recitation-gem)     |
 +----------------------------+-----------------------------------------------------------------------------+
-| Texbooks                   | 🔗 [R for Data Science](https://r4ds.hadley.nz/)                            |
+| Textbooks                  | 🔗 [R for Data Science](https://r4ds.hadley.nz/)                            |
 +----------------------------+-----------------------------------------------------------------------------+
 | Package documentation      | 🔗 ggplot2: [ggplot2.tidyverse.org](https://ggplot2.tidyverse.org/)         |
 |                            |                                                                             |
