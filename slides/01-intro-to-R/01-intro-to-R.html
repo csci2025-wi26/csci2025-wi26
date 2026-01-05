@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-html/tabby.min.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32" />
 
-  <meta name="author" content="Dr.&nbsp;Eric Friedlander">
-  <title>CSCI 2025 – Welcome to CSCI 2025</title>
+  <meta name="author" content="Dr. Eric Friedlander">
+  <title>CSCI 2025 – R Basics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -124,18 +119,18 @@
     }
   </style>
 </head>
-<body class="quarto-light">
+<body>
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Welcome to CSCI 2025</h1>
-  <p class="subtitle">Lecture 0</p>
+<section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block">
+  <h1 class="title">R Basics</h1>
+  <p class="subtitle">Lecture 1</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Dr.&nbsp;Eric Friedlander 
+Dr. Eric Friedlander 
 </div>
         <p class="quarto-title-affiliation">
             College of Idaho <br> CSCI 2025 - Winter 2026
@@ -144,284 +139,142 @@ Dr.&nbsp;Eric Friedlander
 </div>
 
 </section>
-<section>
-<section id="course-details" class="title-slide slide level1 center">
-<h1>Course Details</h1>
-
-</section>
-<section id="instructor" class="slide level2">
-<h2>Instructor</h2>
-<p>Dr.&nbsp;Eric Friedlander</p>
-<p>Boone 126B</p>
-<p><a href="mailto:efriedlander@collegeofidaho.edu">efriedlander@collegeofidaho.edu</a></p>
-</section>
-<section id="timetable" class="slide level2">
-<h2>Timetable</h2>
+<section id="before-we-start" class="slide level2">
+<h2>Before we start…</h2>
 <ul>
-<li>Lectures
+<li>Make sure you have done the following:
 <ul>
-<li>M-TH 1-3pm - CML 105</li>
-</ul></li>
-<li>Office Hours
-<ul>
-<li>M-TH 10-11am - Boone 126B</li>
-<li>Or by appointment</li>
-</ul></li>
-<li>Tutor Hours
-<ul>
-<li>T 3-5pm - Jewett Tutoring Center (I think)</li>
+<li>Downloaded and installed R</li>
+<li>Downloaded and installed Positron (or R Studio)</li>
+<li>Created a Gemini Pro AI account (free for students)</li>
 </ul></li>
 </ul>
 </section>
-<section id="tutor" class="slide level2">
-<h2>Tutor</h2>
-<div class="quarto-figure quarto-figure-center" style="object-fit: cover; object-position: center bottom; width: 400px; height: 500px;">
+<section>
+<section id="introduction-to-r" class="title-slide slide level1">
+<h1>Introduction to R</h1>
+
+</section>
+<section id="what-is-r" class="slide level2 smaller">
+<h2 class="smaller">What is R?</h2>
+<ul>
+<li>R is a statistical programming language
+<ul>
+<li>Inspired by the S programming language developed at Bell Labs in the 1970s</li>
+<li>Created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand in the early 1990s for teaching statistics</li>
+<li>Now one of the most popular programming languages for data science and statistics</li>
+</ul></li>
+<li>R is free and open source
+<ul>
+<li>Anyone can download and use R for free</li>
+<li>Anyone can contribute to the development of R and its packages</li>
+</ul></li>
+</ul>
+</section>
+<section id="r-is-not-the-same-as-r-studio-r-markdown-or-positron" class="slide level2 smaller">
+<h2 class="smaller">R is not the same as R Studio, R Markdown, or Positron</h2>
+<ul>
+<li>R is the programming language</li>
+<li>R Studio (now Positron) is an integrated development environment (IDE) for R
+<ul>
+<li>Provides a user-friendly interface for writing and running R code</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/rabin.JPG"></p>
-<figcaption>Rabin Kalikote</figcaption>
+<p><img data-src="images/r_vs_rstudio_1.png" /></p>
+<figcaption>Source: <a href="https://moderndive.com/1-getting-started.html">Statistical Inference via Data Science</a></figcaption>
 </figure>
 </div>
 </section></section>
 <section>
-<section id="themes-of-this-course" class="title-slide slide level1 center">
-<h1>Themes of this course</h1>
+<section id="working-with-r" class="title-slide slide level1">
+<h1>Working with R</h1>
 
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
-<p><img data-src="images/data-analysis-life-cycle.png"></p>
-<p>Source: <a href="https://r4ds.hadley.nz/"><em>R for Data Science</em></a> with additions from <em>The Art of Statistics: How to Learn from Data</em>.</p>
-</section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<p><img data-src="images/whole-game.png"></p>
-<p>Source: <a href="https://r4ds.hadley.nz/"><em>R for Data Science</em></a></p>
-</section>
-<section id="data-analysis-lifecycle" class="slide level2">
-<h2>Data Analysis Lifecycle</h2>
+<section id="writing-scripts-in-r" class="slide level2">
+<h2>Writing Scripts in R</h2>
 <ul>
-<li>Importing data: how do we get data into R</li>
-<li>Wrangling data: how do we clean and prepare data
+<li>Let’s open up a script and run some R code!
 <ul>
-<li>Tidying data: how do we structure data for analysis</li>
-<li>Transforming data: how do we manipulate and summarize data</li>
+<li>Running R from the console</li>
+<li>Running R from a script file</li>
 </ul></li>
-<li>Visualization: how do we explore data and communicate results</li>
-<li>Modeling: how do we quantify relationships in data (not a focus of this course)</li>
-<li>Communication: how do we share results with others</li>
+</ul>
+</section>
+<section id="r-packages" class="slide level2 smaller">
+<h2 class="smaller">R Packages</h2>
+<ul>
+<li>R has a rich ecosystem of packages that extend its functionality
+<ul>
+<li>You can install packages using <code>install.packages("package_name")</code> (only do this once)</li>
+<li>Load packages into your R session using <code>library(package_name)</code> (do this every time you start a new R session)</li>
+</ul></li>
+<li>An important package for this class:
+<ul>
+<li><code>tidyverse</code>: A collection of packages for data manipulation, visualization, and modeling
+<ul>
+<li><code>ggplot2</code>: A package for creating graphics using the Grammar of Graphics</li>
+<li><code>dplyr</code>: A package for data manipulation</li>
+</ul></li>
+</ul></li>
+<li>Let’s install and load <code>tidyverse</code></li>
+</ul>
+</section>
+<section id="palmer-penguins-dataset" class="slide level2">
+<h2>Palmer Penguins Dataset</h2>
+<ul>
+<li>Install the <code>palmerpenguins</code> package</li>
+<li>Contains dataset on the famous Palmer Penguins: penguin species, island in Palmer Archipelago, size (flipper length, body mass, bill dimensions), and sex.</li>
+<li>Explore more with <code>?penguins</code></li>
+</ul>
+</section>
+<section id="important-vocabulary" class="slide level2 smaller">
+<h2 class="smaller">Important Vocabulary</h2>
+<ul>
+<li><strong>Data frame</strong>: A table-like structure in R that holds data (<code>penguins</code>)
+<ul>
+<li>In the <code>tidyverse</code> data frames are referred to as <code>tibbles</code></li>
+</ul></li>
+<li><strong>Variable</strong>: is a quantity, quality, or property that you can measure (e.g. <code>species</code>, <code>bill_length_mm</code>, <code>island</code>)</li>
+<li><strong>Observation</strong> or <strong>Data point</strong>: a single object that has been measured (e.g. one of the penguins in the data set)</li>
+<li><strong>Value</strong>: the entry for a particular variable and observation (e.g. for the first penguin, the value of <code>species</code> is “Adelie”, the value of <code>bill_length_mm</code> is 39.1)</li>
+<li><strong>Tabular Data</strong>: data organized in rows and columns (like a spreadsheet or data frame)</li>
+<li><strong>Tidy Data</strong>: tabular data where each observation is a row, each variable is a column, and each type of observational unit forms a table</li>
+</ul>
+</section>
+<section id="taking-a-quick-look-at-penguins" class="slide level2">
+<h2>Taking a quick look at <code>penguins</code></h2>
+<ul>
+<li><code>glimpse</code> gives a quick overview of the data frame</li>
+<li><code>head</code> shows the first few rows of the data frame</li>
+<li><code>tail</code> shows the last few rows of the data frame</li>
 </ul>
 </section></section>
 <section>
-<section id="course-components" class="title-slide slide level1 center">
-<h1>Course components</h1>
-
-</section>
-<section id="course-website" class="slide level2">
-<h2>Course website</h2>
-<div class="large" style="text-align: center;">
-<p><a href="https://csci2025wi26.netlify.app">csci2025wi25.netlify.app</a></p>
-</div>
-</section>
-<section id="class" class="slide level2 smaller">
-<h2>Class</h2>
-<ul>
-<li><p>In person</p></li>
-<li><p>Attendance is required</p></li>
-<li><p>A little bit of everything:</p>
-<ul>
-<li>Mostly active learning</li>
-</ul></li>
-<li><p>Recordings will be posted before class – you are expected to watch ahead of time</p></li>
-</ul>
-</section>
-<section id="announcements" class="slide level2">
-<h2>Announcements</h2>
-<ul>
-<li><p>Posted on Teams and sent via email, be sure to check both regularly</p></li>
-<li><p>I’ll assume that you’ve read an announcement by the next “business” day</p></li>
-</ul>
-</section></section>
-<section>
-<section id="assignments" class="title-slide slide level1 center">
-<h1>Assignments</h1>
-
-</section>
-<section id="attendance" class="slide level2">
-<h2>Attendance</h2>
-<ul>
-<li><p>Required throughout the semester</p></li>
-<li><p>If you miss more than 3 classes without a university-excused absence, you will fail this class</p></li>
-<li><p>If you are more than 15 minutes late to class, this will count as an absence</p></li>
-</ul>
-</section>
-<section id="lectures-readings" class="slide level2">
-<h2>Lectures + Readings</h2>
-<ul>
-<li>Several readings will be assigned before each class period, most with videos</li>
-<li>You are expected to complete readings before class</li>
-</ul>
-</section>
-<section id="pop-quizzes" class="slide level2">
-<h2>(Pop) Quizzes</h2>
-<ul>
-<li>Short quizzes will be held periodically throughout the semester to assess your understanding of the course material</li>
-<li>They will take place at the beginning of class, will not be announced in advance</li>
-<li>The purpose of these quizzes is to encourage you to keep up with the course material</li>
-<li>If you are late to class or have an unexcused absence on a quiz day, you will not be able to make up the quiz unless you notify me beforehand</li>
-</ul>
-</section>
-<section id="projects" class="slide level2">
-<h2>Projects</h2>
-<ul>
-<li>Two projects:
-<ul>
-<li>Team Project: Building a Data Visualization Dashboard for Mark Heidrick</li>
-<li>Individual Project: Your choice!</li>
-</ul></li>
-</ul>
-</section>
-<section id="teamwork" class="slide level2">
-<h2>Teamwork</h2>
-<ul>
-<li>You will frequently work in teams of 2-4 students in class</li>
-<li>I will assign teams and roles</li>
-<li>I expect that:
-<ul>
-<li>Everyone contributes</li>
-<li>Everyone learns</li>
-<li>Everyone is respectful</li>
-</ul></li>
-</ul>
-</section>
-<section id="ungrading" class="slide level2 smaller">
-<h2>(Un)Grading</h2>
-<ul>
-<li>You will (mostly) be in charge of determining your own grade</li>
-<li>After each class period, you will reflect on your learning and participation and assign yourself a grade</li>
-<li>You will also self assess your projects</li>
-<li>At the end of the semester, your final grade will be 50% based on your daily reflections, 25% based on your team project, and 25% based on your individual project</li>
-</ul>
-<div class="fragment">
-<ul>
-<li>HOWEVER:</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>You can fail</li>
-<li>If I feel that you aren’t being honest with your self assessments, I will adjust your grade accordingly</li>
-</ul>
-</div>
-</section>
-<section id="ways-to-fail-this-class-or-get-a-d" class="slide level2">
-<h2>Way’s to fail this class (or get a D)</h2>
-<ul>
-<li>Receiving less than a 50% (F) or 60% (D) average on the quizzes.</li>
-<li>Failing to achieve a minimum level of quality on either of your projects.</li>
-<li>Missing more than 3 class periods without a valid excuse.
-<ul>
-<li>Arriving more than 15-minutes late to class will be considered an absence.</li>
-</ul></li>
-<li>Failing to turn in more than 3 self-evaluations.</li>
-</ul>
-</section>
-<section id="self-evaluations" class="slide level2">
-<h2>Self-Evaluations</h2>
-<p>Starting tomorrow, at the end of each class period, you will answer the following questions and assign yourself a grade for your work since the last class period:</p>
-<ol type="1">
-<li>How well do I understand the material covered in lectures and readings for today’s class?</li>
-<li>Did I put in a good faith effort to prepare for and participate in today’s class?</li>
-<li>How would I rate my level of engagement during today’s class?</li>
-<li>How well did I perform on the in-class activities?</li>
-<li>How did I learn and grow from the readings, lectures, and in-class activities today?</li>
-<li>What overall grade would I give myself for the work I completed since the end of the last class period?</li>
-</ol>
-</section></section>
-<section>
-<section id="course-policies" class="title-slide slide level1 center">
-<h1>Course policies</h1>
-
-</section>
-<section id="late-work-policy" class="slide level2 smaller">
-<h2>Late work policy</h2>
-<ul>
-<li><p>Quizzes: not accepted late without university-excused absence</p></li>
-<li><p>Project presentations: Late submissions not accepted</p></li>
-<li><p>Project write-ups: Late submissions not accepted</p></li>
-</ul>
-</section>
-<section id="academic-integrity-ai-collaboration" class="slide level2">
-<h2>Academic integrity, AI, Collaboration</h2>
-<ul>
-<li>I’ve structured this course so that you will be presenting your work in front of the class frequently</li>
-<li>The purpose of this course is to learn</li>
-<li>I will frequently be asking you to explain your code and your reasoning in front of the class</li>
-<li>Feel free to use any resources you want… just make sure you can explain things to the class</li>
-</ul>
-</section></section>
-<section>
-<section id="support" class="title-slide slide level1 center">
-<h1>Support</h1>
-
-</section>
-<section id="office-hours" class="slide level2 smaller">
-<h2>Office hours</h2>
-<ul>
-<li><p>Tutor: Rabin Kalikote</p></li>
-<li><p>T: 3-5PM</p></li>
-<li><p>Lot’s of resources on the website</p></li>
-</ul>
-</section>
-<section id="course-technology" class="slide level2">
-<h2>Course Technology</h2>
-<ul>
-<li>Microsoft Teams (install now)</li>
-<li>R and Positron (install by tomorrow)</li>
-<li>Git and Github (later)</li>
-<li>Google AI Pro Subscription (free for students for a year)
-<ul>
-<li>NotebookLM</li>
-<li>Custom Recitation Gem</li>
-<li>More AI later in the semester</li>
-</ul></li>
-</ul>
-</section>
-<section id="getting-to-know-you" class="slide level2">
-<h2>Getting to Know You</h2>
-<p>In Teams, send me a Chat with answers to the following questions:</p>
-<ol type="1">
-<li>What do you prefer to be called?</li>
-<li>Why are you taking this course?</li>
-<li>What is your experience with R or programming in general?</li>
-<li>How are you with group work?</li>
-<li>Is there anything you want me to know about you (e.g.&nbsp;accommodations, sports, preferred pronouns, etc.)?</li>
-<li>Give me some songs for the class playlist.</li>
-</ol>
-</section></section>
-<section>
-<section id="wrap-up" class="title-slide slide level1 center">
+<section id="wrap-up" class="title-slide slide level1">
 <h1>Wrap up</h1>
 
 </section>
-<section id="for-tomorrow" class="slide level2">
-<h2>For Tomorrow</h2>
+<section id="do-next" class="slide level2">
+<h2>Do Next</h2>
 <ol type="1">
-<li><p>Install R and Positron</p></li>
-<li><p>Sign-up for a Google AI Pro Account</p></li>
-<li><p>Create a Github Account and activate your Education benefits</p></li>
-<li><p>Read the <a href="https://csci2025wi26.netlify.app/course-syllabus/">syllabus</a></p></li>
-<li><p>Complete Lectures 1-4 readings and videos</p></li>
+<li>Read the Introduction of <a href="https://r4ds.had.co.nz/introduction.html">R for Data Science</a></li>
+<li>Post any question you have to the HW channel in our Team.</li>
+<li>Move on to Lecture 02.</li>
 </ol>
-
-
-</section></section>
-    </div>
-  <div class="quarto-auto-generated-content" style="display: none;">
-<p><img src="../logo.png" class="slide-logo"></p>
+<div id="quarto-meta-markdown" class="hidden">
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ==">R Basics – CSCI 2025</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU=">R Basics – CSCI 2025</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl">R Basics – CSCI 2025</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">CSCI 2025</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw==">Lecture 1</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj">Lecture 1</span></p>
+</div>
+<div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="../logo.png" class="slide-logo" /></p>
 <div class="footer footer-default">
 <p><a href="https://csci2025wi26.netlify.app/">🔗 https://csci2025wi26.netlify.app/</a></p>
 </div>
-</div></div>
+</div>
+</section></section>
+    </div>
+  </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
   <script src="../../site_libs/revealjs/dist/reveal.js"></script>
@@ -444,18 +297,7 @@ Dr.&nbsp;Eric Friedlander
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
-      Reveal.initialize({
-'controlsAuto': true,
-'previewLinksAuto': false,
-'pdfSeparateFragments': false,
-'autoAnimateEasing': "ease",
-'autoAnimateDuration': 1,
-'autoAnimateUnmatched': true,
-'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'chalkboard': {"buttons":true},
-'smaller': false,
- 
+      Reveal.initialize({ 
         // Display controls in the bottom right corner
         controls: false,
 
@@ -474,7 +316,7 @@ Dr.&nbsp;Eric Friedlander
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: 'c/t',
+        slideNumber: c/t,
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -624,8 +466,7 @@ Dr.&nbsp;Eric Friedlander
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
-
+        plugins: [
           RevealMath,
           RevealNotes,
           RevealSearch,
@@ -633,7 +474,7 @@ Dr.&nbsp;Eric Friedlander
         ]
       });
     </script>
-    <script id="quarto-html-after-body" type="application/javascript">
+    <script id = "quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
         tabsets.forEach(function(tabset) {
@@ -800,6 +641,5 @@ Dr.&nbsp;Eric Friedlander
         }
       });
       </script>
-    
-
-</body></html>
+    </body>
+</html>

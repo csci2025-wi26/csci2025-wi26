@@ -19,9 +19,17 @@ Boone 126B
 
 -   Lectures
     -   M-TH 1-3pm - CML 105
--   Office Hour
+-   Office Hours
     -   M-TH 10-11am - Boone 126B
     -   Or by appointment
+-   Tutor Hours
+    -   T 3-5pm - Jewett Tutoring Center (I think)
+
+## Tutor
+
+![Rabin Kalikote](images/rabin.JPG){style="object-fit: cover; object-position: center bottom; width: 400px; height: 500px;"}
+
+
 
 # Themes of this course
 
@@ -92,7 +100,7 @@ Source: [*R for Data Science*](https://r4ds.hadley.nz/)
 
 ## (Pop) Quizzes
 
--   Short quizzes will be help periodically throughout the semester to assess your understanding of the course material
+-   Short quizzes will be held periodically throughout the semester to assess your understanding of the course material
 -    They will take place at the beginning of class, will not be announced in advance
 -    The purpose of these quizzes is to encourage you to keep up with the course material
 -    If you are late to class or have an unexcused absence on a quiz day, you will not be able to make up the quiz unless you notify me beforehand
@@ -118,6 +126,9 @@ Source: [*R for Data Science*](https://r4ds.hadley.nz/)
 -   After each class period, you will reflect on your learning and participation and assign yourself a grade
 -   You will also self assess your projects
 -   At the end of the semester, your final grade will be 50% based on your daily reflections, 25% based on your team project, and 25% based on your individual project
+
+. . .
+
 -   HOWEVER:
 
 . . .
@@ -125,9 +136,9 @@ Source: [*R for Data Science*](https://r4ds.hadley.nz/)
 -   You can fail
 -   If I feel that you aren't being honest with your self assessments, I will adjust your grade accordingly
 
-## Way's to fail this class
+## Way's to fail this class (or get a D)
 
--   Receiving less than a 60% average on the quizzes.
+-   Receiving less than a 50% (F) or 60% (D) average on the quizzes.
 -   Failing to achieve a minimum level of quality on either of your projects.
 -   Missing more than 3 class periods without a valid excuse.
     -  Arriving more than 15-minutes late to class will be considered an absence.
@@ -191,8 +202,9 @@ In Teams, send me a Chat with answers to the following questions:
 1. What do you prefer to be called?
 2. Why are you taking this course?
 3. What is your experience with R or programming in general?
-4. Is there anything you want me to know about you (e.g. accommodations, sports, preferred pronouns, etc.)?
-5. Give me some songs for the class playlist.
+4. How are you with group work?
+5. Is there anything you want me to know about you (e.g. accommodations, sports, preferred pronouns, etc.)?
+6. Give me some songs for the class playlist.
 
 
 # Wrap up
@@ -205,6 +217,6 @@ In Teams, send me a Chat with answers to the following questions:
 
 3.  Create a Github Account and activate your Education benefits
 
-4.  Read the [syllabus](/course-syllabus.qmd)
+4.  Read the [syllabus](https://csci2025wi26.netlify.app/course-syllabus/)
 
 5.  Complete Lectures 1-4 readings and videos
