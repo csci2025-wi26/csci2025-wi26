@@ -25,9 +25,9 @@ Boone 126B
 -   Tutor Hours
     -   T 3-5pm - Jewett Tutoring Center (I think)
 
-## Tutor
+## Tutor: Rabin Kalikote
 
-![Rabin Kalikote](images/rabin.JPG){style="object-fit: cover; object-position: center bottom; width: 400px; height: 500px;"}
+![](images/rabin.JPG){style="object-fit: cover; object-position: left bottom; width: 400px; height: 550px;"}
 
 
 
