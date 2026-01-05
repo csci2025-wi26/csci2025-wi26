@@ -1,8 +1,8 @@
 ---
 title: Importing Data
-subtitle: "Lecture 5"
+subtitle: "Lecture 6"
 title-slide-attributes:
-  data-background-image: ../vizdata-bg.png
+  data-background-image: ../title-bg.png
   data-background-size: stretch
   data-slide-number: none
 format: revealjs

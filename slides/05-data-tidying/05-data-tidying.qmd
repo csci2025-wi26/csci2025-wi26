@@ -1,8 +1,8 @@
 ---
 title: Data Tidying
-subtitle: "Lecture 4"
+subtitle: "Lecture 5"
 title-slide-attributes:
-  data-background-image: ../vizdata-bg.png
+  data-background-image: ../title-bg.png
   data-background-size: stretch
   data-slide-number: none
 format: revealjs
@@ -78,39 +78,9 @@ tidy_relig_income |> head()
 
 
 
-## Another `pivot_longer()` example: `billboard`
+## Practice
 
-The `billboard` dataset has chart rankings for 2000.
-
-```{r}
-#| echo: true
-billboard |> head()
-```
-
-The `wk1`, `wk2`, ... columns are values of a "week" variable.
-
-## Tidying `billboard`
-
-:::: columns
-::: column
-```{r}
-#| echo: true
-billboard |>
-  pivot_longer(
-    cols = starts_with("wk"),
-    names_to = "week",
-    values_to = "rank",
-    values_drop_na = TRUE
-  ) |> head()
-```
-:::
-
-::: column
-- We use `starts_with("wk")` to select the columns to pivot.
-- `values_drop_na = TRUE` removes rows where the rank is `NA`.
-:::
-::::
-
+Let's practice with another dataset: `billboard`.
 
 
 ## Widening data with `pivot_wider()` {.smaller}
@@ -141,7 +111,7 @@ fish_encounters |>
     head()
 ```
 
-Problem: `NA` values where there shoiuld be zeros, can fix this with `values_fill`.
+Problem: `NA` values where there should be zeros, can fix this with `values_fill`.
 
 
 ## Using `pivot_wider()` with `values_fill` {.smaller}
@@ -159,6 +129,12 @@ fish_encounters |>
 - `names_from`: The column to get the new column names from.
 - `values_from`: The column to get the cell values from.
 - `values_fill`: A value to replace `NA`s with.
+
+## Practice
+
+Let's practice with `table1`, `table2`, and `table3`.
+
+-  Let's plot the cases of TB in neighboring countries
 
 ## Summary
 

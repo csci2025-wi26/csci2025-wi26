@@ -194,9 +194,9 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="../vizdata-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
+<section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
   <h1 class="title">Data Tidying</h1>
-  <p class="subtitle">Lecture 4</p>
+  <p class="subtitle">Lecture 5</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -299,68 +299,15 @@ Dr.&nbsp;Eric Friedlander
 </ul>
 </div></div>
 </section>
-<section id="another-pivot_longer-example-billboard" class="slide level2">
-<h2>Another <code>pivot_longer()</code> example: <code>billboard</code></h2>
-<p>The <code>billboard</code> dataset has chart rankings for 2000.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>billboard <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 79
-  artist      track date.entered   wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8
-  &lt;chr&gt;       &lt;chr&gt; &lt;date&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 2 Pac       Baby… 2000-02-26      87    82    72    77    87    94    99    NA
-2 2Ge+her     The … 2000-09-02      91    87    92    NA    NA    NA    NA    NA
-3 3 Doors Do… Kryp… 2000-04-08      81    70    68    67    66    57    54    53
-4 3 Doors Do… Loser 2000-10-21      76    76    72    69    67    65    55    59
-5 504 Boyz    Wobb… 2000-04-15      57    34    25    17    17    31    36    49
-6 98^0        Give… 2000-08-19      51    39    34    26    26    19     2     2
-# ℹ 68 more variables: wk9 &lt;dbl&gt;, wk10 &lt;dbl&gt;, wk11 &lt;dbl&gt;, wk12 &lt;dbl&gt;,
-#   wk13 &lt;dbl&gt;, wk14 &lt;dbl&gt;, wk15 &lt;dbl&gt;, wk16 &lt;dbl&gt;, wk17 &lt;dbl&gt;, wk18 &lt;dbl&gt;,
-#   wk19 &lt;dbl&gt;, wk20 &lt;dbl&gt;, wk21 &lt;dbl&gt;, wk22 &lt;dbl&gt;, wk23 &lt;dbl&gt;, wk24 &lt;dbl&gt;,
-#   wk25 &lt;dbl&gt;, wk26 &lt;dbl&gt;, wk27 &lt;dbl&gt;, wk28 &lt;dbl&gt;, wk29 &lt;dbl&gt;, wk30 &lt;dbl&gt;,
-#   wk31 &lt;dbl&gt;, wk32 &lt;dbl&gt;, wk33 &lt;dbl&gt;, wk34 &lt;dbl&gt;, wk35 &lt;dbl&gt;, wk36 &lt;dbl&gt;,
-#   wk37 &lt;dbl&gt;, wk38 &lt;dbl&gt;, wk39 &lt;dbl&gt;, wk40 &lt;dbl&gt;, wk41 &lt;dbl&gt;, wk42 &lt;dbl&gt;,
-#   wk43 &lt;dbl&gt;, wk44 &lt;dbl&gt;, wk45 &lt;dbl&gt;, wk46 &lt;dbl&gt;, wk47 &lt;dbl&gt;, wk48 &lt;dbl&gt;, …</code></pre>
-</div>
-</div>
-<p>The <code>wk1</code>, <code>wk2</code>, … columns are values of a “week” variable.</p>
-</section>
-<section id="tidying-billboard" class="slide level2">
-<h2>Tidying <code>billboard</code></h2>
-<div class="columns">
-<div class="column">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>billboard <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb8-3"><a></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"wk"</span>),</span>
-<span id="cb8-4"><a></a>    <span class="at">names_to =</span> <span class="st">"week"</span>,</span>
-<span id="cb8-5"><a></a>    <span class="at">values_to =</span> <span class="st">"rank"</span>,</span>
-<span id="cb8-6"><a></a>    <span class="at">values_drop_na =</span> <span class="cn">TRUE</span></span>
-<span id="cb8-7"><a></a>  ) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  artist track                   date.entered week   rank
-  &lt;chr&gt;  &lt;chr&gt;                   &lt;date&gt;       &lt;chr&gt; &lt;dbl&gt;
-1 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk1      87
-2 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk2      82
-3 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk3      72
-4 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk4      77
-5 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk5      87
-6 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk6      94</code></pre>
-</div>
-</div>
-</div><div class="column">
-<ul>
-<li>We use <code>starts_with("wk")</code> to select the columns to pivot.</li>
-<li><code>values_drop_na = TRUE</code> removes rows where the rank is <code>NA</code>.</li>
-</ul>
-</div></div>
+<section id="practice" class="slide level2">
+<h2>Practice</h2>
+<p>Let’s practice with another dataset: <code>billboard</code>.</p>
 </section>
 <section id="widening-data-with-pivot_wider" class="slide level2 smaller">
 <h2>Widening data with <code>pivot_wider()</code></h2>
 <p><code>pivot_wider()</code> is the opposite of <code>pivot_longer()</code>. It’s used when an observation is scattered across multiple rows.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>fish_encounters <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>fish_encounters <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   fish  station  seen
@@ -384,12 +331,12 @@ Dr.&nbsp;Eric Friedlander
 <h2>Using <code>pivot_wider()</code></h2>
 <p>Goal: one row per station, with columns indicating whether fish was seen or not.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>fish_encounters <span class="sc">|&gt;</span></span>
-<span id="cb12-2"><a></a>  <span class="fu">pivot_wider</span>(</span>
-<span id="cb12-3"><a></a>    <span class="at">names_from =</span> station,</span>
-<span id="cb12-4"><a></a>    <span class="at">values_from =</span> seen</span>
-<span id="cb12-5"><a></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb12-6"><a></a>    <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>fish_encounters <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb8-3"><a></a>    <span class="at">names_from =</span> station,</span>
+<span id="cb8-4"><a></a>    <span class="at">values_from =</span> seen</span>
+<span id="cb8-5"><a></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb8-6"><a></a>    <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 12
   fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW
@@ -402,18 +349,18 @@ Dr.&nbsp;Eric Friedlander
 6 4848        1     1      1     1      NA    NA    NA    NA    NA    NA    NA</code></pre>
 </div>
 </div>
-<p>Problem: <code>NA</code> values where there shoiuld be zeros, can fix this with <code>values_fill</code>.</p>
+<p>Problem: <code>NA</code> values where there should be zeros, can fix this with <code>values_fill</code>.</p>
 </section>
 <section id="using-pivot_wider-with-values_fill" class="slide level2 smaller">
 <h2>Using <code>pivot_wider()</code> with <code>values_fill</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>fish_encounters <span class="sc">|&gt;</span></span>
-<span id="cb14-2"><a></a>  <span class="fu">pivot_wider</span>(</span>
-<span id="cb14-3"><a></a>    <span class="at">names_from =</span> station,</span>
-<span id="cb14-4"><a></a>    <span class="at">values_from =</span> seen,</span>
-<span id="cb14-5"><a></a>    <span class="at">values_fill =</span> <span class="dv">0</span></span>
-<span id="cb14-6"><a></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb14-7"><a></a>    <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>fish_encounters <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb10-3"><a></a>    <span class="at">names_from =</span> station,</span>
+<span id="cb10-4"><a></a>    <span class="at">values_from =</span> seen,</span>
+<span id="cb10-5"><a></a>    <span class="at">values_fill =</span> <span class="dv">0</span></span>
+<span id="cb10-6"><a></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb10-7"><a></a>    <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 12
   fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW
@@ -430,6 +377,13 @@ Dr.&nbsp;Eric Friedlander
 <li><code>names_from</code>: The column to get the new column names from.</li>
 <li><code>values_from</code>: The column to get the cell values from.</li>
 <li><code>values_fill</code>: A value to replace <code>NA</code>s with.</li>
+</ul>
+</section>
+<section id="practice-1" class="slide level2">
+<h2>Practice</h2>
+<p>Let’s practice with <code>table1</code>, <code>table2</code>, and <code>table3</code>.</p>
+<ul>
+<li>Let’s plot the cases of TB in neighboring countries</li>
 </ul>
 </section>
 <section id="summary" class="slide level2">
