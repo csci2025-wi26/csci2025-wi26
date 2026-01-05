@@ -17,9 +17,11 @@ Boone 126B
 
 ## Timetable
 
--   Lectures (weekly)
+-   Lectures
     -   M-TH 1-3pm - CML 105
--   Office Hours: TBD
+-   Office Hour
+    -   M-TH 10-11am - Boone 126B
+    -   Or by appointment
 
 # Themes of this course
 
@@ -45,41 +47,15 @@ Source: [*R for Data Science*](https://r4ds.hadley.nz/)
 -  Modeling: how do we quantify relationships in data (not a focus of this course)
 -  Communication: how do we share results with others
 
-# But first...
-
-## Show and tell {.smaller}
-
-::: task
--   Form a small group (2-4 people) with people sitting around you
-
--   First, introduce yourselves to each other -- name (and proper pronunciation of name), year, major, where are you from, etc.
-
--   Start with the bad graphs -- Share your examples of "bad" graphs and why you think they're bad.
-
--   Then, share your good graphs -- Same deal, share your examples of "good" graphs and why you think they're good.
-
--   Finally, choose the **one** plot from your group that you think is most striking, either because it's bad or because it's good, and have one team member share the graph on #general in Slack in the relevant thread.
-:::
-
 # Course components
 
 ## Course website
 
 ::: {.large style="text-align: center;"}
-[vizdata.org](https://www.vizdata.org/)
+[csci2025wi25.netlify.app](https://csci2025wi26.netlify.app)
 :::
 
-::: {.hand style="text-align: center;"}
-aka "the one link to rule them all"
-:::
-
-::: {style="text-align: center;"}
-```{=html}
-<iframe width="1000" height="400" src="https://www.vizdata.org/" frameborder="1" style="background:white;"></iframe>
-```
-:::
-
-## Lectures {.smaller}
+## Class {.smaller}
 
 -   In person
 
@@ -87,311 +63,148 @@ aka "the one link to rule them all"
 
 -   A little bit of everything:
 
-    -   Traditional lecture
-    -   Live coding + demos
-    -   Short exercises + solution discussion
+    -   Mostly active learning
 
--   Recordings will be posted after class -- to be used for review + make-up if you can't make it to class due to health reasons, they're not an alternative to class attendance
+-   Recordings will be posted before class -- you are expected to watch ahead of time
 
-## Labs
-
--   Attendance is required
-
--   Opportunity to work on course assignments with TA support
-
--   Opportunity to work with teammates on projects
 
 ## Announcements
 
--   Posted on Canvas (Announcements tool) and sent via email, be sure to check both regularly
+-   Posted on Teams and sent via email, be sure to check both regularly
 
 -   I'll assume that you've read an announcement by the next "business" day
 
-## Diversity and inclusion {.smaller}
 
-It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit.
+# Assignments
 
--   If you have a name that differs from those that appear in your official Duke records, please let me know!
+## Attendance
 
--   Please let me know your preferred pronouns.
+-   Required throughout the semester
 
--   If you feel like your performance in the class is being impacted by your experiences outside of class, please don't hesitate to come and talk with me. I want to be a resource for you. If you prefer to speak with someone outside of the course, your advisers and deans are excellent resources.
+-   If you miss more than 3 classes without a university-excused absence, you will fail this class
 
--   I (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please talk to me about it.
+-   If you are more than 15 minutes late to class, this will count as an absence
 
-## Accessibility
+## Lectures + Readings
 
--   The [Student Disability Access Office (SDAO)](https://access.duke.edu/students) is available to ensure that students are able to engage with their courses and related assignments.
+-   Several readings will be assigned before each class period, most with videos
+-   You are expected to complete readings before class
 
--   I am committed to making all course materials accessible and I'm always learning how to do this better. If any course component is not accessible to you in any way, please don't hesitate to let me know.
+## (Pop) Quizzes
 
-# Assessments
-
-## Attendance + participation (5%)
-
--   Required throughout the semester in lecture and lab
-
--   Students who attend at least 80% of the lectures and participate regularly in lecture and/or other course venues (lab + Slack) will receive full credit for this portion of their grade
-
--   Participation in labs as well as on Slack will also count towards this component
-
-## Reading quizzes (10%)
-
--   Online, individual
--   Cover reading that is due since the previous quiz and up to and including the deadline for the given quiz
--   Due by 10 am ET (beginning of class) on the indicated day on the course schedule
--   **Lowest dropped**
-
-## Homework assignments (45%)
-
--   Submitted on GitHub, individual
--   Some lab sessions allocated to working on homework / getting feedback from TAs
--   Due by 5 pm ET on the indicated day on the course schedule
--   **Lowest dropped**
+-   Short quizzes will be help periodically throughout the semester to assess your understanding of the course material
+-    They will take place at the beginning of class, will not be announced in advance
+-    The purpose of these quizzes is to encourage you to keep up with the course material
+-    If you are late to class or have an unexcused absence on a quiz day, you will not be able to make up the quiz unless you notify me beforehand
 
 ## Projects
 
--   Submitted on GitHub, team-based
--   Interim deadlines, peer review on content, peer evaluation for team contribution
--   Some lab sessions allocated to working on projects, doing peer review, getting feedback from TAs
+-   Two projects:
+    -   Team Project: Building a Data Visualization Dashboard for Mark Heidrick
+    -   Individual Project: Your choice!
 
-## Teams
+## Teamwork
 
--   Team assignments
-    -   In class exercises and projects
-    -   Assigned different teams for each project
-    -   Peer evaluation during teamwork and after completion
--   Expectations and roles
-    -   Everyone is expected to contribute equal *effort*
-    -   Everyone is expected to understand *all* code turned in
-    -   Individual contribution evaluated by peer evaluation, commits, etc.
+-   You will frequently work in teams of 2-4 students in class
+-   I will assign teams and roles
+-   I expect that:
+    -   Everyone contributes
+    -   Everyone learns
+    -   Everyone is respectful
 
-## Project 1 (15%)
+## (Un)Grading {.smaller}
 
--   Same/similar data, different results
+-   You will (mostly) be in charge of determining your own grade
+-   After each class period, you will reflect on your learning and participation and assign yourself a grade
+-   You will also self assess your projects
+-   At the end of the semester, your final grade will be 50% based on your daily reflections, 25% based on your team project, and 25% based on your individual project
+-   HOWEVER:
 
--   Presentation and write-up
+. . .
 
--   Wrapped up before midterms grades are due
+-   You can fail
+-   If I feel that you aren't being honest with your self assessments, I will adjust your grade accordingly
 
-## Project 2 (25%)
+## Way's to fail this class
 
--   The world is your oyster! (and more details TBA)
+-   Receiving less than a 60% average on the quizzes.
+-   Failing to achieve a minimum level of quality on either of your projects.
+-   Missing more than 3 class periods without a valid excuse.
+    -  Arriving more than 15-minutes late to class will be considered an absence.
+-   Failing to turn in more than 3 self-evaluations.
 
--   New team
+## Self-Evaluations
 
--   Presentation and write-up
+Starting tomorrow, at the end of each class period, you will answer the following questions and assign yourself a grade for your work since the last class period:
 
--   Wrapped up on the final exam date
+1. How well do I understand the material covered in lectures and readings for today's class?
+2. Did I put in a good faith effort to prepare for and participate in today's class?
+3. How would I rate my level of engagement during today's class?
+4. How well did I perform on the in-class activities?
+5. How did I learn and grow from the readings, lectures, and in-class activities today?
+6. What overall grade would I give myself for the work I completed since the end of the last class period?
 
-## Grading {.smaller}
-
-This course is assessed 100% on your coursework (there is no exam). We will be assessing you based on the following assignments,
-
-| Assignment                 | Type       | Value | Due                                        |
-|:-----------------|:-----------------|:-----------------|--------------------|
-| Attendance + participation | Individual | 5%    |                                            |
-| Reading quizzes            | Individual | 10%   | \~ Every other week                        |
-| Homeworks                  | Individual | 45%   | \~ Every other week                        |
-| Project 1                  | Team       | 15%   | \~ Week 6 + earlier interim deadlines      |
-| Project 2                  | Team       | 25%   | \~ Finals week + earlier interim deadlines |
-
-## Community participation
-
-This is not required but highly recommended!
-
--   [TidyTuesday](https://github.com/rfordatascience/tidytuesday) - New dataset every week for wrangling, visualizing, modeling
--   I encourage you to participate, or at a minimum, browse others' contributions on Twitter or Mastodon with [#TidyTuesday](https://twitter.com/search?q=%23TidyTuesday&src=typed_query&f=live)
 
 # Course policies
 
 ## Late work policy {.smaller}
 
--   Reading quizzes: Late submissions not accepted
-
--   Homework assignments:
-
-    -   Late, within 24 hours of deadline: -10% of available points
-
-    -   Late, within 24-48 hours of deadline: -20% of available points
-
-    -   More than 48 hours later: No credit, and we will not provide written feedback
+-   Quizzes: not accepted late without university-excused absence
 
 -   Project presentations: Late submissions not accepted
 
--   Project write-ups:
+-   Project write-ups: Late submissions not accepted\above
 
-    -   Late, within 24 hours of deadline: -10% of available points
 
-    -   Late, within 24-48 hours of deadline: -20% of available points
+## Academic integrity, AI, Collaboration
 
-    -   More than 48 hours later: No credit, and we will not provide written feedback
-
--   Peer evaluation:
-
-    -   Late submissions not accepted
-    -   Must turn in peer evaluation if you want your own score from others
-
-## Collaboration policy
-
--   Only work that is clearly assigned as team work should be completed collaboratively (Projects)
-
--   Reading quizzes must be completed individually, you may not discuss answers with teammates, clarification questions should only be asked to myself and the TAs
-
--   Homework assignments must be completed individually. You may not directly share answers / code with others, however you are welcome to discuss the problems in general and ask for advice
-
-## Sharing / reusing code policy
-
--   We are aware that a huge volume of code is available on the web, and many tasks may have solutions posted
-
--   Unless explicitly stated otherwise, this course's policy is that you may make use of any online resources (e.g. RStudio Community, StackOverflow, etc.) but you must explicitly cite where you obtained any code you directly use or use as inspiration in your solution(s)
-
--   Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism, regardless of source
-
-## Use of generative artificial intelligence (AI) {.smaller}
-
--   Treat generative AI, such as ChatGPT, the same as other online resources.
-
--   Guiding principles:
-
-    -   \(1\) *Cognitive dimension:* Working with AI should not reduce your ability to think clearly. We will practice using AI to facilitate—rather than hinder—learning.
-
-    -   \(2\) *Ethical dimension***:** Students using AI should be transparent about their use and make sure it aligns with academic integrity.
-
--   **✅ AI tools for code:** You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code. See the syllabus for guidelines for citing AI-generated content.
-
--   **❌ AI tools for narrative:** Unless instructed otherwise, you may not use generative AI to write narrative on assignments. In general, you may use generative AI as a resource as you complete assignments but not to answer the exercises for you.
-
-## Academic integrity
-
-> To uphold the Duke Community Standard:
-
-> -   I will not lie, cheat, or steal in my academic endeavors;
-> -   I will conduct myself honorably in all my endeavors; and
-> -   I will act if the Standard is compromised.
-
-## 
-
-<br><br><br>
-
-::: {.large .hand style="text-align: center"}
-most importantly:
-
-ask if you're not sure if something violates a policy!
-:::
-
-## 
+-  I've structured this course so that you will be presenting your work in front of the class frequently
+-  The purpose of this course is to learn
+-  I will frequently be asking you to explain your code and your reasoning in front of the class
+-  Feel free to use any resources you want... just make sure you can explain things to the class
 
 # Support
 
 ## Office hours {.smaller}
 
--   Mine:
 
-    -   Tuesdays 2:30 - 3:30 pm - Old Chem 213 (+ Zoom upon request)
+-   Tutor: Rabin Kalikote
 
-        -   Any exceptions will be announced in class / course announcement
+-   T: 3-5PM
 
--   TAs: TBA!
+-   Lot's of resources on the website
 
--   Office hours start next Tuesday
+## Course Technology
 
--   \+ lots more resources listed on the syllabus!
+-   Microsoft Teams (install now)
+-   R and Positron (install by tomorrow)
+-   Git and Github (later)
+-   Google AI Pro Subscription (free for students for a year)
+    -   NotebookLM
+    -   Custom Recitation Gem
+    -   More AI later in the semester
 
-## Wellness
+##  Getting to Know You
 
-I want to make sure that you learn everything you were hoping to learn from this class. If this requires flexibility, please don't hesitate to ask.
+In Teams, send me a Chat with answers to the following questions:
 
--   You never owe me personal information about your health (mental or physical) but you're always welcome to talk to me. If I can't help, I likely know someone who can.
+1. What do you prefer to be called?
+2. Why are you taking this course?
+3. What is your experience with R or programming in general?
+4. Is there anything you want me to know about you (e.g. accommodations, sports, preferred pronouns, etc.)?
+5. Give me some songs for the class playlist.
 
--   I want you to learn lots of things from this class, but I primarily want you to stay healthy, balanced, and grounded.
-
-# Course Tools
-
-## RStudio
-
-::: {.large style="text-align: center;"}
-<https://cmgr.oit.duke.edu/containers>
-:::
-
--   Browser based RStudio instance(s) provided by Duke OIT
-
--   Requires internet connection to access
-
--   Provides consistency in hardware and software environments
-
--   Local R installations are fine but we will not guarantee support
-
-## GitHub {.smaller}
-
-::: {.large style="text-align: center;"}
-<https://github.com/vizdata-s24>
-:::
-
--   GitHub organization for the course
-
--   All of your work and your membership (enrollment) in the organization is private
-
--   Each assignment is a private repo on GitHub, I distribute the assignments on GitHub and you submit them there
-
--   Feedback on assignments is given as GitHub issues, scores recorded on Sakai Gradebook
-
-::: task
-Fill out the *Getting to know you* survey for collection of your account names, later this week you will be invited to the course organization.
-:::
-
-## Username advice {.smaller}
-
-::: hand
-in case you don't yet have a GitHub account...
-:::
-
-Some brief advice about selecting your account names (particularly for GitHub),
-
--   Incorporate your actual name! People like to know who they're dealing with and makes your username easier for people to guess or remember
-
--   Reuse your username from other contexts, e.g., Twitter or Slack
-
--   Pick a username you will be comfortable revealing to your future boss
-
--   Shorter is better than longer, but be as unique as possible
-
--   Make it timeless. Avoid highlighting your current university, employer, or place of residence
-
-## Slack {.smaller}
-
--   Online forum for asking and answering questions
-
--   Private repo in the course organization
-
--   You will need to join the course organization for access
-
--   Ask **and answer** questions related to course logistics, assignment, etc. here
-
--   Personal questions (e.g., extensions, illnesses, etc.) should be via email to me
-
--   Once you join, browse the channels to make sure you're posting questions in the right channel, update your profile with your name, photo/avatar of you that matches your GitHub profile, and your pronouns
-
--   **Unfortunately** Slack is **not** the best place to ask coding questions, but it's a great place for real-time connection and collaboration
-
-::: task
-Demo on Tuesday for asking good questions with proper code formatting.
-:::
 
 # Wrap up
 
-## Disclaimer
+## For Tomorrow
 
-I have a class in the next period in Bio Sci, so I will be rushing out of class each time. I'm always available on Slack and in office hours and happy to make appointments as well!
+1.  Install R and Positron
 
-## This week's tasks
+2.  Sign-up for a Google AI Pro Account
 
-1.  Create a GitHub account if you don't have one
+3.  Create a Github Account and activate your Education benefits
 
-2.  Read the [syllabus](https://www.vizdata.org/syllabus.html)
+4.  Read the [syllabus](/course-syllabus.qmd)
 
-3.  Make sure you can login in to RStudio and reserve a container for STA 313: [cmgr.oit.duke.edu/containers](https://cmgr.oit.duke.edu/containers)
-
-4.  Complete the *Getting to know you* survey on Canvas -- to be posted
-
-5.  Complete the readings
+5.  Complete Lectures 1-4 readings and videos
