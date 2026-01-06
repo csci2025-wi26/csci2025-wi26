@@ -132,9 +132,7 @@ fish_encounters |>
 
 ## Practice
 
-Let's practice with `table1`, `table2`, and `table3`.
-
--  Let's plot the cases of TB in neighboring countries
+Let's practice with `cms_patient_care`
 
 ## Summary
 
