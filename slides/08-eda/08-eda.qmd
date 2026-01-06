@@ -1,11 +1,6 @@
 ---
 title: "Exploratory Data Analysis"
-subtitle: "Lecture 7"
-title-slide-attributes:
-  data-background-image: ../vizdata-bg.png
-  data-background-size: stretch
-  data-slide-number: none
-format: revealjs
+subtitle: "Lecture 8"
 ---
 
 ```{r}
@@ -58,13 +53,9 @@ Two main types of questions to ask:
 
 2.  What type of covariation occurs between my variables?
 
-## Data: `diamonds`
+## Data: `tips`
 
-- We will use the `diamonds` dataset from the `ggplot2` package.
-- It contains information about the prices and attributes of almost 54,000 diamonds.
-```{r}
-glimpse(diamonds)
-```
+- We will use the `tips` dataset from the `reshape2` package (you will likely have to install it).
 
 # Variation
 
@@ -90,8 +81,7 @@ glimpse(diamonds)
 
 ## Practice
 
-- Let's practice exploring the `diamonds` data set
-  - The `binwidth` of a histogram can reveal different patterns.
+- Let's practice exploring tip sizes.
 
 # Unusual Values
 
@@ -108,10 +98,19 @@ glimpse(diamonds)
 
 ## More Practice
 
-- Let's look for outliers in the `diamonds` dataset.
-- Let's also work through some of the exercises in the chapter.
+- Let's complete exercise 5 
+- Let's explore some outliers in the `tips` dataset
 
 # Covariation
+
+## Data: `mpg`
+
+- We will also use the `mpg` dataset from the `ggplot2` package.
+- It contains information about the fuel economy of different car models.
+```{r}
+glimpse(mpg)
+```
+
 
 ## Visualizing Relationships
 
@@ -132,12 +131,7 @@ glimpse(diamonds)
 ## Reordering Categories
 
 - You can reorder the categorical variable to make the plot easier to read.
-
-```{r}
-ggplot(diamonds, aes(x = fct_reorder(cut, price, .fun = median), y = price)) +
-  geom_boxplot() +
-  labs(x = "cut")
-```
+- What kind of car get's the best gas mileage?
 
 ## Some new plots
 
@@ -151,13 +145,7 @@ ggplot(diamonds, aes(x = fct_reorder(cut, price, .fun = median), y = price)) +
 
 ## Practice
 
-- Let's practice exploring covariation in the `diamonds` dataset.
-- Techniques to try:
-  - Reordering categories
-  - New plot types
-  - Dealing with overplotting
-  - Changing aesthetics (color, size, shape)
-  - Filtering and mutating data
+- Let's practice exploring covariation in the our data sets
 
 # Patterns
 
@@ -197,12 +185,9 @@ ggplot(diamonds, aes(x = fct_reorder(cut, price, .fun = median), y = price)) +
 
 ## Practice
 
-- Let's practice looking for patterns in the `diamonds` dataset.
-- Techniques to try:
-  - Transformations (logs, square roots)
-  - Modeling and residuals
+- Let's practice looking for patterns in out data sets.
 
-# Summary
+# Wrap-Up
 
 ## EDA in a nutshell
 
@@ -211,3 +196,11 @@ ggplot(diamonds, aes(x = fct_reorder(cut, price, .fun = median), y = price)) +
 - Then, explore the covariation between variables.
 - Use `ggplot2` to create a wide range of plots to help you understand your data.
 - **DON'T FORGET TO THINK!**
+
+## Do Next
+
+1. Read [Chapter 10: Exploratory data analysis](https://r4ds.hadley.nz/EDA.html) from r4ds.
+2. Open the Recitation Gem and say "Provide me practice problems for Chapter 10" or work through some of the exercises in the text.
+3. That's it for today. See you tomorrow!
+
+

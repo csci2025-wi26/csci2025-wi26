@@ -2166,7 +2166,7 @@
     "href": "slides/08-communication/08-communication.html#example",
     "title": "Communication",
     "section": "Example",
-    "text": "Example\n\n\nCode\nbest_in_class &lt;- mpg |&gt;\n  group_by(class) |&gt;\n  filter(row_number(desc(hwy)) == 1)\n\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = class)) +\n  geom_text_repel(data = best_in_class, aes(label = model), nudge_y = 2)"
+    "text": "Example\n\n\nCode\nbest_in_class &lt;- mpg |&gt;\n  group_by(class) |&gt;\n  slice_max(hwy)\n\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = class)) +\n  geom_text_repel(data = best_in_class, aes(label = model), nudge_y = 2)"
   },
   {
     "objectID": "slides/08-communication/08-communication.html#annotate",
@@ -2374,5 +2374,166 @@
     "title": "GEMINI.md: Project Overview and Contributor Guide",
     "section": "",
     "text": "To work on this project, you will need to have Quarto installed. You can download it from the Quarto website.\n\n\nTo render and preview the website locally, run the following command in your terminal from the project’s root directory:\nquarto preview\nThis will start a local web server and open the site in your browser. The site will automatically refresh when you save changes to any of the source files.\n\n\n\nTo render the entire website without previewing it, use the following command:\nquarto render\nThis will generate all the static files and place them in the _site/ directory. This is typically done for deployment."
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#exploratory-data-analysis",
+    "href": "slides/08-eda/08-eda.html#exploratory-data-analysis",
+    "title": "Exploratory Data Analysis",
+    "section": "Exploratory Data Analysis",
+    "text": "Exploratory Data Analysis\nEDA is an iterative cycle. You:\n\nGenerate questions about your data.\nSearch for answers by visualizing, transforming, and modelling your data.\nUse what you learn to refine your questions and/or generate new questions."
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#fun-quotes",
+    "href": "slides/08-eda/08-eda.html#fun-quotes",
+    "title": "Exploratory Data Analysis",
+    "section": "Fun Quotes",
+    "text": "Fun Quotes\n\n“There are no routine statistical questions, only questionable statistical routines.” — Sir David Cox\n\n\n\n“Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.” — John Tukey"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#guiding-questions",
+    "href": "slides/08-eda/08-eda.html#guiding-questions",
+    "title": "Exploratory Data Analysis",
+    "section": "Guiding Questions",
+    "text": "Guiding Questions\nTwo main types of questions to ask:\n\nWhat type of variation occurs within my variables?\nWhat type of covariation occurs between my variables?"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#data-diamonds",
+    "href": "slides/08-eda/08-eda.html#data-diamonds",
+    "title": "Exploratory Data Analysis",
+    "section": "Data: diamonds",
+    "text": "Data: diamonds\n\nWe will use the diamonds dataset from the ggplot2 package.\nIt contains information about the prices and attributes of almost 54,000 diamonds.\n\n\nglimpse(diamonds)\n\nRows: 53,940\nColumns: 10\n$ carat   &lt;dbl&gt; 0.23, 0.21, 0.23, 0.29, 0.31, 0.24, 0.24, 0.26, 0.22, 0.23, 0.…\n$ cut     &lt;ord&gt; Ideal, Premium, Good, Premium, Good, Very Good, Very Good, Ver…\n$ color   &lt;ord&gt; E, E, E, I, J, J, I, H, E, H, J, J, F, J, E, E, I, J, J, J, I,…\n$ clarity &lt;ord&gt; SI2, SI1, VS1, VS2, SI2, VVS2, VVS1, SI1, VS2, VS1, SI1, VS1, …\n$ depth   &lt;dbl&gt; 61.5, 59.8, 56.9, 62.4, 63.3, 62.8, 62.3, 61.9, 65.1, 59.4, 64…\n$ table   &lt;dbl&gt; 55, 61, 65, 58, 58, 57, 57, 55, 61, 61, 55, 56, 61, 54, 62, 58…\n$ price   &lt;int&gt; 326, 326, 327, 334, 335, 336, 336, 337, 337, 338, 339, 340, 34…\n$ x       &lt;dbl&gt; 3.95, 3.89, 4.05, 4.20, 4.34, 3.94, 3.95, 4.07, 3.87, 4.00, 4.…\n$ y       &lt;dbl&gt; 3.98, 3.84, 4.07, 4.23, 4.35, 3.96, 3.98, 4.11, 3.78, 4.05, 4.…\n$ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39, 2.…"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#visualizing-distributions",
+    "href": "slides/08-eda/08-eda.html#visualizing-distributions",
+    "title": "Exploratory Data Analysis",
+    "section": "Visualizing Distributions",
+    "text": "Visualizing Distributions\nVariation is the tendency of the values of a variable to change from measurement to measurement.\n\nEvery variable has its own pattern of variation, which can reveal interesting information.\nThe best way to understand that pattern is to visualize the variable’s distribution."
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#questions",
+    "href": "slides/08-eda/08-eda.html#questions",
+    "title": "Exploratory Data Analysis",
+    "section": "Questions",
+    "text": "Questions\n\nWhich values are the most common? Why?\nWhich values are rare? Why? Does that match your expectations?\nCan you see any unusual patterns? What might explain them?"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#recall-univarite-plots",
+    "href": "slides/08-eda/08-eda.html#recall-univarite-plots",
+    "title": "Exploratory Data Analysis",
+    "section": "Recall: Univarite Plots",
+    "text": "Recall: Univarite Plots\n\nCategorical variables: bar charts\nNumerical variables: histograms, boxplots"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#practice",
+    "href": "slides/08-eda/08-eda.html#practice",
+    "title": "Exploratory Data Analysis",
+    "section": "Practice",
+    "text": "Practice\n\nLet’s practice exploring tip sizes."
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#outliers",
+    "href": "slides/08-eda/08-eda.html#outliers",
+    "title": "Exploratory Data Analysis",
+    "section": "Outliers",
+    "text": "Outliers\n\nOutliers are observations that are unusual; points that don’t seem to fit the pattern.\nSometimes they are data entry errors; other times they are genuinely important."
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#handling-outliers",
+    "href": "slides/08-eda/08-eda.html#handling-outliers",
+    "title": "Exploratory Data Analysis",
+    "section": "Handling Outliers",
+    "text": "Handling Outliers\n\nIf they are data entry errors, try to fix them or remove them.\nIf they are genuine, their presence is important information.\nNeither of these conclusions can be made without understanding the context of the data and looking deeply at the observations"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#more-practice",
+    "href": "slides/08-eda/08-eda.html#more-practice",
+    "title": "Exploratory Data Analysis",
+    "section": "More Practice",
+    "text": "More Practice\n\nLet’s complete exercise 5\nLet’s explore some outliers in the tips dataset"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#visualizing-relationships",
+    "href": "slides/08-eda/08-eda.html#visualizing-relationships",
+    "title": "Exploratory Data Analysis",
+    "section": "Visualizing Relationships",
+    "text": "Visualizing Relationships\n\nCovariation: how do two variables change together? What is their relationship?\nVisualizing covariation helps you understand relationships between variables\nYou need to think and plan carefully about how to display multiple distributions in a single plot"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#recall-three-general-cases",
+    "href": "slides/08-eda/08-eda.html#recall-three-general-cases",
+    "title": "Exploratory Data Analysis",
+    "section": "Recall: Three general cases",
+    "text": "Recall: Three general cases\n\nCategorical + Categorical\n\nBoxplots\n\nCategorical + Numerical\n\nBoxplots, jitter plots, faceted histograms\n\nNumerical + Numerical\n\nScatterplots, jitter plots"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#reordering-categories",
+    "href": "slides/08-eda/08-eda.html#reordering-categories",
+    "title": "Exploratory Data Analysis",
+    "section": "Reordering Categories",
+    "text": "Reordering Categories\n\nYou can reorder the categorical variable to make the plot easier to read.\nWhat kind of car get’s the best gas mileage?"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#some-new-plots",
+    "href": "slides/08-eda/08-eda.html#some-new-plots",
+    "title": "Exploratory Data Analysis",
+    "section": "Some new plots",
+    "text": "Some new plots\n\nCategorical + Categorical\n\nMosaic plots, count plots, tile plots\n\nCategorical + Numerical\n\nViolin plots, sina plots, ridgeline plots, frequency polygons\n\nNumerical + Numerical\n\n2D-Histogram/heatmap of counts, hexbin plots"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#practice-1",
+    "href": "slides/08-eda/08-eda.html#practice-1",
+    "title": "Exploratory Data Analysis",
+    "section": "Practice",
+    "text": "Practice\n\nLet’s practice exploring covariation in the our data sets"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#patterns-1",
+    "href": "slides/08-eda/08-eda.html#patterns-1",
+    "title": "Exploratory Data Analysis",
+    "section": "Patterns",
+    "text": "Patterns\n\nPatterns in your data hint at relationships. If you can spot a pattern, ask yourself:\n\nCould this pattern be due to coincidence?\nHow can you describe the relationship implied by the pattern?\nHow strong is the relationship implied by the pattern?\nWhat other variables might affect the relationship?\nDoes the relationship change if you look at individual subgroups of the data?\n\nModels can help you extract the strong patterns and leave the weaker ones."
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#transformations",
+    "href": "slides/08-eda/08-eda.html#transformations",
+    "title": "Exploratory Data Analysis",
+    "section": "Transformations",
+    "text": "Transformations\n\nTransformations can help you see patterns more clearly.\nCommon transformations include:\n\nLogarithms\nLogarithms\nLogarithms\nSquare roots\nLogarithms\nStandardization (z-scores)\nLogarithms"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#the-power-emojiman_facepalming-of-logs",
+    "href": "slides/08-eda/08-eda.html#the-power-emojiman_facepalming-of-logs",
+    "title": "Exploratory Data Analysis",
+    "section": "The power emo::ji(\"man_facepalming\") of logs",
+    "text": "The power emo::ji(\"man_facepalming\") of logs\n\nPower law: when \\(y = ax^k\\)\n\nTaking the log of both sides gives: \\(\\log(y) = \\log(a) + k\\log(x)\\)\nIntuitively: multiplying x by a constant multiplies y by a constant.\n\nPower law’s are extremely common in nature:\n\nParetto principle (80/20 rule)\nCity sizes\nEarthquake magnitudes\nWealth distributions\nBacteria growth"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#practice-2",
+    "href": "slides/08-eda/08-eda.html#practice-2",
+    "title": "Exploratory Data Analysis",
+    "section": "Practice",
+    "text": "Practice\n\nLet’s practice looking for patterns in the diamonds dataset.\nTechniques to try:\n\nTransformations (logs, square roots)\nModeling and residuals"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#eda-in-a-nutshell",
+    "href": "slides/08-eda/08-eda.html#eda-in-a-nutshell",
+    "title": "Exploratory Data Analysis",
+    "section": "EDA in a nutshell",
+    "text": "EDA in a nutshell\n\nEDA is about asking questions and using visualizations to find answers.\nStart by looking at the variation of each variable.\nThen, explore the covariation between variables.\nUse ggplot2 to create a wide range of plots to help you understand your data.\nDON’T FORGET TO THINK!"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#data-tips",
+    "href": "slides/08-eda/08-eda.html#data-tips",
+    "title": "Exploratory Data Analysis",
+    "section": "Data: tips",
+    "text": "Data: tips\n\nWe will use the tips dataset from the reshape2 package (you will likely have to install it)."
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#data-mpg",
+    "href": "slides/08-eda/08-eda.html#data-mpg",
+    "title": "Exploratory Data Analysis",
+    "section": "Data: mpg",
+    "text": "Data: mpg\n\nWe will also use the mpg dataset from the ggplot2 package.\nIt contains information about the fuel economy of different car models.\n\n\nglimpse(mpg)\n\nRows: 234\nColumns: 11\n$ manufacturer &lt;chr&gt; \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"…\n$ model        &lt;chr&gt; \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4 quattro\", \"…\n$ displ        &lt;dbl&gt; 1.8, 1.8, 2.0, 2.0, 2.8, 2.8, 3.1, 1.8, 1.8, 2.0, 2.0, 2.…\n$ year         &lt;int&gt; 1999, 1999, 2008, 2008, 1999, 1999, 2008, 1999, 1999, 200…\n$ cyl          &lt;int&gt; 4, 4, 4, 4, 6, 6, 6, 4, 4, 4, 4, 6, 6, 6, 6, 6, 6, 8, 8, …\n$ trans        &lt;chr&gt; \"auto(l5)\", \"manual(m5)\", \"manual(m6)\", \"auto(av)\", \"auto…\n$ drv          &lt;chr&gt; \"f\", \"f\", \"f\", \"f\", \"f\", \"f\", \"f\", \"4\", \"4\", \"4\", \"4\", \"4…\n$ cty          &lt;int&gt; 18, 21, 20, 21, 16, 18, 18, 18, 16, 20, 19, 15, 17, 17, 1…\n$ hwy          &lt;int&gt; 29, 29, 31, 30, 26, 26, 27, 26, 25, 28, 27, 25, 25, 25, 2…\n$ fl           &lt;chr&gt; \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p…\n$ class        &lt;chr&gt; \"compact\", \"compact\", \"compact\", \"compact\", \"compact\", \"c…"
   }
 ]

@@ -1,10 +1,6 @@
 ---
 title: "Communication"
 subtitle: "Lecture 8"
-title-slide-attributes:
-  data-background-image: ../vizdata-bg.png
-  data-background-size: stretch
-  data-slide-number: none
 format: revealjs
 ---
 
@@ -17,8 +13,6 @@ format: revealjs
 library(tidyverse)
 library(countdown)
 library(patchwork)
-library(ggrepel)
-library(ggthemes)
 
 # set theme for ggplot2
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
@@ -72,19 +66,9 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
 - It's similar to other geoms, but has an `label` aesthetic.
 - `ggrepel` package for making text and labels that repel away from each other to avoid overlapping.
 
-## Example
+## Practice
 
-```{r}
-#| echo: true
-#| code-fold: true
-best_in_class <- mpg |>
-  group_by(class) |>
-  filter(row_number(desc(hwy)) == 1)
-
-ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point(aes(color = class)) +
-  geom_text_repel(data = best_in_class, aes(label = model), nudge_y = 2)
-```
+Let's create a scatter plot of engine size vs. highway fuel efficiency, and label the best car in each class.
 
 ## `annotate()`
 
@@ -96,17 +80,7 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
 ```{r}
 #| echo: true
 #| code-fold: true
-ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point() +
-  annotate(
-    "rect", 
-    xmin = 5, xmax = 7, ymin = 10, ymax = 25, 
-    fill = "red", alpha = 0.2
-  ) +
-  annotate(
-    "text", x = 6, y = 15, label = "Large engines are inefficient",
-    color = "red", hjust = 0.5
-  )
+g
 ```
 
 ## Practice!

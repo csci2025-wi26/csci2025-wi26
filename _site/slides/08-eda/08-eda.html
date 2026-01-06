@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
-  <title>CSCI 2025 – Communication</title>
+  <title>CSCI 2025 – Exploratory Data Analysis</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -195,7 +195,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Communication</h1>
+  <h1 class="title">Exploratory Data Analysis</h1>
   <p class="subtitle">Lecture 8</p>
 
 <div class="quarto-title-authors">
@@ -211,359 +211,267 @@ Dr.&nbsp;Eric Friedlander
 
 </section>
 <section>
-<section id="introduction" class="title-slide slide level1 center">
-<h1>Introduction</h1>
+<section id="what-is-eda" class="title-slide slide level1 center">
+<h1>What is EDA?</h1>
 
 </section>
-<section id="communicating-results" class="slide level2">
-<h2>Communicating Results</h2>
+<section id="exploratory-data-analysis" class="slide level2">
+<h2>Exploratory Data Analysis</h2>
+<p>EDA is an iterative cycle. You:</p>
+<ol type="1">
+<li>Generate questions about your data.</li>
+<li>Search for answers by visualizing, transforming, and modelling your data.</li>
+<li>Use what you learn to refine your questions and/or generate new questions.</li>
+</ol>
+</section>
+<section id="fun-quotes" class="slide level2">
+<h2>Fun Quotes</h2>
+<blockquote>
+<p>“There are no routine statistical questions, only questionable statistical routines.” — Sir David Cox</p>
+</blockquote>
+<div class="fragment">
+<blockquote>
+<p>“Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.” — John Tukey</p>
+</blockquote>
+</div>
+</section>
+<section id="guiding-questions" class="slide level2">
+<h2>Guiding Questions</h2>
+<p>Two main types of questions to ask:</p>
+<ol type="1">
+<li><p>What type of variation occurs within my variables?</p></li>
+<li><p>What type of covariation occurs between my variables?</p></li>
+</ol>
+</section>
+<section id="data-tips" class="slide level2">
+<h2>Data: <code>tips</code></h2>
 <ul>
-<li>So far, we’ve focused on using <code>ggplot2</code> for exploration.</li>
-<li>Now, we’ll focus on how to use <code>ggplot2</code> to create explanatory graphics.</li>
-<li>The goal is to communicate your findings to others.</li>
-<li>We will learn how to polish your plots for communication.</li>
+<li>We will use the <code>tips</code> dataset from the <code>reshape2</code> package (you will likely have to install it).</li>
 </ul>
 </section></section>
 <section>
-<section id="labels" class="title-slide slide level1 center">
-<h1>Labels</h1>
+<section id="variation" class="title-slide slide level1 center">
+<h1>Variation</h1>
 
 </section>
-<section id="labs" class="slide level2">
-<h2><code>labs()</code></h2>
+<section id="visualizing-distributions" class="slide level2">
+<h2>Visualizing Distributions</h2>
+<p><strong>Variation</strong> is the tendency of the values of a variable to change from measurement to measurement.</p>
 <ul>
-<li>Use the <code>labs()</code> function to add labels to your plot.</li>
-<li>You can add a <code>title</code>, <code>subtitle</code>, <code>caption</code>, <code>tag</code>, and new <code>x</code> and <code>y</code> axis labels.</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb1-2"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> class)) <span class="sc">+</span></span>
-<span id="cb1-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb1-4"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb1-5"><a></a>    <span class="at">title =</span> <span class="st">"Fuel efficiency generally decreases with engine size"</span>,</span>
-<span id="cb1-6"><a></a>    <span class="at">subtitle =</span> <span class="st">"Two seaters (sports cars) are an exception because of their light weight"</span>,</span>
-<span id="cb1-7"><a></a>    <span class="at">caption =</span> <span class="st">"Data from fueleconomy.gov"</span>,</span>
-<span id="cb1-8"><a></a>    <span class="at">x =</span> <span class="st">"Engine displacement (L)"</span>,</span>
-<span id="cb1-9"><a></a>    <span class="at">y =</span> <span class="st">"Highway fuel efficiency (mpg)"</span>,</span>
-<span id="cb1-10"><a></a>    <span class="at">color =</span> <span class="st">"Car type"</span></span>
-<span id="cb1-11"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
-</div>
-
-</div>
-<img data-src="08-communication_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section></section>
-<section>
-<section id="annotations" class="title-slide slide level1 center">
-<h1>Annotations</h1>
-
-</section>
-<section id="adding-text" class="slide level2">
-<h2>Adding Text</h2>
-<ul>
-<li>You can use <code>geom_text()</code> to add text to your plot.</li>
-<li>It’s similar to other geoms, but has an <code>label</code> aesthetic.</li>
-<li><code>ggrepel</code> package for making text and labels that repel away from each other to avoid overlapping.</li>
+<li>Every variable has its own pattern of variation, which can reveal interesting information.</li>
+<li>The best way to understand that pattern is to visualize the variable’s distribution.</li>
 </ul>
 </section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>best_in_class <span class="ot">&lt;-</span> mpg <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a></a>  <span class="fu">group_by</span>(class) <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a></a>  <span class="fu">slice_max</span>(hwy)</span>
-<span id="cb3-4"><a></a></span>
-<span id="cb3-5"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb3-6"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> class)) <span class="sc">+</span></span>
-<span id="cb3-7"><a></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> best_in_class, <span class="fu">aes</span>(<span class="at">label =</span> model), <span class="at">nudge_y =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="08-communication_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
-<section id="annotate" class="slide level2">
-<h2><code>annotate()</code></h2>
+<section id="questions" class="slide level2">
+<h2>Questions</h2>
 <ul>
-<li>You can use <code>annotate()</code> to add a single annotation to a plot.</li>
-<li>This is useful for adding a text label or a rectangle to highlight something.</li>
+<li><p>Which values are the most common? <em>Why?</em></p></li>
+<li><p>Which values are rare? <em>Why?</em> Does that match your expectations?</p></li>
+<li><p>Can you see any unusual patterns? <em>What might explain them?</em></p></li>
 </ul>
 </section>
-<section id="example-1" class="slide level2">
-<h2>Example</h2>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb4-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb4-3"><a></a>  <span class="fu">annotate</span>(</span>
-<span id="cb4-4"><a></a>    <span class="st">"rect"</span>, </span>
-<span id="cb4-5"><a></a>    <span class="at">xmin =</span> <span class="dv">5</span>, <span class="at">xmax =</span> <span class="dv">7</span>, <span class="at">ymin =</span> <span class="dv">10</span>, <span class="at">ymax =</span> <span class="dv">25</span>, </span>
-<span id="cb4-6"><a></a>    <span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span></span>
-<span id="cb4-7"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb4-8"><a></a>  <span class="fu">annotate</span>(</span>
-<span id="cb4-9"><a></a>    <span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">6</span>, <span class="at">y =</span> <span class="dv">15</span>, <span class="at">label =</span> <span class="st">"Large engines are inefficient"</span>,</span>
-<span id="cb4-10"><a></a>    <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span></span>
-<span id="cb4-11"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="08-communication_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
+<section id="recall-univarite-plots" class="slide level2">
+<h2>Recall: Univarite Plots</h2>
+<ul>
+<li>Categorical variables: bar charts</li>
+<li>Numerical variables: histograms, boxplots</li>
+</ul>
+</section>
 <section id="practice" class="slide level2">
-<h2>Practice!</h2>
-<p>Let’s do some practice!</p>
+<h2>Practice</h2>
+<ul>
+<li>Let’s practice exploring tip sizes.</li>
+</ul>
 </section></section>
 <section>
-<section id="scales" class="title-slide slide level1 center">
-<h1>Scales</h1>
+<section id="unusual-values" class="title-slide slide level1 center">
+<h1>Unusual Values</h1>
 
 </section>
-<section id="axis-ticks" class="slide level2">
-<h2>Axis Ticks</h2>
+<section id="outliers" class="slide level2">
+<h2>Outliers</h2>
 <ul>
-<li>Scales control the mapping from data values to aesthetics.</li>
-<li>You can customize scales to change axis ticks, legend keys, and more.</li>
-<li>Use <code>breaks</code> and <code>labels</code> to customize the ticks on an axis.</li>
+<li>Outliers are observations that are unusual; points that don’t seem to fit the pattern.</li>
+<li>Sometimes they are data entry errors; other times they are genuinely important.</li>
 </ul>
 </section>
-<section id="example-ticks" class="slide level2">
-<h2>Example: Ticks</h2>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb5-3"><a></a>  <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb5-4"><a></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="at">by =</span> <span class="dv">1</span>), </span>
-<span id="cb5-5"><a></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1 carat"</span>, <span class="st">"2 carats"</span>, <span class="st">"3 carats"</span>, <span class="st">"4 carats"</span>, <span class="st">"5 carats"</span>)</span>
-<span id="cb5-6"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb5-7"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<section id="handling-outliers" class="slide level2">
+<h2>Handling Outliers</h2>
+<ul>
+<li>If they are data entry errors, try to fix them or remove them.</li>
+<li>If they are genuine, their presence is important information.</li>
+<li>Neither of these conclusions can be made without understanding the context of the data and looking deeply at the observations</li>
+</ul>
+</section>
+<section id="more-practice" class="slide level2">
+<h2>More Practice</h2>
+<ul>
+<li>Let’s complete exercise 5</li>
+<li>Let’s explore some outliers in the <code>tips</code> dataset</li>
+</ul>
+</section></section>
+<section>
+<section id="covariation" class="title-slide slide level1 center">
+<h1>Covariation</h1>
 
+</section>
+<section id="data-mpg" class="slide level2">
+<h2>Data: <code>mpg</code></h2>
+<ul>
+<li>We will also use the <code>mpg</code> dataset from the <code>ggplot2</code> package.</li>
+<li>It contains information about the fuel economy of different car models.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">glimpse</span>(mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 234
+Columns: 11
+$ manufacturer &lt;chr&gt; "audi", "audi", "audi", "audi", "audi", "audi", "audi", "…
+$ model        &lt;chr&gt; "a4", "a4", "a4", "a4", "a4", "a4", "a4", "a4 quattro", "…
+$ displ        &lt;dbl&gt; 1.8, 1.8, 2.0, 2.0, 2.8, 2.8, 3.1, 1.8, 1.8, 2.0, 2.0, 2.…
+$ year         &lt;int&gt; 1999, 1999, 2008, 2008, 1999, 1999, 2008, 1999, 1999, 200…
+$ cyl          &lt;int&gt; 4, 4, 4, 4, 6, 6, 6, 4, 4, 4, 4, 6, 6, 6, 6, 6, 6, 8, 8, …
+$ trans        &lt;chr&gt; "auto(l5)", "manual(m5)", "manual(m6)", "auto(av)", "auto…
+$ drv          &lt;chr&gt; "f", "f", "f", "f", "f", "f", "f", "4", "4", "4", "4", "4…
+$ cty          &lt;int&gt; 18, 21, 20, 21, 16, 18, 18, 18, 16, 20, 19, 15, 17, 17, 1…
+$ hwy          &lt;int&gt; 29, 29, 31, 30, 26, 26, 27, 26, 25, 28, 27, 25, 25, 25, 2…
+$ fl           &lt;chr&gt; "p", "p", "p", "p", "p", "p", "p", "p", "p", "p", "p", "p…
+$ class        &lt;chr&gt; "compact", "compact", "compact", "compact", "compact", "c…</code></pre>
 </div>
-<img data-src="08-communication_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
-<section id="legend-layout" class="slide level2">
-<h2>Legend Layout</h2>
+</div>
+</section>
+<section id="visualizing-relationships" class="slide level2">
+<h2>Visualizing Relationships</h2>
 <ul>
-<li>Use <code>theme(legend.position = ...)</code> to move the legend.
+<li><strong>Covariation</strong>: how do two variables change together? What is their relationship?</li>
+<li>Visualizing covariation helps you understand relationships between variables</li>
+<li>You need to think and plan carefully about how to display multiple distributions in a single plot</li>
+</ul>
+</section>
+<section id="recall-three-general-cases" class="slide level2">
+<h2>Recall: Three general cases</h2>
 <ul>
-<li>Values: <code>"right"</code>, <code>"left"</code>, <code>"top"</code>, <code>"bottom"</code>, <code>"none"</code>.</li>
+<li>Categorical + Categorical
+<ul>
+<li>Boxplots</li>
 </ul></li>
-<li>Use <code>guides()</code> to control legend appearance, like the number of rows.</li>
-</ul>
-</section>
-<section id="example-legend" class="slide level2">
-<h2>Example: Legend</h2>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>base <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb6-2"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> class))</span>
-<span id="cb6-3"><a></a></span>
-<span id="cb6-4"><a></a>base <span class="sc">+</span> </span>
-<span id="cb6-5"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb6-6"><a></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="dv">4</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="08-communication_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
-<section id="color-scales" class="slide level2">
-<h2>Color Scales</h2>
+<li>Categorical + Numerical
 <ul>
-<li>Use <code>scale_color_*()</code> functions to control color scales.</li>
-<li><code>scale_color_brewer()</code> uses hand-picked, colorblind-friendly palettes.</li>
-<li><code>scale_color_viridis_c()</code> is a continuous color scale that is perceptually uniform and colorblind friendly.</li>
-</ul>
-</section>
-<section id="example-color-brewer" class="slide level2">
-<h2>Example: Color Brewer</h2>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb7-2"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> drv)) <span class="sc">+</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Set1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="08-communication_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
-<section id="manual-color-scale" class="slide level2">
-<h2>Manual Color Scale</h2>
+<li>Boxplots, jitter plots, faceted histograms</li>
+</ul></li>
+<li>Numerical + Numerical
 <ul>
-<li>When you have a predefined mapping between values and colors, use <code>scale_color_manual()</code>.</li>
+<li>Scatterplots, jitter plots</li>
+</ul></li>
 </ul>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> drv)) <span class="sc">+</span></span>
-<span id="cb8-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb8-3"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"4"</span> <span class="ot">=</span> <span class="st">"navy"</span>, <span class="st">"f"</span> <span class="ot">=</span> <span class="st">"darkred"</span>, <span class="st">"r"</span> <span class="ot">=</span> <span class="st">"darkgreen"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="08-communication_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
-<section id="axis-transformations" class="slide level2">
-<h2>Axis Transformations</h2>
+</section>
+<section id="reordering-categories" class="slide level2">
+<h2>Reordering Categories</h2>
 <ul>
-<li>You can transform a variable inside the aesthetic mapping, e.g.&nbsp;<code>aes(y = log10(price))</code>.</li>
-<li>Or, you can transform the scale, e.g.&nbsp;<code>scale_y_log10()</code>. This is usually better because the axis is labeled on the original data scale.</li>
+<li>You can reorder the categorical variable to make the plot easier to read.</li>
+<li>What kind of car get’s the best gas mileage?</li>
 </ul>
 </section>
-<section id="example-2" class="slide level2">
-<h2>Example</h2>
-<div class="columns">
-<div class="column">
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># Transformed in aesthetic</span></span>
-<span id="cb9-2"><a></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log10</span>(carat), <span class="at">y =</span> <span class="fu">log10</span>(price))) <span class="sc">+</span></span>
-<span id="cb9-3"><a></a>  <span class="fu">geom_bin2d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin2d()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
-</div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="08-communication_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center" width="2100"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column">
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
-<span id="cb11-2"><a></a>  <span class="fu">geom_bin2d</span>() <span class="sc">+</span></span>
-<span id="cb11-3"><a></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb11-4"><a></a>  <span class="fu">scale_y_log10</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin2d()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
-</div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="08-communication_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="2100"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="coord_cartesian" class="slide level2">
-<h2><code>coord_cartesian()</code></h2>
+<section id="some-new-plots" class="slide level2">
+<h2>Some new plots</h2>
 <ul>
-<li>To zoom in on a part of the plot, use <code>coord_cartesian()</code>.</li>
-<li>It’s better than <code>xlim()</code> or <code>ylim()</code> because it doesn’t throw away data.</li>
+<li>Categorical + Categorical
+<ul>
+<li>Mosaic plots, count plots, tile plots</li>
+</ul></li>
+<li>Categorical + Numerical
+<ul>
+<li>Violin plots, sina plots, ridgeline plots, frequency polygons</li>
+</ul></li>
+<li>Numerical + Numerical
+<ul>
+<li>2D-Histogram/heatmap of counts, hexbin plots</li>
+</ul></li>
 </ul>
 </section>
-<section id="example-3" class="slide level2">
-<h2>Example</h2>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>)</span>
-<span id="cb13-3"><a></a></span>
-<span id="cb13-4"><a></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
-<span id="cb13-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb13-6"><a></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5000</span>))</span>
-<span id="cb13-7"><a></a></span>
-<span id="cb13-8"><a></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
-<span id="cb13-9"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb13-10"><a></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3000</span>))</span>
-<span id="cb13-11"><a></a></span>
-<span id="cb13-12"><a></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="08-communication_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
 <section id="practice-1" class="slide level2">
 <h2>Practice</h2>
-<p>Let’s practice customizing scales!</p>
-</section></section>
-<section>
-<section id="themes" class="title-slide slide level1 center">
-<h1>Themes</h1>
-
-</section>
-<section id="built-in-themes" class="slide level2">
-<h2>Built-in Themes</h2>
 <ul>
-<li><code>ggplot2</code> comes with several built-in themes: <code>theme_gray()</code>, <code>theme_bw()</code>, <code>theme_minimal()</code>, <code>theme_classic()</code>, <code>theme_light()</code>, and <code>theme_dark()</code>.</li>
-<li>You can set a theme globally with <code>theme_set()</code>.</li>
-</ul>
-</section>
-<section id="example-4" class="slide level2">
-<h2>Example</h2>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class)) <span class="sc">+</span></span>
-<span id="cb14-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb14-3"><a></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="08-communication_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
-<section id="ggthemes" class="slide level2">
-<h2><code>ggthemes</code></h2>
-<ul>
-<li>The <code>ggthemes</code> package provides a variety of addition complete themes.</li>
-<li>Try <code>theme_economist()</code>, <code>theme_solarized()</code>, <code>theme_wsj()</code>.</li>
-</ul>
-</section>
-<section id="example-5" class="slide level2">
-<h2>Example</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class)) <span class="sc">+</span></span>
-<span id="cb15-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb15-3"><a></a>  <span class="fu">theme_economist</span>() <span class="sc">+</span> </span>
-<span id="cb15-4"><a></a>  <span class="fu">scale_color_economist</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="08-communication_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
-<section id="theme" class="slide level2">
-<h2><code>theme()</code></h2>
-<ul>
-<li>Use <code>theme()</code> to customize non-data elements of your plot.</li>
-<li>You can change fonts, backgrounds, gridlines, legend position, and more.</li>
+<li>Let’s practice exploring covariation in the our data sets</li>
 </ul>
 </section></section>
 <section>
-<section id="saving-plots" class="title-slide slide level1 center">
-<h1>Saving Plots</h1>
+<section id="patterns" class="title-slide slide level1 center">
+<h1>Patterns</h1>
 
 </section>
-<section id="ggsave" class="slide level2">
-<h2><code>ggsave()</code></h2>
+<section id="patterns-1" class="slide level2">
+<h2>Patterns</h2>
 <ul>
-<li>Use <code>ggsave()</code> to save your plots.</li>
-<li>It saves the last plot by default.</li>
-<li>You can specify the <code>width</code>, <code>height</code>, and <code>dpi</code>.</li>
+<li>Patterns in your data hint at relationships. If you can spot a pattern, ask yourself:
+<ul>
+<li>Could this pattern be due to coincidence?</li>
+<li>How can you describe the relationship implied by the pattern?</li>
+<li>How strong is the relationship implied by the pattern?</li>
+<li>What other variables might affect the relationship?</li>
+<li>Does the relationship change if you look at individual subgroups of the data?</li>
+</ul></li>
+<li>Models can help you extract the strong patterns and leave the weaker ones.</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb16-2"><a></a><span class="fu">ggsave</span>(<span class="st">"my-plot.png"</span>, <span class="at">plot =</span> p, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+</section>
+<section id="transformations" class="slide level2">
+<h2>Transformations</h2>
+<ul>
+<li>Transformations can help you see patterns more clearly.</li>
+<li>Common transformations include:
+<ul>
+<li>Logarithms</li>
+<li>Logarithms</li>
+<li>Logarithms</li>
+<li>Square roots</li>
+<li>Logarithms</li>
+<li>Standardization (z-scores)</li>
+<li>Logarithms</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-power-emojiman_facepalming-of-logs" class="slide level2">
+<h2>The power <code>emo::ji("man_facepalming")</code> of logs</h2>
+<ul>
+<li>Power law: when <span class="math inline">\(y = ax^k\)</span>
+<ul>
+<li>Taking the log of both sides gives: <span class="math inline">\(\log(y) = \log(a) + k\log(x)\)</span></li>
+<li>Intuitively: multiplying <code>x</code> by a constant multiplies <code>y</code> by a constant.</li>
+</ul></li>
+<li>Power law’s are extremely common in nature:
+<ul>
+<li>Paretto principle (80/20 rule)</li>
+<li>City sizes</li>
+<li>Earthquake magnitudes</li>
+<li>Wealth distributions</li>
+<li>Bacteria growth</li>
+</ul></li>
+</ul>
+</section>
+<section id="practice-2" class="slide level2">
+<h2>Practice</h2>
+<ul>
+<li>Let’s practice looking for patterns in the <code>diamonds</code> dataset.</li>
+<li>Techniques to try:
+<ul>
+<li>Transformations (logs, square roots)</li>
+<li>Modeling and residuals</li>
+</ul></li>
+</ul>
 </section></section>
 <section>
 <section id="summary" class="title-slide slide level1 center">
 <h1>Summary</h1>
 
 </section>
-<section id="communication-best-practices" class="slide level2">
-<h2>Communication Best Practices</h2>
+<section id="eda-in-a-nutshell" class="slide level2">
+<h2>EDA in a nutshell</h2>
 <ul>
-<li>Label your plots clearly and concisely.</li>
-<li>Use annotations to highlight important features.</li>
-<li>Choose appropriate scales and colors.</li>
-<li>Use themes to create a consistent and polished look.</li>
-<li>Save your plots in a suitable format and resolution.</li>
-<li>Your goal is to make your plots easy to understand for your audience.</li>
+<li>EDA is about asking questions and using visualizations to find answers.</li>
+<li>Start by looking at the variation of each variable.</li>
+<li>Then, explore the covariation between variables.</li>
+<li>Use <code>ggplot2</code> to create a wide range of plots to help you understand your data.</li>
+<li><strong>DON’T FORGET TO THINK!</strong></li>
 </ul>
 
 
