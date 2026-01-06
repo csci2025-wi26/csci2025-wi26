@@ -75,7 +75,7 @@ project-name/
 
 ## Practice {.smaller}
 
--  Download Star Formation data from Canvas
+-  Download Star Formation data from Teams
 -  Create a new folder on your computer called StarFormation (don't put it in your Downloads folder)
 -  Create the following folder structure
 
@@ -188,10 +188,11 @@ restored_file <- read_rds("path-to-file.rds")
 ## Other data sources
 
 The `tidyverse` ecosystem has packages for many other data types:
+
 - **`readxl`**: For Excel files (`.xls`, `.xlsx`).
 - **`haven`**: For other statistical formats (SPSS, Stata, SAS).
-- **`DBI`**: To interface with relational databases.
-- **`arrow`**: For high-performance binary formats like Parquet and Feather.
+- **`googlesheets4`**: For Google Sheets.
+- Many more!
 
 ## Summary
 
@@ -199,3 +200,9 @@ The `tidyverse` ecosystem has packages for many other data types:
 -   **Always** check the column specifications that `readr` prints. If they're wrong, fix them with `col_types`.
 -   Use `write_csv()` to save your data frames to CSV files for sharing.
 -   Use `write_rds()` to save R objects for later use in R.
+
+# Wrap Up
+## Do Next
+
+1. Read [Chapter 7: Data import](https://r4ds.hadley.nz/data-import.html) from r4ds.
+2. No need to practice this one and that's all for today!
