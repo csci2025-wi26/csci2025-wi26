@@ -713,137 +713,88 @@
     "text": "Practice!\nLet’s do some practice!"
   },
   {
-    "objectID": "slides/10-numbers/10-numbers.html#working-with-numbers",
-    "href": "slides/10-numbers/10-numbers.html#working-with-numbers",
-    "title": "Numbers",
-    "section": "Working with Numbers",
-    "text": "Working with Numbers\n\nNumeric data is the most common type of data you’ll work with.\nThis lecture covers creating, transforming, and summarizing numeric vectors.\nWe’ll use functions from base R and dplyr."
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#this-lesson",
+    "href": "slides/05-data-tidying/05-data-tidying.html#this-lesson",
+    "title": "Data Tidying",
+    "section": "This lesson",
+    "text": "This lesson\n\nDefine “tidy data”\nLearn how to use tidyr to make data tidy\n\npivot_longer() for lengthening data\npivot_wider() for widening data"
   },
   {
-    "objectID": "slides/10-numbers/10-numbers.html#parsing-numbers",
-    "href": "slides/10-numbers/10-numbers.html#parsing-numbers",
-    "title": "Numbers",
-    "section": "Parsing Numbers",
-    "text": "Parsing Numbers\n\nSometimes numbers are stored as text (strings).\nreadr::parse_double() converts strings to numbers, assuming they are just numbers.\nreadr::parse_number() is more flexible and can extract numbers from strings with other text.\n\n\nparse_double(\"1.23\")\n\n[1] 1.23\n\nparse_number(\"$1,234.50\")\n\n[1] 1234.5\n\nparse_number(\"55%\")\n\n[1] 55"
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#what-is-tidy-data",
+    "href": "slides/05-data-tidying/05-data-tidying.html#what-is-tidy-data",
+    "title": "Data Tidying",
+    "section": "What is tidy data?",
+    "text": "What is tidy data?\nTidy data is a consistent way of structuring datasets that makes them easier to work with. A dataset is tidy if it follows three rules:\n\nEach variable has its own column.\nEach observation has its own row.\nEach value has its own cell.\n\nThis structure is a standard in the tidyverse."
   },
   {
-    "objectID": "slides/10-numbers/10-numbers.html#count",
-    "href": "slides/10-numbers/10-numbers.html#count",
-    "title": "Numbers",
-    "section": "count()",
-    "text": "count()\n\ndplyr::count() is a quick way to count the number of rows for each unique value of a variable.\nIt’s a shortcut for group_by() and summarize(n = n())."
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#setup",
+    "href": "slides/05-data-tidying/05-data-tidying.html#setup",
+    "title": "Data Tidying",
+    "section": "Setup",
+    "text": "Setup\nWe will be using functions from the tidyr package, which is part of the tidyverse.\n\n# load packages\nlibrary(tidyverse)"
   },
   {
-    "objectID": "slides/10-numbers/10-numbers.html#example",
-    "href": "slides/10-numbers/10-numbers.html#example",
-    "title": "Numbers",
-    "section": "Example",
-    "text": "Example\n\n# Count flights per destination\nflights |&gt; count(dest, sort = TRUE)\n\n# A tibble: 105 × 2\n   dest      n\n   &lt;chr&gt; &lt;int&gt;\n 1 ORD   17283\n 2 ATL   17215\n 3 LAX   16174\n 4 BOS   15508\n 5 MCO   14082\n 6 CLT   14064\n 7 SFO   13331\n 8 FLL   12055\n 9 MIA   11728\n10 DCA    9705\n# ℹ 95 more rows"
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#lengthening-data-with-pivot_longer",
+    "href": "slides/05-data-tidying/05-data-tidying.html#lengthening-data-with-pivot_longer",
+    "title": "Data Tidying",
+    "section": "Lengthening data with pivot_longer()",
+    "text": "Lengthening data with pivot_longer()\n\nWide Format: column names are actually values of a variable:\n\n\nrelig_income |&gt; head()\n\n# A tibble: 6 × 11\n  religion  `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`\n  &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n1 Agnostic       27        34        60        81        76       137        122\n2 Atheist        12        27        37        52        35        70         73\n3 Buddhist       27        21        30        34        33        58         62\n4 Catholic      418       617       732       670       638      1116        949\n5 Don’t kn…      15        14        15        11        10        35         21\n6 Evangeli…     575       869      1064       982       881      1486        949\n# ℹ 3 more variables: `$100-150k` &lt;dbl&gt;, `&gt;150k` &lt;dbl&gt;,\n#   `Don't know/refused` &lt;dbl&gt;\n\n\nThis is not tidy. The income brackets are variable names, not a variable."
   },
   {
-    "objectID": "slides/10-numbers/10-numbers.html#weighted-counts",
-    "href": "slides/10-numbers/10-numbers.html#weighted-counts",
-    "title": "Numbers",
-    "section": "Weighted Counts",
-    "text": "Weighted Counts\n\nYou can provide a weight to count() to sum up a variable instead of just counting rows.\nThis is useful for summarizing pre-counted data."
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_longer",
+    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_longer",
+    "title": "Data Tidying",
+    "section": "Using pivot_longer()",
+    "text": "Using pivot_longer()\n\n\n\nGoal: transform this so we have three columns: religion, income, and count.\nUse pivot_longer() to do this.\n\n\ntidy_relig_income &lt;- relig_income |&gt; \n  pivot_longer(\n    cols = !religion, \n    names_to = \"income\", \n    values_to = \"count\"\n  )\n\ntidy_relig_income |&gt; head()\n\n# A tibble: 6 × 3\n  religion income  count\n  &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt;\n1 Agnostic &lt;$10k      27\n2 Agnostic $10-20k    34\n3 Agnostic $20-30k    60\n4 Agnostic $30-40k    81\n5 Agnostic $40-50k    76\n6 Agnostic $50-75k   137\n\n\n\n\ncols: The columns to pivot into longer format. !religion means all columns except religion.\nnames_to: The name of the new column that will contain the names of the original columns.\nvalues_to: The name of the new column that will contain the values from the original columns."
   },
   {
-    "objectID": "slides/10-numbers/10-numbers.html#example-1",
-    "href": "slides/10-numbers/10-numbers.html#example-1",
-    "title": "Numbers",
-    "section": "Example",
-    "text": "Example\n\ndf &lt;- tribble(\n  ~group, ~subgroup, ~n,\n  \"a\",    \"1\",       2,\n  \"a\",    \"2\",       5,\n  \"b\",    \"1\",       3\n)\n\n# Sum of `n` for each `group`\ndf |&gt; count(group, wt = n)\n\n# A tibble: 2 × 2\n  group     n\n  &lt;chr&gt; &lt;dbl&gt;\n1 a         7\n2 b         3"
-  },
-  {
-    "objectID": "slides/10-numbers/10-numbers.html#practice",
-    "href": "slides/10-numbers/10-numbers.html#practice",
-    "title": "Numbers",
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#practice",
+    "href": "slides/05-data-tidying/05-data-tidying.html#practice",
+    "title": "Data Tidying",
     "section": "Practice",
-    "text": "Practice\nLet’s do some practice!"
+    "text": "Practice\nLet’s practice with another dataset: billboard."
   },
   {
-    "objectID": "slides/10-numbers/10-numbers.html#basic-operators",
-    "href": "slides/10-numbers/10-numbers.html#basic-operators",
-    "title": "Numbers",
-    "section": "Basic Operators",
-    "text": "Basic Operators\n\nR provides the standard arithmetic operators: +, -, *, /, ^.\n%% (remainder) and %/% (integer division) are useful for modular arithmetic."
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#widening-data-with-pivot_wider",
+    "href": "slides/05-data-tidying/05-data-tidying.html#widening-data-with-pivot_wider",
+    "title": "Data Tidying",
+    "section": "Widening data with pivot_wider()",
+    "text": "Widening data with pivot_wider()\npivot_wider() is the opposite of pivot_longer(). It’s used when an observation is scattered across multiple rows.\n\nfish_encounters |&gt; head()\n\n# A tibble: 6 × 3\n  fish  station  seen\n  &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;\n1 4842  Release     1\n2 4842  I80_1       1\n3 4842  Lisbon      1\n4 4842  Rstr        1\n5 4842  Base_TD     1\n6 4842  BCE         1\n\n\n\nOne observation = one fishing station\nfish_encounters has two rows for each station: one for when a fish was seen and one for when it wasn’t\nstation column contains variable names\nseen column contains(0/1) values"
   },
   {
-    "objectID": "slides/10-numbers/10-numbers.html#example-2",
-    "href": "slides/10-numbers/10-numbers.html#example-2",
-    "title": "Numbers",
-    "section": "Example",
-    "text": "Example\n\n\nCode\n# Break down departure time into hour and minute\nflights |&gt; \n  select(dep_time) |&gt;\n  mutate(\n    hour = dep_time %/% 100,\n    minute = dep_time %% 100,\n    total_minutes = hour * 60 + minute\n  )\n\n\n# A tibble: 336,776 × 4\n   dep_time  hour minute total_minutes\n      &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;\n 1      517     5     17           317\n 2      533     5     33           333\n 3      542     5     42           342\n 4      544     5     44           344\n 5      554     5     54           354\n 6      554     5     54           354\n 7      555     5     55           355\n 8      557     5     57           357\n 9      557     5     57           357\n10      558     5     58           358\n# ℹ 336,766 more rows"
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider",
+    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider",
+    "title": "Data Tidying",
+    "section": "Using pivot_wider()",
+    "text": "Using pivot_wider()\nGoal: one row per station, with columns indicating whether fish was seen or not.\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1    NA    NA    NA    NA    NA    NA\n5 4847        1     1      1    NA      NA    NA    NA    NA    NA    NA    NA\n6 4848        1     1      1     1      NA    NA    NA    NA    NA    NA    NA\n\n\nProblem: NA values where there should be zeros, can fix this with values_fill."
   },
   {
-    "objectID": "slides/10-numbers/10-numbers.html#logarithms",
-    "href": "slides/10-numbers/10-numbers.html#logarithms",
-    "title": "Numbers",
-    "section": "Logarithms",
-    "text": "Logarithms\n\nLogarithms (log(), log2(), log10()) are useful for data that spans multiple orders of magnitude.\nThey help turn exponential growth into linear growth, which is often easier to model.\n\n\n\nCode\nggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  scale_x_log10() +\n  scale_y_log10() +\n  labs(title = \"Price vs. Carat (log-log scale)\")"
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider-with-values_fill",
+    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider-with-values_fill",
+    "title": "Data Tidying",
+    "section": "Using pivot_wider() with values_fill",
+    "text": "Using pivot_wider() with values_fill\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen,\n    values_fill = 0\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1     0     0     0     0     0     0\n5 4847        1     1      1     0       0     0     0     0     0     0     0\n6 4848        1     1      1     1       0     0     0     0     0     0     0\n\n\n\nnames_from: The column to get the new column names from.\nvalues_from: The column to get the cell values from.\nvalues_fill: A value to replace NAs with."
   },
   {
-    "objectID": "slides/10-numbers/10-numbers.html#rounding",
-    "href": "slides/10-numbers/10-numbers.html#rounding",
-    "title": "Numbers",
-    "section": "Rounding",
-    "text": "Rounding\n\nround(x): rounds to the nearest integer.\nfloor(x): always rounds down.\nceiling(x): always rounds up.\n\n\nx &lt;- c(1.2, 1.5, 1.8)\nround(x)\n\n[1] 1 2 2\n\nfloor(x)\n\n[1] 1 1 1\n\nceiling(x)\n\n[1] 2 2 2"
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#practice-1",
+    "href": "slides/05-data-tidying/05-data-tidying.html#practice-1",
+    "title": "Data Tidying",
+    "section": "Practice",
+    "text": "Practice\nLet’s practice with cms_patient_care"
   },
   {
-    "objectID": "slides/10-numbers/10-numbers.html#cutting",
-    "href": "slides/10-numbers/10-numbers.html#cutting",
-    "title": "Numbers",
-    "section": "Cutting",
-    "text": "Cutting\n\ncut() divides a numeric vector into a set of discrete bins (a factor).\nYou can specify the breaks for the bins.\n\n\nx &lt;- c(1, 2, 5, 7, 10, 12)\ncut(x, breaks = c(0, 5, 10, 15))\n\n[1] (0,5]   (0,5]   (0,5]   (5,10]  (5,10]  (10,15]\nLevels: (0,5] (5,10] (10,15]"
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#summary",
+    "href": "slides/05-data-tidying/05-data-tidying.html#summary",
+    "title": "Data Tidying",
+    "section": "Summary",
+    "text": "Summary\n\nTidy data is a standard format that makes data analysis easier.\nUse pivot_longer() when your column names are actually values of a variable (to make data longer and narrower).\nUse pivot_wider() when an observation is scattered across multiple rows (to make data wider and shorter).\nYou will often need to use pivot_longer() and pivot_wider() when preparing data for plotting\n\nThese two functions are the foundation of data tidying in R."
   },
   {
-    "objectID": "slides/10-numbers/10-numbers.html#ranks",
-    "href": "slides/10-numbers/10-numbers.html#ranks",
-    "title": "Numbers",
-    "section": "Ranks",
-    "text": "Ranks\n\ndplyr::min_rank() gives ranks, handling ties by giving them the same rank.\nUse desc() to rank from highest to lowest.\nrow_number() is similar but gives each row a unique rank.\n\n\nx &lt;- c(5, 1, 3, 2, 2)\nmin_rank(x)\n\n[1] 5 1 4 2 2\n\nrow_number(x)\n\n[1] 5 1 4 2 3"
-  },
-  {
-    "objectID": "slides/10-numbers/10-numbers.html#offsets",
-    "href": "slides/10-numbers/10-numbers.html#offsets",
-    "title": "Numbers",
-    "section": "Offsets",
-    "text": "Offsets\n\ndplyr::lag() gets the previous value in a vector.\ndplyr::lead() gets the next value.\nUseful for computing differences or finding changes.\n\n\nx &lt;- c(2, 5, 11, 20)\n# Difference between each element and the previous one\nx - lag(x)\n\n[1] NA  3  6  9"
-  },
-  {
-    "objectID": "slides/10-numbers/10-numbers.html#practice-1",
-    "href": "slides/10-numbers/10-numbers.html#practice-1",
-    "title": "Numbers",
-    "section": "Practice!",
-    "text": "Practice!\nLet’s practice some arithmetic operations and trasnformations!"
-  },
-  {
-    "objectID": "slides/10-numbers/10-numbers.html#center",
-    "href": "slides/10-numbers/10-numbers.html#center",
-    "title": "Numbers",
-    "section": "Center",
-    "text": "Center\n\nmean(): the average value. Can be sensitive to outliers.\nmedian(): the middle value. More robust to outliers.\n\n\n\nCode\n# Comparing mean and median delay\nflights |&gt;\n  filter(!is.na(dep_delay)) |&gt;\n  summarize(\n    mean_delay = mean(dep_delay),\n    median_delay = median(dep_delay)\n  )\n\n\n# A tibble: 1 × 2\n  mean_delay median_delay\n       &lt;dbl&gt;        &lt;dbl&gt;\n1       12.6           -2"
-  },
-  {
-    "objectID": "slides/10-numbers/10-numbers.html#spread",
-    "href": "slides/10-numbers/10-numbers.html#spread",
-    "title": "Numbers",
-    "section": "Spread",
-    "text": "Spread\n\nsd(): standard deviation, measures how spread out the data is around the mean.\nIQR(): interquartile range (Q3 - Q1), measures the spread of the middle 50% of the data."
-  },
-  {
-    "objectID": "slides/10-numbers/10-numbers.html#position",
-    "href": "slides/10-numbers/10-numbers.html#position",
-    "title": "Numbers",
-    "section": "Position",
-    "text": "Position\n\nmin() and max(): the minimum and maximum values.\nquantile(x, p): finds the value that is greater than p% of the data.\n\nquantile(x, 0.25) is the 25th percentile (Q1).\nmedian(x) is a shortcut for quantile(x, 0.5)."
-  },
-  {
-    "objectID": "slides/10-numbers/10-numbers.html#numbers",
-    "href": "slides/10-numbers/10-numbers.html#numbers",
-    "title": "Numbers",
-    "section": "Numbers",
-    "text": "Numbers\n\nCreate with parse_number().\nTransform with arithmetic, logs, rounding, and cut().\ncount() is a powerful tool for quick exploration.\nUse ranks (min_rank) and offsets (lag, lead) for more complex analysis.\nSummarize with measures of center (mean, median), spread (sd, IQR), and position (min, max, quantile)."
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#do-next",
+    "href": "slides/05-data-tidying/05-data-tidying.html#do-next",
+    "title": "Data Tidying",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 5: Data Tidying from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 5” or work through some of the exercises in the text.\nComplete Lecture 6."
   },
   {
     "objectID": "slides/16-joins/16-joins.html#combining-datasets",
@@ -1399,242 +1350,319 @@
     "text": "Practice!\nLet’s do some practice!"
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#this-lesson",
-    "href": "slides/05-data-tidying/05-data-tidying.html#this-lesson",
-    "title": "Data Tidying",
-    "section": "This lesson",
-    "text": "This lesson\n\nDefine “tidy data”\nLearn how to use tidyr to make data tidy\n\npivot_longer() for lengthening data\npivot_wider() for widening data"
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#what-is-tidy-data",
-    "href": "slides/05-data-tidying/05-data-tidying.html#what-is-tidy-data",
-    "title": "Data Tidying",
-    "section": "What is tidy data?",
-    "text": "What is tidy data?\nTidy data is a consistent way of structuring datasets that makes them easier to work with. A dataset is tidy if it follows three rules:\n\nEach variable has its own column.\nEach observation has its own row.\nEach value has its own cell.\n\nThis structure is a standard in the tidyverse."
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#setup",
-    "href": "slides/05-data-tidying/05-data-tidying.html#setup",
-    "title": "Data Tidying",
-    "section": "Setup",
-    "text": "Setup\nWe will be using functions from the tidyr package, which is part of the tidyverse.\n\n# load packages\nlibrary(tidyverse)"
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#lengthening-data-with-pivot_longer",
-    "href": "slides/05-data-tidying/05-data-tidying.html#lengthening-data-with-pivot_longer",
-    "title": "Data Tidying",
-    "section": "Lengthening data with pivot_longer()",
-    "text": "Lengthening data with pivot_longer()\n\nWide Format: column names are actually values of a variable:\n\n\nrelig_income |&gt; head()\n\n# A tibble: 6 × 11\n  religion  `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`\n  &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n1 Agnostic       27        34        60        81        76       137        122\n2 Atheist        12        27        37        52        35        70         73\n3 Buddhist       27        21        30        34        33        58         62\n4 Catholic      418       617       732       670       638      1116        949\n5 Don’t kn…      15        14        15        11        10        35         21\n6 Evangeli…     575       869      1064       982       881      1486        949\n# ℹ 3 more variables: `$100-150k` &lt;dbl&gt;, `&gt;150k` &lt;dbl&gt;,\n#   `Don't know/refused` &lt;dbl&gt;\n\n\nThis is not tidy. The income brackets are variable names, not a variable."
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_longer",
-    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_longer",
-    "title": "Data Tidying",
-    "section": "Using pivot_longer()",
-    "text": "Using pivot_longer()\n\n\n\nGoal: transform this so we have three columns: religion, income, and count.\nUse pivot_longer() to do this.\n\n\ntidy_relig_income &lt;- relig_income |&gt; \n  pivot_longer(\n    cols = !religion, \n    names_to = \"income\", \n    values_to = \"count\"\n  )\n\ntidy_relig_income |&gt; head()\n\n# A tibble: 6 × 3\n  religion income  count\n  &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt;\n1 Agnostic &lt;$10k      27\n2 Agnostic $10-20k    34\n3 Agnostic $20-30k    60\n4 Agnostic $30-40k    81\n5 Agnostic $40-50k    76\n6 Agnostic $50-75k   137\n\n\n\n\ncols: The columns to pivot into longer format. !religion means all columns except religion.\nnames_to: The name of the new column that will contain the names of the original columns.\nvalues_to: The name of the new column that will contain the values from the original columns."
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#practice",
-    "href": "slides/05-data-tidying/05-data-tidying.html#practice",
-    "title": "Data Tidying",
-    "section": "Practice",
-    "text": "Practice\nLet’s practice with another dataset: billboard."
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#widening-data-with-pivot_wider",
-    "href": "slides/05-data-tidying/05-data-tidying.html#widening-data-with-pivot_wider",
-    "title": "Data Tidying",
-    "section": "Widening data with pivot_wider()",
-    "text": "Widening data with pivot_wider()\npivot_wider() is the opposite of pivot_longer(). It’s used when an observation is scattered across multiple rows.\n\nfish_encounters |&gt; head()\n\n# A tibble: 6 × 3\n  fish  station  seen\n  &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;\n1 4842  Release     1\n2 4842  I80_1       1\n3 4842  Lisbon      1\n4 4842  Rstr        1\n5 4842  Base_TD     1\n6 4842  BCE         1\n\n\n\nOne observation = one fishing station\nfish_encounters has two rows for each station: one for when a fish was seen and one for when it wasn’t\nstation column contains variable names\nseen column contains(0/1) values"
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider",
-    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider",
-    "title": "Data Tidying",
-    "section": "Using pivot_wider()",
-    "text": "Using pivot_wider()\nGoal: one row per station, with columns indicating whether fish was seen or not.\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1    NA    NA    NA    NA    NA    NA\n5 4847        1     1      1    NA      NA    NA    NA    NA    NA    NA    NA\n6 4848        1     1      1     1      NA    NA    NA    NA    NA    NA    NA\n\n\nProblem: NA values where there should be zeros, can fix this with values_fill."
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider-with-values_fill",
-    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider-with-values_fill",
-    "title": "Data Tidying",
-    "section": "Using pivot_wider() with values_fill",
-    "text": "Using pivot_wider() with values_fill\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen,\n    values_fill = 0\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1     0     0     0     0     0     0\n5 4847        1     1      1     0       0     0     0     0     0     0     0\n6 4848        1     1      1     1       0     0     0     0     0     0     0\n\n\n\nnames_from: The column to get the new column names from.\nvalues_from: The column to get the cell values from.\nvalues_fill: A value to replace NAs with."
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#practice-1",
-    "href": "slides/05-data-tidying/05-data-tidying.html#practice-1",
-    "title": "Data Tidying",
-    "section": "Practice",
-    "text": "Practice\nLet’s practice with cms_patient_care"
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#summary",
-    "href": "slides/05-data-tidying/05-data-tidying.html#summary",
-    "title": "Data Tidying",
-    "section": "Summary",
-    "text": "Summary\n\nTidy data is a standard format that makes data analysis easier.\nUse pivot_longer() when your column names are actually values of a variable (to make data longer and narrower).\nUse pivot_wider() when an observation is scattered across multiple rows (to make data wider and shorter).\nYou will often need to use pivot_longer() and pivot_wider() when preparing data for plotting\n\nThese two functions are the foundation of data tidying in R."
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#do-next",
-    "href": "slides/05-data-tidying/05-data-tidying.html#do-next",
-    "title": "Data Tidying",
-    "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 5: Data Tidying from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 5” or work through some of the exercises in the text.\nComplete Lecture 6."
-  },
-  {
-    "objectID": "slides/06-layers/06-layers.html#data-flights-from-nyc-in-2013",
-    "href": "slides/06-layers/06-layers.html#data-flights-from-nyc-in-2013",
+    "objectID": "slides/07-layers/07-layers.html#data-flights-from-nyc-in-2013",
+    "href": "slides/07-layers/07-layers.html#data-flights-from-nyc-in-2013",
     "title": "ggplot2 layers",
     "section": "Data: Flights from NYC in 2013",
     "text": "Data: Flights from NYC in 2013\nWe will be using the nycflights13::flights dataset. This dataset contains information about all flights that departed from New York City (EWR, LGA, JFK) in 2013.\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#a-simple-scatterplot",
-    "href": "slides/06-layers/06-layers.html#a-simple-scatterplot",
+    "objectID": "slides/07-layers/07-layers.html#a-simple-scatterplot",
+    "href": "slides/07-layers/07-layers.html#a-simple-scatterplot",
     "title": "ggplot2 layers",
     "section": "A simple scatterplot",
     "text": "A simple scatterplot\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point()\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#adding-layers",
-    "href": "slides/06-layers/06-layers.html#adding-layers",
+    "objectID": "slides/07-layers/07-layers.html#adding-layers",
+    "href": "slides/07-layers/07-layers.html#adding-layers",
     "title": "ggplot2 layers",
     "section": "Adding layers",
     "text": "Adding layers\nA plot is composed of layers. Each layer has:\n\nA geom: The geometric object that represents the data (e.g., points, lines, bars).\nAn aesthetic mapping: How variables are mapped to visual properties.\nA stat: A statistical transformation (e.g., counting, summarizing).\nA position adjustment: How to arrange elements that would otherwise overlap."
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#adding-a-layer-trend-line-with-geom_smooth",
-    "href": "slides/06-layers/06-layers.html#adding-a-layer-trend-line-with-geom_smooth",
+    "objectID": "slides/07-layers/07-layers.html#adding-a-layer-trend-line-with-geom_smooth",
+    "href": "slides/07-layers/07-layers.html#adding-a-layer-trend-line-with-geom_smooth",
     "title": "ggplot2 layers",
     "section": "Adding a layer: Trend line with geom_smooth()",
-    "text": "Adding a layer: Trend line with geom_smooth()\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(alpha = 0.1) +\n  geom_smooth()\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 9430 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+    "text": "Adding a layer: Trend line with geom_smooth()\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(alpha = 0.1) +\n  geom_smooth()"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#global-vs.-local-mappings",
-    "href": "slides/06-layers/06-layers.html#global-vs.-local-mappings",
+    "objectID": "slides/07-layers/07-layers.html#global-vs.-local-mappings",
+    "href": "slides/07-layers/07-layers.html#global-vs.-local-mappings",
     "title": "ggplot2 layers",
     "section": "Global vs. Local Mappings",
     "text": "Global vs. Local Mappings\n\nAesthetic mappings can be:\nGlobal: specify in ggplot() so they apply to all layers\nLocal: specify in each geom_*() so they apply only to that layer"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#using-color-as-a-local-aesthetic",
-    "href": "slides/06-layers/06-layers.html#using-color-as-a-local-aesthetic",
+    "objectID": "slides/07-layers/07-layers.html#using-color-as-a-local-aesthetic",
+    "href": "slides/07-layers/07-layers.html#using-color-as-a-local-aesthetic",
     "title": "ggplot2 layers",
     "section": "Using color as a local aesthetic",
-    "text": "Using color as a local aesthetic\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(mapping = aes(color = origin), alpha = 0.1) +\n  geom_smooth()\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 9430 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+    "text": "Using color as a local aesthetic\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(mapping = aes(color = origin), alpha = 0.1) +\n  geom_smooth()"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#why-isnt-this-plot-blue",
-    "href": "slides/06-layers/06-layers.html#why-isnt-this-plot-blue",
+    "objectID": "slides/07-layers/07-layers.html#why-isnt-this-plot-blue",
+    "href": "slides/07-layers/07-layers.html#why-isnt-this-plot-blue",
     "title": "ggplot2 layers",
     "section": "Why isn’t this plot blue?",
-    "text": "Why isn’t this plot blue?\n\n# This is probably not what you want\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(aes(color = \"blue\"))\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+    "text": "Why isn’t this plot blue?\n\n# This is probably not what you want\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(aes(color = \"blue\"))"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#setting-vs.-mapping",
-    "href": "slides/06-layers/06-layers.html#setting-vs.-mapping",
+    "objectID": "slides/07-layers/07-layers.html#setting-vs.-mapping",
+    "href": "slides/07-layers/07-layers.html#setting-vs.-mapping",
     "title": "ggplot2 layers",
     "section": "Setting vs. Mapping",
-    "text": "Setting vs. Mapping\n\nTo apply a constant property to all points, set it outside of aes()\n\n\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(color = \"blue\", alpha = 0.1)\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+    "text": "Setting vs. Mapping\n\nTo apply a constant property to all points, set it outside of aes()\n\n\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(color = \"blue\", alpha = 0.1)"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#common-geoms",
-    "href": "slides/06-layers/06-layers.html#common-geoms",
+    "objectID": "slides/07-layers/07-layers.html#common-geoms",
+    "href": "slides/07-layers/07-layers.html#common-geoms",
     "title": "ggplot2 layers",
     "section": "Common geoms",
     "text": "Common geoms\n\ngeom_point(): Scatterplots\ngeom_line(): Line charts\ngeom_bar(): Bar charts\ngeom_histogram(): Histograms\ngeom_boxplot(): Boxplots\ngeom_smooth(): Trend lines\ngeom_density(): Density plots\nMany more!"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#geom_bar-vs-geom_col",
-    "href": "slides/06-layers/06-layers.html#geom_bar-vs-geom_col",
+    "objectID": "slides/07-layers/07-layers.html#geom_bar-vs-geom_col",
+    "href": "slides/07-layers/07-layers.html#geom_bar-vs-geom_col",
     "title": "ggplot2 layers",
     "section": "geom_bar vs geom_col",
     "text": "geom_bar vs geom_col\n\ngeom_bar() uses stat_count() by default to count the number of observations for each category\n\n\nggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar()"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#changing-the-stat-argument",
-    "href": "slides/06-layers/06-layers.html#changing-the-stat-argument",
+    "objectID": "slides/07-layers/07-layers.html#changing-the-stat-argument",
+    "href": "slides/07-layers/07-layers.html#changing-the-stat-argument",
     "title": "ggplot2 layers",
     "section": "Changing the stat argument",
-    "text": "Changing the stat argument\n\nYou can change the statistical transformation used by a geom with the stat argument…\n\n\ncarrier_counts &lt;- flights |&gt;\n  count(carrier) |&gt; \n  ggplot(mapping = aes(x = carrier, y = n)) +\n    geom_bar(stat = \"identity\")"
+    "text": "Changing the stat argument\n\nYou can change the statistical transformation used by a geom with the stat argument…\n\n\nflights |&gt;\n  count(carrier) |&gt; \n  ggplot(mapping = aes(x = carrier, y = n)) +\n    geom_bar(stat = \"identity\")"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#changing-the-stat",
-    "href": "slides/06-layers/06-layers.html#changing-the-stat",
+    "objectID": "slides/07-layers/07-layers.html#changing-the-stat",
+    "href": "slides/07-layers/07-layers.html#changing-the-stat",
     "title": "ggplot2 layers",
     "section": "Changing the stat",
     "text": "Changing the stat\n\nUsing after_stat() to modify computed variables from a stat\n\n\nggplot(data = flights) +\n  geom_bar(mapping = aes(x = carrier, y = after_stat(prop), group = 1)) +\n  labs(y = \"Proportion\")"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#practice",
-    "href": "slides/06-layers/06-layers.html#practice",
+    "objectID": "slides/07-layers/07-layers.html#practice",
+    "href": "slides/07-layers/07-layers.html#practice",
     "title": "ggplot2 layers",
     "section": "Practice",
     "text": "Practice\nLet’s try to overlay a density plot on top of a histogram of dep_delay…"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#overplotting",
-    "href": "slides/06-layers/06-layers.html#overplotting",
+    "objectID": "slides/07-layers/07-layers.html#overplotting",
+    "href": "slides/07-layers/07-layers.html#overplotting",
     "title": "ggplot2 layers",
     "section": "Overplotting",
     "text": "Overplotting\n\nOverplotting: When many points overlap in a scatterplot, making it hard to see the distribution of points\nCommon solution: Use transparency with alpha aesthetic\nAnother solution: Use position adjustments to spread out points"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#jittering-points",
-    "href": "slides/06-layers/06-layers.html#jittering-points",
+    "objectID": "slides/07-layers/07-layers.html#jittering-points",
+    "href": "slides/07-layers/07-layers.html#jittering-points",
     "title": "ggplot2 layers",
     "section": "Jittering points",
     "text": "Jittering points\n\nlibrary(patchwork)\np1 &lt;- ggplot(flights, aes(x = month, y = dep_delay)) +\n  geom_point(alpha = 0.01)\np2 &lt;- ggplot(flights, aes(x = month, y = dep_delay)) +\n  geom_jitter(alpha = 0.01)\np1 + p2"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#bar-chart-adjustments",
-    "href": "slides/06-layers/06-layers.html#bar-chart-adjustments",
+    "objectID": "slides/07-layers/07-layers.html#bar-chart-adjustments",
+    "href": "slides/07-layers/07-layers.html#bar-chart-adjustments",
     "title": "ggplot2 layers",
     "section": "Bar chart adjustments",
-    "text": "Bar chart adjustments\nFor bar charts, you can use position to change how bars are arranged. - stack (default): Stack bars on top of each other. - fill: Stack bars, but standardize to have the same height. Good for comparing proportions. - dodge: Place bars next to each other."
+    "text": "Bar chart adjustments\nFor bar charts, you can use position to change how bars are arranged.\n\nstack (default): Stack bars on top of each other.\nfill: Stack bars, but standardize to have the same height. Good for comparing proportions.\ndodge: Place bars next to each other."
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#bar-chart-adjustments-1",
-    "href": "slides/06-layers/06-layers.html#bar-chart-adjustments-1",
+    "objectID": "slides/07-layers/07-layers.html#bar-chart-adjustments-1",
+    "href": "slides/07-layers/07-layers.html#bar-chart-adjustments-1",
     "title": "ggplot2 layers",
     "section": "Bar chart adjustments",
-    "text": "Bar chart adjustments\n\np1 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"stack\")\np2 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"fill\") +\n  labs(y = \"Proportion\")\np3 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"dodge\")\np1 + p2 + p3"
+    "text": "Bar chart adjustments\n\np1 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"stack\")\np2 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"fill\")\np3 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"dodge\") +\n  labs(title = \"dodge\")"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#facet_wrap",
-    "href": "slides/06-layers/06-layers.html#facet_wrap",
+    "objectID": "slides/07-layers/07-layers.html#bar-chart-stacked",
+    "href": "slides/07-layers/07-layers.html#bar-chart-stacked",
+    "title": "ggplot2 layers",
+    "section": "Bar chart: Stacked",
+    "text": "Bar chart: Stacked\n\np1"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#bar-chart-standardized",
+    "href": "slides/07-layers/07-layers.html#bar-chart-standardized",
+    "title": "ggplot2 layers",
+    "section": "Bar chart: Standardized",
+    "text": "Bar chart: Standardized\n\np2"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#bar-chart-dodged",
+    "href": "slides/07-layers/07-layers.html#bar-chart-dodged",
+    "title": "ggplot2 layers",
+    "section": "Bar chart: Dodged",
+    "text": "Bar chart: Dodged\n\np3"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#facet_wrap",
+    "href": "slides/07-layers/07-layers.html#facet_wrap",
     "title": "ggplot2 layers",
     "section": "facet_wrap",
-    "text": "facet_wrap\n\nFacets allow you to break your plot into subplots based on a categorical variable.\n\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(alpha = 0.1) +\n  facet_wrap(~ origin, nrow = 1)\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+    "text": "facet_wrap\n\nFacets allow you to break your plot into subplots based on a categorical variable.\n\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(alpha = 0.1) +\n  facet_wrap(~ origin, nrow = 1)"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#adding-a-trend-line-to-facets",
-    "href": "slides/06-layers/06-layers.html#adding-a-trend-line-to-facets",
+    "objectID": "slides/07-layers/07-layers.html#adding-a-trend-line-to-facets",
+    "href": "slides/07-layers/07-layers.html#adding-a-trend-line-to-facets",
     "title": "ggplot2 layers",
     "section": "Adding a trend line to facets",
-    "text": "Adding a trend line to facets\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(alpha = 0.1) +\n  geom_smooth() +\n  facet_wrap(~ origin, nrow = 1)\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 9430 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+    "text": "Adding a trend line to facets\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(alpha = 0.1) +\n  geom_smooth() +\n  facet_wrap(~ origin, nrow = 1)"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#facet-grids",
-    "href": "slides/06-layers/06-layers.html#facet-grids",
+    "objectID": "slides/07-layers/07-layers.html#facet-grids",
+    "href": "slides/07-layers/07-layers.html#facet-grids",
     "title": "ggplot2 layers",
     "section": "Facet Grids",
-    "text": "Facet Grids\n\nggplot(data = flights, mapping = aes(x = dep_delay, y = arr_delay)) +\n  geom_point(alpha = 0.1) +\n  geom_smooth() +\n  facet_grid(carrier ~ origin)\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 9430 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Failed to fit group -1.\nCaused by error in `smooth.construct.cr.smooth.spec()`:\n! x has insufficient unique values to support 10 knots: reduce k.\n\n\nWarning: Removed 9430 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+    "text": "Facet Grids\n\nflights |&gt;\n  filter(carrier %in% c(\"AA\", \"DL\", \"UA\")) |&gt;\n  ggplot(mapping = aes(x = dep_delay, y = arr_delay)) +\n    geom_point(alpha = 0.1) +\n    geom_smooth() +\n    facet_grid(carrier ~ origin)"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#flipping-coordinates",
-    "href": "slides/06-layers/06-layers.html#flipping-coordinates",
+    "objectID": "slides/07-layers/07-layers.html#flipping-coordinates",
+    "href": "slides/07-layers/07-layers.html#flipping-coordinates",
     "title": "ggplot2 layers",
     "section": "Flipping coordinates",
     "text": "Flipping coordinates\n\np1 &lt;- ggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar()\n\np2 &lt;- ggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar() +\n  coord_flip()\np1 + p2"
   },
   {
-    "objectID": "slides/06-layers/06-layers.html#the-layered-grammar-in-summary",
-    "href": "slides/06-layers/06-layers.html#the-layered-grammar-in-summary",
+    "objectID": "slides/07-layers/07-layers.html#the-layered-grammar-in-summary",
+    "href": "slides/07-layers/07-layers.html#the-layered-grammar-in-summary",
     "title": "ggplot2 layers",
     "section": "The layered grammar in summary",
     "text": "The layered grammar in summary\n#| eval: false\n`ggplot(data = &lt;DATA&gt;) +`\n`  &lt;GEOM_FUNCTION&gt;(`\n`    mapping = aes(&lt;AESTHETIC_MAPPINGS&gt;),`\n`    stat = &lt;STAT&gt;,`\n`    position = &lt;POSITION&gt;`\n`  ) +`\n`  &lt;COORDINATE_SYSTEM&gt; +`\n`  &lt;FACET_FUNCTION&gt;`"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#do-next",
+    "href": "slides/07-layers/07-layers.html#do-next",
+    "title": "ggplot2 layers",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 9: Layers from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 9” or work through some of the exercises in the text.\nMove on to Lecture 08.\nStick around for me working through some practice problems!"
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#working-with-numbers",
+    "href": "slides/10-numbers/10-numbers.html#working-with-numbers",
+    "title": "Numbers",
+    "section": "Working with Numbers",
+    "text": "Working with Numbers\n\nNumeric data is the most common type of data you’ll work with.\nThis lecture covers creating, transforming, and summarizing numeric vectors.\nWe’ll use functions from base R and dplyr."
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#parsing-numbers",
+    "href": "slides/10-numbers/10-numbers.html#parsing-numbers",
+    "title": "Numbers",
+    "section": "Parsing Numbers",
+    "text": "Parsing Numbers\n\nSometimes numbers are stored as text (strings).\nreadr::parse_double() converts strings to numbers, assuming they are just numbers.\nreadr::parse_number() is more flexible and can extract numbers from strings with other text.\n\n\nparse_double(\"1.23\")\n\n[1] 1.23\n\nparse_number(\"$1,234.50\")\n\n[1] 1234.5\n\nparse_number(\"55%\")\n\n[1] 55"
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#count",
+    "href": "slides/10-numbers/10-numbers.html#count",
+    "title": "Numbers",
+    "section": "count()",
+    "text": "count()\n\ndplyr::count() is a quick way to count the number of rows for each unique value of a variable.\nIt’s a shortcut for group_by() and summarize(n = n())."
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#example",
+    "href": "slides/10-numbers/10-numbers.html#example",
+    "title": "Numbers",
+    "section": "Example",
+    "text": "Example\n\n# Count flights per destination\nflights |&gt; count(dest, sort = TRUE)\n\n# A tibble: 105 × 2\n   dest      n\n   &lt;chr&gt; &lt;int&gt;\n 1 ORD   17283\n 2 ATL   17215\n 3 LAX   16174\n 4 BOS   15508\n 5 MCO   14082\n 6 CLT   14064\n 7 SFO   13331\n 8 FLL   12055\n 9 MIA   11728\n10 DCA    9705\n# ℹ 95 more rows"
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#weighted-counts",
+    "href": "slides/10-numbers/10-numbers.html#weighted-counts",
+    "title": "Numbers",
+    "section": "Weighted Counts",
+    "text": "Weighted Counts\n\nYou can provide a weight to count() to sum up a variable instead of just counting rows.\nThis is useful for summarizing pre-counted data."
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#example-1",
+    "href": "slides/10-numbers/10-numbers.html#example-1",
+    "title": "Numbers",
+    "section": "Example",
+    "text": "Example\n\ndf &lt;- tribble(\n  ~group, ~subgroup, ~n,\n  \"a\",    \"1\",       2,\n  \"a\",    \"2\",       5,\n  \"b\",    \"1\",       3\n)\n\n# Sum of `n` for each `group`\ndf |&gt; count(group, wt = n)\n\n# A tibble: 2 × 2\n  group     n\n  &lt;chr&gt; &lt;dbl&gt;\n1 a         7\n2 b         3"
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#practice",
+    "href": "slides/10-numbers/10-numbers.html#practice",
+    "title": "Numbers",
+    "section": "Practice",
+    "text": "Practice\nLet’s do some practice!"
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#basic-operators",
+    "href": "slides/10-numbers/10-numbers.html#basic-operators",
+    "title": "Numbers",
+    "section": "Basic Operators",
+    "text": "Basic Operators\n\nR provides the standard arithmetic operators: +, -, *, /, ^.\n%% (remainder) and %/% (integer division) are useful for modular arithmetic."
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#example-2",
+    "href": "slides/10-numbers/10-numbers.html#example-2",
+    "title": "Numbers",
+    "section": "Example",
+    "text": "Example\n\n\nCode\n# Break down departure time into hour and minute\nflights |&gt; \n  select(dep_time) |&gt;\n  mutate(\n    hour = dep_time %/% 100,\n    minute = dep_time %% 100,\n    total_minutes = hour * 60 + minute\n  )\n\n\n# A tibble: 336,776 × 4\n   dep_time  hour minute total_minutes\n      &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;\n 1      517     5     17           317\n 2      533     5     33           333\n 3      542     5     42           342\n 4      544     5     44           344\n 5      554     5     54           354\n 6      554     5     54           354\n 7      555     5     55           355\n 8      557     5     57           357\n 9      557     5     57           357\n10      558     5     58           358\n# ℹ 336,766 more rows"
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#logarithms",
+    "href": "slides/10-numbers/10-numbers.html#logarithms",
+    "title": "Numbers",
+    "section": "Logarithms",
+    "text": "Logarithms\n\nLogarithms (log(), log2(), log10()) are useful for data that spans multiple orders of magnitude.\nThey help turn exponential growth into linear growth, which is often easier to model.\n\n\n\nCode\nggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  scale_x_log10() +\n  scale_y_log10() +\n  labs(title = \"Price vs. Carat (log-log scale)\")"
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#rounding",
+    "href": "slides/10-numbers/10-numbers.html#rounding",
+    "title": "Numbers",
+    "section": "Rounding",
+    "text": "Rounding\n\nround(x): rounds to the nearest integer.\nfloor(x): always rounds down.\nceiling(x): always rounds up.\n\n\nx &lt;- c(1.2, 1.5, 1.8)\nround(x)\n\n[1] 1 2 2\n\nfloor(x)\n\n[1] 1 1 1\n\nceiling(x)\n\n[1] 2 2 2"
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#cutting",
+    "href": "slides/10-numbers/10-numbers.html#cutting",
+    "title": "Numbers",
+    "section": "Cutting",
+    "text": "Cutting\n\ncut() divides a numeric vector into a set of discrete bins (a factor).\nYou can specify the breaks for the bins.\n\n\nx &lt;- c(1, 2, 5, 7, 10, 12)\ncut(x, breaks = c(0, 5, 10, 15))\n\n[1] (0,5]   (0,5]   (0,5]   (5,10]  (5,10]  (10,15]\nLevels: (0,5] (5,10] (10,15]"
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#ranks",
+    "href": "slides/10-numbers/10-numbers.html#ranks",
+    "title": "Numbers",
+    "section": "Ranks",
+    "text": "Ranks\n\ndplyr::min_rank() gives ranks, handling ties by giving them the same rank.\nUse desc() to rank from highest to lowest.\nrow_number() is similar but gives each row a unique rank.\n\n\nx &lt;- c(5, 1, 3, 2, 2)\nmin_rank(x)\n\n[1] 5 1 4 2 2\n\nrow_number(x)\n\n[1] 5 1 4 2 3"
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#offsets",
+    "href": "slides/10-numbers/10-numbers.html#offsets",
+    "title": "Numbers",
+    "section": "Offsets",
+    "text": "Offsets\n\ndplyr::lag() gets the previous value in a vector.\ndplyr::lead() gets the next value.\nUseful for computing differences or finding changes.\n\n\nx &lt;- c(2, 5, 11, 20)\n# Difference between each element and the previous one\nx - lag(x)\n\n[1] NA  3  6  9"
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#practice-1",
+    "href": "slides/10-numbers/10-numbers.html#practice-1",
+    "title": "Numbers",
+    "section": "Practice!",
+    "text": "Practice!\nLet’s practice some arithmetic operations and trasnformations!"
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#center",
+    "href": "slides/10-numbers/10-numbers.html#center",
+    "title": "Numbers",
+    "section": "Center",
+    "text": "Center\n\nmean(): the average value. Can be sensitive to outliers.\nmedian(): the middle value. More robust to outliers.\n\n\n\nCode\n# Comparing mean and median delay\nflights |&gt;\n  filter(!is.na(dep_delay)) |&gt;\n  summarize(\n    mean_delay = mean(dep_delay),\n    median_delay = median(dep_delay)\n  )\n\n\n# A tibble: 1 × 2\n  mean_delay median_delay\n       &lt;dbl&gt;        &lt;dbl&gt;\n1       12.6           -2"
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#spread",
+    "href": "slides/10-numbers/10-numbers.html#spread",
+    "title": "Numbers",
+    "section": "Spread",
+    "text": "Spread\n\nsd(): standard deviation, measures how spread out the data is around the mean.\nIQR(): interquartile range (Q3 - Q1), measures the spread of the middle 50% of the data."
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#position",
+    "href": "slides/10-numbers/10-numbers.html#position",
+    "title": "Numbers",
+    "section": "Position",
+    "text": "Position\n\nmin() and max(): the minimum and maximum values.\nquantile(x, p): finds the value that is greater than p% of the data.\n\nquantile(x, 0.25) is the 25th percentile (Q1).\nmedian(x) is a shortcut for quantile(x, 0.5)."
+  },
+  {
+    "objectID": "slides/10-numbers/10-numbers.html#numbers",
+    "href": "slides/10-numbers/10-numbers.html#numbers",
+    "title": "Numbers",
+    "section": "Numbers",
+    "text": "Numbers\n\nCreate with parse_number().\nTransform with arithmetic, logs, rounding, and cut().\ncount() is a powerful tool for quick exploration.\nUse ranks (min_rank) and offsets (lag, lead) for more complex analysis.\nSummarize with measures of center (mean, median), spread (sd, IQR), and position (min, max, quantile)."
   },
   {
     "objectID": "slides/13-factors/13-factors.html#categorical-data-and-factors",

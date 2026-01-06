@@ -91,4 +91,3 @@ countdown::countdown(minutes = 20)
 ## Wrap Up {.smaller}
 
 -   Before you leave, complete your reflection on Teams!
-
