@@ -1,0 +1,95 @@
+---
+title: Our First Analysis
+subtitle: Lecture 0
+format: revealjs
+auto-stretch: false
+---
+
+## Today
+
+-   Today we're going to split up into groups and each analyze a data set of our choice
+-   We will take turns presenting on what we've done
+-   After each presentation, we'll have a brief discussion where we critique each other's analysis
+
+## \#TidyTuesday
+
+-   TidyTuesday is a weekly data project aimed at the R community
+-   Each week a new data set is released along with a short description
+-   People analyze the data set and share their work on social media using the hashtag #TidyTuesday
+-   You can find the data sets and more information at the [TidyTuesday GitHub repository](https://github.com/rfordatascience/tidytuesday)
+
+## Today {.smaller}
+
+-   Each group will pick a data set from the TidyTuesday repository
+-   Each group will *do their best* to analyze that data
+-   Advice:
+    -   Try to choose a more recent data set, and one that already has questions associated with it
+    -   There is usually an import script at the bottom of each dataset
+    -   It is likely that you will need to install some packages to work with the data
+    -   Don't worry about being perfect
+    -   Focus on exploring the data and telling a story with it
+    -   Ask for help when you need it
+
+# Groups
+
+## Group Roles
+
+-   Coder: responsible for typing for your group
+-   Reporter: responsible for sharing your group's work with the class
+-   Researcher: responsible for looking up any questions your group has
+-   Everyone should contribute to the discussion and help with writing the code
+-   There will be several parts of this activity, between each part, rotate roles
+    -   Coder -> Reporter -> Researcher -> Coder ...
+    -   For now, old Coder copy and paste script in Teams chat to new Coder
+
+## Get in your groups {.smaller}
+
+-   You can find a spreadsheet in the Jan 6th Activities Module in the Classword section on Teams with your team assignments
+-   Get in your groups now
+-   Introduce yourselves
+-   Decide who will be the first Coder, Reporter, and Researcher
+-   Decide on a group name
+-   Create a post in the Activities Channel on Teams with all of this information
+
+```{r}
+countdown::countdown(minutes = 5)
+```
+
+## Selecting a Dataset {.smaller}
+
+-   Do the following:
+    +   Find the data set on the TidyTuesday GitHub repository
+    +   Load that data set into R
+    +   Post a link to the dataset as a response to your group's post in the Activities Channel on Teams
+-   Answer the following questions (be prepared to give a 2-minute report to the class):
+    +   What is the data about?
+    +   What question(s) are you interested in answering with this data?
+    +   How many data frames are there and how many rows and columns does it have?
+    +   What data frames and variables are you going to focus on?
+
+```{r}
+countdown::countdown(minutes = 20)
+```
+
+## Explore the Data {.smaller}
+
+-  Be prepared to present the following (less than 5 minutes per group):
+    +   Create up to 5 visualizations or tables that help answer your questions
+    +   Explain what each visualization or table shows
+    +   Explain what you learned from each visualization or table
+    +   Explain any challenges you had while working with the data
+    +   Be prepared to answer questions and explain your code if you are asked
+-   Copy and paste your entire script (up to this point) into Teams as a response to your group's post
+
+```{r}
+countdown::countdown(minutes = 20)
+```
+
+## Time Permitting: Refine and Extend {.smaller}
+
+-   If you have time left, refine your visualizations and analyses based on our discussions
+
+## Wrap Up {.smaller}
+
+-   Before you leave, complete your reflection on Teams!
+

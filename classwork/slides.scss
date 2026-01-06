@@ -1,0 +1,110 @@
+/*-- scss:defaults --*/
+
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
+$font-family-sans-serif: "Atkinson Hyperlegible", sans-serif;
+$font-family-monospace: "Source Code Pro", monospace;
+$presentation-heading-color: #533860; /* Pantone Midnight - Fall 2022 */
+$link-color: #533860;
+$code-color: #533860;
+$code-block-font-size: 0.7em;
+$presentation-h2-font-size: 1.4em !default;
+$presentation-font-size-root: 36px !default;
+
+/*-- scss:rules --*/
+
+details>summary {
+  font-size: 0.75em;
+}
+
+#title-slide .subtitle {
+  color: #533860;
+  font-weight: bold;
+  text-align: center;
+}
+
+#title-slide .title {
+  text-align: center;
+  color: #533860;
+}
+
+#title-slide .author {
+  text-align: center;
+  color: #533860;
+}
+
+#title-slide .institute {
+  text-align: center;
+  color: #533860;
+  padding-bottom: 200px;
+}
+
+.small {
+  font-size: 0.75em;
+}
+
+.smallest {
+  font-size: 0.5em;
+}
+
+.large {
+  font-size: 1.5em;
+}
+
+.medium {
+  font-size: 0.9em;
+}
+
+.center-align {
+  text-align: center;
+}
+
+.reveal .hand {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 1.2em
+}
+
+.reveal .slide .task {
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-bottom: 6px;
+  margin-top: 6px;
+  border-left: solid 5px #494C5A;
+  background-color: #FFF42A80;
+}
+
+.reveal pre code {
+  width: 1200px;
+}
+/* Target the title slide container specifically */
+#title-slide {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Use margin-top: auto to push everything below the title/subtitle to the bottom */
+.reveal .quarto-title-block .quarto-title-authors {
+  margin-top: auto; 
+  position: relative; 
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-bottom: 20px; /* Space from the very bottom edge */
+}
+
+/* Ensure the individual author styling remains */
+.reveal .quarto-title-block .quarto-title-authors .quarto-title-author {
+  background-color: transparent;
+  color: #533860;
+}
+.reveal .footer a {
+  color: #533860;
+  background-color: transparent;
+}
