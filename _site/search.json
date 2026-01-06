@@ -488,6 +488,13 @@
     "text": "Other common import options\n\nskip = n: Skip the first n lines (useful for files with metadata at the top).\ncomment = \"#\": Drop all lines that start with #.\ncol_names = FALSE: If your file has no column headers. readr will label them X1, X2, etc.\nna = \"...\": Specify which strings should be treated as missing values (e.g., na = \"N/A\")."
   },
   {
+    "objectID": "slides/06-importing/06-importing-data.html#example-with-skip",
+    "href": "slides/06-importing/06-importing-data.html#example-with-skip",
+    "title": "Importing Data",
+    "section": "Example with skip",
+    "text": "Example with skip\n\nread_csv(\"\n  This is metadata\n  That we want to skip\n  x,y\n  1,2\n\", skip = 3)\n\nRows: 1 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (2): x, y\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 1 × 2\n      x     y\n  &lt;dbl&gt; &lt;dbl&gt;\n1     1     2"
+  },
+  {
     "objectID": "slides/06-importing/06-importing-data.html#writing-to-a-file",
     "href": "slides/06-importing/06-importing-data.html#writing-to-a-file",
     "title": "Importing Data",
@@ -1189,7 +1196,7 @@
     "href": "index.html",
     "title": "CSCI-2025: Data Manipulation and Visualization",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\n\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\n\n\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\n\n\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\n\n\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\n\n\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\n\n\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\n\n\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\n\n\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\n\n\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\n\n\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\n\n\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\n\n\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\n\n\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\n\n\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\n\n\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\n\n\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\n\n\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\n\n\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\n\n\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\n\n\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\n\n\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -2276,12 +2283,5 @@
       "Course information",
       "Syllabus"
     ]
-  },
-  {
-    "objectID": "slides/06-importing/06-importing-data.html#example-with-skip",
-    "href": "slides/06-importing/06-importing-data.html#example-with-skip",
-    "title": "Importing Data",
-    "section": "Example with skip",
-    "text": "Example with skip\n\nread_csv(\"\n  This is metadata\n  That we want to skip\n  x,y\n  1,2\n\", skip = 3)\n\nRows: 1 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (2): x, y\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 1 × 2\n      x     y\n  &lt;dbl&gt; &lt;dbl&gt;\n1     1     2"
   }
 ]
