@@ -485,7 +485,7 @@
     "href": "slides/06-importing/06-importing-data.html#other-common-import-options",
     "title": "Importing Data",
     "section": "Other common import options",
-    "text": "Other common import options\n\nskip = n: Skip the first n lines (useful for files with metadata at the top).\ncomment = \"#\": Drop all lines that start with #.\ncol_names = FALSE: If your file has no column headers. readr will label them X1, X2, etc.\nna = \"...\": Specify which strings should be treated as missing values (e.g., na = \"N/A\").\n\nExample with skip:\n\nread_csv(\"\n  This is metadata\n  That we want to skip\n  x,y\n  1,2\n\", skip = 3)\n\nRows: 1 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (2): x, y\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 1 × 2\n      x     y\n  &lt;dbl&gt; &lt;dbl&gt;\n1     1     2"
+    "text": "Other common import options\n\nskip = n: Skip the first n lines (useful for files with metadata at the top).\ncomment = \"#\": Drop all lines that start with #.\ncol_names = FALSE: If your file has no column headers. readr will label them X1, X2, etc.\nna = \"...\": Specify which strings should be treated as missing values (e.g., na = \"N/A\")."
   },
   {
     "objectID": "slides/06-importing/06-importing-data.html#writing-to-a-file",
@@ -2276,5 +2276,12 @@
       "Course information",
       "Syllabus"
     ]
+  },
+  {
+    "objectID": "slides/06-importing/06-importing-data.html#example-with-skip",
+    "href": "slides/06-importing/06-importing-data.html#example-with-skip",
+    "title": "Importing Data",
+    "section": "Example with skip:",
+    "text": "Example with skip:\n\nread_csv(\"\n  This is metadata\n  That we want to skip\n  x,y\n  1,2\n\", skip = 3)\n\nRows: 1 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (2): x, y\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 1 × 2\n      x     y\n  &lt;dbl&gt; &lt;dbl&gt;\n1     1     2"
   }
 ]
