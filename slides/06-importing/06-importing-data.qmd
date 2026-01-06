@@ -96,7 +96,7 @@ StarFormation/
     └── Tables-for-CSCI2040.txt
 ```
 
-## Paths
+## Paths {.smaller}
 
 - Root directory: Highest level folder of your project or computer (sometimes the same)
 - Working directory: The folder R is currently "looking at"
@@ -104,6 +104,9 @@ StarFormation/
 - Two types of Paths:
   - Absolute paths: Full path from the root of your computer
   - Relative paths: Path from your working directory
+- Specifying a path in R:
+  - Use forward slashes `/` every time you go down a folder
+  - Example: `data/raw/MIRION_spec_1.csv`
 
 ## Practice
 
@@ -140,7 +143,7 @@ StarFormation/
 
 You can override `readr`'s guesses using the `col_types` argument. More on this later in the course.
 
-## Other common import options
+## Other common import options {.smaller}
 
 - `skip = n`: Skip the first `n` lines (useful for files with metadata at the top).
 - `comment = "#"`: Drop all lines that start with `#`.
@@ -155,7 +158,7 @@ read_csv("
   That we want to skip
   x,y
   1,2
-", skip = 2)
+", skip = 3)
 ```
 
 ## Writing to a file

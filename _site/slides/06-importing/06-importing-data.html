@@ -295,7 +295,7 @@ Dr.&nbsp;Eric Friedlander
 <span id="cb4-13"><a></a>└── docs/                 </span>
 <span id="cb4-14"><a></a>    └── Tables-for-CSCI2040.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="paths" class="slide level2">
+<section id="paths" class="slide level2 smaller">
 <h2>Paths</h2>
 <ul>
 <li>Root directory: Highest level folder of your project or computer (sometimes the same)</li>
@@ -305,6 +305,11 @@ Dr.&nbsp;Eric Friedlander
 <ul>
 <li>Absolute paths: Full path from the root of your computer</li>
 <li>Relative paths: Path from your working directory</li>
+</ul></li>
+<li>Specifying a path in R:
+<ul>
+<li>Use forward slashes <code>/</code> every time you go down a folder</li>
+<li>Example: <code>data/raw/MIRION_spec_1.csv</code></li>
 </ul></li>
 </ul>
 </section>
@@ -352,7 +357,7 @@ Dr.&nbsp;Eric Friedlander
 <h2>Manually specifying column types</h2>
 <p>You can override <code>readr</code>’s guesses using the <code>col_types</code> argument. More on this later in the course.</p>
 </section>
-<section id="other-common-import-options" class="slide level2">
+<section id="other-common-import-options" class="slide level2 smaller">
 <h2>Other common import options</h2>
 <ul>
 <li><code>skip = n</code>: Skip the first <code>n</code> lines (useful for files with metadata at the top).</li>
@@ -367,28 +372,21 @@ Dr.&nbsp;Eric Friedlander
 <span id="cb5-3"><a></a><span class="st">  That we want to skip</span></span>
 <span id="cb5-4"><a></a><span class="st">  x,y</span></span>
 <span id="cb5-5"><a></a><span class="st">  1,2</span></span>
-<span id="cb5-6"><a></a><span class="st">"</span>, <span class="at">skip =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a></a><span class="st">"</span>, <span class="at">skip =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: One or more parsing issues, call `problems()` on your data frame for details,
-e.g.:
-  dat &lt;- vroom(...)
-  problems(dat)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 2 Columns: 1
+<pre><code>Rows: 1 Columns: 2
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr (1): That we want to skip
+dbl (2): x, y
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 1
-  `That we want to skip`
-  &lt;chr&gt;                 
-1 x,y                   
-2 1,2                   </code></pre>
+<pre><code># A tibble: 1 × 2
+      x     y
+  &lt;dbl&gt; &lt;dbl&gt;
+1     1     2</code></pre>
 </div>
 </div>
 </section>
@@ -396,7 +394,7 @@ chr (1): That we want to skip
 <h2>Writing to a file</h2>
 <p>To save a data frame back to a file, use <code>write_csv()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">write_csv</span>(file<span class="sc">-</span>name, <span class="st">"path-to-file.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">write_csv</span>(file<span class="sc">-</span>name, <span class="st">"path-to-file.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="practice-with-reading-and-writing" class="slide level2">
@@ -412,8 +410,8 @@ chr (1): That we want to skip
 <p>For saving intermediate R objects, <code>write_csv()</code> is not ideal because it loses type information (e.g., factors become characters).</p>
 <p>It’s better to use <code>write_rds()</code> and <code>read_rds()</code> to save and load a single R object in R’s native RDS format.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">write_rds</span>(file, <span class="st">"path-to-file.rds"</span>)</span>
-<span id="cb10-2"><a></a>restored_file <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"path-to-file.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">write_rds</span>(file, <span class="st">"path-to-file.rds"</span>)</span>
+<span id="cb9-2"><a></a>restored_file <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"path-to-file.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="other-data-sources" class="slide level2">

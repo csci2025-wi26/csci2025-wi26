@@ -443,7 +443,7 @@
     "href": "slides/06-importing/06-importing-data.html#paths",
     "title": "Importing Data",
     "section": "Paths",
-    "text": "Paths\n\nRoot directory: Highest level folder of your project or computer (sometimes the same)\nWorking directory: The folder R is currently “looking at”\nMaking a project in RStudio/Positron automatically sets the working directory to the project folder\nTwo types of Paths:\n\nAbsolute paths: Full path from the root of your computer\nRelative paths: Path from your working directory"
+    "text": "Paths\n\nRoot directory: Highest level folder of your project or computer (sometimes the same)\nWorking directory: The folder R is currently “looking at”\nMaking a project in RStudio/Positron automatically sets the working directory to the project folder\nTwo types of Paths:\n\nAbsolute paths: Full path from the root of your computer\nRelative paths: Path from your working directory\n\nSpecifying a path in R:\n\nUse forward slashes / every time you go down a folder\nExample: data/raw/MIRION_spec_1.csv"
   },
   {
     "objectID": "slides/06-importing/06-importing-data.html#practice-1",
@@ -485,7 +485,7 @@
     "href": "slides/06-importing/06-importing-data.html#other-common-import-options",
     "title": "Importing Data",
     "section": "Other common import options",
-    "text": "Other common import options\n\nskip = n: Skip the first n lines (useful for files with metadata at the top).\ncomment = \"#\": Drop all lines that start with #.\ncol_names = FALSE: If your file has no column headers. readr will label them X1, X2, etc.\nna = \"...\": Specify which strings should be treated as missing values (e.g., na = \"N/A\").\n\nExample with skip:\n\nread_csv(\"\n  This is metadata\n  That we want to skip\n  x,y\n  1,2\n\", skip = 2)\n\nWarning: One or more parsing issues, call `problems()` on your data frame for details,\ne.g.:\n  dat &lt;- vroom(...)\n  problems(dat)\n\n\nRows: 2 Columns: 1\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (1): That we want to skip\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 2 × 1\n  `That we want to skip`\n  &lt;chr&gt;                 \n1 x,y                   \n2 1,2"
+    "text": "Other common import options\n\nskip = n: Skip the first n lines (useful for files with metadata at the top).\ncomment = \"#\": Drop all lines that start with #.\ncol_names = FALSE: If your file has no column headers. readr will label them X1, X2, etc.\nna = \"...\": Specify which strings should be treated as missing values (e.g., na = \"N/A\").\n\nExample with skip:\n\nread_csv(\"\n  This is metadata\n  That we want to skip\n  x,y\n  1,2\n\", skip = 3)\n\nRows: 1 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (2): x, y\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 1 × 2\n      x     y\n  &lt;dbl&gt; &lt;dbl&gt;\n1     1     2"
   },
   {
     "objectID": "slides/06-importing/06-importing-data.html#writing-to-a-file",
