@@ -376,6 +376,13 @@
     "text": "Summary\n\nTidy data is a standard format that makes data analysis easier.\nUse pivot_longer() when your column names are actually values of a variable (to make data longer and narrower).\nUse pivot_wider() when an observation is scattered across multiple rows (to make data wider and shorter).\nYou will often need to use pivot_longer() and pivot_wider() when preparing data for plotting\n\nThese two functions are the foundation of data tidying in R."
   },
   {
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#do-next",
+    "href": "slides/05-data-tidying/05-data-tidying.html#do-next",
+    "title": "Data Tidying",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 5: Data Tidying from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 5” or work through some of the exercises in the text.\nComplete Lecture 6."
+  },
+  {
     "objectID": "slides/06-importing/06-importing-data.html#this-lesson",
     "href": "slides/06-importing/06-importing-data.html#this-lesson",
     "title": "Importing Data",

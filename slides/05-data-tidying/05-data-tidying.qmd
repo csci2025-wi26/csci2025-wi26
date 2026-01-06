@@ -144,3 +144,11 @@ Let's practice with `table1`, `table2`, and `table3`.
 -   You will often need to use `pivot_longer()` and `pivot_wider()` when preparing data for plotting
 
 These two functions are the foundation of data tidying in R.
+
+# Wrap Up
+
+## Do Next
+
+1. Read [Chapter 5: Data Tidying](https://r4ds.hadley.nz/data-tidy.html) from r4ds.
+2. Open the Recitation Gem and say "Provide me practice problems for Chapter 5" or work through some of the exercises in the text.
+3. Complete Lecture 6.
