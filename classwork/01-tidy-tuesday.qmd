@@ -1,6 +1,5 @@
 ---
 title: Our First Analysis
-subtitle: Lecture 0
 format: revealjs
 auto-stretch: false
 ---
