@@ -150,7 +150,7 @@ You can override `readr`'s guesses using the `col_types` argument. More on this 
 - `col_names = FALSE`: If your file has no column headers. `readr` will label them `X1`, `X2`, etc.
 - `na = "..."`: Specify which strings should be treated as missing values (e.g., `na = "N/A"`).
 
-## Example with `skip`:
+## Example with `skip` {.smaller}
 ```{r}
 #| echo: true
 read_csv("
