@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
-  <title>CSCI 2025 – Our First Analysis</title>
+  <title>CSCI 2025 – More Analysis</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -28,72 +28,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #97947a;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #97947a;  padding-left: 4px; }
-    div.sourceCode
-      { color: #f8f8f2; background-color: #2b2b2b; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #f8f8f2; } /* Normal */
-    code span.al { color: #dcc6e0; } /* Alert */
-    code span.an { color: #d4d0ab; } /* Annotation */
-    code span.at { color: #ffd700; } /* Attribute */
-    code span.bn { color: #dcc6e0; } /* BaseN */
-    code span.bu { color: #f5ab35; } /* BuiltIn */
-    code span.cf { color: #ffa07a; } /* ControlFlow */
-    code span.ch { color: #abe338; } /* Char */
-    code span.cn { color: #ffa07a; } /* Constant */
-    code span.co { color: #d4d0ab; } /* Comment */
-    code span.cv { color: #d4d0ab; font-style: italic; } /* CommentVar */
-    code span.do { color: #d4d0ab; font-style: italic; } /* Documentation */
-    code span.dt { color: #dcc6e0; } /* DataType */
-    code span.dv { color: #dcc6e0; } /* DecVal */
-    code span.er { color: #dcc6e0; } /* Error */
-    code span.ex { color: #ffd700; } /* Extension */
-    code span.fl { color: #f5ab35; } /* Float */
-    code span.fu { color: #ffd700; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #d4d0ab; } /* Information */
-    code span.kw { color: #ffa07a; } /* Keyword */
-    code span.op { color: #00e0e0; } /* Operator */
-    code span.ot { color: #ffa07a; } /* Other */
-    code span.pp { color: #dcc6e0; } /* Preprocessor */
-    code span.sc { color: #00e0e0; } /* SpecialChar */
-    code span.ss { color: #abe338; } /* SpecialString */
-    code span.st { color: #abe338; } /* String */
-    code span.va { color: #f5ab35; } /* Variable */
-    code span.vs { color: #abe338; } /* VerbatimString */
-    code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-8bca78ff1bb92eb160b3f14c6bb84c86.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -189,15 +123,13 @@
       margin-right: 0; 
     }
   </style>
-  <link href="../site_libs/countdown-0.6.0/countdown.css" rel="stylesheet">
-  <script src="../site_libs/countdown-0.6.0/countdown.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" data-background-image="title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Our First Analysis</h1>
+  <h1 class="title">More Analysis</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -214,43 +146,12 @@ Dr.&nbsp;Eric Friedlander
 <section id="today" class="slide level2">
 <h2>Today</h2>
 <ul>
-<li>Today we’re going to split up into groups and each analyze a data set of our choice</li>
-<li>We will take turns presenting on what we’ve done</li>
-<li>After each presentation, we’ll have a brief discussion where we critique each other’s analysis</li>
+<li>Work with some real experimental data generated from by Dr.&nbsp;Belissimo’s class</li>
+<li>Time permitting: return to TidyTuesday analysis from last class</li>
 </ul>
 </section>
-<section id="tidytuesday" class="slide level2">
-<h2>#TidyTuesday</h2>
-<ul>
-<li>TidyTuesday is a weekly data project aimed at the R community</li>
-<li>Each week a new data set is released along with a short description</li>
-<li>People analyze the data set and share their work on social media using the hashtag #TidyTuesday</li>
-<li>You can find the data sets and more information at the <a href="https://github.com/rfordatascience/tidytuesday">TidyTuesday GitHub repository</a></li>
-</ul>
-</section>
-<section id="today-1" class="slide level2 smaller">
-<h2>Today</h2>
-<ul>
-<li>Each group will pick a data set from the TidyTuesday repository</li>
-<li>Each group will <em>do their best</em> to analyze that data</li>
-<li>Advice:
-<ul>
-<li>Try to choose a more recent data set, and one that already has questions associated with it</li>
-<li>There is usually an import script at the bottom of each dataset</li>
-<li>It is likely that you will need to install some packages to work with the data</li>
-<li>Don’t worry about being perfect</li>
-<li>Focus on exploring the data and telling a story with it</li>
-<li>Ask for help when you need it</li>
-</ul></li>
-</ul>
-</section>
-<section>
-<section id="groups" class="title-slide slide level1 center">
-<h1>Groups</h1>
-
-</section>
-<section id="group-roles" class="slide level2">
-<h2>Group Roles</h2>
+<section id="group-roles-reminder" class="slide level2">
+<h2>Group Roles: Reminder</h2>
 <ul>
 <li>Coder: responsible for typing for your group</li>
 <li>Reporter: responsible for sharing your group’s work with the class</li>
@@ -263,77 +164,190 @@ Dr.&nbsp;Eric Friedlander
 </ul></li>
 </ul>
 </section>
-<section id="get-in-your-groups" class="slide level2 smaller">
-<h2>Get in your groups</h2>
+<section id="groups-for-today" class="slide level2">
+<h2>Groups for Today</h2>
 <ul>
-<li>You can find a spreadsheet in the Jan 6th Activities Module in the Classword section on Teams with your team assignments</li>
-<li>Get in your groups now</li>
-<li>Introduce yourselves</li>
-<li>Decide who will be the first Coder, Reporter, and Researcher</li>
-<li>Decide on a group name</li>
-<li>Create a post in the Activities Channel on Teams with all of this information</li>
+<li>If you didn’t present yesterday, same groups as yesterday</li>
+<li>If you did present yesterday, you’ve been assigned a new group (check Teams)</li>
+</ul>
+</section>
+<section>
+<section id="hhp-data" class="title-slide slide level1 center">
+<h1>HHP Data</h1>
+
+</section>
+<section id="reasearch-question" class="slide level2">
+<h2>Reasearch Question</h2>
+<ul>
+<li>Traditional Resistance Training (TRT): Involves performing a set number of repetitions continuously until the set is complete, followed by a rest period.
+<ul>
+<li>Example: 3 sets of 10 repetitions with 60 seconds rest between sets.</li>
+</ul></li>
+<li>Cluster Resistance Training (CRT): Involves breaking a set into smaller clusters of repetitions with short rest intervals in between, allowing for brief recovery periods during the set.
+<ul>
+<li>Example: 3 sets of 10 repetitions performed as 2 clusters of 5 repetitions with 15 seconds rest between clusters and 60 seconds rest between sets.</li>
+</ul></li>
+<li>Primary research goal: characterize the intensity of TRT vs CRT</li>
+<li>Today’s Question: Are there differences in heart rate response between traditional and cluster resistance volume-matched protocols?</li>
+</ul>
+</section>
+<section id="experimental-design" class="slide level2">
+<h2>Experimental Design</h2>
+<ul>
+<li>Participants: 10 college students</li>
+<li>Cross-over design
+<ul>
+<li>Each participant completed both the TRT and CRTprotocols… <em>why?</em></li>
+<li>Randomized (flipped a coin) which protocol was completed first… <em>why?</em></li>
+<li>One week washout period between protocols… <em>why?</em></li>
+<li>Measured heart rate, before and after exercise</li>
+</ul></li>
+<li>This was a class project conducted by Jayva Anderson, Emily Lettenmaier, Sayre Schreiner, and Greta Valaika</li>
+</ul>
+</section>
+<section id="the-data" class="slide level2">
+<h2>The Data</h2>
+<ul>
+<li>Stored in <code>TRAD_CLU_group.csv</code> on Teams in the Jan 7th Activities Module in the Classwork section</li>
+<li>Columns:
+<ul>
+<li>ID : Participant identifier</li>
+<li>Condition: TRAD or CLU (traditional or cluster)</li>
+<li>Time: PRE or POST (before or after exercise)</li>
+<li>HR: Heart Rate (in beats per minute)</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="whats-next" class="title-slide slide level1 center">
+<h1>What’s Next</h1>
+<ul>
+<li>Pokemon: Refine your visualizations using pivoting (be prepared to present to class)</li>
+<li>DnD: Refine your visualizations using pivoting (be prepared to present to class)</li>
+<li>Everyone else: Work on the challenges below (you may use any order you like)
+<ul>
+<li>Do not use AI to generate, you may use AI to debug code</li>
+<li>Upload completed image once complete by pasting into replay in Activities Channel</li>
+</ul></li>
+</ul>
+</section>
+<section id="challenge-1a-parks" class="slide level2">
+<h2>Challenge 1A: Parks</h2>
+<ul>
+<li>Use the <code>parks.csv</code> found in Teams to make this plot.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>countdown<span class="sc">::</span><span class="fu">countdown</span>(<span class="at">minutes =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_a27fa0b0" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<div>
+<figure>
+<p><img data-src="02-pivoting_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
-<section id="selecting-a-dataset" class="slide level2 smaller">
-<h2>Selecting a Dataset</h2>
+<section id="challenge-1b-parks" class="slide level2">
+<h2>Challenge 1B: Parks</h2>
 <ul>
-<li>Do the following:
-<ul>
-<li>Find the data set on the TidyTuesday GitHub repository</li>
-<li>Load that data set into R</li>
-<li>Post a link to the dataset as a response to your group’s post in the Activities Channel on Teams</li>
-</ul></li>
-<li>Answer the following questions (be prepared to give a 2-minute report to the class):
-<ul>
-<li>What is the data about?</li>
-<li>What question(s) are you interested in answering with this data?</li>
-<li>How many data frames are there and how many rows and columns does it have?</li>
-<li>What data frames and variables are you going to focus on?</li>
-</ul></li>
+<li>Use the <code>parks.csv</code> found in Teams to make this plot.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>countdown<span class="sc">::</span><span class="fu">countdown</span>(<span class="at">minutes =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_49123444" minutes="20" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<div>
+<figure>
+<p><img data-src="02-pivoting_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
-<section id="explore-the-data" class="slide level2 smaller">
-<h2>Explore the Data</h2>
-<ul>
-<li>Be prepared to present the following (less than 5 minutes per group):
-<ul>
-<li>Create up to 5 visualizations or tables that help answer your questions</li>
-<li>Explain what each visualization or table shows</li>
-<li>Explain what you learned from each visualization or table</li>
-<li>Explain any challenges you had while working with the data</li>
-<li>Be prepared to answer questions and explain your code if you are asked</li>
-</ul></li>
-<li>Copy and paste your entire script (up to this point) into Teams as a response to your group’s post</li>
-</ul>
+<section id="challenge-2-valentines-day" class="slide level2">
+<h2>Challenge 2: Valentine’s Day</h2>
+<p><a href="https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-02-13/readme.md">Generate this plot (without usiung AI):</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>countdown<span class="sc">::</span><span class="fu">countdown</span>(<span class="at">minutes =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_0b1b296f" minutes="20" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<div>
+<figure>
+<p><img data-src="02-pivoting_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
-<section id="time-permitting-refine-and-extend" class="slide level2 smaller">
-<h2>Time Permitting: Refine and Extend</h2>
-<ul>
-<li>If you have time left, refine your visualizations and analyses based on our discussions</li>
-</ul>
+<section id="challenge-3-pokemon" class="slide level2">
+<h2>Challenge 3: Pokemon</h2>
+<p><a href="https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-04-01/readme.md">Generate the following data frame from the pokemon data (no AI):</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Stat</th>
+<th style="text-align: right;">Avg_Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">bug</td>
+<td style="text-align: left;">attack</td>
+<td style="text-align: right;">72.70238</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bug</td>
+<td style="text-align: left;">defense</td>
+<td style="text-align: right;">72.38095</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bug</td>
+<td style="text-align: left;">hp</td>
+<td style="text-align: right;">57.46429</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bug</td>
+<td style="text-align: left;">special_attack</td>
+<td style="text-align: right;">56.98810</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bug</td>
+<td style="text-align: left;">special_defense</td>
+<td style="text-align: right;">65.23810</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bug</td>
+<td style="text-align: left;">speed</td>
+<td style="text-align: right;">62.57143</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">dark</td>
+<td style="text-align: left;">attack</td>
+<td style="text-align: right;">94.67742</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dark</td>
+<td style="text-align: left;">defense</td>
+<td style="text-align: right;">69.19355</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">dark</td>
+<td style="text-align: left;">hp</td>
+<td style="text-align: right;">72.80645</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dark</td>
+<td style="text-align: left;">special_attack</td>
+<td style="text-align: right;">76.09677</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
-<section id="wrap-up" class="slide level2 smaller">
-<h2>Wrap Up</h2>
+<section id="for-next-class" class="slide level2">
+<h2>For Next Class</h2>
 <ul>
-<li>Before you leave, complete your reflection on Teams!</li>
+<li>Complete reflection</li>
+<li>Complete next two lectures</li>
 </ul>
 
 
