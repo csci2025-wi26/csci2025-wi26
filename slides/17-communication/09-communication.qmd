@@ -1,6 +1,6 @@
 ---
 title: "Communication"
-subtitle: "Lecture 8"
+subtitle: "Lecture 9"
 format: revealjs
 ---
 
