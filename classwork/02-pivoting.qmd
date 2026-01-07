@@ -9,7 +9,7 @@ auto-stretch: false
 -   Return to TidyTuesday analysis from last class
 -   Work with some real experimental data generated from by Dr. Belissimo's class
 
-## Group Roles: Reminder
+## Group Roles: Reminder {.smaller}
 
 -   Coder: responsible for typing for your group
 -   Reporter: responsible for sharing your group's work with the class
@@ -34,7 +34,8 @@ auto-stretch: false
     +   Upload completed image once complete by pasting into replay in Activities Channel
 
 ```{r}
-#| echo:: false
+#| echo: false
+
 countdown::countdown(minutes = 30)
 ```
 
@@ -125,7 +126,7 @@ pokemon_df |>
 
 # HHP Data
 
-## Reasearch Question
+## Reasearch Question {.smaller}
 
 - Traditional Resistance Training (TRT): Involves performing a set number of repetitions continuously until the set is complete, followed by a rest period.
     +   Example: 3 sets of 10 repetitions with 60 seconds rest between sets.
