@@ -870,11 +870,11 @@
     "text": "Transformations\n\nTransformations can help you see patterns more clearly.\nCommon transformations include:\n\nLogarithms\nLogarithms\nLogarithms\nSquare roots\nLogarithms\nStandardization (z-scores)\nLogarithms"
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#the-power-emojiman_facepalming-of-logs",
-    "href": "slides/08-eda/08-eda.html#the-power-emojiman_facepalming-of-logs",
+    "objectID": "slides/08-eda/08-eda.html#the-power-of-logs",
+    "href": "slides/08-eda/08-eda.html#the-power-of-logs",
     "title": "Exploratory Data Analysis",
-    "section": "The power emo::ji(\"man_facepalming\") of logs",
-    "text": "The power emo::ji(\"man_facepalming\") of logs\n\nPower law: when \\(y = ax^k\\)\n\nTaking the log of both sides gives: \\(\\log(y) = \\log(a) + k\\log(x)\\)\nIntuitively: multiplying x by a constant multiplies y by a constant.\n\nPower law’s are extremely common in nature:\n\nParetto principle (80/20 rule)\nCity sizes\nEarthquake magnitudes\nWealth distributions\nBacteria growth"
+    "section": "The power of logs",
+    "text": "The power of logs\n\nPower law: when \\(y = ax^k\\)\n\nTaking the log of both sides gives: \\(\\log(y) = \\log(a) + k\\log(x)\\)\nIntuitively: multiplying x by a constant multiplies y by a constant.\n\nPower law’s are extremely common in nature:\n\nParetto principle (80/20 rule)\nCity sizes\nEarthquake magnitudes\nWealth distributions\nBacteria growth"
   },
   {
     "objectID": "slides/08-eda/08-eda.html#practice-2",

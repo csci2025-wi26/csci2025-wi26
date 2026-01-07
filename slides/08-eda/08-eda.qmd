@@ -171,7 +171,7 @@ glimpse(mpg)
   - Standardization (z-scores)
   - Logarithms
 
-## The power `emo::ji("man_facepalming")` of logs
+## The power of logs {.smaller}
 
 - Power law: when $y = ax^k$
   + Taking the log of both sides gives: $\log(y) = \log(a) + k\log(x)$
