@@ -77,11 +77,6 @@ Let's create a scatter plot of engine size vs. highway fuel efficiency, and labe
 
 ## Example 
 
-```{r}
-#| echo: true
-#| code-fold: true
-g
-```
 
 ## Practice!
 
@@ -241,6 +236,8 @@ ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
 
 ```{r}
 #| echo: true
+
+library(ggthemes)
 ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
   geom_point() +
   theme_economist() + 

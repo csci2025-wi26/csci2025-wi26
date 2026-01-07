@@ -196,7 +196,7 @@
 
 <section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
   <h1 class="title">ggplot2 layers</h1>
-  <p class="subtitle">Lecture 6</p>
+  <p class="subtitle">Lecture 7</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -247,16 +247,8 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </section>
 <section id="a-simple-scatterplot" class="slide level2 smaller">
 <h2>A simple scatterplot</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dep_delay, <span class="at">y =</span> arr_delay)) <span class="sc">+</span></span>
-<span id="cb3-2"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 9430 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-
-</div>
-<img data-src="07-layers_files/figure-revealjs/simple-plot-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
+<p>Let’s create a simple scatterplot of departure delay vs.&nbsp;arrival delay.</p>
+</section>
 <section id="adding-layers" class="slide level2">
 <h2>Adding layers</h2>
 <p>A plot is composed of layers. Each layer has:</p>
@@ -269,13 +261,8 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </section>
 <section id="adding-a-layer-trend-line-with-geom_smooth" class="slide level2 smaller">
 <h2>Adding a layer: Trend line with <code>geom_smooth()</code></h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dep_delay, <span class="at">y =</span> arr_delay)) <span class="sc">+</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb5-3"><a></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="07-layers_files/figure-revealjs/smooth-plot-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section></section>
+<p>Let’s add a trend line… What does se = FALSE do?</p>
+</section></section>
 <section>
 <section id="aesthetic-mappings" class="title-slide slide level1 center">
 <h1>Aesthetic Mappings</h1>
@@ -291,19 +278,15 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </section>
 <section id="using-color-as-a-local-aesthetic" class="slide level2 smaller">
 <h2>Using <code>color</code> as a local aesthetic</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dep_delay, <span class="at">y =</span> arr_delay)) <span class="sc">+</span></span>
-<span id="cb6-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> origin), <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb6-3"><a></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="07-layers_files/figure-revealjs/local-aes-plot-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
+<p>Let see what happens when we use <code>color</code> as a global aesthetic mapping in <code>geom_point()</code>.</p>
+<p>How can we make a single color for all points but still have the smooth line?</p>
+</section>
 <section id="why-isnt-this-plot-blue" class="slide level2">
 <h2>Why isn’t this plot blue?</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># This is probably not what you want</span></span>
-<span id="cb7-2"><a></a><span class="fu">ggplot</span>(flights, <span class="fu">aes</span>(<span class="at">x =</span> dep_delay, <span class="at">y =</span> arr_delay)) <span class="sc">+</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"blue"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># This is probably not what you want</span></span>
+<span id="cb3-2"><a></a><span class="fu">ggplot</span>(flights, <span class="fu">aes</span>(<span class="at">x =</span> dep_delay, <span class="at">y =</span> arr_delay)) <span class="sc">+</span></span>
+<span id="cb3-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"blue"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="07-layers_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
@@ -313,8 +296,8 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <li>To apply a constant property to all points, set it outside of <code>aes()</code></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(flights, <span class="fu">aes</span>(<span class="at">x =</span> dep_delay, <span class="at">y =</span> arr_delay)) <span class="sc">+</span></span>
-<span id="cb8-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(flights, <span class="fu">aes</span>(<span class="at">x =</span> dep_delay, <span class="at">y =</span> arr_delay)) <span class="sc">+</span></span>
+<span id="cb4-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="07-layers_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section></section>
@@ -347,8 +330,8 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <li><code>geom_bar()</code> uses <code>stat_count()</code> by default to count the number of observations for each category</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier)) <span class="sc">+</span></span>
-<span id="cb9-2"><a></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier)) <span class="sc">+</span></span>
+<span id="cb5-2"><a></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="07-layers_files/figure-revealjs/bar-chart-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
@@ -358,10 +341,10 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <li>You can change the statistical transformation used by a geom with the <code>stat</code> argument…</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>flights <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a></a>  <span class="fu">count</span>(carrier) <span class="sc">|&gt;</span> </span>
-<span id="cb10-3"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier, <span class="at">y =</span> n)) <span class="sc">+</span></span>
-<span id="cb10-4"><a></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>flights <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a></a>  <span class="fu">count</span>(carrier) <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb6-4"><a></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="07-layers_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
@@ -371,9 +354,9 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <li>Using <code>after_stat()</code> to modify computed variables from a stat</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights) <span class="sc">+</span></span>
-<span id="cb11-2"><a></a>  <span class="fu">geom_bar</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier, <span class="at">y =</span> <span class="fu">after_stat</span>(prop), <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb11-3"><a></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Proportion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights) <span class="sc">+</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">geom_bar</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier, <span class="at">y =</span> <span class="fu">after_stat</span>(prop), <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb7-3"><a></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Proportion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="07-layers_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
@@ -397,12 +380,12 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <section id="jittering-points" class="slide level2">
 <h2>Jittering points</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb12-2"><a></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(flights, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> dep_delay)) <span class="sc">+</span></span>
-<span id="cb12-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.01</span>)</span>
-<span id="cb12-4"><a></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(flights, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> dep_delay)) <span class="sc">+</span></span>
-<span id="cb12-5"><a></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> <span class="fl">0.01</span>)</span>
-<span id="cb12-6"><a></a>p1 <span class="sc">+</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb8-2"><a></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(flights, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> dep_delay)) <span class="sc">+</span></span>
+<span id="cb8-3"><a></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb8-4"><a></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(flights, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> dep_delay)) <span class="sc">+</span></span>
+<span id="cb8-5"><a></a>  <span class="fu">geom_jitter</span>()</span>
+<span id="cb8-6"><a></a>p1 <span class="sc">+</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="07-layers_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
@@ -418,33 +401,33 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <section id="bar-chart-adjustments-1" class="slide level2">
 <h2>Bar chart adjustments</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(flights, <span class="fu">aes</span>(<span class="at">x =</span> carrier, <span class="at">fill =</span> origin)) <span class="sc">+</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"stack"</span>)</span>
-<span id="cb13-3"><a></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(flights, <span class="fu">aes</span>(<span class="at">x =</span> carrier, <span class="at">fill =</span> origin)) <span class="sc">+</span></span>
-<span id="cb13-4"><a></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)</span>
-<span id="cb13-5"><a></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(flights, <span class="fu">aes</span>(<span class="at">x =</span> carrier, <span class="at">fill =</span> origin)) <span class="sc">+</span></span>
-<span id="cb13-6"><a></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb13-7"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(flights, <span class="fu">aes</span>(<span class="at">x =</span> carrier, <span class="at">fill =</span> origin)) <span class="sc">+</span></span>
+<span id="cb9-2"><a></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"stack"</span>)</span>
+<span id="cb9-3"><a></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(flights, <span class="fu">aes</span>(<span class="at">x =</span> carrier, <span class="at">fill =</span> origin)) <span class="sc">+</span></span>
+<span id="cb9-4"><a></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)</span>
+<span id="cb9-5"><a></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(flights, <span class="fu">aes</span>(<span class="at">x =</span> carrier, <span class="at">fill =</span> origin)) <span class="sc">+</span></span>
+<span id="cb9-6"><a></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb9-7"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="bar-chart-stacked" class="slide level2">
 <h2>Bar chart: Stacked</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>p1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>p1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="07-layers_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
 <section id="bar-chart-standardized" class="slide level2">
 <h2>Bar chart: Standardized</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="07-layers_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
 <section id="bar-chart-dodged" class="slide level2">
 <h2>Bar chart: Dodged</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>p3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>p3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="07-layers_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section></section>
@@ -453,40 +436,20 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <h1>Facets</h1>
 
 </section>
-<section id="facet_wrap" class="slide level2 smaller">
-<h2><code>facet_wrap</code></h2>
+<section id="facet_wrap-and-facet_grid" class="slide level2 smaller">
+<h2><code>facet_wrap</code> and <code>facet_grid</code></h2>
 <ul>
 <li>Facets allow you to break your plot into subplots based on a categorical variable.</li>
+<li><code>facet_wrap</code>: Creates a series of plots wrapped into a rectangle</li>
+<li><code>facet_grid</code>: Creates a grid of plots based on two categorical variables</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dep_delay, <span class="at">y =</span> arr_delay)) <span class="sc">+</span></span>
-<span id="cb17-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb17-3"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> origin, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="07-layers_files/figure-revealjs/facet-plot-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
-<section id="adding-a-trend-line-to-facets" class="slide level2">
-<h2>Adding a trend line to facets</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dep_delay, <span class="at">y =</span> arr_delay)) <span class="sc">+</span></span>
-<span id="cb18-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb18-3"><a></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
-<span id="cb18-4"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> origin, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="07-layers_files/figure-revealjs/facet-smooth-plot-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
-<section id="facet-grids" class="slide level2">
-<h2>Facet Grids</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>flights <span class="sc">|&gt;</span></span>
-<span id="cb19-2"><a></a>  <span class="fu">filter</span>(carrier <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"AA"</span>, <span class="st">"DL"</span>, <span class="st">"UA"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb19-3"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dep_delay, <span class="at">y =</span> arr_delay)) <span class="sc">+</span></span>
-<span id="cb19-4"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb19-5"><a></a>    <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
-<span id="cb19-6"><a></a>    <span class="fu">facet_grid</span>(carrier <span class="sc">~</span> origin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="07-layers_files/figure-revealjs/facet-smooth-plot-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section></section>
+</section>
+<section id="practice-1" class="slide level2">
+<h2>Practice</h2>
+<ul>
+<li>Let’s visualize the relationship between <code>origin</code>, <code>carrier</code>, <code>dep_delay</code>, and <code>arr_delay</code> using facets!</li>
+</ul>
+</section></section>
 <section>
 <section id="coordinate-systems" class="title-slide slide level1 center">
 <h1>Coordinate Systems</h1>
@@ -495,27 +458,27 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <section id="flipping-coordinates" class="slide level2">
 <h2>Flipping coordinates</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier)) <span class="sc">+</span></span>
-<span id="cb20-2"><a></a>  <span class="fu">geom_bar</span>()</span>
-<span id="cb20-3"><a></a></span>
-<span id="cb20-4"><a></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier)) <span class="sc">+</span></span>
-<span id="cb20-5"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb20-6"><a></a>  <span class="fu">coord_flip</span>()</span>
-<span id="cb20-7"><a></a>p1 <span class="sc">+</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier)) <span class="sc">+</span></span>
+<span id="cb13-2"><a></a>  <span class="fu">geom_bar</span>()</span>
+<span id="cb13-3"><a></a></span>
+<span id="cb13-4"><a></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier)) <span class="sc">+</span></span>
+<span id="cb13-5"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb13-6"><a></a>  <span class="fu">coord_flip</span>()</span>
+<span id="cb13-7"><a></a>p1 <span class="sc">+</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="07-layers_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
 <section id="the-layered-grammar-in-summary" class="slide level2">
 <h2>The layered grammar in summary</h2>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co">#| eval: false</span></span>
-<span id="cb21-2"><a></a><span class="st">`</span><span class="at">ggplot(data = &lt;DATA&gt;) +</span><span class="st">`</span></span>
-<span id="cb21-3"><a></a><span class="st">`</span><span class="at">  &lt;GEOM_FUNCTION&gt;(</span><span class="st">`</span></span>
-<span id="cb21-4"><a></a><span class="st">`</span><span class="at">    mapping = aes(&lt;AESTHETIC_MAPPINGS&gt;),</span><span class="st">`</span></span>
-<span id="cb21-5"><a></a><span class="st">`</span><span class="at">    stat = &lt;STAT&gt;,</span><span class="st">`</span></span>
-<span id="cb21-6"><a></a><span class="st">`</span><span class="at">    position = &lt;POSITION&gt;</span><span class="st">`</span></span>
-<span id="cb21-7"><a></a><span class="st">`</span><span class="at">  ) +</span><span class="st">`</span></span>
-<span id="cb21-8"><a></a><span class="st">`</span><span class="at">  &lt;COORDINATE_SYSTEM&gt; +</span><span class="st">`</span></span>
-<span id="cb21-9"><a></a><span class="st">`</span><span class="at">  &lt;FACET_FUNCTION&gt;</span><span class="st">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co">#| eval: false</span></span>
+<span id="cb14-2"><a></a><span class="st">`</span><span class="at">ggplot(data = &lt;DATA&gt;) +</span><span class="st">`</span></span>
+<span id="cb14-3"><a></a><span class="st">`</span><span class="at">  &lt;GEOM_FUNCTION&gt;(</span><span class="st">`</span></span>
+<span id="cb14-4"><a></a><span class="st">`</span><span class="at">    mapping = aes(&lt;AESTHETIC_MAPPINGS&gt;),</span><span class="st">`</span></span>
+<span id="cb14-5"><a></a><span class="st">`</span><span class="at">    stat = &lt;STAT&gt;,</span><span class="st">`</span></span>
+<span id="cb14-6"><a></a><span class="st">`</span><span class="at">    position = &lt;POSITION&gt;</span><span class="st">`</span></span>
+<span id="cb14-7"><a></a><span class="st">`</span><span class="at">  ) +</span><span class="st">`</span></span>
+<span id="cb14-8"><a></a><span class="st">`</span><span class="at">  &lt;COORDINATE_SYSTEM&gt; +</span><span class="st">`</span></span>
+<span id="cb14-9"><a></a><span class="st">`</span><span class="at">  &lt;FACET_FUNCTION&gt;</span><span class="st">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="do-next" class="slide level2">
 <h2>Do Next</h2>
@@ -523,7 +486,6 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <li>Read <a href="https://r4ds.hadley.nz/layers.html">Chapter 9: Layers</a> from r4ds.</li>
 <li>Open the Recitation Gem and say “Provide me practice problems for Chapter 9” or work through some of the exercises in the text.</li>
 <li>Move on to Lecture 08.</li>
-<li>Stick around for me working through some practice problems!</li>
 </ol>
 
 
