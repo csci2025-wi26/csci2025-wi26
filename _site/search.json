@@ -1320,7 +1320,7 @@
     "href": "classwork/02-pivoting.html#today",
     "title": "More Analysis",
     "section": "Today",
-    "text": "Today\n\nWork with some real experimental data generated from by Dr. Belissimo’s class\nTime permitting: return to TidyTuesday analysis from last class"
+    "text": "Today\n\nReturn to TidyTuesday analysis from last class\nWork with some real experimental data generated from by Dr. Belissimo’s class"
   },
   {
     "objectID": "classwork/02-pivoting.html#group-roles-reminder",
@@ -1335,27 +1335,6 @@
     "title": "More Analysis",
     "section": "Groups for Today",
     "text": "Groups for Today\n\nIf you didn’t present yesterday, same groups as yesterday\nIf you did present yesterday, you’ve been assigned a new group (check Teams)"
-  },
-  {
-    "objectID": "classwork/02-pivoting.html#reasearch-question",
-    "href": "classwork/02-pivoting.html#reasearch-question",
-    "title": "More Analysis",
-    "section": "Reasearch Question",
-    "text": "Reasearch Question\n\nTraditional Resistance Training (TRT): Involves performing a set number of repetitions continuously until the set is complete, followed by a rest period.\n\nExample: 3 sets of 10 repetitions with 60 seconds rest between sets.\n\nCluster Resistance Training (CRT): Involves breaking a set into smaller clusters of repetitions with short rest intervals in between, allowing for brief recovery periods during the set.\n\nExample: 3 sets of 10 repetitions performed as 2 clusters of 5 repetitions with 15 seconds rest between clusters and 60 seconds rest between sets.\n\nPrimary research goal: characterize the intensity of TRT vs CRT\nToday’s Question: Are there differences in heart rate response between traditional and cluster resistance volume-matched protocols?"
-  },
-  {
-    "objectID": "classwork/02-pivoting.html#experimental-design",
-    "href": "classwork/02-pivoting.html#experimental-design",
-    "title": "More Analysis",
-    "section": "Experimental Design",
-    "text": "Experimental Design\n\nParticipants: 10 college students\nCross-over design\n\nEach participant completed both the TRT and CRTprotocols… why?\nRandomized (flipped a coin) which protocol was completed first… why?\nOne week washout period between protocols… why?\nMeasured heart rate, before and after exercise\n\nThis was a class project conducted by Jayva Anderson, Emily Lettenmaier, Sayre Schreiner, and Greta Valaika"
-  },
-  {
-    "objectID": "classwork/02-pivoting.html#the-data",
-    "href": "classwork/02-pivoting.html#the-data",
-    "title": "More Analysis",
-    "section": "The Data",
-    "text": "The Data\n\nStored in TRAD_CLU_group.csv on Teams in the Jan 7th Activities Module in the Classwork section\nColumns:\n\nID : Participant identifier\nCondition: TRAD or CLU (traditional or cluster)\nTime: PRE or POST (before or after exercise)\nHR: Heart Rate (in beats per minute)"
   },
   {
     "objectID": "classwork/02-pivoting.html#challenge-1a-parks",
@@ -1384,6 +1363,34 @@
     "title": "More Analysis",
     "section": "Challenge 3: Pokemon",
     "text": "Challenge 3: Pokemon\nGenerate the following data frame from the pokemon data (no AI):\n\n\n\n\n\nType\nStat\nAvg_Value\n\n\n\n\nbug\nattack\n72.70238\n\n\nbug\ndefense\n72.38095\n\n\nbug\nhp\n57.46429\n\n\nbug\nspecial_attack\n56.98810\n\n\nbug\nspecial_defense\n65.23810\n\n\nbug\nspeed\n62.57143\n\n\ndark\nattack\n94.67742\n\n\ndark\ndefense\n69.19355\n\n\ndark\nhp\n72.80645\n\n\ndark\nspecial_attack\n76.09677"
+  },
+  {
+    "objectID": "classwork/02-pivoting.html#reasearch-question",
+    "href": "classwork/02-pivoting.html#reasearch-question",
+    "title": "More Analysis",
+    "section": "Reasearch Question",
+    "text": "Reasearch Question\n\nTraditional Resistance Training (TRT): Involves performing a set number of repetitions continuously until the set is complete, followed by a rest period.\n\nExample: 3 sets of 10 repetitions with 60 seconds rest between sets.\n\nCluster Resistance Training (CRT): Involves breaking a set into smaller clusters of repetitions with short rest intervals in between, allowing for brief recovery periods during the set.\n\nExample: 3 sets of 10 repetitions performed as 2 clusters of 5 repetitions with 15 seconds rest between clusters and 60 seconds rest between sets.\n\nPrimary research goal: characterize the intensity of TRT vs CRT\nToday’s Question: Are there differences in heart rate response between traditional and cluster resistance volume-matched protocols?"
+  },
+  {
+    "objectID": "classwork/02-pivoting.html#experimental-design",
+    "href": "classwork/02-pivoting.html#experimental-design",
+    "title": "More Analysis",
+    "section": "Experimental Design",
+    "text": "Experimental Design\n\nParticipants: 10 college students\nCross-over design\n\nEach participant completed both the TRT and CRTprotocols… why?\nRandomized (flipped a coin) which protocol was completed first… why?\nOne week washout period between protocols… why?\nMeasured heart rate, before and after exercise\n\nThis was a class project conducted by Jayva Anderson, Emily Lettenmaier, Sayre Schreiner, and Greta Valaika"
+  },
+  {
+    "objectID": "classwork/02-pivoting.html#the-data",
+    "href": "classwork/02-pivoting.html#the-data",
+    "title": "More Analysis",
+    "section": "The Data",
+    "text": "The Data\n\nStored in TRAD_CLU_group.csv on Teams in the Jan 7th Activities Module in the Classwork section\nColumns:\n\nID : Participant identifier\nCondition: TRAD or CLU (traditional or cluster)\nTime: PRE or POST (before or after exercise)\nHR: Heart Rate (in beats per minute)"
+  },
+  {
+    "objectID": "classwork/02-pivoting.html#challenge",
+    "href": "classwork/02-pivoting.html#challenge",
+    "title": "More Analysis",
+    "section": "Challenge",
+    "text": "Challenge\nMake a visualization that addresses the research question.\nBest viz wins. Once you’re complete post your image in the Activities Channel on Teams."
   },
   {
     "objectID": "classwork/02-pivoting.html#for-next-class",

@@ -6,8 +6,8 @@ auto-stretch: false
 
 ## Today
 
+-   Return to TidyTuesday analysis from last class
 -   Work with some real experimental data generated from by Dr. Belissimo's class
--   Time permitting: return to TidyTuesday analysis from last class
 
 ## Group Roles: Reminder
 
@@ -24,43 +24,19 @@ auto-stretch: false
 -   If you didn't present yesterday, same groups as yesterday
 -   If you did present yesterday, you've been assigned a new group (check Teams)
 
-# HHP Data
 
-## Reasearch Question
-
-- Traditional Resistance Training (TRT): Involves performing a set number of repetitions continuously until the set is complete, followed by a rest period.
-    +   Example: 3 sets of 10 repetitions with 60 seconds rest between sets.
-- Cluster Resistance Training (CRT): Involves breaking a set into smaller clusters of repetitions with short rest intervals in between, allowing for brief recovery periods during the set.
-    +   Example: 3 sets of 10 repetitions performed as 2 clusters of 5 repetitions with 15 seconds rest between clusters and 60 seconds rest between sets.
-- Primary research goal: characterize the intensity of TRT vs CRT
-- Today's Question: Are there differences in heart rate response between traditional and cluster resistance volume-matched protocols?
-
-## Experimental Design
-
-- Participants: 10 college students
-- Cross-over design
-    + Each participant completed both the TRT and CRTprotocols... *why?*
-    + Randomized (flipped a coin) which protocol was completed first... *why?*
-    + One week washout period between protocols... *why?*
-    + Measured heart rate, before and after exercise
-- This was a class project conducted by Jayva Anderson, Emily Lettenmaier, Sayre Schreiner, and Greta Valaika
-
-## The Data
-
--  Stored in `TRAD_CLU_group.csv` on Teams in the Jan 7th Activities Module in the Classwork section
--  Columns:
-    - ID : Participant identifier
-    - Condition: TRAD or CLU (traditional or cluster)
-    - Time: PRE or POST (before or after exercise)
-    - HR: Heart Rate (in beats per minute)
-
-# What's Next
+# Back to TidyTuesday
 
 -   Pokemon: Refine your visualizations using pivoting (be prepared to present to class)
 -   DnD: Refine your visualizations using pivoting (be prepared to present to class)
 -   Everyone else: Work on the challenges below (you may use any order you like)
     +   Do not use AI to generate, you may use AI to debug code
     +   Upload completed image once complete by pasting into replay in Activities Channel
+
+```{r}
+#| echo:: false
+countdown::countdown(minutes = 30)
+```
 
 ## Challenge 1A: Parks
 
@@ -145,6 +121,46 @@ pokemon_df |>
     select(Type, Stat, Avg_Value) |> 
     head(10) |> 
     kable()
+```
+
+# HHP Data
+
+## Reasearch Question
+
+- Traditional Resistance Training (TRT): Involves performing a set number of repetitions continuously until the set is complete, followed by a rest period.
+    +   Example: 3 sets of 10 repetitions with 60 seconds rest between sets.
+- Cluster Resistance Training (CRT): Involves breaking a set into smaller clusters of repetitions with short rest intervals in between, allowing for brief recovery periods during the set.
+    +   Example: 3 sets of 10 repetitions performed as 2 clusters of 5 repetitions with 15 seconds rest between clusters and 60 seconds rest between sets.
+- Primary research goal: characterize the intensity of TRT vs CRT
+- Today's Question: Are there differences in heart rate response between traditional and cluster resistance volume-matched protocols?
+
+## Experimental Design
+
+- Participants: 10 college students
+- Cross-over design
+    + Each participant completed both the TRT and CRTprotocols... *why?*
+    + Randomized (flipped a coin) which protocol was completed first... *why?*
+    + One week washout period between protocols... *why?*
+    + Measured heart rate, before and after exercise
+- This was a class project conducted by Jayva Anderson, Emily Lettenmaier, Sayre Schreiner, and Greta Valaika
+
+## The Data
+
+-  Stored in `TRAD_CLU_group.csv` on Teams in the Jan 7th Activities Module in the Classwork section
+-  Columns:
+    - ID : Participant identifier
+    - Condition: TRAD or CLU (traditional or cluster)
+    - Time: PRE or POST (before or after exercise)
+    - HR: Heart Rate (in beats per minute)
+
+## Challenge
+
+Make a visualization that addresses the research question.
+
+Best viz wins. Once you're complete post your image in the Activities Channel on Teams.
+```{r}
+#| echo: false
+countdown::countdown(minutes = 30)
 ```
 
 ## For Next Class
