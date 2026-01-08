@@ -194,7 +194,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="../vizdata-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
+<section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
   <h1 class="title">Strings</h1>
   <p class="subtitle">Lecture 11</p>
 
@@ -222,6 +222,15 @@ Dr.&nbsp;Eric Friedlander
 <li>The <code>stringr</code> package, part of the <code>tidyverse</code>, provides a modern and consistent interface for working with strings.</li>
 <li>All functions in <code>stringr</code> start with <code>str_</code>.</li>
 </ul>
+</section>
+<section id="data-idaho-naturalization" class="slide level2">
+<h2>Data: Idaho Naturalization</h2>
+<ul>
+<li>We’re going to use Naturalization data from the Idaho State Archives</li>
+<li>This dataset was assembled by Dr.&nbsp;Rachel Miller</li>
+<li><a href="https://docs.google.com/spreadsheets/d/1UpMPcO8Jr3FLlFvy27a5xNMcCPqF20wur8YtOjH8tw0/edit?gid=1474309575#gid=1474309575">Link to Google Sheet</a></li>
+<li>Let’s load the data</li>
+</ul>
 </section></section>
 <section>
 <section id="creating-strings" class="title-slide slide level1 center">
@@ -233,65 +242,17 @@ Dr.&nbsp;Eric Friedlander
 <ul>
 <li>You can create strings with single (<code>'</code>) or double (<code>"</code>) quotes.</li>
 <li>To include a literal quote in your string, you need to “escape” it with a <code>\</code>.</li>
+<li>Let’s work through a few examples…</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>string1 <span class="ot">&lt;-</span> <span class="st">"This is a string."</span></span>
-<span id="cb1-2"><a></a>string2 <span class="ot">&lt;-</span> <span class="st">'If I want to include a "quote", I can.'</span></span>
-<span id="cb1-3"><a></a>string3 <span class="ot">&lt;-</span> <span class="st">"Or I can escape it like this </span><span class="sc">\"</span><span class="st">"</span></span>
-<span id="cb1-4"><a></a></span>
-<span id="cb1-5"><a></a><span class="fu">str_view</span>(<span class="fu">c</span>(string1, string2, string3))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] │ This is a string.
-[2] │ If I want to include a "quote", I can.
-[3] │ Or I can escape it like this "</code></pre>
-</div>
-</div>
 </section>
-<section id="combining-strings-str_c" class="slide level2">
-<h2>Combining Strings: <code>str_c()</code></h2>
+<section id="combining-strings" class="slide level2">
+<h2>Combining Strings</h2>
 <ul>
 <li><code>str_c()</code> combines multiple vectors into a single character vector.</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">str_c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "xyz"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">str_c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "xya" "xyb"</code></pre>
-</div>
-</div>
-</section>
-<section id="gluing-strings-str_glue" class="slide level2">
-<h2>Gluing Strings: <code>str_glue()</code></h2>
-<ul>
 <li><code>str_glue()</code> from the <code>glue</code> package is great for embedding R code inside a string.</li>
 <li>Wrap your R code in <code>{}</code>.</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>name <span class="ot">&lt;-</span> <span class="st">"Fred"</span></span>
-<span id="cb7-2"><a></a>age <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb7-3"><a></a>anniversary <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2025-12-30"</span>)</span>
-<span id="cb7-4"><a></a></span>
-<span id="cb7-5"><a></a><span class="fu">str_glue</span>(</span>
-<span id="cb7-6"><a></a>  <span class="st">"My name is {name}, "</span>,</span>
-<span id="cb7-7"><a></a>  <span class="st">"my age is {age}, "</span>,</span>
-<span id="cb7-8"><a></a>  <span class="st">"and my anniversary is {format(anniversary, '%A, %B %d, %Y')}."</span></span>
-<span id="cb7-9"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>My name is Fred, my age is 50, and my anniversary is Tuesday, December 30, 2025.</code></pre>
-</div>
-</div>
 </section></section>
-<section id="practice" class="title-slide slide level1 center">
-<h1>Practice</h1>
-<p>Let’s practice working with strings!</p>
-</section>
-
 <section>
 <section id="extracting-data" class="title-slide slide level1 center">
 <h1>Extracting Data</h1>
@@ -304,12 +265,12 @@ Dr.&nbsp;Eric Friedlander
 <li>You must provide names for the new columns.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"a_b_1"</span>, <span class="st">"c_d_2"</span>, <span class="st">"e_f_3"</span>))</span>
-<span id="cb9-2"><a></a>df <span class="sc">|&gt;</span> <span class="fu">separate_wider_delim</span>(</span>
-<span id="cb9-3"><a></a>  x,</span>
-<span id="cb9-4"><a></a>  <span class="at">delim =</span> <span class="st">"_"</span>,</span>
-<span id="cb9-5"><a></a>  <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"second"</span>, <span class="st">"third"</span>)</span>
-<span id="cb9-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"a_b_1"</span>, <span class="st">"c_d_2"</span>, <span class="st">"e_f_3"</span>))</span>
+<span id="cb1-2"><a></a>df <span class="sc">|&gt;</span> <span class="fu">separate_wider_delim</span>(</span>
+<span id="cb1-3"><a></a>  x,</span>
+<span id="cb1-4"><a></a>  <span class="at">delim =</span> <span class="st">"_"</span>,</span>
+<span id="cb1-5"><a></a>  <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"second"</span>, <span class="st">"third"</span>)</span>
+<span id="cb1-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   first second third
@@ -327,8 +288,8 @@ Dr.&nbsp;Eric Friedlander
 <li>Useful when each cell contains a varying number of items.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"a,b"</span>, <span class="st">"c,d,e"</span>))</span>
-<span id="cb11-2"><a></a>df <span class="sc">|&gt;</span> <span class="fu">separate_longer_delim</span>(y, <span class="at">delim =</span> <span class="st">","</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"a,b"</span>, <span class="st">"c,d,e"</span>))</span>
+<span id="cb3-2"><a></a>df <span class="sc">|&gt;</span> <span class="fu">separate_longer_delim</span>(y, <span class="at">delim =</span> <span class="st">","</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
       x y    
@@ -352,7 +313,7 @@ Dr.&nbsp;Eric Friedlander
 <li><code>str_length()</code> gives you the number of characters in a string.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">str_length</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"R for data science"</span>, <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">str_length</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"R for data science"</span>, <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1 18 NA</code></pre>
 </div>
@@ -366,12 +327,12 @@ Dr.&nbsp;Eric Friedlander
 <li>Negative numbers count from the end of the string.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Apple"</span>, <span class="st">"Banana"</span>, <span class="st">"Pear"</span>)</span>
-<span id="cb15-2"><a></a><span class="fu">str_sub</span>(x, <span class="dv">1</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Apple"</span>, <span class="st">"Banana"</span>, <span class="st">"Pear"</span>)</span>
+<span id="cb7-2"><a></a><span class="fu">str_sub</span>(x, <span class="dv">1</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "App" "Ban" "Pea"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">str_sub</span>(x, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">str_sub</span>(x, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "le" "na" "ar"</code></pre>
 </div>
@@ -385,11 +346,11 @@ Dr.&nbsp;Eric Friedlander
 <li><code>str_to_title()</code>: convert to title case.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">str_to_lower</span>(<span class="st">"I am shouting."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">str_to_lower</span>(<span class="st">"I am shouting."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "i am shouting."</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">str_to_title</span>(<span class="st">"a tale of two cities"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">str_to_title</span>(<span class="st">"a tale of two cities"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "A Tale Of Two Cities"</code></pre>
 </div>
@@ -402,12 +363,12 @@ Dr.&nbsp;Eric Friedlander
 <li><code>str_squish()</code> also removes whitespace from the start and end, and reduces any internal whitespace to a single space.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>text <span class="ot">&lt;-</span> <span class="st">"  this   has  a lot of   whitespace   "</span></span>
-<span id="cb23-2"><a></a><span class="fu">str_trim</span>(text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>text <span class="ot">&lt;-</span> <span class="st">"  this   has  a lot of   whitespace   "</span></span>
+<span id="cb15-2"><a></a><span class="fu">str_trim</span>(text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "this   has  a lot of   whitespace"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">str_squish</span>(text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">str_squish</span>(text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "this has a lot of whitespace"</code></pre>
 </div>
@@ -428,14 +389,14 @@ Dr.&nbsp;Eric Friedlander
 </ul>
 </section>
 
-<section id="practice-1" class="title-slide slide level1 center">
+<section id="practice" class="title-slide slide level1 center">
 <h1>Practice</h1>
 <p>Let’s practice working with strings!</p>
 </section>
 
 <section>
-<section id="summary" class="title-slide slide level1 center">
-<h1>Summary</h1>
+<section id="wrap-up" class="title-slide slide level1 center">
+<h1>Wrap-Up</h1>
 
 </section>
 <section id="strings" class="slide level2">
@@ -447,6 +408,14 @@ Dr.&nbsp;Eric Friedlander
 <li>Manipulate letters with <code>str_length()</code>, <code>str_sub()</code>, <code>str_to_*()</code>, and <code>str_trim()</code>/<code>str_squish()</code>.</li>
 <li>The next step is to master pattern matching with regular expressions.</li>
 </ul>
+</section>
+<section id="do-next" class="slide level2">
+<h2>Do Next</h2>
+<ol type="1">
+<li>Read <a href="https://r4ds.hadley.nz/strings.html">Chapter 14: Strings</a> from r4ds.</li>
+<li>Open the Recitation Gem and say “Provide me practice problems for Chapter 14” or work through some of the exercises in the text.</li>
+<li>Move on the Lecture 13.</li>
+</ol>
 
 
 </section></section>
