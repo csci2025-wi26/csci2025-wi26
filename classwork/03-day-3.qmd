@@ -1,0 +1,136 @@
+---
+title: More Analysis
+format: revealjs
+auto-stretch: false
+---
+
+## Today
+
+-   Return to TidyTuesday analysis from last class
+-   Work with some real experimental data generated from by Dr. Belissimo's class
+
+
+
+## Challenge 1A: Parks
+
+- Use the `parks.csv` found in Teams to make this plot.
+
+```{r}
+#| echo: false
+library(tidyverse)
+parks <- read_csv(here::here("Data", "Parks", "parks.csv"))
+
+parks |> 
+    filter(city %in% c("New York", "Chicago")) |> 
+    ggplot(aes(x = year, y = total_points, fill = city)) +
+    geom_col(position="dodge")
+```
+
+## Challenge 1B: Parks
+
+- Use the `parks.csv` found in Teams to make this plot.
+
+```{r}
+#| echo: false
+
+parks |> 
+    filter(city %in% c("New York", "Chicago")) |> 
+    select(year, city, total_points) |>
+    pivot_wider(
+        names_from = city,
+        values_from = total_points
+    ) |> 
+    ggplot(aes(x = `New York`, y = Chicago)) +
+    geom_point() + 
+    labs(
+        x = "New York Total Points",
+        y = "Chicago Total Points"
+    )
+```
+
+## Challenge 1C: Parks
+
+- Use the `parks.csv` found in Teams to make this plot.
+
+```{r}
+#| echo: false
+
+parks |> 
+    filter(city %in% c("New York", "Chicago", "Los Angeles", "Boise")) |> 
+    pivot_longer(
+        cols = contains("points"),
+        names_to = "Category",
+        values_to = "Score"
+    ) |> 
+    filter(Category != "total_points") |>
+    ggplot(aes(x = year, y = Score, fill=Category)) +
+    geom_col(position="stack") +
+    coord_flip() +
+    facet_wrap(~city)
+```
+
+## Challenge 2: Valentine's Day
+
+[Generate this plot (without usiung AI):](https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-02-13/readme.md)
+
+```{r}
+#| echo: false
+
+library(tidyverse)
+historical_spending <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-02-13/historical_spending.csv')
+
+historical_spending |> 
+    select(-PercentCelebrating) |> 
+    pivot_longer(
+        cols = !Year,
+        names_to = "Category",
+        values_to = "Spending"
+    ) |> 
+    ggplot(aes(x = Year, y = Spending, color = Category)) +
+        geom_line()
+```
+
+## Challenge 3: Pokemon
+
+[Generate the following data frame from the pokemon data (no AI):](https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-04-01/readme.md)
+```{r}
+#| echo: false
+
+library(ggforce)
+pokemon_df <- pokemon::pokemon
+
+pokemon_df |> 
+    pivot_longer(
+        cols = type_1:type_2,
+        names_to = "Type_num",
+        values_to = "Type"
+    ) |> 
+    drop_na(Type) |> 
+    pivot_longer(
+        cols = hp:speed,
+        names_to = "Stat",
+        values_to = "Value"
+    ) |>
+    ggplot(aes(y = Type, x = Value, color = generation_id)) +
+    geom_sina(size = 0.75, width=0.5) +
+    facet_wrap(~Stat) + 
+    scale_x_discrete()
+```
+
+## Groups for Today
+
+-   Self sort:
+    -   Easy: Table 1 (near the windows)
+        + Challenge 1A, 1B, 1C
+    -   Medium: Table 2 (middle of the room)
+        + Challenge 2 and 1A
+    -   Hard: Table 3 (near the TVs)
+        + Challenge 3
+-   Start by sketching a plan on the white board...
+
+
+
+## For Next Class
+
+-  Complete reflection
+-  Complete next three lectures
