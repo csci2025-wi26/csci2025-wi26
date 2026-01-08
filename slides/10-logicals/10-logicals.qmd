@@ -1,6 +1,6 @@
 ---
 title: "Logical Vectors"
-subtitle: "Lecture 9"
+subtitle: "Lecture 10"
 ---
 
 ```{r}

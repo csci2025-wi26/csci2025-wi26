@@ -1,6 +1,6 @@
 ---
 title: "Numbers"
-subtitle: "Lecture 10"
+subtitle: "Lecture 11"
 ---
 
 ```{r}
