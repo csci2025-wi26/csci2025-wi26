@@ -1,13 +1,12 @@
 ---
-title: More Analysis
+title: Challenges!
 format: revealjs
 auto-stretch: false
 ---
 
 ## Today
 
--   Return to TidyTuesday analysis from last class
--   Work with some real experimental data generated from by Dr. Belissimo's class
+-   Some challenges to practice your skills!
 
 
 
