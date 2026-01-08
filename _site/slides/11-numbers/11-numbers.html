@@ -28,72 +28,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #97947a;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #97947a;  padding-left: 4px; }
-    div.sourceCode
-      { color: #f8f8f2; background-color: #2b2b2b; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #f8f8f2; } /* Normal */
-    code span.al { color: #dcc6e0; } /* Alert */
-    code span.an { color: #d4d0ab; } /* Annotation */
-    code span.at { color: #ffd700; } /* Attribute */
-    code span.bn { color: #dcc6e0; } /* BaseN */
-    code span.bu { color: #f5ab35; } /* BuiltIn */
-    code span.cf { color: #ffa07a; } /* ControlFlow */
-    code span.ch { color: #abe338; } /* Char */
-    code span.cn { color: #ffa07a; } /* Constant */
-    code span.co { color: #d4d0ab; } /* Comment */
-    code span.cv { color: #d4d0ab; font-style: italic; } /* CommentVar */
-    code span.do { color: #d4d0ab; font-style: italic; } /* Documentation */
-    code span.dt { color: #dcc6e0; } /* DataType */
-    code span.dv { color: #dcc6e0; } /* DecVal */
-    code span.er { color: #dcc6e0; } /* Error */
-    code span.ex { color: #ffd700; } /* Extension */
-    code span.fl { color: #f5ab35; } /* Float */
-    code span.fu { color: #ffd700; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #d4d0ab; } /* Information */
-    code span.kw { color: #ffa07a; } /* Keyword */
-    code span.op { color: #00e0e0; } /* Operator */
-    code span.ot { color: #ffa07a; } /* Other */
-    code span.pp { color: #dcc6e0; } /* Preprocessor */
-    code span.sc { color: #00e0e0; } /* SpecialChar */
-    code span.ss { color: #abe338; } /* SpecialString */
-    code span.st { color: #abe338; } /* String */
-    code span.va { color: #f5ab35; } /* Variable */
-    code span.vs { color: #abe338; } /* VerbatimString */
-    code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-8bca78ff1bb92eb160b3f14c6bb84c86.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -194,7 +128,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="../vizdata-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
+<section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
   <h1 class="title">Numbers</h1>
   <p class="subtitle">Lecture 10</p>
 
@@ -235,20 +169,10 @@ Dr.&nbsp;Eric Friedlander
 <li><code>readr::parse_double()</code> converts strings to numbers, assuming they are just numbers.</li>
 <li><code>readr::parse_number()</code> is more flexible and can extract numbers from strings with other text.</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">parse_double</span>(<span class="st">"1.23"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.23</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">parse_number</span>(<span class="st">"$1,234.50"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1234.5</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">parse_number</span>(<span class="st">"55%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 55</code></pre>
-</div>
-</div>
+</section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<p>Let’s work with the <code>parks</code> dataset.</p>
 </section></section>
 <section>
 <section id="counts" class="title-slide slide level1 center">
@@ -262,28 +186,9 @@ Dr.&nbsp;Eric Friedlander
 <li>It’s a shortcut for <code>group_by()</code> and <code>summarize(n = n())</code>.</li>
 </ul>
 </section>
-<section id="example" class="slide level2">
+<section id="example-1" class="slide level2">
 <h2>Example</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Count flights per destination</span></span>
-<span id="cb7-2"><a></a>flights <span class="sc">|&gt;</span> <span class="fu">count</span>(dest, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 105 × 2
-   dest      n
-   &lt;chr&gt; &lt;int&gt;
- 1 ORD   17283
- 2 ATL   17215
- 3 LAX   16174
- 4 BOS   15508
- 5 MCO   14082
- 6 CLT   14064
- 7 SFO   13331
- 8 FLL   12055
- 9 MIA   11728
-10 DCA    9705
-# ℹ 95 more rows</code></pre>
-</div>
-</div>
+<p>What cities appear in the <code>parks</code> dataset most frequently?</p>
 </section>
 <section id="weighted-counts" class="slide level2">
 <h2>Weighted Counts</h2>
@@ -292,26 +197,9 @@ Dr.&nbsp;Eric Friedlander
 <li>This is useful for summarizing pre-counted data.</li>
 </ul>
 </section>
-<section id="example-1" class="slide level2">
+<section id="example-2" class="slide level2">
 <h2>Example</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb9-2"><a></a>  <span class="sc">~</span>group, <span class="sc">~</span>subgroup, <span class="sc">~</span>n,</span>
-<span id="cb9-3"><a></a>  <span class="st">"a"</span>,    <span class="st">"1"</span>,       <span class="dv">2</span>,</span>
-<span id="cb9-4"><a></a>  <span class="st">"a"</span>,    <span class="st">"2"</span>,       <span class="dv">5</span>,</span>
-<span id="cb9-5"><a></a>  <span class="st">"b"</span>,    <span class="st">"1"</span>,       <span class="dv">3</span></span>
-<span id="cb9-6"><a></a>)</span>
-<span id="cb9-7"><a></a></span>
-<span id="cb9-8"><a></a><span class="co"># Sum of `n` for each `group`</span></span>
-<span id="cb9-9"><a></a>df <span class="sc">|&gt;</span> <span class="fu">count</span>(group, <span class="at">wt =</span> n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-  group     n
-  &lt;chr&gt; &lt;dbl&gt;
-1 a         7
-2 b         3</code></pre>
-</div>
-</div>
+<p>Let’s create a new metric: best city for parks since this was created.</p>
 </section>
 <section id="practice" class="slide level2">
 <h2>Practice</h2>
@@ -329,37 +217,11 @@ Dr.&nbsp;Eric Friedlander
 <li><code>%%</code> (remainder) and <code>%/%</code> (integer division) are useful for modular arithmetic.</li>
 </ul>
 </section>
-<section id="example-2" class="slide level2">
+<section id="example-3" class="slide level2">
 <h2>Example</h2>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># Break down departure time into hour and minute</span></span>
-<span id="cb11-2"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb11-3"><a></a>  <span class="fu">select</span>(dep_time) <span class="sc">|&gt;</span></span>
-<span id="cb11-4"><a></a>  <span class="fu">mutate</span>(</span>
-<span id="cb11-5"><a></a>    <span class="at">hour =</span> dep_time <span class="sc">%/%</span> <span class="dv">100</span>,</span>
-<span id="cb11-6"><a></a>    <span class="at">minute =</span> dep_time <span class="sc">%%</span> <span class="dv">100</span>,</span>
-<span id="cb11-7"><a></a>    <span class="at">total_minutes =</span> hour <span class="sc">*</span> <span class="dv">60</span> <span class="sc">+</span> minute</span>
-<span id="cb11-8"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 4
-   dep_time  hour minute total_minutes
-      &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;
- 1      517     5     17           317
- 2      533     5     33           333
- 3      542     5     42           342
- 4      544     5     44           344
- 5      554     5     54           354
- 6      554     5     54           354
- 7      555     5     55           355
- 8      557     5     57           357
- 9      557     5     57           357
-10      558     5     58           358
-# ℹ 336,766 more rows</code></pre>
-</div>
-</div>
+<ul>
+<li>From the <code>flights</code> dataset, create new columns for the departure hour and minute.</li>
+</ul>
 </section></section>
 <section>
 <section id="transformations" class="title-slide slide level1 center">
@@ -370,42 +232,16 @@ Dr.&nbsp;Eric Friedlander
 <h2>Logarithms</h2>
 <ul>
 <li>Logarithms (<code>log()</code>, <code>log2()</code>, <code>log10()</code>) are useful for data that spans multiple orders of magnitude.</li>
-<li>They help turn exponential growth into linear growth, which is often easier to model.</li>
+<li>They help turn exponential growth into linear growth, which is often easier to model</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb13-3"><a></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb13-4"><a></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span></span>
-<span id="cb13-5"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Price vs. Carat (log-log scale)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="10-numbers_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
+</section>
 <section id="rounding" class="slide level2">
 <h2>Rounding</h2>
 <ul>
-<li><code>round(x)</code>: rounds to the nearest integer.</li>
+<li><code>round(x)</code>: rounds to the nearest integer, can specify number of digits.</li>
 <li><code>floor(x)</code>: always rounds down.</li>
 <li><code>ceiling(x)</code>: always rounds up.</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.2</span>, <span class="fl">1.5</span>, <span class="fl">1.8</span>)</span>
-<span id="cb14-2"><a></a><span class="fu">round</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 2 2</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">floor</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 1 1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">ceiling</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2 2 2</code></pre>
-</div>
-</div>
 </section>
 <section id="cutting" class="slide level2">
 <h2>Cutting</h2>
@@ -413,14 +249,10 @@ Dr.&nbsp;Eric Friedlander
 <li><code>cut()</code> divides a numeric vector into a set of discrete bins (a factor).</li>
 <li>You can specify the <code>breaks</code> for the bins.</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="dv">12</span>)</span>
-<span id="cb20-2"><a></a><span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] (0,5]   (0,5]   (0,5]   (5,10]  (5,10]  (10,15]
-Levels: (0,5] (5,10] (10,15]</code></pre>
-</div>
-</div>
+</section>
+<section id="practice-1" class="slide level2">
+<h2>Practice!</h2>
+<p>Compute the average rank of each city, rounding to 2 decimal places.</p>
 </section></section>
 <section>
 <section id="ranks-offsets" class="title-slide slide level1 center">
@@ -434,17 +266,6 @@ Levels: (0,5] (5,10] (10,15]</code></pre>
 <li>Use <code>desc()</code> to rank from highest to lowest.</li>
 <li><code>row_number()</code> is similar but gives each row a unique rank.</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb22-2"><a></a><span class="fu">min_rank</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 5 1 4 2 2</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">row_number</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 5 1 4 2 3</code></pre>
-</div>
-</div>
 </section>
 <section id="offsets" class="slide level2">
 <h2>Offsets</h2>
@@ -453,18 +274,6 @@ Levels: (0,5] (5,10] (10,15]</code></pre>
 <li><code>dplyr::lead()</code> gets the next value.</li>
 <li>Useful for computing differences or finding changes.</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">11</span>, <span class="dv">20</span>)</span>
-<span id="cb26-2"><a></a><span class="co"># Difference between each element and the previous one</span></span>
-<span id="cb26-3"><a></a>x <span class="sc">-</span> <span class="fu">lag</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NA  3  6  9</code></pre>
-</div>
-</div>
-</section>
-<section id="practice-1" class="slide level2">
-<h2>Practice!</h2>
-<p>Let’s practice some arithmetic operations and trasnformations!</p>
 </section></section>
 <section>
 <section id="numeric-summaries" class="title-slide slide level1 center">
@@ -477,24 +286,6 @@ Levels: (0,5] (5,10] (10,15]</code></pre>
 <li><code>mean()</code>: the average value. Can be sensitive to outliers.</li>
 <li><code>median()</code>: the middle value. More robust to outliers.</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="co"># Comparing mean and median delay</span></span>
-<span id="cb28-2"><a></a>flights <span class="sc">|&gt;</span></span>
-<span id="cb28-3"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay)) <span class="sc">|&gt;</span></span>
-<span id="cb28-4"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb28-5"><a></a>    <span class="at">mean_delay =</span> <span class="fu">mean</span>(dep_delay),</span>
-<span id="cb28-6"><a></a>    <span class="at">median_delay =</span> <span class="fu">median</span>(dep_delay)</span>
-<span id="cb28-7"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 2
-  mean_delay median_delay
-       &lt;dbl&gt;        &lt;dbl&gt;
-1       12.6           -2</code></pre>
-</div>
-</div>
 </section>
 <section id="spread" class="slide level2">
 <h2>Spread</h2>
@@ -514,11 +305,6 @@ Levels: (0,5] (5,10] (10,15]</code></pre>
 </ul></li>
 </ul>
 </section></section>
-<section id="practice-2" class="title-slide slide level1 center">
-<h1>Practice</h1>
-<p>Let’s practice working with numbers!</p>
-</section>
-
 <section>
 <section id="summary" class="title-slide slide level1 center">
 <h1>Summary</h1>
@@ -533,6 +319,14 @@ Levels: (0,5] (5,10] (10,15]</code></pre>
 <li>Use ranks (<code>min_rank</code>) and offsets (<code>lag</code>, <code>lead</code>) for more complex analysis.</li>
 <li>Summarize with measures of center (<code>mean</code>, <code>median</code>), spread (<code>sd</code>, <code>IQR</code>), and position (<code>min</code>, <code>max</code>, <code>quantile</code>).</li>
 </ul>
+</section>
+<section id="do-next" class="slide level2">
+<h2>Do Next</h2>
+<ol type="1">
+<li>Read <a href="https://r4ds.hadley.nz/numbers.html">Chapter 13: Numbers</a> from r4ds.</li>
+<li>Open the Recitation Gem and say “Provide me practice problems for Chapter 13” or work through some of the exercises in the text.</li>
+<li>That’s it! See you Monday!</li>
+</ol>
 
 
 </section></section>

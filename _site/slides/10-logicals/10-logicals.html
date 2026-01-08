@@ -309,37 +309,13 @@ Dr.&nbsp;Eric Friedlander
 <li>If you want to include missing values in your filter, you must ask for them explicitly.</li>
 </ul>
 </section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>))</span>
-<span id="cb11-2"><a></a></span>
-<span id="cb11-3"><a></a><span class="co"># This only keeps the row where x &gt; 1 is TRUE</span></span>
-<span id="cb11-4"><a></a>df <span class="sc">|&gt;</span> </span>
-<span id="cb11-5"><a></a>  <span class="fu">filter</span>(x <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 1
-      x
-  &lt;dbl&gt;
-1     3</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co"># To keep NA values, you have to say so</span></span>
-<span id="cb13-2"><a></a>df <span class="sc">|&gt;</span></span>
-<span id="cb13-3"><a></a>  <span class="fu">filter</span>(x <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">|</span> <span class="fu">is.na</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 1
-      x
-  &lt;dbl&gt;
-1    NA
-2     3</code></pre>
-</div>
-</div>
+<section id="removing-missing-values" class="slide level2">
+<h2>Removing Missing Values</h2>
+<ul>
+<li>Use <code>drop_na</code> to remove rows with missing values.</li>
+<li>Specify the columns you want to remove from.</li>
+<li>Avoid dropping more rows than necessary.</li>
+</ul>
 </section>
 <section id="practice" class="slide level2">
 <h2>Practice!</h2>
@@ -361,65 +337,14 @@ Dr.&nbsp;Eric Friedlander
 </ul></li>
 </ul>
 </section>
-<section id="example-1" class="slide level2">
-<h2>Example 1</h2>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># Flights in January or February</span></span>
-<span id="cb15-2"><a></a>flights <span class="sc">|&gt;</span></span>
-<span id="cb15-3"><a></a>  <span class="fu">filter</span>(month <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> month <span class="sc">==</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 51,955 × 19
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013     1     1      517            515         2      830            819
- 2  2013     1     1      533            529         4      850            830
- 3  2013     1     1      542            540         2      923            850
- 4  2013     1     1      544            545        -1     1004           1022
- 5  2013     1     1      554            600        -6      812            837
- 6  2013     1     1      554            558        -4      740            728
- 7  2013     1     1      555            600        -5      913            854
- 8  2013     1     1      557            600        -3      709            723
- 9  2013     1     1      557            600        -3      838            846
-10  2013     1     1      558            600        -2      753            745
-# ℹ 51,945 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="example-2" class="slide level2">
-<h2>Example 2</h2>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="co"># Flights not delayed (on departure or arrival)</span></span>
-<span id="cb17-2"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb17-3"><a></a><span class="fu">filter</span>(<span class="sc">!</span>(dep_delay <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">|</span> arr_delay <span class="sc">&gt;</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 158,900 × 19
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013     1     1      544            545        -1     1004           1022
- 2  2013     1     1      554            600        -6      812            837
- 3  2013     1     1      557            600        -3      709            723
- 4  2013     1     1      557            600        -3      838            846
- 5  2013     1     1      558            600        -2      849            851
- 6  2013     1     1      558            600        -2      853            856
- 7  2013     1     1      558            600        -2      923            937
- 8  2013     1     1      559            559         0      702            706
- 9  2013     1     1      559            600        -1      854            902
-10  2013     1     1      600            600         0      851            858
-# ℹ 158,890 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
-</div>
+<section id="examples" class="slide level2">
+<h2>Examples</h2>
+<ul>
+<li>Let’s select flights that were delayed on both departure and arrival.</li>
+<li>Let’s select flights that were delayed on either departure or arrival.</li>
+<li>Let’s select flights that were not delayed on either departure or arrival.</li>
+<li>Let’s select flights that were from November or December.</li>
+</ul>
 </section>
 <section id="in" class="slide level2">
 <h2><code>%in%</code></h2>
@@ -427,64 +352,11 @@ Dr.&nbsp;Eric Friedlander
 <li>A useful shortcut for <code>x == a | x == b | x == c</code> is <code>x %in% c(a, b, c)</code>.</li>
 <li>It checks if each value in the left vector is present in the right vector.</li>
 </ul>
-</section>
-<section id="example-3" class="slide level2">
-<h2>Example</h2>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># Flights in November or December</span></span>
-<span id="cb19-2"><a></a>flights <span class="sc">|&gt;</span></span>
-<span id="cb19-3"><a></a>  <span class="fu">filter</span>(month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 55,403 × 19
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013    11     1        5           2359         6      352            345
- 2  2013    11     1       35           2250       105      123           2356
- 3  2013    11     1      455            500        -5      641            651
- 4  2013    11     1      539            545        -6      856            827
- 5  2013    11     1      542            545        -3      831            855
- 6  2013    11     1      549            600       -11      912            923
- 7  2013    11     1      550            600       -10      705            659
- 8  2013    11     1      554            600        -6      659            701
- 9  2013    11     1      554            600        -6      826            827
-10  2013    11     1      554            600        -6      749            751
-# ℹ 55,393 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="practice-1" class="slide level2">
-<h2>Practice!</h2>
-<p>Let’s do some practice!</p>
 </section></section>
 <section>
 <section id="summarizing-logicals" class="title-slide slide level1 center">
 <h1>Summarizing Logicals</h1>
 
-</section>
-<section id="logical-summaries" class="slide level2">
-<h2>Logical Summaries</h2>
-<ul>
-<li><code>any()</code>: returns <code>TRUE</code> if there is at least one <code>TRUE</code>.</li>
-<li><code>all()</code>: returns <code>TRUE</code> if all values are <code>TRUE</code>.</li>
-<li>Use <code>na.rm = TRUE</code> to ignore missing values.</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">NA</span>)</span>
-<span id="cb21-2"><a></a><span class="fu">any</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">all</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-</div>
 </section>
 <section id="numeric-summaries" class="slide level2">
 <h2>Numeric Summaries</h2>
@@ -493,28 +365,14 @@ Dr.&nbsp;Eric Friedlander
 <li><code>sum()</code>: counts the number of <code>TRUE</code>s.</li>
 <li><code>mean()</code>: calculates the proportion of <code>TRUE</code>s.</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="co"># How many flights were delayed on arrival by more than an hour?</span></span>
-<span id="cb25-2"><a></a><span class="fu">sum</span>(flights<span class="sc">$</span>arr_delay <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 27789</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="co"># What proportion of flights were delayed?</span></span>
-<span id="cb27-2"><a></a><span class="fu">mean</span>(flights<span class="sc">$</span>arr_delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4063101</code></pre>
-</div>
-</div>
 </section>
-<section id="practice-2" class="slide level2">
+<section id="practice-1" class="slide level2">
 <h2>Practice!</h2>
-<p>Let’s do some practice!</p>
+<ul>
+<li>Did Delta have any departure delays on Christmas Day? If so how many?</li>
+<li>How many departure delays did AA, DL, and UA have on Christmas Day?</li>
+<li>Plot the total number of departure delays per month. Per day.</li>
+</ul>
 </section></section>
 <section>
 <section id="conditional-transformations" class="title-slide slide level1 center">
@@ -525,12 +383,11 @@ Dr.&nbsp;Eric Friedlander
 <h2><code>if_else()</code></h2>
 <ul>
 <li><code>if_else(condition, value_if_true, value_if_false)</code></li>
-<li>A safe and strict version of <code>if</code> that works well inside <code>mutate()</code>.</li>
 <li>All output values must be of the same type.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>)</span>
-<span id="cb29-2"><a></a><span class="fu">if_else</span>(x <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"positive"</span>, <span class="st">"negative or zero"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb11-2"><a></a><span class="fu">if_else</span>(x <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"positive"</span>, <span class="st">"negative or zero"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "negative or zero" "negative or zero" "negative or zero" "positive"        
 [5] "positive"        </code></pre>
@@ -547,11 +404,11 @@ Dr.&nbsp;Eric Friedlander
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">case_when</span>(</span>
-<span id="cb31-2"><a></a>  x <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"negative"</span>,</span>
-<span id="cb31-3"><a></a>  x <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"zero"</span>,</span>
-<span id="cb31-4"><a></a>  x <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"positive"</span></span>
-<span id="cb31-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">case_when</span>(</span>
+<span id="cb13-2"><a></a>  x <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"negative"</span>,</span>
+<span id="cb13-3"><a></a>  x <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"zero"</span>,</span>
+<span id="cb13-4"><a></a>  x <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"positive"</span></span>
+<span id="cb13-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "negative" "negative" "zero"     "positive" "positive"</code></pre>
@@ -563,46 +420,10 @@ Dr.&nbsp;Eric Friedlander
 <ul>
 <li>Let’s create a human-readable “season” variable.</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>flights <span class="sc">|&gt;</span></span>
-<span id="cb33-2"><a></a>  <span class="fu">mutate</span>(</span>
-<span id="cb33-3"><a></a>    <span class="at">season =</span> <span class="fu">case_when</span>(</span>
-<span id="cb33-4"><a></a>      month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">~</span> <span class="st">"Winter"</span>,</span>
-<span id="cb33-5"><a></a>      month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">~</span> <span class="st">"Spring"</span>,</span>
-<span id="cb33-6"><a></a>      month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>) <span class="sc">~</span> <span class="st">"Summer"</span>,</span>
-<span id="cb33-7"><a></a>      month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>) <span class="sc">~</span> <span class="st">"Fall"</span></span>
-<span id="cb33-8"><a></a>    )</span>
-<span id="cb33-9"><a></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb33-10"><a></a>  <span class="fu">select</span>(month, season)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 2
-   month season
-   &lt;int&gt; &lt;chr&gt; 
- 1     1 Winter
- 2     1 Winter
- 3     1 Winter
- 4     1 Winter
- 5     1 Winter
- 6     1 Winter
- 7     1 Winter
- 8     1 Winter
- 9     1 Winter
-10     1 Winter
-# ℹ 336,766 more rows</code></pre>
-</div>
-</div>
 </section></section>
-<section id="practice-3" class="title-slide slide level1 center">
-<h1>Practice</h1>
-<p>Let’s practice with logical vectors!</p>
-</section>
-
 <section>
-<section id="summary" class="title-slide slide level1 center">
-<h1>Summary</h1>
+<section id="wrap-up" class="title-slide slide level1 center">
+<h1>Wrap Up</h1>
 
 </section>
 <section id="logical-vectors-1" class="slide level2">
@@ -614,6 +435,14 @@ Dr.&nbsp;Eric Friedlander
 <li>Use for conditional transformations with <code>if_else()</code> and <code>case_when()</code>.</li>
 <li>Logical vectors are a fundamental tool for data manipulation in R.</li>
 </ul>
+</section>
+<section id="do-next" class="slide level2">
+<h2>Do Next</h2>
+<ol type="1">
+<li>Read <a href="https://r4ds.hadley.nz/logicals.html">Chapter 12: Logicals</a> from r4ds.</li>
+<li>Open the Recitation Gem and say “Provide me practice problems for Chapter 11” or work through some of the exercises in the text.</li>
+<li>Move on the Lecture 11!</li>
+</ol>
 
 
 </section></section>

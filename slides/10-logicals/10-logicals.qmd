@@ -90,21 +90,11 @@ is.na(x)
 - `filter()` only includes rows where the condition is `TRUE`. It excludes `FALSE` and `NA` values.
 - If you want to include missing values in your filter, you must ask for them explicitly.
 
-## Example
+## Removing Missing Values
 
-```{r}
-#| echo: true
-#| code-fold: true
-df <- tibble(x = c(1, NA, 3))
-
-# This only keeps the row where x > 1 is TRUE
-df |> 
-  filter(x > 1)
-
-# To keep NA values, you have to say so
-df |>
-  filter(x > 1 | is.na(x))
-```
+- Use `drop_na` to remove rows with missing values.
+- Specify the columns you want to remove from.
+- Avoid dropping more rows than necessary.
 
 ## Practice!
 
@@ -119,59 +109,19 @@ Let's do some practice!
   - `|` (or)
   - `!` (not)
 
-## Example 1
+## Examples
 
-```{r}
-#| echo: true
-#| code-fold: true
-# Flights in January or February
-flights |>
-  filter(month == 1 | month == 2)
-```
-
-## Example 2
-
-```{r}
-#| echo: true
-#| code-fold: true
-# Flights not delayed (on departure or arrival)
-flights |> 
-filter(!(dep_delay > 0 | arr_delay > 0))
-```
+-  Let's select flights that were delayed on both departure and arrival.
+-  Let's select flights that were delayed on either departure or arrival.
+-  Let's select flights that were not delayed on either departure or arrival.
+-  Let's select flights that were from November or December.
 
 ## `%in%`
 
 - A useful shortcut for `x == a | x == b | x == c` is `x %in% c(a, b, c)`.
 - It checks if each value in the left vector is present in the right vector.
 
-## Example
-
-```{r}
-#| echo: true
-#| code-fold: true
-# Flights in November or December
-flights |>
-  filter(month %in% c(11, 12))
-```
-
-## Practice!
-
-Let's do some practice!
-
 # Summarizing Logicals
-
-## Logical Summaries
-
-- `any()`: returns `TRUE` if there is at least one `TRUE`.
-- `all()`: returns `TRUE` if all values are `TRUE`.
-- Use `na.rm = TRUE` to ignore missing values.
-
-```{r}
-#| echo: true
-x <- c(TRUE, FALSE, NA)
-any(x)
-all(x, na.rm = TRUE)
-```
 
 ## Numeric Summaries
 
@@ -179,26 +129,17 @@ all(x, na.rm = TRUE)
 - `sum()`: counts the number of `TRUE`s.
 - `mean()`: calculates the proportion of `TRUE`s.
 
-```{r}
-#| echo: true
-#| code-fold: true
-# How many flights were delayed on arrival by more than an hour?
-sum(flights$arr_delay > 60, na.rm = TRUE)
-
-# What proportion of flights were delayed?
-mean(flights$arr_delay > 0, na.rm = TRUE)
-```
-
 ## Practice!
 
-Let's do some practice!
+-  Did Delta have any departure delays on Christmas Day? If so how many?
+-  How many departure delays did AA, DL, and UA have on Christmas Day?
+-  Plot the total number of departure delays per month. Per day.
 
 # Conditional Transformations
 
 ## `if_else()`
 
 - `if_else(condition, value_if_true, value_if_false)`
-- A safe and strict version of `if` that works well inside `mutate()`.
 - All output values must be of the same type.
 
 ```{r}
@@ -227,26 +168,7 @@ case_when(
 
 - Let's create a human-readable "season" variable.
 
-```{r}
-#| echo: true
-#| code-fold: true
-flights |>
-  mutate(
-    season = case_when(
-      month %in% c(12, 1, 2) ~ "Winter",
-      month %in% c(3, 4, 5) ~ "Spring",
-      month %in% c(6, 7, 8) ~ "Summer",
-      month %in% c(9, 10, 11) ~ "Fall"
-    )
-  ) |>
-  select(month, season)
-```
-
-# Practice
-
-Let's practice with logical vectors!
-
-# Summary
+# Wrap Up
 
 ## Logical Vectors
 
@@ -255,3 +177,9 @@ Let's practice with logical vectors!
 - Summarize with `any()`, `all()`, `sum()`, `mean()`.
 - Use for conditional transformations with `if_else()` and `case_when()`.
 - Logical vectors are a fundamental tool for data manipulation in R.
+
+## Do Next
+
+1. Read [Chapter 12: Logicals](https://r4ds.hadley.nz/logicals.html) from r4ds.
+2. Open the Recitation Gem and say "Provide me practice problems for Chapter 11" or work through some of the exercises in the text.
+3. Move on the Lecture 11!

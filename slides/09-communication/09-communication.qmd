@@ -77,10 +77,21 @@ Let's create a scatter plot of engine size vs. highway fuel efficiency, and labe
 
 ## Example 
 
-
-## Practice!
-
-Let's do some practice!
+```{r}
+#| echo: true
+#| code-fold: true
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  annotate(
+    "rect", 
+    xmin = 5, xmax = 7, ymin = 10, ymax = 25, 
+    fill = "red", alpha = 0.2
+  ) +
+  annotate(
+    "text", x = 6, y = 12, label = "Large engines are inefficient",
+    color = "red", hjust = 0.5
+  )
+```
 
 # Scales
 
@@ -184,7 +195,7 @@ ggplot(diamonds, aes(x = carat, y = price)) +
 ## `coord_cartesian()`
 
 - To zoom in on a part of the plot, use `coord_cartesian()`.
-- It's better than `xlim()` or `ylim()` because it doesn't throw away data.
+- It's better than `xlim()` or `ylim()` because it doesn't throw away data... this matters if you're using statistics or fitting curves
 
 ## Example
 
@@ -204,10 +215,6 @@ p3 <- ggplot(diamonds, aes(x = carat, y = price)) +
 
 p1 + p2 + p3
 ```
-
-## Practice
-
-Let's practice customizing scales!
 
 # Themes
 
@@ -274,3 +281,9 @@ ggsave("my-plot.png", plot = p, width = 6, height = 4, dpi = 300)
 - Use themes to create a consistent and polished look.
 - Save your plots in a suitable format and resolution.
 - Your goal is to make your plots easy to understand for your audience.
+
+## Do Next
+
+1. Read [Chapter 11: Communication](https://r4ds.hadley.nz/communication.html) from r4ds.
+2. Open the Recitation Gem and say "Provide me practice problems for Chapter 10" or work through some of the exercises in the text.
+3. Move on the Lecture 10!
