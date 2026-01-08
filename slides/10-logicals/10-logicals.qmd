@@ -181,5 +181,5 @@ case_when(
 ## Do Next
 
 1. Read [Chapter 12: Logicals](https://r4ds.hadley.nz/logicals.html) from r4ds.
-2. Open the Recitation Gem and say "Provide me practice problems for Chapter 11" or work through some of the exercises in the text.
+2. Open the Recitation Gem and say "Provide me practice problems for Chapter 12" or work through some of the exercises in the text.
 3. Move on the Lecture 11!

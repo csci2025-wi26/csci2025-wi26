@@ -285,5 +285,5 @@ ggsave("my-plot.png", plot = p, width = 6, height = 4, dpi = 300)
 ## Do Next
 
 1. Read [Chapter 11: Communication](https://r4ds.hadley.nz/communication.html) from r4ds.
-2. Open the Recitation Gem and say "Provide me practice problems for Chapter 10" or work through some of the exercises in the text.
+2. Open the Recitation Gem and say "Provide me practice problems for Chapter 11" or work through some of the exercises in the text.
 3. Move on the Lecture 10!
