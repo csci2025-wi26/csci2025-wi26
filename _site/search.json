@@ -244,116 +244,158 @@
     ]
   },
   {
-    "objectID": "slides/12-regex/12-regex.html#regular-expressions-regex",
-    "href": "slides/12-regex/12-regex.html#regular-expressions-regex",
-    "title": "Regular Expressions",
-    "section": "Regular Expressions (Regex)",
-    "text": "Regular Expressions (Regex)\n\nA powerful tool for describing patterns in strings.\nUsed for finding, extracting, and replacing text.\nstringr provides a consistent interface for working with regex."
+    "objectID": "slides/06-importing/06-importing-data.html#this-lesson",
+    "href": "slides/06-importing/06-importing-data.html#this-lesson",
+    "title": "Importing Data",
+    "section": "This lesson",
+    "text": "This lesson\n\nLearn how to import data into R using the readr package.\nUnderstand how readr parses files and how to control it.\nLearn how to write data from R back to a file.\nBecome aware of other packages for importing different file types."
   },
   {
-    "objectID": "slides/12-regex/12-regex.html#str_detect",
-    "href": "slides/12-regex/12-regex.html#str_detect",
-    "title": "Regular Expressions",
-    "section": "str_detect()",
-    "text": "str_detect()\n\nstr_detect() returns TRUE if a pattern is found in a string, FALSE otherwise.\n\n\nx &lt;- c(\"apple\", \"banana\", \"pear\", \"pineapple\", \"naartjie\")\nstr_detect(x, \"an\")\n\n[1] FALSE  TRUE FALSE FALSE FALSE"
+    "objectID": "slides/06-importing/06-importing-data.html#the-readr-package",
+    "href": "slides/06-importing/06-importing-data.html#the-readr-package",
+    "title": "Importing Data",
+    "section": "The readr package",
+    "text": "The readr package\n\nPart of the tidyverse, readr provides functions for reading rectangular data from delimited files (like CSVs).\nIt’s fast, consistent, and produces tibbles.\nIt provides detailed information about how files were parsed."
   },
   {
-    "objectID": "slides/12-regex/12-regex.html#str_count",
-    "href": "slides/12-regex/12-regex.html#str_count",
-    "title": "Regular Expressions",
-    "section": "str_count()",
-    "text": "str_count()\n\nstr_count() counts the number of matches in a string.\n\n\nstr_count(\"banana\", \"a\")\n\n[1] 3"
+    "objectID": "slides/06-importing/06-importing-data.html#setup",
+    "href": "slides/06-importing/06-importing-data.html#setup",
+    "title": "Importing Data",
+    "section": "Setup",
+    "text": "Setup\nWe’ll use functions from readr, which is loaded with the tidyverse.\n\nlibrary(tidyverse)"
   },
   {
-    "objectID": "slides/12-regex/12-regex.html#str_extract-and-str_extract_all",
-    "href": "slides/12-regex/12-regex.html#str_extract-and-str_extract_all",
-    "title": "Regular Expressions",
-    "section": "str_extract() and str_extract_all()",
-    "text": "str_extract() and str_extract_all()\n\nstr_extract() extracts the first match.\nstr_extract_all() extracts all matches.\n\n\nstr_extract(\"banana\", \"an\")\n\n[1] \"an\"\n\nstr_extract_all(\"banana\", \"an\")\n\n[[1]]\n[1] \"an\" \"an\""
+    "objectID": "slides/06-importing/06-importing-data.html#reading-delimited-data",
+    "href": "slides/06-importing/06-importing-data.html#reading-delimited-data",
+    "title": "Importing Data",
+    "section": "Reading delimited data",
+    "text": "Reading delimited data\nThe most common function is read_csv() for comma-separated values.\n\nstudents &lt;- read_csv(\"path-to-file.csv\")\nstudents\n\nread_csv() prints the column specification, which is its guess for each column’s type."
   },
   {
-    "objectID": "slides/12-regex/12-regex.html#str_replace-and-str_replace_all",
-    "href": "slides/12-regex/12-regex.html#str_replace-and-str_replace_all",
-    "title": "Regular Expressions",
-    "section": "str_replace() and str_replace_all()",
-    "text": "str_replace() and str_replace_all()\n\nReplaces the first or all matches with a new string.\n\n\nx &lt;- c(\"Dr_Eric_Friedlander\", \"Dr_Brandy_Wiegers\", \"Anthony_Campitelli\")\nstr_replace(x, \"_\", \" \")\n\n[1] \"Dr Eric_Friedlander\" \"Dr Brandy_Wiegers\"   \"Anthony Campitelli\" \n\nstr_replace_all(x, \" \", \" \")\n\n[1] \"Dr_Eric_Friedlander\" \"Dr_Brandy_Wiegers\"   \"Anthony_Campitelli\""
+    "objectID": "slides/06-importing/06-importing-data.html#paths-and-organizing-your-computer",
+    "href": "slides/06-importing/06-importing-data.html#paths-and-organizing-your-computer",
+    "title": "Importing Data",
+    "section": "Paths and Organizing Your Computer",
+    "text": "Paths and Organizing Your Computer\n\nThink of your computer like a file cabinet\nWhen working on a project in R, put it in a folder and make that folder a “workspace” or “project” in Positron, RStudio, or VSCode"
   },
   {
-    "objectID": "slides/12-regex/12-regex.html#regex",
-    "href": "slides/12-regex/12-regex.html#regex",
-    "title": "Regular Expressions",
-    "section": "Regex",
-    "text": "Regex\nInstead of inputting literal strings, you can use regex patterns to describe more complex matches.\n\nx &lt;- c(\"Dr_Eric_Friedlander\", \"Dr_Brandy_Wiegers\", \"Anthony_Campitelli\")\n# remove all vowels\nstr_replace_all(x, \"[aeiouAEIOU]\", \"\")\n\n[1] \"Dr_rc_Frdlndr\" \"Dr_Brndy_Wgrs\" \"nthny_Cmptll\""
+    "objectID": "slides/06-importing/06-importing-data.html#example",
+    "href": "slides/06-importing/06-importing-data.html#example",
+    "title": "Importing Data",
+    "section": "Example",
+    "text": "Example\nproject-name/\n├── project-name.code-workspace\n├── README.md             &lt;- Overview of the project and how to run it.\n├── data/\n│   ├── raw/              &lt;- Original data (never edit these files).\n│   └── processed/        &lt;- Cleaned data ready for analysis (RDS or CSV).\n├── R/                    &lt;- Folder for reusable functions and source code.\n├── scripts/              &lt;- Analysis scripts (e.g., 01_cleanup.R, 02_model.R).\n├── output/               &lt;- Plots, tables, and exported results.\n└── docs/                 &lt;- Quarto or RMarkdown reports."
   },
   {
-    "objectID": "slides/12-regex/12-regex.html#anchors",
-    "href": "slides/12-regex/12-regex.html#anchors",
-    "title": "Regular Expressions",
-    "section": "Anchors",
-    "text": "Anchors\n\n^ matches the start of the string.\n$ matches the end of the string.\n\n\nx &lt;- c(\"apple\", \"banana\", \"pear\")\nstr_detect(x, \"^a\")\n\n[1]  TRUE FALSE FALSE\n\nstr_detect(x, \"a$\")\n\n[1] FALSE  TRUE FALSE"
+    "objectID": "slides/06-importing/06-importing-data.html#where-to-put-this",
+    "href": "slides/06-importing/06-importing-data.html#where-to-put-this",
+    "title": "Importing Data",
+    "section": "Where to put this",
+    "text": "Where to put this\n\nGood practice: use Github\nDON’T PUT FOLDER IN DOWNLOADS!\nOrganize your computer\nLet’s look through Dr. F’s organization\nAvoid putting in Dropbox, OneDrive, Google Drive, folders if using github and writing code"
   },
   {
-    "objectID": "slides/12-regex/12-regex.html#character-classes",
-    "href": "slides/12-regex/12-regex.html#character-classes",
-    "title": "Regular Expressions",
-    "section": "Character Classes",
-    "text": "Character Classes\n\n. matches any character except a newline.\n\\d matches any digit.\n\\s matches any whitespace.\n[abc] matches a, b, or c.\n[^abc] matches anything except a, b, or c."
+    "objectID": "slides/06-importing/06-importing-data.html#practice",
+    "href": "slides/06-importing/06-importing-data.html#practice",
+    "title": "Importing Data",
+    "section": "Practice",
+    "text": "Practice\n\nDownload Star Formation data from Teams\nCreate a new folder on your computer called StarFormation (don’t put it in your Downloads folder)\nCreate the following folder structure\n\nStarFormation/\n├── project-name.code-workspace \n├── README.md             \n├── data/\n│   ├── raw/              \n│   │   ├── MIRION_meta_all_1.csv\n│   │   ├── MIRION_meta_din_1.csv\n│   │   └── MIRION_spec_1.csv              \n│   └── processed/        \n├── scripts/              \n│   └── loading_the_data.R\n├── output/               \n└── docs/                 \n    └── Tables-for-CSCI2040.txt"
   },
   {
-    "objectID": "slides/12-regex/12-regex.html#repetition",
-    "href": "slides/12-regex/12-regex.html#repetition",
-    "title": "Regular Expressions",
-    "section": "Repetition",
-    "text": "Repetition\n\n?: 0 or 1 time.\n+: 1 or more times.\n*: 0 or more times.\n{n}: exactly n times.\n{n,}: n or more times.\n{n,m}: between n and m times."
+    "objectID": "slides/06-importing/06-importing-data.html#paths",
+    "href": "slides/06-importing/06-importing-data.html#paths",
+    "title": "Importing Data",
+    "section": "Paths",
+    "text": "Paths\n\nRoot directory: Highest level folder of your project or computer (sometimes the same)\nWorking directory: The folder R is currently “looking at”\nMaking a project in RStudio/Positron automatically sets the working directory to the project folder\nTwo types of Paths:\n\nAbsolute paths: Full path from the root of your computer\nRelative paths: Path from your working directory\n\nSpecifying a path in R:\n\nUse forward slashes / every time you go down a folder\nExample: data/raw/MIRION_spec_1.csv"
   },
   {
-    "objectID": "slides/12-regex/12-regex.html#practice",
-    "href": "slides/12-regex/12-regex.html#practice",
-    "title": "Regular Expressions",
-    "section": "Practice!",
-    "text": "Practice!\nLet’s do some practice!"
+    "objectID": "slides/06-importing/06-importing-data.html#practice-1",
+    "href": "slides/06-importing/06-importing-data.html#practice-1",
+    "title": "Importing Data",
+    "section": "Practice",
+    "text": "Practice\n\nIn our loading_the_data.R script, let’s use read_csv to load the three data sets into R"
   },
   {
-    "objectID": "slides/12-regex/12-regex.html#for-grouping",
-    "href": "slides/12-regex/12-regex.html#for-grouping",
-    "title": "Regular Expressions",
-    "section": "() for Grouping",
-    "text": "() for Grouping\n\nParentheses create a “capturing group” to extract parts of a match.\n\n\nstr_match(\"apple, banana, pear\", \"([a-z]+), ([a-z]+)\")\n\n     [,1]            [,2]    [,3]    \n[1,] \"apple, banana\" \"apple\" \"banana\""
+    "objectID": "slides/06-importing/06-importing-data.html#other-delimiters",
+    "href": "slides/06-importing/06-importing-data.html#other-delimiters",
+    "title": "Importing Data",
+    "section": "Other delimiters",
+    "text": "Other delimiters\n\nreadr provides functions for other common delimiters:\n\nread_csv2(): For semicolon-separated files. Common in European countries.\nread_tsv(): For tab-separated files.\nread_delim(): For files with any delimiter."
   },
   {
-    "objectID": "slides/12-regex/12-regex.html#backreferences",
-    "href": "slides/12-regex/12-regex.html#backreferences",
-    "title": "Regular Expressions",
-    "section": "Backreferences",
-    "text": "Backreferences\n\n\\1, \\2, etc. refer to previously captured groups.\n\n\nstr_replace(\"abab\", \"(a)(b)\", \"\\\\2\\\\1\")\n\n[1] \"baab\""
+    "objectID": "slides/06-importing/06-importing-data.html#data-types-in-r",
+    "href": "slides/06-importing/06-importing-data.html#data-types-in-r",
+    "title": "Importing Data",
+    "section": "Data Types in R",
+    "text": "Data Types in R\n\nThere are a variety of data types in R. Some common ones include:\nCharacter: Text data (e.g., names, categories).\nNumeric: Decimal numbers (e.g., 3.14, -2.5).\nInteger: Whole numbers (e.g., 1, 42).\nLogical: Boolean values (TRUE or FALSE).\nFactor: Categorical data with a fixed set of levels (e.g., “low”, “medium”, “high”).\nMore on this later in the course!\nFor now: Understanding data types is crucial for data analysis and manipulation in R."
   },
   {
-    "objectID": "slides/12-regex/12-regex.html#practice-1",
-    "href": "slides/12-regex/12-regex.html#practice-1",
-    "title": "Regular Expressions",
-    "section": "Practice!",
-    "text": "Practice!\nLet’s do some practice!"
+    "objectID": "slides/06-importing/06-importing-data.html#parsing-column-specification",
+    "href": "slides/06-importing/06-importing-data.html#parsing-column-specification",
+    "title": "Importing Data",
+    "section": "Parsing & Column Specification",
+    "text": "Parsing & Column Specification\n\nreadr tries to be clever and guess column types by looking at the first 1000 rows. Sometimes, it guesses wrong.\nCommon issues:\nLeading zeros in numeric columns (R reads them as characters).\nMixed types in a column (e.g., numbers and text).\nUnits included in numeric columns (e.g., “10 kg”)."
   },
   {
-    "objectID": "slides/12-regex/12-regex.html#tidyrseparate_wider_regex",
-    "href": "slides/12-regex/12-regex.html#tidyrseparate_wider_regex",
-    "title": "Regular Expressions",
-    "section": "tidyr::separate_wider_regex()",
-    "text": "tidyr::separate_wider_regex()\n\nSeparates a column into multiple columns using regex with capture groups.\n\n\ndf &lt;- tibble(x = \"123-abc\")\ndf |&gt; separate_wider_regex(x, c(num = \"\\\\d+\", \"-\", chr = \"[a-z]+\"))\n\n# A tibble: 1 × 2\n  num   chr  \n  &lt;chr&gt; &lt;chr&gt;\n1 123   abc"
+    "objectID": "slides/06-importing/06-importing-data.html#manually-specifying-column-types",
+    "href": "slides/06-importing/06-importing-data.html#manually-specifying-column-types",
+    "title": "Importing Data",
+    "section": "Manually specifying column types",
+    "text": "Manually specifying column types\nYou can override readr’s guesses using the col_types argument. More on this later in the course."
   },
   {
-    "objectID": "slides/12-regex/12-regex.html#fixed",
-    "href": "slides/12-regex/12-regex.html#fixed",
-    "title": "Regular Expressions",
-    "section": "fixed()",
-    "text": "fixed()\n\nUse fixed() to match a literal string without interpreting it as a regex.\n\n\nstr_detect(\"a.b\", fixed(\".\"))\n\n[1] TRUE"
+    "objectID": "slides/06-importing/06-importing-data.html#other-common-import-options",
+    "href": "slides/06-importing/06-importing-data.html#other-common-import-options",
+    "title": "Importing Data",
+    "section": "Other common import options",
+    "text": "Other common import options\n\nskip = n: Skip the first n lines (useful for files with metadata at the top).\ncomment = \"#\": Drop all lines that start with #.\ncol_names = FALSE: If your file has no column headers. readr will label them X1, X2, etc.\nna = \"...\": Specify which strings should be treated as missing values (e.g., na = \"N/A\")."
   },
   {
-    "objectID": "slides/12-regex/12-regex.html#practice-2",
-    "href": "slides/12-regex/12-regex.html#practice-2",
-    "title": "Regular Expressions",
-    "section": "Practice!",
-    "text": "Practice!\nLet’s do some practice!"
+    "objectID": "slides/06-importing/06-importing-data.html#example-with-skip",
+    "href": "slides/06-importing/06-importing-data.html#example-with-skip",
+    "title": "Importing Data",
+    "section": "Example with skip",
+    "text": "Example with skip\n\nread_csv(\"\n  This is metadata\n  That we want to skip\n  x,y\n  1,2\n\", skip = 3)\n\nRows: 1 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (2): x, y\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 1 × 2\n      x     y\n  &lt;dbl&gt; &lt;dbl&gt;\n1     1     2"
+  },
+  {
+    "objectID": "slides/06-importing/06-importing-data.html#writing-to-a-file",
+    "href": "slides/06-importing/06-importing-data.html#writing-to-a-file",
+    "title": "Importing Data",
+    "section": "Writing to a file",
+    "text": "Writing to a file\nTo save a data frame back to a file, use write_csv().\n\nwrite_csv(file-name, \"path-to-file.csv\")"
+  },
+  {
+    "objectID": "slides/06-importing/06-importing-data.html#practice-with-reading-and-writing",
+    "href": "slides/06-importing/06-importing-data.html#practice-with-reading-and-writing",
+    "title": "Importing Data",
+    "section": "Practice with reading and writing",
+    "text": "Practice with reading and writing\n\nRead MIRION_spec_1.csv into R\nPut data in tidy format\nSave the tidy data to data/processed/MIRION_spec_tidy.csv"
+  },
+  {
+    "objectID": "slides/06-importing/06-importing-data.html#saving-and-loading-r-objects",
+    "href": "slides/06-importing/06-importing-data.html#saving-and-loading-r-objects",
+    "title": "Importing Data",
+    "section": "Saving and loading R objects",
+    "text": "Saving and loading R objects\nFor saving intermediate R objects, write_csv() is not ideal because it loses type information (e.g., factors become characters).\nIt’s better to use write_rds() and read_rds() to save and load a single R object in R’s native RDS format.\n\nwrite_rds(file, \"path-to-file.rds\")\nrestored_file &lt;- read_rds(\"path-to-file.rds\")"
+  },
+  {
+    "objectID": "slides/06-importing/06-importing-data.html#other-data-sources",
+    "href": "slides/06-importing/06-importing-data.html#other-data-sources",
+    "title": "Importing Data",
+    "section": "Other data sources",
+    "text": "Other data sources\nThe tidyverse ecosystem has packages for many other data types:\n\nreadxl: For Excel files (.xls, .xlsx).\nhaven: For other statistical formats (SPSS, Stata, SAS).\ngooglesheets4: For Google Sheets.\nMany more!"
+  },
+  {
+    "objectID": "slides/06-importing/06-importing-data.html#summary",
+    "href": "slides/06-importing/06-importing-data.html#summary",
+    "title": "Importing Data",
+    "section": "Summary",
+    "text": "Summary\n\nread_csv() is your go-to for reading delimited text files.\nAlways check the column specifications that readr prints. If they’re wrong, fix them with col_types.\nUse write_csv() to save your data frames to CSV files for sharing.\nUse write_rds() to save R objects for later use in R."
+  },
+  {
+    "objectID": "slides/06-importing/06-importing-data.html#do-next",
+    "href": "slides/06-importing/06-importing-data.html#do-next",
+    "title": "Importing Data",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 7: Data import from r4ds.\nNo need to practice this one and that’s all for today!"
   },
   {
     "objectID": "slides/14-datetimes/14-datetimes.html#working-with-dates-and-times",
@@ -2070,158 +2112,123 @@
     "text": "Do Next\n\nRead Chapter 5: Data Tidying from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 5” or work through some of the exercises in the text.\nComplete Lecture 6."
   },
   {
-    "objectID": "slides/06-importing/06-importing-data.html#this-lesson",
-    "href": "slides/06-importing/06-importing-data.html#this-lesson",
-    "title": "Importing Data",
-    "section": "This lesson",
-    "text": "This lesson\n\nLearn how to import data into R using the readr package.\nUnderstand how readr parses files and how to control it.\nLearn how to write data from R back to a file.\nBecome aware of other packages for importing different file types."
+    "objectID": "slides/13-regex/13-regex.html#regular-expressions-regex",
+    "href": "slides/13-regex/13-regex.html#regular-expressions-regex",
+    "title": "Regular Expressions",
+    "section": "Regular Expressions (Regex)",
+    "text": "Regular Expressions (Regex)\n\nA powerful tool for describing patterns in strings.\nUsed for finding, extracting, and replacing text.\nstringr provides a consistent interface for working with regex."
   },
   {
-    "objectID": "slides/06-importing/06-importing-data.html#the-readr-package",
-    "href": "slides/06-importing/06-importing-data.html#the-readr-package",
-    "title": "Importing Data",
-    "section": "The readr package",
-    "text": "The readr package\n\nPart of the tidyverse, readr provides functions for reading rectangular data from delimited files (like CSVs).\nIt’s fast, consistent, and produces tibbles.\nIt provides detailed information about how files were parsed."
+    "objectID": "slides/13-regex/13-regex.html#str_detect",
+    "href": "slides/13-regex/13-regex.html#str_detect",
+    "title": "Regular Expressions",
+    "section": "str_detect()",
+    "text": "str_detect()\n\nstr_detect() returns TRUE if a pattern is found in a string, FALSE otherwise.\n\n\nx &lt;- c(\"apple\", \"banana\", \"pear\", \"pineapple\", \"naartjie\")\nstr_detect(x, \"an\")\n\n[1] FALSE  TRUE FALSE FALSE FALSE"
   },
   {
-    "objectID": "slides/06-importing/06-importing-data.html#setup",
-    "href": "slides/06-importing/06-importing-data.html#setup",
-    "title": "Importing Data",
-    "section": "Setup",
-    "text": "Setup\nWe’ll use functions from readr, which is loaded with the tidyverse.\n\nlibrary(tidyverse)"
+    "objectID": "slides/13-regex/13-regex.html#str_count",
+    "href": "slides/13-regex/13-regex.html#str_count",
+    "title": "Regular Expressions",
+    "section": "str_count()",
+    "text": "str_count()\n\nstr_count() counts the number of matches in a string.\n\n\nstr_count(\"banana\", \"a\")\n\n[1] 3"
   },
   {
-    "objectID": "slides/06-importing/06-importing-data.html#reading-delimited-data",
-    "href": "slides/06-importing/06-importing-data.html#reading-delimited-data",
-    "title": "Importing Data",
-    "section": "Reading delimited data",
-    "text": "Reading delimited data\nThe most common function is read_csv() for comma-separated values.\n\nstudents &lt;- read_csv(\"path-to-file.csv\")\nstudents\n\nread_csv() prints the column specification, which is its guess for each column’s type."
+    "objectID": "slides/13-regex/13-regex.html#str_extract-and-str_extract_all",
+    "href": "slides/13-regex/13-regex.html#str_extract-and-str_extract_all",
+    "title": "Regular Expressions",
+    "section": "str_extract() and str_extract_all()",
+    "text": "str_extract() and str_extract_all()\n\nstr_extract() extracts the first match.\nstr_extract_all() extracts all matches.\n\n\nstr_extract(\"banana\", \"an\")\n\n[1] \"an\"\n\nstr_extract_all(\"banana\", \"an\")\n\n[[1]]\n[1] \"an\" \"an\""
   },
   {
-    "objectID": "slides/06-importing/06-importing-data.html#paths-and-organizing-your-computer",
-    "href": "slides/06-importing/06-importing-data.html#paths-and-organizing-your-computer",
-    "title": "Importing Data",
-    "section": "Paths and Organizing Your Computer",
-    "text": "Paths and Organizing Your Computer\n\nThink of your computer like a file cabinet\nWhen working on a project in R, put it in a folder and make that folder a “workspace” or “project” in Positron, RStudio, or VSCode"
+    "objectID": "slides/13-regex/13-regex.html#str_replace-and-str_replace_all",
+    "href": "slides/13-regex/13-regex.html#str_replace-and-str_replace_all",
+    "title": "Regular Expressions",
+    "section": "str_replace() and str_replace_all()",
+    "text": "str_replace() and str_replace_all()\n\nReplaces the first or all matches with a new string.\n\n\nx &lt;- c(\"Dr_Eric_Friedlander\", \"Dr_Brandy_Wiegers\", \"Anthony_Campitelli\")\nstr_replace(x, \"_\", \" \")\n\n[1] \"Dr Eric_Friedlander\" \"Dr Brandy_Wiegers\"   \"Anthony Campitelli\" \n\nstr_replace_all(x, \" \", \" \")\n\n[1] \"Dr_Eric_Friedlander\" \"Dr_Brandy_Wiegers\"   \"Anthony_Campitelli\""
   },
   {
-    "objectID": "slides/06-importing/06-importing-data.html#example",
-    "href": "slides/06-importing/06-importing-data.html#example",
-    "title": "Importing Data",
-    "section": "Example",
-    "text": "Example\nproject-name/\n├── project-name.code-workspace\n├── README.md             &lt;- Overview of the project and how to run it.\n├── data/\n│   ├── raw/              &lt;- Original data (never edit these files).\n│   └── processed/        &lt;- Cleaned data ready for analysis (RDS or CSV).\n├── R/                    &lt;- Folder for reusable functions and source code.\n├── scripts/              &lt;- Analysis scripts (e.g., 01_cleanup.R, 02_model.R).\n├── output/               &lt;- Plots, tables, and exported results.\n└── docs/                 &lt;- Quarto or RMarkdown reports."
+    "objectID": "slides/13-regex/13-regex.html#regex",
+    "href": "slides/13-regex/13-regex.html#regex",
+    "title": "Regular Expressions",
+    "section": "Regex",
+    "text": "Regex\nInstead of inputting literal strings, you can use regex patterns to describe more complex matches.\n\nx &lt;- c(\"Dr_Eric_Friedlander\", \"Dr_Brandy_Wiegers\", \"Anthony_Campitelli\")\n# remove all vowels\nstr_replace_all(x, \"[aeiouAEIOU]\", \"\")\n\n[1] \"Dr_rc_Frdlndr\" \"Dr_Brndy_Wgrs\" \"nthny_Cmptll\""
   },
   {
-    "objectID": "slides/06-importing/06-importing-data.html#where-to-put-this",
-    "href": "slides/06-importing/06-importing-data.html#where-to-put-this",
-    "title": "Importing Data",
-    "section": "Where to put this",
-    "text": "Where to put this\n\nGood practice: use Github\nDON’T PUT FOLDER IN DOWNLOADS!\nOrganize your computer\nLet’s look through Dr. F’s organization\nAvoid putting in Dropbox, OneDrive, Google Drive, folders if using github and writing code"
+    "objectID": "slides/13-regex/13-regex.html#anchors",
+    "href": "slides/13-regex/13-regex.html#anchors",
+    "title": "Regular Expressions",
+    "section": "Anchors",
+    "text": "Anchors\n\n^ matches the start of the string.\n$ matches the end of the string.\n\n\nx &lt;- c(\"apple\", \"banana\", \"pear\")\nstr_detect(x, \"^a\")\n\n[1]  TRUE FALSE FALSE\n\nstr_detect(x, \"a$\")\n\n[1] FALSE  TRUE FALSE"
   },
   {
-    "objectID": "slides/06-importing/06-importing-data.html#practice",
-    "href": "slides/06-importing/06-importing-data.html#practice",
-    "title": "Importing Data",
-    "section": "Practice",
-    "text": "Practice\n\nDownload Star Formation data from Teams\nCreate a new folder on your computer called StarFormation (don’t put it in your Downloads folder)\nCreate the following folder structure\n\nStarFormation/\n├── project-name.code-workspace \n├── README.md             \n├── data/\n│   ├── raw/              \n│   │   ├── MIRION_meta_all_1.csv\n│   │   ├── MIRION_meta_din_1.csv\n│   │   └── MIRION_spec_1.csv              \n│   └── processed/        \n├── scripts/              \n│   └── loading_the_data.R\n├── output/               \n└── docs/                 \n    └── Tables-for-CSCI2040.txt"
+    "objectID": "slides/13-regex/13-regex.html#character-classes",
+    "href": "slides/13-regex/13-regex.html#character-classes",
+    "title": "Regular Expressions",
+    "section": "Character Classes",
+    "text": "Character Classes\n\n. matches any character except a newline.\n\\d matches any digit.\n\\s matches any whitespace.\n[abc] matches a, b, or c.\n[^abc] matches anything except a, b, or c."
   },
   {
-    "objectID": "slides/06-importing/06-importing-data.html#paths",
-    "href": "slides/06-importing/06-importing-data.html#paths",
-    "title": "Importing Data",
-    "section": "Paths",
-    "text": "Paths\n\nRoot directory: Highest level folder of your project or computer (sometimes the same)\nWorking directory: The folder R is currently “looking at”\nMaking a project in RStudio/Positron automatically sets the working directory to the project folder\nTwo types of Paths:\n\nAbsolute paths: Full path from the root of your computer\nRelative paths: Path from your working directory\n\nSpecifying a path in R:\n\nUse forward slashes / every time you go down a folder\nExample: data/raw/MIRION_spec_1.csv"
+    "objectID": "slides/13-regex/13-regex.html#repetition",
+    "href": "slides/13-regex/13-regex.html#repetition",
+    "title": "Regular Expressions",
+    "section": "Repetition",
+    "text": "Repetition\n\n?: 0 or 1 time.\n+: 1 or more times.\n*: 0 or more times.\n{n}: exactly n times.\n{n,}: n or more times.\n{n,m}: between n and m times."
   },
   {
-    "objectID": "slides/06-importing/06-importing-data.html#practice-1",
-    "href": "slides/06-importing/06-importing-data.html#practice-1",
-    "title": "Importing Data",
-    "section": "Practice",
-    "text": "Practice\n\nIn our loading_the_data.R script, let’s use read_csv to load the three data sets into R"
+    "objectID": "slides/13-regex/13-regex.html#practice",
+    "href": "slides/13-regex/13-regex.html#practice",
+    "title": "Regular Expressions",
+    "section": "Practice!",
+    "text": "Practice!\nLet’s do some practice!"
   },
   {
-    "objectID": "slides/06-importing/06-importing-data.html#other-delimiters",
-    "href": "slides/06-importing/06-importing-data.html#other-delimiters",
-    "title": "Importing Data",
-    "section": "Other delimiters",
-    "text": "Other delimiters\n\nreadr provides functions for other common delimiters:\n\nread_csv2(): For semicolon-separated files. Common in European countries.\nread_tsv(): For tab-separated files.\nread_delim(): For files with any delimiter."
+    "objectID": "slides/13-regex/13-regex.html#for-grouping",
+    "href": "slides/13-regex/13-regex.html#for-grouping",
+    "title": "Regular Expressions",
+    "section": "() for Grouping",
+    "text": "() for Grouping\n\nParentheses create a “capturing group” to extract parts of a match.\n\n\nstr_match(\"apple, banana, pear\", \"([a-z]+), ([a-z]+)\")\n\n     [,1]            [,2]    [,3]    \n[1,] \"apple, banana\" \"apple\" \"banana\""
   },
   {
-    "objectID": "slides/06-importing/06-importing-data.html#data-types-in-r",
-    "href": "slides/06-importing/06-importing-data.html#data-types-in-r",
-    "title": "Importing Data",
-    "section": "Data Types in R",
-    "text": "Data Types in R\n\nThere are a variety of data types in R. Some common ones include:\nCharacter: Text data (e.g., names, categories).\nNumeric: Decimal numbers (e.g., 3.14, -2.5).\nInteger: Whole numbers (e.g., 1, 42).\nLogical: Boolean values (TRUE or FALSE).\nFactor: Categorical data with a fixed set of levels (e.g., “low”, “medium”, “high”).\nMore on this later in the course!\nFor now: Understanding data types is crucial for data analysis and manipulation in R."
+    "objectID": "slides/13-regex/13-regex.html#back-references",
+    "href": "slides/13-regex/13-regex.html#back-references",
+    "title": "Regular Expressions",
+    "section": "Back References",
+    "text": "Back References\n\n\\1, \\2, etc. refer to previously captured groups.\n\n\nstr_replace(\"abab\", \"(a)(b)\", \"\\\\2\\\\1\")\n\n[1] \"baab\""
   },
   {
-    "objectID": "slides/06-importing/06-importing-data.html#parsing-column-specification",
-    "href": "slides/06-importing/06-importing-data.html#parsing-column-specification",
-    "title": "Importing Data",
-    "section": "Parsing & Column Specification",
-    "text": "Parsing & Column Specification\n\nreadr tries to be clever and guess column types by looking at the first 1000 rows. Sometimes, it guesses wrong.\nCommon issues:\nLeading zeros in numeric columns (R reads them as characters).\nMixed types in a column (e.g., numbers and text).\nUnits included in numeric columns (e.g., “10 kg”)."
+    "objectID": "slides/13-regex/13-regex.html#practice-1",
+    "href": "slides/13-regex/13-regex.html#practice-1",
+    "title": "Regular Expressions",
+    "section": "Practice!",
+    "text": "Practice!\nLet’s do some practice!"
   },
   {
-    "objectID": "slides/06-importing/06-importing-data.html#manually-specifying-column-types",
-    "href": "slides/06-importing/06-importing-data.html#manually-specifying-column-types",
-    "title": "Importing Data",
-    "section": "Manually specifying column types",
-    "text": "Manually specifying column types\nYou can override readr’s guesses using the col_types argument. More on this later in the course."
+    "objectID": "slides/13-regex/13-regex.html#tidyrseparate_wider_regex",
+    "href": "slides/13-regex/13-regex.html#tidyrseparate_wider_regex",
+    "title": "Regular Expressions",
+    "section": "tidyr::separate_wider_regex()",
+    "text": "tidyr::separate_wider_regex()\n\nSeparates a column into multiple columns using regex with capture groups.\n\n\ndf &lt;- tibble(x = \"123-abc\")\ndf |&gt; separate_wider_regex(x, c(num = \"\\\\d+\", \"-\", chr = \"[a-z]+\"))\n\n# A tibble: 1 × 2\n  num   chr  \n  &lt;chr&gt; &lt;chr&gt;\n1 123   abc"
   },
   {
-    "objectID": "slides/06-importing/06-importing-data.html#other-common-import-options",
-    "href": "slides/06-importing/06-importing-data.html#other-common-import-options",
-    "title": "Importing Data",
-    "section": "Other common import options",
-    "text": "Other common import options\n\nskip = n: Skip the first n lines (useful for files with metadata at the top).\ncomment = \"#\": Drop all lines that start with #.\ncol_names = FALSE: If your file has no column headers. readr will label them X1, X2, etc.\nna = \"...\": Specify which strings should be treated as missing values (e.g., na = \"N/A\")."
+    "objectID": "slides/13-regex/13-regex.html#fixed",
+    "href": "slides/13-regex/13-regex.html#fixed",
+    "title": "Regular Expressions",
+    "section": "fixed()",
+    "text": "fixed()\n\nUse fixed() to match a literal string without interpreting it as a regex.\n\n\nstr_detect(\"a.b\", fixed(\".\"))\n\n[1] TRUE"
   },
   {
-    "objectID": "slides/06-importing/06-importing-data.html#example-with-skip",
-    "href": "slides/06-importing/06-importing-data.html#example-with-skip",
-    "title": "Importing Data",
-    "section": "Example with skip",
-    "text": "Example with skip\n\nread_csv(\"\n  This is metadata\n  That we want to skip\n  x,y\n  1,2\n\", skip = 3)\n\nRows: 1 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (2): x, y\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 1 × 2\n      x     y\n  &lt;dbl&gt; &lt;dbl&gt;\n1     1     2"
+    "objectID": "slides/13-regex/13-regex.html#practice-2",
+    "href": "slides/13-regex/13-regex.html#practice-2",
+    "title": "Regular Expressions",
+    "section": "Practice!",
+    "text": "Practice!\nLet’s do some practice!"
   },
   {
-    "objectID": "slides/06-importing/06-importing-data.html#writing-to-a-file",
-    "href": "slides/06-importing/06-importing-data.html#writing-to-a-file",
-    "title": "Importing Data",
-    "section": "Writing to a file",
-    "text": "Writing to a file\nTo save a data frame back to a file, use write_csv().\n\nwrite_csv(file-name, \"path-to-file.csv\")"
-  },
-  {
-    "objectID": "slides/06-importing/06-importing-data.html#practice-with-reading-and-writing",
-    "href": "slides/06-importing/06-importing-data.html#practice-with-reading-and-writing",
-    "title": "Importing Data",
-    "section": "Practice with reading and writing",
-    "text": "Practice with reading and writing\n\nRead MIRION_spec_1.csv into R\nPut data in tidy format\nSave the tidy data to data/processed/MIRION_spec_tidy.csv"
-  },
-  {
-    "objectID": "slides/06-importing/06-importing-data.html#saving-and-loading-r-objects",
-    "href": "slides/06-importing/06-importing-data.html#saving-and-loading-r-objects",
-    "title": "Importing Data",
-    "section": "Saving and loading R objects",
-    "text": "Saving and loading R objects\nFor saving intermediate R objects, write_csv() is not ideal because it loses type information (e.g., factors become characters).\nIt’s better to use write_rds() and read_rds() to save and load a single R object in R’s native RDS format.\n\nwrite_rds(file, \"path-to-file.rds\")\nrestored_file &lt;- read_rds(\"path-to-file.rds\")"
-  },
-  {
-    "objectID": "slides/06-importing/06-importing-data.html#other-data-sources",
-    "href": "slides/06-importing/06-importing-data.html#other-data-sources",
-    "title": "Importing Data",
-    "section": "Other data sources",
-    "text": "Other data sources\nThe tidyverse ecosystem has packages for many other data types:\n\nreadxl: For Excel files (.xls, .xlsx).\nhaven: For other statistical formats (SPSS, Stata, SAS).\ngooglesheets4: For Google Sheets.\nMany more!"
-  },
-  {
-    "objectID": "slides/06-importing/06-importing-data.html#summary",
-    "href": "slides/06-importing/06-importing-data.html#summary",
-    "title": "Importing Data",
-    "section": "Summary",
-    "text": "Summary\n\nread_csv() is your go-to for reading delimited text files.\nAlways check the column specifications that readr prints. If they’re wrong, fix them with col_types.\nUse write_csv() to save your data frames to CSV files for sharing.\nUse write_rds() to save R objects for later use in R."
-  },
-  {
-    "objectID": "slides/06-importing/06-importing-data.html#do-next",
-    "href": "slides/06-importing/06-importing-data.html#do-next",
-    "title": "Importing Data",
+    "objectID": "slides/13-regex/13-regex.html#do-next",
+    "href": "slides/13-regex/13-regex.html#do-next",
+    "title": "Regular Expressions",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 7: Data import from r4ds.\nNo need to practice this one and that’s all for today!"
+    "text": "Do Next\n\nRead Chapter 15: Regular Expression from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 15” or work through some of the exercises in the text.\nThat it for tonight! See you tomorrow."
   },
   {
     "objectID": "slides/10-logicals/10-logicals.html#logical-vectors",

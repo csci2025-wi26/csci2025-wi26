@@ -1,11 +1,6 @@
 ---
 title: "Regular Expressions"
-subtitle: "Lecture 12"
-title-slide-attributes:
-  data-background-image: ../vizdata-bg.png
-  data-background-size: stretch
-  data-slide-number: none
-format: revealjs
+subtitle: "Lecture 13"
 ---
 
 ```{r}
@@ -128,7 +123,7 @@ str_detect(x, "a$")
 
 Let's do some practice!
 
-# Grouping and Backreferences
+# Grouping and Back References
 
 ## `()` for Grouping
 
@@ -139,7 +134,7 @@ Let's do some practice!
 str_match("apple, banana, pear", "([a-z]+), ([a-z]+)")
 ```
 
-## Backreferences
+## Back References
 
 - `\1`, `\2`, etc. refer to previously captured groups.
 
@@ -176,3 +171,9 @@ str_detect("a.b", fixed("."))
 ## Practice!
 
 Let's do some practice!
+
+## Do Next
+
+1. Read [Chapter 15: Regular Expression](https://r4ds.hadley.nz/regexps.html) from r4ds.
+2. Open the Recitation Gem and say "Provide me practice problems for Chapter 15" or work through some of the exercises in the text.
+3. That it for tonight! See you tomorrow.
