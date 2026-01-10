@@ -222,8 +222,8 @@
     "objectID": "slides/06-importing/06-importing-data.html#this-lesson",
     "href": "slides/06-importing/06-importing-data.html#this-lesson",
     "title": "Importing Data",
-    "section": "This lesson",
-    "text": "This lesson\n\nLearn how to import data into R using the readr package.\nUnderstand how readr parses files and how to control it.\nLearn how to write data from R back to a file.\nBecome aware of other packages for importing different file types."
+    "section": "",
+    "text": "Learn how to import data into R using the readr package.\nUnderstand how readr parses files and how to control it.\nLearn how to write data from R back to a file.\nBecome aware of other packages for importing different file types."
   },
   {
     "objectID": "slides/06-importing/06-importing-data.html#the-readr-package",
@@ -279,7 +279,7 @@
     "href": "slides/06-importing/06-importing-data.html#paths",
     "title": "Importing Data",
     "section": "Paths",
-    "text": "Paths\n\nRoot directory: Highest level folder of your project or computer (sometimes the same)\nWorking directory: The folder R is currently “looking at”\nMaking a project in RStudio/Positron automatically sets the working directory to the project folder\nTwo types of Paths:\n\nAbsolute paths: Full path from the root of your computer\nRelative paths: Path from your working directory\n\nSpecifying a path in R:\n\nUse forward slashes / every time you go down a folder\nExample: data/raw/MIRION_spec_1.csv"
+    "text": "Paths\n\nRoot directory: Highest level folder of your project or computer (sometimes the same)\nWorking directory: The folder R is currently “looking at”\nMaking a project in RStudio/Positron automatically sets the working directory to the project folder\nTwo types of Paths:\n\nAbsolute paths: Full path from the root of your computer\nRelative paths: Path from your working directory\n\n\nSpecifying a path in R:\n\nUse forward slashes / every time you go down a folder\nExample: data/raw/MIRION_spec_1.csv"
   },
   {
     "objectID": "slides/06-importing/06-importing-data.html#practice-1",
@@ -293,21 +293,21 @@
     "href": "slides/06-importing/06-importing-data.html#other-delimiters",
     "title": "Importing Data",
     "section": "Other delimiters",
-    "text": "Other delimiters\n\nreadr provides functions for other common delimiters:\n\nread_csv2(): For semicolon-separated files. Common in European countries.\nread_tsv(): For tab-separated files.\nread_delim(): For files with any delimiter."
+    "text": "Other delimiters\n\n\nreadr provides functions for other common delimiters:\n\n\nread_csv2(): For semicolon-separated files. Common in European countries.\n\nread_tsv(): For tab-separated files.\n\nread_delim(): For files with any delimiter."
   },
   {
     "objectID": "slides/06-importing/06-importing-data.html#data-types-in-r",
     "href": "slides/06-importing/06-importing-data.html#data-types-in-r",
     "title": "Importing Data",
     "section": "Data Types in R",
-    "text": "Data Types in R\n\nThere are a variety of data types in R. Some common ones include:\nCharacter: Text data (e.g., names, categories).\nNumeric: Decimal numbers (e.g., 3.14, -2.5).\nInteger: Whole numbers (e.g., 1, 42).\nLogical: Boolean values (TRUE or FALSE).\nFactor: Categorical data with a fixed set of levels (e.g., “low”, “medium”, “high”).\nMore on this later in the course!\nFor now: Understanding data types is crucial for data analysis and manipulation in R."
+    "text": "Data Types in R\n\nThere are a variety of data types in R. Some common ones include:\n\nCharacter: Text data (e.g., names, categories).\n\nNumeric: Decimal numbers (e.g., 3.14, -2.5).\n\nInteger: Whole numbers (e.g., 1, 42).\n\nLogical: Boolean values (TRUE or FALSE).\n\nFactor: Categorical data with a fixed set of levels (e.g., “low”, “medium”, “high”).\nMore on this later in the course!\nFor now: Understanding data types is crucial for data analysis and manipulation in R."
   },
   {
     "objectID": "slides/06-importing/06-importing-data.html#parsing-column-specification",
     "href": "slides/06-importing/06-importing-data.html#parsing-column-specification",
     "title": "Importing Data",
     "section": "Parsing & Column Specification",
-    "text": "Parsing & Column Specification\n\nreadr tries to be clever and guess column types by looking at the first 1000 rows. Sometimes, it guesses wrong.\nCommon issues:\nLeading zeros in numeric columns (R reads them as characters).\nMixed types in a column (e.g., numbers and text).\nUnits included in numeric columns (e.g., “10 kg”)."
+    "text": "Parsing & Column Specification\n\n\nreadr tries to be clever and guess column types by looking at the first 1000 rows. Sometimes, it guesses wrong.\nCommon issues:\nLeading zeros in numeric columns (R reads them as characters).\nMixed types in a column (e.g., numbers and text).\nUnits included in numeric columns (e.g., “10 kg”)."
   },
   {
     "objectID": "slides/06-importing/06-importing-data.html#manually-specifying-column-types",
@@ -321,14 +321,14 @@
     "href": "slides/06-importing/06-importing-data.html#other-common-import-options",
     "title": "Importing Data",
     "section": "Other common import options",
-    "text": "Other common import options\n\nskip = n: Skip the first n lines (useful for files with metadata at the top).\ncomment = \"#\": Drop all lines that start with #.\ncol_names = FALSE: If your file has no column headers. readr will label them X1, X2, etc.\nna = \"...\": Specify which strings should be treated as missing values (e.g., na = \"N/A\")."
+    "text": "Other common import options\n\n\nskip = n: Skip the first n lines (useful for files with metadata at the top).\n\ncomment = \"#\": Drop all lines that start with #.\n\ncol_names = FALSE: If your file has no column headers. readr will label them X1, X2, etc.\n\nna = \"...\": Specify which strings should be treated as missing values (e.g., na = \"N/A\")."
   },
   {
     "objectID": "slides/06-importing/06-importing-data.html#example-with-skip",
     "href": "slides/06-importing/06-importing-data.html#example-with-skip",
     "title": "Importing Data",
-    "section": "Example with skip",
-    "text": "Example with skip\n\nread_csv(\"\n  This is metadata\n  That we want to skip\n  x,y\n  1,2\n\", skip = 3)\n\nRows: 1 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (2): x, y\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 1 × 2\n      x     y\n  &lt;dbl&gt; &lt;dbl&gt;\n1     1     2"
+    "section": "Example with skip\n",
+    "text": "Example with skip\n\n\nread_csv(\"\n  This is metadata\n  That we want to skip\n  x,y\n  1,2\n\", skip = 3)\n\nRows: 1 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (2): x, y\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 1 × 2\n      x     y\n  &lt;dbl&gt; &lt;dbl&gt;\n1     1     2"
   },
   {
     "objectID": "slides/06-importing/06-importing-data.html#writing-to-a-file",
@@ -356,14 +356,14 @@
     "href": "slides/06-importing/06-importing-data.html#other-data-sources",
     "title": "Importing Data",
     "section": "Other data sources",
-    "text": "Other data sources\nThe tidyverse ecosystem has packages for many other data types:\n\nreadxl: For Excel files (.xls, .xlsx).\nhaven: For other statistical formats (SPSS, Stata, SAS).\ngooglesheets4: For Google Sheets.\nMany more!"
+    "text": "Other data sources\nThe tidyverse ecosystem has packages for many other data types:\n\n\nreadxl: For Excel files (.xls, .xlsx).\n\nhaven: For other statistical formats (SPSS, Stata, SAS).\n\ngooglesheets4: For Google Sheets.\nMany more!"
   },
   {
     "objectID": "slides/06-importing/06-importing-data.html#summary",
     "href": "slides/06-importing/06-importing-data.html#summary",
     "title": "Importing Data",
     "section": "Summary",
-    "text": "Summary\n\nread_csv() is your go-to for reading delimited text files.\nAlways check the column specifications that readr prints. If they’re wrong, fix them with col_types.\nUse write_csv() to save your data frames to CSV files for sharing.\nUse write_rds() to save R objects for later use in R."
+    "text": "Summary\n\n\nread_csv() is your go-to for reading delimited text files.\n\nAlways check the column specifications that readr prints. If they’re wrong, fix them with col_types.\nUse write_csv() to save your data frames to CSV files for sharing.\nUse write_rds() to save R objects for later use in R."
   },
   {
     "objectID": "slides/06-importing/06-importing-data.html#do-next",
@@ -376,22 +376,22 @@
     "objectID": "slides/10-logicals/10-logicals.html#logical-vectors",
     "href": "slides/10-logicals/10-logicals.html#logical-vectors",
     "title": "Logical Vectors",
-    "section": "Logical Vectors",
-    "text": "Logical Vectors\n\nA logical vector is a vector that contains only TRUE, FALSE, and NA (missing) values.\nThey are rarely in your raw data, but you will create and use them in almost every analysis.\nLogical vectors are the foundation of filtering and conditional transformations.\nIn CS Logical Vectors are often called “Boolean” vectors."
+    "section": "",
+    "text": "A logical vector is a vector that contains only TRUE, FALSE, and NA (missing) values.\nThey are rarely in your raw data, but you will create and use them in almost every analysis.\nLogical vectors are the foundation of filtering and conditional transformations.\nIn CS Logical Vectors are often called “Boolean” vectors."
   },
   {
     "objectID": "slides/10-logicals/10-logicals.html#creating-logicals",
     "href": "slides/10-logicals/10-logicals.html#creating-logicals",
     "title": "Logical Vectors",
     "section": "Creating Logicals",
-    "text": "Creating Logicals\n\nYou can create logical vectors with comparison operators:\n\n&gt; (greater than), &lt; (less than)\n&gt;= (greater than or equal to), &lt;= (less than or equal to)\n== (equal to), != (not equal to)\n\n\n\nx &lt;- c(1, 2, 3, 5, 8, 13)\nx &gt; 4\n\n[1] FALSE FALSE FALSE  TRUE  TRUE  TRUE"
+    "text": "Creating Logicals\n\nYou can create logical vectors with comparison operators:\n\n\n&gt; (greater than), &lt; (less than)\n\n&gt;= (greater than or equal to), &lt;= (less than or equal to)\n\n== (equal to), != (not equal to)\n\n\n\n\nx &lt;- c(1, 2, 3, 5, 8, 13)\nx &gt; 4\n\n[1] FALSE FALSE FALSE  TRUE  TRUE  TRUE"
   },
   {
     "objectID": "slides/10-logicals/10-logicals.html#comparisons-with-filter",
     "href": "slides/10-logicals/10-logicals.html#comparisons-with-filter",
     "title": "Logical Vectors",
-    "section": "Comparisons with filter()",
-    "text": "Comparisons with filter()\n\nMost often, you’ll use comparisons inside filter() to select rows.\nLet’s use the flights dataset to find flights that were delayed on arrival."
+    "section": "Comparisons with filter()\n",
+    "text": "Comparisons with filter()\n\n\nMost often, you’ll use comparisons inside filter() to select rows.\nLet’s use the flights dataset to find flights that were delayed on arrival."
   },
   {
     "objectID": "slides/10-logicals/10-logicals.html#floating-point-comparison",
@@ -405,7 +405,7 @@
     "href": "slides/10-logicals/10-logicals.html#na",
     "title": "Logical Vectors",
     "section": "NA",
-    "text": "NA\n\nNA represents a missing value.\nNA is “contagious”: almost any operation involving NA will produce NA.\nYou can’t use == to find missing values.\n\n\nNA &gt; 5\n\n[1] NA\n\nNA == 10\n\n[1] NA\n\nNA == NA\n\n[1] NA"
+    "text": "NA\n\n\nNA represents a missing value.\n\nNA is “contagious”: almost any operation involving NA will produce NA.\nYou can’t use == to find missing values.\n\n\nNA &gt; 5\n\n[1] NA\n\nNA == 10\n\n[1] NA\n\nNA == NA\n\n[1] NA"
   },
   {
     "objectID": "slides/10-logicals/10-logicals.html#is.na",
@@ -418,8 +418,8 @@
     "objectID": "slides/10-logicals/10-logicals.html#filtering-and-na",
     "href": "slides/10-logicals/10-logicals.html#filtering-and-na",
     "title": "Logical Vectors",
-    "section": "Filtering and NA",
-    "text": "Filtering and NA\n\nfilter() only includes rows where the condition is TRUE. It excludes FALSE and NA values.\nIf you want to include missing values in your filter, you must ask for them explicitly."
+    "section": "Filtering and NA\n",
+    "text": "Filtering and NA\n\n\n\nfilter() only includes rows where the condition is TRUE. It excludes FALSE and NA values.\nIf you want to include missing values in your filter, you must ask for them explicitly."
   },
   {
     "objectID": "slides/10-logicals/10-logicals.html#removing-missing-values",
@@ -440,7 +440,7 @@
     "href": "slides/10-logicals/10-logicals.html#combining-conditions",
     "title": "Logical Vectors",
     "section": "Combining Conditions",
-    "text": "Combining Conditions\n\nYou can combine multiple logical conditions using boolean operators:\n\n& (and)\n| (or)\n! (not)"
+    "text": "Combining Conditions\n\nYou can combine multiple logical conditions using boolean operators:\n\n\n& (and)\n\n| (or)\n\n! (not)"
   },
   {
     "objectID": "slides/10-logicals/10-logicals.html#examples",
@@ -461,7 +461,7 @@
     "href": "slides/10-logicals/10-logicals.html#numeric-summaries",
     "title": "Logical Vectors",
     "section": "Numeric Summaries",
-    "text": "Numeric Summaries\n\nWhen you use a logical vector in a numeric context, TRUE becomes 1 and FALSE becomes 0.\nsum(): counts the number of TRUEs.\nmean(): calculates the proportion of TRUEs."
+    "text": "Numeric Summaries\n\nWhen you use a logical vector in a numeric context, TRUE becomes 1 and FALSE becomes 0.\n\nsum(): counts the number of TRUEs.\n\nmean(): calculates the proportion of TRUEs."
   },
   {
     "objectID": "slides/10-logicals/10-logicals.html#practice-1",
@@ -482,14 +482,14 @@
     "href": "slides/10-logicals/10-logicals.html#case_when",
     "title": "Logical Vectors",
     "section": "case_when()",
-    "text": "case_when()\n\nFor multiple conditions, case_when() is easier to read than nested if_else().\ncase_when(condition1 ~ value1, condition2 ~ value2, ...)\nThe first TRUE condition wins.\n\n\n\nCode\ncase_when(\n  x &lt; 0 ~ \"negative\",\n  x == 0 ~ \"zero\",\n  x &gt; 0 ~ \"positive\"\n)\n\n\n[1] \"negative\" \"negative\" \"zero\"     \"positive\" \"positive\""
+    "text": "case_when()\n\nFor multiple conditions, case_when() is easier to read than nested if_else().\ncase_when(condition1 ~ value1, condition2 ~ value2, ...)\nThe first TRUE condition wins.\n\n\nCodecase_when(\n  x &lt; 0 ~ \"negative\",\n  x == 0 ~ \"zero\",\n  x &gt; 0 ~ \"positive\"\n)\n\n[1] \"negative\" \"negative\" \"zero\"     \"positive\" \"positive\""
   },
   {
     "objectID": "slides/10-logicals/10-logicals.html#example-case_when",
     "href": "slides/10-logicals/10-logicals.html#example-case_when",
     "title": "Logical Vectors",
-    "section": "Example: case_when()",
-    "text": "Example: case_when()\n\nLet’s create a human-readable “season” variable."
+    "section": "Example: case_when()\n",
+    "text": "Example: case_when()\n\n\nLet’s create a human-readable “season” variable."
   },
   {
     "objectID": "slides/10-logicals/10-logicals.html#logical-vectors-1",
@@ -712,8 +712,8 @@
     "objectID": "slides/05-data-tidying/05-data-tidying.html#this-lesson",
     "href": "slides/05-data-tidying/05-data-tidying.html#this-lesson",
     "title": "Data Tidying",
-    "section": "This lesson",
-    "text": "This lesson\n\nDefine “tidy data”\nLearn how to use tidyr to make data tidy\n\npivot_longer() for lengthening data\npivot_wider() for widening data"
+    "section": "",
+    "text": "Define “tidy data”\nLearn how to use tidyr to make data tidy\n\n\npivot_longer() for lengthening data\n\npivot_wider() for widening data"
   },
   {
     "objectID": "slides/05-data-tidying/05-data-tidying.html#what-is-tidy-data",
@@ -733,15 +733,15 @@
     "objectID": "slides/05-data-tidying/05-data-tidying.html#lengthening-data-with-pivot_longer",
     "href": "slides/05-data-tidying/05-data-tidying.html#lengthening-data-with-pivot_longer",
     "title": "Data Tidying",
-    "section": "Lengthening data with pivot_longer()",
-    "text": "Lengthening data with pivot_longer()\n\nWide Format: column names are actually values of a variable:\n\n\nrelig_income |&gt; head()\n\n# A tibble: 6 × 11\n  religion  `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`\n  &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n1 Agnostic       27        34        60        81        76       137        122\n2 Atheist        12        27        37        52        35        70         73\n3 Buddhist       27        21        30        34        33        58         62\n4 Catholic      418       617       732       670       638      1116        949\n5 Don’t kn…      15        14        15        11        10        35         21\n6 Evangeli…     575       869      1064       982       881      1486        949\n# ℹ 3 more variables: `$100-150k` &lt;dbl&gt;, `&gt;150k` &lt;dbl&gt;,\n#   `Don't know/refused` &lt;dbl&gt;\n\n\nThis is not tidy. The income brackets are variable names, not a variable."
+    "section": "Lengthening data with pivot_longer()\n",
+    "text": "Lengthening data with pivot_longer()\n\n\n\nWide Format: column names are actually values of a variable:\n\n\nrelig_income |&gt; head()\n\n# A tibble: 6 × 11\n  religion  `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`\n  &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n1 Agnostic       27        34        60        81        76       137        122\n2 Atheist        12        27        37        52        35        70         73\n3 Buddhist       27        21        30        34        33        58         62\n4 Catholic      418       617       732       670       638      1116        949\n5 Don’t kn…      15        14        15        11        10        35         21\n6 Evangeli…     575       869      1064       982       881      1486        949\n# ℹ 3 more variables: `$100-150k` &lt;dbl&gt;, `&gt;150k` &lt;dbl&gt;,\n#   `Don't know/refused` &lt;dbl&gt;\n\n\nThis is not tidy. The income brackets are variable names, not a variable."
   },
   {
     "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_longer",
     "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_longer",
     "title": "Data Tidying",
-    "section": "Using pivot_longer()",
-    "text": "Using pivot_longer()\n\n\n\nGoal: transform this so we have three columns: religion, income, and count.\nUse pivot_longer() to do this.\n\n\ntidy_relig_income &lt;- relig_income |&gt; \n  pivot_longer(\n    cols = !religion, \n    names_to = \"income\", \n    values_to = \"count\"\n  )\n\ntidy_relig_income |&gt; head()\n\n# A tibble: 6 × 3\n  religion income  count\n  &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt;\n1 Agnostic &lt;$10k      27\n2 Agnostic $10-20k    34\n3 Agnostic $20-30k    60\n4 Agnostic $30-40k    81\n5 Agnostic $40-50k    76\n6 Agnostic $50-75k   137\n\n\n\n\ncols: The columns to pivot into longer format. !religion means all columns except religion.\nnames_to: The name of the new column that will contain the names of the original columns.\nvalues_to: The name of the new column that will contain the values from the original columns."
+    "section": "Using pivot_longer()\n",
+    "text": "Using pivot_longer()\n\n\n\n\nGoal: transform this so we have three columns: religion, income, and count.\nUse pivot_longer() to do this.\n\n\ntidy_relig_income &lt;- relig_income |&gt; \n  pivot_longer(\n    cols = !religion, \n    names_to = \"income\", \n    values_to = \"count\"\n  )\n\ntidy_relig_income |&gt; head()\n\n# A tibble: 6 × 3\n  religion income  count\n  &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt;\n1 Agnostic &lt;$10k      27\n2 Agnostic $10-20k    34\n3 Agnostic $20-30k    60\n4 Agnostic $30-40k    81\n5 Agnostic $40-50k    76\n6 Agnostic $50-75k   137\n\n\n\n\n\ncols: The columns to pivot into longer format. !religion means all columns except religion.\n\nnames_to: The name of the new column that will contain the names of the original columns.\n\nvalues_to: The name of the new column that will contain the values from the original columns."
   },
   {
     "objectID": "slides/05-data-tidying/05-data-tidying.html#practice",
@@ -754,22 +754,22 @@
     "objectID": "slides/05-data-tidying/05-data-tidying.html#widening-data-with-pivot_wider",
     "href": "slides/05-data-tidying/05-data-tidying.html#widening-data-with-pivot_wider",
     "title": "Data Tidying",
-    "section": "Widening data with pivot_wider()",
-    "text": "Widening data with pivot_wider()\npivot_wider() is the opposite of pivot_longer(). It’s used when an observation is scattered across multiple rows.\n\nfish_encounters |&gt; head()\n\n# A tibble: 6 × 3\n  fish  station  seen\n  &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;\n1 4842  Release     1\n2 4842  I80_1       1\n3 4842  Lisbon      1\n4 4842  Rstr        1\n5 4842  Base_TD     1\n6 4842  BCE         1\n\n\n\nOne observation = one fishing station\nfish_encounters has two rows for each station: one for when a fish was seen and one for when it wasn’t\nstation column contains variable names\nseen column contains(0/1) values"
+    "section": "Widening data with pivot_wider()\n",
+    "text": "Widening data with pivot_wider()\n\npivot_wider() is the opposite of pivot_longer(). It’s used when an observation is scattered across multiple rows.\n\nfish_encounters |&gt; head()\n\n# A tibble: 6 × 3\n  fish  station  seen\n  &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;\n1 4842  Release     1\n2 4842  I80_1       1\n3 4842  Lisbon      1\n4 4842  Rstr        1\n5 4842  Base_TD     1\n6 4842  BCE         1\n\n\n\nOne observation = one fishing station\n\nfish_encounters has two rows for each station: one for when a fish was seen and one for when it wasn’t\n\nstation column contains variable names\n\nseen column contains(0/1) values"
   },
   {
     "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider",
     "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider",
     "title": "Data Tidying",
-    "section": "Using pivot_wider()",
-    "text": "Using pivot_wider()\nGoal: one row per station, with columns indicating whether fish was seen or not.\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1    NA    NA    NA    NA    NA    NA\n5 4847        1     1      1    NA      NA    NA    NA    NA    NA    NA    NA\n6 4848        1     1      1     1      NA    NA    NA    NA    NA    NA    NA\n\n\nProblem: NA values where there should be zeros, can fix this with values_fill."
+    "section": "Using pivot_wider()\n",
+    "text": "Using pivot_wider()\n\nGoal: one row per station, with columns indicating whether fish was seen or not.\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1    NA    NA    NA    NA    NA    NA\n5 4847        1     1      1    NA      NA    NA    NA    NA    NA    NA    NA\n6 4848        1     1      1     1      NA    NA    NA    NA    NA    NA    NA\n\n\nProblem: NA values where there should be zeros, can fix this with values_fill."
   },
   {
     "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider-with-values_fill",
     "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider-with-values_fill",
     "title": "Data Tidying",
-    "section": "Using pivot_wider() with values_fill",
-    "text": "Using pivot_wider() with values_fill\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen,\n    values_fill = 0\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1     0     0     0     0     0     0\n5 4847        1     1      1     0       0     0     0     0     0     0     0\n6 4848        1     1      1     1       0     0     0     0     0     0     0\n\n\n\nnames_from: The column to get the new column names from.\nvalues_from: The column to get the cell values from.\nvalues_fill: A value to replace NAs with."
+    "section": "Using pivot_wider() with values_fill\n",
+    "text": "Using pivot_wider() with values_fill\n\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen,\n    values_fill = 0\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1     0     0     0     0     0     0\n5 4847        1     1      1     0       0     0     0     0     0     0     0\n6 4848        1     1      1     1       0     0     0     0     0     0     0\n\n\n\n\nnames_from: The column to get the new column names from.\n\nvalues_from: The column to get the cell values from.\n\nvalues_fill: A value to replace NAs with."
   },
   {
     "objectID": "slides/05-data-tidying/05-data-tidying.html#practice-1",
@@ -783,7 +783,7 @@
     "href": "slides/05-data-tidying/05-data-tidying.html#summary",
     "title": "Data Tidying",
     "section": "Summary",
-    "text": "Summary\n\nTidy data is a standard format that makes data analysis easier.\nUse pivot_longer() when your column names are actually values of a variable (to make data longer and narrower).\nUse pivot_wider() when an observation is scattered across multiple rows (to make data wider and shorter).\nYou will often need to use pivot_longer() and pivot_wider() when preparing data for plotting\n\nThese two functions are the foundation of data tidying in R."
+    "text": "Summary\n\n\nTidy data is a standard format that makes data analysis easier.\nUse pivot_longer() when your column names are actually values of a variable (to make data longer and narrower).\nUse pivot_wider() when an observation is scattered across multiple rows (to make data wider and shorter).\nYou will often need to use pivot_longer() and pivot_wider() when preparing data for plotting\n\nThese two functions are the foundation of data tidying in R."
   },
   {
     "objectID": "slides/05-data-tidying/05-data-tidying.html#do-next",
@@ -880,8 +880,8 @@
     "objectID": "slides/01-intro-to-R/01-intro-to-R.html#before-we-start",
     "href": "slides/01-intro-to-R/01-intro-to-R.html#before-we-start",
     "title": "R Basics",
-    "section": "Before we start…",
-    "text": "Before we start…\n\nMake sure you have done the following:\n\nDownloaded and installed R\nDownloaded and installed Positron (or R Studio)\nCreated a Gemini Pro AI account (free for students)"
+    "section": "",
+    "text": "Make sure you have done the following:\n\nDownloaded and installed R\nDownloaded and installed Positron (or R Studio)\nCreated a Gemini Pro AI account (free for students)"
   },
   {
     "objectID": "slides/01-intro-to-R/01-intro-to-R.html#what-is-r",
@@ -1023,8 +1023,8 @@
     "objectID": "classwork/01-tidy-tuesday.html#today",
     "href": "classwork/01-tidy-tuesday.html#today",
     "title": "Our First Analysis",
-    "section": "Today",
-    "text": "Today\n\nToday we’re going to split up into groups and each analyze a data set of our choice\nWe will take turns presenting on what we’ve done\nAfter each presentation, we’ll have a brief discussion where we critique each other’s analysis"
+    "section": "",
+    "text": "Today we’re going to split up into groups and each analyze a data set of our choice\nWe will take turns presenting on what we’ve done\nAfter each presentation, we’ll have a brief discussion where we critique each other’s analysis"
   },
   {
     "objectID": "classwork/01-tidy-tuesday.html#tidytuesday",
@@ -1059,14 +1059,14 @@
     "href": "classwork/01-tidy-tuesday.html#selecting-a-dataset",
     "title": "Our First Analysis",
     "section": "Selecting a Dataset",
-    "text": "Selecting a Dataset\n\nDo the following:\n\nFind the data set on the TidyTuesday GitHub repository\nLoad that data set into R\nPost a link to the dataset as a response to your group’s post in the Activities Channel on Teams\n\nAnswer the following questions (be prepared to give a 2-minute report to the class):\n\nWhat is the data about?\nWhat question(s) are you interested in answering with this data?\nHow many data frames are there and how many rows and columns does it have?\nWhat data frames and variables are you going to focus on?\n\n\n\ncountdown::countdown(minutes = 20)"
+    "text": "Selecting a Dataset\n\nDo the following:\n\nFind the data set on the TidyTuesday GitHub repository\nLoad that data set into R\nPost a link to the dataset as a response to your group’s post in the Activities Channel on Teams\n\n\nAnswer the following questions (be prepared to give a 2-minute report to the class):\n\nWhat is the data about?\nWhat question(s) are you interested in answering with this data?\nHow many data frames are there and how many rows and columns does it have?\nWhat data frames and variables are you going to focus on?\n\n\n\n\ncountdown::countdown(minutes = 20)"
   },
   {
     "objectID": "classwork/01-tidy-tuesday.html#explore-the-data",
     "href": "classwork/01-tidy-tuesday.html#explore-the-data",
     "title": "Our First Analysis",
     "section": "Explore the Data",
-    "text": "Explore the Data\n\nBe prepared to present the following (less than 5 minutes per group):\n\nCreate up to 5 visualizations or tables that help answer your questions\nExplain what each visualization or table shows\nExplain what you learned from each visualization or table\nExplain any challenges you had while working with the data\nBe prepared to answer questions and explain your code if you are asked\n\nCopy and paste your entire script (up to this point) into Teams as a response to your group’s post\n\n\ncountdown::countdown(minutes = 20)"
+    "text": "Explore the Data\n\nBe prepared to present the following (less than 5 minutes per group):\n\nCreate up to 5 visualizations or tables that help answer your questions\nExplain what each visualization or table shows\nExplain what you learned from each visualization or table\nExplain any challenges you had while working with the data\nBe prepared to answer questions and explain your code if you are asked\n\n\nCopy and paste your entire script (up to this point) into Teams as a response to your group’s post\n\n\ncountdown::countdown(minutes = 20)"
   },
   {
     "objectID": "classwork/01-tidy-tuesday.html#time-permitting-refine-and-extend",
@@ -1086,8 +1086,8 @@
     "objectID": "classwork/03-day-3.html#today",
     "href": "classwork/03-day-3.html#today",
     "title": "Challenges!",
-    "section": "Today",
-    "text": "Today\n\nSome challenges to practice your skills!"
+    "section": "",
+    "text": "Some challenges to practice your skills!"
   },
   {
     "objectID": "classwork/03-day-3.html#challenge-1a-parks",
@@ -1129,7 +1129,7 @@
     "href": "classwork/03-day-3.html#groups-for-today",
     "title": "Challenges!",
     "section": "Groups for Today",
-    "text": "Groups for Today\n\nSelf sort:\n\nEasy: Table 1 (near the windows)\n\nChallenge 1A, 1B, 1C\n\nMedium: Table 2 (middle of the room)\n\nChallenge 2 and 1A\n\nHard: Table 3 (near the TVs)\n\nChallenge 3\n\n\nStart by sketching a plan on the white board…"
+    "text": "Groups for Today\n\nSelf sort:\n\nEasy: Table 1 (near the windows)\n\nChallenge 1A, 1B, 1C\n\n\nMedium: Table 2 (middle of the room)\n\nChallenge 2 and 1A\n\n\nHard: Table 3 (near the TVs)\n\nChallenge 3\n\n\n\n\nStart by sketching a plan on the white board…"
   },
   {
     "objectID": "classwork/03-day-3.html#for-next-class",
@@ -1186,8 +1186,8 @@
     "objectID": "classwork/02-pivoting.html#today",
     "href": "classwork/02-pivoting.html#today",
     "title": "More Analysis",
-    "section": "Today",
-    "text": "Today\n\nReturn to TidyTuesday analysis from last class\nWork with some real experimental data generated from by Dr. Belissimo’s class"
+    "section": "",
+    "text": "Return to TidyTuesday analysis from last class\nWork with some real experimental data generated from by Dr. Belissimo’s class"
   },
   {
     "objectID": "classwork/02-pivoting.html#group-roles-reminder",
@@ -1208,14 +1208,14 @@
     "href": "classwork/02-pivoting.html#reasearch-question",
     "title": "More Analysis",
     "section": "Reasearch Question",
-    "text": "Reasearch Question\n\nTraditional Resistance Training (TRT): Involves performing a set number of repetitions continuously until the set is complete, followed by a rest period.\n\nExample: 3 sets of 10 repetitions with 60 seconds rest between sets.\n\nCluster Resistance Training (CRT): Involves breaking a set into smaller clusters of repetitions with short rest intervals in between, allowing for brief recovery periods during the set.\n\nExample: 3 sets of 10 repetitions performed as 2 clusters of 5 repetitions with 15 seconds rest between clusters and 60 seconds rest between sets.\n\nPrimary research goal: characterize the intensity of TRT vs CRT\nToday’s Question: Are there differences in heart rate response between traditional and cluster resistance volume-matched protocols?"
+    "text": "Reasearch Question\n\nTraditional Resistance Training (TRT): Involves performing a set number of repetitions continuously until the set is complete, followed by a rest period.\n\nExample: 3 sets of 10 repetitions with 60 seconds rest between sets.\n\n\nCluster Resistance Training (CRT): Involves breaking a set into smaller clusters of repetitions with short rest intervals in between, allowing for brief recovery periods during the set.\n\nExample: 3 sets of 10 repetitions performed as 2 clusters of 5 repetitions with 15 seconds rest between clusters and 60 seconds rest between sets.\n\n\nPrimary research goal: characterize the intensity of TRT vs CRT\nToday’s Question: Are there differences in heart rate response between traditional and cluster resistance volume-matched protocols?"
   },
   {
     "objectID": "classwork/02-pivoting.html#experimental-design",
     "href": "classwork/02-pivoting.html#experimental-design",
     "title": "More Analysis",
     "section": "Experimental Design",
-    "text": "Experimental Design\n\nParticipants: 10 college students\nCross-over design\n\nEach participant completed both the TRT and CRTprotocols… why?\nRandomized (flipped a coin) which protocol was completed first… why?\nOne week washout period between protocols… why?\nMeasured heart rate, before and after exercise\n\nThis was a class project conducted by Jayva Anderson, Emily Lettenmaier, Sayre Schreiner, and Greta Valaika"
+    "text": "Experimental Design\n\nParticipants: 10 college students\nCross-over design\n\nEach participant completed both the TRT and CRTprotocols… why?\n\nRandomized (flipped a coin) which protocol was completed first… why?\n\nOne week washout period between protocols… why?\n\nMeasured heart rate, before and after exercise\n\n\nThis was a class project conducted by Jayva Anderson, Emily Lettenmaier, Sayre Schreiner, and Greta Valaika"
   },
   {
     "objectID": "classwork/02-pivoting.html#the-data",
@@ -1377,15 +1377,15 @@
     "objectID": "slides/12-strings/12-strings.html#working-with-strings",
     "href": "slides/12-strings/12-strings.html#working-with-strings",
     "title": "Strings",
-    "section": "Working with Strings",
-    "text": "Working with Strings\n\nText data, or “strings”, are very common.\nThe stringr package, part of the tidyverse, provides a modern and consistent interface for working with strings.\nAll functions in stringr start with str_."
+    "section": "",
+    "text": "Text data, or “strings”, are very common.\nThe stringr package, part of the tidyverse, provides a modern and consistent interface for working with strings.\nAll functions in stringr start with str_."
   },
   {
     "objectID": "slides/12-strings/12-strings.html#data-idaho-naturalization",
     "href": "slides/12-strings/12-strings.html#data-idaho-naturalization",
     "title": "Strings",
-    "section": "Data: Idaho Naturalization",
-    "text": "Data: Idaho Naturalization\n\nWe’re going to use Naturalization data from the Idaho State Archives\nThis dataset was assembled by Dr. Rachel Miller\nLink to Google Sheet\nLet’s load the data"
+    "section": "",
+    "text": "We’re going to use Naturalization data from the Idaho State Archives\nThis dataset was assembled by Dr. Rachel Miller\nLink to Google Sheet\nLet’s load the data"
   },
   {
     "objectID": "slides/12-strings/12-strings.html#basics",
@@ -1399,49 +1399,49 @@
     "href": "slides/12-strings/12-strings.html#combining-strings",
     "title": "Strings",
     "section": "Combining Strings",
-    "text": "Combining Strings\n\nstr_c() combines multiple vectors into a single character vector.\nstr_glue() from the glue package is great for embedding R code inside a string.\nWrap your R code in {}."
+    "text": "Combining Strings\n\n\nstr_c() combines multiple vectors into a single character vector.\n\nstr_glue() from the glue package is great for embedding R code inside a string.\nWrap your R code in {}."
   },
   {
     "objectID": "slides/12-strings/12-strings.html#separating-into-columns",
     "href": "slides/12-strings/12-strings.html#separating-into-columns",
     "title": "Strings",
     "section": "Separating into Columns",
-    "text": "Separating into Columns\n\ntidyr::separate_wider_delim() splits a column into multiple new columns based on a delimiter.\nYou must provide names for the new columns.\n\n\ndf &lt;- tibble(x = c(\"a_b_1\", \"c_d_2\", \"e_f_3\"))\ndf |&gt; separate_wider_delim(\n  x,\n  delim = \"_\",\n  names = c(\"first\", \"second\", \"third\")\n)\n\n# A tibble: 3 × 3\n  first second third\n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;\n1 a     b      1    \n2 c     d      2    \n3 e     f      3"
+    "text": "Separating into Columns\n\n\ntidyr::separate_wider_delim() splits a column into multiple new columns based on a delimiter.\nYou must provide names for the new columns.\n\n\ndf &lt;- tibble(x = c(\"a_b_1\", \"c_d_2\", \"e_f_3\"))\ndf |&gt; separate_wider_delim(\n  x,\n  delim = \"_\",\n  names = c(\"first\", \"second\", \"third\")\n)\n\n# A tibble: 3 × 3\n  first second third\n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;\n1 a     b      1    \n2 c     d      2    \n3 e     f      3"
   },
   {
     "objectID": "slides/12-strings/12-strings.html#separating-into-rows",
     "href": "slides/12-strings/12-strings.html#separating-into-rows",
     "title": "Strings",
     "section": "Separating into Rows",
-    "text": "Separating into Rows\n\ntidyr::separate_longer_delim() splits a column into multiple new rows.\nUseful when each cell contains a varying number of items.\n\n\ndf &lt;- tibble(x = 1:2, y = c(\"a,b\", \"c,d,e\"))\ndf |&gt; separate_longer_delim(y, delim = \",\")\n\n# A tibble: 5 × 2\n      x y    \n  &lt;int&gt; &lt;chr&gt;\n1     1 a    \n2     1 b    \n3     2 c    \n4     2 d    \n5     2 e"
+    "text": "Separating into Rows\n\n\ntidyr::separate_longer_delim() splits a column into multiple new rows.\nUseful when each cell contains a varying number of items.\n\n\ndf &lt;- tibble(x = 1:2, y = c(\"a,b\", \"c,d,e\"))\ndf |&gt; separate_longer_delim(y, delim = \",\")\n\n# A tibble: 5 × 2\n      x y    \n  &lt;int&gt; &lt;chr&gt;\n1     1 a    \n2     1 b    \n3     2 c    \n4     2 d    \n5     2 e"
   },
   {
     "objectID": "slides/12-strings/12-strings.html#length",
     "href": "slides/12-strings/12-strings.html#length",
     "title": "Strings",
     "section": "Length",
-    "text": "Length\n\nstr_length() gives you the number of characters in a string.\n\n\nstr_length(c(\"a\", \"R for data science\", NA))\n\n[1]  1 18 NA"
+    "text": "Length\n\n\nstr_length() gives you the number of characters in a string.\n\n\nstr_length(c(\"a\", \"R for data science\", NA))\n\n[1]  1 18 NA"
   },
   {
     "objectID": "slides/12-strings/12-strings.html#subsetting",
     "href": "slides/12-strings/12-strings.html#subsetting",
     "title": "Strings",
     "section": "Subsetting",
-    "text": "Subsetting\n\nstr_sub() extracts a part of a string.\nYou provide the start and end positions (inclusive).\nNegative numbers count from the end of the string.\n\n\nx &lt;- c(\"Apple\", \"Banana\", \"Pear\")\nstr_sub(x, 1, 3)\n\n[1] \"App\" \"Ban\" \"Pea\"\n\nstr_sub(x, -2, -1)\n\n[1] \"le\" \"na\" \"ar\""
+    "text": "Subsetting\n\n\nstr_sub() extracts a part of a string.\nYou provide the start and end positions (inclusive).\nNegative numbers count from the end of the string.\n\n\nx &lt;- c(\"Apple\", \"Banana\", \"Pear\")\nstr_sub(x, 1, 3)\n\n[1] \"App\" \"Ban\" \"Pea\"\n\nstr_sub(x, -2, -1)\n\n[1] \"le\" \"na\" \"ar\""
   },
   {
     "objectID": "slides/12-strings/12-strings.html#case",
     "href": "slides/12-strings/12-strings.html#case",
     "title": "Strings",
     "section": "Case",
-    "text": "Case\n\nstr_to_lower(): convert to lowercase.\nstr_to_upper(): convert to uppercase.\nstr_to_title(): convert to title case.\n\n\nstr_to_lower(\"I am shouting.\")\n\n[1] \"i am shouting.\"\n\nstr_to_title(\"a tale of two cities\")\n\n[1] \"A Tale Of Two Cities\""
+    "text": "Case\n\n\nstr_to_lower(): convert to lowercase.\n\nstr_to_upper(): convert to uppercase.\n\nstr_to_title(): convert to title case.\n\n\nstr_to_lower(\"I am shouting.\")\n\n[1] \"i am shouting.\"\n\nstr_to_title(\"a tale of two cities\")\n\n[1] \"A Tale Of Two Cities\""
   },
   {
     "objectID": "slides/12-strings/12-strings.html#whitespace",
     "href": "slides/12-strings/12-strings.html#whitespace",
     "title": "Strings",
     "section": "Whitespace",
-    "text": "Whitespace\n\nstr_trim() removes whitespace from the start and end of a string.\nstr_squish() also removes whitespace from the start and end, and reduces any internal whitespace to a single space.\n\n\ntext &lt;- \"  this   has  a lot of   whitespace   \"\nstr_trim(text)\n\n[1] \"this   has  a lot of   whitespace\"\n\nstr_squish(text)\n\n[1] \"this has a lot of whitespace\""
+    "text": "Whitespace\n\n\nstr_trim() removes whitespace from the start and end of a string.\n\nstr_squish() also removes whitespace from the start and end, and reduces any internal whitespace to a single space.\n\n\ntext &lt;- \"  this   has  a lot of   whitespace   \"\nstr_trim(text)\n\n[1] \"this   has  a lot of   whitespace\"\n\nstr_squish(text)\n\n[1] \"this has a lot of whitespace\""
   },
   {
     "objectID": "slides/12-strings/12-strings.html#strings",
@@ -1545,29 +1545,29 @@
     "objectID": "slides/07-layers/07-layers.html#data-flights-from-nyc-in-2013",
     "href": "slides/07-layers/07-layers.html#data-flights-from-nyc-in-2013",
     "title": "ggplot2 layers",
-    "section": "Data: Flights from NYC in 2013",
-    "text": "Data: Flights from NYC in 2013\nWe will be using the nycflights13::flights dataset. This dataset contains information about all flights that departed from New York City (EWR, LGA, JFK) in 2013.\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…"
+    "section": "",
+    "text": "We will be using the nycflights13::flights dataset. This dataset contains information about all flights that departed from New York City (EWR, LGA, JFK) in 2013.\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…"
   },
   {
     "objectID": "slides/07-layers/07-layers.html#a-simple-scatterplot",
     "href": "slides/07-layers/07-layers.html#a-simple-scatterplot",
     "title": "ggplot2 layers",
-    "section": "A simple scatterplot",
-    "text": "A simple scatterplot\nLet’s create a simple scatterplot of departure delay vs. arrival delay."
+    "section": "",
+    "text": "Let’s create a simple scatterplot of departure delay vs. arrival delay."
   },
   {
     "objectID": "slides/07-layers/07-layers.html#adding-layers",
     "href": "slides/07-layers/07-layers.html#adding-layers",
     "title": "ggplot2 layers",
-    "section": "Adding layers",
-    "text": "Adding layers\nA plot is composed of layers. Each layer has:\n\nA geom: The geometric object that represents the data (e.g., points, lines, bars).\nAn aesthetic mapping: How variables are mapped to visual properties.\nA stat: A statistical transformation (e.g., counting, summarizing).\nA position adjustment: How to arrange elements that would otherwise overlap."
+    "section": "",
+    "text": "A plot is composed of layers. Each layer has:\n\nA geom: The geometric object that represents the data (e.g., points, lines, bars).\nAn aesthetic mapping: How variables are mapped to visual properties.\nA stat: A statistical transformation (e.g., counting, summarizing).\nA position adjustment: How to arrange elements that would otherwise overlap."
   },
   {
     "objectID": "slides/07-layers/07-layers.html#adding-a-layer-trend-line-with-geom_smooth",
     "href": "slides/07-layers/07-layers.html#adding-a-layer-trend-line-with-geom_smooth",
     "title": "ggplot2 layers",
-    "section": "Adding a layer: Trend line with geom_smooth()",
-    "text": "Adding a layer: Trend line with geom_smooth()\nLet’s add a trend line… What does se = FALSE do?"
+    "section": "",
+    "text": "Let’s add a trend line… What does se = FALSE do?"
   },
   {
     "objectID": "slides/07-layers/07-layers.html#global-vs.-local-mappings",
@@ -1595,21 +1595,21 @@
     "href": "slides/07-layers/07-layers.html#setting-vs.-mapping",
     "title": "ggplot2 layers",
     "section": "Setting vs. Mapping",
-    "text": "Setting vs. Mapping\n\nTo apply a constant property to all points, set it outside of aes()\n\n\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(color = \"blue\")"
+    "text": "Setting vs. Mapping\n\nTo apply a constant property to all points, set it outside of aes()\n\n\n\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(color = \"blue\")"
   },
   {
     "objectID": "slides/07-layers/07-layers.html#common-geoms",
     "href": "slides/07-layers/07-layers.html#common-geoms",
     "title": "ggplot2 layers",
     "section": "Common geoms",
-    "text": "Common geoms\n\ngeom_point(): Scatterplots\ngeom_line(): Line charts\ngeom_bar(): Bar charts\ngeom_histogram(): Histograms\ngeom_boxplot(): Boxplots\ngeom_smooth(): Trend lines\ngeom_density(): Density plots\nMany more!"
+    "text": "Common geoms\n\n\ngeom_point(): Scatterplots\n\ngeom_line(): Line charts\n\ngeom_bar(): Bar charts\n\ngeom_histogram(): Histograms\n\ngeom_boxplot(): Boxplots\n\ngeom_smooth(): Trend lines\n\ngeom_density(): Density plots\nMany more!"
   },
   {
     "objectID": "slides/07-layers/07-layers.html#geom_bar-vs-geom_col",
     "href": "slides/07-layers/07-layers.html#geom_bar-vs-geom_col",
     "title": "ggplot2 layers",
-    "section": "geom_bar vs geom_col",
-    "text": "geom_bar vs geom_col\n\ngeom_bar() uses stat_count() by default to count the number of observations for each category\n\n\nggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar()"
+    "section": "\ngeom_bar vs geom_col\n",
+    "text": "geom_bar vs geom_col\n\n\n\ngeom_bar() uses stat_count() by default to count the number of observations for each category\n\n\nggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar()"
   },
   {
     "objectID": "slides/07-layers/07-layers.html#changing-the-stat-argument",
@@ -1651,7 +1651,7 @@
     "href": "slides/07-layers/07-layers.html#bar-chart-adjustments",
     "title": "ggplot2 layers",
     "section": "Bar chart adjustments",
-    "text": "Bar chart adjustments\nFor bar charts, you can use position to change how bars are arranged.\n\nstack (default): Stack bars on top of each other.\nfill: Stack bars, but standardize to have the same height. Good for comparing proportions.\ndodge: Place bars next to each other."
+    "text": "Bar chart adjustments\nFor bar charts, you can use position to change how bars are arranged.\n\n\nstack (default): Stack bars on top of each other.\n\nfill: Stack bars, but standardize to have the same height. Good for comparing proportions.\n\ndodge: Place bars next to each other."
   },
   {
     "objectID": "slides/07-layers/07-layers.html#bar-chart-adjustments-1",
@@ -1685,8 +1685,8 @@
     "objectID": "slides/07-layers/07-layers.html#facet_wrap-and-facet_grid",
     "href": "slides/07-layers/07-layers.html#facet_wrap-and-facet_grid",
     "title": "ggplot2 layers",
-    "section": "facet_wrap and facet_grid",
-    "text": "facet_wrap and facet_grid\n\nFacets allow you to break your plot into subplots based on a categorical variable.\nfacet_wrap: Creates a series of plots wrapped into a rectangle\nfacet_grid: Creates a grid of plots based on two categorical variables"
+    "section": "\nfacet_wrap and facet_grid\n",
+    "text": "facet_wrap and facet_grid\n\n\nFacets allow you to break your plot into subplots based on a categorical variable.\n\nfacet_wrap: Creates a series of plots wrapped into a rectangle\n\nfacet_grid: Creates a grid of plots based on two categorical variables"
   },
   {
     "objectID": "slides/07-layers/07-layers.html#practice-1",
@@ -1720,8 +1720,8 @@
     "objectID": "slides/09-communication/09-communication.html#communicating-results",
     "href": "slides/09-communication/09-communication.html#communicating-results",
     "title": "Communication",
-    "section": "Communicating Results",
-    "text": "Communicating Results\n\nSo far, we’ve focused on using ggplot2 for exploration.\nNow, we’ll focus on how to use ggplot2 to create explanatory graphics.\nThe goal is to communicate your findings to others.\nWe will learn how to polish your plots for communication."
+    "section": "",
+    "text": "So far, we’ve focused on using ggplot2 for exploration.\nNow, we’ll focus on how to use ggplot2 to create explanatory graphics.\nThe goal is to communicate your findings to others.\nWe will learn how to polish your plots for communication."
   },
   {
     "objectID": "slides/09-communication/09-communication.html#labs",
@@ -1735,7 +1735,7 @@
     "href": "slides/09-communication/09-communication.html#adding-text",
     "title": "Communication",
     "section": "Adding Text",
-    "text": "Adding Text\n\nYou can use geom_text() to add text to your plot.\nIt’s similar to other geoms, but has an label aesthetic.\nggrepel package for making text and labels that repel away from each other to avoid overlapping."
+    "text": "Adding Text\n\nYou can use geom_text() to add text to your plot.\nIt’s similar to other geoms, but has an label aesthetic.\n\nggrepel package for making text and labels that repel away from each other to avoid overlapping."
   },
   {
     "objectID": "slides/09-communication/09-communication.html#practice",
@@ -1756,7 +1756,7 @@
     "href": "slides/09-communication/09-communication.html#example",
     "title": "Communication",
     "section": "Example",
-    "text": "Example\n\n\nCode\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point() +\n  annotate(\n    \"rect\", \n    xmin = 5, xmax = 7, ymin = 10, ymax = 25, \n    fill = \"red\", alpha = 0.2\n  ) +\n  annotate(\n    \"text\", x = 6, y = 12, label = \"Large engines are inefficient\",\n    color = \"red\", hjust = 0.5\n  )"
+    "text": "Example\n\nCodeggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point() +\n  annotate(\n    \"rect\", \n    xmin = 5, xmax = 7, ymin = 10, ymax = 25, \n    fill = \"red\", alpha = 0.2\n  ) +\n  annotate(\n    \"text\", x = 6, y = 12, label = \"Large engines are inefficient\",\n    color = \"red\", hjust = 0.5\n  )"
   },
   {
     "objectID": "slides/09-communication/09-communication.html#axis-ticks",
@@ -1770,42 +1770,42 @@
     "href": "slides/09-communication/09-communication.html#example-ticks",
     "title": "Communication",
     "section": "Example: Ticks",
-    "text": "Example: Ticks\n\n\nCode\nggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  scale_x_continuous(\n    breaks = seq(0, 5, by = 1), \n    labels = c(\"0\", \"1 carat\", \"2 carats\", \"3 carats\", \"4 carats\", \"5 carats\")\n  ) +\n  scale_y_continuous(labels = scales::dollar)"
+    "text": "Example: Ticks\n\nCodeggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  scale_x_continuous(\n    breaks = seq(0, 5, by = 1), \n    labels = c(\"0\", \"1 carat\", \"2 carats\", \"3 carats\", \"4 carats\", \"5 carats\")\n  ) +\n  scale_y_continuous(labels = scales::dollar)"
   },
   {
     "objectID": "slides/09-communication/09-communication.html#legend-layout",
     "href": "slides/09-communication/09-communication.html#legend-layout",
     "title": "Communication",
     "section": "Legend Layout",
-    "text": "Legend Layout\n\nUse theme(legend.position = ...) to move the legend.\n\nValues: \"right\", \"left\", \"top\", \"bottom\", \"none\".\n\nUse guides() to control legend appearance, like the number of rows."
+    "text": "Legend Layout\n\nUse theme(legend.position = ...) to move the legend.\n\nValues: \"right\", \"left\", \"top\", \"bottom\", \"none\".\n\n\nUse guides() to control legend appearance, like the number of rows."
   },
   {
     "objectID": "slides/09-communication/09-communication.html#example-legend",
     "href": "slides/09-communication/09-communication.html#example-legend",
     "title": "Communication",
     "section": "Example: Legend",
-    "text": "Example: Legend\n\n\nCode\nbase &lt;- ggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = class))\n\nbase + \n  theme(legend.position = \"bottom\") +\n  guides(color = guide_legend(nrow = 2, override.aes = list(size = 4)))"
+    "text": "Example: Legend\n\nCodebase &lt;- ggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = class))\n\nbase + \n  theme(legend.position = \"bottom\") +\n  guides(color = guide_legend(nrow = 2, override.aes = list(size = 4)))"
   },
   {
     "objectID": "slides/09-communication/09-communication.html#color-scales",
     "href": "slides/09-communication/09-communication.html#color-scales",
     "title": "Communication",
     "section": "Color Scales",
-    "text": "Color Scales\n\nUse scale_color_*() functions to control color scales.\nscale_color_brewer() uses hand-picked, colorblind-friendly palettes.\nscale_color_viridis_c() is a continuous color scale that is perceptually uniform and colorblind friendly."
+    "text": "Color Scales\n\nUse scale_color_*() functions to control color scales.\n\nscale_color_brewer() uses hand-picked, colorblind-friendly palettes.\n\nscale_color_viridis_c() is a continuous color scale that is perceptually uniform and colorblind friendly."
   },
   {
     "objectID": "slides/09-communication/09-communication.html#example-color-brewer",
     "href": "slides/09-communication/09-communication.html#example-color-brewer",
     "title": "Communication",
     "section": "Example: Color Brewer",
-    "text": "Example: Color Brewer\n\n\nCode\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = drv)) +\n  scale_color_brewer(palette = \"Set1\")"
+    "text": "Example: Color Brewer\n\nCodeggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = drv)) +\n  scale_color_brewer(palette = \"Set1\")"
   },
   {
     "objectID": "slides/09-communication/09-communication.html#manual-color-scale",
     "href": "slides/09-communication/09-communication.html#manual-color-scale",
     "title": "Communication",
     "section": "Manual Color Scale",
-    "text": "Manual Color Scale\n\nWhen you have a predefined mapping between values and colors, use scale_color_manual().\n\n\n\nCode\nggplot(mpg, aes(x = displ, y = hwy, color = drv)) +\n  geom_point() +\n  scale_color_manual(values = c(\"4\" = \"navy\", \"f\" = \"darkred\", \"r\" = \"darkgreen\"))"
+    "text": "Manual Color Scale\n\nWhen you have a predefined mapping between values and colors, use scale_color_manual().\n\n\nCodeggplot(mpg, aes(x = displ, y = hwy, color = drv)) +\n  geom_point() +\n  scale_color_manual(values = c(\"4\" = \"navy\", \"f\" = \"darkred\", \"r\" = \"darkgreen\"))"
   },
   {
     "objectID": "slides/09-communication/09-communication.html#axis-transformations",
@@ -1819,7 +1819,7 @@
     "href": "slides/09-communication/09-communication.html#example-1",
     "title": "Communication",
     "section": "Example",
-    "text": "Example\n\n\n\n\nCode\n# Transformed in aesthetic\nggplot(diamonds, aes(x = log10(carat), y = log10(price))) +\n  geom_bin2d()\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nggplot(diamonds, aes(x = carat, y = price)) +\n  geom_bin2d() +\n  scale_x_log10() +\n  scale_y_log10()"
+    "text": "Example\n\n\n\nCode# Transformed in aesthetic\nggplot(diamonds, aes(x = log10(carat), y = log10(price))) +\n  geom_bin2d()\n\n\n\n\n\n\n\n\n\nCodeggplot(diamonds, aes(x = carat, y = price)) +\n  geom_bin2d() +\n  scale_x_log10() +\n  scale_y_log10()"
   },
   {
     "objectID": "slides/09-communication/09-communication.html#coord_cartesian",
@@ -1833,21 +1833,21 @@
     "href": "slides/09-communication/09-communication.html#example-2",
     "title": "Communication",
     "section": "Example",
-    "text": "Example\n\n\nCode\np1 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1)\n\np2 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  coord_cartesian(xlim = c(0, 1), ylim = c(0, 5000))\n\np3 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  coord_cartesian(xlim = c(0, 0.5), ylim = c(0, 3000))\n\np1 + p2 + p3"
+    "text": "Example\n\nCodep1 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1)\n\np2 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  coord_cartesian(xlim = c(0, 1), ylim = c(0, 5000))\n\np3 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  coord_cartesian(xlim = c(0, 0.5), ylim = c(0, 3000))\n\np1 + p2 + p3"
   },
   {
     "objectID": "slides/09-communication/09-communication.html#built-in-themes",
     "href": "slides/09-communication/09-communication.html#built-in-themes",
     "title": "Communication",
     "section": "Built-in Themes",
-    "text": "Built-in Themes\n\nggplot2 comes with several built-in themes: theme_gray(), theme_bw(), theme_minimal(), theme_classic(), theme_light(), and theme_dark().\nYou can set a theme globally with theme_set()."
+    "text": "Built-in Themes\n\n\nggplot2 comes with several built-in themes: theme_gray(), theme_bw(), theme_minimal(), theme_classic(), theme_light(), and theme_dark().\nYou can set a theme globally with theme_set()."
   },
   {
     "objectID": "slides/09-communication/09-communication.html#example-3",
     "href": "slides/09-communication/09-communication.html#example-3",
     "title": "Communication",
     "section": "Example",
-    "text": "Example\n\n\nCode\nggplot(mpg, aes(x = displ, y = hwy, color = class)) +\n  geom_point() +\n  theme_classic()"
+    "text": "Example\n\nCodeggplot(mpg, aes(x = displ, y = hwy, color = class)) +\n  geom_point() +\n  theme_classic()"
   },
   {
     "objectID": "slides/09-communication/09-communication.html#ggthemes",
@@ -1979,15 +1979,15 @@
     "objectID": "slides/00-welcome/00-welcome.html#instructor",
     "href": "slides/00-welcome/00-welcome.html#instructor",
     "title": "Welcome to CSCI 2025",
-    "section": "Instructor",
-    "text": "Instructor\nDr. Eric Friedlander\nBoone 126B\nefriedlander@collegeofidaho.edu"
+    "section": "",
+    "text": "Dr. Eric Friedlander\nBoone 126B\nefriedlander@collegeofidaho.edu"
   },
   {
     "objectID": "slides/00-welcome/00-welcome.html#timetable",
     "href": "slides/00-welcome/00-welcome.html#timetable",
     "title": "Welcome to CSCI 2025",
-    "section": "Timetable",
-    "text": "Timetable\n\nLectures\n\nM-TH 1-3pm - CML 105\n\nOffice Hours\n\nM-TH 10-11am - Boone 126B\nOr by appointment\n\nTutor Hours\n\nT 3-5pm - Jewett Tutoring Center (I think)"
+    "section": "",
+    "text": "Lectures\n\nM-TH 1-3pm - CML 105\n\nOffice Hours\n\nM-TH 10-11am - Boone 126B\nOr by appointment\n\nTutor Hours\n\nT 3-5pm - Jewett Tutoring Center (I think)"
   },
   {
     "objectID": "slides/00-welcome/00-welcome.html#tutor-rabin-kalikote",
@@ -2085,7 +2085,7 @@
     "href": "slides/00-welcome/00-welcome.html#ungrading",
     "title": "Welcome to CSCI 2025",
     "section": "(Un)Grading",
-    "text": "(Un)Grading\n\nYou will (mostly) be in charge of determining your own grade\nAfter each class period, you will reflect on your learning and participation and assign yourself a grade\nYou will also self assess your projects\nAt the end of the semester, your final grade will be 50% based on your daily reflections, 25% based on your team project, and 25% based on your individual project\n\n\n\nHOWEVER:\n\n\n\n\nYou can fail\nIf I feel that you aren’t being honest with your self assessments, I will adjust your grade accordingly"
+    "text": "(Un)Grading\n\nYou will (mostly) be in charge of determining your own grade\nAfter each class period, you will reflect on your learning and participation and assign yourself a grade\nYou will also self assess your projects\nAt the end of the semester, your final grade will be 50% based on your daily reflections, 25% based on your team project, and 25% based on your individual project\n\n. . .\n\nHOWEVER:\n\n. . .\n\nYou can fail\nIf I feel that you aren’t being honest with your self assessments, I will adjust your grade accordingly"
   },
   {
     "objectID": "slides/00-welcome/00-welcome.html#ways-to-fail-this-class-or-get-a-d",
@@ -2147,29 +2147,29 @@
     "objectID": "slides/08-eda/08-eda.html#exploratory-data-analysis",
     "href": "slides/08-eda/08-eda.html#exploratory-data-analysis",
     "title": "Exploratory Data Analysis",
-    "section": "Exploratory Data Analysis",
-    "text": "Exploratory Data Analysis\nEDA is an iterative cycle. You:\n\nGenerate questions about your data.\nSearch for answers by visualizing, transforming, and modelling your data.\nUse what you learn to refine your questions and/or generate new questions."
+    "section": "",
+    "text": "EDA is an iterative cycle. You:\n\nGenerate questions about your data.\nSearch for answers by visualizing, transforming, and modelling your data.\nUse what you learn to refine your questions and/or generate new questions."
   },
   {
     "objectID": "slides/08-eda/08-eda.html#fun-quotes",
     "href": "slides/08-eda/08-eda.html#fun-quotes",
     "title": "Exploratory Data Analysis",
-    "section": "Fun Quotes",
-    "text": "Fun Quotes\n\n“There are no routine statistical questions, only questionable statistical routines.” — Sir David Cox\n\n\n\n“Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.” — John Tukey"
+    "section": "",
+    "text": "“There are no routine statistical questions, only questionable statistical routines.” — Sir David Cox\n\n. . .\n\n“Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.” — John Tukey"
   },
   {
     "objectID": "slides/08-eda/08-eda.html#guiding-questions",
     "href": "slides/08-eda/08-eda.html#guiding-questions",
     "title": "Exploratory Data Analysis",
-    "section": "Guiding Questions",
-    "text": "Guiding Questions\nTwo main types of questions to ask:\n\nWhat type of variation occurs within my variables?\nWhat type of covariation occurs between my variables?"
+    "section": "",
+    "text": "Two main types of questions to ask:\n\nWhat type of variation occurs within my variables?\nWhat type of covariation occurs between my variables?"
   },
   {
     "objectID": "slides/08-eda/08-eda.html#data-tips",
     "href": "slides/08-eda/08-eda.html#data-tips",
     "title": "Exploratory Data Analysis",
-    "section": "Data: tips",
-    "text": "Data: tips\n\nWe will use the tips dataset from the reshape2 package (you will likely have to install it)."
+    "section": "",
+    "text": "We will use the tips dataset from the reshape2 package (you will likely have to install it)."
   },
   {
     "objectID": "slides/08-eda/08-eda.html#visualizing-distributions",
@@ -2224,22 +2224,22 @@
     "objectID": "slides/08-eda/08-eda.html#data-mpg",
     "href": "slides/08-eda/08-eda.html#data-mpg",
     "title": "Exploratory Data Analysis",
-    "section": "Data: mpg",
-    "text": "Data: mpg\n\nWe will also use the mpg dataset from the ggplot2 package.\nIt contains information about the fuel economy of different car models.\n\n\nglimpse(mpg)\n\nRows: 234\nColumns: 11\n$ manufacturer &lt;chr&gt; \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"…\n$ model        &lt;chr&gt; \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4 quattro\", \"…\n$ displ        &lt;dbl&gt; 1.8, 1.8, 2.0, 2.0, 2.8, 2.8, 3.1, 1.8, 1.8, 2.0, 2.0, 2.…\n$ year         &lt;int&gt; 1999, 1999, 2008, 2008, 1999, 1999, 2008, 1999, 1999, 200…\n$ cyl          &lt;int&gt; 4, 4, 4, 4, 6, 6, 6, 4, 4, 4, 4, 6, 6, 6, 6, 6, 6, 8, 8, …\n$ trans        &lt;chr&gt; \"auto(l5)\", \"manual(m5)\", \"manual(m6)\", \"auto(av)\", \"auto…\n$ drv          &lt;chr&gt; \"f\", \"f\", \"f\", \"f\", \"f\", \"f\", \"f\", \"4\", \"4\", \"4\", \"4\", \"4…\n$ cty          &lt;int&gt; 18, 21, 20, 21, 16, 18, 18, 18, 16, 20, 19, 15, 17, 17, 1…\n$ hwy          &lt;int&gt; 29, 29, 31, 30, 26, 26, 27, 26, 25, 28, 27, 25, 25, 25, 2…\n$ fl           &lt;chr&gt; \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p…\n$ class        &lt;chr&gt; \"compact\", \"compact\", \"compact\", \"compact\", \"compact\", \"c…"
+    "section": "Data: mpg\n",
+    "text": "Data: mpg\n\n\nWe will also use the mpg dataset from the ggplot2 package.\nIt contains information about the fuel economy of different car models.\n\n\nglimpse(mpg)\n\nRows: 234\nColumns: 11\n$ manufacturer &lt;chr&gt; \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"…\n$ model        &lt;chr&gt; \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4 quattro\", \"…\n$ displ        &lt;dbl&gt; 1.8, 1.8, 2.0, 2.0, 2.8, 2.8, 3.1, 1.8, 1.8, 2.0, 2.0, 2.…\n$ year         &lt;int&gt; 1999, 1999, 2008, 2008, 1999, 1999, 2008, 1999, 1999, 200…\n$ cyl          &lt;int&gt; 4, 4, 4, 4, 6, 6, 6, 4, 4, 4, 4, 6, 6, 6, 6, 6, 6, 8, 8, …\n$ trans        &lt;chr&gt; \"auto(l5)\", \"manual(m5)\", \"manual(m6)\", \"auto(av)\", \"auto…\n$ drv          &lt;chr&gt; \"f\", \"f\", \"f\", \"f\", \"f\", \"f\", \"f\", \"4\", \"4\", \"4\", \"4\", \"4…\n$ cty          &lt;int&gt; 18, 21, 20, 21, 16, 18, 18, 18, 16, 20, 19, 15, 17, 17, 1…\n$ hwy          &lt;int&gt; 29, 29, 31, 30, 26, 26, 27, 26, 25, 28, 27, 25, 25, 25, 2…\n$ fl           &lt;chr&gt; \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p…\n$ class        &lt;chr&gt; \"compact\", \"compact\", \"compact\", \"compact\", \"compact\", \"c…"
   },
   {
     "objectID": "slides/08-eda/08-eda.html#visualizing-relationships",
     "href": "slides/08-eda/08-eda.html#visualizing-relationships",
     "title": "Exploratory Data Analysis",
     "section": "Visualizing Relationships",
-    "text": "Visualizing Relationships\n\nCovariation: how do two variables change together? What is their relationship?\nVisualizing covariation helps you understand relationships between variables\nYou need to think and plan carefully about how to display multiple distributions in a single plot"
+    "text": "Visualizing Relationships\n\n\nCovariation: how do two variables change together? What is their relationship?\nVisualizing covariation helps you understand relationships between variables\nYou need to think and plan carefully about how to display multiple distributions in a single plot"
   },
   {
     "objectID": "slides/08-eda/08-eda.html#recall-three-general-cases",
     "href": "slides/08-eda/08-eda.html#recall-three-general-cases",
     "title": "Exploratory Data Analysis",
     "section": "Recall: Three general cases",
-    "text": "Recall: Three general cases\n\nCategorical + Categorical\n\nBoxplots\n\nCategorical + Numerical\n\nBoxplots, jitter plots, faceted histograms\n\nNumerical + Numerical\n\nScatterplots, jitter plots"
+    "text": "Recall: Three general cases\n\nCategorical + Categorical\n\nBoxplots\n\n\nCategorical + Numerical\n\nBoxplots, jitter plots, faceted histograms\n\n\nNumerical + Numerical\n\nScatterplots, jitter plots"
   },
   {
     "objectID": "slides/08-eda/08-eda.html#reordering-categories",
@@ -2253,7 +2253,7 @@
     "href": "slides/08-eda/08-eda.html#some-new-plots",
     "title": "Exploratory Data Analysis",
     "section": "Some new plots",
-    "text": "Some new plots\n\nCategorical + Categorical\n\nMosaic plots, count plots, tile plots\n\nCategorical + Numerical\n\nViolin plots, sina plots, ridgeline plots, frequency polygons\n\nNumerical + Numerical\n\n2D-Histogram/heatmap of counts, hexbin plots"
+    "text": "Some new plots\n\nCategorical + Categorical\n\nMosaic plots, count plots, tile plots\n\n\nCategorical + Numerical\n\nViolin plots, sina plots, ridgeline plots, frequency polygons\n\n\nNumerical + Numerical\n\n2D-Histogram/heatmap of counts, hexbin plots"
   },
   {
     "objectID": "slides/08-eda/08-eda.html#practice-1",
@@ -2267,7 +2267,7 @@
     "href": "slides/08-eda/08-eda.html#patterns-1",
     "title": "Exploratory Data Analysis",
     "section": "Patterns",
-    "text": "Patterns\n\nPatterns in your data hint at relationships. If you can spot a pattern, ask yourself:\n\nCould this pattern be due to coincidence?\nHow can you describe the relationship implied by the pattern?\nHow strong is the relationship implied by the pattern?\nWhat other variables might affect the relationship?\nDoes the relationship change if you look at individual subgroups of the data?\n\nModels can help you extract the strong patterns and leave the weaker ones."
+    "text": "Patterns\n\nPatterns in your data hint at relationships. If you can spot a pattern, ask yourself:\n\nCould this pattern be due to coincidence?\nHow can you describe the relationship implied by the pattern?\nHow strong is the relationship implied by the pattern?\nWhat other variables might affect the relationship?\nDoes the relationship change if you look at individual subgroups of the data?\n\n\nModels can help you extract the strong patterns and leave the weaker ones."
   },
   {
     "objectID": "slides/08-eda/08-eda.html#transformations",
@@ -2281,7 +2281,7 @@
     "href": "slides/08-eda/08-eda.html#the-power-of-logs",
     "title": "Exploratory Data Analysis",
     "section": "The power of logs",
-    "text": "The power of logs\n\nPower law: when \\(y = ax^k\\)\n\nTaking the log of both sides gives: \\(\\log(y) = \\log(a) + k\\log(x)\\)\nIntuitively: multiplying x by a constant multiplies y by a constant.\n\nPower law’s are extremely common in nature:\n\nParetto principle (80/20 rule)\nCity sizes\nEarthquake magnitudes\nWealth distributions\nBacteria growth"
+    "text": "The power of logs\n\nPower law: when \\(y = ax^k\\)\n\nTaking the log of both sides gives: \\(\\log(y) = \\log(a) + k\\log(x)\\)\n\nIntuitively: multiplying x by a constant multiplies y by a constant.\n\n\nPower law’s are extremely common in nature:\n\nParetto principle (80/20 rule)\nCity sizes\nEarthquake magnitudes\nWealth distributions\nBacteria growth"
   },
   {
     "objectID": "slides/08-eda/08-eda.html#practice-2",
@@ -2308,15 +2308,15 @@
     "objectID": "slides/11-numbers/11-numbers.html#working-with-numbers",
     "href": "slides/11-numbers/11-numbers.html#working-with-numbers",
     "title": "Numbers",
-    "section": "Working with Numbers",
-    "text": "Working with Numbers\n\nNumeric data is the most common type of data you’ll work with.\nThis lecture covers creating, transforming, and summarizing numeric vectors.\nWe’ll use functions from base R and dplyr."
+    "section": "",
+    "text": "Numeric data is the most common type of data you’ll work with.\nThis lecture covers creating, transforming, and summarizing numeric vectors.\nWe’ll use functions from base R and dplyr."
   },
   {
     "objectID": "slides/11-numbers/11-numbers.html#parsing-numbers",
     "href": "slides/11-numbers/11-numbers.html#parsing-numbers",
     "title": "Numbers",
     "section": "Parsing Numbers",
-    "text": "Parsing Numbers\n\nSometimes numbers are stored as text (strings).\nreadr::parse_double() converts strings to numbers, assuming they are just numbers.\nreadr::parse_number() is more flexible and can extract numbers from strings with other text."
+    "text": "Parsing Numbers\n\nSometimes numbers are stored as text (strings).\n\nreadr::parse_double() converts strings to numbers, assuming they are just numbers.\n\nreadr::parse_number() is more flexible and can extract numbers from strings with other text."
   },
   {
     "objectID": "slides/11-numbers/11-numbers.html#example",
@@ -2330,7 +2330,7 @@
     "href": "slides/11-numbers/11-numbers.html#count",
     "title": "Numbers",
     "section": "count()",
-    "text": "count()\n\ndplyr::count() is a quick way to count the number of rows for each unique value of a variable.\nIt’s a shortcut for group_by() and summarize(n = n())."
+    "text": "count()\n\n\ndplyr::count() is a quick way to count the number of rows for each unique value of a variable.\nIt’s a shortcut for group_by() and summarize(n = n())."
   },
   {
     "objectID": "slides/11-numbers/11-numbers.html#example-1",
@@ -2365,7 +2365,7 @@
     "href": "slides/11-numbers/11-numbers.html#basic-operators",
     "title": "Numbers",
     "section": "Basic Operators",
-    "text": "Basic Operators\n\nR provides the standard arithmetic operators: +, -, *, /, ^.\n%% (remainder) and %/% (integer division) are useful for modular arithmetic."
+    "text": "Basic Operators\n\nR provides the standard arithmetic operators: +, -, *, /, ^.\n\n%% (remainder) and %/% (integer division) are useful for modular arithmetic."
   },
   {
     "objectID": "slides/11-numbers/11-numbers.html#example-3",
@@ -2386,14 +2386,14 @@
     "href": "slides/11-numbers/11-numbers.html#rounding",
     "title": "Numbers",
     "section": "Rounding",
-    "text": "Rounding\n\nround(x): rounds to the nearest integer, can specify number of digits.\nfloor(x): always rounds down.\nceiling(x): always rounds up."
+    "text": "Rounding\n\n\nround(x): rounds to the nearest integer, can specify number of digits.\n\nfloor(x): always rounds down.\n\nceiling(x): always rounds up."
   },
   {
     "objectID": "slides/11-numbers/11-numbers.html#cutting",
     "href": "slides/11-numbers/11-numbers.html#cutting",
     "title": "Numbers",
     "section": "Cutting",
-    "text": "Cutting\n\ncut() divides a numeric vector into a set of discrete bins (a factor).\nYou can specify the breaks for the bins."
+    "text": "Cutting\n\n\ncut() divides a numeric vector into a set of discrete bins (a factor).\nYou can specify the breaks for the bins."
   },
   {
     "objectID": "slides/11-numbers/11-numbers.html#practice-1",
@@ -2407,42 +2407,42 @@
     "href": "slides/11-numbers/11-numbers.html#ranks",
     "title": "Numbers",
     "section": "Ranks",
-    "text": "Ranks\n\ndplyr::min_rank() gives ranks, handling ties by giving them the same rank.\nUse desc() to rank from highest to lowest.\nrow_number() is similar but gives each row a unique rank."
+    "text": "Ranks\n\n\ndplyr::min_rank() gives ranks, handling ties by giving them the same rank.\nUse desc() to rank from highest to lowest.\n\nrow_number() is similar but gives each row a unique rank."
   },
   {
     "objectID": "slides/11-numbers/11-numbers.html#offsets",
     "href": "slides/11-numbers/11-numbers.html#offsets",
     "title": "Numbers",
     "section": "Offsets",
-    "text": "Offsets\n\ndplyr::lag() gets the previous value in a vector.\ndplyr::lead() gets the next value.\nUseful for computing differences or finding changes."
+    "text": "Offsets\n\n\ndplyr::lag() gets the previous value in a vector.\n\ndplyr::lead() gets the next value.\nUseful for computing differences or finding changes."
   },
   {
     "objectID": "slides/11-numbers/11-numbers.html#center",
     "href": "slides/11-numbers/11-numbers.html#center",
     "title": "Numbers",
     "section": "Center",
-    "text": "Center\n\nmean(): the average value. Can be sensitive to outliers.\nmedian(): the middle value. More robust to outliers."
+    "text": "Center\n\n\nmean(): the average value. Can be sensitive to outliers.\n\nmedian(): the middle value. More robust to outliers."
   },
   {
     "objectID": "slides/11-numbers/11-numbers.html#spread",
     "href": "slides/11-numbers/11-numbers.html#spread",
     "title": "Numbers",
     "section": "Spread",
-    "text": "Spread\n\nsd(): standard deviation, measures how spread out the data is around the mean.\nIQR(): interquartile range (Q3 - Q1), measures the spread of the middle 50% of the data."
+    "text": "Spread\n\n\nsd(): standard deviation, measures how spread out the data is around the mean.\n\nIQR(): interquartile range (Q3 - Q1), measures the spread of the middle 50% of the data."
   },
   {
     "objectID": "slides/11-numbers/11-numbers.html#position",
     "href": "slides/11-numbers/11-numbers.html#position",
     "title": "Numbers",
     "section": "Position",
-    "text": "Position\n\nmin() and max(): the minimum and maximum values.\nquantile(x, p): finds the value that is greater than p% of the data.\n\nquantile(x, 0.25) is the 25th percentile (Q1).\nmedian(x) is a shortcut for quantile(x, 0.5)."
+    "text": "Position\n\n\nmin() and max(): the minimum and maximum values.\n\nquantile(x, p): finds the value that is greater than p% of the data.\n\n\nquantile(x, 0.25) is the 25th percentile (Q1).\n\nmedian(x) is a shortcut for quantile(x, 0.5)."
   },
   {
     "objectID": "slides/11-numbers/11-numbers.html#numbers",
     "href": "slides/11-numbers/11-numbers.html#numbers",
     "title": "Numbers",
     "section": "Numbers",
-    "text": "Numbers\n\nCreate with parse_number().\nTransform with arithmetic, logs, rounding, and cut().\ncount() is a powerful tool for quick exploration.\nUse ranks (min_rank) and offsets (lag, lead) for more complex analysis.\nSummarize with measures of center (mean, median), spread (sd, IQR), and position (min, max, quantile)."
+    "text": "Numbers\n\nCreate with parse_number().\nTransform with arithmetic, logs, rounding, and cut().\n\ncount() is a powerful tool for quick exploration.\nUse ranks (min_rank) and offsets (lag, lead) for more complex analysis.\nSummarize with measures of center (mean, median), spread (sd, IQR), and position (min, max, quantile)."
   },
   {
     "objectID": "slides/11-numbers/11-numbers.html#do-next",
@@ -2514,5 +2514,215 @@
     "title": "GEMINI.md: Project Overview and Contributor Guide",
     "section": "",
     "text": "To work on this project, you will need to have Quarto installed. You can download it from the Quarto website.\n\n\nTo render and preview the website locally, run the following command in your terminal from the project’s root directory:\nquarto preview\nThis will start a local web server and open the site in your browser. The site will automatically refresh when you save changes to any of the source files.\n\n\n\nTo render the entire website without previewing it, use the following command:\nquarto render\nThis will generate all the static files and place them in the _site/ directory. This is typically done for deployment."
+  },
+  {
+    "objectID": "projects/group_project/overview.html",
+    "href": "projects/group_project/overview.html",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "Course: CSCI-2025: Data Manipulation and Visualization (Winter Term)\nClient: Academic Program Review Committee\nTimeline: 7 Sessions (2-Week Sprint)\n\n\n\nThe class will function as a single data science consultancy divided into four “Feature Pods.” The goal is to build one unified Shiny Dashboard that allows academic departments to analyze equity gaps in their programs.\nInstead of building four separate apps, we are building four Modules that integrate into a single “Golden Repository.”\n\n\n\n\n\n\nThe class is divided into four teams. Each team owns one “tab” of the final application.\n\nTeam Access (The “Who is here?” Team)\n\nFocus: Enrollment demographics vs. College-wide benchmarks.\nKey Stats: Representation Indices, Population Pyramids.\n\nTeam Gatekeeper (The “Who passes?” Team)\n\nFocus: DFW (D, F, Withdrawal) rates in specific courses.\nKey Stats: Pass rates by demographic group.\n\nTeam Retention (The “Who stays?” Team)\n\nFocus: Persistence from Year 1 to Graduation.\nKey Stats: Cohort analysis, Sankey diagrams.\n\nTeam Outcome (The “Gap” Team)\n\nFocus: Graduation GPA and Time-to-Degree gaps.\nKey Stats: Difference in Means, Error bar plots.\n\n\n\n\n\nEvery student has a specific title and responsibility within their team.\n\n\n\n\n\n\n\n\nRole\nResponsibility\nKey Deliverable\n\n\n\n\nGitHub Sentinel (Tech Lead)\nManages the git branch, resolves merge conflicts, and manages renv.lock.\nThe clean Merge; Repo health.\n\n\nData Steward (Data Engineer)\nETL processes and Privacy Protection. Masks data if N &lt; 5.\nclean_data.R; Anonymized datasets.\n\n\nChart Artist (Viz Specialist)\nCreates high-quality static ggplot2/plotly visualizations.\nPlot functions (e.g., plot_gpa()).\n\n\nInterface Architect (Shiny Dev)\nWires the UI/Server logic. Connects inputs to the plots.\nui and server module code.\n\n\nNarrative Lead (Context/QA)\nWrites dynamic “Mad Libs” text using glue() to interpret charts automatically.\nrenderText() logic; Help tooltips.\n\n\nStat Validator (Teams of 6)\nManually validates calculations in Excel/R to ensure dashboard accuracy.\nValidation report.\n\n\n\n\n\n\n\n\nTo ensure the dashboard looks cohesive, students across teams will meet in “Guilds” twice during the project.\n\nThe UI Guild (Chart Artists): Decides on the CSS theme, color palette (e.g., College Purple), and font choices.\nThe Data Guild (Stewards): Agrees on variable naming conventions and the “Small N” suppression threshold.\nThe Code Guild (Sentinels): Agrees on the Git branching strategy and dependency management.\n\n\n\n\n\n\n\nStudents will clone a repository pre-scaffolded by the instructor.\n\nglobal.R: Shared libraries and data loading (Read-Only for students).\napp.R: The main shell application (Read-Only).\nmodules/:\n\nmod_access.R (Team 1 Workspace)\nmod_gatekeeper.R (Team 2 Workspace)\nmod_retention.R (Team 3 Workspace)\nmod_outcome.R (Team 4 Workspace)\n\ndata/: Stores the clean .rds files.\nrenv/: Manages package dependencies.\n\n\n\n\nWe will use a “Mad Libs” approach to narrative. The Narrative Lead creates logic that adapts to the user’s selection: * Static: Definitions of metrics (never changes). * Dynamic: “The DFW rate for [Biology] is [12%], which is [lower] than the college average.” * Privacy: “Data hidden due to small sample size (N &lt; 5).”\n\n\n\n\n\n\n\n\n\n\n\n\n\nSession\nPhase\nKey Activity\n\n\n\n\nDay 1\nFoundation\nThe Data Contract. Teams agree on variable names. Clone the repo.\n\n\nDay 2\nStatic Viz\nGuild Meetings. Work strictly in RMarkdown/Quarto to build static plots.\n\n\nDay 3\nConstruction\nShiny-fication. Migrate static plots into Module UI. Focus on layout.\n\n\nDay 4\nReactivity\nWiring. Implement reactive() logic (sliders, dropdowns) and “Mad Libs” text.\n\n\nDay 5\nIntegration\nThe Merge Party. Teams PR their modules into main. Resolve conflicts.\n\n\nDay 6\nPolish\nBug Smashing. Fix UI inconsistencies, check tab order, refine CSS.\n\n\nDay 7\nDelivery\nClient Demo. Final deployment and presentation to the client.\n\n\n\n\n\n\n\n\nBranching: Use Trunk-Based Development. Branch from main -&gt; feature/team-name -&gt; PR back to main.\nNo Direct Pushes: All code must enter main via a Pull Request (PR).\nThe “Sentinel” Rule: Only the Team GitHub Sentinel is authorized to open a PR.\nDependency Lockdown: Do not install new library packages without instructor approval. If approved, renv::snapshot() must be run immediately.\n\n\n\n\n\nBefore Day 1, the Instructor must: 1. Create the Repository: Initialize the RProject with renv. 2. Scaffold the Modules: Create the empty mod_teamX.R files so students have a place to start. 3. Clean the Data (Partially): Ensure the dataset is joinable, even if it requires further cleaning by the Data Stewards."
+  },
+  {
+    "objectID": "projects/group_project/overview.html#project-overview",
+    "href": "projects/group_project/overview.html#project-overview",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "The class will function as a single data science consultancy divided into four “Feature Pods.” The goal is to build one unified Shiny Dashboard that allows academic departments to analyze equity gaps in their programs.\nInstead of building four separate apps, we are building four Modules that integrate into a single “Golden Repository.”"
+  },
+  {
+    "objectID": "projects/group_project/overview.html#team-structure-the-cluster-pod-model",
+    "href": "projects/group_project/overview.html#team-structure-the-cluster-pod-model",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "The class is divided into four teams. Each team owns one “tab” of the final application.\n\nTeam Access (The “Who is here?” Team)\n\nFocus: Enrollment demographics vs. College-wide benchmarks.\nKey Stats: Representation Indices, Population Pyramids.\n\nTeam Gatekeeper (The “Who passes?” Team)\n\nFocus: DFW (D, F, Withdrawal) rates in specific courses.\nKey Stats: Pass rates by demographic group.\n\nTeam Retention (The “Who stays?” Team)\n\nFocus: Persistence from Year 1 to Graduation.\nKey Stats: Cohort analysis, Sankey diagrams.\n\nTeam Outcome (The “Gap” Team)\n\nFocus: Graduation GPA and Time-to-Degree gaps.\nKey Stats: Difference in Means, Error bar plots.\n\n\n\n\n\nEvery student has a specific title and responsibility within their team.\n\n\n\n\n\n\n\n\nRole\nResponsibility\nKey Deliverable\n\n\n\n\nGitHub Sentinel (Tech Lead)\nManages the git branch, resolves merge conflicts, and manages renv.lock.\nThe clean Merge; Repo health.\n\n\nData Steward (Data Engineer)\nETL processes and Privacy Protection. Masks data if N &lt; 5.\nclean_data.R; Anonymized datasets.\n\n\nChart Artist (Viz Specialist)\nCreates high-quality static ggplot2/plotly visualizations.\nPlot functions (e.g., plot_gpa()).\n\n\nInterface Architect (Shiny Dev)\nWires the UI/Server logic. Connects inputs to the plots.\nui and server module code.\n\n\nNarrative Lead (Context/QA)\nWrites dynamic “Mad Libs” text using glue() to interpret charts automatically.\nrenderText() logic; Help tooltips.\n\n\nStat Validator (Teams of 6)\nManually validates calculations in Excel/R to ensure dashboard accuracy.\nValidation report."
+  },
+  {
+    "objectID": "projects/group_project/overview.html#collaboration-the-guilds",
+    "href": "projects/group_project/overview.html#collaboration-the-guilds",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "To ensure the dashboard looks cohesive, students across teams will meet in “Guilds” twice during the project.\n\nThe UI Guild (Chart Artists): Decides on the CSS theme, color palette (e.g., College Purple), and font choices.\nThe Data Guild (Stewards): Agrees on variable naming conventions and the “Small N” suppression threshold.\nThe Code Guild (Sentinels): Agrees on the Git branching strategy and dependency management."
+  },
+  {
+    "objectID": "projects/group_project/overview.html#technical-architecture",
+    "href": "projects/group_project/overview.html#technical-architecture",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "Students will clone a repository pre-scaffolded by the instructor.\n\nglobal.R: Shared libraries and data loading (Read-Only for students).\napp.R: The main shell application (Read-Only).\nmodules/:\n\nmod_access.R (Team 1 Workspace)\nmod_gatekeeper.R (Team 2 Workspace)\nmod_retention.R (Team 3 Workspace)\nmod_outcome.R (Team 4 Workspace)\n\ndata/: Stores the clean .rds files.\nrenv/: Manages package dependencies.\n\n\n\n\nWe will use a “Mad Libs” approach to narrative. The Narrative Lead creates logic that adapts to the user’s selection: * Static: Definitions of metrics (never changes). * Dynamic: “The DFW rate for [Biology] is [12%], which is [lower] than the college average.” * Privacy: “Data hidden due to small sample size (N &lt; 5).”"
+  },
+  {
+    "objectID": "projects/group_project/overview.html#the-7-session-sprint-timeline",
+    "href": "projects/group_project/overview.html#the-7-session-sprint-timeline",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "Session\nPhase\nKey Activity\n\n\n\n\nDay 1\nFoundation\nThe Data Contract. Teams agree on variable names. Clone the repo.\n\n\nDay 2\nStatic Viz\nGuild Meetings. Work strictly in RMarkdown/Quarto to build static plots.\n\n\nDay 3\nConstruction\nShiny-fication. Migrate static plots into Module UI. Focus on layout.\n\n\nDay 4\nReactivity\nWiring. Implement reactive() logic (sliders, dropdowns) and “Mad Libs” text.\n\n\nDay 5\nIntegration\nThe Merge Party. Teams PR their modules into main. Resolve conflicts.\n\n\nDay 6\nPolish\nBug Smashing. Fix UI inconsistencies, check tab order, refine CSS.\n\n\nDay 7\nDelivery\nClient Demo. Final deployment and presentation to the client."
+  },
+  {
+    "objectID": "projects/group_project/overview.html#development-workflow-rules",
+    "href": "projects/group_project/overview.html#development-workflow-rules",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "Branching: Use Trunk-Based Development. Branch from main -&gt; feature/team-name -&gt; PR back to main.\nNo Direct Pushes: All code must enter main via a Pull Request (PR).\nThe “Sentinel” Rule: Only the Team GitHub Sentinel is authorized to open a PR.\nDependency Lockdown: Do not install new library packages without instructor approval. If approved, renv::snapshot() must be run immediately."
+  },
+  {
+    "objectID": "projects/group_project/overview.html#instructor-prep-pre-game",
+    "href": "projects/group_project/overview.html#instructor-prep-pre-game",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "Before Day 1, the Instructor must: 1. Create the Repository: Initialize the RProject with renv. 2. Scaffold the Modules: Create the empty mod_teamX.R files so students have a place to start. 3. Clean the Data (Partially): Ensure the dataset is joinable, even if it requires further cleaning by the Data Stewards."
+  },
+  {
+    "objectID": "classwork/03-day-3.html",
+    "href": "classwork/03-day-3.html",
+    "title": "Challenges!",
+    "section": "",
+    "text": "Some challenges to practice your skills!"
+  },
+  {
+    "objectID": "classwork/01-tidy-tuesday.html",
+    "href": "classwork/01-tidy-tuesday.html",
+    "title": "Our First Analysis",
+    "section": "",
+    "text": "Today we’re going to split up into groups and each analyze a data set of our choice\nWe will take turns presenting on what we’ve done\nAfter each presentation, we’ll have a brief discussion where we critique each other’s analysis"
+  },
+  {
+    "objectID": "slides/10-logicals/10-logicals.html",
+    "href": "slides/10-logicals/10-logicals.html",
+    "title": "Logical Vectors",
+    "section": "",
+    "text": "A logical vector is a vector that contains only TRUE, FALSE, and NA (missing) values.\nThey are rarely in your raw data, but you will create and use them in almost every analysis.\nLogical vectors are the foundation of filtering and conditional transformations.\nIn CS Logical Vectors are often called “Boolean” vectors."
+  },
+  {
+    "objectID": "slides/05-data-tidying/05-data-tidying.html",
+    "href": "slides/05-data-tidying/05-data-tidying.html",
+    "title": "Data Tidying",
+    "section": "",
+    "text": "Define “tidy data”\nLearn how to use tidyr to make data tidy\n\n\npivot_longer() for lengthening data\n\npivot_wider() for widening data"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html",
+    "href": "slides/00-welcome/00-welcome.html",
+    "title": "Welcome to CSCI 2025",
+    "section": "",
+    "text": "Dr. Eric Friedlander\nBoone 126B\nefriedlander@collegeofidaho.edu\n\n\n\n\nLectures\n\nM-TH 1-3pm - CML 105\n\nOffice Hours\n\nM-TH 10-11am - Boone 126B\nOr by appointment\n\nTutor Hours\n\nT 3-5pm - Jewett Tutoring Center (I think)"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html",
+    "href": "slides/07-layers/07-layers.html",
+    "title": "ggplot2 layers",
+    "section": "",
+    "text": "We will be using the nycflights13::flights dataset. This dataset contains information about all flights that departed from New York City (EWR, LGA, JFK) in 2013.\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…\n\n\n\nLet’s create a simple scatterplot of departure delay vs. arrival delay.\n\nA plot is composed of layers. Each layer has:\n\nA geom: The geometric object that represents the data (e.g., points, lines, bars).\nAn aesthetic mapping: How variables are mapped to visual properties.\nA stat: A statistical transformation (e.g., counting, summarizing).\nA position adjustment: How to arrange elements that would otherwise overlap.\n\nLet’s add a trend line… What does se = FALSE do?"
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html",
+    "href": "slides/09-communication/09-communication.html",
+    "title": "Communication",
+    "section": "",
+    "text": "So far, we’ve focused on using ggplot2 for exploration.\nNow, we’ll focus on how to use ggplot2 to create explanatory graphics.\nThe goal is to communicate your findings to others.\nWe will learn how to polish your plots for communication."
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html",
+    "href": "slides/08-eda/08-eda.html",
+    "title": "Exploratory Data Analysis",
+    "section": "",
+    "text": "EDA is an iterative cycle. You:\n\nGenerate questions about your data.\nSearch for answers by visualizing, transforming, and modelling your data.\nUse what you learn to refine your questions and/or generate new questions.\n\n\n“There are no routine statistical questions, only questionable statistical routines.” — Sir David Cox\n\n. . .\n\n“Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.” — John Tukey\n\n\nTwo main types of questions to ask:\n\nWhat type of variation occurs within my variables?\nWhat type of covariation occurs between my variables?\n\n\nWe will use the tips dataset from the reshape2 package (you will likely have to install it)."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html",
+    "href": "slides/11-numbers/11-numbers.html",
+    "title": "Numbers",
+    "section": "",
+    "text": "Numeric data is the most common type of data you’ll work with.\nThis lecture covers creating, transforming, and summarizing numeric vectors.\nWe’ll use functions from base R and dplyr."
+  },
+  {
+    "objectID": "slides/01-intro-to-R/01-intro-to-R.html",
+    "href": "slides/01-intro-to-R/01-intro-to-R.html",
+    "title": "R Basics",
+    "section": "",
+    "text": "Make sure you have done the following:\n\nDownloaded and installed R\nDownloaded and installed Positron (or R Studio)\nCreated a Gemini Pro AI account (free for students)"
+  },
+  {
+    "objectID": "slides/12-strings/12-strings.html",
+    "href": "slides/12-strings/12-strings.html",
+    "title": "Strings",
+    "section": "",
+    "text": "Text data, or “strings”, are very common.\nThe stringr package, part of the tidyverse, provides a modern and consistent interface for working with strings.\nAll functions in stringr start with str_.\n\n\nWe’re going to use Naturalization data from the Idaho State Archives\nThis dataset was assembled by Dr. Rachel Miller\nLink to Google Sheet\nLet’s load the data"
+  },
+  {
+    "objectID": "slides/06-importing/06-importing-data.html",
+    "href": "slides/06-importing/06-importing-data.html",
+    "title": "Importing Data",
+    "section": "",
+    "text": "Learn how to import data into R using the readr package.\nUnderstand how readr parses files and how to control it.\nLearn how to write data from R back to a file.\nBecome aware of other packages for importing different file types."
+  },
+  {
+    "objectID": "classwork/02-pivoting.html",
+    "href": "classwork/02-pivoting.html",
+    "title": "More Analysis",
+    "section": "",
+    "text": "Return to TidyTuesday analysis from last class\nWork with some real experimental data generated from by Dr. Belissimo’s class"
+  },
+  {
+    "objectID": "projects/group_project/project-overview.html",
+    "href": "projects/group_project/project-overview.html",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "Course: CSCI-2025: Data Manipulation and Visualization (Winter Term)\nClient: Mark Heidrich, Associate Vice President for Institutional Effectiveness and Registrar\n\n\nThe class will function as a single data science consultancy divided into four “Feature Pods.” The goal is to build one unified Shiny Dashboard that allows academic departments to analyze equity gaps in their programs.\nInstead of building four separate apps, we are building four Modules that integrate into a single “Golden Github Repository.”\n\n\n\n\n\nThe class is divided into four teams. Each team owns one “tab” of the final application.\n\nPod 1: Enrollment\nPod 2: Performance\nPod 3: Retention\nPod 4: Outcomes\n\n\n\n\nEvery student has a specific title and responsibility within their team.\n\n\n\n\n\n\n\n\nRole\nResponsibility\nKey Deliverable\n\n\n\n\nGitHub Sentinel/Team Leader (Teach Lead)\nManages the git branch, resolves merge conflicts, and manages renv.lock.\nThe clean Merge; Repo health.\n\n\nData Steward (Data Engineer)\nETL processes and Privacy Protection. Masks data if N &lt; 5.\nclean_data.R; Anonymized datasets.\n\n\nChart Artist (Viz Specialist)\nCreates high-quality static visualizations.\nPlot functions (e.g., plot_gpa()).\n\n\nInterface Architect (Shiny Dev)\nWires the UI/Server logic. Connects inputs to the plots.\nui and server module code.\n\n\nNarrative Lead (Context/QA)\nWrites dynamic “Mad Libs” text to interpret charts automatically.\nrenderText() logic; Help tooltips.\n\n\n\n\n\n\n\nTo ensure the dashboard looks cohesive, students across teams will meet in “Guilds”.\n\nThe Code Guild (Sentinels): Agrees on the Git branching strategy and dependency management.\nThe Data Guild (Stewards): Agrees on variable naming conventions and the “Small N” suppression threshold.\nThe UI Guild (Chart Artists): Decides aesthetic conventions for project (e.g. colors, fonts, themes, etc.).\nThe Shiny Guild (Interface Architects): Standardizes UI layout and input types across modules.\nThe Narrative Guild (Narrative Leads): Standardizes the “Mad Libs” text structure for consistency.\n\n\n\n\n\n\nStudents will clone a repository pre-scaffolded by the instructor.\n\nglobal.R: Shared libraries and data loading (Read-Only for students).\napp.R: The main shell application (Read-Only).\nmodules/:\n\nmod_access.R (Team 1 Workspace)\nmod_gatekeeper.R (Team 2 Workspace)\nmod_retention.R (Team 3 Workspace)\nmod_outcome.R (Team 4 Workspace)\n\ndata/: Stores the clean data files.\nrenv/: Manages package dependencies.\n\n\n\n\n\n\n\nBranching: Use Trunk-Based Development. Branch from main -&gt; feature/team-name -&gt; PR back to main.\nNo Direct Pushes: All code must enter main via a Pull Request (PR).\nThe “Sentinel” Rule: Only the Team GitHub Sentinel is authorized to open a PR.\nDependency Lockdown: Do not install new library packages without instructor approval. If approved, renv::snapshot() must be run immediately."
+  },
+  {
+    "objectID": "projects/group_project/project-overview.html#project-overview",
+    "href": "projects/group_project/project-overview.html#project-overview",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "The class will function as a single data science consultancy divided into four “Feature Pods.” The goal is to build one unified Shiny Dashboard that allows academic departments to analyze equity gaps in their programs.\nInstead of building four separate apps, we are building four Modules that integrate into a single “Golden Github Repository.”"
+  },
+  {
+    "objectID": "projects/group_project/project-overview.html#team-structure-the-cluster-pod-model",
+    "href": "projects/group_project/project-overview.html#team-structure-the-cluster-pod-model",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "The class is divided into four teams. Each team owns one “tab” of the final application.\n\nPod 1: Enrollment\nPod 2: Performance\nPod 3: Retention\nPod 4: Outcomes\n\n\n\n\nEvery student has a specific title and responsibility within their team.\n\n\n\n\n\n\n\n\nRole\nResponsibility\nKey Deliverable\n\n\n\n\nGitHub Sentinel/Team Leader\nManages the git branch, resolves merge conflicts, and manages renv.lock.\nThe clean Merge; Repo health.\n\n\nData Steward (Data Engineer)\nETL processes and Privacy Protection. Masks data if N &lt; 5.\nclean_data.R; Anonymized datasets.\n\n\nChart Artist (Viz Specialist)\nCreates high-quality static ggplot2/plotly visualizations.\nPlot functions (e.g., plot_gpa()).\n\n\nInterface Architect (Shiny Dev)\nWires the UI/Server logic. Connects inputs to the plots.\nui and server module code.\n\n\nNarrative Lead (Context/QA)\nWrites dynamic “Mad Libs” text using glue() to interpret charts automatically.\nrenderText() logic; Help tooltips.\n\n\nStat Validator (Teams of 6)\nManually validates calculations in Excel/R to ensure dashboard accuracy.\nValidation report."
+  },
+  {
+    "objectID": "projects/group_project/project-overview.html#collaboration-the-guilds",
+    "href": "projects/group_project/project-overview.html#collaboration-the-guilds",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "To ensure the dashboard looks cohesive, students across teams will meet in “Guilds”.\n\nThe Code Guild (Sentinels): Agrees on the Git branching strategy and dependency management.\nThe Data Guild (Stewards): Agrees on variable naming conventions and the “Small N” suppression threshold.\nThe UI Guild (Chart Artists): Decides aesthetic conventions for project (e.g. colors, fonts, themes, etc.).\nThe Shiny Guild (Interface Architects): Standardizes UI layout and input types across modules.\nThe Narrative Guild (Narrative Leads): Standardizes the “Mad Libs” text structure for consistency."
+  },
+  {
+    "objectID": "projects/group_project/project-overview.html#technical-architecture",
+    "href": "projects/group_project/project-overview.html#technical-architecture",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "Students will clone a repository pre-scaffolded by the instructor.\n\nglobal.R: Shared libraries and data loading (Read-Only for students).\napp.R: The main shell application (Read-Only).\nmodules/:\n\nmod_access.R (Team 1 Workspace)\nmod_gatekeeper.R (Team 2 Workspace)\nmod_retention.R (Team 3 Workspace)\nmod_outcome.R (Team 4 Workspace)\n\ndata/: Stores the clean data files.\nrenv/: Manages package dependencies."
+  },
+  {
+    "objectID": "projects/group_project/project-overview.html#the-7-session-sprint-timeline",
+    "href": "projects/group_project/project-overview.html#the-7-session-sprint-timeline",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "Session\nPhase\nKey Activity\n\n\n\n\nDay 1\nFoundation\nThe Data Contract. Teams agree on variable names. Clone the repo.\n\n\nDay 2\nStatic Viz\nGuild Meetings. Work strictly in RMarkdown/Quarto to build static plots.\n\n\nDay 3\nConstruction\nShiny-fication. Migrate static plots into Module UI. Focus on layout.\n\n\nDay 4\nReactivity\nWiring. Implement reactive() logic (sliders, dropdowns) and “Mad Libs” text.\n\n\nDay 5\nIntegration\nThe Merge Party. Teams PR their modules into main. Resolve conflicts.\n\n\nDay 6\nPolish\nBug Smashing. Fix UI inconsistencies, check tab order, refine CSS.\n\n\nDay 7\nDelivery\nClient Demo. Final deployment and presentation to the client."
+  },
+  {
+    "objectID": "projects/group_project/project-overview.html#development-workflow-rules",
+    "href": "projects/group_project/project-overview.html#development-workflow-rules",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "Branching: Use Trunk-Based Development. Branch from main -&gt; feature/team-name -&gt; PR back to main.\nNo Direct Pushes: All code must enter main via a Pull Request (PR).\nThe “Sentinel” Rule: Only the Team GitHub Sentinel is authorized to open a PR.\nDependency Lockdown: Do not install new library packages without instructor approval. If approved, renv::snapshot() must be run immediately."
+  },
+  {
+    "objectID": "projects/group_project/project-overview.html#instructor-prep-pre-game",
+    "href": "projects/group_project/project-overview.html#instructor-prep-pre-game",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "Before Day 1, the Instructor must: 1. Create the Repository: Initialize the RProject with renv. 2. Scaffold the Modules: Create the empty mod_teamX.R files so students have a place to start. 3. Clean the Data (Partially): Ensure the dataset is joinable, even if it requires further cleaning by the Data Stewards."
+  },
+  {
+    "objectID": "projects/group_project/project-overview.html#team-structure",
+    "href": "projects/group_project/project-overview.html#team-structure",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "The class is divided into four teams. Each team owns one “tab” of the final application.\n\nPod 1: Enrollment\nPod 2: Performance\nPod 3: Retention\nPod 4: Outcomes\n\n\n\n\nEvery student has a specific title and responsibility within their team.\n\n\n\n\n\n\n\n\nRole\nResponsibility\nKey Deliverable\n\n\n\n\nGitHub Sentinel/Team Leader (Teach Lead)\nManages the git branch, resolves merge conflicts, and manages renv.lock.\nThe clean Merge; Repo health.\n\n\nData Steward (Data Engineer)\nETL processes and Privacy Protection. Masks data if N &lt; 5.\nclean_data.R; Anonymized datasets.\n\n\nChart Artist (Viz Specialist)\nCreates high-quality static visualizations.\nPlot functions (e.g., plot_gpa()).\n\n\nInterface Architect (Shiny Dev)\nWires the UI/Server logic. Connects inputs to the plots.\nui and server module code.\n\n\nNarrative Lead (Context/QA)\nWrites dynamic “Mad Libs” text to interpret charts automatically.\nrenderText() logic; Help tooltips."
   }
 ]
