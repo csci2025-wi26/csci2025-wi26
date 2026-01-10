@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-html/tabby.min.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d6a2ae2cb249da1580f0a11f71b8f854.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-d6a2ae2cb249da1580f0a11f71b8f854.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.26">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
-  <title>CSCI 2025 – Joins</title>
+  <title>CSCI 2025 – Group Project Introduction</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -28,80 +28,14 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #97947a;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #97947a;  padding-left: 4px; }
-    div.sourceCode
-      { color: #f8f8f2; background-color: #2b2b2b; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #f8f8f2; } /* Normal */
-    code span.al { color: #dcc6e0; } /* Alert */
-    code span.an { color: #d4d0ab; } /* Annotation */
-    code span.at { color: #ffd700; } /* Attribute */
-    code span.bn { color: #dcc6e0; } /* BaseN */
-    code span.bu { color: #f5ab35; } /* BuiltIn */
-    code span.cf { color: #ffa07a; } /* ControlFlow */
-    code span.ch { color: #abe338; } /* Char */
-    code span.cn { color: #ffa07a; } /* Constant */
-    code span.co { color: #d4d0ab; } /* Comment */
-    code span.cv { color: #d4d0ab; font-style: italic; } /* CommentVar */
-    code span.do { color: #d4d0ab; font-style: italic; } /* Documentation */
-    code span.dt { color: #dcc6e0; } /* DataType */
-    code span.dv { color: #dcc6e0; } /* DecVal */
-    code span.er { color: #dcc6e0; } /* Error */
-    code span.ex { color: #ffd700; } /* Extension */
-    code span.fl { color: #f5ab35; } /* Float */
-    code span.fu { color: #ffd700; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #d4d0ab; } /* Information */
-    code span.kw { color: #ffa07a; } /* Keyword */
-    code span.op { color: #00e0e0; } /* Operator */
-    code span.ot { color: #ffa07a; } /* Other */
-    code span.pp { color: #dcc6e0; } /* Preprocessor */
-    code span.sc { color: #00e0e0; } /* SpecialChar */
-    code span.ss { color: #abe338; } /* SpecialString */
-    code span.st { color: #abe338; } /* String */
-    code span.va { color: #f5ab35; } /* Variable */
-    code span.vs { color: #abe338; } /* VerbatimString */
-    code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-bbdd004fd2b3e45c32e264a29407a69e.css">
-  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-bbdd004fd2b3e45c32e264a29407a69e.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -194,9 +128,9 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="../vizdata-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Joins</h1>
-  <p class="subtitle">Lecture 16</p>
+<section id="title-slide" data-background-image="title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
+  <h1 class="title">Group Project Introduction</h1>
+  <p class="subtitle">Equity Analysis Dashboard</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -211,219 +145,203 @@ Dr.&nbsp;Eric Friedlander
 
 </section>
 <section>
-<section id="introduction" class="title-slide slide level1 center">
-<h1>Introduction</h1>
+<section id="academic-program-review" class="title-slide slide level1 center">
+<h1>Academic Program Review</h1>
 
 </section>
-<section id="combining-datasets" class="slide level2">
-<h2>Combining Datasets</h2>
+<section id="academic-program-review-1" class="slide level2">
+<h2>Academic Program Review</h2>
 <ul>
-<li>Joins are used to combine data from different tables based on a set of common variables (“keys”).</li>
-<li><code>dplyr</code> provides a family of join functions.</li>
-<li>We will use data from the <code>nycflights13</code> package.</li>
+<li>Departments review their programs every 5 years.</li>
+<li>This “program review” is then submitted to our accrediting body.</li>
+<li>Let’s take a look at the Guidelines Document</li>
+</ul>
+</section>
+<section id="our-part" class="slide level2">
+<h2>Our part</h2>
+<ul>
+<li>How is disaggregated data utilized in exploring whether there are equity gaps and what steps have resulted for its use? (1.D.2) (1.D.4)</li>
+<li>Review Criteria 1.D.2 and 1.D.4 in the Guidelines Document.</li>
 </ul>
 </section></section>
 <section>
-<section id="keys" class="title-slide slide level1 center">
-<h1>Keys</h1>
+<section id="the-goal" class="title-slide slide level1 center">
+<h1>The Goal</h1>
 
 </section>
-<section id="primary-and-foreign-keys" class="slide level2">
-<h2>Primary and Foreign Keys</h2>
+<section id="project-overview" class="slide level2">
+<h2>Project Overview</h2>
 <ul>
-<li>A <strong>primary key</strong> is a variable (or set of variables) that uniquely identifies each observation in a table.</li>
-<li>A <strong>foreign key</strong> is a variable (or set of variables) in one table that corresponds to a primary key in another table.</li>
-<li>Keys are what link tables together.</li>
-</ul>
-</section>
-<section id="dataset-1-flights" class="slide level2">
-<h2>Dataset 1: <code>flights</code></h2>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">glimpse</span>(flights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 336,776
-Columns: 19
-$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…
-$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …
-$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …
-$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…
-$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…
-$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…
-$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…
-$ carrier        &lt;chr&gt; "UA", "UA", "AA", "B6", "DL", "UA", "B6", "EV", "B6", "…
-$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…
-$ tailnum        &lt;chr&gt; "N14228", "N24211", "N619AA", "N804JB", "N668DN", "N394…
-$ origin         &lt;chr&gt; "EWR", "LGA", "JFK", "JFK", "LGA", "EWR", "EWR", "LGA",…
-$ dest           &lt;chr&gt; "IAH", "IAH", "MIA", "BQN", "ATL", "ORD", "FLL", "IAD",…
-$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…
-$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …
-$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…
-$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…
-$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…</code></pre>
-</div>
-</div>
-</section>
-<section id="dataset-2-airlines" class="slide level2">
-<h2>Dataset 2: <code>airlines</code></h2>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">glimpse</span>(airlines)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 16
-Columns: 2
-$ carrier &lt;chr&gt; "9E", "AA", "AS", "B6", "DL", "EV", "F9", "FL", "HA", "MQ", "O…
-$ name    &lt;chr&gt; "Endeavor Air Inc.", "American Airlines Inc.", "Alaska Airline…</code></pre>
-</div>
-</div>
-</section></section>
-<section>
-<section id="mutating-joins" class="title-slide slide level1 center">
-<h1>Mutating Joins</h1>
-
-</section>
-<section id="left_join" class="slide level2">
-<h2><code>left_join()</code></h2>
-<ul>
-<li><code>left_join()</code> is the most commonly used join.</li>
-<li>It returns all rows from the left table (<code>x</code>), and all columns from both tables (<code>x</code> and <code>y</code>).</li>
-<li>Rows in <code>x</code> with no match in <code>y</code> will have <code>NA</code> values in the new columns.</li>
-<li>Rows in <code>y</code> with no match in <code>x</code> are ignored.</li>
-<li>Rows in <code>y</code> that match multiple rows in <code>x</code> will result in duplicated rows in the output (and vice versa).</li>
-</ul>
-</section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>flights2 <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span> <span class="fu">select</span>(year<span class="sc">:</span>day, hour, origin, dest, tailnum, carrier)</span>
-<span id="cb5-2"><a></a>flights2 <span class="sc">|&gt;</span> <span class="fu">left_join</span>(airlines, <span class="at">by =</span> <span class="st">"carrier"</span>) <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 336,776
-Columns: 9
-$ year    &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 20…
-$ month   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
-$ day     &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
-$ hour    &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 6, 6,…
-$ origin  &lt;chr&gt; "EWR", "LGA", "JFK", "JFK", "LGA", "EWR", "EWR", "LGA", "JFK",…
-$ dest    &lt;chr&gt; "IAH", "IAH", "MIA", "BQN", "ATL", "ORD", "FLL", "IAD", "MCO",…
-$ tailnum &lt;chr&gt; "N14228", "N24211", "N619AA", "N804JB", "N668DN", "N39463", "N…
-$ carrier &lt;chr&gt; "UA", "UA", "AA", "B6", "DL", "UA", "B6", "EV", "B6", "AA", "B…
-$ name    &lt;chr&gt; "United Air Lines Inc.", "United Air Lines Inc.", "American Ai…</code></pre>
-</div>
-</div>
-</section>
-<section id="other-mutating-joins" class="slide level2">
-<h2>Other Mutating Joins</h2>
-<ul>
-<li><code>inner_join()</code>: returns only rows that have a match in both tables.</li>
-<li><code>right_join()</code>: returns all rows from the right table.</li>
-<li><code>full_join()</code>: returns all rows from both tables.</li>
+<li><strong>Client:</strong> Mark Heidrich (AVP for Institutional Effectiveness)</li>
+<li><strong>Objective:</strong> Build a <strong>unified Dashboard</strong> for analyzing equity gaps in academic programs.</li>
+<li><strong>One Data Science Consultancy:</strong> The entire class working together.</li>
 </ul>
 </section></section>
 <section>
-<section id="filtering-joins" class="title-slide slide level1 center">
-<h1>Filtering Joins</h1>
+<section id="team-structure" class="title-slide slide level1 center">
+<h1>Team Structure</h1>
 
 </section>
-<section id="semi_join" class="slide level2">
-<h2><code>semi_join()</code></h2>
+<section id="the-hierarchy" class="slide level2">
+<h2>The Hierarchy</h2>
 <ul>
-<li><code>semi_join()</code> keeps all rows from the left table (<code>x</code>) that have a match in the right table (<code>y</code>).</li>
-<li>It does not add any columns from <code>y</code>.</li>
+<li><strong>Core Team (Management)</strong>
+<ul>
+<li>Product Owner (“Client VP”)</li>
+<li>Lead Architect (“Tech VP”)</li>
+<li>“Guild Leaders”</li>
+<li>Instructor (Dr.&nbsp;Friedlander)</li>
+</ul></li>
+<li><strong>Feature Teams</strong>
+<ul>
+<li>Team 1: Enrollment</li>
+<li>Team 2: Performance</li>
+<li>Team 3: Retention</li>
+<li>Team 4: Outcomes</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="feature-team-roles" class="title-slide slide level1 center">
+<h1>Feature Team Roles</h1>
+
+</section>
+<section id="github-sentinel-team-lead" class="slide level2">
+<h2>1. Github Sentinel (Team Lead)</h2>
+<ul>
+<li><strong>Skills:</strong> Git, Organization, Conflict Resolution, Jack-Of-All trades.</li>
+<li><strong>Responsibility:</strong>
+<ul>
+<li>Manages the team’s “branch” (workspace).</li>
+<li>Resolves “merge conflicts” (when code clashes).</li>
+<li>Ensures the team’s code safely enters the main project.</li>
+</ul></li>
+<li><em>The only person authorized to submit code updates to the Tech VP.</em></li>
 </ul>
 </section>
-<section id="example-1" class="slide level2">
-<h2>Example</h2>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>top_dest <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a></a>  <span class="fu">count</span>(dest, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
-<span id="cb7-4"><a></a></span>
-<span id="cb7-5"><a></a>flights <span class="sc">|&gt;</span> <span class="fu">semi_join</span>(top_dest)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Joining with `by = join_by(dest)`</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 141,145 × 19
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013     1     1      542            540         2      923            850
- 2  2013     1     1      554            600        -6      812            837
- 3  2013     1     1      554            558        -4      740            728
- 4  2013     1     1      555            600        -5      913            854
- 5  2013     1     1      557            600        -3      838            846
- 6  2013     1     1      558            600        -2      753            745
- 7  2013     1     1      558            600        -2      924            917
- 8  2013     1     1      558            600        -2      923            937
- 9  2013     1     1      559            559         0      702            706
-10  2013     1     1      600            600         0      851            858
-# ℹ 141,135 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="anti_join" class="slide level2">
-<h2><code>anti_join()</code></h2>
+<section id="data-steward-data-engineer" class="slide level2">
+<h2>2. Data Steward (Data Engineer)</h2>
 <ul>
-<li><code>anti_join()</code> returns all rows from <code>x</code> that do <strong>not</strong> have a match in <code>y</code>.</li>
-<li>Useful for finding observations that don’t have a match.</li>
+<li><strong>Skills:</strong> <code>dplyr</code>, Data Cleaning, Ethics.</li>
+<li><strong>Responsibility:</strong>
+<ul>
+<li>Writes <code>clean_data.R</code>.</li>
+<li><strong>Privacy Protection:</strong> Ensures no student is identifiable (masks data if sample size too small).</li>
+<li>Creates clean, anonymized datasets for the team.</li>
+</ul></li>
 </ul>
 </section>
-<section id="example-2" class="slide level2">
-<h2>Example</h2>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>flights <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a></a>  <span class="fu">anti_join</span>(planes, <span class="at">by =</span> <span class="st">"tailnum"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb10-3"><a></a>  <span class="fu">count</span>(tailnum, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 722 × 2
-   tailnum     n
-   &lt;chr&gt;   &lt;int&gt;
- 1 &lt;NA&gt;     2512
- 2 N725MQ    575
- 3 N722MQ    513
- 4 N723MQ    507
- 5 N713MQ    483
- 6 N735MQ    396
- 7 N0EGMQ    371
- 8 N534MQ    364
- 9 N542MQ    363
-10 N531MQ    349
-# ℹ 712 more rows</code></pre>
-</div>
-</div>
+<section id="chart-artist-viz-specialist" class="slide level2">
+<h2>3. Chart Artist (Viz Specialist)</h2>
+<ul>
+<li><strong>Skills:</strong> <code>ggplot2</code>, Visualization Design.</li>
+<li><strong>Responsibility:</strong>
+<ul>
+<li>Creates high-quality static visualizations.</li>
+<li>Writes plot functions (e.g., <code>plot_gpa()</code>).</li>
+<li>Ensures all charts match the design system (colors, fonts).</li>
+</ul></li>
+</ul>
 </section>
-<section id="practice" class="slide level2">
-<h2>Practice!</h2>
-<p>Let’s practice joins!</p>
+<section id="interface-architect-shiny-dev" class="slide level2">
+<h2>4. Interface Architect (Shiny Dev)</h2>
+<ul>
+<li><strong>Skills:</strong> Shiny UI/Server, Layouts.</li>
+<li><strong>Responsibility:</strong>
+<ul>
+<li>Wires the User Interface (buttons, sliders, tabs).</li>
+<li>Connects inputs to the Chart Artist’s plots.</li>
+<li>Ensures the interactive elements work smoothly.</li>
+</ul></li>
+</ul>
+</section>
+<section id="narrative-lead-contextqa" class="slide level2">
+<h2>5. Narrative Lead (Context/QA)</h2>
+<ul>
+<li><strong>Skills:</strong> Writing, Interpretation, <code>stringr</code>.</li>
+<li><strong>Responsibility:</strong>
+<ul>
+<li>Writes dynamic text to interpret charts automatically (“Mad Libs” style).</li>
+<li>Explains <em>what</em> the data shows to the user.</li>
+<li>Acts as Quality Assurance for the team’s module.</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="collaboration" class="title-slide slide level1 center">
+<h1>Collaboration</h1>
+
+</section>
+<section id="the-guilds" class="slide level2">
+<h2>The Guilds</h2>
+<ul>
+<li><strong>Code Guild:</strong> Sentinels + Lead Architect (Git &amp; Process).</li>
+<li><strong>UI Guild:</strong> Chart Artists + Product Owner (Design &amp; Style).</li>
+<li><strong>Data Guild:</strong> Data Stewards (Definitions &amp; Privacy).</li>
+<li><strong>Shiny Guild:</strong> Interface Architects (Layouts &amp; Inputs).</li>
+<li><strong>Narrative Guild:</strong> Narrative Leads (Tone &amp; Consistency).</li>
+</ul>
+</section>
+<section id="core-team-roles" class="slide level2">
+<h2>Core Team Roles</h2>
+<ul>
+<li><strong>Product Owner (Client VP)</strong>
+<ul>
+<li>“Voice of the Client”</li>
+<li>Manages the <strong>Landing Page</strong>, <code>global.R</code>, and <code>styles.css</code>.</li>
+<li>Leads the <strong>UI Guild</strong>.</li>
+</ul></li>
+<li><strong>Lead Architect (Tech VP)</strong>
+<ul>
+<li>Repository Health &amp; Integration.</li>
+<li>Manages <code>app.R</code> and Deployment.</li>
+<li>Leads the <strong>Code Guild</strong>.</li>
+</ul></li>
+<li><strong>Guild Leaders</strong>: Each Guild will nominate a leader to coordinate efforts.</li>
+</ul>
+</section></section>
+<section>
+<section id="workflow-explained" class="title-slide slide level1 center">
+<h1>Workflow Explained</h1>
+
+</section>
+<section id="next-steps" class="slide level2">
+<h2>Next Steps</h2>
+<ul>
+<li>Review the full job descriptions.</li>
+<li>Think about which role fits your skills and interests best.</li>
+<li>Submit this Microsoft Form ranking your preferred roles.</li>
+</ul>
+</section>
+<section id="reviewing-the-data-set" class="slide level2">
+<h2>Reviewing the data set</h2>
+<p>While Mark is here let’s review the data set and make sure we don’t have specific questions about the columns.</p>
 
 
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
-<p><img src="../logo.png" class="slide-logo"></p>
+<p><img src="logo.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p><a href="https://csci2025wi26.netlify.app/">🔗 https://csci2025wi26.netlify.app/</a></p>
 </div>
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -619,44 +537,6 @@ $ name    &lt;chr&gt; "United Air Lines Inc.", "United Air Lines Inc.", "America
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

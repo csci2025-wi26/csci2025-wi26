@@ -45,14 +45,16 @@ website:
             text: FAQ
           - href: computing/computing-cheatsheets.qmd
             text: Cheatsheets
-      - section: "Projects"
-        contents:
-          # - href: project/project-1.qmd
-          # - href: project/project-2.qmd
+      # - section: "Projects"
+      #   contents:
+      #     - href: projects/individual_project/index.qmd
+      #       text: Individual Project
+      #     - href: projects/group_project/project-overview.qmd
+      #       text: Group Project
           # - href: project/project-tips-resources.qmd
           #   text: Tips + resources
-      - section: "HW"
-        contents:
+      # - section: "HW"
+      #   contents:
           # - href: hw/hw-0.qmd
           #   text: HW 0
           # - href: hw/hw-1.qmd

@@ -1,0 +1,119 @@
+---
+title: "Group Project Introduction"
+subtitle: "Equity Analysis Dashboard"
+format: revealjs
+---
+
+# Academic Program Review
+
+## Academic Program Review
+
+- Departments review their programs every 5 years.
+- This "program review" is then submitted to our accrediting body.
+- Let's take a look at the Guidelines Document
+
+## Our part
+
+-   How is disaggregated data utilized in exploring whether there are equity gaps and what steps have resulted for its use? (1.D.2) (1.D.4)
+-   Review Criteria 1.D.2 and 1.D.4 in the Guidelines Document.
+
+# The Goal
+
+## Project Overview
+
+- **Client:** Mark Heidrich (AVP for Institutional Effectiveness)
+- **Objective:** Build a **unified Dashboard** for analyzing equity gaps in academic programs.
+- **One Data Science Consultancy:** The entire class working together.
+
+# Team Structure
+
+## The Hierarchy
+
+- **Core Team (Management)**
+    - Product Owner ("Client VP")
+    - Lead Architect ("Tech VP")
+    - "Guild Leaders"
+    - Instructor (Dr. Friedlander)
+- **Feature Teams**
+    - Team 1: Enrollment
+    - Team 2: Performance
+    - Team 3: Retention
+    - Team 4: Outcomes
+
+# Feature Team Roles
+
+## 1. Github Sentinel (Team Lead)
+
+- **Skills:** Git, Organization, Conflict Resolution, Jack-Of-All trades.
+- **Responsibility:**
+    - Manages the team's "branch" (workspace).
+    - Resolves "merge conflicts" (when code clashes).
+    - Ensures the team's code safely enters the main project.
+- *The only person authorized to submit code updates to the Tech VP.*
+
+## 2. Data Steward (Data Engineer)
+
+- **Skills:** `dplyr`, Data Cleaning, Ethics.
+- **Responsibility:**
+    - Writes `clean_data.R`.
+    - **Privacy Protection:** Ensures no student is identifiable (masks data if sample size too small).
+    - Creates clean, anonymized datasets for the team.
+
+## 3. Chart Artist (Viz Specialist)
+
+- **Skills:** `ggplot2`, Visualization Design.
+- **Responsibility:**
+    - Creates high-quality static visualizations.
+    - Writes plot functions (e.g., `plot_gpa()`).
+    - Ensures all charts match the design system (colors, fonts).
+
+## 4. Interface Architect (Shiny Dev)
+
+- **Skills:** Shiny UI/Server, Layouts.
+- **Responsibility:**
+    - Wires the User Interface (buttons, sliders, tabs).
+    - Connects inputs to the Chart Artist's plots.
+    - Ensures the interactive elements work smoothly.
+
+## 5. Narrative Lead (Context/QA)
+
+- **Skills:** Writing, Interpretation, `stringr`.
+- **Responsibility:**
+    - Writes dynamic text to interpret charts automatically ("Mad Libs" style).
+    - Explains *what* the data shows to the user.
+    - Acts as Quality Assurance for the team's module.
+
+# Collaboration
+
+## The Guilds
+
+- **Code Guild:** Sentinels + Lead Architect (Git & Process).
+- **UI Guild:** Chart Artists + Product Owner (Design & Style).
+- **Data Guild:** Data Stewards (Definitions & Privacy).
+- **Shiny Guild:** Interface Architects (Layouts & Inputs).
+- **Narrative Guild:** Narrative Leads (Tone & Consistency).
+
+## Core Team Roles
+
+- **Product Owner (Client VP)**
+    - "Voice of the Client"
+    - Manages the **Landing Page**, `global.R`, and `styles.css`.
+    - Leads the **UI Guild**.
+- **Lead Architect (Tech VP)**
+    - Repository Health & Integration.
+    - Manages `app.R` and Deployment.
+    - Leads the **Code Guild**.
+- **Guild Leaders**: Each Guild will nominate a leader to coordinate efforts.
+
+# Workflow Explained
+
+## Next Steps
+
+- Review the full job descriptions.
+- Think about which role fits your skills and interests best.
+- Submit this Microsoft Form ranking your preferred roles.
+
+## Reviewing the data set
+
+While Mark is here let's review the data set and make sure we don't have specific questions about the columns.
+

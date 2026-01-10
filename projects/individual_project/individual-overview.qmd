@@ -1,0 +1,52 @@
+---
+title: "Individual Project: Data Analysis & Presentation"
+---
+
+The goal of the individual project is to give you the opportunity to find a dataset that interests you, analyze it using the tools we've learned in class, and present your findings to your peers.
+
+## Goals
+
+1.  **Data Acquisition**: Find a dataset that is interesting to you. This could be from a public repository (e.g., Kaggle, TidyTuesday, government data) or data you have collected yourself.
+2.  **Data Cleaning**: Demonstrate your ability to clean and prepare data for analysis.
+3.  **Exploratory Data Analysis (EDA)**: Use summary statistics and visualizations to understand the structure and relationships in your data.
+4.  **Communication**: Effectively communicate your findings through a presentation.
+
+## Deliverables
+
+### 1. Quarto Document
+You will submit a Quarto document (`.qmd`) and the rendered HTML file. This document should contain all the code used for your analysis, along with narrative text explaining your steps and findings.
+
+*   **Introduction**: Briefly describe the dataset and why you chose it.
+*   **Data Preparation**: Show how you loaded and cleaned the data.
+*   **Analysis**: Present your visualizations and summary statistics. Explain what they show.
+*   **Conclusion**: Summarize your main takeaways.
+
+### 2. Presentation
+You will give a **5-minute presentation** to the class.
+
+*   **Slides**: You are required to use slides for your presentation. You can create them using Quarto (Revealjs), PowerPoint, Google Slides, or any other tool you prefer.
+*   **Content**: Focus on the most interesting findings from your analysis. Do not walk us through your code line-by-line; focus on the *insights*.
+
+## Timeline
+
+*   **Proposal Due**: [Date TBD] mechanism to submit dataset chioce.
+*   **Project Due**: End of Term.
+*   **Presentations**: Final week of class.
+
+## Grading Rubric
+
+| Category | Description | Points |
+| :--- | :--- | :--- |
+| **Data Preparation** | Data is loaded correctly, cleaned, and tidy. | 20 |
+| **Analysis & Viz** | Appropriate visualizations and summary stats are used. | 30 |
+| **Narrative** | The Quarto doc is well-written and explains the analysis clearly. | 20 |
+| **Presentation** | Clear, engaging, and within the time limit. | 20 |
+| **Creativity/Effort** | Dataset choice and depth of analysis. | 10 |
+| **Total** | | **100** |
+
+## Resources for Data
+
+*   [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
+*   [Kaggle](https://www.kaggle.com/datasets)
+*   [FiveThirtyEight](https://data.fivethirtyeight.com/)
+*   [Data.gov](https://data.gov/)

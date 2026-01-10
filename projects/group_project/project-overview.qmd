@@ -1,7 +1,6 @@
 # Project Specification: Equity Analysis Dashboard
 **Course:** CSCI-2025: Data Manipulation and Visualization (Winter Term)  
-**Client:** Mark Heidrich, Associate Vice President for Institutional Effectiveness
-and Registrar
+**Client:** Mark Heidrich, Associate Vice President for Institutional Effectiveness and Registrar
 
 ## 1. Project Overview
 The class will function as a single data science consultancy divided into four "Feature Pods." The goal is to build **one unified Shiny Dashboard** that allows academic departments to analyze equity gaps in their programs.
@@ -10,33 +9,54 @@ Instead of building four separate apps, we are building four **Modules** that in
 
 ## 2. Team Structure
 
-### The Four Teams
-The class is divided into four teams. Each team owns one "tab" of the final application.
+### A. The Core Team (Management)
+A team of students responsible for overall project health and cross-team consistency. The team will be led by two VPs and Dr. Friedlander.
+
+**1. The Product Owner (The "Client VP")**
+* **Responsibility:** The "Voice of the Client" and Narrative consistency.
+* **Concrete Deliverables (Coding):**
+    * Codes the **Landing Page** (The "Home" tab).
+    * Writes `global.R` (loading data and packages).
+    * Writes `styles.css` (defining colors/fonts).
+* **Management Duty:** Leads the **UI Guild**. Directs teams on styling to match the CSS.
+
+**2. The Lead Architect (The "Tech VP")**
+* **Responsibility:** Repository health and final integration.
+* **Concrete Deliverables (Coding):**
+    * Maintains `app.R` (the shell application).
+    * Manages site deployment.
+    * Codes the "About/Methodology" page.
+* **Management Duty:** Leads the **Code Guild**. Accepts/rejects Pull Requests from Feature Teams.
+
+**3. Remaining Guild Leads**: See section on Guilds below.
+
+### B. The Four Feature Teams
+The rest of the class is divided into four pods. Each pod owns one "tab" of the final application.
 
 1.  **Pod 1:** Enrollment
 2.  **Pod 2:** Performance
 3.  **Pod 3:** Retention
 4.  **Pod 4:** Outcomes
 
-### Individual Roles
+#### Individual Roles within Feature Teams
 Every student has a specific title and responsibility within their team.
 
 | Role | Responsibility | Key Deliverable |
 | :--- | :--- | :--- |
-| **GitHub Sentinel/Team Leader** (Teach Lead)| Manages the git branch, resolves merge conflicts, and manages `renv.lock`. | The clean Merge; Repo health. |
+| **GitHub Sentinel / Team Leader** | Manages the git branch, resolves merge conflicts, and manages `renv.lock`. | The clean Merge; Repo health. |
 | **Data Steward** (Data Engineer) | ETL processes and **Privacy Protection**. Masks data if N < 5. | `clean_data.R`; Anonymized datasets. |
 | **Chart Artist** (Viz Specialist) | Creates high-quality static visualizations. | Plot functions (e.g., `plot_gpa()`). |
 | **Interface Architect** (Shiny Dev) | Wires the UI/Server logic. Connects inputs to the plots. | `ui` and `server` module code. |
 | **Narrative Lead** (Context/QA) | Writes dynamic "Mad Libs" text to interpret charts automatically. | `renderText()` logic; Help tooltips. |
 
 ## 3. Collaboration: "The Guilds"
-To ensure the dashboard looks cohesive, students across teams will meet in "Guilds".
+To ensure the dashboard looks cohesive, students with matching roles across teams will meet in "Guilds".
 
-* **The Code Guild (Sentinels):** Agrees on the Git branching strategy and dependency management.
-* **The Data Guild (Stewards):** Agrees on variable naming conventions and the "Small N" suppression threshold.
-* **The UI Guild (Chart Artists):** Decides aesthetic conventions for project (e.g. colors, fonts, themes, etc.).
-* **The Shiny Guild (Interface Architects):** Standardizes UI layout and input types across modules.
-* **The Narrative Guild (Narrative Leads):** Standardizes the "Mad Libs" text structure for consistency.
+* **The Code Guild (Sentinels):** Led by the *Lead Architect*. Agrees on Git branching and dependencies. Team led by the *Lead Architect*.
+* **The UI Guild (Chart Artists):** Led by the *Product Owner*. Decides aesthetic conventions (colors, fonts, themes). Team led by the *Product Owner*.
+* **The Data Guild (Stewards):** Agrees on variable naming conventions and the "Small N" suppression threshold. *Lead Steward will be nominated from the group.*
+* **The Shiny Guild (Interface Architects):** Standardizes UI layout and input types across modules. *Lead Architect will be nominated from the group.*
+* **The Narrative Guild (Narrative Leads):** Standardizes the "Mad Libs" text structure for consistency. *Lead Narrator will be nominated from the group.*
 
 ## 4. Technical Architecture
 
@@ -46,35 +66,16 @@ Students will clone a repository pre-scaffolded by the instructor.
 * **`global.R`**: Shared libraries and data loading (Read-Only for students).
 * **`app.R`**: The main shell application (Read-Only).
 * **`modules/`**:
-    * `mod_access.R` (Team 1 Workspace)
-    * `mod_gatekeeper.R` (Team 2 Workspace)
-    * `mod_retention.R` (Team 3 Workspace)
-    * `mod_outcome.R` (Team 4 Workspace)
+    * `mod_enrollment.R` (Pod 1 Workspace)
+    * `mod_performance.R` (Pod 2 Workspace)
+    * `mod_retention.R` (Pod 3 Workspace)
+    * `mod_outcomes.R` (Pod 4 Workspace)
 * **`data/`**: Stores the clean data files.
 * **`renv/`**: Manages package dependencies.
 
-<!-- ## 5. The 7-Session "Sprint" Timeline
-
-| Session | Phase | Key Activity |
-| :--- | :--- | :--- |
-| **Day 1** | **Foundation** | **The Data Contract.** Teams agree on variable names. Clone the repo. |
-| **Day 2** | **Static Viz** | **Guild Meetings.** Work strictly in RMarkdown/Quarto to build static plots. |
-| **Day 3** | **Construction** | **Shiny-fication.** Migrate static plots into Module UI. Focus on layout. |
-| **Day 4** | **Reactivity** | **Wiring.** Implement `reactive()` logic (sliders, dropdowns) and "Mad Libs" text. |
-| **Day 5** | **Integration** | **The Merge Party.** Teams PR their modules into `main`. Resolve conflicts. |
-| **Day 6** | **Polish** | **Bug Smashing.** Fix UI inconsistencies, check tab order, refine CSS. |
-| **Day 7** | **Delivery** | **Client Demo.** Final deployment and presentation to the client. | -->
-
-## 6. Development Workflow Rules
+## 5. Development Workflow Rules
 
 1.  **Branching:** Use Trunk-Based Development. Branch from `main` -> `feature/team-name` -> PR back to `main`.
 2.  **No Direct Pushes:** All code must enter `main` via a Pull Request (PR).
 3.  **The "Sentinel" Rule:** Only the Team GitHub Sentinel is authorized to open a PR.
 4.  **Dependency Lockdown:** Do not install new library packages without instructor approval. If approved, `renv::snapshot()` must be run immediately.
-
-<!-- ## 7. Instructor Prep (Pre-Game)
-
-Before Day 1, the Instructor must:
-1.  **Create the Repository:** Initialize the RProject with `renv`.
-2.  **Scaffold the Modules:** Create the empty `mod_teamX.R` files so students have a place to start.
-3.  **Clean the Data (Partially):** Ensure the dataset is joinable, even if it requires further cleaning by the Data Stewards. -->

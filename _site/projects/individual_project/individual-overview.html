@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>overview – CSCI 2025</title>
+<title>Individual Project: Data Analysis &amp; Presentation – CSCI 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,18 +31,19 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d6a2ae2cb249da1580f0a11f71b8f854.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d6a2ae2cb249da1580f0a11f71b8f854.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d6a2ae2cb249da1580f0a11f71b8f854.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-26d91828340d0b41d6b6e976db5ffac1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-6b5d7b853e2708c4baec52456f59e228.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-26d91828340d0b41d6b6e976db5ffac1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-f08b276c18a01c3fccf344abdde17b37.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-63359e2bb36d4f0bccaeafdf1d8f3e4c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-f08b276c18a01c3fccf344abdde17b37.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -245,7 +246,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Individual Project: Data Analysis &amp; Presentation</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -260,7 +261,8 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../../images/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../images/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/csci2025-wi26" title="GitHub organization" class="quarto-navigation-tool px-1" aria-label="GitHub organization"><i class="bi bi-github"></i></a>
@@ -336,14 +338,6 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Projects</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">HW</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">Student work</span></span>
   </li>
     </ul>
@@ -356,77 +350,82 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#project-specification-equity-analysis-dashboard" id="toc-project-specification-equity-analysis-dashboard" class="nav-link active" data-scroll-target="#project-specification-equity-analysis-dashboard">Project Specification: Equity Analysis Dashboard</a>
+  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
+  <li><a href="#deliverables" id="toc-deliverables" class="nav-link" data-scroll-target="#deliverables">Deliverables</a>
   <ul class="collapse">
-  <li><a href="#project-overview" id="toc-project-overview" class="nav-link" data-scroll-target="#project-overview">1. Project Overview</a></li>
-  <li><a href="#team-structure-the-cluster-pod-model" id="toc-team-structure-the-cluster-pod-model" class="nav-link" data-scroll-target="#team-structure-the-cluster-pod-model">2. Team Structure: The “Cluster &amp; Pod” Model</a>
-  <ul class="collapse">
-  <li><a href="#the-four-feature-pods-the-modules" id="toc-the-four-feature-pods-the-modules" class="nav-link" data-scroll-target="#the-four-feature-pods-the-modules">The Four Feature Pods (The Modules)</a></li>
-  <li><a href="#individual-roles-the-verticals" id="toc-individual-roles-the-verticals" class="nav-link" data-scroll-target="#individual-roles-the-verticals">Individual Roles (The “Verticals”)</a></li>
+  <li><a href="#quarto-document" id="toc-quarto-document" class="nav-link" data-scroll-target="#quarto-document">1. Quarto Document</a></li>
+  <li><a href="#presentation" id="toc-presentation" class="nav-link" data-scroll-target="#presentation">2. Presentation</a></li>
   </ul></li>
-  <li><a href="#collaboration-the-guilds" id="toc-collaboration-the-guilds" class="nav-link" data-scroll-target="#collaboration-the-guilds">3. Collaboration: “The Guilds”</a></li>
-  <li><a href="#technical-architecture" id="toc-technical-architecture" class="nav-link" data-scroll-target="#technical-architecture">4. Technical Architecture</a>
-  <ul class="collapse">
-  <li><a href="#the-golden-repo" id="toc-the-golden-repo" class="nav-link" data-scroll-target="#the-golden-repo">The “Golden Repo”</a></li>
-  <li><a href="#the-narrative-strategy-automated-insights" id="toc-the-narrative-strategy-automated-insights" class="nav-link" data-scroll-target="#the-narrative-strategy-automated-insights">The Narrative Strategy (Automated Insights)</a></li>
-  </ul></li>
-  <li><a href="#the-7-session-sprint-timeline" id="toc-the-7-session-sprint-timeline" class="nav-link" data-scroll-target="#the-7-session-sprint-timeline">5. The 7-Session “Sprint” Timeline</a></li>
-  <li><a href="#development-workflow-rules" id="toc-development-workflow-rules" class="nav-link" data-scroll-target="#development-workflow-rules">6. Development Workflow Rules</a></li>
-  <li><a href="#instructor-prep-pre-game" id="toc-instructor-prep-pre-game" class="nav-link" data-scroll-target="#instructor-prep-pre-game">7. Instructor Prep (Pre-Game)</a></li>
-  </ul></li>
+  <li><a href="#timeline" id="toc-timeline" class="nav-link" data-scroll-target="#timeline">Timeline</a></li>
+  <li><a href="#grading-rubric" id="toc-grading-rubric" class="nav-link" data-scroll-target="#grading-rubric">Grading Rubric</a></li>
+  <li><a href="#resources-for-data" id="toc-resources-for-data" class="nav-link" data-scroll-target="#resources-for-data">Resources for Data</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/csci2025-wi26/csci2025-wi26/edit/main/projects/group_project/overview.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/csci2025-wi26/csci2025-wi26/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/csci2025-wi26/csci2025-wi26/edit/main/projects/individual_project/individual-overview.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/csci2025-wi26/csci2025-wi26/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Individual Project: Data Analysis &amp; Presentation</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
-<section id="project-specification-equity-analysis-dashboard" class="level1">
-<h1>Project Specification: Equity Analysis Dashboard</h1>
-<p><strong>Course:</strong> CSCI-2025: Data Manipulation and Visualization (Winter Term)<br>
-<strong>Client:</strong> Academic Program Review Committee<br>
-<strong>Timeline:</strong> 7 Sessions (2-Week Sprint)</p>
-<hr>
-<section id="project-overview" class="level2">
-<h2 class="anchored" data-anchor-id="project-overview">1. Project Overview</h2>
-<p>The class will function as a single data science consultancy divided into four “Feature Pods.” The goal is to build <strong>one unified Shiny Dashboard</strong> that allows academic departments to analyze equity gaps in their programs.</p>
-<p>Instead of building four separate apps, we are building four <strong>Modules</strong> that integrate into a single “Golden Repository.”</p>
-<hr>
-</section>
-<section id="team-structure-the-cluster-pod-model" class="level2">
-<h2 class="anchored" data-anchor-id="team-structure-the-cluster-pod-model">2. Team Structure: The “Cluster &amp; Pod” Model</h2>
-<section id="the-four-feature-pods-the-modules" class="level3">
-<h3 class="anchored" data-anchor-id="the-four-feature-pods-the-modules">The Four Feature Pods (The Modules)</h3>
-<p>The class is divided into four teams. Each team owns one “tab” of the final application.</p>
+</header>
+
+
+<p>The goal of the individual project is to give you the opportunity to find a dataset that interests you, analyze it using the tools we’ve learned in class, and present your findings to your peers.</p>
+<section id="goals" class="level2">
+<h2 class="anchored" data-anchor-id="goals">Goals</h2>
 <ol type="1">
-<li><strong>Team Access (The “Who is here?” Team)</strong>
-<ul>
-<li><em>Focus:</em> Enrollment demographics vs.&nbsp;College-wide benchmarks.</li>
-<li><em>Key Stats:</em> Representation Indices, Population Pyramids.</li>
-</ul></li>
-<li><strong>Team Gatekeeper (The “Who passes?” Team)</strong>
-<ul>
-<li><em>Focus:</em> DFW (D, F, Withdrawal) rates in specific courses.</li>
-<li><em>Key Stats:</em> Pass rates by demographic group.</li>
-</ul></li>
-<li><strong>Team Retention (The “Who stays?” Team)</strong>
-<ul>
-<li><em>Focus:</em> Persistence from Year 1 to Graduation.</li>
-<li><em>Key Stats:</em> Cohort analysis, Sankey diagrams.</li>
-</ul></li>
-<li><strong>Team Outcome (The “Gap” Team)</strong>
-<ul>
-<li><em>Focus:</em> Graduation GPA and Time-to-Degree gaps.</li>
-<li><em>Key Stats:</em> Difference in Means, Error bar plots.</li>
-</ul></li>
+<li><strong>Data Acquisition</strong>: Find a dataset that is interesting to you. This could be from a public repository (e.g., Kaggle, TidyTuesday, government data) or data you have collected yourself.</li>
+<li><strong>Data Cleaning</strong>: Demonstrate your ability to clean and prepare data for analysis.</li>
+<li><strong>Exploratory Data Analysis (EDA)</strong>: Use summary statistics and visualizations to understand the structure and relationships in your data.</li>
+<li><strong>Communication</strong>: Effectively communicate your findings through a presentation.</li>
 </ol>
 </section>
-<section id="individual-roles-the-verticals" class="level3">
-<h3 class="anchored" data-anchor-id="individual-roles-the-verticals">Individual Roles (The “Verticals”)</h3>
-<p>Every student has a specific title and responsibility within their team.</p>
+<section id="deliverables" class="level2">
+<h2 class="anchored" data-anchor-id="deliverables">Deliverables</h2>
+<section id="quarto-document" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-document">1. Quarto Document</h3>
+<p>You will submit a Quarto document (<code>.qmd</code>) and the rendered HTML file. This document should contain all the code used for your analysis, along with narrative text explaining your steps and findings.</p>
+<ul>
+<li><strong>Introduction</strong>: Briefly describe the dataset and why you chose it.</li>
+<li><strong>Data Preparation</strong>: Show how you loaded and cleaned the data.</li>
+<li><strong>Analysis</strong>: Present your visualizations and summary statistics. Explain what they show.</li>
+<li><strong>Conclusion</strong>: Summarize your main takeaways.</li>
+</ul>
+</section>
+<section id="presentation" class="level3">
+<h3 class="anchored" data-anchor-id="presentation">2. Presentation</h3>
+<p>You will give a <strong>5-minute presentation</strong> to the class.</p>
+<ul>
+<li><strong>Slides</strong>: You are required to use slides for your presentation. You can create them using Quarto (Revealjs), PowerPoint, Google Slides, or any other tool you prefer.</li>
+<li><strong>Content</strong>: Focus on the most interesting findings from your analysis. Do not walk us through your code line-by-line; focus on the <em>insights</em>.</li>
+</ul>
+</section>
+</section>
+<section id="timeline" class="level2">
+<h2 class="anchored" data-anchor-id="timeline">Timeline</h2>
+<ul>
+<li><strong>Proposal Due</strong>: [Date TBD] mechanism to submit dataset chioce.</li>
+<li><strong>Project Due</strong>: End of Term.</li>
+<li><strong>Presentations</strong>: Final week of class.</li>
+</ul>
+</section>
+<section id="grading-rubric" class="level2">
+<h2 class="anchored" data-anchor-id="grading-rubric">Grading Rubric</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -435,153 +434,55 @@ ul.task-list li input[type="checkbox"] {
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Role</th>
-<th style="text-align: left;">Responsibility</th>
-<th style="text-align: left;">Key Deliverable</th>
+<th style="text-align: left;">Category</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Points</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>GitHub Sentinel</strong> (Tech Lead)</td>
-<td style="text-align: left;">Manages the git branch, resolves merge conflicts, and manages <code>renv.lock</code>.</td>
-<td style="text-align: left;">The clean Merge; Repo health.</td>
+<td style="text-align: left;"><strong>Data Preparation</strong></td>
+<td style="text-align: left;">Data is loaded correctly, cleaned, and tidy.</td>
+<td style="text-align: left;">20</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Data Steward</strong> (Data Engineer)</td>
-<td style="text-align: left;">ETL processes and <strong>Privacy Protection</strong>. Masks data if N &lt; 5.</td>
-<td style="text-align: left;"><code>clean_data.R</code>; Anonymized datasets.</td>
+<td style="text-align: left;"><strong>Analysis &amp; Viz</strong></td>
+<td style="text-align: left;">Appropriate visualizations and summary stats are used.</td>
+<td style="text-align: left;">30</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Chart Artist</strong> (Viz Specialist)</td>
-<td style="text-align: left;">Creates high-quality static <code>ggplot2</code>/<code>plotly</code> visualizations.</td>
-<td style="text-align: left;">Plot functions (e.g., <code>plot_gpa()</code>).</td>
+<td style="text-align: left;"><strong>Narrative</strong></td>
+<td style="text-align: left;">The Quarto doc is well-written and explains the analysis clearly.</td>
+<td style="text-align: left;">20</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Interface Architect</strong> (Shiny Dev)</td>
-<td style="text-align: left;">Wires the UI/Server logic. Connects inputs to the plots.</td>
-<td style="text-align: left;"><code>ui</code> and <code>server</code> module code.</td>
+<td style="text-align: left;"><strong>Presentation</strong></td>
+<td style="text-align: left;">Clear, engaging, and within the time limit.</td>
+<td style="text-align: left;">20</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Narrative Lead</strong> (Context/QA)</td>
-<td style="text-align: left;">Writes dynamic “Mad Libs” text using <code>glue()</code> to interpret charts automatically.</td>
-<td style="text-align: left;"><code>renderText()</code> logic; Help tooltips.</td>
+<td style="text-align: left;"><strong>Creativity/Effort</strong></td>
+<td style="text-align: left;">Dataset choice and depth of analysis.</td>
+<td style="text-align: left;">10</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Stat Validator</strong> (Teams of 6)</td>
-<td style="text-align: left;">Manually validates calculations in Excel/R to ensure dashboard accuracy.</td>
-<td style="text-align: left;">Validation report.</td>
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>100</strong></td>
 </tr>
 </tbody>
 </table>
-<hr>
 </section>
-</section>
-<section id="collaboration-the-guilds" class="level2">
-<h2 class="anchored" data-anchor-id="collaboration-the-guilds">3. Collaboration: “The Guilds”</h2>
-<p>To ensure the dashboard looks cohesive, students across teams will meet in “Guilds” twice during the project.</p>
+<section id="resources-for-data" class="level2">
+<h2 class="anchored" data-anchor-id="resources-for-data">Resources for Data</h2>
 <ul>
-<li><strong>The UI Guild (Chart Artists):</strong> Decides on the CSS theme, color palette (e.g., College Purple), and font choices.</li>
-<li><strong>The Data Guild (Stewards):</strong> Agrees on variable naming conventions and the “Small N” suppression threshold.</li>
-<li><strong>The Code Guild (Sentinels):</strong> Agrees on the Git branching strategy and dependency management.</li>
+<li><a href="https://github.com/rfordatascience/tidytuesday">TidyTuesday</a></li>
+<li><a href="https://www.kaggle.com/datasets">Kaggle</a></li>
+<li><a href="https://data.fivethirtyeight.com/">FiveThirtyEight</a></li>
+<li><a href="https://data.gov/">Data.gov</a></li>
 </ul>
-<hr>
-</section>
-<section id="technical-architecture" class="level2">
-<h2 class="anchored" data-anchor-id="technical-architecture">4. Technical Architecture</h2>
-<section id="the-golden-repo" class="level3">
-<h3 class="anchored" data-anchor-id="the-golden-repo">The “Golden Repo”</h3>
-<p>Students will clone a repository pre-scaffolded by the instructor.</p>
-<ul>
-<li><strong><code>global.R</code></strong>: Shared libraries and data loading (Read-Only for students).</li>
-<li><strong><code>app.R</code></strong>: The main shell application (Read-Only).</li>
-<li><strong><code>modules/</code></strong>:
-<ul>
-<li><code>mod_access.R</code> (Team 1 Workspace)</li>
-<li><code>mod_gatekeeper.R</code> (Team 2 Workspace)</li>
-<li><code>mod_retention.R</code> (Team 3 Workspace)</li>
-<li><code>mod_outcome.R</code> (Team 4 Workspace)</li>
-</ul></li>
-<li><strong><code>data/</code></strong>: Stores the clean <code>.rds</code> files.</li>
-<li><strong><code>renv/</code></strong>: Manages package dependencies.</li>
-</ul>
-</section>
-<section id="the-narrative-strategy-automated-insights" class="level3">
-<h3 class="anchored" data-anchor-id="the-narrative-strategy-automated-insights">The Narrative Strategy (Automated Insights)</h3>
-<p>We will use a “Mad Libs” approach to narrative. The <strong>Narrative Lead</strong> creates logic that adapts to the user’s selection: * <em>Static:</em> Definitions of metrics (never changes). * <em>Dynamic:</em> “The DFW rate for [Biology] is [12%], which is [lower] than the college average.” * <em>Privacy:</em> “Data hidden due to small sample size (N &lt; 5).”</p>
-<hr>
-</section>
-</section>
-<section id="the-7-session-sprint-timeline" class="level2">
-<h2 class="anchored" data-anchor-id="the-7-session-sprint-timeline">5. The 7-Session “Sprint” Timeline</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Session</th>
-<th style="text-align: left;">Phase</th>
-<th style="text-align: left;">Key Activity</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Day 1</strong></td>
-<td style="text-align: left;"><strong>Foundation</strong></td>
-<td style="text-align: left;"><strong>The Data Contract.</strong> Teams agree on variable names. Clone the repo.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Day 2</strong></td>
-<td style="text-align: left;"><strong>Static Viz</strong></td>
-<td style="text-align: left;"><strong>Guild Meetings.</strong> Work strictly in RMarkdown/Quarto to build static plots.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Day 3</strong></td>
-<td style="text-align: left;"><strong>Construction</strong></td>
-<td style="text-align: left;"><strong>Shiny-fication.</strong> Migrate static plots into Module UI. Focus on layout.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Day 4</strong></td>
-<td style="text-align: left;"><strong>Reactivity</strong></td>
-<td style="text-align: left;"><strong>Wiring.</strong> Implement <code>reactive()</code> logic (sliders, dropdowns) and “Mad Libs” text.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Day 5</strong></td>
-<td style="text-align: left;"><strong>Integration</strong></td>
-<td style="text-align: left;"><strong>The Merge Party.</strong> Teams PR their modules into <code>main</code>. Resolve conflicts.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Day 6</strong></td>
-<td style="text-align: left;"><strong>Polish</strong></td>
-<td style="text-align: left;"><strong>Bug Smashing.</strong> Fix UI inconsistencies, check tab order, refine CSS.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Day 7</strong></td>
-<td style="text-align: left;"><strong>Delivery</strong></td>
-<td style="text-align: left;"><strong>Client Demo.</strong> Final deployment and presentation to the client.</td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-<section id="development-workflow-rules" class="level2">
-<h2 class="anchored" data-anchor-id="development-workflow-rules">6. Development Workflow Rules</h2>
-<ol type="1">
-<li><strong>Branching:</strong> Use Trunk-Based Development. Branch from <code>main</code> -&gt; <code>feature/team-name</code> -&gt; PR back to <code>main</code>.</li>
-<li><strong>No Direct Pushes:</strong> All code must enter <code>main</code> via a Pull Request (PR).</li>
-<li><strong>The “Sentinel” Rule:</strong> Only the Team GitHub Sentinel is authorized to open a PR.</li>
-<li><strong>Dependency Lockdown:</strong> Do not install new library packages without instructor approval. If approved, <code>renv::snapshot()</code> must be run immediately.</li>
-</ol>
-<hr>
-</section>
-<section id="instructor-prep-pre-game" class="level2">
-<h2 class="anchored" data-anchor-id="instructor-prep-pre-game">7. Instructor Prep (Pre-Game)</h2>
-<p>Before Day 1, the Instructor must: 1. <strong>Create the Repository:</strong> Initialize the RProject with <code>renv</code>. 2. <strong>Scaffold the Modules:</strong> Create the empty <code>mod_teamX.R</code> files so students have a place to start. 3. <strong>Clean the Data (Partially):</strong> Ensure the dataset is joinable, even if it requires further cleaning by the Data Stewards.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -649,13 +550,14 @@ ul.task-list li input[type="checkbox"] {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1005,7 +907,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/csci2025-wi26/csci2025-wi26/edit/main/projects/group_project/overview.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/csci2025-wi26/csci2025-wi26/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/csci2025-wi26/csci2025-wi26/edit/main/projects/individual_project/individual-overview.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/csci2025-wi26/csci2025-wi26/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with 💛 and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

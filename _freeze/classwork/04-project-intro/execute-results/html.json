@@ -1,0 +1,17 @@
+{
+  "hash": "47891f8e1b405e9ad6ce998ce6a91b30",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: Challenges!\nformat: revealjs\nauto-stretch: false\n---\n\n## Today\n\n-   Some challenges to practice your skills!\n\n\n\n## Challenge 1A: Parks\n\n- Use the `parks.csv` found in Teams to make this plot.\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](04-project-intro_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n\n\n## Challenge 1B: Parks\n\n- Use the `parks.csv` found in Teams to make this plot.\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](04-project-intro_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\n\n## Challenge 1C: Parks\n\n- Use the `parks.csv` found in Teams to make this plot.\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](04-project-intro_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n\n\n## Challenge 2: Valentine's Day\n\n[Generate this plot (without usiung AI):](https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-02-13/readme.md)\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](04-project-intro_files/figure-html/unnamed-chunk-4-1.png){width=672}\n:::\n:::\n\n\n## Challenge 3: Pokemon\n\n[Generate the following data frame from the pokemon data (no AI):](https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-04-01/readme.md)\n\n::: {.cell}\n::: {.cell-output-display}\n![](04-project-intro_files/figure-html/unnamed-chunk-5-1.png){width=672}\n:::\n:::\n\n\n## Groups for Today\n\n-   Self sort:\n    -   Easy: Table 1 (near the windows)\n        + Challenge 1A, 1B, 1C\n    -   Medium: Table 2 (middle of the room)\n        + Challenge 2 and 1A\n    -   Hard: Table 3 (near the TVs)\n        + Challenge 3\n-   Start by sketching a plan on the white board...\n\n\n\n## For Next Class\n\n-  Complete reflection\n-  Complete next three lectures\n",
+    "supporting": [
+      "04-project-intro_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
