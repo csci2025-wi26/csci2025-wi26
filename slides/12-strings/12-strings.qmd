@@ -53,6 +53,7 @@ knitr::opts_chunk$set(
 - `str_c()` combines multiple vectors into a single character vector.
 - `str_glue()` from the `glue` package is great for embedding R code inside a string.
 - Wrap your R code in `{}`.
+- Let's create a `full_name` and greeting column using both functions.
 
 # Extracting Data
 
@@ -81,6 +82,10 @@ df |> separate_wider_delim(
 df <- tibble(x = 1:2, y = c("a,b", "c,d,e"))
 df |> separate_longer_delim(y, delim = ",")
 ```
+
+## Practice
+
+Let's extract the `AR` codes from the Naturalization data!
 
 # Working with Letters
 

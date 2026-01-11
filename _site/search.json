@@ -1969,7 +1969,7 @@
     "href": "slides/12-strings/12-strings.html#combining-strings",
     "title": "Strings",
     "section": "Combining Strings",
-    "text": "Combining Strings\n\nstr_c() combines multiple vectors into a single character vector.\nstr_glue() from the glue package is great for embedding R code inside a string.\nWrap your R code in {}."
+    "text": "Combining Strings\n\nstr_c() combines multiple vectors into a single character vector.\nstr_glue() from the glue package is great for embedding R code inside a string.\nWrap your R code in {}.\nLet’s create a full_name and greeting column using both functions."
   },
   {
     "objectID": "slides/12-strings/12-strings.html#separating-into-columns",
@@ -1984,6 +1984,13 @@
     "title": "Strings",
     "section": "Separating into Rows",
     "text": "Separating into Rows\n\ntidyr::separate_longer_delim() splits a column into multiple new rows.\nUseful when each cell contains a varying number of items.\n\n\ndf &lt;- tibble(x = 1:2, y = c(\"a,b\", \"c,d,e\"))\ndf |&gt; separate_longer_delim(y, delim = \",\")\n\n# A tibble: 5 × 2\n      x y    \n  &lt;int&gt; &lt;chr&gt;\n1     1 a    \n2     1 b    \n3     2 c    \n4     2 d    \n5     2 e"
+  },
+  {
+    "objectID": "slides/12-strings/12-strings.html#practice",
+    "href": "slides/12-strings/12-strings.html#practice",
+    "title": "Strings",
+    "section": "Practice",
+    "text": "Practice\nLet’s extract the AR codes from the Naturalization data!"
   },
   {
     "objectID": "slides/12-strings/12-strings.html#length",
@@ -2165,7 +2172,7 @@
     "href": "slides/13-regex/13-regex.html#character-classes",
     "title": "Regular Expressions",
     "section": "Character Classes",
-    "text": "Character Classes\n\n. matches any character except a newline.\n\\d matches any digit.\n\\s matches any whitespace.\n[abc] matches a, b, or c.\n[^abc] matches anything except a, b, or c."
+    "text": "Character Classes\n\n. matches any character except a newline.\n\\d matches any digit.\n\\s matches any whitespace.\n[abc] matches a, b, or c.\n[^abc] matches anything except a, b, or c.\n| matches either the expression before or after the |."
   },
   {
     "objectID": "slides/13-regex/13-regex.html#repetition",
@@ -2179,7 +2186,7 @@
     "href": "slides/13-regex/13-regex.html#practice",
     "title": "Regular Expressions",
     "section": "Practice!",
-    "text": "Practice!\nLet’s do some practice!"
+    "text": "Practice!\nWhat do each of these do?\n\n\"^b.*a$\"\n\"^.{5}$\"\n\"[aeiou]\"\nCreate a regular expression that will match telephone numbers as commonly written in your country."
   },
   {
     "objectID": "slides/13-regex/13-regex.html#for-grouping",
@@ -2200,7 +2207,7 @@
     "href": "slides/13-regex/13-regex.html#practice-1",
     "title": "Regular Expressions",
     "section": "Practice!",
-    "text": "Practice!\nLet’s do some practice!"
+    "text": "Practice!\nExercise 6 from 15.4.7."
   },
   {
     "objectID": "slides/13-regex/13-regex.html#tidyrseparate_wider_regex",
@@ -2221,7 +2228,7 @@
     "href": "slides/13-regex/13-regex.html#practice-2",
     "title": "Regular Expressions",
     "section": "Practice!",
-    "text": "Practice!\nLet’s do some practice!"
+    "text": "Practice!\nLet’s extract the AR codes and the county names from the Naturalization data!"
   },
   {
     "objectID": "slides/13-regex/13-regex.html#do-next",

@@ -109,6 +109,7 @@ str_detect(x, "a$")
 - `\s` matches any whitespace.
 - `[abc]` matches a, b, or c.
 - `[^abc]` matches anything except a, b, or c.
+- `|` matches either the expression before or after the `|`.
 
 ## Repetition
 
@@ -121,7 +122,12 @@ str_detect(x, "a$")
 
 ## Practice!
 
-Let's do some practice!
+What do each of these do?
+
+- `"^b.*a$"`
+- `"^.{5}$"`
+- `"[aeiou]"`
+- Create a regular expression that will match telephone numbers as commonly written in your country.
 
 # Grouping and Back References
 
@@ -145,7 +151,7 @@ str_replace("abab", "(a)(b)", "\\2\\1")
 
 ## Practice!
 
-Let's do some practice!
+Exercise 6 from 15.4.7.
 
 # Other Tools
 
@@ -170,7 +176,10 @@ str_detect("a.b", fixed("."))
 
 ## Practice!
 
-Let's do some practice!
+Let's extract the AR codes and the county names from the Naturalization data!
+
+# Wrap-Up
+
 
 ## Do Next
 
