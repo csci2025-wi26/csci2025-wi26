@@ -27,47 +27,265 @@ format: revealjs
 
 # Team Structure
 
-## The Hierarchy
+## Project Hierarchy
 
-- **Core Team (Management)**
-    - Product Owner ("Client VP")
-    - Lead Architect ("Tech VP")
-    - "Guild Leaders"
-    - Instructor (Dr. Friedlander)
-- **Feature Teams**
-    - Team 1: Enrollment
-    - Team 2: Performance
-    - Team 3: Retention
-    - Team 4: Outcomes
+```{ojs}
+//| echo: false
+d3 = require("d3@7")
+
+data = ({
+  name: "Equity Analysis Project",
+  children: [
+    {
+      name: "Core Team",
+      children: [
+        { name: "Lead Architect",
+            children: [
+                { name: "Code Guild", 
+                    children: [{ name: "Sentinels" }]
+                },
+                { name: "Data Guild", 
+                    children: [{ name: "Data Stewards" }], 
+                },
+            ]
+        },
+        { name: "Product Owner",
+            children: [
+                { name: "UI Guild", children: [{ name: "Chart Artists" }] },
+                { name: "Shiny Guild", children: [{ name: "Interface Architects" }] },
+                { name: "Narrative Guild", children: [{ name: "Narrative Leads" }] }
+            ]
+         },
+        {
+          name: "Team Leads",
+          children: [
+            { name: "Feature 1: Enrollment", 
+                children: [
+                    { name: "Github Sentinel (Team Lead)" },
+                    { name: "Data Steward (Data Eng)" },
+                    { name: "Chart Artist (Viz)" },
+                    { name: "Interface Architect (Shiny)" },
+                    { name: "Narrative Lead (Context)" }
+          ]
+            },
+            { name: "Feature 2: Performance", 
+                children: [
+                    { name: "Github Sentinel (Team Lead)" },
+                    { name: "Data Steward (Data Eng)" },
+                    { name: "Chart Artist (Viz)" },
+                    { name: "Interface Architect (Shiny)" },
+                    { name: "Narrative Lead (Context)" }
+          ] },
+            { name: "Feature 3: Retention", 
+                children: [
+                    { name: "Github Sentinel (Team Lead)" },
+                    { name: "Data Steward (Data Eng)" },
+                    { name: "Chart Artist (Viz)" },
+                    { name: "Interface Architect (Shiny)" },
+                    { name: "Narrative Lead (Context)" }
+          ] },
+            { name: "Feature 4: Outcomes", 
+                children: [
+                    { name: "Github Sentinel (Team Lead)" },
+                    { name: "Data Steward (Data Eng)" },
+                    { name: "Chart Artist (Viz)" },
+                    { name: "Interface Architect (Shiny)" },
+                    { name: "Narrative Lead (Context)" }
+          ] }
+          ]
+          
+        }
+      ]
+    }
+  ]
+})
+
+
+chart = {
+  const width = 2000;
+  const height = 600;
+  
+  // Increased dx for better vertical spacing to prevent overlap
+  const dx = 35; 
+  const dy = width / 6;
+
+  const root = d3.hierarchy(data);
+
+  const tree = d3.tree().nodeSize([dx, dy]);
+  
+  // Initial collapsed state logic
+  root.descendants().slice(1).forEach(d => {
+    // Keep high level branches open, collapse details deeper down
+    if (d.data.name === "Guilds" || d.data.name === "Feature Teams (x5)" || d.data.name === "Core Team") {
+        // Keep open
+    } else if (d.depth > 1) {
+       // Collapse grandchildren initially
+       d._children = d.children;
+       d.children = null; 
+    }
+  });
+
+  const svg = d3.create("svg")
+      .attr("viewBox", [-400, -50, width, height]) 
+      .style("font", "14px sans-serif")
+      .style("user-select", "none")
+      .style("max-width", "100%")
+      .style("height", "auto");
+
+  // Add Zoom
+  const gLink = svg.append("g")
+      .attr("fill", "none")
+      .attr("stroke", "#999")
+      .attr("stroke-opacity", 0.4)
+      .attr("stroke-width", 1.5);
+
+  const gNode = svg.append("g")
+      .attr("cursor", "pointer")
+      .attr("pointer-events", "all");
+
+  function update(source) {
+      const duration = 250;
+      const nodes = root.descendants().reverse();
+      const links = root.links();
+      tree(root);
+
+      let left = root;
+      let right = root;
+      root.eachBefore(node => {
+        if (node.x < left.x) left = node;
+        if (node.x > right.x) right = node;
+      });
+
+      const height = right.x - left.x + 100;
+
+      const transition = svg.transition()
+          .duration(duration)
+          .attr("viewBox", [-400, left.x - 50, width, height]);
+
+      const node = gNode.selectAll("g")
+        .data(nodes, d => d.id || (d.id = Math.random()));
+
+      const nodeEnter = node.enter().append("g")
+          .attr("transform", d => `translate(${source.y0 || source.y},${source.x0 || source.x})`)
+          .attr("fill-opacity", 0)
+          .attr("stroke-opacity", 0)
+          .on("click", (event, d) => {
+            // Fix: properly toggle children and _children
+            if (d.children) {
+                d._children = d.children;
+                d.children = null;
+            } else {
+                d.children = d._children;
+                d._children = null;
+            }
+            update(d);
+          });
+
+      nodeEnter.append("circle")
+          .attr("r", 6)
+          .attr("fill", d => d._children ? "#007bff" : "#999") 
+          .attr("stroke-width", 10);
+
+      nodeEnter.append("text")
+          .attr("dy", "0.31em")
+          .attr("x", d => d._children ? -8 : 8)
+          .attr("text-anchor", d => d._children ? "end" : "start")
+          .text(d => d.data.name)
+          .clone(true).lower()
+          .attr("stroke-linejoin", "round")
+          .attr("stroke-width", 3)
+          .attr("stroke", "white");
+
+      const nodeUpdate = node.merge(nodeEnter).transition().duration(duration)
+          .attr("transform", d => `translate(${d.y},${d.x})`)
+          .attr("fill-opacity", 1)
+          .attr("stroke-opacity", 1);
+      
+      // Update color based on whether it effectively has children (expanded or collapsed)
+      nodeUpdate.select("circle")
+        .attr("fill", d => (d.children || d._children) ? "#533860" : "#999");
+
+      const nodeExit = node.exit().transition().duration(duration).remove()
+          .attr("transform", d => `translate(${source.y},${source.x})`)
+          .attr("fill-opacity", 0)
+          .attr("stroke-opacity", 0);
+
+      const link = gLink.selectAll("path")
+        .data(links, d => d.target.id);
+
+      const linkEnter = link.enter().append("path")
+          .attr("d", d => {
+            const o = {x: source.x0 || source.x, y: source.y0 || source.y};
+            return d3.linkHorizontal()({source: o, target: o});
+          });
+
+      link.merge(linkEnter).transition().duration(duration)
+          .attr("d", d3.linkHorizontal()
+              .x(d => d.y)
+              .y(d => d.x));
+
+      link.exit().transition().duration(duration).remove()
+          .attr("d", d => {
+            const o = {x: source.x, y: source.y};
+            return d3.linkHorizontal()({source: o, target: o});
+          });
+
+      root.eachBefore(d => {
+        d.x0 = d.x;
+        d.y0 = d.y;
+      });
+  }
+
+  root.x0 = dy / 2;
+  root.y0 = 0;
+  
+  update(root);
+
+  // Zoom Logic
+  svg.call(d3.zoom()
+      .extent([[0, 0], [width, height]])
+      .scaleExtent([0.5, 4])
+      .on("zoom", ({transform}) => {
+          gLink.attr("transform", transform);
+          gNode.attr("transform", transform);
+      }));
+
+  return svg.node();
+}
+```
 
 # Feature Team Roles
 
-## 1. Github Sentinel (Team Lead)
+## 1. Github Sentinel (Team Lead) {.smaller}
 
 - **Skills:** Git, Organization, Conflict Resolution, Jack-Of-All trades.
 - **Responsibility:**
     - Manages the team's "branch" (workspace).
     - Resolves "merge conflicts" (when code clashes).
     - Ensures the team's code safely enters the main project.
+    - Set's deadlines and keeps the team on track.
+    - Ultimately responsible for the team's success.
 - *The only person authorized to submit code updates to the Tech VP.*
 
-## 2. Data Steward (Data Engineer)
+## 2. Data Steward (Data Engineer) {.smaller}
 
 - **Skills:** `dplyr`, Data Cleaning, Ethics.
 - **Responsibility:**
     - Writes `clean_data.R`.
     - **Privacy Protection:** Ensures no student is identifiable (masks data if sample size too small).
     - Creates clean, anonymized datasets for the team.
+    - Works with other Data Stewards to standardize definitions.
 
-## 3. Chart Artist (Viz Specialist)
+## 3. Chart Artist (Viz Specialist) {.smaller}
 
 - **Skills:** `ggplot2`, Visualization Design.
 - **Responsibility:**
     - Creates high-quality static visualizations.
     - Writes plot functions (e.g., `plot_gpa()`).
     - Ensures all charts match the design system (colors, fonts).
+    - Works with other Chart Artists to ensure consistency across modules.
 
-## 4. Interface Architect (Shiny Dev)
+## 4. Interface Architect (Shiny Dev) {.smaller}
 
 - **Skills:** Shiny UI/Server, Layouts.
 - **Responsibility:**
@@ -75,13 +293,14 @@ format: revealjs
     - Connects inputs to the Chart Artist's plots.
     - Ensures the interactive elements work smoothly.
 
-## 5. Narrative Lead (Context/QA)
+## 5. Narrative Lead (Context/QA) {.smaller}
 
 - **Skills:** Writing, Interpretation, `stringr`.
 - **Responsibility:**
     - Writes dynamic text to interpret charts automatically ("Mad Libs" style).
     - Explains *what* the data shows to the user.
     - Acts as Quality Assurance for the team's module.
+    - Take notes at team meetings and documents decisions and timelines.
 
 # Collaboration
 
@@ -93,17 +312,17 @@ format: revealjs
 - **Shiny Guild:** Interface Architects (Layouts & Inputs).
 - **Narrative Guild:** Narrative Leads (Tone & Consistency).
 
-## Core Team Roles
+## Core Team Roles {.smaller}
 
 - **Product Owner (Client VP)**
     - "Voice of the Client"
     - Manages the **Landing Page**, `global.R`, and `styles.css`.
-    - Leads the **UI Guild**.
+    - Leads the **UI Guild**, **Shiny Guild**, and **Narrative Guild**.
 - **Lead Architect (Tech VP)**
     - Repository Health & Integration.
     - Manages `app.R` and Deployment.
-    - Leads the **Code Guild**.
-- **Guild Leaders**: Each Guild will nominate a leader to coordinate efforts.
+    - Leads the **Code Guild** and **Data Guild**.
+- **Team Leads**
 
 # Workflow Explained
 
@@ -116,4 +335,3 @@ format: revealjs
 ## Reviewing the data set
 
 While Mark is here let's review the data set and make sure we don't have specific questions about the columns.
-

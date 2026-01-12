@@ -28,6 +28,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #97947a;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #97947a;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2; background-color: #2b2b2b; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #dcc6e0; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #ffd700; } /* Attribute */
+    code span.bn { color: #dcc6e0; } /* BaseN */
+    code span.bu { color: #f5ab35; } /* BuiltIn */
+    code span.cf { color: #ffa07a; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffa07a; } /* Constant */
+    code span.co { color: #d4d0ab; } /* Comment */
+    code span.cv { color: #d4d0ab; font-style: italic; } /* CommentVar */
+    code span.do { color: #d4d0ab; font-style: italic; } /* Documentation */
+    code span.dt { color: #dcc6e0; } /* DataType */
+    code span.dv { color: #dcc6e0; } /* DecVal */
+    code span.er { color: #dcc6e0; } /* Error */
+    code span.ex { color: #ffd700; } /* Extension */
+    code span.fl { color: #f5ab35; } /* Float */
+    code span.fu { color: #ffd700; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; } /* Keyword */
+    code span.op { color: #00e0e0; } /* Operator */
+    code span.ot { color: #ffa07a; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.sc { color: #00e0e0; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #f5ab35; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-8bca78ff1bb92eb160b3f14c6bb84c86.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -123,6 +189,8 @@
       margin-right: 0; 
     }
   </style>
+  <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -182,31 +250,259 @@ Dr.&nbsp;Eric Friedlander
 <h1>Team Structure</h1>
 
 </section>
-<section id="the-hierarchy" class="slide level2">
-<h2>The Hierarchy</h2>
-<ul>
-<li><strong>Core Team (Management)</strong>
-<ul>
-<li>Product Owner (“Client VP”)</li>
-<li>Lead Architect (“Tech VP”)</li>
-<li>“Guild Leaders”</li>
-<li>Instructor (Dr.&nbsp;Friedlander)</li>
-</ul></li>
-<li><strong>Feature Teams</strong>
-<ul>
-<li>Team 1: Enrollment</li>
-<li>Team 2: Performance</li>
-<li>Team 3: Retention</li>
-<li>Team 4: Outcomes</li>
-</ul></li>
-</ul>
+<section id="project-hierarchy" class="slide level2">
+<h2>Project Hierarchy</h2>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="34" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 33;"><span id="cb1-34"><a></a>d3 <span class="op">=</span> <span class="pp">require</span>(<span class="st">"d3@7"</span>)</span>
+<span id="cb1-35"><a></a></span>
+<span id="cb1-36"><a></a>data <span class="op">=</span> ({</span>
+<span id="cb1-37"><a></a>  <span class="dt">name</span><span class="op">:</span> <span class="st">"Equity Analysis Project"</span><span class="op">,</span></span>
+<span id="cb1-38"><a></a>  <span class="dt">children</span><span class="op">:</span> [</span>
+<span id="cb1-39"><a></a>    {</span>
+<span id="cb1-40"><a></a>      <span class="dt">name</span><span class="op">:</span> <span class="st">"Core Team"</span><span class="op">,</span></span>
+<span id="cb1-41"><a></a>      <span class="dt">children</span><span class="op">:</span> [</span>
+<span id="cb1-42"><a></a>        { <span class="dt">name</span><span class="op">:</span> <span class="st">"Lead Architect"</span><span class="op">,</span></span>
+<span id="cb1-43"><a></a>            <span class="dt">children</span><span class="op">:</span> [</span>
+<span id="cb1-44"><a></a>                { <span class="dt">name</span><span class="op">:</span> <span class="st">"Code Guild"</span><span class="op">,</span> </span>
+<span id="cb1-45"><a></a>                    <span class="dt">children</span><span class="op">:</span> [{ <span class="dt">name</span><span class="op">:</span> <span class="st">"Sentinels"</span> }]</span>
+<span id="cb1-46"><a></a>                }<span class="op">,</span></span>
+<span id="cb1-47"><a></a>                { <span class="dt">name</span><span class="op">:</span> <span class="st">"Data Guild"</span><span class="op">,</span> </span>
+<span id="cb1-48"><a></a>                    <span class="dt">children</span><span class="op">:</span> [{ <span class="dt">name</span><span class="op">:</span> <span class="st">"Data Stewards"</span> }]<span class="op">,</span> </span>
+<span id="cb1-49"><a></a>                }<span class="op">,</span></span>
+<span id="cb1-50"><a></a>            ]</span>
+<span id="cb1-51"><a></a>        }<span class="op">,</span></span>
+<span id="cb1-52"><a></a>        { <span class="dt">name</span><span class="op">:</span> <span class="st">"Product Owner"</span><span class="op">,</span></span>
+<span id="cb1-53"><a></a>            <span class="dt">children</span><span class="op">:</span> [</span>
+<span id="cb1-54"><a></a>                { <span class="dt">name</span><span class="op">:</span> <span class="st">"UI Guild"</span><span class="op">,</span> <span class="dt">children</span><span class="op">:</span> [{ <span class="dt">name</span><span class="op">:</span> <span class="st">"Chart Artists"</span> }] }<span class="op">,</span></span>
+<span id="cb1-55"><a></a>                { <span class="dt">name</span><span class="op">:</span> <span class="st">"Shiny Guild"</span><span class="op">,</span> <span class="dt">children</span><span class="op">:</span> [{ <span class="dt">name</span><span class="op">:</span> <span class="st">"Interface Architects"</span> }] }<span class="op">,</span></span>
+<span id="cb1-56"><a></a>                { <span class="dt">name</span><span class="op">:</span> <span class="st">"Narrative Guild"</span><span class="op">,</span> <span class="dt">children</span><span class="op">:</span> [{ <span class="dt">name</span><span class="op">:</span> <span class="st">"Narrative Leads"</span> }] }</span>
+<span id="cb1-57"><a></a>            ]</span>
+<span id="cb1-58"><a></a>         }<span class="op">,</span></span>
+<span id="cb1-59"><a></a>        {</span>
+<span id="cb1-60"><a></a>          <span class="dt">name</span><span class="op">:</span> <span class="st">"Team Leads"</span><span class="op">,</span></span>
+<span id="cb1-61"><a></a>          <span class="dt">children</span><span class="op">:</span> [</span>
+<span id="cb1-62"><a></a>            { <span class="dt">name</span><span class="op">:</span> <span class="st">"Feature 1: Enrollment"</span><span class="op">,</span> </span>
+<span id="cb1-63"><a></a>                <span class="dt">children</span><span class="op">:</span> [</span>
+<span id="cb1-64"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Github Sentinel (Team Lead)"</span> }<span class="op">,</span></span>
+<span id="cb1-65"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Data Steward (Data Eng)"</span> }<span class="op">,</span></span>
+<span id="cb1-66"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Chart Artist (Viz)"</span> }<span class="op">,</span></span>
+<span id="cb1-67"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Interface Architect (Shiny)"</span> }<span class="op">,</span></span>
+<span id="cb1-68"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Narrative Lead (Context)"</span> }</span>
+<span id="cb1-69"><a></a>          ]</span>
+<span id="cb1-70"><a></a>            }<span class="op">,</span></span>
+<span id="cb1-71"><a></a>            { <span class="dt">name</span><span class="op">:</span> <span class="st">"Feature 2: Performance"</span><span class="op">,</span> </span>
+<span id="cb1-72"><a></a>                <span class="dt">children</span><span class="op">:</span> [</span>
+<span id="cb1-73"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Github Sentinel (Team Lead)"</span> }<span class="op">,</span></span>
+<span id="cb1-74"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Data Steward (Data Eng)"</span> }<span class="op">,</span></span>
+<span id="cb1-75"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Chart Artist (Viz)"</span> }<span class="op">,</span></span>
+<span id="cb1-76"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Interface Architect (Shiny)"</span> }<span class="op">,</span></span>
+<span id="cb1-77"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Narrative Lead (Context)"</span> }</span>
+<span id="cb1-78"><a></a>          ] }<span class="op">,</span></span>
+<span id="cb1-79"><a></a>            { <span class="dt">name</span><span class="op">:</span> <span class="st">"Feature 3: Retention"</span><span class="op">,</span> </span>
+<span id="cb1-80"><a></a>                <span class="dt">children</span><span class="op">:</span> [</span>
+<span id="cb1-81"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Github Sentinel (Team Lead)"</span> }<span class="op">,</span></span>
+<span id="cb1-82"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Data Steward (Data Eng)"</span> }<span class="op">,</span></span>
+<span id="cb1-83"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Chart Artist (Viz)"</span> }<span class="op">,</span></span>
+<span id="cb1-84"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Interface Architect (Shiny)"</span> }<span class="op">,</span></span>
+<span id="cb1-85"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Narrative Lead (Context)"</span> }</span>
+<span id="cb1-86"><a></a>          ] }<span class="op">,</span></span>
+<span id="cb1-87"><a></a>            { <span class="dt">name</span><span class="op">:</span> <span class="st">"Feature 4: Outcomes"</span><span class="op">,</span> </span>
+<span id="cb1-88"><a></a>                <span class="dt">children</span><span class="op">:</span> [</span>
+<span id="cb1-89"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Github Sentinel (Team Lead)"</span> }<span class="op">,</span></span>
+<span id="cb1-90"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Data Steward (Data Eng)"</span> }<span class="op">,</span></span>
+<span id="cb1-91"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Chart Artist (Viz)"</span> }<span class="op">,</span></span>
+<span id="cb1-92"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Interface Architect (Shiny)"</span> }<span class="op">,</span></span>
+<span id="cb1-93"><a></a>                    { <span class="dt">name</span><span class="op">:</span> <span class="st">"Narrative Lead (Context)"</span> }</span>
+<span id="cb1-94"><a></a>          ] }</span>
+<span id="cb1-95"><a></a>          ]</span>
+<span id="cb1-96"><a></a>          </span>
+<span id="cb1-97"><a></a>        }</span>
+<span id="cb1-98"><a></a>      ]</span>
+<span id="cb1-99"><a></a>    }</span>
+<span id="cb1-100"><a></a>  ]</span>
+<span id="cb1-101"><a></a>})</span>
+<span id="cb1-102"><a></a></span>
+<span id="cb1-103"><a></a></span>
+<span id="cb1-104"><a></a>chart <span class="op">=</span> {</span>
+<span id="cb1-105"><a></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">2000</span><span class="op">;</span></span>
+<span id="cb1-106"><a></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">600</span><span class="op">;</span></span>
+<span id="cb1-107"><a></a>  </span>
+<span id="cb1-108"><a></a>  <span class="co">// Increased dx for better vertical spacing to prevent overlap</span></span>
+<span id="cb1-109"><a></a>  <span class="kw">const</span> dx <span class="op">=</span> <span class="dv">35</span><span class="op">;</span> </span>
+<span id="cb1-110"><a></a>  <span class="kw">const</span> dy <span class="op">=</span> width <span class="op">/</span> <span class="dv">6</span><span class="op">;</span></span>
+<span id="cb1-111"><a></a></span>
+<span id="cb1-112"><a></a>  <span class="kw">const</span> <span class="bu">root</span> <span class="op">=</span> d3<span class="op">.</span><span class="fu">hierarchy</span>(data)<span class="op">;</span></span>
+<span id="cb1-113"><a></a></span>
+<span id="cb1-114"><a></a>  <span class="kw">const</span> tree <span class="op">=</span> d3<span class="op">.</span><span class="fu">tree</span>()<span class="op">.</span><span class="fu">nodeSize</span>([dx<span class="op">,</span> dy])<span class="op">;</span></span>
+<span id="cb1-115"><a></a>  </span>
+<span id="cb1-116"><a></a>  <span class="co">// Initial collapsed state logic</span></span>
+<span id="cb1-117"><a></a>  <span class="bu">root</span><span class="op">.</span><span class="fu">descendants</span>()<span class="op">.</span><span class="fu">slice</span>(<span class="dv">1</span>)<span class="op">.</span><span class="fu">forEach</span>(d <span class="kw">=&gt;</span> {</span>
+<span id="cb1-118"><a></a>    <span class="co">// Keep high level branches open, collapse details deeper down</span></span>
+<span id="cb1-119"><a></a>    <span class="cf">if</span> (d<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">name</span> <span class="op">===</span> <span class="st">"Guilds"</span> <span class="op">||</span> d<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">name</span> <span class="op">===</span> <span class="st">"Feature Teams (x5)"</span> <span class="op">||</span> d<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">name</span> <span class="op">===</span> <span class="st">"Core Team"</span>) {</span>
+<span id="cb1-120"><a></a>        <span class="co">// Keep open</span></span>
+<span id="cb1-121"><a></a>    } <span class="cf">else</span> <span class="cf">if</span> (d<span class="op">.</span><span class="at">depth</span> <span class="op">&gt;</span> <span class="dv">1</span>) {</span>
+<span id="cb1-122"><a></a>       <span class="co">// Collapse grandchildren initially</span></span>
+<span id="cb1-123"><a></a>       d<span class="op">.</span><span class="at">_children</span> <span class="op">=</span> d<span class="op">.</span><span class="at">children</span><span class="op">;</span></span>
+<span id="cb1-124"><a></a>       d<span class="op">.</span><span class="at">children</span> <span class="op">=</span> <span class="kw">null</span><span class="op">;</span> </span>
+<span id="cb1-125"><a></a>    }</span>
+<span id="cb1-126"><a></a>  })<span class="op">;</span></span>
+<span id="cb1-127"><a></a></span>
+<span id="cb1-128"><a></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">create</span>(<span class="st">"svg"</span>)</span>
+<span id="cb1-129"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"viewBox"</span><span class="op">,</span> [<span class="op">-</span><span class="dv">400</span><span class="op">,</span> <span class="op">-</span><span class="dv">50</span><span class="op">,</span> width<span class="op">,</span> height]) </span>
+<span id="cb1-130"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"font"</span><span class="op">,</span> <span class="st">"14px sans-serif"</span>)</span>
+<span id="cb1-131"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"user-select"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb1-132"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"max-width"</span><span class="op">,</span> <span class="st">"100%"</span>)</span>
+<span id="cb1-133"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"height"</span><span class="op">,</span> <span class="st">"auto"</span>)<span class="op">;</span></span>
+<span id="cb1-134"><a></a></span>
+<span id="cb1-135"><a></a>  <span class="co">// Add Zoom</span></span>
+<span id="cb1-136"><a></a>  <span class="kw">const</span> gLink <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-137"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb1-138"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"#999"</span>)</span>
+<span id="cb1-139"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-opacity"</span><span class="op">,</span> <span class="fl">0.4</span>)</span>
+<span id="cb1-140"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="fl">1.5</span>)<span class="op">;</span></span>
+<span id="cb1-141"><a></a></span>
+<span id="cb1-142"><a></a>  <span class="kw">const</span> gNode <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-143"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cursor"</span><span class="op">,</span> <span class="st">"pointer"</span>)</span>
+<span id="cb1-144"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"pointer-events"</span><span class="op">,</span> <span class="st">"all"</span>)<span class="op">;</span></span>
+<span id="cb1-145"><a></a></span>
+<span id="cb1-146"><a></a>  <span class="kw">function</span> <span class="fu">update</span>(source) {</span>
+<span id="cb1-147"><a></a>      <span class="kw">const</span> duration <span class="op">=</span> <span class="dv">250</span><span class="op">;</span></span>
+<span id="cb1-148"><a></a>      <span class="kw">const</span> nodes <span class="op">=</span> <span class="bu">root</span><span class="op">.</span><span class="fu">descendants</span>()<span class="op">.</span><span class="fu">reverse</span>()<span class="op">;</span></span>
+<span id="cb1-149"><a></a>      <span class="kw">const</span> links <span class="op">=</span> <span class="bu">root</span><span class="op">.</span><span class="fu">links</span>()<span class="op">;</span></span>
+<span id="cb1-150"><a></a>      <span class="fu">tree</span>(<span class="bu">root</span>)<span class="op">;</span></span>
+<span id="cb1-151"><a></a></span>
+<span id="cb1-152"><a></a>      <span class="kw">let</span> left <span class="op">=</span> <span class="bu">root</span><span class="op">;</span></span>
+<span id="cb1-153"><a></a>      <span class="kw">let</span> right <span class="op">=</span> <span class="bu">root</span><span class="op">;</span></span>
+<span id="cb1-154"><a></a>      <span class="bu">root</span><span class="op">.</span><span class="fu">eachBefore</span>(node <span class="kw">=&gt;</span> {</span>
+<span id="cb1-155"><a></a>        <span class="cf">if</span> (node<span class="op">.</span><span class="at">x</span> <span class="op">&lt;</span> left<span class="op">.</span><span class="at">x</span>) left <span class="op">=</span> node<span class="op">;</span></span>
+<span id="cb1-156"><a></a>        <span class="cf">if</span> (node<span class="op">.</span><span class="at">x</span> <span class="op">&gt;</span> right<span class="op">.</span><span class="at">x</span>) right <span class="op">=</span> node<span class="op">;</span></span>
+<span id="cb1-157"><a></a>      })<span class="op">;</span></span>
+<span id="cb1-158"><a></a></span>
+<span id="cb1-159"><a></a>      <span class="kw">const</span> height <span class="op">=</span> right<span class="op">.</span><span class="at">x</span> <span class="op">-</span> left<span class="op">.</span><span class="at">x</span> <span class="op">+</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb1-160"><a></a></span>
+<span id="cb1-161"><a></a>      <span class="kw">const</span> transition <span class="op">=</span> svg<span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb1-162"><a></a>          <span class="op">.</span><span class="fu">duration</span>(duration)</span>
+<span id="cb1-163"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"viewBox"</span><span class="op">,</span> [<span class="op">-</span><span class="dv">400</span><span class="op">,</span> left<span class="op">.</span><span class="at">x</span> <span class="op">-</span> <span class="dv">50</span><span class="op">,</span> width<span class="op">,</span> height])<span class="op">;</span></span>
+<span id="cb1-164"><a></a></span>
+<span id="cb1-165"><a></a>      <span class="kw">const</span> node <span class="op">=</span> gNode<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-166"><a></a>        <span class="op">.</span><span class="fu">data</span>(nodes<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">id</span> <span class="op">||</span> (d<span class="op">.</span><span class="at">id</span> <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>()))<span class="op">;</span></span>
+<span id="cb1-167"><a></a></span>
+<span id="cb1-168"><a></a>      <span class="kw">const</span> nodeEnter <span class="op">=</span> node<span class="op">.</span><span class="fu">enter</span>()<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-169"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="vs">`translate(</span><span class="sc">${</span>source<span class="op">.</span><span class="at">y0</span> <span class="op">||</span> source<span class="op">.</span><span class="at">y</span><span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>source<span class="op">.</span><span class="at">x0</span> <span class="op">||</span> source<span class="op">.</span><span class="at">x</span><span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb1-170"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill-opacity"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb1-171"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-opacity"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb1-172"><a></a>          <span class="op">.</span><span class="fu">on</span>(<span class="st">"click"</span><span class="op">,</span> (<span class="bu">event</span><span class="op">,</span> d) <span class="kw">=&gt;</span> {</span>
+<span id="cb1-173"><a></a>            <span class="co">// Fix: properly toggle children and _children</span></span>
+<span id="cb1-174"><a></a>            <span class="cf">if</span> (d<span class="op">.</span><span class="at">children</span>) {</span>
+<span id="cb1-175"><a></a>                d<span class="op">.</span><span class="at">_children</span> <span class="op">=</span> d<span class="op">.</span><span class="at">children</span><span class="op">;</span></span>
+<span id="cb1-176"><a></a>                d<span class="op">.</span><span class="at">children</span> <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb1-177"><a></a>            } <span class="cf">else</span> {</span>
+<span id="cb1-178"><a></a>                d<span class="op">.</span><span class="at">children</span> <span class="op">=</span> d<span class="op">.</span><span class="at">_children</span><span class="op">;</span></span>
+<span id="cb1-179"><a></a>                d<span class="op">.</span><span class="at">_children</span> <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb1-180"><a></a>            }</span>
+<span id="cb1-181"><a></a>            <span class="fu">update</span>(d)<span class="op">;</span></span>
+<span id="cb1-182"><a></a>          })<span class="op">;</span></span>
+<span id="cb1-183"><a></a></span>
+<span id="cb1-184"><a></a>      nodeEnter<span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
+<span id="cb1-185"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> <span class="dv">6</span>)</span>
+<span id="cb1-186"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">_children</span> <span class="op">?</span> <span class="st">"#007bff"</span> <span class="op">:</span> <span class="st">"#999"</span>) </span>
+<span id="cb1-187"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">10</span>)<span class="op">;</span></span>
+<span id="cb1-188"><a></a></span>
+<span id="cb1-189"><a></a>      nodeEnter<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-190"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"dy"</span><span class="op">,</span> <span class="st">"0.31em"</span>)</span>
+<span id="cb1-191"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">_children</span> <span class="op">?</span> <span class="op">-</span><span class="dv">8</span> <span class="op">:</span> <span class="dv">8</span>)</span>
+<span id="cb1-192"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">_children</span> <span class="op">?</span> <span class="st">"end"</span> <span class="op">:</span> <span class="st">"start"</span>)</span>
+<span id="cb1-193"><a></a>          <span class="op">.</span><span class="fu">text</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">name</span>)</span>
+<span id="cb1-194"><a></a>          <span class="op">.</span><span class="fu">clone</span>(<span class="kw">true</span>)<span class="op">.</span><span class="fu">lower</span>()</span>
+<span id="cb1-195"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-linejoin"</span><span class="op">,</span> <span class="st">"round"</span>)</span>
+<span id="cb1-196"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">3</span>)</span>
+<span id="cb1-197"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"white"</span>)<span class="op">;</span></span>
+<span id="cb1-198"><a></a></span>
+<span id="cb1-199"><a></a>      <span class="kw">const</span> nodeUpdate <span class="op">=</span> node<span class="op">.</span><span class="fu">merge</span>(nodeEnter)<span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(duration)</span>
+<span id="cb1-200"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="vs">`translate(</span><span class="sc">${</span>d<span class="op">.</span><span class="at">y</span><span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>d<span class="op">.</span><span class="at">x</span><span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb1-201"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill-opacity"</span><span class="op">,</span> <span class="dv">1</span>)</span>
+<span id="cb1-202"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-opacity"</span><span class="op">,</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb1-203"><a></a>      </span>
+<span id="cb1-204"><a></a>      <span class="co">// Update color based on whether it effectively has children (expanded or collapsed)</span></span>
+<span id="cb1-205"><a></a>      nodeUpdate<span class="op">.</span><span class="fu">select</span>(<span class="st">"circle"</span>)</span>
+<span id="cb1-206"><a></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> d <span class="kw">=&gt;</span> (d<span class="op">.</span><span class="at">children</span> <span class="op">||</span> d<span class="op">.</span><span class="at">_children</span>) <span class="op">?</span> <span class="st">"#533860"</span> <span class="op">:</span> <span class="st">"#999"</span>)<span class="op">;</span></span>
+<span id="cb1-207"><a></a></span>
+<span id="cb1-208"><a></a>      <span class="kw">const</span> nodeExit <span class="op">=</span> node<span class="op">.</span><span class="fu">exit</span>()<span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(duration)<span class="op">.</span><span class="fu">remove</span>()</span>
+<span id="cb1-209"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="vs">`translate(</span><span class="sc">${</span>source<span class="op">.</span><span class="at">y</span><span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>source<span class="op">.</span><span class="at">x</span><span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb1-210"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill-opacity"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb1-211"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-opacity"</span><span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb1-212"><a></a></span>
+<span id="cb1-213"><a></a>      <span class="kw">const</span> link <span class="op">=</span> gLink<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"path"</span>)</span>
+<span id="cb1-214"><a></a>        <span class="op">.</span><span class="fu">data</span>(links<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">id</span>)<span class="op">;</span></span>
+<span id="cb1-215"><a></a></span>
+<span id="cb1-216"><a></a>      <span class="kw">const</span> linkEnter <span class="op">=</span> link<span class="op">.</span><span class="fu">enter</span>()<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
+<span id="cb1-217"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> d <span class="kw">=&gt;</span> {</span>
+<span id="cb1-218"><a></a>            <span class="kw">const</span> o <span class="op">=</span> {<span class="dt">x</span><span class="op">:</span> source<span class="op">.</span><span class="at">x0</span> <span class="op">||</span> source<span class="op">.</span><span class="at">x</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> source<span class="op">.</span><span class="at">y0</span> <span class="op">||</span> source<span class="op">.</span><span class="at">y</span>}<span class="op">;</span></span>
+<span id="cb1-219"><a></a>            <span class="cf">return</span> d3<span class="op">.</span><span class="fu">linkHorizontal</span>()({<span class="dt">source</span><span class="op">:</span> o<span class="op">,</span> <span class="dt">target</span><span class="op">:</span> o})<span class="op">;</span></span>
+<span id="cb1-220"><a></a>          })<span class="op">;</span></span>
+<span id="cb1-221"><a></a></span>
+<span id="cb1-222"><a></a>      link<span class="op">.</span><span class="fu">merge</span>(linkEnter)<span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(duration)</span>
+<span id="cb1-223"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> d3<span class="op">.</span><span class="fu">linkHorizontal</span>()</span>
+<span id="cb1-224"><a></a>              <span class="op">.</span><span class="fu">x</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span>)</span>
+<span id="cb1-225"><a></a>              <span class="op">.</span><span class="fu">y</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span>))<span class="op">;</span></span>
+<span id="cb1-226"><a></a></span>
+<span id="cb1-227"><a></a>      link<span class="op">.</span><span class="fu">exit</span>()<span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(duration)<span class="op">.</span><span class="fu">remove</span>()</span>
+<span id="cb1-228"><a></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> d <span class="kw">=&gt;</span> {</span>
+<span id="cb1-229"><a></a>            <span class="kw">const</span> o <span class="op">=</span> {<span class="dt">x</span><span class="op">:</span> source<span class="op">.</span><span class="at">x</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> source<span class="op">.</span><span class="at">y</span>}<span class="op">;</span></span>
+<span id="cb1-230"><a></a>            <span class="cf">return</span> d3<span class="op">.</span><span class="fu">linkHorizontal</span>()({<span class="dt">source</span><span class="op">:</span> o<span class="op">,</span> <span class="dt">target</span><span class="op">:</span> o})<span class="op">;</span></span>
+<span id="cb1-231"><a></a>          })<span class="op">;</span></span>
+<span id="cb1-232"><a></a></span>
+<span id="cb1-233"><a></a>      <span class="bu">root</span><span class="op">.</span><span class="fu">eachBefore</span>(d <span class="kw">=&gt;</span> {</span>
+<span id="cb1-234"><a></a>        d<span class="op">.</span><span class="at">x0</span> <span class="op">=</span> d<span class="op">.</span><span class="at">x</span><span class="op">;</span></span>
+<span id="cb1-235"><a></a>        d<span class="op">.</span><span class="at">y0</span> <span class="op">=</span> d<span class="op">.</span><span class="at">y</span><span class="op">;</span></span>
+<span id="cb1-236"><a></a>      })<span class="op">;</span></span>
+<span id="cb1-237"><a></a>  }</span>
+<span id="cb1-238"><a></a></span>
+<span id="cb1-239"><a></a>  <span class="bu">root</span><span class="op">.</span><span class="at">x0</span> <span class="op">=</span> dy <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb1-240"><a></a>  <span class="bu">root</span><span class="op">.</span><span class="at">y0</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-241"><a></a>  </span>
+<span id="cb1-242"><a></a>  <span class="fu">update</span>(<span class="bu">root</span>)<span class="op">;</span></span>
+<span id="cb1-243"><a></a></span>
+<span id="cb1-244"><a></a>  <span class="co">// Zoom Logic</span></span>
+<span id="cb1-245"><a></a>  svg<span class="op">.</span><span class="fu">call</span>(d3<span class="op">.</span><span class="fu">zoom</span>()</span>
+<span id="cb1-246"><a></a>      <span class="op">.</span><span class="fu">extent</span>([[<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span>]<span class="op">,</span> [width<span class="op">,</span> height]])</span>
+<span id="cb1-247"><a></a>      <span class="op">.</span><span class="fu">scaleExtent</span>([<span class="fl">0.5</span><span class="op">,</span> <span class="dv">4</span>])</span>
+<span id="cb1-248"><a></a>      <span class="op">.</span><span class="fu">on</span>(<span class="st">"zoom"</span><span class="op">,</span> ({transform}) <span class="kw">=&gt;</span> {</span>
+<span id="cb1-249"><a></a>          gLink<span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> transform)<span class="op">;</span></span>
+<span id="cb1-250"><a></a>          gNode<span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> transform)<span class="op">;</span></span>
+<span id="cb1-251"><a></a>      }))<span class="op">;</span></span>
+<span id="cb1-252"><a></a></span>
+<span id="cb1-253"><a></a>  <span class="cf">return</span> svg<span class="op">.</span><span class="fu">node</span>()<span class="op">;</span></span>
+<span id="cb1-254"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="feature-team-roles" class="title-slide slide level1 center">
 <h1>Feature Team Roles</h1>
 
 </section>
-<section id="github-sentinel-team-lead" class="slide level2">
+<section id="github-sentinel-team-lead" class="slide level2 smaller">
 <h2>1. Github Sentinel (Team Lead)</h2>
 <ul>
 <li><strong>Skills:</strong> Git, Organization, Conflict Resolution, Jack-Of-All trades.</li>
@@ -215,11 +511,13 @@ Dr.&nbsp;Eric Friedlander
 <li>Manages the team’s “branch” (workspace).</li>
 <li>Resolves “merge conflicts” (when code clashes).</li>
 <li>Ensures the team’s code safely enters the main project.</li>
+<li>Set’s deadlines and keeps the team on track.</li>
+<li>Ultimately responsible for the team’s success.</li>
 </ul></li>
 <li><em>The only person authorized to submit code updates to the Tech VP.</em></li>
 </ul>
 </section>
-<section id="data-steward-data-engineer" class="slide level2">
+<section id="data-steward-data-engineer" class="slide level2 smaller">
 <h2>2. Data Steward (Data Engineer)</h2>
 <ul>
 <li><strong>Skills:</strong> <code>dplyr</code>, Data Cleaning, Ethics.</li>
@@ -228,10 +526,11 @@ Dr.&nbsp;Eric Friedlander
 <li>Writes <code>clean_data.R</code>.</li>
 <li><strong>Privacy Protection:</strong> Ensures no student is identifiable (masks data if sample size too small).</li>
 <li>Creates clean, anonymized datasets for the team.</li>
+<li>Works with other Data Stewards to standardize definitions.</li>
 </ul></li>
 </ul>
 </section>
-<section id="chart-artist-viz-specialist" class="slide level2">
+<section id="chart-artist-viz-specialist" class="slide level2 smaller">
 <h2>3. Chart Artist (Viz Specialist)</h2>
 <ul>
 <li><strong>Skills:</strong> <code>ggplot2</code>, Visualization Design.</li>
@@ -240,10 +539,11 @@ Dr.&nbsp;Eric Friedlander
 <li>Creates high-quality static visualizations.</li>
 <li>Writes plot functions (e.g., <code>plot_gpa()</code>).</li>
 <li>Ensures all charts match the design system (colors, fonts).</li>
+<li>Works with other Chart Artists to ensure consistency across modules.</li>
 </ul></li>
 </ul>
 </section>
-<section id="interface-architect-shiny-dev" class="slide level2">
+<section id="interface-architect-shiny-dev" class="slide level2 smaller">
 <h2>4. Interface Architect (Shiny Dev)</h2>
 <ul>
 <li><strong>Skills:</strong> Shiny UI/Server, Layouts.</li>
@@ -255,7 +555,7 @@ Dr.&nbsp;Eric Friedlander
 </ul></li>
 </ul>
 </section>
-<section id="narrative-lead-contextqa" class="slide level2">
+<section id="narrative-lead-contextqa" class="slide level2 smaller">
 <h2>5. Narrative Lead (Context/QA)</h2>
 <ul>
 <li><strong>Skills:</strong> Writing, Interpretation, <code>stringr</code>.</li>
@@ -264,6 +564,7 @@ Dr.&nbsp;Eric Friedlander
 <li>Writes dynamic text to interpret charts automatically (“Mad Libs” style).</li>
 <li>Explains <em>what</em> the data shows to the user.</li>
 <li>Acts as Quality Assurance for the team’s module.</li>
+<li>Take notes at team meetings and documents decisions and timelines.</li>
 </ul></li>
 </ul>
 </section></section>
@@ -282,22 +583,22 @@ Dr.&nbsp;Eric Friedlander
 <li><strong>Narrative Guild:</strong> Narrative Leads (Tone &amp; Consistency).</li>
 </ul>
 </section>
-<section id="core-team-roles" class="slide level2">
+<section id="core-team-roles" class="slide level2 smaller">
 <h2>Core Team Roles</h2>
 <ul>
 <li><strong>Product Owner (Client VP)</strong>
 <ul>
 <li>“Voice of the Client”</li>
 <li>Manages the <strong>Landing Page</strong>, <code>global.R</code>, and <code>styles.css</code>.</li>
-<li>Leads the <strong>UI Guild</strong>.</li>
+<li>Leads the <strong>UI Guild</strong>, <strong>Shiny Guild</strong>, and <strong>Narrative Guild</strong>.</li>
 </ul></li>
 <li><strong>Lead Architect (Tech VP)</strong>
 <ul>
 <li>Repository Health &amp; Integration.</li>
 <li>Manages <code>app.R</code> and Deployment.</li>
-<li>Leads the <strong>Code Guild</strong>.</li>
+<li>Leads the <strong>Code Guild</strong> and <strong>Data Guild</strong>.</li>
 </ul></li>
-<li><strong>Guild Leaders</strong>: Each Guild will nominate a leader to coordinate efforts.</li>
+<li><strong>Team Leads</strong></li>
 </ul>
 </section></section>
 <section>
@@ -536,6 +837,17 @@ Dr.&nbsp;Eric Friedlander
           RevealZoom
         ]
       });
+    </script>
+    <script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImQzID0gcmVxdWlyZShcImQzQDdcIilcblxuZGF0YSA9ICh7XG4gIG5hbWU6IFwiRXF1aXR5IEFuYWx5c2lzIFByb2plY3RcIixcbiAgY2hpbGRyZW46IFtcbiAgICB7XG4gICAgICBuYW1lOiBcIkNvcmUgVGVhbVwiLFxuICAgICAgY2hpbGRyZW46IFtcbiAgICAgICAgeyBuYW1lOiBcIkxlYWQgQXJjaGl0ZWN0XCIsXG4gICAgICAgICAgICBjaGlsZHJlbjogW1xuICAgICAgICAgICAgICAgIHsgbmFtZTogXCJDb2RlIEd1aWxkXCIsIFxuICAgICAgICAgICAgICAgICAgICBjaGlsZHJlbjogW3sgbmFtZTogXCJTZW50aW5lbHNcIiB9XVxuICAgICAgICAgICAgICAgIH0sXG4gICAgICAgICAgICAgICAgeyBuYW1lOiBcIkRhdGEgR3VpbGRcIiwgXG4gICAgICAgICAgICAgICAgICAgIGNoaWxkcmVuOiBbeyBuYW1lOiBcIkRhdGEgU3Rld2FyZHNcIiB9XSwgXG4gICAgICAgICAgICAgICAgfSxcbiAgICAgICAgICAgIF1cbiAgICAgICAgfSxcbiAgICAgICAgeyBuYW1lOiBcIlByb2R1Y3QgT3duZXJcIixcbiAgICAgICAgICAgIGNoaWxkcmVuOiBbXG4gICAgICAgICAgICAgICAgeyBuYW1lOiBcIlVJIEd1aWxkXCIsIGNoaWxkcmVuOiBbeyBuYW1lOiBcIkNoYXJ0IEFydGlzdHNcIiB9XSB9LFxuICAgICAgICAgICAgICAgIHsgbmFtZTogXCJTaGlueSBHdWlsZFwiLCBjaGlsZHJlbjogW3sgbmFtZTogXCJJbnRlcmZhY2UgQXJjaGl0ZWN0c1wiIH1dIH0sXG4gICAgICAgICAgICAgICAgeyBuYW1lOiBcIk5hcnJhdGl2ZSBHdWlsZFwiLCBjaGlsZHJlbjogW3sgbmFtZTogXCJOYXJyYXRpdmUgTGVhZHNcIiB9XSB9XG4gICAgICAgICAgICBdXG4gICAgICAgICB9LFxuICAgICAgICB7XG4gICAgICAgICAgbmFtZTogXCJUZWFtIExlYWRzXCIsXG4gICAgICAgICAgY2hpbGRyZW46IFtcbiAgICAgICAgICAgIHsgbmFtZTogXCJGZWF0dXJlIDE6IEVucm9sbG1lbnRcIiwgXG4gICAgICAgICAgICAgICAgY2hpbGRyZW46IFtcbiAgICAgICAgICAgICAgICAgICAgeyBuYW1lOiBcIkdpdGh1YiBTZW50aW5lbCAoVGVhbSBMZWFkKVwiIH0sXG4gICAgICAgICAgICAgICAgICAgIHsgbmFtZTogXCJEYXRhIFN0ZXdhcmQgKERhdGEgRW5nKVwiIH0sXG4gICAgICAgICAgICAgICAgICAgIHsgbmFtZTogXCJDaGFydCBBcnRpc3QgKFZpeilcIiB9LFxuICAgICAgICAgICAgICAgICAgICB7IG5hbWU6IFwiSW50ZXJmYWNlIEFyY2hpdGVjdCAoU2hpbnkpXCIgfSxcbiAgICAgICAgICAgICAgICAgICAgeyBuYW1lOiBcIk5hcnJhdGl2ZSBMZWFkIChDb250ZXh0KVwiIH1cbiAgICAgICAgICBdXG4gICAgICAgICAgICB9LFxuICAgICAgICAgICAgeyBuYW1lOiBcIkZlYXR1cmUgMjogUGVyZm9ybWFuY2VcIiwgXG4gICAgICAgICAgICAgICAgY2hpbGRyZW46IFtcbiAgICAgICAgICAgICAgICAgICAgeyBuYW1lOiBcIkdpdGh1YiBTZW50aW5lbCAoVGVhbSBMZWFkKVwiIH0sXG4gICAgICAgICAgICAgICAgICAgIHsgbmFtZTogXCJEYXRhIFN0ZXdhcmQgKERhdGEgRW5nKVwiIH0sXG4gICAgICAgICAgICAgICAgICAgIHsgbmFtZTogXCJDaGFydCBBcnRpc3QgKFZpeilcIiB9LFxuICAgICAgICAgICAgICAgICAgICB7IG5hbWU6IFwiSW50ZXJmYWNlIEFyY2hpdGVjdCAoU2hpbnkpXCIgfSxcbiAgICAgICAgICAgICAgICAgICAgeyBuYW1lOiBcIk5hcnJhdGl2ZSBMZWFkIChDb250ZXh0KVwiIH1cbiAgICAgICAgICBdIH0sXG4gICAgICAgICAgICB7IG5hbWU6IFwiRmVhdHVyZSAzOiBSZXRlbnRpb25cIiwgXG4gICAgICAgICAgICAgICAgY2hpbGRyZW46IFtcbiAgICAgICAgICAgICAgICAgICAgeyBuYW1lOiBcIkdpdGh1YiBTZW50aW5lbCAoVGVhbSBMZWFkKVwiIH0sXG4gICAgICAgICAgICAgICAgICAgIHsgbmFtZTogXCJEYXRhIFN0ZXdhcmQgKERhdGEgRW5nKVwiIH0sXG4gICAgICAgICAgICAgICAgICAgIHsgbmFtZTogXCJDaGFydCBBcnRpc3QgKFZpeilcIiB9LFxuICAgICAgICAgICAgICAgICAgICB7IG5hbWU6IFwiSW50ZXJmYWNlIEFyY2hpdGVjdCAoU2hpbnkpXCIgfSxcbiAgICAgICAgICAgICAgICAgICAgeyBuYW1lOiBcIk5hcnJhdGl2ZSBMZWFkIChDb250ZXh0KVwiIH1cbiAgICAgICAgICBdIH0sXG4gICAgICAgICAgICB7IG5hbWU6IFwiRmVhdHVyZSA0OiBPdXRjb21lc1wiLCBcbiAgICAgICAgICAgICAgICBjaGlsZHJlbjogW1xuICAgICAgICAgICAgICAgICAgICB7IG5hbWU6IFwiR2l0aHViIFNlbnRpbmVsIChUZWFtIExlYWQpXCIgfSxcbiAgICAgICAgICAgICAgICAgICAgeyBuYW1lOiBcIkRhdGEgU3Rld2FyZCAoRGF0YSBFbmcpXCIgfSxcbiAgICAgICAgICAgICAgICAgICAgeyBuYW1lOiBcIkNoYXJ0IEFydGlzdCAoVml6KVwiIH0sXG4gICAgICAgICAgICAgICAgICAgIHsgbmFtZTogXCJJbnRlcmZhY2UgQXJjaGl0ZWN0IChTaGlueSlcIiB9LFxuICAgICAgICAgICAgICAgICAgICB7IG5hbWU6IFwiTmFycmF0aXZlIExlYWQgKENvbnRleHQpXCIgfVxuICAgICAgICAgIF0gfVxuICAgICAgICAgIF1cbiAgICAgICAgICBcbiAgICAgICAgfVxuICAgICAgXVxuICAgIH1cbiAgXVxufSlcblxuXG5jaGFydCA9IHtcbiAgY29uc3Qgd2lkdGggPSAyMDAwO1xuICBjb25zdCBoZWlnaHQgPSA2MDA7XG4gIFxuICAvLyBJbmNyZWFzZWQgZHggZm9yIGJldHRlciB2ZXJ0aWNhbCBzcGFjaW5nIHRvIHByZXZlbnQgb3ZlcmxhcFxuICBjb25zdCBkeCA9IDM1OyBcbiAgY29uc3QgZHkgPSB3aWR0aCAvIDY7XG5cbiAgY29uc3Qgcm9vdCA9IGQzLmhpZXJhcmNoeShkYXRhKTtcblxuICBjb25zdCB0cmVlID0gZDMudHJlZSgpLm5vZGVTaXplKFtkeCwgZHldKTtcbiAgXG4gIC8vIEluaXRpYWwgY29sbGFwc2VkIHN0YXRlIGxvZ2ljXG4gIHJvb3QuZGVzY2VuZGFudHMoKS5zbGljZSgxKS5mb3JFYWNoKGQgPT4ge1xuICAgIC8vIEtlZXAgaGlnaCBsZXZlbCBicmFuY2hlcyBvcGVuLCBjb2xsYXBzZSBkZXRhaWxzIGRlZXBlciBkb3duXG4gICAgaWYgKGQuZGF0YS5uYW1lID09PSBcIkd1aWxkc1wiIHx8IGQuZGF0YS5uYW1lID09PSBcIkZlYXR1cmUgVGVhbXMgKHg1KVwiIHx8IGQuZGF0YS5uYW1lID09PSBcIkNvcmUgVGVhbVwiKSB7XG4gICAgICAgIC8vIEtlZXAgb3BlblxuICAgIH0gZWxzZSBpZiAoZC5kZXB0aCA+IDEpIHtcbiAgICAgICAvLyBDb2xsYXBzZSBncmFuZGNoaWxkcmVuIGluaXRpYWxseVxuICAgICAgIGQuX2NoaWxkcmVuID0gZC5jaGlsZHJlbjtcbiAgICAgICBkLmNoaWxkcmVuID0gbnVsbDsgXG4gICAgfVxuICB9KTtcblxuICBjb25zdCBzdmcgPSBkMy5jcmVhdGUoXCJzdmdcIilcbiAgICAgIC5hdHRyKFwidmlld0JveFwiLCBbLTQwMCwgLTUwLCB3aWR0aCwgaGVpZ2h0XSkgXG4gICAgICAuc3R5bGUoXCJmb250XCIsIFwiMTRweCBzYW5zLXNlcmlmXCIpXG4gICAgICAuc3R5bGUoXCJ1c2VyLXNlbGVjdFwiLCBcIm5vbmVcIilcbiAgICAgIC5zdHlsZShcIm1heC13aWR0aFwiLCBcIjEwMCVcIilcbiAgICAgIC5zdHlsZShcImhlaWdodFwiLCBcImF1dG9cIik7XG5cbiAgLy8gQWRkIFpvb21cbiAgY29uc3QgZ0xpbmsgPSBzdmcuYXBwZW5kKFwiZ1wiKVxuICAgICAgLmF0dHIoXCJmaWxsXCIsIFwibm9uZVwiKVxuICAgICAgLmF0dHIoXCJzdHJva2VcIiwgXCIjOTk5XCIpXG4gICAgICAuYXR0cihcInN0cm9rZS1vcGFjaXR5XCIsIDAuNClcbiAgICAgIC5hdHRyKFwic3Ryb2tlLXdpZHRoXCIsIDEuNSk7XG5cbiAgY29uc3QgZ05vZGUgPSBzdmcuYXBwZW5kKFwiZ1wiKVxuICAgICAgLmF0dHIoXCJjdXJzb3JcIiwgXCJwb2ludGVyXCIpXG4gICAgICAuYXR0cihcInBvaW50ZXItZXZlbnRzXCIsIFwiYWxsXCIpO1xuXG4gIGZ1bmN0aW9uIHVwZGF0ZShzb3VyY2UpIHtcbiAgICAgIGNvbnN0IGR1cmF0aW9uID0gMjUwO1xuICAgICAgY29uc3Qgbm9kZXMgPSByb290LmRlc2NlbmRhbnRzKCkucmV2ZXJzZSgpO1xuICAgICAgY29uc3QgbGlua3MgPSByb290LmxpbmtzKCk7XG4gICAgICB0cmVlKHJvb3QpO1xuXG4gICAgICBsZXQgbGVmdCA9IHJvb3Q7XG4gICAgICBsZXQgcmlnaHQgPSByb290O1xuICAgICAgcm9vdC5lYWNoQmVmb3JlKG5vZGUgPT4ge1xuICAgICAgICBpZiAobm9kZS54IDwgbGVmdC54KSBsZWZ0ID0gbm9kZTtcbiAgICAgICAgaWYgKG5vZGUueCA+IHJpZ2h0LngpIHJpZ2h0ID0gbm9kZTtcbiAgICAgIH0pO1xuXG4gICAgICBjb25zdCBoZWlnaHQgPSByaWdodC54IC0gbGVmdC54ICsgMTAwO1xuXG4gICAgICBjb25zdCB0cmFuc2l0aW9uID0gc3ZnLnRyYW5zaXRpb24oKVxuICAgICAgICAgIC5kdXJhdGlvbihkdXJhdGlvbilcbiAgICAgICAgICAuYXR0cihcInZpZXdCb3hcIiwgWy00MDAsIGxlZnQueCAtIDUwLCB3aWR0aCwgaGVpZ2h0XSk7XG5cbiAgICAgIGNvbnN0IG5vZGUgPSBnTm9kZS5zZWxlY3RBbGwoXCJnXCIpXG4gICAgICAgIC5kYXRhKG5vZGVzLCBkID0+IGQuaWQgfHwgKGQuaWQgPSBNYXRoLnJhbmRvbSgpKSk7XG5cbiAgICAgIGNvbnN0IG5vZGVFbnRlciA9IG5vZGUuZW50ZXIoKS5hcHBlbmQoXCJnXCIpXG4gICAgICAgICAgLmF0dHIoXCJ0cmFuc2Zvcm1cIiwgZCA9PiBgdHJhbnNsYXRlKCR7c291cmNlLnkwIHx8IHNvdXJjZS55fSwke3NvdXJjZS54MCB8fCBzb3VyY2UueH0pYClcbiAgICAgICAgICAuYXR0cihcImZpbGwtb3BhY2l0eVwiLCAwKVxuICAgICAgICAgIC5hdHRyKFwic3Ryb2tlLW9wYWNpdHlcIiwgMClcbiAgICAgICAgICAub24oXCJjbGlja1wiLCAoZXZlbnQsIGQpID0+IHtcbiAgICAgICAgICAgIC8vIEZpeDogcHJvcGVybHkgdG9nZ2xlIGNoaWxkcmVuIGFuZCBfY2hpbGRyZW5cbiAgICAgICAgICAgIGlmIChkLmNoaWxkcmVuKSB7XG4gICAgICAgICAgICAgICAgZC5fY2hpbGRyZW4gPSBkLmNoaWxkcmVuO1xuICAgICAgICAgICAgICAgIGQuY2hpbGRyZW4gPSBudWxsO1xuICAgICAgICAgICAgfSBlbHNlIHtcbiAgICAgICAgICAgICAgICBkLmNoaWxkcmVuID0gZC5fY2hpbGRyZW47XG4gICAgICAgICAgICAgICAgZC5fY2hpbGRyZW4gPSBudWxsO1xuICAgICAgICAgICAgfVxuICAgICAgICAgICAgdXBkYXRlKGQpO1xuICAgICAgICAgIH0pO1xuXG4gICAgICBub2RlRW50ZXIuYXBwZW5kKFwiY2lyY2xlXCIpXG4gICAgICAgICAgLmF0dHIoXCJyXCIsIDYpXG4gICAgICAgICAgLmF0dHIoXCJmaWxsXCIsIGQgPT4gZC5fY2hpbGRyZW4gPyBcIiMwMDdiZmZcIiA6IFwiIzk5OVwiKSBcbiAgICAgICAgICAuYXR0cihcInN0cm9rZS13aWR0aFwiLCAxMCk7XG5cbiAgICAgIG5vZGVFbnRlci5hcHBlbmQoXCJ0ZXh0XCIpXG4gICAgICAgICAgLmF0dHIoXCJkeVwiLCBcIjAuMzFlbVwiKVxuICAgICAgICAgIC5hdHRyKFwieFwiLCBkID0+IGQuX2NoaWxkcmVuID8gLTggOiA4KVxuICAgICAgICAgIC5hdHRyKFwidGV4dC1hbmNob3JcIiwgZCA9PiBkLl9jaGlsZHJlbiA/IFwiZW5kXCIgOiBcInN0YXJ0XCIpXG4gICAgICAgICAgLnRleHQoZCA9PiBkLmRhdGEubmFtZSlcbiAgICAgICAgICAuY2xvbmUodHJ1ZSkubG93ZXIoKVxuICAgICAgICAgIC5hdHRyKFwic3Ryb2tlLWxpbmVqb2luXCIsIFwicm91bmRcIilcbiAgICAgICAgICAuYXR0cihcInN0cm9rZS13aWR0aFwiLCAzKVxuICAgICAgICAgIC5hdHRyKFwic3Ryb2tlXCIsIFwid2hpdGVcIik7XG5cbiAgICAgIGNvbnN0IG5vZGVVcGRhdGUgPSBub2RlLm1lcmdlKG5vZGVFbnRlcikudHJhbnNpdGlvbigpLmR1cmF0aW9uKGR1cmF0aW9uKVxuICAgICAgICAgIC5hdHRyKFwidHJhbnNmb3JtXCIsIGQgPT4gYHRyYW5zbGF0ZSgke2QueX0sJHtkLnh9KWApXG4gICAgICAgICAgLmF0dHIoXCJmaWxsLW9wYWNpdHlcIiwgMSlcbiAgICAgICAgICAuYXR0cihcInN0cm9rZS1vcGFjaXR5XCIsIDEpO1xuICAgICAgXG4gICAgICAvLyBVcGRhdGUgY29sb3IgYmFzZWQgb24gd2hldGhlciBpdCBlZmZlY3RpdmVseSBoYXMgY2hpbGRyZW4gKGV4cGFuZGVkIG9yIGNvbGxhcHNlZClcbiAgICAgIG5vZGVVcGRhdGUuc2VsZWN0KFwiY2lyY2xlXCIpXG4gICAgICAgIC5hdHRyKFwiZmlsbFwiLCBkID0+IChkLmNoaWxkcmVuIHx8IGQuX2NoaWxkcmVuKSA/IFwiIzUzMzg2MFwiIDogXCIjOTk5XCIpO1xuXG4gICAgICBjb25zdCBub2RlRXhpdCA9IG5vZGUuZXhpdCgpLnRyYW5zaXRpb24oKS5kdXJhdGlvbihkdXJhdGlvbikucmVtb3ZlKClcbiAgICAgICAgICAuYXR0cihcInRyYW5zZm9ybVwiLCBkID0+IGB0cmFuc2xhdGUoJHtzb3VyY2UueX0sJHtzb3VyY2UueH0pYClcbiAgICAgICAgICAuYXR0cihcImZpbGwtb3BhY2l0eVwiLCAwKVxuICAgICAgICAgIC5hdHRyKFwic3Ryb2tlLW9wYWNpdHlcIiwgMCk7XG5cbiAgICAgIGNvbnN0IGxpbmsgPSBnTGluay5zZWxlY3RBbGwoXCJwYXRoXCIpXG4gICAgICAgIC5kYXRhKGxpbmtzLCBkID0+IGQudGFyZ2V0LmlkKTtcblxuICAgICAgY29uc3QgbGlua0VudGVyID0gbGluay5lbnRlcigpLmFwcGVuZChcInBhdGhcIilcbiAgICAgICAgICAuYXR0cihcImRcIiwgZCA9PiB7XG4gICAgICAgICAgICBjb25zdCBvID0ge3g6IHNvdXJjZS54MCB8fCBzb3VyY2UueCwgeTogc291cmNlLnkwIHx8IHNvdXJjZS55fTtcbiAgICAgICAgICAgIHJldHVybiBkMy5saW5rSG9yaXpvbnRhbCgpKHtzb3VyY2U6IG8sIHRhcmdldDogb30pO1xuICAgICAgICAgIH0pO1xuXG4gICAgICBsaW5rLm1lcmdlKGxpbmtFbnRlcikudHJhbnNpdGlvbigpLmR1cmF0aW9uKGR1cmF0aW9uKVxuICAgICAgICAgIC5hdHRyKFwiZFwiLCBkMy5saW5rSG9yaXpvbnRhbCgpXG4gICAgICAgICAgICAgIC54KGQgPT4gZC55KVxuICAgICAgICAgICAgICAueShkID0+IGQueCkpO1xuXG4gICAgICBsaW5rLmV4aXQoKS50cmFuc2l0aW9uKCkuZHVyYXRpb24oZHVyYXRpb24pLnJlbW92ZSgpXG4gICAgICAgICAgLmF0dHIoXCJkXCIsIGQgPT4ge1xuICAgICAgICAgICAgY29uc3QgbyA9IHt4OiBzb3VyY2UueCwgeTogc291cmNlLnl9O1xuICAgICAgICAgICAgcmV0dXJuIGQzLmxpbmtIb3Jpem9udGFsKCkoe3NvdXJjZTogbywgdGFyZ2V0OiBvfSk7XG4gICAgICAgICAgfSk7XG5cbiAgICAgIHJvb3QuZWFjaEJlZm9yZShkID0+IHtcbiAgICAgICAgZC54MCA9IGQueDtcbiAgICAgICAgZC55MCA9IGQueTtcbiAgICAgIH0pO1xuICB9XG5cbiAgcm9vdC54MCA9IGR5IC8gMjtcbiAgcm9vdC55MCA9IDA7XG4gIFxuICB1cGRhdGUocm9vdCk7XG5cbiAgLy8gWm9vbSBMb2dpY1xuICBzdmcuY2FsbChkMy56b29tKClcbiAgICAgIC5leHRlbnQoW1swLCAwXSwgW3dpZHRoLCBoZWlnaHRdXSlcbiAgICAgIC5zY2FsZUV4dGVudChbMC41LCA0XSlcbiAgICAgIC5vbihcInpvb21cIiwgKHt0cmFuc2Zvcm19KSA9PiB7XG4gICAgICAgICAgZ0xpbmsuYXR0cihcInRyYW5zZm9ybVwiLCB0cmFuc2Zvcm0pO1xuICAgICAgICAgIGdOb2RlLmF0dHIoXCJ0cmFuc2Zvcm1cIiwgdHJhbnNmb3JtKTtcbiAgICAgIH0pKTtcblxuICByZXR1cm4gc3ZnLm5vZGUoKTtcbn1cbiJ9XX0=
+    </script>
+    <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../../classwork";
+    window._ojs.paths.runtimeToRoot = "../..";
+    window._ojs.paths.docToRoot = "..";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {

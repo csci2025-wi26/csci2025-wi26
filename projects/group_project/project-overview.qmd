@@ -18,7 +18,7 @@ A team of students responsible for overall project health and cross-team consist
     * Codes the **Landing Page** (The "Home" tab).
     * Writes `global.R` (loading data and packages).
     * Writes `styles.css` (defining colors/fonts).
-* **Management Duty:** Leads the **UI Guild**. Directs teams on styling to match the CSS.
+* **Management Duty:** Leads the **UI**, **Shiny**, and **Narrative**, Guilds. Directs teams on styling.
 
 **2. The Lead Architect (The "Tech VP")**
 * **Responsibility:** Repository health and final integration.
@@ -26,9 +26,9 @@ A team of students responsible for overall project health and cross-team consist
     * Maintains `app.R` (the shell application).
     * Manages site deployment.
     * Codes the "About/Methodology" page.
-* **Management Duty:** Leads the **Code Guild**. Accepts/rejects Pull Requests from Feature Teams.
+* **Management Duty:** Leads the **Code** and **Data** guilds. Accepts/rejects Pull Requests from Feature Teams.
 
-**3. Remaining Guild Leads**: See section on Guilds below.
+**3. Remaining Team Leads**: See section on Guilds below.
 
 ### B. The Four Feature Teams
 The rest of the class is divided into four pods. Each pod owns one "tab" of the final application.
@@ -52,18 +52,18 @@ Every student has a specific title and responsibility within their team.
 ## 3. Collaboration: "The Guilds"
 To ensure the dashboard looks cohesive, students with matching roles across teams will meet in "Guilds".
 
-* **The Code Guild (Sentinels):** Led by the *Lead Architect*. Agrees on Git branching and dependencies. Team led by the *Lead Architect*.
-* **The UI Guild (Chart Artists):** Led by the *Product Owner*. Decides aesthetic conventions (colors, fonts, themes). Team led by the *Product Owner*.
-* **The Data Guild (Stewards):** Agrees on variable naming conventions and the "Small N" suppression threshold. *Lead Steward will be nominated from the group.*
-* **The Shiny Guild (Interface Architects):** Standardizes UI layout and input types across modules. *Lead Architect will be nominated from the group.*
-* **The Narrative Guild (Narrative Leads):** Standardizes the "Mad Libs" text structure for consistency. *Lead Narrator will be nominated from the group.*
+* **The Code Guild (Sentinels):** Led by the *Lead Architect*. Agrees on Git branching and dependencies.
+* **The UI Guild (Chart Artists):** Led by the *Product Owner*. Decides aesthetic conventions (colors, fonts, themes).
+* **The Data Guild (Stewards):** Agrees on variable naming conventions and the "Small N" suppression threshold.
+* **The Shiny Guild (Interface Architects):** Standardizes UI layout and input types across modules.
+* **The Narrative Guild (Narrative Leads):** Standardizes the "Mad Libs" text structure for consistency takes and maintains notes.
 
 ## 4. Technical Architecture
 
 ### The "Golden Repo"
 Students will clone a repository pre-scaffolded by the instructor.
 
-* **`global.R`**: Shared libraries and data loading (Read-Only for students).
+* **`global.R`**: Shared libraries and data loading (Read-Only).
 * **`app.R`**: The main shell application (Read-Only).
 * **`modules/`**:
     * `mod_enrollment.R` (Pod 1 Workspace)

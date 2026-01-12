@@ -40,9 +40,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9b0aae9c6eff177b6c9cd689f409ae12.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-905bbebc6139474c9082c6191bd5434f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-9b0aae9c6eff177b6c9cd689f409ae12.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-cdbc01e2de1c1d5b0a3f9deda1d0fff5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-1c8910b5bcd708f62aaa137c2659dfb1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-cdbc01e2de1c1d5b0a3f9deda1d0fff5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -387,9 +387,9 @@ ul.task-list li input[type="checkbox"] {
 <section id="a.-the-core-team-management" class="level3">
 <h3 class="anchored" data-anchor-id="a.-the-core-team-management">A. The Core Team (Management)</h3>
 <p>A team of students responsible for overall project health and cross-team consistency. The team will be led by two VPs and Dr.&nbsp;Friedlander.</p>
-<p><strong>1. The Product Owner (The “Client VP”)</strong> * <strong>Responsibility:</strong> The “Voice of the Client” and Narrative consistency. * <strong>Concrete Deliverables (Coding):</strong> * Codes the <strong>Landing Page</strong> (The “Home” tab). * Writes <code>global.R</code> (loading data and packages). * Writes <code>styles.css</code> (defining colors/fonts). * <strong>Management Duty:</strong> Leads the <strong>UI Guild</strong>. Directs teams on styling to match the CSS.</p>
-<p><strong>2. The Lead Architect (The “Tech VP”)</strong> * <strong>Responsibility:</strong> Repository health and final integration. * <strong>Concrete Deliverables (Coding):</strong> * Maintains <code>app.R</code> (the shell application). * Manages site deployment. * Codes the “About/Methodology” page. * <strong>Management Duty:</strong> Leads the <strong>Code Guild</strong>. Accepts/rejects Pull Requests from Feature Teams.</p>
-<p><strong>3. Remaining Guild Leads</strong>: See section on Guilds below.</p>
+<p><strong>1. The Product Owner (The “Client VP”)</strong> * <strong>Responsibility:</strong> The “Voice of the Client” and Narrative consistency. * <strong>Concrete Deliverables (Coding):</strong> * Codes the <strong>Landing Page</strong> (The “Home” tab). * Writes <code>global.R</code> (loading data and packages). * Writes <code>styles.css</code> (defining colors/fonts). * <strong>Management Duty:</strong> Leads the <strong>UI</strong>, <strong>Shiny</strong>, and <strong>Narrative</strong>, Guilds. Directs teams on styling.</p>
+<p><strong>2. The Lead Architect (The “Tech VP”)</strong> * <strong>Responsibility:</strong> Repository health and final integration. * <strong>Concrete Deliverables (Coding):</strong> * Maintains <code>app.R</code> (the shell application). * Manages site deployment. * Codes the “About/Methodology” page. * <strong>Management Duty:</strong> Leads the <strong>Code</strong> and <strong>Data</strong> guilds. Accepts/rejects Pull Requests from Feature Teams.</p>
+<p><strong>3. Remaining Team Leads</strong>: See section on Guilds below.</p>
 </section>
 <section id="b.-the-four-feature-teams" class="level3">
 <h3 class="anchored" data-anchor-id="b.-the-four-feature-teams">B. The Four Feature Teams</h3>
@@ -451,11 +451,11 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="collaboration-the-guilds">3. Collaboration: “The Guilds”</h2>
 <p>To ensure the dashboard looks cohesive, students with matching roles across teams will meet in “Guilds”.</p>
 <ul>
-<li><strong>The Code Guild (Sentinels):</strong> Led by the <em>Lead Architect</em>. Agrees on Git branching and dependencies. Team led by the <em>Lead Architect</em>.</li>
-<li><strong>The UI Guild (Chart Artists):</strong> Led by the <em>Product Owner</em>. Decides aesthetic conventions (colors, fonts, themes). Team led by the <em>Product Owner</em>.</li>
-<li><strong>The Data Guild (Stewards):</strong> Agrees on variable naming conventions and the “Small N” suppression threshold. <em>Lead Steward will be nominated from the group.</em></li>
-<li><strong>The Shiny Guild (Interface Architects):</strong> Standardizes UI layout and input types across modules. <em>Lead Architect will be nominated from the group.</em></li>
-<li><strong>The Narrative Guild (Narrative Leads):</strong> Standardizes the “Mad Libs” text structure for consistency. <em>Lead Narrator will be nominated from the group.</em></li>
+<li><strong>The Code Guild (Sentinels):</strong> Led by the <em>Lead Architect</em>. Agrees on Git branching and dependencies.</li>
+<li><strong>The UI Guild (Chart Artists):</strong> Led by the <em>Product Owner</em>. Decides aesthetic conventions (colors, fonts, themes).</li>
+<li><strong>The Data Guild (Stewards):</strong> Agrees on variable naming conventions and the “Small N” suppression threshold.</li>
+<li><strong>The Shiny Guild (Interface Architects):</strong> Standardizes UI layout and input types across modules.</li>
+<li><strong>The Narrative Guild (Narrative Leads):</strong> Standardizes the “Mad Libs” text structure for consistency takes and maintains notes.</li>
 </ul>
 </section>
 <section id="technical-architecture" class="level2">
@@ -464,7 +464,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="the-golden-repo">The “Golden Repo”</h3>
 <p>Students will clone a repository pre-scaffolded by the instructor.</p>
 <ul>
-<li><strong><code>global.R</code></strong>: Shared libraries and data loading (Read-Only for students).</li>
+<li><strong><code>global.R</code></strong>: Shared libraries and data loading (Read-Only).</li>
 <li><strong><code>app.R</code></strong>: The main shell application (Read-Only).</li>
 <li><strong><code>modules/</code></strong>:
 <ul>
