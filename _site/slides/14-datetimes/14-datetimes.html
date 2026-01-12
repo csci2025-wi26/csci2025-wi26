@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d6a2ae2cb249da1580f0a11f71b8f854.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
   <title>CSCI 2025 – Dates and Times</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ed2e4e4ddc4d9168fc867cf473780ab9.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-19712d0536fb4af57e0e6d790f4cb4d1.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -241,15 +241,15 @@ Dr.&nbsp;Eric Friedlander
 <li>Functions are named after the order of components: <code>ymd()</code>, <code>mdy()</code>, <code>dmy()</code>, etc.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ymd</span>(<span class="st">"2017-01-31"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ymd</span>(<span class="st">"2017-01-31"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2017-01-31"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">mdy</span>(<span class="st">"January 31st, 2017"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">mdy</span>(<span class="st">"January 31st, 2017"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2017-01-31"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">dmy</span>(<span class="st">"31-Jan-2017"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">dmy</span>(<span class="st">"31-Jan-2017"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2017-01-31"</code></pre>
 </div>
@@ -258,7 +258,7 @@ Dr.&nbsp;Eric Friedlander
 <li>For date-times, add <code>_hms</code>, <code>_hm</code>, or <code>_h</code>.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ymd_hms</span>(<span class="st">"2017-01-31 20:11:59"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ymd_hms</span>(<span class="st">"2017-01-31 20:11:59"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2017-01-31 20:11:59 UTC"</code></pre>
 </div>
@@ -272,9 +272,9 @@ Dr.&nbsp;Eric Friedlander
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>flights <span class="sc">|&gt;</span> </span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>flights <span class="sc">|&gt;</span> </span>
 <span id="cb9-2"><a></a>  <span class="fu">select</span>(year, month, day, hour, minute) <span class="sc">|&gt;</span> </span>
-<span id="cb9-3"><a></a>  <span class="fu">mutate</span>(<span class="at">departure =</span> <span class="fu">make_datetime</span>(year, month, day, hour, minute))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-3"><a></a>  <span class="fu">mutate</span>(<span class="at">departure =</span> <span class="fu">make_datetime</span>(year, month, day, hour, minute))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 6
@@ -305,17 +305,17 @@ Dr.&nbsp;Eric Friedlander
 <li>Functions like <code>year()</code>, <code>month()</code>, <code>mday()</code>, <code>wday()</code>, <code>hour()</code>, <code>minute()</code>, and <code>second()</code> extract components.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>datetime <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">"2026-07-08 12:34:56"</span>)</span>
-<span id="cb11-2"><a></a><span class="fu">year</span>(datetime)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>datetime <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">"2026-07-08 12:34:56"</span>)</span>
+<span id="cb11-2"><a></a><span class="fu">year</span>(datetime)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2026</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">month</span>(datetime, <span class="at">label =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">month</span>(datetime, <span class="at">label =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Jul
 12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; ... &lt; Dec</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">wday</span>(datetime, <span class="at">label =</span> <span class="cn">TRUE</span>, <span class="at">abbr =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">wday</span>(datetime, <span class="at">label =</span> <span class="cn">TRUE</span>, <span class="at">abbr =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Wednesday
 7 Levels: Sunday &lt; Monday &lt; Tuesday &lt; Wednesday &lt; Thursday &lt; ... &lt; Saturday</code></pre>
@@ -328,9 +328,9 @@ Dr.&nbsp;Eric Friedlander
 <li>You can also set components using the same accessor functions.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>datetime <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">"2026-07-08 12:34:56"</span>)</span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>datetime <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">"2026-07-08 12:34:56"</span>)</span>
 <span id="cb17-2"><a></a><span class="fu">year</span>(datetime) <span class="ot">&lt;-</span> <span class="dv">2030</span></span>
-<span id="cb17-3"><a></a>datetime</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-3"><a></a>datetime</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2030-07-08 12:34:56 UTC"</code></pre>
 </div>
@@ -339,7 +339,7 @@ Dr.&nbsp;Eric Friedlander
 <li><code>update()</code> can modify multiple components.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">update</span>(datetime, <span class="at">year =</span> <span class="dv">2030</span>, <span class="at">month =</span> <span class="dv">2</span>, <span class="at">mday =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">update</span>(datetime, <span class="at">year =</span> <span class="dv">2030</span>, <span class="at">month =</span> <span class="dv">2</span>, <span class="at">mday =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2030-02-02 12:34:56 UTC"</code></pre>
 </div>
@@ -357,11 +357,11 @@ Dr.&nbsp;Eric Friedlander
 <li>Created with functions like <code>dseconds()</code>, <code>dminutes()</code>, <code>dhours()</code>, <code>ddays()</code>.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ddays</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ddays</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "86400s (~1 days)"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">dyears</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">dyears</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "31557600s (~1 years)"</code></pre>
 </div>
@@ -377,12 +377,12 @@ Dr.&nbsp;Eric Friedlander
 <li>More intuitive for arithmetic.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>one_am <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">"2026-03-08 01:00:00"</span>, <span class="at">tz =</span> <span class="st">"America/New_York"</span>)</span>
-<span id="cb25-2"><a></a>one_am <span class="sc">+</span> <span class="fu">ddays</span>(<span class="dv">1</span>) <span class="co"># duration</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>one_am <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">"2026-03-08 01:00:00"</span>, <span class="at">tz =</span> <span class="st">"America/New_York"</span>)</span>
+<span id="cb25-2"><a></a>one_am <span class="sc">+</span> <span class="fu">ddays</span>(<span class="dv">1</span>) <span class="co"># duration</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2026-03-09 02:00:00 EDT"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>one_am <span class="sc">+</span> <span class="fu">days</span>(<span class="dv">1</span>)  <span class="co"># period</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>one_am <span class="sc">+</span> <span class="fu">days</span>(<span class="dv">1</span>)  <span class="co"># period</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2026-03-09 01:00:00 EDT"</code></pre>
 </div>
@@ -395,8 +395,8 @@ Dr.&nbsp;Eric Friedlander
 <li>Useful for calculating the exact length of a time span in human units.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>y2024 <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2024-01-01"</span>) <span class="sc">%--%</span> <span class="fu">ymd</span>(<span class="st">"2025-01-01"</span>)</span>
-<span id="cb29-2"><a></a>y2024 <span class="sc">/</span> <span class="fu">days</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>y2024 <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2024-01-01"</span>) <span class="sc">%--%</span> <span class="fu">ymd</span>(<span class="st">"2025-01-01"</span>)</span>
+<span id="cb29-2"><a></a>y2024 <span class="sc">/</span> <span class="fu">days</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 366</code></pre>
 </div>
@@ -422,12 +422,12 @@ Dr.&nbsp;Eric Friedlander
 <li><code>force_tz()</code>: changes the instant in time.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>x1 <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">"2024-06-01 12:00:00"</span>, <span class="at">tz =</span> <span class="st">"America/New_York"</span>)</span>
-<span id="cb31-2"><a></a><span class="fu">with_tz</span>(x1, <span class="st">"Europe/Paris"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>x1 <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">"2024-06-01 12:00:00"</span>, <span class="at">tz =</span> <span class="st">"America/New_York"</span>)</span>
+<span id="cb31-2"><a></a><span class="fu">with_tz</span>(x1, <span class="st">"Europe/Paris"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2024-06-01 18:00:00 CEST"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">force_tz</span>(x1, <span class="st">"Europe/Paris"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">force_tz</span>(x1, <span class="st">"Europe/Paris"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2024-06-01 12:00:00 CEST"</code></pre>
 </div>
@@ -631,7 +631,7 @@ Dr.&nbsp;Eric Friedlander
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -743,14 +743,13 @@ Dr.&nbsp;Eric Friedlander
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

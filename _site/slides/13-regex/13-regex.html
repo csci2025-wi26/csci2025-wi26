@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d6a2ae2cb249da1580f0a11f71b8f854.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
   <title>CSCI 2025 – Regular Expressions</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ed2e4e4ddc4d9168fc867cf473780ab9.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-19712d0536fb4af57e0e6d790f4cb4d1.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -234,8 +234,8 @@ Dr.&nbsp;Eric Friedlander
 <li><code>str_detect()</code> returns <code>TRUE</code> if a pattern is found in a string, <code>FALSE</code> otherwise.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"pear"</span>, <span class="st">"pineapple"</span>, <span class="st">"naartjie"</span>)</span>
-<span id="cb1-2"><a></a><span class="fu">str_detect</span>(x, <span class="st">"an"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"pear"</span>, <span class="st">"pineapple"</span>, <span class="st">"naartjie"</span>)</span>
+<span id="cb1-2"><a></a><span class="fu">str_detect</span>(x, <span class="st">"an"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE  TRUE FALSE FALSE FALSE</code></pre>
 </div>
@@ -247,7 +247,7 @@ Dr.&nbsp;Eric Friedlander
 <li><code>str_count()</code> counts the number of matches in a string.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">str_count</span>(<span class="st">"banana"</span>, <span class="st">"a"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">str_count</span>(<span class="st">"banana"</span>, <span class="st">"a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
@@ -260,11 +260,11 @@ Dr.&nbsp;Eric Friedlander
 <li><code>str_extract_all()</code> extracts all matches.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">str_extract</span>(<span class="st">"banana"</span>, <span class="st">"an"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">str_extract</span>(<span class="st">"banana"</span>, <span class="st">"an"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "an"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">str_extract_all</span>(<span class="st">"banana"</span>, <span class="st">"an"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">str_extract_all</span>(<span class="st">"banana"</span>, <span class="st">"an"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "an" "an"</code></pre>
@@ -277,12 +277,12 @@ Dr.&nbsp;Eric Friedlander
 <li>Replaces the first or all matches with a new string.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Dr_Eric_Friedlander"</span>, <span class="st">"Dr_Brandy_Wiegers"</span>, <span class="st">"Anthony_Campitelli"</span>)</span>
-<span id="cb9-2"><a></a><span class="fu">str_replace</span>(x, <span class="st">"_"</span>, <span class="st">" "</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Dr_Eric_Friedlander"</span>, <span class="st">"Dr_Brandy_Wiegers"</span>, <span class="st">"Anthony_Campitelli"</span>)</span>
+<span id="cb9-2"><a></a><span class="fu">str_replace</span>(x, <span class="st">"_"</span>, <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Dr Eric_Friedlander" "Dr Brandy_Wiegers"   "Anthony Campitelli" </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">str_replace_all</span>(x, <span class="st">" "</span>, <span class="st">" "</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">str_replace_all</span>(x, <span class="st">" "</span>, <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Dr_Eric_Friedlander" "Dr_Brandy_Wiegers"   "Anthony_Campitelli" </code></pre>
 </div>
@@ -292,9 +292,9 @@ Dr.&nbsp;Eric Friedlander
 <h2>Regex</h2>
 <p>Instead of inputting literal strings, you can use regex patterns to describe more complex matches.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Dr_Eric_Friedlander"</span>, <span class="st">"Dr_Brandy_Wiegers"</span>, <span class="st">"Anthony_Campitelli"</span>)</span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Dr_Eric_Friedlander"</span>, <span class="st">"Dr_Brandy_Wiegers"</span>, <span class="st">"Anthony_Campitelli"</span>)</span>
 <span id="cb13-2"><a></a><span class="co"># remove all vowels</span></span>
-<span id="cb13-3"><a></a><span class="fu">str_replace_all</span>(x, <span class="st">"[aeiouAEIOU]"</span>, <span class="st">""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-3"><a></a><span class="fu">str_replace_all</span>(x, <span class="st">"[aeiouAEIOU]"</span>, <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Dr_rc_Frdlndr" "Dr_Brndy_Wgrs" "nthny_Cmptll" </code></pre>
 </div>
@@ -312,12 +312,12 @@ Dr.&nbsp;Eric Friedlander
 <li><code>$</code> matches the end of the string.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"pear"</span>)</span>
-<span id="cb15-2"><a></a><span class="fu">str_detect</span>(x, <span class="st">"^a"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"pear"</span>)</span>
+<span id="cb15-2"><a></a><span class="fu">str_detect</span>(x, <span class="st">"^a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE FALSE FALSE</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">str_detect</span>(x, <span class="st">"a$"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">str_detect</span>(x, <span class="st">"a$"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE  TRUE FALSE</code></pre>
 </div>
@@ -366,7 +366,7 @@ Dr.&nbsp;Eric Friedlander
 <li>Parentheses create a “capturing group” to extract parts of a match.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">str_match</span>(<span class="st">"apple, banana, pear"</span>, <span class="st">"([a-z]+), ([a-z]+)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">str_match</span>(<span class="st">"apple, banana, pear"</span>, <span class="st">"([a-z]+), ([a-z]+)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1]            [,2]    [,3]    
 [1,] "apple, banana" "apple" "banana"</code></pre>
@@ -379,7 +379,7 @@ Dr.&nbsp;Eric Friedlander
 <li><code>\1</code>, <code>\2</code>, etc. refer to previously captured groups.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">str_replace</span>(<span class="st">"abab"</span>, <span class="st">"(a)(b)"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">2</span><span class="sc">\\</span><span class="st">1"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">str_replace</span>(<span class="st">"abab"</span>, <span class="st">"(a)(b)"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">2</span><span class="sc">\\</span><span class="st">1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "baab"</code></pre>
 </div>
@@ -400,8 +400,8 @@ Dr.&nbsp;Eric Friedlander
 <li>Separates a column into multiple columns using regex with capture groups.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="st">"123-abc"</span>)</span>
-<span id="cb23-2"><a></a>df <span class="sc">|&gt;</span> <span class="fu">separate_wider_regex</span>(x, <span class="fu">c</span>(<span class="at">num =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">d+"</span>, <span class="st">"-"</span>, <span class="at">chr =</span> <span class="st">"[a-z]+"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="st">"123-abc"</span>)</span>
+<span id="cb23-2"><a></a>df <span class="sc">|&gt;</span> <span class="fu">separate_wider_regex</span>(x, <span class="fu">c</span>(<span class="at">num =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">d+"</span>, <span class="st">"-"</span>, <span class="at">chr =</span> <span class="st">"[a-z]+"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
   num   chr  
@@ -416,7 +416,7 @@ Dr.&nbsp;Eric Friedlander
 <li>Use <code>fixed()</code> to match a literal string without interpreting it as a regex.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">str_detect</span>(<span class="st">"a.b"</span>, <span class="fu">fixed</span>(<span class="st">"."</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">str_detect</span>(<span class="st">"a.b"</span>, <span class="fu">fixed</span>(<span class="st">"."</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -633,7 +633,7 @@ Dr.&nbsp;Eric Friedlander
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -745,14 +745,13 @@ Dr.&nbsp;Eric Friedlander
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
