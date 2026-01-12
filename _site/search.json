@@ -2703,5 +2703,138 @@
       "Course information",
       "Syllabus"
     ]
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#what-is-version-control",
+    "href": "slides/17-github/17-github.html#what-is-version-control",
+    "title": "Introduction to GitHub",
+    "section": "What is Version Control?",
+    "text": "What is Version Control?\n\nA system that records changes to a file or set of files over time so that you can recall specific versions later.\nIt allows you to revert files back to a previous state, revert the entire project back to a previous state, compare changes over time, see who last modified something that might be causing a problem, who introduced an issue and when.\nThink of it like “track changes” in a word processor, but for all your project files (code, data, text, etc.)."
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#why-is-it-useful",
+    "href": "slides/17-github/17-github.html#why-is-it-useful",
+    "title": "Introduction to GitHub",
+    "section": "Why is it useful?",
+    "text": "Why is it useful?\n\nCollaboration: Many people can work on the same project without overwriting each other’s changes.\nOrganization: Keeps a history of your project. No more final_report_v2_final_final.docx!\nBackup: Your project history is stored in a remote, safe place (like GitHub). If your computer crashes, your work is not lost.\nExperimentation: You can try out new ideas in a “branch” without messing up the main version of your project."
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#what-is-git",
+    "href": "slides/17-github/17-github.html#what-is-git",
+    "title": "Introduction to GitHub",
+    "section": "What is Git?",
+    "text": "What is Git?\n\nGit is a free and open source distributed version control system.\nIt’s a command-line tool that you run on your computer to track changes in your project files.\nIt’s the most popular version control system in the world."
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#what-is-github",
+    "href": "slides/17-github/17-github.html#what-is-github",
+    "title": "Introduction to GitHub",
+    "section": "What is GitHub?",
+    "text": "What is GitHub?\n\nGitHub is a web-based hosting service for Git repositories.\nIt’s a place to store your projects and collaborate with others.\nIt provides a graphical interface to Git, plus other features like issue tracking, project management, and more.\nGit is the tool, GitHub is the service."
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#cloning-a-repository",
+    "href": "slides/17-github/17-github.html#cloning-a-repository",
+    "title": "Introduction to GitHub",
+    "section": "Cloning a Repository",
+    "text": "Cloning a Repository\n\n“Cloning” is how you get a copy of a project from GitHub onto your computer.\nYou only need to do this once per project.\nYou’ll get a URL from the GitHub page of the repository.\n\n\ngit clone &lt;URL_of_the_repository&gt;\n\n\nThis creates a new directory on your computer with all the project files."
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#the-add-commit-push-cycle",
+    "href": "slides/17-github/17-github.html#the-add-commit-push-cycle",
+    "title": "Introduction to GitHub",
+    "section": "The Add-Commit-Push Cycle",
+    "text": "The Add-Commit-Push Cycle\nThis is the most common workflow you’ll use.\n\nMake changes: Edit your files, create new files, etc.\nAdd files: Tell Git which files you want to save in the next “snapshot” (commit).\nCommit files: Save the snapshot with a descriptive message.\nPush changes: Send your committed changes to GitHub.\n\nThis is represented well by this image from our own images folder!"
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#git-add",
+    "href": "slides/17-github/17-github.html#git-add",
+    "title": "Introduction to GitHub",
+    "section": "git add",
+    "text": "git add\n\nUse git add to stage your changes. Staging is the step before committing.\nYou can add specific files or all files with changes.\n\n\n# Add a specific file\ngit add path/to/your/file.R\n\n# Add all changed files in the current directory and subdirectories\ngit add ."
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#git-commit",
+    "href": "slides/17-github/17-github.html#git-commit",
+    "title": "Introduction to GitHub",
+    "section": "git commit",
+    "text": "git commit\n\nA “commit” is a snapshot of your staged changes.\nEach commit has a unique ID and a message.\nThe message is important! It should be a short, descriptive summary of the changes you made.\n\n\ngit commit -m \"Fix bug in data cleaning script\""
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#git-push",
+    "href": "slides/17-github/17-github.html#git-push",
+    "title": "Introduction to GitHub",
+    "section": "git push",
+    "text": "git push\n\ngit push sends your committed changes from your local computer to the remote repository on GitHub.\n\n\ngit push"
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#git-pull",
+    "href": "slides/17-github/17-github.html#git-pull",
+    "title": "Introduction to GitHub",
+    "section": "git pull",
+    "text": "git pull\n\nIf you’re working with others, they will merge changes into the main branch.\ngit pull fetches changes from the remote repository and merges them into your local copy.\nIt’s a critical habit to pull from main before you start working to make sure you have the latest version.\n\n\n\n# Make sure you're on the main branch first\ngit checkout main\ngit pull"
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#good-commit-messages",
+    "href": "slides/17-github/17-github.html#good-commit-messages",
+    "title": "Introduction to GitHub",
+    "section": "Good Commit Messages",
+    "text": "Good Commit Messages\n\nKeep them short and descriptive.\nUse the imperative mood (e.g., “Add feature” not “Added feature”).\nExplain what the change is and why you made it.\n\nGood: - Fix typo in course syllabus - Update plot styling in HW1 - Feat: Add enrollment module skeleton - Docs: Explain data cleaning process\nBad: - stuff - fixed it - aaaaaaaa"
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#practice",
+    "href": "slides/17-github/17-github.html#practice",
+    "title": "Introduction to GitHub",
+    "section": "Practice!",
+    "text": "Practice!\nLet’s simulate the project workflow. countdown(minutes = 15)\nPartner A: The “Lead Architect” 1. Create a new public repository on GitHub named github-practice. 2. Initialize it with a README.md file. 3. Clone it to your computer. 4. Add Partner B as a collaborator (Settings &gt; Collaborators).\nPartner B: The “GitHub Sentinel” 1. Accept the collaborator invitation (check your email!). 2. Clone the repository. 3. Create a new branch: git checkout -b add-contrib-list. 4. Create a new file contributors.txt and add your name to it. 5. add, commit, and push your branch to the repository. 6. Go to GitHub and open a Pull Request to merge add-contrib-list into main.\nPartner A: The “Lead Architect” (again) 1. On GitHub, go to the “Pull requests” tab. 2. Review the PR. Leave a comment! Ask Partner B to add your name to the file.\nPartner B: The “GitHub Sentinel” (again) 1. Locally, on your branch, add Partner A’s name to contributors.txt. 2. add, commit, and push the change. Notice the PR on GitHub updates automatically!\nPartner A: The “Lead Architect” (last time) 1. On the PR, see the new commit. Looks good! 2. Merge the Pull Request.\nBoth Partners: 1. Locally, git checkout main and git pull to see the contributors.txt file with both names."
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#do-next",
+    "href": "slides/17-github/17-github.html#do-next",
+    "title": "Introduction to GitHub",
+    "section": "Do Next",
+    "text": "Do Next\n\nMake sure you have Git installed on your computer.\nMake sure you have a GitHub account.\nAccept the invitation to our course organization on GitHub.\nThat’s it for tonight! See you tomorrow."
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#what-is-a-branch",
+    "href": "slides/17-github/17-github.html#what-is-a-branch",
+    "title": "Introduction to GitHub",
+    "section": "What is a Branch?",
+    "text": "What is a Branch?\n\nA branch is a parallel version of your repository.\nIt allows you to work on new features or fixes without affecting the main codebase (the main branch).\nThis is essential for teamwork."
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#the-branching-workflow-a-full-example",
+    "href": "slides/17-github/17-github.html#the-branching-workflow-a-full-example",
+    "title": "Introduction to GitHub",
+    "section": "The Branching Workflow: A Full Example",
+    "text": "The Branching Workflow: A Full Example\n\nSync your local main branch: git checkout main git pull\nCreate a new branch for your work: For the project, your team leader (the “GitHub Sentinel”) will do this. Branch names should be descriptive, like feature/team-name. git checkout -b feature/pod-1-enrollment\nWork on your branch: Now you do the familiar add-commit cycle. Edit files, create new R scripts… git add . git commit -m \"Add enrollment chart and data cleaning\"\nPush your branch to GitHub: The -u flag sets the upstream branch so you can just git push next time. git push -u origin feature/pod-1-enrollment"
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#what-is-a-pull-request",
+    "href": "slides/17-github/17-github.html#what-is-a-pull-request",
+    "title": "Introduction to GitHub",
+    "section": "What is a Pull Request?",
+    "text": "What is a Pull Request?\n\nA Pull Request (or PR) is a formal request to merge your changes.\nYou’re asking the project maintainer (the “Lead Architect” for your project) to “pull” your changes from your branch into the main branch.\nIt’s a place for code review and discussion before the changes are integrated."
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#how-the-sentinel-opens-a-pull-request",
+    "href": "slides/17-github/17-github.html#how-the-sentinel-opens-a-pull-request",
+    "title": "Introduction to GitHub",
+    "section": "How the Sentinel Opens a Pull Request",
+    "text": "How the Sentinel Opens a Pull Request\n\nAfter pushing the branch, go to the repository on GitHub.\nGitHub will usually show a banner prompting you to “Compare & pull request”. Click it!\nIf not, go to the “Pull requests” tab and click “New pull request”.\nSelect your team’s branch as the “compare” branch and main as the “base” branch.\nWrite a clear title and description for your changes. Explain what you did.\nClick “Create pull request”."
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#review-and-merging",
+    "href": "slides/17-github/17-github.html#review-and-merging",
+    "title": "Introduction to GitHub",
+    "section": "Review and Merging",
+    "text": "Review and Merging\n\nOnce the PR is open, the “Lead Architect” and other team members can review your code, add comments, and request changes.\nIf changes are requested, your team makes them on the local branch, then commits and pushes again. The PR will update automatically.\nOnce approved, the Lead Architect will merge your branch into main. Your work is now part of the official project!"
+  },
+  {
+    "objectID": "slides/17-github/17-github.html#a-note-on-merge-conflicts",
+    "href": "slides/17-github/17-github.html#a-note-on-merge-conflicts",
+    "title": "Introduction to GitHub",
+    "section": "A Note on Merge Conflicts",
+    "text": "A Note on Merge Conflicts\n\nIf you and another person edit the same lines in the same file on different branches, Git won’t know which version to keep when merging.\nThis is a merge conflict.\nThe person merging the PR (or the Sentinel, before opening it) will need to manually resolve the conflict by choosing which code to keep.\nThe best way to avoid conflicts: Pull from main often and communicate with your team!"
   }
 ]
