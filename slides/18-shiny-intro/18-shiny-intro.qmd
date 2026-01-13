@@ -1,0 +1,169 @@
+---
+title: Your First Shiny App
+subtitle: Lecture 18
+title-slide-attributes:
+  data-background-image: ../title-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+auto-stretch: false
+---
+
+# Introduction to Shiny
+
+## What is Shiny?
+
+-   **Shiny** is an R package that makes it easy to build interactive web apps straight from R.
+-   Allows you to create standalone apps on a webpage or embed them in R Markdown/Quarto documents.
+-   **Key Components**:
+    -   **UI (User Interface)**: Defines how your app *looks*.
+    -   **Server**: Defines how your app *works*.
+
+## Installation
+
+-   If you haven't installed it yet:
+
+```r
+install.packages("shiny")
+```
+
+-   Load it in your R session:
+
+```r
+library(shiny)
+```
+
+# Creating an App
+
+## App Structure (`app.R`)
+
+-   The simplest way to create an app is a single file named `app.R`.
+-   It contains three main parts:
+
+```r
+library(shiny)
+
+ui <- fluidPage(
+  "Hello, world!"
+)
+
+server <- function(input, output, session) {
+}
+
+shinyApp(ui, server)
+```
+
+1.  **UI object**: The HTML webpage humans interact with.
+2.  **Server function**: The logic that tells the app what to do.
+3.  **`shinyApp` call**: Combines UI and server to run the app.
+
+## Running the App
+
+-   **In RStudio/Positron**:
+    -   Click the **Run App** button (play icon) in the toolbar.
+    -   Keyboard Shortcut: `Cmd/Ctrl + Shift + Enter`.
+-   **From Console**:
+    -   `shiny::runApp("path/to/app.R")`
+-   **Stopping**:
+    -   Click the **Stop** sign in the console.
+    -   Press `Esc`.
+
+## Adding UI Controls
+
+-   Use **Layout Functions** to structure the page (e.g., `fluidPage`).
+-   Use **Inputs** to let users provide values.
+-   Use **Outputs** to show results.
+
+```r
+ui <- fluidPage(
+  selectInput("dataset", label = "Dataset", choices = ls("package:datasets")),
+  verbatimTextOutput("summary"),
+  tableOutput("table")
+)
+```
+
+-   `selectInput()`: A dropdown menu.
+-   `verbatimTextOutput()`: Placeholder for code/text output.
+-   `tableOutput()`: Placeholder for a table.
+
+# Adding Behavior (Server)
+
+## The Server Function
+
+-   Tells Shiny how to build the outputs from the inputs.
+-   **Rules**:
+    1.  Save objects to `output$ID`.
+    2.  Build objects with `render{Type}()`.
+    3.  Access inputs with `input$ID`.
+
+## Connecting Inputs to Outputs
+
+```r
+server <- function(input, output, session) {
+  output$summary <- renderPrint({
+    dataset <- get(input$dataset, "package:datasets")
+    summary(dataset)
+  })
+
+  output$table <- renderTable({
+    dataset <- get(input$dataset, "package:datasets")
+    dataset
+  })
+}
+```
+
+-   `renderPrint()` pairs with `verbatimTextOutput()`.
+-   `renderTable()` pairs with `tableOutput()`.
+-   **Reactivity**: Outputs automatically update when `input$dataset` changes.
+
+# Reactivity
+
+## Reducing Duplication
+
+-   In the previous example, we fetched the dataset twice:
+
+```r
+dataset <- get(input$dataset, "package:datasets")
+```
+
+-   **Don't** use regular variables or functions to solve this (they won't work as expected in the reactive graph).
+-   **Do** use **Reactive Expressions**.
+
+## Reactive Expressions
+
+-   Wrap code in `reactive({...})`.
+-   Call it like a function: `my_reactive()`.
+-   **Benefits**:
+    -   Updates only when inputs change.
+    -   Caches the result (lazy evaluation) - efficient!
+
+```r
+server <- function(input, output, session) {
+  # Create a reactive expression
+  dataset <- reactive({
+    get(input$dataset, "package:datasets")
+  })
+
+  output$summary <- renderPrint({
+    # Call it like a function
+    summary(dataset())
+  })
+
+  output$table <- renderTable({
+    dataset()
+  })
+}
+```
+
+# Summary
+
+## Recap
+
+-   **UI**: `fluidPage()`, `input*()`, `*Output()`.
+-   **Server**: `function(input, output, session)`.
+-   **Wiring**:
+    -   `output$ID <- render*({ code using input$ID })`
+-   **Reactivity**:
+    -   `reactive()` calculates values and caches them.
+    -   Outputs automatically "react" to input changes.
+-   **Next Steps**: Basic UI, Basic Reactivity (Chapters 2 & 3).

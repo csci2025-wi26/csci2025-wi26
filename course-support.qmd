@@ -30,7 +30,7 @@ The first tool that may be useful is the course NotebookLM. NotebookLM is a real
 
 ### Recitation Leader Gem
 
-Another tool that you will be asked to use is the Recitation Leader Gem. A Gem is kind of like the Gemini Chat but it is specialized for a particular task. The Recitation Leader Gem is designed to help you practice the material from lectures by generating practice problems based on the course material. You can access the Recitation Leader Gem [here](https://gemini.google.com/gem/1dtY23owKnSeen_WhFPxo71Ex3VWzRGvV?usp=sharing). To use the Recitation Leader Gem, simply say "I would like to practice material from Chapter 1" or  "I would like to practice material from the first lecture".
+Another tool that you will be asked to use is the Recitation Leader Gem. A Gem is kind of like the Gemini Chat but it is specialized for a particular task. The Recitation Leader Gem is designed to help you practice the material from lectures by generating practice problems based on the course material. You can access the Recitation Leader Gem [here](https://gemini.google.com/gem/1lAphdaLdud2coXeijxaRccQ8ED87XChx?usp=sharing). To use the Recitation Leader Gem, simply say "I would like to practice material from Chapter 1" or  "I would like to practice material from the first lecture".
 
 ### AI Feedback
 

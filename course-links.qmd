@@ -2,28 +2,28 @@
 title: "Useful links"
 ---
 
-+----------------------------+-----------------------------------------------------------------------------+
-| Course GitHub organization | 🔗 on [GitHub](https://github.com/csci2025-wi26)                            |
-+----------------------------+-----------------------------------------------------------------------------+
-| Gradebook                  | 🔗 on [Teams](https://tinyurl.com/csci2025wi26-teams)                       |
-+----------------------------+-----------------------------------------------------------------------------+
-| Artificial Intelligence    | 🔗 [Course NotebookLM](https://tinyurl.com/csci2025wi26-notebooklm)         |
-|                            |                                                                             |
-|                            | 🔗 [Recitation Leader Gem](https://tinyurl.com/csci2025-recitation-gem)     |
-+----------------------------+-----------------------------------------------------------------------------+
-| Textbooks                  | 🔗 [R for Data Science](https://r4ds.hadley.nz/)                            |
-+----------------------------+-----------------------------------------------------------------------------+
-| Package documentation      | 🔗 ggplot2: [ggplot2.tidyverse.org](https://ggplot2.tidyverse.org/)         |
-|                            |                                                                             |
-|                            | 🔗 dplyr: [dplyr.tidyverse.org](https://dplyr.tidyverse.org/)               |
-|                            |                                                                             |
-|                            | 🔗 tidyr: [tidyr.tidyverse.org](https://tidyr.tidyverse.org/)               |
-|                            |                                                                             |
-|                            | 🔗 forcats: [forcats.tidyverse.org](https://forcats.tidyverse.org/)         |
-|                            |                                                                             |
-|                            | 🔗 stringr: [stringr.tidyverse.org](https://stringr.tidyverse.org/)         |
-|                            |                                                                             |
-|                            | 🔗 lubridate: [lubridate.tidyverse.org](https://lubridate.tidyverse.org/)   |
-|                            |                                                                             |
-|                            | 🔗 readr: [readr.tidyverse.org](https://readr.tidyverse.org/)               |
-+----------------------------+-----------------------------------------------------------------------------+
++----------------------------+---------------------------------------------------------------------------+
+| Course GitHub organization | 🔗 on [GitHub](https://github.com/csci2025-wi26)                          |
++----------------------------+---------------------------------------------------------------------------+
+| Gradebook                  | 🔗 on [Teams](https://tinyurl.com/csci2025wi26-teams)                     |
++----------------------------+---------------------------------------------------------------------------+
+| Artificial Intelligence    | 🔗 [Course NotebookLM](https://tinyurl.com/csci2025wi26-notebooklm)       |
+|                            |                                                                           |
+|                            | 🔗 [Recitation Leader Gem](https://tinyurl.com/rec-leader)                |
++----------------------------+---------------------------------------------------------------------------+
+| Textbooks                  | 🔗 [R for Data Science](https://r4ds.hadley.nz/)                          |
++----------------------------+---------------------------------------------------------------------------+
+| Package documentation      | 🔗 ggplot2: [ggplot2.tidyverse.org](https://ggplot2.tidyverse.org/)       |
+|                            |                                                                           |
+|                            | 🔗 dplyr: [dplyr.tidyverse.org](https://dplyr.tidyverse.org/)             |
+|                            |                                                                           |
+|                            | 🔗 tidyr: [tidyr.tidyverse.org](https://tidyr.tidyverse.org/)             |
+|                            |                                                                           |
+|                            | 🔗 forcats: [forcats.tidyverse.org](https://forcats.tidyverse.org/)       |
+|                            |                                                                           |
+|                            | 🔗 stringr: [stringr.tidyverse.org](https://stringr.tidyverse.org/)       |
+|                            |                                                                           |
+|                            | 🔗 lubridate: [lubridate.tidyverse.org](https://lubridate.tidyverse.org/) |
+|                            |                                                                           |
+|                            | 🔗 readr: [readr.tidyverse.org](https://readr.tidyverse.org/)             |
++----------------------------+---------------------------------------------------------------------------+
