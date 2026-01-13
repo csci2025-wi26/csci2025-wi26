@@ -63,14 +63,7 @@ ymd_hms("2017-01-31 20:11:59")
 ## From Components {.smaller}
 
 - Use `make_date()` for dates and `make_datetime()` for date-times from individual components.
-
-```{r}
-#| echo: true
-#| code-fold: true
-flights |> 
-  select(year, month, day, hour, minute) |> 
-  mutate(departure = make_datetime(year, month, day, hour, minute))
-```
+- Let's do this with the flights data!
 
 # Date-Time Components
 
@@ -164,3 +157,11 @@ force_tz(x1, "Europe/Paris")
 ## Practice!
 
 Let's do some practice!
+
+# Wrap Up
+
+## Do Next
+
+1. Read [Chapter 17: Factors](https://r4ds.hadley.nz/datetimes.html) from r4ds.
+2. Open the Recitation Gem and say "Provide me practice problems for Chapter 17" or work through some of the exercises in the text.
+3. That's it for today! See you tomorrow!
