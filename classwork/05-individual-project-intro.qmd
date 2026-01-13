@@ -1,0 +1,51 @@
+---
+title: "Individual Project Introduction"
+subtitle: "Do something cool/hard"
+format: revealjs
+---
+
+# Individual Project Introduction
+
+## Individual Project: TLDR
+
+- Find an interesting dataset
+- Do something cool/hard with it
+- Present your findings to the class
+- Deliverables:
+  - Quarto document with code and narrative
+  - **Project Defense**: 5-minute presentation followed by Q&A
+  - All your work will be uploaded to a Github assignment
+- Goal: Practice your skills and learn something new
+
+## Basic (Mostly Vibes Based) Requirements
+
+- Dataset must be REAL (e.g. no simulated data)
+- Project must be "substantial" *\# vibes*
+    + Takes times to complete (if you start this the night before it's due, I don't care how good your analysis is)
+    + You learn something new (i.e. something we didn't cover in class)
+- You must challenge yourself *\# vibes*
+    + Looks different for everyone
+
+## Taking Risks is OK
+
+> I spent a ton of time on this and couln't quite get it to work by the deadline. *- Future You Maybe*
+
+- It's OK to try something hard and fail
+
+## Way's you can fail
+
+- You have nothing to show during class check-ins
+- You don't turn in your work on time
+- You demonstrate a complete lack of understanding of your project when you present
+
+## Ideas
+
+- Creating your own Shiny App/Dashboard
+- Learning to use a new plotting package (e.g. `plotly`) or software (e.g. Python)
+- Using APIs to get data (e.g. Twitter API)
+- Scraping data from the web
+
+## Today: Soft Launch
+
+- Hard launch: next week
+- Today: brainstorm project ideas and datasets

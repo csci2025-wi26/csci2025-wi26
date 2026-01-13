@@ -916,7 +916,7 @@
     "href": "slides/15-datetimes/15-datetimes.html#do-next",
     "title": "Dates and Times",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 17: Factors from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 17” or work through some of the exercises in the text.\nThat’s it for today! See you tomorrow!"
+    "text": "Do Next\n\nRead Chapter 17: DateTimes from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 17” or work through some of the exercises in the text.\nThat’s it for today! See you tomorrow!"
   },
   {
     "objectID": "slides/03-basics-of-R/03-basics-of-R.html#notebooklm",
@@ -2782,7 +2782,7 @@
     "href": "index.html",
     "title": "CSCI-2025: Data Manipulation and Visualization",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\n\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\n\n\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\nvideo-15\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\n\n\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -2829,5 +2829,54 @@
     "title": "GEMINI.md: Project Overview and Contributor Guide",
     "section": "",
     "text": "To work on this project, you will need to have Quarto installed. You can download it from the Quarto website.\n\n\nTo render and preview the website locally, run the following command in your terminal from the project’s root directory:\nquarto preview\nThis will start a local web server and open the site in your browser. The site will automatically refresh when you save changes to any of the source files.\n\n\n\nTo render the entire website without previewing it, use the following command:\nquarto render\nThis will generate all the static files and place them in the _site/ directory. This is typically done for deployment."
+  },
+  {
+    "objectID": "classwork/05-individual-project-intro.html#individual-project-tldr",
+    "href": "classwork/05-individual-project-intro.html#individual-project-tldr",
+    "title": "Individual Project Introduction",
+    "section": "Individual Project: TLDR",
+    "text": "Individual Project: TLDR\n\nFind an interesting dataset\nDo something cool/hard with it\nPresent your findings to the class\nDeliverables:\n\nQuarto document with code and narrative\nProject Defense: 5-minute presentation followed by Q&A\nAll your work will be uploaded to a Github assignment\n\nGoal: Practice your skills and learn something new"
+  },
+  {
+    "objectID": "classwork/05-individual-project-intro.html#basic-mostly-vibes-based-requirements",
+    "href": "classwork/05-individual-project-intro.html#basic-mostly-vibes-based-requirements",
+    "title": "Individual Project Introduction",
+    "section": "Basic (Mostly Vibes Based) Requirements",
+    "text": "Basic (Mostly Vibes Based) Requirements\n\nDataset must be REAL (e.g. no simulated data)\nProject must be “substantial” # vibes\n\nTakes times to complete (if you start this the night before it’s due, I don’t care how good your analysis is)\nYou learn something new (i.e. something we didn’t cover in class)\n\nYou must challenge yourself # vibes\n\nLooks different for everyone"
+  },
+  {
+    "objectID": "classwork/05-individual-project-intro.html#taking-risks-is-ok",
+    "href": "classwork/05-individual-project-intro.html#taking-risks-is-ok",
+    "title": "Individual Project Introduction",
+    "section": "Taking Risks is OK",
+    "text": "Taking Risks is OK\n\nI spent a ton of time on this and couln’t quite get it to work by the deadline. - Future You Maybe\n\n\nIt’s OK to try something hard and fail"
+  },
+  {
+    "objectID": "classwork/05-individual-project-intro.html#dr.-fs-plea",
+    "href": "classwork/05-individual-project-intro.html#dr.-fs-plea",
+    "title": "Individual Project Introduction",
+    "section": "Dr. F’s Plea",
+    "text": "Dr. F’s Plea"
+  },
+  {
+    "objectID": "classwork/05-individual-project-intro.html#ways-you-can-fail",
+    "href": "classwork/05-individual-project-intro.html#ways-you-can-fail",
+    "title": "Individual Project Introduction",
+    "section": "Way’s you can fail",
+    "text": "Way’s you can fail\n\nYou have nothing to show during class check-ins\nYou don’t turn in your work on time\nYou demonstrate a complete lack of understanding of your project when you present"
+  },
+  {
+    "objectID": "classwork/05-individual-project-intro.html#today-soft-launch",
+    "href": "classwork/05-individual-project-intro.html#today-soft-launch",
+    "title": "Individual Project Introduction",
+    "section": "Today: Soft Launch",
+    "text": "Today: Soft Launch\n\nHard launch: next week\nToday: brainstorm project ideas and datasets"
+  },
+  {
+    "objectID": "classwork/05-individual-project-intro.html#ideas",
+    "href": "classwork/05-individual-project-intro.html#ideas",
+    "title": "Individual Project Introduction",
+    "section": "Ideas",
+    "text": "Ideas\n\nCreating your own Shiny App/Dashboard\nLearning to use a new plotting package (e.g. plotly) or software (e.g. Python)\nUsing APIs to get data (e.g. Twitter API)\nScraping data from the web"
   }
 ]

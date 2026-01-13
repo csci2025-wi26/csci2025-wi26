@@ -162,6 +162,6 @@ Let's do some practice!
 
 ## Do Next
 
-1. Read [Chapter 17: Factors](https://r4ds.hadley.nz/datetimes.html) from r4ds.
+1. Read [Chapter 17: DateTimes](https://r4ds.hadley.nz/datetimes.html) from r4ds.
 2. Open the Recitation Gem and say "Provide me practice problems for Chapter 17" or work through some of the exercises in the text.
 3. That's it for today! See you tomorrow!
