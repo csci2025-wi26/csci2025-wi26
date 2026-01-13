@@ -194,9 +194,9 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="../vizdata-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
+<section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
   <h1 class="title">Factors</h1>
-  <p class="subtitle">Lecture 13</p>
+  <p class="subtitle">Lecture 14</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -233,6 +233,7 @@ Dr.&nbsp;Eric Friedlander
 <ul>
 <li>Create factors from a character vector.</li>
 <li><code>levels()</code> shows the categories of the factor.</li>
+<li>The levels have an order (not to be confused with “ordered factors” which are different)</li>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>, <span class="st">"Female"</span>, <span class="st">"Male"</span>)</span>
@@ -248,10 +249,13 @@ Levels: Female Male</code></pre>
 </div>
 </div>
 </section>
-<section id="gss_cat-dataset" class="slide level2">
-<h2><code>gss_cat</code> dataset</h2>
+<section id="data-idaho-naturalization" class="slide level2">
+<h2>Data: Idaho Naturalization</h2>
 <ul>
-<li>We’ll use the <code>gss_cat</code> dataset, which contains data from the General Social Survey, for examples.</li>
+<li>We’re going to use Naturalization data from the Idaho State Archives again</li>
+<li>This dataset was assembled by Dr.&nbsp;Rachel Miller</li>
+<li><a href="https://docs.google.com/spreadsheets/d/1UpMPcO8Jr3FLlFvy27a5xNMcCPqF20wur8YtOjH8tw0/edit?gid=1474309575#gid=1474309575">Link to Google Sheet</a></li>
+<li>Let’s load the data and convert the country of origin to a factor</li>
 </ul>
 </section></section>
 <section>
@@ -264,129 +268,60 @@ Levels: Female Male</code></pre>
 <ul>
 <li>Reorders a factor by another variable, useful for plots.</li>
 <li>For example, ordering bars in a bar chart.</li>
+<li>Let’s create a bar chart of country of origin ordered by the average year of arrival.</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>gss_cat <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">filter</span>(rincome <span class="sc">!=</span> <span class="st">"Not applicable"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-3"><a></a>  <span class="fu">group_by</span>(rincome) <span class="sc">|&gt;</span></span>
-<span id="cb5-4"><a></a>  <span class="fu">summarize</span>(<span class="at">age =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb5-5"><a></a>  <span class="fu">mutate</span>(<span class="at">rincome =</span> <span class="fu">fct_reorder</span>(rincome, age)) <span class="sc">|&gt;</span></span>
-<span id="cb5-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> rincome)) <span class="sc">+</span></span>
-<span id="cb5-7"><a></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>gss_cat <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a></a>  <span class="fu">filter</span>(rincome <span class="sc">!=</span> <span class="st">"Not applicable"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a></a>  <span class="fu">group_by</span>(rincome) <span class="sc">|&gt;</span></span>
-<span id="cb6-4"><a></a>  <span class="fu">summarize</span>(<span class="at">age =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb6-5"><a></a>  <span class="fu">mutate</span>(<span class="at">rincome =</span> <span class="fu">fct_reorder</span>(rincome, age)) <span class="sc">|&gt;</span></span>
-<span id="cb6-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> rincome)) <span class="sc">+</span></span>
-<span id="cb6-7"><a></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="13-factors_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
 <section id="fct_infreq" class="slide level2">
 <h2><code>fct_infreq()</code></h2>
 <ul>
 <li>Reorders a factor by the frequency of its values.</li>
+<li>Let’s create a bar chart of country of origina by the frequency</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>gss_cat <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a></a>  <span class="fu">count</span>(race) <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">mutate</span>(<span class="at">race =</span> <span class="fu">fct_infreq</span>(race)) <span class="sc">|&gt;</span> </span>
-<span id="cb7-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> race)) <span class="sc">+</span></span>
-<span id="cb7-5"><a></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="13-factors_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
+</section>
 <section id="fct_relevel" class="slide level2">
 <h2><code>fct_relevel()</code></h2>
 <ul>
 <li>Manually move levels to the front.</li>
+<li>Let’s move “Spain” to the front.</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>p1 <span class="ot">&lt;-</span> gss_cat <span class="sc">|&gt;</span> </span>
-<span id="cb8-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> partyid)) <span class="sc">+</span></span>
-<span id="cb8-3"><a></a>  <span class="fu">geom_bar</span>()</span>
-<span id="cb8-4"><a></a></span>
-<span id="cb8-5"><a></a>p2 <span class="ot">&lt;-</span> gss_cat <span class="sc">|&gt;</span> </span>
-<span id="cb8-6"><a></a>  <span class="fu">mutate</span>(<span class="at">partyid =</span> <span class="fu">fct_relevel</span>(partyid, <span class="st">"Independent"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb8-7"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> partyid)) <span class="sc">+</span></span>
-<span id="cb8-8"><a></a>  <span class="fu">geom_bar</span>()</span>
-<span id="cb8-9"><a></a></span>
-<span id="cb8-10"><a></a>p1 <span class="sc">+</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="13-factors_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
+</section>
+<section id="modifying-factor-levels" class="slide level2">
+<h2>Modifying Factor Levels</h2>
+<ul>
+<li><code>fct_recode()</code>: Changes the names of factor levels.</li>
+<li><code>fct_collapse()</code>: Combines several levels into one.</li>
+<li><code>fct_lump_*()</code>: lump together the least/most frequent levels into an “Other” category.</li>
+</ul>
+</section>
 <section id="practice" class="slide level2">
-<h2>Practice!</h2>
-<p>Let’s do some practice!</p>
+<h2>Practice</h2>
+<ul>
+<li>Let’s make the country of origin factor more manageable by lumping together the least frequent countries into “Other” and recoding some country names for clarity.</li>
+</ul>
+</section>
+<section id="ordered-factors" class="slide level2">
+<h2>Ordered Factors</h2>
+<ul>
+<li>A factor that enforces a strict ordering of levels</li>
+<li>Useful for ordinal data (e.g., ratings)</li>
+<li>This class: only really matters if you tie it to a color aesthetic
+<ul>
+<li>Will select a color scheme that implies an ordering</li>
+</ul></li>
+</ul>
 </section></section>
 <section>
-<section id="modifying-factor-levels" class="title-slide slide level1 center">
-<h1>Modifying Factor Levels</h1>
+<section id="wrap-up" class="title-slide slide level1 center">
+<h1>Wrap Up</h1>
 
 </section>
-<section id="fct_recode" class="slide level2">
-<h2><code>fct_recode()</code></h2>
-<ul>
-<li>Changes the names of factor levels.</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>gss_cat <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a></a>  <span class="fu">mutate</span>(<span class="at">partyid =</span> <span class="fu">fct_recode</span>(partyid,</span>
-<span id="cb9-3"><a></a>    <span class="st">"Republican, strong"</span>    <span class="ot">=</span> <span class="st">"Strong republican"</span>,</span>
-<span id="cb9-4"><a></a>    <span class="st">"Republican, weak"</span>      <span class="ot">=</span> <span class="st">"Not str republican"</span>,</span>
-<span id="cb9-5"><a></a>    <span class="st">"Independent, near rep"</span> <span class="ot">=</span> <span class="st">"Ind,near rep"</span>,</span>
-<span id="cb9-6"><a></a>    <span class="st">"Independent, near dem"</span> <span class="ot">=</span> <span class="st">"Ind,near dem"</span>,</span>
-<span id="cb9-7"><a></a>    <span class="st">"Democrat, weak"</span>        <span class="ot">=</span> <span class="st">"Not str democrat"</span>,</span>
-<span id="cb9-8"><a></a>    <span class="st">"Democrat, strong"</span>      <span class="ot">=</span> <span class="st">"Strong democrat"</span></span>
-<span id="cb9-9"><a></a>  )) <span class="sc">|&gt;</span></span>
-<span id="cb9-10"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> partyid)) <span class="sc">+</span></span>
-<span id="cb9-11"><a></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="13-factors_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
-<section id="fct_collapse" class="slide level2">
-<h2><code>fct_collapse()</code></h2>
-<ul>
-<li>Combines several levels into one.</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>gss_cat <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a></a>  <span class="fu">mutate</span>(<span class="at">partyid =</span> <span class="fu">fct_collapse</span>(partyid,</span>
-<span id="cb10-3"><a></a>    <span class="at">other =</span> <span class="fu">c</span>(<span class="st">"No answer"</span>, <span class="st">"Don't know"</span>, <span class="st">"Other party"</span>),</span>
-<span id="cb10-4"><a></a>    <span class="at">rep =</span> <span class="fu">c</span>(<span class="st">"Strong republican"</span>, <span class="st">"Not str republican"</span>),</span>
-<span id="cb10-5"><a></a>    <span class="at">ind =</span> <span class="fu">c</span>(<span class="st">"Ind,near rep"</span>, <span class="st">"Independent"</span>, <span class="st">"Ind,near dem"</span>),</span>
-<span id="cb10-6"><a></a>    <span class="at">dem =</span> <span class="fu">c</span>(<span class="st">"Not str democrat"</span>, <span class="st">"Strong democrat"</span>)</span>
-<span id="cb10-7"><a></a>  )) <span class="sc">|&gt;</span></span>
-<span id="cb10-8"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> partyid)) <span class="sc">+</span></span>
-<span id="cb10-9"><a></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="13-factors_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
-<section id="fct_lump_" class="slide level2">
-<h2><code>fct_lump_*()</code></h2>
-<ul>
-<li><code>fct_lump_n()</code> and <code>fct_lump_prop()</code> lump together the least/most frequent levels into an “Other” category.</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>gss_cat <span class="sc">|&gt;</span></span>
-<span id="cb11-2"><a></a>  <span class="fu">mutate</span>(<span class="at">relig =</span> <span class="fu">fct_lump_n</span>(relig, <span class="at">n =</span> <span class="dv">5</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb11-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> relig)) <span class="sc">+</span></span>
-<span id="cb11-4"><a></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="13-factors_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2100"></section>
-<section id="practice-1" class="slide level2">
-<h2>Practice!</h2>
-<p>Let’s do some practice!</p>
+<section id="do-next" class="slide level2">
+<h2>Do Next</h2>
+<ol type="1">
+<li>Read <a href="https://r4ds.hadley.nz/factors.html">Chapter 16: Factors</a> from r4ds.</li>
+<li>Open the Recitation Gem and say “Provide me practice problems for Chapter 16” or work through some of the exercises in the text.</li>
+<li>Move on to lecture 15.</li>
+</ol>
 
 
 </section></section>

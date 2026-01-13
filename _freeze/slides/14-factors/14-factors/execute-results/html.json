@@ -1,0 +1,21 @@
+{
+  "hash": "e694b797aca10cfdc02c2c0cf0b6d2fd",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Factors\"\nsubtitle: \"Lecture 14\"\n---\n\n\n::: {.cell}\n\n:::\n\n\n# Introduction\n\n## Categorical Data and Factors\n\n- Factors are R's data structure for categorical variables.\n- The `forcats` package (part of `tidyverse`) provides a suite of tools for working with factors.\n- Useful for reordering and relabeling for better visualizations.\n\n# Creating Factors\n\n## `factor()` and `fct()`\n\n- Create factors from a character vector.\n- `levels()` shows the categories of the factor.\n- The levels have an order (not to be confused with \"ordered factors\" which are different)\n\n\n::: {.cell layout-align=\"center\"}\n\n```{.r .cell-code}\nx <- c(\"Male\", \"Female\", \"Female\", \"Male\")\nf <- factor(x)\nf\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] Male   Female Female Male  \nLevels: Female Male\n```\n\n\n:::\n\n```{.r .cell-code}\nlevels(f)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"Female\" \"Male\"  \n```\n\n\n:::\n:::\n\n\n## Data: Idaho Naturalization\n\n- We're going to use Naturalization data from the Idaho State Archives again\n- This dataset was assembled by Dr. Rachel Miller\n- [Link to Google Sheet](https://docs.google.com/spreadsheets/d/1UpMPcO8Jr3FLlFvy27a5xNMcCPqF20wur8YtOjH8tw0/edit?gid=1474309575#gid=1474309575)\n- Let's load the data and convert the country of origin to a factor\n\n# Modifying Factor Order\n\n## `fct_reorder()`\n\n- Reorders a factor by another variable, useful for plots.\n- For example, ordering bars in a bar chart.\n- Let's create a bar chart of country of origin ordered by the average year of arrival.\n\n## `fct_infreq()`\n\n- Reorders a factor by the frequency of its values.\n- Let's create a bar chart of country of origina by the frequency\n\n## `fct_relevel()`\n\n- Manually move levels to the front.\n- Let's move \"Spain\" to the front.\n\n## Modifying Factor Levels\n\n- `fct_recode()`: Changes the names of factor levels.\n- `fct_collapse()`: Combines several levels into one.\n- `fct_lump_*()`: lump together the least/most frequent levels into an \"Other\" category.\n\n## Practice\n\n- Let's make the country of origin factor more manageable by lumping together the least frequent countries into \"Other\" and recoding some country names for clarity.\n\n## Ordered Factors\n\n- A factor that enforces a strict ordering of levels\n- Useful for ordinal data (e.g., ratings)\n- This class: only really matters if you tie it to a color aesthetic\n  + Will select a color scheme that implies an ordering\n\n# Wrap Up\n\n## Do Next\n\n1. Read [Chapter 16: Factors](https://r4ds.hadley.nz/factors.html) from r4ds.\n2. Open the Recitation Gem and say \"Provide me practice problems for Chapter 16\" or work through some of the exercises in the text.\n3. Move on to lecture 15.\n\n",
+    "supporting": [
+      "14-factors_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-after-body": [
+        "\n<script>\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\n  // slide changes (different for each slide format).\n  (function () {\n    // dispatch for htmlwidgets\n    function fireSlideEnter() {\n      const event = window.document.createEvent(\"Event\");\n      event.initEvent(\"slideenter\", true, true);\n      window.document.dispatchEvent(event);\n    }\n\n    function fireSlideChanged(previousSlide, currentSlide) {\n      fireSlideEnter();\n\n      // dispatch for shiny\n      if (window.jQuery) {\n        if (previousSlide) {\n          window.jQuery(previousSlide).trigger(\"hidden\");\n        }\n        if (currentSlide) {\n          window.jQuery(currentSlide).trigger(\"shown\");\n        }\n      }\n    }\n\n    // hookup for slidy\n    if (window.w3c_slidy) {\n      window.w3c_slidy.add_observer(function (slide_num) {\n        // slide_num starts at position 1\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\n      });\n    }\n\n  })();\n</script>\n\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,103 @@
+---
+title: "Factors"
+subtitle: "Lecture 14"
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| echo: false
+
+# load packages
+library(tidyverse)
+library(countdown)
+library(forcats)
+library(patchwork)
+
+# set theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
+
+# set figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 7,        # 7" width
+  fig.asp = 0.618,      # the golden ratio
+  fig.retina = 3,       # dpi multiplier for displaying HTML output on retina
+  fig.align = "center", # center align figures
+  dpi = 300             # higher dpi, sharper image
+)
+```
+
+# Introduction
+
+## Categorical Data and Factors
+
+- Factors are R's data structure for categorical variables.
+- The `forcats` package (part of `tidyverse`) provides a suite of tools for working with factors.
+- Useful for reordering and relabeling for better visualizations.
+
+# Creating Factors
+
+## `factor()` and `fct()`
+
+- Create factors from a character vector.
+- `levels()` shows the categories of the factor.
+- The levels have an order (not to be confused with "ordered factors" which are different)
+
+```{r}
+#| echo: true
+x <- c("Male", "Female", "Female", "Male")
+f <- factor(x)
+f
+levels(f)
+```
+
+## Data: Idaho Naturalization
+
+- We're going to use Naturalization data from the Idaho State Archives again
+- This dataset was assembled by Dr. Rachel Miller
+- [Link to Google Sheet](https://docs.google.com/spreadsheets/d/1UpMPcO8Jr3FLlFvy27a5xNMcCPqF20wur8YtOjH8tw0/edit?gid=1474309575#gid=1474309575)
+- Let's load the data and convert the country of origin to a factor
+
+# Modifying Factor Order
+
+## `fct_reorder()`
+
+- Reorders a factor by another variable, useful for plots.
+- For example, ordering bars in a bar chart.
+- Let's create a bar chart of country of origin ordered by the average year of arrival.
+
+## `fct_infreq()`
+
+- Reorders a factor by the frequency of its values.
+- Let's create a bar chart of country of origina by the frequency
+
+## `fct_relevel()`
+
+- Manually move levels to the front.
+- Let's move "Spain" to the front.
+
+## Modifying Factor Levels
+
+- `fct_recode()`: Changes the names of factor levels.
+- `fct_collapse()`: Combines several levels into one.
+- `fct_lump_*()`: lump together the least/most frequent levels into an "Other" category.
+
+## Practice
+
+- Let's make the country of origin factor more manageable by lumping together the least frequent countries into "Other" and recoding some country names for clarity.
+
+## Ordered Factors
+
+- A factor that enforces a strict ordering of levels
+- Useful for ordinal data (e.g., ratings)
+- This class: only really matters if you tie it to a color aesthetic
+  + Will select a color scheme that implies an ordering
+
+# Wrap Up
+
+## Do Next
+
+1. Read [Chapter 16: Factors](https://r4ds.hadley.nz/factors.html) from r4ds.
+2. Open the Recitation Gem and say "Provide me practice problems for Chapter 16" or work through some of the exercises in the text.
+3. Move on to lecture 15.
+

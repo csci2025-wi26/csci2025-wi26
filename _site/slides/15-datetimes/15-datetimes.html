@@ -194,9 +194,9 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="../vizdata-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
+<section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
   <h1 class="title">Dates and Times</h1>
-  <p class="subtitle">Lecture 14</p>
+  <p class="subtitle">Lecture 15</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -218,8 +218,9 @@ Dr.&nbsp;Eric Friedlander
 <section id="working-with-dates-and-times" class="slide level2">
 <h2>Working with Dates and Times</h2>
 <ul>
-<li>Dates and times can be complex due to leap years, daylight saving time (DST), and time zones.</li>
-<li>The <code>lubridate</code> package in R makes working with dates and times easier.</li>
+<li>Dates and times can be complex due to daylight saving time (DST), time zones, and all the different formats that dates can come in</li>
+<li>Dates are a very special kind of data: they are kind of “quantitative” but also kind of “categorical/ordinal”</li>
+<li>The <code>lubridate</code> package in R makes working with dates and times easier</li>
 </ul>
 </section>
 <section id="lubridate" class="slide level2">
@@ -264,7 +265,7 @@ Dr.&nbsp;Eric Friedlander
 </div>
 </div>
 </section>
-<section id="from-components" class="slide level2">
+<section id="from-components" class="slide level2 smaller">
 <h2>From Components</h2>
 <ul>
 <li>Use <code>make_date()</code> for dates and <code>make_datetime()</code> for date-times from individual components.</li>

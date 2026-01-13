@@ -1,11 +1,6 @@
 ---
 title: "Dates and Times"
-subtitle: "Lecture 14"
-title-slide-attributes:
-  data-background-image: ../vizdata-bg.png
-  data-background-size: stretch
-  data-slide-number: none
-format: revealjs
+subtitle: "Lecture 15"
 ---
 
 ```{r}
@@ -36,8 +31,9 @@ knitr::opts_chunk$set(
 
 ## Working with Dates and Times
 
-- Dates and times can be complex due to leap years, daylight saving time (DST), and time zones.
-- The `lubridate` package in R makes working with dates and times easier.
+- Dates and times can be complex due to daylight saving time (DST), time zones, and all the different formats that dates can come in
+- Dates are a very special kind of data: they are kind of "quantitative" but also kind of "categorical/ordinal"
+- The `lubridate` package in R makes working with dates and times easier
 
 ## `lubridate`
 
@@ -64,7 +60,7 @@ dmy("31-Jan-2017")
 ymd_hms("2017-01-31 20:11:59")
 ```
 
-## From Components
+## From Components {.smaller}
 
 - Use `make_date()` for dates and `make_datetime()` for date-times from individual components.
 
