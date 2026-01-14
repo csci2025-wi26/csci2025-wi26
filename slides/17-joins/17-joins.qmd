@@ -1,11 +1,6 @@
 ---
 title: "Joins"
-subtitle: "Lecture 16"
-title-slide-attributes:
-  data-background-image: ../vizdata-bg.png
-  data-background-size: stretch
-  data-slide-number: none
-format: revealjs
+subtitle: "Lecture 17"
 ---
 
 ```{r}
@@ -59,6 +54,19 @@ glimpse(flights)
 glimpse(airlines)
 ```
 
+## Dataset 3: `weather`
+
+```{r}
+glimpse(weather)
+```
+
+## Dataset 4: `planes`
+
+```{r}
+glimpse(planes)
+```
+
+
 # Mutating Joins
 
 ## `left_join()`
@@ -71,11 +79,7 @@ glimpse(airlines)
 
 ## Example
 
-```{r}
-#| echo: true
-flights2 <- flights |> select(year:day, hour, origin, dest, tailnum, carrier)
-flights2 |> left_join(airlines, by = "carrier") |> glimpse()
-```
+Let's join `flights` with `airlines` with `weather` with `planes` to get the full airline names, weather data, and flight data.
 
 ## Other Mutating Joins
 
@@ -92,14 +96,7 @@ flights2 |> left_join(airlines, by = "carrier") |> glimpse()
 
 ## Example
 
-```{r}
-#| echo: true
-top_dest <- flights |>
-  count(dest, sort = TRUE) |>
-  head(10)
-
-flights |> semi_join(top_dest)
-```
+Let's use a `semi_join()` to find all the flights heading to the top 10 destinations.
 
 ## `anti_join()`
 
@@ -119,3 +116,11 @@ flights |>
 ## Practice!
 
 Let's practice joins!
+
+# Wrap Up
+
+## Do Next
+
+1. Read [Chapter 19: Joins](https://r4ds.hadley.nz/joins.html) from r4ds.
+2. Open the Recitation Gem and say "Provide me practice problems for Chapter 19" or work through some of the exercises in the text.
+3. That's it for tonight!

@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
-  <title>CSCI 2025 – Missing Values</title>
+  <title>CSCI 2025 – Introduction to GitHub</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -194,9 +194,9 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="../vizdata-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Missing Values</h1>
-  <p class="subtitle">Lecture 15</p>
+<section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
+  <h1 class="title">Introduction to GitHub</h1>
+  <p class="subtitle">Lecture 18</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -215,141 +215,276 @@ Dr.&nbsp;Eric Friedlander
 <h1>Introduction</h1>
 
 </section>
-<section id="missing-values" class="slide level2">
-<h2>Missing Values</h2>
+<section id="what-is-version-control" class="slide level2">
+<h2>What is Version Control?</h2>
 <ul>
-<li>Real-world data is often messy and contains missing values.</li>
-<li>R represents missing values with <code>NA</code>.</li>
-<li>There are explicit and implicit missing values.</li>
+<li>A system that records changes to a file or set of files over time so that you can recall specific versions later.</li>
+<li>It allows you to revert files back to a previous state, revert the entire project back to a previous state, compare changes over time, see who last modified something that might be causing a problem, who introduced an issue and when.</li>
+<li>Think of it like “track changes” in a word processor, but for all your project files (code, data, text, etc.).</li>
+</ul>
+</section>
+<section id="why-is-it-useful" class="slide level2">
+<h2>Why is it useful?</h2>
+<ul>
+<li><strong>Collaboration:</strong> Many people can work on the same project without overwriting each other’s changes.</li>
+<li><strong>Organization:</strong> Keeps a history of your project. No more <code>final_report_v2_final_final.docx</code>!</li>
+<li><strong>Backup:</strong> Your project history is stored in a remote, safe place (like GitHub). If your computer crashes, your work is not lost.</li>
+<li><strong>Experimentation:</strong> You can try out new ideas in a “branch” without messing up the main version of your project.</li>
 </ul>
 </section></section>
 <section>
-<section id="explicit-missing-values-na" class="title-slide slide level1 center">
-<h1>Explicit Missing Values (<code>NA</code>)</h1>
+<section id="git-and-github" class="title-slide slide level1 center">
+<h1>Git and GitHub</h1>
 
 </section>
-<section id="is.na" class="slide level2">
-<h2><code>is.na()</code></h2>
+<section id="what-is-git" class="slide level2">
+<h2>What is Git?</h2>
 <ul>
-<li>Most functions will return <code>NA</code> if any input is <code>NA</code>.</li>
-<li>Use <code>na.rm = TRUE</code> to remove <code>NA</code>s before computation in functions like <code>mean()</code>, <code>sum()</code>, etc.</li>
+<li>Git is a free and open source <strong>distributed version control system</strong>.</li>
+<li>It’s a command-line tool that you run on your computer to track changes in your project files.</li>
+<li>It’s the most popular version control system in the world.</li>
 </ul>
 </section>
-<section id="tidyrfill" class="slide level2">
-<h2><code>tidyr::fill()</code></h2>
+<section id="what-is-github" class="slide level2">
+<h2>What is GitHub?</h2>
 <ul>
-<li>Fills in missing values using the last known value (last observation carried forward).</li>
+<li>GitHub is a <strong>web-based hosting service</strong> for Git repositories.</li>
+<li>It’s a place to store your projects and collaborate with others.</li>
+<li>It provides a graphical interface to Git, plus other features like issue tracking, project management, and more.</li>
+<li><strong>Git</strong> is the tool, <strong>GitHub</strong> is the service.</li>
+</ul>
+</section></section>
+<section>
+<section id="getting-started" class="title-slide slide level1 center">
+<h1>Getting Started</h1>
+
+</section>
+<section id="cloning-a-repository" class="slide level2">
+<h2>Cloning a Repository</h2>
+<ul>
+<li>“Cloning” is how you get a copy of a project from GitHub onto your computer.</li>
+<li>You only need to do this once per project.</li>
+<li>You’ll get a URL from the GitHub page of the repository.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">2</span>, <span class="cn">NA</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="cn">NA</span>, <span class="st">"b"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>))</span>
-<span id="cb1-2"><a></a>df <span class="sc">|&gt;</span> <span class="fu">fill</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 2
-      x y    
-  &lt;dbl&gt; &lt;chr&gt;
-1     1 a    
-2     1 a    
-3     1 b    
-4     2 b    
-5     2 b    </code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a></a><span class="fu">git</span> clone <span class="op">&lt;</span>URL_of_the_repository<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</section>
-<section id="coalesce-and-na_if" class="slide level2">
-<h2><code>coalesce()</code> and <code>na_if()</code></h2>
 <ul>
-<li><code>dplyr::coalesce()</code> replaces <code>NA</code>s with values from another vector.</li>
-<li><code>dplyr::na_if()</code> replaces a specific value with <code>NA</code>.</li>
+<li>This creates a new directory on your computer with all the project files.</li>
+</ul>
+</section></section>
+<section>
+<section id="the-core-workflow" class="title-slide slide level1 center">
+<h1>The Core Workflow</h1>
+
+</section>
+<section id="the-add-commit-push-cycle" class="slide level2">
+<h2>The Add-Commit-Push Cycle</h2>
+<p>This is the most common workflow you’ll use.</p>
+<ol type="1">
+<li><strong>Make changes:</strong> Edit your files, create new files, etc.</li>
+<li><strong>Add files:</strong> Tell Git which files you want to save in the next “snapshot” (commit).</li>
+<li><strong>Commit files:</strong> Save the snapshot with a descriptive message.</li>
+<li><strong>Push changes:</strong> Send your committed changes to GitHub.</li>
+</ol>
+</section>
+<section id="git-add" class="slide level2">
+<h2><code>git add</code></h2>
+<ul>
+<li>Use <code>git add</code> to stage your changes. Staging is the step before committing.</li>
+<li>You can add specific files or all files with changes.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">99</span>)</span>
-<span id="cb3-2"><a></a><span class="fu">coalesce</span>(x, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]   1   2   0   4 -99</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a></a><span class="co"># Add a specific file</span></span>
+<span id="cb2-2"><a></a><span class="fu">git</span> add path/to/your/file.R</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="co"># Add all changed files in the current directory and subdirectories</span></span>
+<span id="cb2-5"><a></a><span class="fu">git</span> add .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">na_if</span>(x, <span class="sc">-</span><span class="dv">99</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  1  2 NA  4 NA</code></pre>
-</div>
-</div>
-</section></section>
-<section>
-<section id="implicit-missing-values" class="title-slide slide level1 center">
-<h1>Implicit Missing Values</h1>
-
 </section>
-<section id="making-implicit-nas-explicit" class="slide level2">
-<h2>Making Implicit <code>NA</code>s Explicit</h2>
+<section id="git-commit" class="slide level2">
+<h2><code>git commit</code></h2>
 <ul>
-<li>Implicit missing values are values that are not present in the data.</li>
-<li>For example, if a group has no observations, it won’t appear in summaries.</li>
-</ul>
-</section>
-<section id="tidyrcomplete" class="slide level2">
-<h2><code>tidyr::complete()</code></h2>
-<ul>
-<li><code>complete()</code> turns implicit missing values into explicit <code>NA</code>s by completing the full range of data.</li>
+<li>A “commit” is a snapshot of your staged changes.</li>
+<li>Each commit has a unique ID and a message.</li>
+<li>The message is important! It should be a short, descriptive summary of the changes you made.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb7-2"><a></a>  <span class="at">group =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>),</span>
-<span id="cb7-3"><a></a>  <span class="at">year  =</span> <span class="fu">c</span>(<span class="dv">2020</span>, <span class="dv">2022</span>, <span class="dv">2021</span>),</span>
-<span id="cb7-4"><a></a>  <span class="at">value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb7-5"><a></a>)</span>
-<span id="cb7-6"><a></a>df <span class="sc">|&gt;</span> <span class="fu">complete</span>(group, year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  group  year value
-  &lt;chr&gt; &lt;dbl&gt; &lt;int&gt;
-1 a      2020     1
-2 a      2021    NA
-3 a      2022     2
-4 b      2020    NA
-5 b      2021     3
-6 b      2022    NA</code></pre>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Fix bug in data cleaning script"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="git-push" class="slide level2">
+<h2><code>git push</code></h2>
+<ul>
+<li><code>git push</code> sends your committed changes from your local computer to the remote repository on GitHub.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
-<section id="nan" class="title-slide slide level1 center">
-<h1><code>NaN</code></h1>
+<section id="staying-in-sync" class="title-slide slide level1 center">
+<h1>Staying in Sync</h1>
 
 </section>
-<section id="not-a-number-nan" class="slide level2">
-<h2>Not a Number (<code>NaN</code>)</h2>
+<section id="git-pull" class="slide level2">
+<h2><code>git pull</code></h2>
 <ul>
-<li><code>NaN</code> (“Not a Number”) is a special numeric value that can arise from invalid mathematical operations, like <code>0/0</code>.</li>
-<li><code>is.nan()</code> tests for <code>NaN</code>.</li>
-<li><code>NaN</code> is also considered <code>NA</code>, so <code>is.na(NaN)</code> is <code>TRUE</code>.</li>
+<li>If you’re working with others, they will merge changes into the <code>main</code> branch.</li>
+<li><code>git pull</code> fetches changes from the remote repository and merges them into your local copy.</li>
+<li><strong>It’s a critical habit to <code>pull</code> from <code>main</code> before you start working to make sure you have the latest version.</strong></li>
+</ul>
+
+<img data-src="../../images/pull.png" class="r-stretch"><div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a></a><span class="co"># Make sure you're on the main branch first</span></span>
+<span id="cb5-2"><a></a><span class="fu">git</span> checkout main</span>
+<span id="cb5-3"><a></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
+<section id="a-collaborative-workflow-the-feature-branch" class="title-slide slide level1 center">
+<h1>A Collaborative Workflow: The Feature Branch</h1>
+<p>For our group project, we will use a workflow that prevents accidentally breaking the main version of our app. <strong>You will not push directly to <code>main</code></strong>.</p>
+<p>The core idea is: 1. Create a copy of the project (a “branch”) where you can work safely. 2. Make all your changes on that branch. 3. When you’re ready, you’ll open a “Pull Request” to have your changes reviewed and merged into the <code>main</code> branch.</p>
+</section>
+<section id="what-is-a-branch" class="slide level2">
+<h2>What is a Branch?</h2>
+<ul>
+<li>A branch is a parallel version of your repository.</li>
+<li>It allows you to work on new features or fixes without affecting the main codebase (the <code>main</code> branch).</li>
+<li>This is essential for teamwork.</li>
+</ul>
+</section>
+<section id="the-branching-workflow-a-full-example" class="slide level2">
+<h2>The Branching Workflow: A Full Example</h2>
+<ol type="1">
+<li><p><strong>Sync your local <code>main</code> branch:</strong> <code>git checkout main</code> <code>git pull</code></p></li>
+<li><p><strong>Create a new branch for your work:</strong> For the project, your team leader (the “GitHub Sentinel”) will do this. Branch names should be descriptive, like <code>feature/team-name</code>. <code>git checkout -b feature/pod-1-enrollment</code></p></li>
+<li><p><strong>Work on your branch:</strong> Now you do the familiar add-commit cycle. <em>Edit files, create new R scripts…</em> <code>git add .</code> <code>git commit -m "Add enrollment chart and data cleaning"</code></p></li>
+<li><p><strong>Push your branch to GitHub:</strong> The <code>-u</code> flag sets the upstream branch so you can just <code>git push</code> next time. <code>git push -u origin feature/pod-1-enrollment</code></p></li>
+</ol>
+</section></section>
+<section>
+<section id="pull-requests-proposing-changes" class="title-slide slide level1 center">
+<h1>Pull Requests: Proposing Changes</h1>
+<p>Now that your branch is on GitHub, the GitHub Sentinel needs to ask for it to be merged into <code>main</code>.</p>
+</section>
+<section id="what-is-a-pull-request" class="slide level2">
+<h2>What is a Pull Request?</h2>
+<ul>
+<li>A Pull Request (or PR) is a formal request to merge your changes.</li>
+<li>You’re asking the project maintainer (the “Lead Architect” for your project) to “pull” your changes from your branch into the <code>main</code> branch.</li>
+<li>It’s a place for <strong>code review</strong> and discussion before the changes are integrated.</li>
+</ul>
+</section>
+<section id="how-the-sentinel-opens-a-pull-request" class="slide level2">
+<h2>How the Sentinel Opens a Pull Request</h2>
+<ol type="1">
+<li>After pushing the branch, go to the repository on GitHub.</li>
+<li>GitHub will usually show a banner prompting you to “Compare &amp; pull request”. Click it!</li>
+<li>If not, go to the “Pull requests” tab and click “New pull request”.</li>
+<li>Select your team’s branch as the “compare” branch and <code>main</code> as the “base” branch.</li>
+<li>Write a clear title and description for your changes. Explain what you did.</li>
+<li>Click “Create pull request”.</li>
+</ol>
+</section>
+<section id="review-and-merging" class="slide level2">
+<h2>Review and Merging</h2>
+<ul>
+<li>Once the PR is open, the “Lead Architect” and other team members can review your code, add comments, and request changes.</li>
+<li>If changes are requested, your team makes them on the local branch, then <code>commits</code> and <code>pushes</code> again. The PR will update automatically.</li>
+<li>Once approved, the Lead Architect will <strong>merge</strong> your branch into <code>main</code>. Your work is now part of the official project!</li>
+</ul>
+</section>
+<section id="a-note-on-merge-conflicts" class="slide level2">
+<h2>A Note on Merge Conflicts</h2>
+<ul>
+<li>If you and another person edit the <strong>same lines in the same file</strong> on different branches, Git won’t know which version to keep when merging.</li>
+<li>This is a <strong>merge conflict</strong>.</li>
+<li>The person merging the PR (or the Sentinel, before opening it) will need to manually resolve the conflict by choosing which code to keep.</li>
+<li><strong>The best way to avoid conflicts: Pull from <code>main</code> often and communicate with your team!</strong></li>
+</ul>
+</section>
+<section id="after-a-pr-is-merged" class="slide level2">
+<h2>After a PR is Merged</h2>
+<p>Once your team’s branch is merged by the Lead Architect, everyone should update their local repository.</p>
+<ol type="1">
+<li><p>Switch back to your main branch: <code>git checkout main</code></p></li>
+<li><p>Pull the latest changes (which now include the merged work): <code>git pull</code></p></li>
+<li><p>Now your <code>main</code> is up to date, and you can create a new branch for the next feature!</p></li>
+</ol>
+</section></section>
+<section>
+<section id="best-practices" class="title-slide slide level1 center">
+<h1>Best Practices</h1>
+
+</section>
+<section id="good-commit-messages" class="slide level2 smaller">
+<h2>Good Commit Messages</h2>
+<ul>
+<li>Keep them short and descriptive.</li>
+<li>Use the imperative mood (e.g., “Add feature” not “Added feature”).</li>
+<li>Explain <em>what</em> the change is and <em>why</em> you made it.</li>
+</ul>
+<p><strong>Good:</strong></p>
+<ul>
+<li><code>Fix typo in course syllabus</code></li>
+<li><code>Update plot styling in HW1</code></li>
+<li><code>Feat: Add enrollment module skeleton</code></li>
+<li><code>Docs: Explain data cleaning process</code></li>
+</ul>
+<p><strong>Bad:</strong></p>
+<ul>
+<li><code>stuff</code></li>
+<li><code>fixed it</code></li>
+<li><code>aaaaaaaa</code> <!-- 
+## Practice!
+
+Let's simulate the project workflow. `countdown(minutes = 15)`
+
+**Partner A: The "Lead Architect"**
+1. Create a new **public** repository on GitHub named `github-practice`.
+2. Initialize it with a `README.md` file.
+3. Clone it to your computer.
+4. Add Partner B as a collaborator (`Settings` > `Collaborators`).
+
+**Partner B: The "GitHub Sentinel"**
+1. Accept the collaborator invitation (check your email!).
+2. Clone the repository.
+3. Create a new branch: `git checkout -b add-contrib-list`.
+4. Create a new file `contributors.txt` and add your name to it.
+5. `add`, `commit`, and `push` your branch to the repository.
+6. Go to GitHub and open a Pull Request to merge `add-contrib-list` into `main`.
+
+**Partner A: The "Lead Architect" (again)**
+1. On GitHub, go to the "Pull requests" tab.
+2. Review the PR. Leave a comment! Ask Partner B to add your name to the file.
+
+**Partner B: The "GitHub Sentinel" (again)**
+1. Locally, on your branch, add Partner A's name to `contributors.txt`.
+2. `add`, `commit`, and `push` the change. Notice the PR on GitHub updates automatically!
+
+**Partner A: The "Lead Architect" (last time)**
+1. On the PR, see the new commit. Looks good!
+2. **Merge the Pull Request.**
+
+**Both Partners:**
+1. Locally, `git checkout main` and `git pull` to see the `contributors.txt` file with both names. --></li>
 </ul>
 </section></section>
 <section>
-<section id="thinking-about-missing-values" class="title-slide slide level1 center">
-<h1>Thinking about missing values</h1>
+<section id="wrap-up" class="title-slide slide level1 center">
+<h1>Wrap-Up</h1>
 
 </section>
-<section id="missingness-in-data-analysis" class="slide level2">
-<h2>Missingness in Data Analysis</h2>
-<ul>
-<li>Be careful about removing missing values without understanding why they are missing</li>
-<li>Sometimes missing values aren’t missing at all</li>
-<li>Sometimes non-missing values are actually missing</li>
-<li>Sometimes there is a pattern to missing data (call this structured missingness)</li>
-<li>Not undersanding missingness can lead to biased results!</li>
-</ul>
-</section>
-<section id="missing-data-mechanisms" class="slide level2">
-<h2>Missing Data Mechanisms</h2>
-<ul>
-<li>Missing Completely at Random (MCAR): Missingness is unrelated to any data.</li>
-<li>Missing at Random (MAR): Missingness is related to observed data.</li>
-<li>Missing Not at Random (MNAR): Missingness is related to unobserved data.</li>
-<li>Understanding the mechanism helps in choosing appropriate handling methods.</li>
-</ul>
-</section>
-<section id="practice" class="slide level2">
-<h2>Practice!</h2>
-<p>Let’s practice!</p>
+<section id="do-next" class="slide level2">
+<h2>Do Next</h2>
+<ol type="1">
+<li>Make sure you have Git installed on your computer.</li>
+<li>Make sure you have a GitHub account.</li>
+<li>Accept the invitation to our course organization on GitHub.</li>
+<li>That’s it for tonight! See you tomorrow.</li>
+</ol>
 
 
 </section></section>

@@ -149,76 +149,6 @@
     "text": "Data Dictionary\n\nID : Participant identifier\nCondition: TRAD or CLU (traditional or cluster)\nTime: PRE or POST (before or after exercise)\nHR: Heart Rate (in beats per minute)"
   },
   {
-    "objectID": "slides/15-missing-values/15-missing-values.html#missing-values",
-    "href": "slides/15-missing-values/15-missing-values.html#missing-values",
-    "title": "Missing Values",
-    "section": "Missing Values",
-    "text": "Missing Values\n\nReal-world data is often messy and contains missing values.\nR represents missing values with NA.\nThere are explicit and implicit missing values."
-  },
-  {
-    "objectID": "slides/15-missing-values/15-missing-values.html#is.na",
-    "href": "slides/15-missing-values/15-missing-values.html#is.na",
-    "title": "Missing Values",
-    "section": "is.na()",
-    "text": "is.na()\n\nMost functions will return NA if any input is NA.\nUse na.rm = TRUE to remove NAs before computation in functions like mean(), sum(), etc."
-  },
-  {
-    "objectID": "slides/15-missing-values/15-missing-values.html#tidyrfill",
-    "href": "slides/15-missing-values/15-missing-values.html#tidyrfill",
-    "title": "Missing Values",
-    "section": "tidyr::fill()",
-    "text": "tidyr::fill()\n\nFills in missing values using the last known value (last observation carried forward).\n\n\ndf &lt;- tibble(x = c(1, NA, NA, 2, NA), y = c(\"a\", NA, \"b\", NA, NA))\ndf |&gt; fill(x, y)\n\n# A tibble: 5 × 2\n      x y    \n  &lt;dbl&gt; &lt;chr&gt;\n1     1 a    \n2     1 a    \n3     1 b    \n4     2 b    \n5     2 b"
-  },
-  {
-    "objectID": "slides/15-missing-values/15-missing-values.html#coalesce-and-na_if",
-    "href": "slides/15-missing-values/15-missing-values.html#coalesce-and-na_if",
-    "title": "Missing Values",
-    "section": "coalesce() and na_if()",
-    "text": "coalesce() and na_if()\n\ndplyr::coalesce() replaces NAs with values from another vector.\ndplyr::na_if() replaces a specific value with NA.\n\n\nx &lt;- c(1, 2, NA, 4, -99)\ncoalesce(x, 0)\n\n[1]   1   2   0   4 -99\n\nna_if(x, -99)\n\n[1]  1  2 NA  4 NA"
-  },
-  {
-    "objectID": "slides/15-missing-values/15-missing-values.html#making-implicit-nas-explicit",
-    "href": "slides/15-missing-values/15-missing-values.html#making-implicit-nas-explicit",
-    "title": "Missing Values",
-    "section": "Making Implicit NAs Explicit",
-    "text": "Making Implicit NAs Explicit\n\nImplicit missing values are values that are not present in the data.\nFor example, if a group has no observations, it won’t appear in summaries."
-  },
-  {
-    "objectID": "slides/15-missing-values/15-missing-values.html#tidyrcomplete",
-    "href": "slides/15-missing-values/15-missing-values.html#tidyrcomplete",
-    "title": "Missing Values",
-    "section": "tidyr::complete()",
-    "text": "tidyr::complete()\n\ncomplete() turns implicit missing values into explicit NAs by completing the full range of data.\n\n\ndf &lt;- tibble(\n  group = c(\"a\", \"a\", \"b\"),\n  year  = c(2020, 2022, 2021),\n  value = 1:3\n)\ndf |&gt; complete(group, year)\n\n# A tibble: 6 × 3\n  group  year value\n  &lt;chr&gt; &lt;dbl&gt; &lt;int&gt;\n1 a      2020     1\n2 a      2021    NA\n3 a      2022     2\n4 b      2020    NA\n5 b      2021     3\n6 b      2022    NA"
-  },
-  {
-    "objectID": "slides/15-missing-values/15-missing-values.html#not-a-number-nan",
-    "href": "slides/15-missing-values/15-missing-values.html#not-a-number-nan",
-    "title": "Missing Values",
-    "section": "Not a Number (NaN)",
-    "text": "Not a Number (NaN)\n\nNaN (“Not a Number”) is a special numeric value that can arise from invalid mathematical operations, like 0/0.\nis.nan() tests for NaN.\nNaN is also considered NA, so is.na(NaN) is TRUE."
-  },
-  {
-    "objectID": "slides/15-missing-values/15-missing-values.html#missingness-in-data-analysis",
-    "href": "slides/15-missing-values/15-missing-values.html#missingness-in-data-analysis",
-    "title": "Missing Values",
-    "section": "Missingness in Data Analysis",
-    "text": "Missingness in Data Analysis\n\nBe careful about removing missing values without understanding why they are missing\nSometimes missing values aren’t missing at all\nSometimes non-missing values are actually missing\nSometimes there is a pattern to missing data (call this structured missingness)\nNot undersanding missingness can lead to biased results!"
-  },
-  {
-    "objectID": "slides/15-missing-values/15-missing-values.html#missing-data-mechanisms",
-    "href": "slides/15-missing-values/15-missing-values.html#missing-data-mechanisms",
-    "title": "Missing Values",
-    "section": "Missing Data Mechanisms",
-    "text": "Missing Data Mechanisms\n\nMissing Completely at Random (MCAR): Missingness is unrelated to any data.\nMissing at Random (MAR): Missingness is related to observed data.\nMissing Not at Random (MNAR): Missingness is related to unobserved data.\nUnderstanding the mechanism helps in choosing appropriate handling methods."
-  },
-  {
-    "objectID": "slides/15-missing-values/15-missing-values.html#practice",
-    "href": "slides/15-missing-values/15-missing-values.html#practice",
-    "title": "Missing Values",
-    "section": "Practice!",
-    "text": "Practice!\nLet’s practice!"
-  },
-  {
     "objectID": "slides/11-numbers/11-numbers.html#working-with-numbers",
     "href": "slides/11-numbers/11-numbers.html#working-with-numbers",
     "title": "Numbers",
@@ -366,207 +296,347 @@
     "text": "Do Next\n\nRead Chapter 13: Numbers from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 13” or work through some of the exercises in the text.\nThat’s it! See you Monday!"
   },
   {
-    "objectID": "slides/14-factors/14-factors.html#categorical-data-and-factors",
-    "href": "slides/14-factors/14-factors.html#categorical-data-and-factors",
-    "title": "Factors",
-    "section": "Categorical Data and Factors",
-    "text": "Categorical Data and Factors\n\nFactors are R’s data structure for categorical variables.\nThe forcats package (part of tidyverse) provides a suite of tools for working with factors.\nUseful for reordering and relabeling for better visualizations."
+    "objectID": "slides/17-joins/17-joins.html#combining-datasets",
+    "href": "slides/17-joins/17-joins.html#combining-datasets",
+    "title": "Joins",
+    "section": "Combining Datasets",
+    "text": "Combining Datasets\n\nJoins are used to combine data from different tables based on a set of common variables (“keys”).\ndplyr provides a family of join functions.\nWe will use data from the nycflights13 package."
   },
   {
-    "objectID": "slides/14-factors/14-factors.html#factor-and-fct",
-    "href": "slides/14-factors/14-factors.html#factor-and-fct",
-    "title": "Factors",
-    "section": "factor() and fct()",
-    "text": "factor() and fct()\n\nCreate factors from a character vector.\nlevels() shows the categories of the factor.\nThe levels have an order (not to be confused with “ordered factors” which are different)\n\n\nx &lt;- c(\"Male\", \"Female\", \"Female\", \"Male\")\nf &lt;- factor(x)\nf\n\n[1] Male   Female Female Male  \nLevels: Female Male\n\nlevels(f)\n\n[1] \"Female\" \"Male\""
+    "objectID": "slides/17-joins/17-joins.html#primary-and-foreign-keys",
+    "href": "slides/17-joins/17-joins.html#primary-and-foreign-keys",
+    "title": "Joins",
+    "section": "Primary and Foreign Keys",
+    "text": "Primary and Foreign Keys\n\nA primary key is a variable (or set of variables) that uniquely identifies each observation in a table.\nA foreign key is a variable (or set of variables) in one table that corresponds to a primary key in another table.\nKeys are what link tables together."
   },
   {
-    "objectID": "slides/14-factors/14-factors.html#data-idaho-naturalization",
-    "href": "slides/14-factors/14-factors.html#data-idaho-naturalization",
-    "title": "Factors",
-    "section": "Data: Idaho Naturalization",
-    "text": "Data: Idaho Naturalization\n\nWe’re going to use Naturalization data from the Idaho State Archives again\nThis dataset was assembled by Dr. Rachel Miller\nLink to Google Sheet\nLet’s load the data and convert the country of origin to a factor"
+    "objectID": "slides/17-joins/17-joins.html#dataset-1-flights",
+    "href": "slides/17-joins/17-joins.html#dataset-1-flights",
+    "title": "Joins",
+    "section": "Dataset 1: flights",
+    "text": "Dataset 1: flights\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…"
   },
   {
-    "objectID": "slides/14-factors/14-factors.html#fct_reorder",
-    "href": "slides/14-factors/14-factors.html#fct_reorder",
-    "title": "Factors",
-    "section": "fct_reorder()",
-    "text": "fct_reorder()\n\nReorders a factor by another variable, useful for plots.\nFor example, ordering bars in a bar chart.\nLet’s create a bar chart of country of origin ordered by the average year of arrival."
+    "objectID": "slides/17-joins/17-joins.html#dataset-2-airlines",
+    "href": "slides/17-joins/17-joins.html#dataset-2-airlines",
+    "title": "Joins",
+    "section": "Dataset 2: airlines",
+    "text": "Dataset 2: airlines\n\nglimpse(airlines)\n\nRows: 16\nColumns: 2\n$ carrier &lt;chr&gt; \"9E\", \"AA\", \"AS\", \"B6\", \"DL\", \"EV\", \"F9\", \"FL\", \"HA\", \"MQ\", \"O…\n$ name    &lt;chr&gt; \"Endeavor Air Inc.\", \"American Airlines Inc.\", \"Alaska Airline…"
   },
   {
-    "objectID": "slides/14-factors/14-factors.html#fct_infreq",
-    "href": "slides/14-factors/14-factors.html#fct_infreq",
-    "title": "Factors",
-    "section": "fct_infreq()",
-    "text": "fct_infreq()\n\nReorders a factor by the frequency of its values.\nLet’s create a bar chart of country of origina by the frequency"
+    "objectID": "slides/17-joins/17-joins.html#dataset-3-weather",
+    "href": "slides/17-joins/17-joins.html#dataset-3-weather",
+    "title": "Joins",
+    "section": "Dataset 3: weather",
+    "text": "Dataset 3: weather\n\nglimpse(weather)\n\nRows: 26,115\nColumns: 15\n$ origin     &lt;chr&gt; \"EWR\", \"EWR\", \"EWR\", \"EWR\", \"EWR\", \"EWR\", \"EWR\", \"EWR\", \"EW…\n$ year       &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013,…\n$ month      &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ day        &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ hour       &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, …\n$ temp       &lt;dbl&gt; 39.02, 39.02, 39.02, 39.92, 39.02, 37.94, 39.02, 39.92, 39.…\n$ dewp       &lt;dbl&gt; 26.06, 26.96, 28.04, 28.04, 28.04, 28.04, 28.04, 28.04, 28.…\n$ humid      &lt;dbl&gt; 59.37, 61.63, 64.43, 62.21, 64.43, 67.21, 64.43, 62.21, 62.…\n$ wind_dir   &lt;dbl&gt; 270, 250, 240, 250, 260, 240, 240, 250, 260, 260, 260, 330,…\n$ wind_speed &lt;dbl&gt; 10.35702, 8.05546, 11.50780, 12.65858, 12.65858, 11.50780, …\n$ wind_gust  &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 20.…\n$ precip     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…\n$ pressure   &lt;dbl&gt; 1012.0, 1012.3, 1012.5, 1012.2, 1011.9, 1012.4, 1012.2, 101…\n$ visib      &lt;dbl&gt; 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,…\n$ time_hour  &lt;dttm&gt; 2013-01-01 01:00:00, 2013-01-01 02:00:00, 2013-01-01 03:00…"
   },
   {
-    "objectID": "slides/14-factors/14-factors.html#fct_relevel",
-    "href": "slides/14-factors/14-factors.html#fct_relevel",
-    "title": "Factors",
-    "section": "fct_relevel()",
-    "text": "fct_relevel()\n\nManually move levels to the front.\nLet’s move “Spain” to the front."
+    "objectID": "slides/17-joins/17-joins.html#dataset-4-planes",
+    "href": "slides/17-joins/17-joins.html#dataset-4-planes",
+    "title": "Joins",
+    "section": "Dataset 4: planes",
+    "text": "Dataset 4: planes\n\nglimpse(planes)\n\nRows: 3,322\nColumns: 9\n$ tailnum      &lt;chr&gt; \"N10156\", \"N102UW\", \"N103US\", \"N104UW\", \"N10575\", \"N105UW…\n$ year         &lt;int&gt; 2004, 1998, 1999, 1999, 2002, 1999, 1999, 1999, 1999, 199…\n$ type         &lt;chr&gt; \"Fixed wing multi engine\", \"Fixed wing multi engine\", \"Fi…\n$ manufacturer &lt;chr&gt; \"EMBRAER\", \"AIRBUS INDUSTRIE\", \"AIRBUS INDUSTRIE\", \"AIRBU…\n$ model        &lt;chr&gt; \"EMB-145XR\", \"A320-214\", \"A320-214\", \"A320-214\", \"EMB-145…\n$ engines      &lt;int&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …\n$ seats        &lt;int&gt; 55, 182, 182, 182, 55, 182, 182, 182, 182, 182, 55, 55, 5…\n$ speed        &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ engine       &lt;chr&gt; \"Turbo-fan\", \"Turbo-fan\", \"Turbo-fan\", \"Turbo-fan\", \"Turb…"
   },
   {
-    "objectID": "slides/14-factors/14-factors.html#modifying-factor-levels",
-    "href": "slides/14-factors/14-factors.html#modifying-factor-levels",
-    "title": "Factors",
-    "section": "Modifying Factor Levels",
-    "text": "Modifying Factor Levels\n\nfct_recode(): Changes the names of factor levels.\nfct_collapse(): Combines several levels into one.\nfct_lump_*(): lump together the least/most frequent levels into an “Other” category."
+    "objectID": "slides/17-joins/17-joins.html#left_join",
+    "href": "slides/17-joins/17-joins.html#left_join",
+    "title": "Joins",
+    "section": "left_join()",
+    "text": "left_join()\n\nleft_join() is the most commonly used join.\nIt returns all rows from the left table (x), and all columns from both tables (x and y).\nRows in x with no match in y will have NA values in the new columns.\nRows in y with no match in x are ignored.\nRows in y that match multiple rows in x will result in duplicated rows in the output (and vice versa)."
   },
   {
-    "objectID": "slides/14-factors/14-factors.html#practice",
-    "href": "slides/14-factors/14-factors.html#practice",
-    "title": "Factors",
+    "objectID": "slides/17-joins/17-joins.html#example",
+    "href": "slides/17-joins/17-joins.html#example",
+    "title": "Joins",
+    "section": "Example",
+    "text": "Example\nLet’s join flights with airlines with weather with planes to get the full airline names, weather data, and flight data."
+  },
+  {
+    "objectID": "slides/17-joins/17-joins.html#other-mutating-joins",
+    "href": "slides/17-joins/17-joins.html#other-mutating-joins",
+    "title": "Joins",
+    "section": "Other Mutating Joins",
+    "text": "Other Mutating Joins\n\ninner_join(): returns only rows that have a match in both tables.\nright_join(): returns all rows from the right table.\nfull_join(): returns all rows from both tables."
+  },
+  {
+    "objectID": "slides/17-joins/17-joins.html#semi_join",
+    "href": "slides/17-joins/17-joins.html#semi_join",
+    "title": "Joins",
+    "section": "semi_join()",
+    "text": "semi_join()\n\nsemi_join() keeps all rows from the left table (x) that have a match in the right table (y).\nIt does not add any columns from y."
+  },
+  {
+    "objectID": "slides/17-joins/17-joins.html#example-1",
+    "href": "slides/17-joins/17-joins.html#example-1",
+    "title": "Joins",
+    "section": "Example",
+    "text": "Example\nLet’s use a semi_join() to find all the flights heading to the top 10 destinations."
+  },
+  {
+    "objectID": "slides/17-joins/17-joins.html#anti_join",
+    "href": "slides/17-joins/17-joins.html#anti_join",
+    "title": "Joins",
+    "section": "anti_join()",
+    "text": "anti_join()\n\nanti_join() returns all rows from x that do not have a match in y.\nUseful for finding observations that don’t have a match."
+  },
+  {
+    "objectID": "slides/17-joins/17-joins.html#example-2",
+    "href": "slides/17-joins/17-joins.html#example-2",
+    "title": "Joins",
+    "section": "Example",
+    "text": "Example\n\nflights |&gt;\n  anti_join(planes, by = \"tailnum\") |&gt;\n  count(tailnum, sort = TRUE)\n\n# A tibble: 722 × 2\n   tailnum     n\n   &lt;chr&gt;   &lt;int&gt;\n 1 &lt;NA&gt;     2512\n 2 N725MQ    575\n 3 N722MQ    513\n 4 N723MQ    507\n 5 N713MQ    483\n 6 N735MQ    396\n 7 N0EGMQ    371\n 8 N534MQ    364\n 9 N542MQ    363\n10 N531MQ    349\n# ℹ 712 more rows"
+  },
+  {
+    "objectID": "slides/17-joins/17-joins.html#practice",
+    "href": "slides/17-joins/17-joins.html#practice",
+    "title": "Joins",
+    "section": "Practice!",
+    "text": "Practice!\nLet’s practice joins!"
+  },
+  {
+    "objectID": "slides/17-joins/17-joins.html#do-next",
+    "href": "slides/17-joins/17-joins.html#do-next",
+    "title": "Joins",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 19: Joins from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 19” or work through some of the exercises in the text.\nThat’s it for tonight!"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#exploratory-data-analysis",
+    "href": "slides/08-eda/08-eda.html#exploratory-data-analysis",
+    "title": "Exploratory Data Analysis",
+    "section": "Exploratory Data Analysis",
+    "text": "Exploratory Data Analysis\nEDA is an iterative cycle. You:\n\nGenerate questions about your data.\nSearch for answers by visualizing, transforming, and modelling your data.\nUse what you learn to refine your questions and/or generate new questions."
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#fun-quotes",
+    "href": "slides/08-eda/08-eda.html#fun-quotes",
+    "title": "Exploratory Data Analysis",
+    "section": "Fun Quotes",
+    "text": "Fun Quotes\n\n“There are no routine statistical questions, only questionable statistical routines.” — Sir David Cox\n\n\n\n“Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.” — John Tukey"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#guiding-questions",
+    "href": "slides/08-eda/08-eda.html#guiding-questions",
+    "title": "Exploratory Data Analysis",
+    "section": "Guiding Questions",
+    "text": "Guiding Questions\nTwo main types of questions to ask:\n\nWhat type of variation occurs within my variables?\nWhat type of covariation occurs between my variables?"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#data-tips",
+    "href": "slides/08-eda/08-eda.html#data-tips",
+    "title": "Exploratory Data Analysis",
+    "section": "Data: tips",
+    "text": "Data: tips\n\nWe will use the tips dataset from the reshape2 package (you will likely have to install it)."
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#visualizing-distributions",
+    "href": "slides/08-eda/08-eda.html#visualizing-distributions",
+    "title": "Exploratory Data Analysis",
+    "section": "Visualizing Distributions",
+    "text": "Visualizing Distributions\nVariation is the tendency of the values of a variable to change from measurement to measurement.\n\nEvery variable has its own pattern of variation, which can reveal interesting information.\nThe best way to understand that pattern is to visualize the variable’s distribution."
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#questions",
+    "href": "slides/08-eda/08-eda.html#questions",
+    "title": "Exploratory Data Analysis",
+    "section": "Questions",
+    "text": "Questions\n\nWhich values are the most common? Why?\nWhich values are rare? Why? Does that match your expectations?\nCan you see any unusual patterns? What might explain them?"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#recall-univarite-plots",
+    "href": "slides/08-eda/08-eda.html#recall-univarite-plots",
+    "title": "Exploratory Data Analysis",
+    "section": "Recall: Univarite Plots",
+    "text": "Recall: Univarite Plots\n\nCategorical variables: bar charts\nNumerical variables: histograms, boxplots"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#practice",
+    "href": "slides/08-eda/08-eda.html#practice",
+    "title": "Exploratory Data Analysis",
     "section": "Practice",
-    "text": "Practice\n\nLet’s make the country of origin factor more manageable by lumping together the least frequent countries into “Other” and recoding some country names for clarity."
+    "text": "Practice\n\nLet’s practice exploring tip sizes."
   },
   {
-    "objectID": "slides/14-factors/14-factors.html#ordered-factors",
-    "href": "slides/14-factors/14-factors.html#ordered-factors",
-    "title": "Factors",
-    "section": "Ordered Factors",
-    "text": "Ordered Factors\n\nA factor that enforces a strict ordering of levels\nUseful for ordinal data (e.g., ratings)\nThis class: only really matters if you tie it to a color aesthetic\n\nWill select a color scheme that implies an ordering"
+    "objectID": "slides/08-eda/08-eda.html#outliers",
+    "href": "slides/08-eda/08-eda.html#outliers",
+    "title": "Exploratory Data Analysis",
+    "section": "Outliers",
+    "text": "Outliers\n\nOutliers are observations that are unusual; points that don’t seem to fit the pattern.\nSometimes they are data entry errors; other times they are genuinely important."
   },
   {
-    "objectID": "slides/14-factors/14-factors.html#do-next",
-    "href": "slides/14-factors/14-factors.html#do-next",
-    "title": "Factors",
+    "objectID": "slides/08-eda/08-eda.html#handling-outliers",
+    "href": "slides/08-eda/08-eda.html#handling-outliers",
+    "title": "Exploratory Data Analysis",
+    "section": "Handling Outliers",
+    "text": "Handling Outliers\n\nIf they are data entry errors, try to fix them or remove them.\nIf they are genuine, their presence is important information.\nNeither of these conclusions can be made without understanding the context of the data and looking deeply at the observations"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#more-practice",
+    "href": "slides/08-eda/08-eda.html#more-practice",
+    "title": "Exploratory Data Analysis",
+    "section": "More Practice",
+    "text": "More Practice\n\nLet’s complete exercise 5\nLet’s explore some outliers in the tips dataset"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#data-mpg",
+    "href": "slides/08-eda/08-eda.html#data-mpg",
+    "title": "Exploratory Data Analysis",
+    "section": "Data: mpg",
+    "text": "Data: mpg\n\nWe will also use the mpg dataset from the ggplot2 package.\nIt contains information about the fuel economy of different car models.\n\n\nglimpse(mpg)\n\nRows: 234\nColumns: 11\n$ manufacturer &lt;chr&gt; \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"…\n$ model        &lt;chr&gt; \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4 quattro\", \"…\n$ displ        &lt;dbl&gt; 1.8, 1.8, 2.0, 2.0, 2.8, 2.8, 3.1, 1.8, 1.8, 2.0, 2.0, 2.…\n$ year         &lt;int&gt; 1999, 1999, 2008, 2008, 1999, 1999, 2008, 1999, 1999, 200…\n$ cyl          &lt;int&gt; 4, 4, 4, 4, 6, 6, 6, 4, 4, 4, 4, 6, 6, 6, 6, 6, 6, 8, 8, …\n$ trans        &lt;chr&gt; \"auto(l5)\", \"manual(m5)\", \"manual(m6)\", \"auto(av)\", \"auto…\n$ drv          &lt;chr&gt; \"f\", \"f\", \"f\", \"f\", \"f\", \"f\", \"f\", \"4\", \"4\", \"4\", \"4\", \"4…\n$ cty          &lt;int&gt; 18, 21, 20, 21, 16, 18, 18, 18, 16, 20, 19, 15, 17, 17, 1…\n$ hwy          &lt;int&gt; 29, 29, 31, 30, 26, 26, 27, 26, 25, 28, 27, 25, 25, 25, 2…\n$ fl           &lt;chr&gt; \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p…\n$ class        &lt;chr&gt; \"compact\", \"compact\", \"compact\", \"compact\", \"compact\", \"c…"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#visualizing-relationships",
+    "href": "slides/08-eda/08-eda.html#visualizing-relationships",
+    "title": "Exploratory Data Analysis",
+    "section": "Visualizing Relationships",
+    "text": "Visualizing Relationships\n\nCovariation: how do two variables change together? What is their relationship?\nVisualizing covariation helps you understand relationships between variables\nYou need to think and plan carefully about how to display multiple distributions in a single plot"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#recall-three-general-cases",
+    "href": "slides/08-eda/08-eda.html#recall-three-general-cases",
+    "title": "Exploratory Data Analysis",
+    "section": "Recall: Three general cases",
+    "text": "Recall: Three general cases\n\nCategorical + Categorical\n\nBoxplots\n\nCategorical + Numerical\n\nBoxplots, jitter plots, faceted histograms\n\nNumerical + Numerical\n\nScatterplots, jitter plots"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#reordering-categories",
+    "href": "slides/08-eda/08-eda.html#reordering-categories",
+    "title": "Exploratory Data Analysis",
+    "section": "Reordering Categories",
+    "text": "Reordering Categories\n\nYou can reorder the categorical variable to make the plot easier to read.\nWhat kind of car get’s the best gas mileage?"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#some-new-plots",
+    "href": "slides/08-eda/08-eda.html#some-new-plots",
+    "title": "Exploratory Data Analysis",
+    "section": "Some new plots",
+    "text": "Some new plots\n\nCategorical + Categorical\n\nMosaic plots, count plots, tile plots\n\nCategorical + Numerical\n\nViolin plots, sina plots, ridgeline plots, frequency polygons\n\nNumerical + Numerical\n\n2D-Histogram/heatmap of counts, hexbin plots"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#practice-1",
+    "href": "slides/08-eda/08-eda.html#practice-1",
+    "title": "Exploratory Data Analysis",
+    "section": "Practice",
+    "text": "Practice\n\nLet’s practice exploring covariation in the our data sets"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#patterns-1",
+    "href": "slides/08-eda/08-eda.html#patterns-1",
+    "title": "Exploratory Data Analysis",
+    "section": "Patterns",
+    "text": "Patterns\n\nPatterns in your data hint at relationships. If you can spot a pattern, ask yourself:\n\nCould this pattern be due to coincidence?\nHow can you describe the relationship implied by the pattern?\nHow strong is the relationship implied by the pattern?\nWhat other variables might affect the relationship?\nDoes the relationship change if you look at individual subgroups of the data?\n\nModels can help you extract the strong patterns and leave the weaker ones."
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#transformations",
+    "href": "slides/08-eda/08-eda.html#transformations",
+    "title": "Exploratory Data Analysis",
+    "section": "Transformations",
+    "text": "Transformations\n\nTransformations can help you see patterns more clearly.\nCommon transformations include:\n\nLogarithms\nLogarithms\nLogarithms\nSquare roots\nLogarithms\nStandardization (z-scores)\nLogarithms"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#the-power-of-logs",
+    "href": "slides/08-eda/08-eda.html#the-power-of-logs",
+    "title": "Exploratory Data Analysis",
+    "section": "The power of logs",
+    "text": "The power of logs\n\nPower law: when \\(y = ax^k\\)\n\nTaking the log of both sides gives: \\(\\log(y) = \\log(a) + k\\log(x)\\)\nIntuitively: multiplying x by a constant multiplies y by a constant.\n\nPower law’s are extremely common in nature:\n\nParetto principle (80/20 rule)\nCity sizes\nEarthquake magnitudes\nWealth distributions\nBacteria growth"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#practice-2",
+    "href": "slides/08-eda/08-eda.html#practice-2",
+    "title": "Exploratory Data Analysis",
+    "section": "Practice",
+    "text": "Practice\n\nLet’s practice looking for patterns in out data sets."
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#eda-in-a-nutshell",
+    "href": "slides/08-eda/08-eda.html#eda-in-a-nutshell",
+    "title": "Exploratory Data Analysis",
+    "section": "EDA in a nutshell",
+    "text": "EDA in a nutshell\n\nEDA is about asking questions and using visualizations to find answers.\nStart by looking at the variation of each variable.\nThen, explore the covariation between variables.\nUse ggplot2 to create a wide range of plots to help you understand your data.\nDON’T FORGET TO THINK!"
+  },
+  {
+    "objectID": "slides/08-eda/08-eda.html#do-next",
+    "href": "slides/08-eda/08-eda.html#do-next",
+    "title": "Exploratory Data Analysis",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 16: Factors from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 16” or work through some of the exercises in the text.\nMove on to lecture 15."
+    "text": "Do Next\n\nRead Chapter 10: Exploratory data analysis from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 10” or work through some of the exercises in the text.\nThat’s it for today. See you tomorrow!"
   },
   {
-    "objectID": "slides/10-logicals/10-logicals.html#logical-vectors",
-    "href": "slides/10-logicals/10-logicals.html#logical-vectors",
-    "title": "Logical Vectors",
-    "section": "Logical Vectors",
-    "text": "Logical Vectors\n\nA logical vector is a vector that contains only TRUE, FALSE, and NA (missing) values.\nThey are rarely in your raw data, but you will create and use them in almost every analysis.\nLogical vectors are the foundation of filtering and conditional transformations.\nIn CS Logical Vectors are often called “Boolean” vectors."
+    "objectID": "slides/16-missing-values/16-missing-values.html#missing-values",
+    "href": "slides/16-missing-values/16-missing-values.html#missing-values",
+    "title": "Missing Values",
+    "section": "Missing Values",
+    "text": "Missing Values\n\nReal-world data is often messy and contains missing values.\nR represents missing values with NA.\nThere are explicit and implicit missing values."
   },
   {
-    "objectID": "slides/10-logicals/10-logicals.html#creating-logicals",
-    "href": "slides/10-logicals/10-logicals.html#creating-logicals",
-    "title": "Logical Vectors",
-    "section": "Creating Logicals",
-    "text": "Creating Logicals\n\nYou can create logical vectors with comparison operators:\n\n&gt; (greater than), &lt; (less than)\n&gt;= (greater than or equal to), &lt;= (less than or equal to)\n== (equal to), != (not equal to)\n\n\n\nx &lt;- c(1, 2, 3, 5, 8, 13)\nx &gt; 4\n\n[1] FALSE FALSE FALSE  TRUE  TRUE  TRUE"
-  },
-  {
-    "objectID": "slides/10-logicals/10-logicals.html#comparisons-with-filter",
-    "href": "slides/10-logicals/10-logicals.html#comparisons-with-filter",
-    "title": "Logical Vectors",
-    "section": "Comparisons with filter()",
-    "text": "Comparisons with filter()\n\nMost often, you’ll use comparisons inside filter() to select rows.\nLet’s use the flights dataset to find flights that were delayed on arrival."
-  },
-  {
-    "objectID": "slides/10-logicals/10-logicals.html#floating-point-comparison",
-    "href": "slides/10-logicals/10-logicals.html#floating-point-comparison",
-    "title": "Logical Vectors",
-    "section": "Floating Point Comparison",
-    "text": "Floating Point Comparison\n\nBe careful when using == with numbers. Computers can have small rounding errors.\nUse near() from the dply package to compare two numbers for “close enough” equality.\nLet’s see an example."
-  },
-  {
-    "objectID": "slides/10-logicals/10-logicals.html#na",
-    "href": "slides/10-logicals/10-logicals.html#na",
-    "title": "Logical Vectors",
-    "section": "NA",
-    "text": "NA\n\nNA represents a missing value.\nNA is “contagious”: almost any operation involving NA will produce NA.\nYou can’t use == to find missing values.\n\n\nNA &gt; 5\n\n[1] NA\n\nNA == 10\n\n[1] NA\n\nNA == NA\n\n[1] NA"
-  },
-  {
-    "objectID": "slides/10-logicals/10-logicals.html#is.na",
-    "href": "slides/10-logicals/10-logicals.html#is.na",
-    "title": "Logical Vectors",
+    "objectID": "slides/16-missing-values/16-missing-values.html#is.na",
+    "href": "slides/16-missing-values/16-missing-values.html#is.na",
+    "title": "Missing Values",
     "section": "is.na()",
-    "text": "is.na()\n\nUse the is.na() function to test if a value is missing.\n\n\nx &lt;- c(1, NA, 3)\nis.na(x)\n\n[1] FALSE  TRUE FALSE"
+    "text": "is.na()\n\nMost functions will return NA if any input is NA.\nUse na.rm = TRUE to remove NAs before computation in functions like mean(), sum(), etc."
   },
   {
-    "objectID": "slides/10-logicals/10-logicals.html#filtering-and-na",
-    "href": "slides/10-logicals/10-logicals.html#filtering-and-na",
-    "title": "Logical Vectors",
-    "section": "Filtering and NA",
-    "text": "Filtering and NA\n\nfilter() only includes rows where the condition is TRUE. It excludes FALSE and NA values.\nIf you want to include missing values in your filter, you must ask for them explicitly."
+    "objectID": "slides/16-missing-values/16-missing-values.html#tidyrfill",
+    "href": "slides/16-missing-values/16-missing-values.html#tidyrfill",
+    "title": "Missing Values",
+    "section": "tidyr::fill()",
+    "text": "tidyr::fill()\n\nFills in missing values using the last known value (last observation carried forward).\n\n\ndf &lt;- tibble(x = c(1, NA, NA, 2, NA), y = c(\"a\", NA, \"b\", NA, NA))\ndf |&gt; fill(x, y)\n\n# A tibble: 5 × 2\n      x y    \n  &lt;dbl&gt; &lt;chr&gt;\n1     1 a    \n2     1 a    \n3     1 b    \n4     2 b    \n5     2 b"
   },
   {
-    "objectID": "slides/10-logicals/10-logicals.html#removing-missing-values",
-    "href": "slides/10-logicals/10-logicals.html#removing-missing-values",
-    "title": "Logical Vectors",
-    "section": "Removing Missing Values",
-    "text": "Removing Missing Values\n\nUse drop_na to remove rows with missing values.\nSpecify the columns you want to remove from.\nAvoid dropping more rows than necessary."
+    "objectID": "slides/16-missing-values/16-missing-values.html#coalesce-and-na_if",
+    "href": "slides/16-missing-values/16-missing-values.html#coalesce-and-na_if",
+    "title": "Missing Values",
+    "section": "coalesce() and na_if()",
+    "text": "coalesce() and na_if()\n\ndplyr::coalesce() replaces NAs with values from another vector.\ndplyr::na_if() replaces a specific value with NA.\n\n\nx &lt;- c(1, 2, NA, 4, -99)\ncoalesce(x, 0)\n\n[1]   1   2   0   4 -99\n\nna_if(x, -99)\n\n[1]  1  2 NA  4 NA"
   },
   {
-    "objectID": "slides/10-logicals/10-logicals.html#practice",
-    "href": "slides/10-logicals/10-logicals.html#practice",
-    "title": "Logical Vectors",
+    "objectID": "slides/16-missing-values/16-missing-values.html#making-implicit-nas-explicit",
+    "href": "slides/16-missing-values/16-missing-values.html#making-implicit-nas-explicit",
+    "title": "Missing Values",
+    "section": "Making Implicit NAs Explicit",
+    "text": "Making Implicit NAs Explicit\n\nImplicit missing values are values that are not present in the data.\nFor example, if a group has no observations, it won’t appear in summaries."
+  },
+  {
+    "objectID": "slides/16-missing-values/16-missing-values.html#tidyrcomplete",
+    "href": "slides/16-missing-values/16-missing-values.html#tidyrcomplete",
+    "title": "Missing Values",
+    "section": "tidyr::complete()",
+    "text": "tidyr::complete()\n\ncomplete() turns implicit missing values into explicit NAs by completing the full range of data.\n\n\ndf &lt;- tibble(\n  group = c(\"a\", \"a\", \"b\"),\n  year  = c(2020, 2022, 2021),\n  value = 1:3\n)\ndf |&gt; complete(group, year)\n\n# A tibble: 6 × 3\n  group  year value\n  &lt;chr&gt; &lt;dbl&gt; &lt;int&gt;\n1 a      2020     1\n2 a      2021    NA\n3 a      2022     2\n4 b      2020    NA\n5 b      2021     3\n6 b      2022    NA"
+  },
+  {
+    "objectID": "slides/16-missing-values/16-missing-values.html#not-a-number-nan",
+    "href": "slides/16-missing-values/16-missing-values.html#not-a-number-nan",
+    "title": "Missing Values",
+    "section": "Not a Number (NaN)",
+    "text": "Not a Number (NaN)\n\nNaN (“Not a Number”) is a special numeric value that can arise from invalid mathematical operations, like 0/0.\nis.nan() tests for NaN.\nNaN is also considered NA, so is.na(NaN) is TRUE."
+  },
+  {
+    "objectID": "slides/16-missing-values/16-missing-values.html#missingness-in-data-analysis",
+    "href": "slides/16-missing-values/16-missing-values.html#missingness-in-data-analysis",
+    "title": "Missing Values",
+    "section": "Missingness in Data Analysis",
+    "text": "Missingness in Data Analysis\n\nBe careful about removing missing values without understanding why they are missing\nSometimes missing values aren’t missing at all\nSometimes non-missing values are actually missing\nSometimes there is a pattern to missing data (call this structured missingness)\nNot undersanding missingness can lead to biased results!"
+  },
+  {
+    "objectID": "slides/16-missing-values/16-missing-values.html#missing-data-mechanisms",
+    "href": "slides/16-missing-values/16-missing-values.html#missing-data-mechanisms",
+    "title": "Missing Values",
+    "section": "Missing Data Mechanisms",
+    "text": "Missing Data Mechanisms\n\nMissing Completely at Random (MCAR): Missingness is unrelated to any data.\nMissing at Random (MAR): Missingness is related to observed data.\nMissing Not at Random (MNAR): Missingness is related to unobserved data.\nUnderstanding the mechanism helps in choosing appropriate handling methods."
+  },
+  {
+    "objectID": "slides/16-missing-values/16-missing-values.html#practice",
+    "href": "slides/16-missing-values/16-missing-values.html#practice",
+    "title": "Missing Values",
     "section": "Practice!",
-    "text": "Practice!\nLet’s do some practice!"
+    "text": "Practice!\nLet’s practice!"
   },
   {
-    "objectID": "slides/10-logicals/10-logicals.html#combining-conditions",
-    "href": "slides/10-logicals/10-logicals.html#combining-conditions",
-    "title": "Logical Vectors",
-    "section": "Combining Conditions",
-    "text": "Combining Conditions\n\nYou can combine multiple logical conditions using boolean operators:\n\n& (and)\n| (or)\n! (not)"
-  },
-  {
-    "objectID": "slides/10-logicals/10-logicals.html#examples",
-    "href": "slides/10-logicals/10-logicals.html#examples",
-    "title": "Logical Vectors",
-    "section": "Examples",
-    "text": "Examples\n\nLet’s select flights that were delayed on both departure and arrival.\nLet’s select flights that were delayed on either departure or arrival.\nLet’s select flights that were not delayed on either departure or arrival.\nLet’s select flights that were from November or December."
-  },
-  {
-    "objectID": "slides/10-logicals/10-logicals.html#in",
-    "href": "slides/10-logicals/10-logicals.html#in",
-    "title": "Logical Vectors",
-    "section": "%in%",
-    "text": "%in%\n\nA useful shortcut for x == a | x == b | x == c is x %in% c(a, b, c).\nIt checks if each value in the left vector is present in the right vector."
-  },
-  {
-    "objectID": "slides/10-logicals/10-logicals.html#numeric-summaries",
-    "href": "slides/10-logicals/10-logicals.html#numeric-summaries",
-    "title": "Logical Vectors",
-    "section": "Numeric Summaries",
-    "text": "Numeric Summaries\n\nWhen you use a logical vector in a numeric context, TRUE becomes 1 and FALSE becomes 0.\nsum(): counts the number of TRUEs.\nmean(): calculates the proportion of TRUEs."
-  },
-  {
-    "objectID": "slides/10-logicals/10-logicals.html#practice-1",
-    "href": "slides/10-logicals/10-logicals.html#practice-1",
-    "title": "Logical Vectors",
-    "section": "Practice!",
-    "text": "Practice!\n\nDid Delta have any departure delays on Christmas Day? If so how many?\nHow many departure delays did AA, DL, and UA have on Christmas Day?\nPlot the total number of departure delays per month. Per day."
-  },
-  {
-    "objectID": "slides/10-logicals/10-logicals.html#if_else",
-    "href": "slides/10-logicals/10-logicals.html#if_else",
-    "title": "Logical Vectors",
-    "section": "if_else()",
-    "text": "if_else()\n\nif_else(condition, value_if_true, value_if_false)\nAll output values must be of the same type.\n\n\nx &lt;- c(-3, -1, 0, 1, 3)\nif_else(x &gt; 0, \"positive\", \"negative or zero\")\n\n[1] \"negative or zero\" \"negative or zero\" \"negative or zero\" \"positive\"        \n[5] \"positive\""
-  },
-  {
-    "objectID": "slides/10-logicals/10-logicals.html#case_when",
-    "href": "slides/10-logicals/10-logicals.html#case_when",
-    "title": "Logical Vectors",
-    "section": "case_when()",
-    "text": "case_when()\n\nFor multiple conditions, case_when() is easier to read than nested if_else().\ncase_when(condition1 ~ value1, condition2 ~ value2, ...)\nThe first TRUE condition wins.\n\n\n\nCode\ncase_when(\n  x &lt; 0 ~ \"negative\",\n  x == 0 ~ \"zero\",\n  x &gt; 0 ~ \"positive\"\n)\n\n\n[1] \"negative\" \"negative\" \"zero\"     \"positive\" \"positive\""
-  },
-  {
-    "objectID": "slides/10-logicals/10-logicals.html#example-case_when",
-    "href": "slides/10-logicals/10-logicals.html#example-case_when",
-    "title": "Logical Vectors",
-    "section": "Example: case_when()",
-    "text": "Example: case_when()\n\nLet’s create a human-readable “season” variable."
-  },
-  {
-    "objectID": "slides/10-logicals/10-logicals.html#logical-vectors-1",
-    "href": "slides/10-logicals/10-logicals.html#logical-vectors-1",
-    "title": "Logical Vectors",
-    "section": "Logical Vectors",
-    "text": "Logical Vectors\n\nCreate with comparisons: &lt;, ==, %in%, is.na().\nCombine with boolean operators: &, |, !.\nSummarize with any(), all(), sum(), mean().\nUse for conditional transformations with if_else() and case_when().\nLogical vectors are a fundamental tool for data manipulation in R."
-  },
-  {
-    "objectID": "slides/10-logicals/10-logicals.html#do-next",
-    "href": "slides/10-logicals/10-logicals.html#do-next",
-    "title": "Logical Vectors",
+    "objectID": "slides/16-missing-values/16-missing-values.html#do-next",
+    "href": "slides/16-missing-values/16-missing-values.html#do-next",
+    "title": "Missing Values",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 12: Logicals from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 12” or work through some of the exercises in the text.\nMove on the Lecture 11!"
+    "text": "Do Next\n\nRead Chapter 18: Missing Values from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 18” or work through some of the exercises in the text.\nMove on to Lecture 17!"
   },
   {
     "objectID": "slides/00-welcome/00-welcome.html#instructor",
@@ -912,179 +982,88 @@
     "text": "Do Next\n\nRead Chapter 11: Communication from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 11” or work through some of the exercises in the text.\nMove on the Lecture 10!"
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#data-flights-from-nyc-in-2013",
-    "href": "slides/07-layers/07-layers.html#data-flights-from-nyc-in-2013",
-    "title": "ggplot2 layers",
-    "section": "Data: Flights from NYC in 2013",
-    "text": "Data: Flights from NYC in 2013\nWe will be using the nycflights13::flights dataset. This dataset contains information about all flights that departed from New York City (EWR, LGA, JFK) in 2013.\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…"
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#this-lesson",
+    "href": "slides/05-data-tidying/05-data-tidying.html#this-lesson",
+    "title": "Data Tidying",
+    "section": "This lesson",
+    "text": "This lesson\n\nDefine “tidy data”\nLearn how to use tidyr to make data tidy\n\npivot_longer() for lengthening data\npivot_wider() for widening data"
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#a-simple-scatterplot",
-    "href": "slides/07-layers/07-layers.html#a-simple-scatterplot",
-    "title": "ggplot2 layers",
-    "section": "A simple scatterplot",
-    "text": "A simple scatterplot\nLet’s create a simple scatterplot of departure delay vs. arrival delay."
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#what-is-tidy-data",
+    "href": "slides/05-data-tidying/05-data-tidying.html#what-is-tidy-data",
+    "title": "Data Tidying",
+    "section": "What is tidy data?",
+    "text": "What is tidy data?\nTidy data is a consistent way of structuring datasets that makes them easier to work with. A dataset is tidy if it follows three rules:\n\nEach variable has its own column.\nEach observation has its own row.\nEach value has its own cell.\n\nThis structure is a standard in the tidyverse."
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#adding-layers",
-    "href": "slides/07-layers/07-layers.html#adding-layers",
-    "title": "ggplot2 layers",
-    "section": "Adding layers",
-    "text": "Adding layers\nA plot is composed of layers. Each layer has:\n\nA geom: The geometric object that represents the data (e.g., points, lines, bars).\nAn aesthetic mapping: How variables are mapped to visual properties.\nA stat: A statistical transformation (e.g., counting, summarizing).\nA position adjustment: How to arrange elements that would otherwise overlap."
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#setup",
+    "href": "slides/05-data-tidying/05-data-tidying.html#setup",
+    "title": "Data Tidying",
+    "section": "Setup",
+    "text": "Setup\nWe will be using functions from the tidyr package, which is part of the tidyverse.\n\n# load packages\nlibrary(tidyverse)"
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#adding-a-layer-trend-line-with-geom_smooth",
-    "href": "slides/07-layers/07-layers.html#adding-a-layer-trend-line-with-geom_smooth",
-    "title": "ggplot2 layers",
-    "section": "Adding a layer: Trend line with geom_smooth()",
-    "text": "Adding a layer: Trend line with geom_smooth()\nLet’s add a trend line… What does se = FALSE do?"
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#lengthening-data-with-pivot_longer",
+    "href": "slides/05-data-tidying/05-data-tidying.html#lengthening-data-with-pivot_longer",
+    "title": "Data Tidying",
+    "section": "Lengthening data with pivot_longer()",
+    "text": "Lengthening data with pivot_longer()\n\nWide Format: column names are actually values of a variable:\n\n\nrelig_income |&gt; head()\n\n# A tibble: 6 × 11\n  religion  `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`\n  &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n1 Agnostic       27        34        60        81        76       137        122\n2 Atheist        12        27        37        52        35        70         73\n3 Buddhist       27        21        30        34        33        58         62\n4 Catholic      418       617       732       670       638      1116        949\n5 Don’t kn…      15        14        15        11        10        35         21\n6 Evangeli…     575       869      1064       982       881      1486        949\n# ℹ 3 more variables: `$100-150k` &lt;dbl&gt;, `&gt;150k` &lt;dbl&gt;,\n#   `Don't know/refused` &lt;dbl&gt;\n\n\nThis is not tidy. The income brackets are variable names, not a variable."
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#global-vs.-local-mappings",
-    "href": "slides/07-layers/07-layers.html#global-vs.-local-mappings",
-    "title": "ggplot2 layers",
-    "section": "Global vs. Local Mappings",
-    "text": "Global vs. Local Mappings\n\nAesthetic mappings can be:\nGlobal: specify in ggplot() so they apply to all layers\nLocal: specify in each geom_*() so they apply only to that layer"
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_longer",
+    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_longer",
+    "title": "Data Tidying",
+    "section": "Using pivot_longer()",
+    "text": "Using pivot_longer()\n\n\n\nGoal: transform this so we have three columns: religion, income, and count.\nUse pivot_longer() to do this.\n\n\ntidy_relig_income &lt;- relig_income |&gt; \n  pivot_longer(\n    cols = !religion, \n    names_to = \"income\", \n    values_to = \"count\"\n  )\n\ntidy_relig_income |&gt; head()\n\n# A tibble: 6 × 3\n  religion income  count\n  &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt;\n1 Agnostic &lt;$10k      27\n2 Agnostic $10-20k    34\n3 Agnostic $20-30k    60\n4 Agnostic $30-40k    81\n5 Agnostic $40-50k    76\n6 Agnostic $50-75k   137\n\n\n\n\ncols: The columns to pivot into longer format. !religion means all columns except religion.\nnames_to: The name of the new column that will contain the names of the original columns.\nvalues_to: The name of the new column that will contain the values from the original columns."
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#using-color-as-a-local-aesthetic",
-    "href": "slides/07-layers/07-layers.html#using-color-as-a-local-aesthetic",
-    "title": "ggplot2 layers",
-    "section": "Using color as a local aesthetic",
-    "text": "Using color as a local aesthetic\nLet see what happens when we use color as a global aesthetic mapping in geom_point().\nHow can we make a single color for all points but still have the smooth line?"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#why-isnt-this-plot-blue",
-    "href": "slides/07-layers/07-layers.html#why-isnt-this-plot-blue",
-    "title": "ggplot2 layers",
-    "section": "Why isn’t this plot blue?",
-    "text": "Why isn’t this plot blue?\n\n# This is probably not what you want\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(aes(color = \"blue\"))"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#setting-vs.-mapping",
-    "href": "slides/07-layers/07-layers.html#setting-vs.-mapping",
-    "title": "ggplot2 layers",
-    "section": "Setting vs. Mapping",
-    "text": "Setting vs. Mapping\n\nTo apply a constant property to all points, set it outside of aes()\n\n\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(color = \"blue\")"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#common-geoms",
-    "href": "slides/07-layers/07-layers.html#common-geoms",
-    "title": "ggplot2 layers",
-    "section": "Common geoms",
-    "text": "Common geoms\n\ngeom_point(): Scatterplots\ngeom_line(): Line charts\ngeom_bar(): Bar charts\ngeom_histogram(): Histograms\ngeom_boxplot(): Boxplots\ngeom_smooth(): Trend lines\ngeom_density(): Density plots\nMany more!"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#geom_bar-vs-geom_col",
-    "href": "slides/07-layers/07-layers.html#geom_bar-vs-geom_col",
-    "title": "ggplot2 layers",
-    "section": "geom_bar vs geom_col",
-    "text": "geom_bar vs geom_col\n\ngeom_bar() uses stat_count() by default to count the number of observations for each category\n\n\nggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar()"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#changing-the-stat-argument",
-    "href": "slides/07-layers/07-layers.html#changing-the-stat-argument",
-    "title": "ggplot2 layers",
-    "section": "Changing the stat argument",
-    "text": "Changing the stat argument\n\nYou can change the statistical transformation used by a geom with the stat argument…\n\n\nflights |&gt;\n  count(carrier) |&gt; \n  ggplot(mapping = aes(x = carrier, y = n)) +\n    geom_bar(stat = \"identity\")"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#changing-the-stat",
-    "href": "slides/07-layers/07-layers.html#changing-the-stat",
-    "title": "ggplot2 layers",
-    "section": "Changing the stat",
-    "text": "Changing the stat\n\nUsing after_stat() to modify computed variables from a stat\n\n\nggplot(data = flights) +\n  geom_bar(mapping = aes(x = carrier, y = after_stat(prop), group = 1)) +\n  labs(y = \"Proportion\")"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#practice",
-    "href": "slides/07-layers/07-layers.html#practice",
-    "title": "ggplot2 layers",
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#practice",
+    "href": "slides/05-data-tidying/05-data-tidying.html#practice",
+    "title": "Data Tidying",
     "section": "Practice",
-    "text": "Practice\nLet’s try to overlay a density plot on top of a histogram of dep_delay…"
+    "text": "Practice\nLet’s practice with another dataset: billboard."
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#overplotting",
-    "href": "slides/07-layers/07-layers.html#overplotting",
-    "title": "ggplot2 layers",
-    "section": "Overplotting",
-    "text": "Overplotting\n\nOverplotting: When many points overlap in a scatterplot, making it hard to see the distribution of points\nCommon solution: Use transparency with alpha aesthetic\nAnother solution: Use position adjustments to spread out points"
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#widening-data-with-pivot_wider",
+    "href": "slides/05-data-tidying/05-data-tidying.html#widening-data-with-pivot_wider",
+    "title": "Data Tidying",
+    "section": "Widening data with pivot_wider()",
+    "text": "Widening data with pivot_wider()\npivot_wider() is the opposite of pivot_longer(). It’s used when an observation is scattered across multiple rows.\n\nfish_encounters |&gt; head()\n\n# A tibble: 6 × 3\n  fish  station  seen\n  &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;\n1 4842  Release     1\n2 4842  I80_1       1\n3 4842  Lisbon      1\n4 4842  Rstr        1\n5 4842  Base_TD     1\n6 4842  BCE         1\n\n\n\nOne observation = one fishing station\nfish_encounters has two rows for each station: one for when a fish was seen and one for when it wasn’t\nstation column contains variable names\nseen column contains(0/1) values"
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#jittering-points",
-    "href": "slides/07-layers/07-layers.html#jittering-points",
-    "title": "ggplot2 layers",
-    "section": "Jittering points",
-    "text": "Jittering points\n\nlibrary(patchwork)\np1 &lt;- ggplot(flights, aes(x = month, y = dep_delay)) +\n  geom_point()\np2 &lt;- ggplot(flights, aes(x = month, y = dep_delay)) +\n  geom_jitter()\np1 + p2"
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider",
+    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider",
+    "title": "Data Tidying",
+    "section": "Using pivot_wider()",
+    "text": "Using pivot_wider()\nGoal: one row per station, with columns indicating whether fish was seen or not.\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1    NA    NA    NA    NA    NA    NA\n5 4847        1     1      1    NA      NA    NA    NA    NA    NA    NA    NA\n6 4848        1     1      1     1      NA    NA    NA    NA    NA    NA    NA\n\n\nProblem: NA values where there should be zeros, can fix this with values_fill."
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#bar-chart-adjustments",
-    "href": "slides/07-layers/07-layers.html#bar-chart-adjustments",
-    "title": "ggplot2 layers",
-    "section": "Bar chart adjustments",
-    "text": "Bar chart adjustments\nFor bar charts, you can use position to change how bars are arranged.\n\nstack (default): Stack bars on top of each other.\nfill: Stack bars, but standardize to have the same height. Good for comparing proportions.\ndodge: Place bars next to each other."
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider-with-values_fill",
+    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider-with-values_fill",
+    "title": "Data Tidying",
+    "section": "Using pivot_wider() with values_fill",
+    "text": "Using pivot_wider() with values_fill\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen,\n    values_fill = 0\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1     0     0     0     0     0     0\n5 4847        1     1      1     0       0     0     0     0     0     0     0\n6 4848        1     1      1     1       0     0     0     0     0     0     0\n\n\n\nnames_from: The column to get the new column names from.\nvalues_from: The column to get the cell values from.\nvalues_fill: A value to replace NAs with."
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#bar-chart-adjustments-1",
-    "href": "slides/07-layers/07-layers.html#bar-chart-adjustments-1",
-    "title": "ggplot2 layers",
-    "section": "Bar chart adjustments",
-    "text": "Bar chart adjustments\n\np1 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"stack\")\np2 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"fill\")\np3 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"dodge\") +\n  labs(title = \"dodge\")"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#bar-chart-stacked",
-    "href": "slides/07-layers/07-layers.html#bar-chart-stacked",
-    "title": "ggplot2 layers",
-    "section": "Bar chart: Stacked",
-    "text": "Bar chart: Stacked\n\np1"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#bar-chart-standardized",
-    "href": "slides/07-layers/07-layers.html#bar-chart-standardized",
-    "title": "ggplot2 layers",
-    "section": "Bar chart: Standardized",
-    "text": "Bar chart: Standardized\n\np2"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#bar-chart-dodged",
-    "href": "slides/07-layers/07-layers.html#bar-chart-dodged",
-    "title": "ggplot2 layers",
-    "section": "Bar chart: Dodged",
-    "text": "Bar chart: Dodged\n\np3"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#facet_wrap-and-facet_grid",
-    "href": "slides/07-layers/07-layers.html#facet_wrap-and-facet_grid",
-    "title": "ggplot2 layers",
-    "section": "facet_wrap and facet_grid",
-    "text": "facet_wrap and facet_grid\n\nFacets allow you to break your plot into subplots based on a categorical variable.\nfacet_wrap: Creates a series of plots wrapped into a rectangle\nfacet_grid: Creates a grid of plots based on two categorical variables"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#practice-1",
-    "href": "slides/07-layers/07-layers.html#practice-1",
-    "title": "ggplot2 layers",
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#practice-1",
+    "href": "slides/05-data-tidying/05-data-tidying.html#practice-1",
+    "title": "Data Tidying",
     "section": "Practice",
-    "text": "Practice\n\nLet’s visualize the relationship between origin, carrier, dep_delay, and arr_delay using facets!"
+    "text": "Practice\nLet’s practice with cms_patient_care"
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#flipping-coordinates",
-    "href": "slides/07-layers/07-layers.html#flipping-coordinates",
-    "title": "ggplot2 layers",
-    "section": "Flipping coordinates",
-    "text": "Flipping coordinates\n\np1 &lt;- ggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar()\n\np2 &lt;- ggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar() +\n  coord_flip()\np1 + p2"
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#summary",
+    "href": "slides/05-data-tidying/05-data-tidying.html#summary",
+    "title": "Data Tidying",
+    "section": "Summary",
+    "text": "Summary\n\nTidy data is a standard format that makes data analysis easier.\nUse pivot_longer() when your column names are actually values of a variable (to make data longer and narrower).\nUse pivot_wider() when an observation is scattered across multiple rows (to make data wider and shorter).\nYou will often need to use pivot_longer() and pivot_wider() when preparing data for plotting\n\nThese two functions are the foundation of data tidying in R."
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#the-layered-grammar-in-summary",
-    "href": "slides/07-layers/07-layers.html#the-layered-grammar-in-summary",
-    "title": "ggplot2 layers",
-    "section": "The layered grammar in summary",
-    "text": "The layered grammar in summary\n#| eval: false\n`ggplot(data = &lt;DATA&gt;) +`\n`  &lt;GEOM_FUNCTION&gt;(`\n`    mapping = aes(&lt;AESTHETIC_MAPPINGS&gt;),`\n`    stat = &lt;STAT&gt;,`\n`    position = &lt;POSITION&gt;`\n`  ) +`\n`  &lt;COORDINATE_SYSTEM&gt; +`\n`  &lt;FACET_FUNCTION&gt;`"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#do-next",
-    "href": "slides/07-layers/07-layers.html#do-next",
-    "title": "ggplot2 layers",
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#do-next",
+    "href": "slides/05-data-tidying/05-data-tidying.html#do-next",
+    "title": "Data Tidying",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 9: Layers from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 9” or work through some of the exercises in the text.\nMove on to Lecture 08."
+    "text": "Do Next\n\nRead Chapter 5: Data Tidying from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 5” or work through some of the exercises in the text.\nComplete Lecture 6."
   },
   {
     "objectID": "slides/01-intro-to-R/01-intro-to-R.html#before-we-start",
@@ -2102,172 +2081,312 @@
     "text": "Do Next\n\nRead Chapter 17: DateTimes from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 17” or work through some of the exercises in the text.\nThat’s it for today! See you tomorrow!"
   },
   {
-    "objectID": "slides/16-joins/16-joins.html#combining-datasets",
-    "href": "slides/16-joins/16-joins.html#combining-datasets",
-    "title": "Joins",
-    "section": "Combining Datasets",
-    "text": "Combining Datasets\n\nJoins are used to combine data from different tables based on a set of common variables (“keys”).\ndplyr provides a family of join functions.\nWe will use data from the nycflights13 package."
+    "objectID": "slides/07-layers/07-layers.html#data-flights-from-nyc-in-2013",
+    "href": "slides/07-layers/07-layers.html#data-flights-from-nyc-in-2013",
+    "title": "ggplot2 layers",
+    "section": "Data: Flights from NYC in 2013",
+    "text": "Data: Flights from NYC in 2013\nWe will be using the nycflights13::flights dataset. This dataset contains information about all flights that departed from New York City (EWR, LGA, JFK) in 2013.\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…"
   },
   {
-    "objectID": "slides/16-joins/16-joins.html#primary-and-foreign-keys",
-    "href": "slides/16-joins/16-joins.html#primary-and-foreign-keys",
-    "title": "Joins",
-    "section": "Primary and Foreign Keys",
-    "text": "Primary and Foreign Keys\n\nA primary key is a variable (or set of variables) that uniquely identifies each observation in a table.\nA foreign key is a variable (or set of variables) in one table that corresponds to a primary key in another table.\nKeys are what link tables together."
+    "objectID": "slides/07-layers/07-layers.html#a-simple-scatterplot",
+    "href": "slides/07-layers/07-layers.html#a-simple-scatterplot",
+    "title": "ggplot2 layers",
+    "section": "A simple scatterplot",
+    "text": "A simple scatterplot\nLet’s create a simple scatterplot of departure delay vs. arrival delay."
   },
   {
-    "objectID": "slides/16-joins/16-joins.html#dataset-1-flights",
-    "href": "slides/16-joins/16-joins.html#dataset-1-flights",
-    "title": "Joins",
-    "section": "Dataset 1: flights",
-    "text": "Dataset 1: flights\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…"
+    "objectID": "slides/07-layers/07-layers.html#adding-layers",
+    "href": "slides/07-layers/07-layers.html#adding-layers",
+    "title": "ggplot2 layers",
+    "section": "Adding layers",
+    "text": "Adding layers\nA plot is composed of layers. Each layer has:\n\nA geom: The geometric object that represents the data (e.g., points, lines, bars).\nAn aesthetic mapping: How variables are mapped to visual properties.\nA stat: A statistical transformation (e.g., counting, summarizing).\nA position adjustment: How to arrange elements that would otherwise overlap."
   },
   {
-    "objectID": "slides/16-joins/16-joins.html#dataset-2-airlines",
-    "href": "slides/16-joins/16-joins.html#dataset-2-airlines",
-    "title": "Joins",
-    "section": "Dataset 2: airlines",
-    "text": "Dataset 2: airlines\n\nglimpse(airlines)\n\nRows: 16\nColumns: 2\n$ carrier &lt;chr&gt; \"9E\", \"AA\", \"AS\", \"B6\", \"DL\", \"EV\", \"F9\", \"FL\", \"HA\", \"MQ\", \"O…\n$ name    &lt;chr&gt; \"Endeavor Air Inc.\", \"American Airlines Inc.\", \"Alaska Airline…"
+    "objectID": "slides/07-layers/07-layers.html#adding-a-layer-trend-line-with-geom_smooth",
+    "href": "slides/07-layers/07-layers.html#adding-a-layer-trend-line-with-geom_smooth",
+    "title": "ggplot2 layers",
+    "section": "Adding a layer: Trend line with geom_smooth()",
+    "text": "Adding a layer: Trend line with geom_smooth()\nLet’s add a trend line… What does se = FALSE do?"
   },
   {
-    "objectID": "slides/16-joins/16-joins.html#left_join",
-    "href": "slides/16-joins/16-joins.html#left_join",
-    "title": "Joins",
-    "section": "left_join()",
-    "text": "left_join()\n\nleft_join() is the most commonly used join.\nIt returns all rows from the left table (x), and all columns from both tables (x and y).\nRows in x with no match in y will have NA values in the new columns.\nRows in y with no match in x are ignored.\nRows in y that match multiple rows in x will result in duplicated rows in the output (and vice versa)."
+    "objectID": "slides/07-layers/07-layers.html#global-vs.-local-mappings",
+    "href": "slides/07-layers/07-layers.html#global-vs.-local-mappings",
+    "title": "ggplot2 layers",
+    "section": "Global vs. Local Mappings",
+    "text": "Global vs. Local Mappings\n\nAesthetic mappings can be:\nGlobal: specify in ggplot() so they apply to all layers\nLocal: specify in each geom_*() so they apply only to that layer"
   },
   {
-    "objectID": "slides/16-joins/16-joins.html#example",
-    "href": "slides/16-joins/16-joins.html#example",
-    "title": "Joins",
-    "section": "Example",
-    "text": "Example\n\nflights2 &lt;- flights |&gt; select(year:day, hour, origin, dest, tailnum, carrier)\nflights2 |&gt; left_join(airlines, by = \"carrier\") |&gt; glimpse()\n\nRows: 336,776\nColumns: 9\n$ year    &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 20…\n$ month   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ day     &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…\n$ hour    &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 6, 6,…\n$ origin  &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\", \"JFK\",…\n$ dest    &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\", \"MCO\",…\n$ tailnum &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N39463\", \"N…\n$ carrier &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"AA\", \"B…\n$ name    &lt;chr&gt; \"United Air Lines Inc.\", \"United Air Lines Inc.\", \"American Ai…"
+    "objectID": "slides/07-layers/07-layers.html#using-color-as-a-local-aesthetic",
+    "href": "slides/07-layers/07-layers.html#using-color-as-a-local-aesthetic",
+    "title": "ggplot2 layers",
+    "section": "Using color as a local aesthetic",
+    "text": "Using color as a local aesthetic\nLet see what happens when we use color as a global aesthetic mapping in geom_point().\nHow can we make a single color for all points but still have the smooth line?"
   },
   {
-    "objectID": "slides/16-joins/16-joins.html#other-mutating-joins",
-    "href": "slides/16-joins/16-joins.html#other-mutating-joins",
-    "title": "Joins",
-    "section": "Other Mutating Joins",
-    "text": "Other Mutating Joins\n\ninner_join(): returns only rows that have a match in both tables.\nright_join(): returns all rows from the right table.\nfull_join(): returns all rows from both tables."
+    "objectID": "slides/07-layers/07-layers.html#why-isnt-this-plot-blue",
+    "href": "slides/07-layers/07-layers.html#why-isnt-this-plot-blue",
+    "title": "ggplot2 layers",
+    "section": "Why isn’t this plot blue?",
+    "text": "Why isn’t this plot blue?\n\n# This is probably not what you want\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(aes(color = \"blue\"))"
   },
   {
-    "objectID": "slides/16-joins/16-joins.html#semi_join",
-    "href": "slides/16-joins/16-joins.html#semi_join",
-    "title": "Joins",
-    "section": "semi_join()",
-    "text": "semi_join()\n\nsemi_join() keeps all rows from the left table (x) that have a match in the right table (y).\nIt does not add any columns from y."
+    "objectID": "slides/07-layers/07-layers.html#setting-vs.-mapping",
+    "href": "slides/07-layers/07-layers.html#setting-vs.-mapping",
+    "title": "ggplot2 layers",
+    "section": "Setting vs. Mapping",
+    "text": "Setting vs. Mapping\n\nTo apply a constant property to all points, set it outside of aes()\n\n\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(color = \"blue\")"
   },
   {
-    "objectID": "slides/16-joins/16-joins.html#example-1",
-    "href": "slides/16-joins/16-joins.html#example-1",
-    "title": "Joins",
-    "section": "Example",
-    "text": "Example\n\ntop_dest &lt;- flights |&gt;\n  count(dest, sort = TRUE) |&gt;\n  head(10)\n\nflights |&gt; semi_join(top_dest)\n\nJoining with `by = join_by(dest)`\n\n\n# A tibble: 141,145 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      542            540         2      923            850\n 2  2013     1     1      554            600        -6      812            837\n 3  2013     1     1      554            558        -4      740            728\n 4  2013     1     1      555            600        -5      913            854\n 5  2013     1     1      557            600        -3      838            846\n 6  2013     1     1      558            600        -2      753            745\n 7  2013     1     1      558            600        -2      924            917\n 8  2013     1     1      558            600        -2      923            937\n 9  2013     1     1      559            559         0      702            706\n10  2013     1     1      600            600         0      851            858\n# ℹ 141,135 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
+    "objectID": "slides/07-layers/07-layers.html#common-geoms",
+    "href": "slides/07-layers/07-layers.html#common-geoms",
+    "title": "ggplot2 layers",
+    "section": "Common geoms",
+    "text": "Common geoms\n\ngeom_point(): Scatterplots\ngeom_line(): Line charts\ngeom_bar(): Bar charts\ngeom_histogram(): Histograms\ngeom_boxplot(): Boxplots\ngeom_smooth(): Trend lines\ngeom_density(): Density plots\nMany more!"
   },
   {
-    "objectID": "slides/16-joins/16-joins.html#anti_join",
-    "href": "slides/16-joins/16-joins.html#anti_join",
-    "title": "Joins",
-    "section": "anti_join()",
-    "text": "anti_join()\n\nanti_join() returns all rows from x that do not have a match in y.\nUseful for finding observations that don’t have a match."
+    "objectID": "slides/07-layers/07-layers.html#geom_bar-vs-geom_col",
+    "href": "slides/07-layers/07-layers.html#geom_bar-vs-geom_col",
+    "title": "ggplot2 layers",
+    "section": "geom_bar vs geom_col",
+    "text": "geom_bar vs geom_col\n\ngeom_bar() uses stat_count() by default to count the number of observations for each category\n\n\nggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar()"
   },
   {
-    "objectID": "slides/16-joins/16-joins.html#example-2",
-    "href": "slides/16-joins/16-joins.html#example-2",
-    "title": "Joins",
-    "section": "Example",
-    "text": "Example\n\nflights |&gt;\n  anti_join(planes, by = \"tailnum\") |&gt;\n  count(tailnum, sort = TRUE)\n\n# A tibble: 722 × 2\n   tailnum     n\n   &lt;chr&gt;   &lt;int&gt;\n 1 &lt;NA&gt;     2512\n 2 N725MQ    575\n 3 N722MQ    513\n 4 N723MQ    507\n 5 N713MQ    483\n 6 N735MQ    396\n 7 N0EGMQ    371\n 8 N534MQ    364\n 9 N542MQ    363\n10 N531MQ    349\n# ℹ 712 more rows"
+    "objectID": "slides/07-layers/07-layers.html#changing-the-stat-argument",
+    "href": "slides/07-layers/07-layers.html#changing-the-stat-argument",
+    "title": "ggplot2 layers",
+    "section": "Changing the stat argument",
+    "text": "Changing the stat argument\n\nYou can change the statistical transformation used by a geom with the stat argument…\n\n\nflights |&gt;\n  count(carrier) |&gt; \n  ggplot(mapping = aes(x = carrier, y = n)) +\n    geom_bar(stat = \"identity\")"
   },
   {
-    "objectID": "slides/16-joins/16-joins.html#practice",
-    "href": "slides/16-joins/16-joins.html#practice",
-    "title": "Joins",
-    "section": "Practice!",
-    "text": "Practice!\nLet’s practice joins!"
+    "objectID": "slides/07-layers/07-layers.html#changing-the-stat",
+    "href": "slides/07-layers/07-layers.html#changing-the-stat",
+    "title": "ggplot2 layers",
+    "section": "Changing the stat",
+    "text": "Changing the stat\n\nUsing after_stat() to modify computed variables from a stat\n\n\nggplot(data = flights) +\n  geom_bar(mapping = aes(x = carrier, y = after_stat(prop), group = 1)) +\n  labs(y = \"Proportion\")"
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#this-lesson",
-    "href": "slides/05-data-tidying/05-data-tidying.html#this-lesson",
-    "title": "Data Tidying",
-    "section": "This lesson",
-    "text": "This lesson\n\nDefine “tidy data”\nLearn how to use tidyr to make data tidy\n\npivot_longer() for lengthening data\npivot_wider() for widening data"
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#what-is-tidy-data",
-    "href": "slides/05-data-tidying/05-data-tidying.html#what-is-tidy-data",
-    "title": "Data Tidying",
-    "section": "What is tidy data?",
-    "text": "What is tidy data?\nTidy data is a consistent way of structuring datasets that makes them easier to work with. A dataset is tidy if it follows three rules:\n\nEach variable has its own column.\nEach observation has its own row.\nEach value has its own cell.\n\nThis structure is a standard in the tidyverse."
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#setup",
-    "href": "slides/05-data-tidying/05-data-tidying.html#setup",
-    "title": "Data Tidying",
-    "section": "Setup",
-    "text": "Setup\nWe will be using functions from the tidyr package, which is part of the tidyverse.\n\n# load packages\nlibrary(tidyverse)"
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#lengthening-data-with-pivot_longer",
-    "href": "slides/05-data-tidying/05-data-tidying.html#lengthening-data-with-pivot_longer",
-    "title": "Data Tidying",
-    "section": "Lengthening data with pivot_longer()",
-    "text": "Lengthening data with pivot_longer()\n\nWide Format: column names are actually values of a variable:\n\n\nrelig_income |&gt; head()\n\n# A tibble: 6 × 11\n  religion  `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`\n  &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n1 Agnostic       27        34        60        81        76       137        122\n2 Atheist        12        27        37        52        35        70         73\n3 Buddhist       27        21        30        34        33        58         62\n4 Catholic      418       617       732       670       638      1116        949\n5 Don’t kn…      15        14        15        11        10        35         21\n6 Evangeli…     575       869      1064       982       881      1486        949\n# ℹ 3 more variables: `$100-150k` &lt;dbl&gt;, `&gt;150k` &lt;dbl&gt;,\n#   `Don't know/refused` &lt;dbl&gt;\n\n\nThis is not tidy. The income brackets are variable names, not a variable."
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_longer",
-    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_longer",
-    "title": "Data Tidying",
-    "section": "Using pivot_longer()",
-    "text": "Using pivot_longer()\n\n\n\nGoal: transform this so we have three columns: religion, income, and count.\nUse pivot_longer() to do this.\n\n\ntidy_relig_income &lt;- relig_income |&gt; \n  pivot_longer(\n    cols = !religion, \n    names_to = \"income\", \n    values_to = \"count\"\n  )\n\ntidy_relig_income |&gt; head()\n\n# A tibble: 6 × 3\n  religion income  count\n  &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt;\n1 Agnostic &lt;$10k      27\n2 Agnostic $10-20k    34\n3 Agnostic $20-30k    60\n4 Agnostic $30-40k    81\n5 Agnostic $40-50k    76\n6 Agnostic $50-75k   137\n\n\n\n\ncols: The columns to pivot into longer format. !religion means all columns except religion.\nnames_to: The name of the new column that will contain the names of the original columns.\nvalues_to: The name of the new column that will contain the values from the original columns."
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#practice",
-    "href": "slides/05-data-tidying/05-data-tidying.html#practice",
-    "title": "Data Tidying",
+    "objectID": "slides/07-layers/07-layers.html#practice",
+    "href": "slides/07-layers/07-layers.html#practice",
+    "title": "ggplot2 layers",
     "section": "Practice",
-    "text": "Practice\nLet’s practice with another dataset: billboard."
+    "text": "Practice\nLet’s try to overlay a density plot on top of a histogram of dep_delay…"
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#widening-data-with-pivot_wider",
-    "href": "slides/05-data-tidying/05-data-tidying.html#widening-data-with-pivot_wider",
-    "title": "Data Tidying",
-    "section": "Widening data with pivot_wider()",
-    "text": "Widening data with pivot_wider()\npivot_wider() is the opposite of pivot_longer(). It’s used when an observation is scattered across multiple rows.\n\nfish_encounters |&gt; head()\n\n# A tibble: 6 × 3\n  fish  station  seen\n  &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;\n1 4842  Release     1\n2 4842  I80_1       1\n3 4842  Lisbon      1\n4 4842  Rstr        1\n5 4842  Base_TD     1\n6 4842  BCE         1\n\n\n\nOne observation = one fishing station\nfish_encounters has two rows for each station: one for when a fish was seen and one for when it wasn’t\nstation column contains variable names\nseen column contains(0/1) values"
+    "objectID": "slides/07-layers/07-layers.html#overplotting",
+    "href": "slides/07-layers/07-layers.html#overplotting",
+    "title": "ggplot2 layers",
+    "section": "Overplotting",
+    "text": "Overplotting\n\nOverplotting: When many points overlap in a scatterplot, making it hard to see the distribution of points\nCommon solution: Use transparency with alpha aesthetic\nAnother solution: Use position adjustments to spread out points"
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider",
-    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider",
-    "title": "Data Tidying",
-    "section": "Using pivot_wider()",
-    "text": "Using pivot_wider()\nGoal: one row per station, with columns indicating whether fish was seen or not.\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1    NA    NA    NA    NA    NA    NA\n5 4847        1     1      1    NA      NA    NA    NA    NA    NA    NA    NA\n6 4848        1     1      1     1      NA    NA    NA    NA    NA    NA    NA\n\n\nProblem: NA values where there should be zeros, can fix this with values_fill."
+    "objectID": "slides/07-layers/07-layers.html#jittering-points",
+    "href": "slides/07-layers/07-layers.html#jittering-points",
+    "title": "ggplot2 layers",
+    "section": "Jittering points",
+    "text": "Jittering points\n\nlibrary(patchwork)\np1 &lt;- ggplot(flights, aes(x = month, y = dep_delay)) +\n  geom_point()\np2 &lt;- ggplot(flights, aes(x = month, y = dep_delay)) +\n  geom_jitter()\np1 + p2"
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider-with-values_fill",
-    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider-with-values_fill",
-    "title": "Data Tidying",
-    "section": "Using pivot_wider() with values_fill",
-    "text": "Using pivot_wider() with values_fill\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen,\n    values_fill = 0\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1     0     0     0     0     0     0\n5 4847        1     1      1     0       0     0     0     0     0     0     0\n6 4848        1     1      1     1       0     0     0     0     0     0     0\n\n\n\nnames_from: The column to get the new column names from.\nvalues_from: The column to get the cell values from.\nvalues_fill: A value to replace NAs with."
+    "objectID": "slides/07-layers/07-layers.html#bar-chart-adjustments",
+    "href": "slides/07-layers/07-layers.html#bar-chart-adjustments",
+    "title": "ggplot2 layers",
+    "section": "Bar chart adjustments",
+    "text": "Bar chart adjustments\nFor bar charts, you can use position to change how bars are arranged.\n\nstack (default): Stack bars on top of each other.\nfill: Stack bars, but standardize to have the same height. Good for comparing proportions.\ndodge: Place bars next to each other."
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#practice-1",
-    "href": "slides/05-data-tidying/05-data-tidying.html#practice-1",
-    "title": "Data Tidying",
+    "objectID": "slides/07-layers/07-layers.html#bar-chart-adjustments-1",
+    "href": "slides/07-layers/07-layers.html#bar-chart-adjustments-1",
+    "title": "ggplot2 layers",
+    "section": "Bar chart adjustments",
+    "text": "Bar chart adjustments\n\np1 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"stack\")\np2 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"fill\")\np3 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"dodge\") +\n  labs(title = \"dodge\")"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#bar-chart-stacked",
+    "href": "slides/07-layers/07-layers.html#bar-chart-stacked",
+    "title": "ggplot2 layers",
+    "section": "Bar chart: Stacked",
+    "text": "Bar chart: Stacked\n\np1"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#bar-chart-standardized",
+    "href": "slides/07-layers/07-layers.html#bar-chart-standardized",
+    "title": "ggplot2 layers",
+    "section": "Bar chart: Standardized",
+    "text": "Bar chart: Standardized\n\np2"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#bar-chart-dodged",
+    "href": "slides/07-layers/07-layers.html#bar-chart-dodged",
+    "title": "ggplot2 layers",
+    "section": "Bar chart: Dodged",
+    "text": "Bar chart: Dodged\n\np3"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#facet_wrap-and-facet_grid",
+    "href": "slides/07-layers/07-layers.html#facet_wrap-and-facet_grid",
+    "title": "ggplot2 layers",
+    "section": "facet_wrap and facet_grid",
+    "text": "facet_wrap and facet_grid\n\nFacets allow you to break your plot into subplots based on a categorical variable.\nfacet_wrap: Creates a series of plots wrapped into a rectangle\nfacet_grid: Creates a grid of plots based on two categorical variables"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#practice-1",
+    "href": "slides/07-layers/07-layers.html#practice-1",
+    "title": "ggplot2 layers",
     "section": "Practice",
-    "text": "Practice\nLet’s practice with cms_patient_care"
+    "text": "Practice\n\nLet’s visualize the relationship between origin, carrier, dep_delay, and arr_delay using facets!"
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#summary",
-    "href": "slides/05-data-tidying/05-data-tidying.html#summary",
-    "title": "Data Tidying",
-    "section": "Summary",
-    "text": "Summary\n\nTidy data is a standard format that makes data analysis easier.\nUse pivot_longer() when your column names are actually values of a variable (to make data longer and narrower).\nUse pivot_wider() when an observation is scattered across multiple rows (to make data wider and shorter).\nYou will often need to use pivot_longer() and pivot_wider() when preparing data for plotting\n\nThese two functions are the foundation of data tidying in R."
+    "objectID": "slides/07-layers/07-layers.html#flipping-coordinates",
+    "href": "slides/07-layers/07-layers.html#flipping-coordinates",
+    "title": "ggplot2 layers",
+    "section": "Flipping coordinates",
+    "text": "Flipping coordinates\n\np1 &lt;- ggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar()\n\np2 &lt;- ggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar() +\n  coord_flip()\np1 + p2"
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#do-next",
-    "href": "slides/05-data-tidying/05-data-tidying.html#do-next",
-    "title": "Data Tidying",
+    "objectID": "slides/07-layers/07-layers.html#the-layered-grammar-in-summary",
+    "href": "slides/07-layers/07-layers.html#the-layered-grammar-in-summary",
+    "title": "ggplot2 layers",
+    "section": "The layered grammar in summary",
+    "text": "The layered grammar in summary\n#| eval: false\n`ggplot(data = &lt;DATA&gt;) +`\n`  &lt;GEOM_FUNCTION&gt;(`\n`    mapping = aes(&lt;AESTHETIC_MAPPINGS&gt;),`\n`    stat = &lt;STAT&gt;,`\n`    position = &lt;POSITION&gt;`\n`  ) +`\n`  &lt;COORDINATE_SYSTEM&gt; +`\n`  &lt;FACET_FUNCTION&gt;`"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#do-next",
+    "href": "slides/07-layers/07-layers.html#do-next",
+    "title": "ggplot2 layers",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 5: Data Tidying from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 5” or work through some of the exercises in the text.\nComplete Lecture 6."
+    "text": "Do Next\n\nRead Chapter 9: Layers from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 9” or work through some of the exercises in the text.\nMove on to Lecture 08."
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#what-is-version-control",
+    "href": "slides/18-github/18-github.html#what-is-version-control",
+    "title": "Introduction to GitHub",
+    "section": "What is Version Control?",
+    "text": "What is Version Control?\n\nA system that records changes to a file or set of files over time so that you can recall specific versions later.\nIt allows you to revert files back to a previous state, revert the entire project back to a previous state, compare changes over time, see who last modified something that might be causing a problem, who introduced an issue and when.\nThink of it like “track changes” in a word processor, but for all your project files (code, data, text, etc.)."
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#why-is-it-useful",
+    "href": "slides/18-github/18-github.html#why-is-it-useful",
+    "title": "Introduction to GitHub",
+    "section": "Why is it useful?",
+    "text": "Why is it useful?\n\nCollaboration: Many people can work on the same project without overwriting each other’s changes.\nOrganization: Keeps a history of your project. No more final_report_v2_final_final.docx!\nBackup: Your project history is stored in a remote, safe place (like GitHub). If your computer crashes, your work is not lost.\nExperimentation: You can try out new ideas in a “branch” without messing up the main version of your project."
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#what-is-git",
+    "href": "slides/18-github/18-github.html#what-is-git",
+    "title": "Introduction to GitHub",
+    "section": "What is Git?",
+    "text": "What is Git?\n\nGit is a free and open source distributed version control system.\nIt’s a command-line tool that you run on your computer to track changes in your project files.\nIt’s the most popular version control system in the world."
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#what-is-github",
+    "href": "slides/18-github/18-github.html#what-is-github",
+    "title": "Introduction to GitHub",
+    "section": "What is GitHub?",
+    "text": "What is GitHub?\n\nGitHub is a web-based hosting service for Git repositories.\nIt’s a place to store your projects and collaborate with others.\nIt provides a graphical interface to Git, plus other features like issue tracking, project management, and more.\nGit is the tool, GitHub is the service."
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#cloning-a-repository",
+    "href": "slides/18-github/18-github.html#cloning-a-repository",
+    "title": "Introduction to GitHub",
+    "section": "Cloning a Repository",
+    "text": "Cloning a Repository\n\n“Cloning” is how you get a copy of a project from GitHub onto your computer.\nYou only need to do this once per project.\nYou’ll get a URL from the GitHub page of the repository.\n\n\ngit clone &lt;URL_of_the_repository&gt;\n\n\nThis creates a new directory on your computer with all the project files."
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#the-add-commit-push-cycle",
+    "href": "slides/18-github/18-github.html#the-add-commit-push-cycle",
+    "title": "Introduction to GitHub",
+    "section": "The Add-Commit-Push Cycle",
+    "text": "The Add-Commit-Push Cycle\nThis is the most common workflow you’ll use.\n\nMake changes: Edit your files, create new files, etc.\nAdd files: Tell Git which files you want to save in the next “snapshot” (commit).\nCommit files: Save the snapshot with a descriptive message.\nPush changes: Send your committed changes to GitHub."
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#git-add",
+    "href": "slides/18-github/18-github.html#git-add",
+    "title": "Introduction to GitHub",
+    "section": "git add",
+    "text": "git add\n\nUse git add to stage your changes. Staging is the step before committing.\nYou can add specific files or all files with changes.\n\n\n# Add a specific file\ngit add path/to/your/file.R\n\n# Add all changed files in the current directory and subdirectories\ngit add ."
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#git-commit",
+    "href": "slides/18-github/18-github.html#git-commit",
+    "title": "Introduction to GitHub",
+    "section": "git commit",
+    "text": "git commit\n\nA “commit” is a snapshot of your staged changes.\nEach commit has a unique ID and a message.\nThe message is important! It should be a short, descriptive summary of the changes you made.\n\n\ngit commit -m \"Fix bug in data cleaning script\""
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#git-push",
+    "href": "slides/18-github/18-github.html#git-push",
+    "title": "Introduction to GitHub",
+    "section": "git push",
+    "text": "git push\n\ngit push sends your committed changes from your local computer to the remote repository on GitHub.\n\n\ngit push"
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#git-pull",
+    "href": "slides/18-github/18-github.html#git-pull",
+    "title": "Introduction to GitHub",
+    "section": "git pull",
+    "text": "git pull\n\nIf you’re working with others, they will merge changes into the main branch.\ngit pull fetches changes from the remote repository and merges them into your local copy.\nIt’s a critical habit to pull from main before you start working to make sure you have the latest version.\n\n\n\n# Make sure you're on the main branch first\ngit checkout main\ngit pull"
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#what-is-a-branch",
+    "href": "slides/18-github/18-github.html#what-is-a-branch",
+    "title": "Introduction to GitHub",
+    "section": "What is a Branch?",
+    "text": "What is a Branch?\n\nA branch is a parallel version of your repository.\nIt allows you to work on new features or fixes without affecting the main codebase (the main branch).\nThis is essential for teamwork."
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#the-branching-workflow-a-full-example",
+    "href": "slides/18-github/18-github.html#the-branching-workflow-a-full-example",
+    "title": "Introduction to GitHub",
+    "section": "The Branching Workflow: A Full Example",
+    "text": "The Branching Workflow: A Full Example\n\nSync your local main branch: git checkout main git pull\nCreate a new branch for your work: For the project, your team leader (the “GitHub Sentinel”) will do this. Branch names should be descriptive, like feature/team-name. git checkout -b feature/pod-1-enrollment\nWork on your branch: Now you do the familiar add-commit cycle. Edit files, create new R scripts… git add . git commit -m \"Add enrollment chart and data cleaning\"\nPush your branch to GitHub: The -u flag sets the upstream branch so you can just git push next time. git push -u origin feature/pod-1-enrollment"
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#what-is-a-pull-request",
+    "href": "slides/18-github/18-github.html#what-is-a-pull-request",
+    "title": "Introduction to GitHub",
+    "section": "What is a Pull Request?",
+    "text": "What is a Pull Request?\n\nA Pull Request (or PR) is a formal request to merge your changes.\nYou’re asking the project maintainer (the “Lead Architect” for your project) to “pull” your changes from your branch into the main branch.\nIt’s a place for code review and discussion before the changes are integrated."
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#how-the-sentinel-opens-a-pull-request",
+    "href": "slides/18-github/18-github.html#how-the-sentinel-opens-a-pull-request",
+    "title": "Introduction to GitHub",
+    "section": "How the Sentinel Opens a Pull Request",
+    "text": "How the Sentinel Opens a Pull Request\n\nAfter pushing the branch, go to the repository on GitHub.\nGitHub will usually show a banner prompting you to “Compare & pull request”. Click it!\nIf not, go to the “Pull requests” tab and click “New pull request”.\nSelect your team’s branch as the “compare” branch and main as the “base” branch.\nWrite a clear title and description for your changes. Explain what you did.\nClick “Create pull request”."
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#review-and-merging",
+    "href": "slides/18-github/18-github.html#review-and-merging",
+    "title": "Introduction to GitHub",
+    "section": "Review and Merging",
+    "text": "Review and Merging\n\nOnce the PR is open, the “Lead Architect” and other team members can review your code, add comments, and request changes.\nIf changes are requested, your team makes them on the local branch, then commits and pushes again. The PR will update automatically.\nOnce approved, the Lead Architect will merge your branch into main. Your work is now part of the official project!"
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#a-note-on-merge-conflicts",
+    "href": "slides/18-github/18-github.html#a-note-on-merge-conflicts",
+    "title": "Introduction to GitHub",
+    "section": "A Note on Merge Conflicts",
+    "text": "A Note on Merge Conflicts\n\nIf you and another person edit the same lines in the same file on different branches, Git won’t know which version to keep when merging.\nThis is a merge conflict.\nThe person merging the PR (or the Sentinel, before opening it) will need to manually resolve the conflict by choosing which code to keep.\nThe best way to avoid conflicts: Pull from main often and communicate with your team!"
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#after-a-pr-is-merged",
+    "href": "slides/18-github/18-github.html#after-a-pr-is-merged",
+    "title": "Introduction to GitHub",
+    "section": "After a PR is Merged",
+    "text": "After a PR is Merged\nOnce your team’s branch is merged by the Lead Architect, everyone should update their local repository.\n\nSwitch back to your main branch: git checkout main\nPull the latest changes (which now include the merged work): git pull\nNow your main is up to date, and you can create a new branch for the next feature!"
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#good-commit-messages",
+    "href": "slides/18-github/18-github.html#good-commit-messages",
+    "title": "Introduction to GitHub",
+    "section": "Good Commit Messages",
+    "text": "Good Commit Messages\n\nKeep them short and descriptive.\nUse the imperative mood (e.g., “Add feature” not “Added feature”).\nExplain what the change is and why you made it.\n\nGood:\n\nFix typo in course syllabus\nUpdate plot styling in HW1\nFeat: Add enrollment module skeleton\nDocs: Explain data cleaning process\n\nBad:\n\nstuff\nfixed it\naaaaaaaa"
+  },
+  {
+    "objectID": "slides/18-github/18-github.html#do-next",
+    "href": "slides/18-github/18-github.html#do-next",
+    "title": "Introduction to GitHub",
+    "section": "Do Next",
+    "text": "Do Next\n\nMake sure you have Git installed on your computer.\nMake sure you have a GitHub account.\nAccept the invitation to our course organization on GitHub.\nThat’s it for tonight! See you tomorrow."
   },
   {
     "objectID": "slides/02-first-viz/02-first-viz.html#data-visualization",
@@ -2431,165 +2550,207 @@
     "text": "Recap\n\nUI: fluidPage(), input*(), *Output().\nServer: function(input, output, session).\nWiring:\n\noutput$ID &lt;- render*({ code using input$ID })\n\nReactivity:\n\nreactive() calculates values and caches them.\nOutputs automatically “react” to input changes.\n\nNext Steps: Basic UI, Basic Reactivity (Chapters 2 & 3)."
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#exploratory-data-analysis",
-    "href": "slides/08-eda/08-eda.html#exploratory-data-analysis",
-    "title": "Exploratory Data Analysis",
-    "section": "Exploratory Data Analysis",
-    "text": "Exploratory Data Analysis\nEDA is an iterative cycle. You:\n\nGenerate questions about your data.\nSearch for answers by visualizing, transforming, and modelling your data.\nUse what you learn to refine your questions and/or generate new questions."
+    "objectID": "slides/10-logicals/10-logicals.html#logical-vectors",
+    "href": "slides/10-logicals/10-logicals.html#logical-vectors",
+    "title": "Logical Vectors",
+    "section": "Logical Vectors",
+    "text": "Logical Vectors\n\nA logical vector is a vector that contains only TRUE, FALSE, and NA (missing) values.\nThey are rarely in your raw data, but you will create and use them in almost every analysis.\nLogical vectors are the foundation of filtering and conditional transformations.\nIn CS Logical Vectors are often called “Boolean” vectors."
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#fun-quotes",
-    "href": "slides/08-eda/08-eda.html#fun-quotes",
-    "title": "Exploratory Data Analysis",
-    "section": "Fun Quotes",
-    "text": "Fun Quotes\n\n“There are no routine statistical questions, only questionable statistical routines.” — Sir David Cox\n\n\n\n“Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.” — John Tukey"
+    "objectID": "slides/10-logicals/10-logicals.html#creating-logicals",
+    "href": "slides/10-logicals/10-logicals.html#creating-logicals",
+    "title": "Logical Vectors",
+    "section": "Creating Logicals",
+    "text": "Creating Logicals\n\nYou can create logical vectors with comparison operators:\n\n&gt; (greater than), &lt; (less than)\n&gt;= (greater than or equal to), &lt;= (less than or equal to)\n== (equal to), != (not equal to)\n\n\n\nx &lt;- c(1, 2, 3, 5, 8, 13)\nx &gt; 4\n\n[1] FALSE FALSE FALSE  TRUE  TRUE  TRUE"
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#guiding-questions",
-    "href": "slides/08-eda/08-eda.html#guiding-questions",
-    "title": "Exploratory Data Analysis",
-    "section": "Guiding Questions",
-    "text": "Guiding Questions\nTwo main types of questions to ask:\n\nWhat type of variation occurs within my variables?\nWhat type of covariation occurs between my variables?"
+    "objectID": "slides/10-logicals/10-logicals.html#comparisons-with-filter",
+    "href": "slides/10-logicals/10-logicals.html#comparisons-with-filter",
+    "title": "Logical Vectors",
+    "section": "Comparisons with filter()",
+    "text": "Comparisons with filter()\n\nMost often, you’ll use comparisons inside filter() to select rows.\nLet’s use the flights dataset to find flights that were delayed on arrival."
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#data-tips",
-    "href": "slides/08-eda/08-eda.html#data-tips",
-    "title": "Exploratory Data Analysis",
-    "section": "Data: tips",
-    "text": "Data: tips\n\nWe will use the tips dataset from the reshape2 package (you will likely have to install it)."
+    "objectID": "slides/10-logicals/10-logicals.html#floating-point-comparison",
+    "href": "slides/10-logicals/10-logicals.html#floating-point-comparison",
+    "title": "Logical Vectors",
+    "section": "Floating Point Comparison",
+    "text": "Floating Point Comparison\n\nBe careful when using == with numbers. Computers can have small rounding errors.\nUse near() from the dply package to compare two numbers for “close enough” equality.\nLet’s see an example."
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#visualizing-distributions",
-    "href": "slides/08-eda/08-eda.html#visualizing-distributions",
-    "title": "Exploratory Data Analysis",
-    "section": "Visualizing Distributions",
-    "text": "Visualizing Distributions\nVariation is the tendency of the values of a variable to change from measurement to measurement.\n\nEvery variable has its own pattern of variation, which can reveal interesting information.\nThe best way to understand that pattern is to visualize the variable’s distribution."
+    "objectID": "slides/10-logicals/10-logicals.html#na",
+    "href": "slides/10-logicals/10-logicals.html#na",
+    "title": "Logical Vectors",
+    "section": "NA",
+    "text": "NA\n\nNA represents a missing value.\nNA is “contagious”: almost any operation involving NA will produce NA.\nYou can’t use == to find missing values.\n\n\nNA &gt; 5\n\n[1] NA\n\nNA == 10\n\n[1] NA\n\nNA == NA\n\n[1] NA"
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#questions",
-    "href": "slides/08-eda/08-eda.html#questions",
-    "title": "Exploratory Data Analysis",
-    "section": "Questions",
-    "text": "Questions\n\nWhich values are the most common? Why?\nWhich values are rare? Why? Does that match your expectations?\nCan you see any unusual patterns? What might explain them?"
+    "objectID": "slides/10-logicals/10-logicals.html#is.na",
+    "href": "slides/10-logicals/10-logicals.html#is.na",
+    "title": "Logical Vectors",
+    "section": "is.na()",
+    "text": "is.na()\n\nUse the is.na() function to test if a value is missing.\n\n\nx &lt;- c(1, NA, 3)\nis.na(x)\n\n[1] FALSE  TRUE FALSE"
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#recall-univarite-plots",
-    "href": "slides/08-eda/08-eda.html#recall-univarite-plots",
-    "title": "Exploratory Data Analysis",
-    "section": "Recall: Univarite Plots",
-    "text": "Recall: Univarite Plots\n\nCategorical variables: bar charts\nNumerical variables: histograms, boxplots"
+    "objectID": "slides/10-logicals/10-logicals.html#filtering-and-na",
+    "href": "slides/10-logicals/10-logicals.html#filtering-and-na",
+    "title": "Logical Vectors",
+    "section": "Filtering and NA",
+    "text": "Filtering and NA\n\nfilter() only includes rows where the condition is TRUE. It excludes FALSE and NA values.\nIf you want to include missing values in your filter, you must ask for them explicitly."
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#practice",
-    "href": "slides/08-eda/08-eda.html#practice",
-    "title": "Exploratory Data Analysis",
-    "section": "Practice",
-    "text": "Practice\n\nLet’s practice exploring tip sizes."
+    "objectID": "slides/10-logicals/10-logicals.html#removing-missing-values",
+    "href": "slides/10-logicals/10-logicals.html#removing-missing-values",
+    "title": "Logical Vectors",
+    "section": "Removing Missing Values",
+    "text": "Removing Missing Values\n\nUse drop_na to remove rows with missing values.\nSpecify the columns you want to remove from.\nAvoid dropping more rows than necessary."
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#outliers",
-    "href": "slides/08-eda/08-eda.html#outliers",
-    "title": "Exploratory Data Analysis",
-    "section": "Outliers",
-    "text": "Outliers\n\nOutliers are observations that are unusual; points that don’t seem to fit the pattern.\nSometimes they are data entry errors; other times they are genuinely important."
+    "objectID": "slides/10-logicals/10-logicals.html#practice",
+    "href": "slides/10-logicals/10-logicals.html#practice",
+    "title": "Logical Vectors",
+    "section": "Practice!",
+    "text": "Practice!\nLet’s do some practice!"
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#handling-outliers",
-    "href": "slides/08-eda/08-eda.html#handling-outliers",
-    "title": "Exploratory Data Analysis",
-    "section": "Handling Outliers",
-    "text": "Handling Outliers\n\nIf they are data entry errors, try to fix them or remove them.\nIf they are genuine, their presence is important information.\nNeither of these conclusions can be made without understanding the context of the data and looking deeply at the observations"
+    "objectID": "slides/10-logicals/10-logicals.html#combining-conditions",
+    "href": "slides/10-logicals/10-logicals.html#combining-conditions",
+    "title": "Logical Vectors",
+    "section": "Combining Conditions",
+    "text": "Combining Conditions\n\nYou can combine multiple logical conditions using boolean operators:\n\n& (and)\n| (or)\n! (not)"
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#more-practice",
-    "href": "slides/08-eda/08-eda.html#more-practice",
-    "title": "Exploratory Data Analysis",
-    "section": "More Practice",
-    "text": "More Practice\n\nLet’s complete exercise 5\nLet’s explore some outliers in the tips dataset"
+    "objectID": "slides/10-logicals/10-logicals.html#examples",
+    "href": "slides/10-logicals/10-logicals.html#examples",
+    "title": "Logical Vectors",
+    "section": "Examples",
+    "text": "Examples\n\nLet’s select flights that were delayed on both departure and arrival.\nLet’s select flights that were delayed on either departure or arrival.\nLet’s select flights that were not delayed on either departure or arrival.\nLet’s select flights that were from November or December."
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#data-mpg",
-    "href": "slides/08-eda/08-eda.html#data-mpg",
-    "title": "Exploratory Data Analysis",
-    "section": "Data: mpg",
-    "text": "Data: mpg\n\nWe will also use the mpg dataset from the ggplot2 package.\nIt contains information about the fuel economy of different car models.\n\n\nglimpse(mpg)\n\nRows: 234\nColumns: 11\n$ manufacturer &lt;chr&gt; \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"…\n$ model        &lt;chr&gt; \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4 quattro\", \"…\n$ displ        &lt;dbl&gt; 1.8, 1.8, 2.0, 2.0, 2.8, 2.8, 3.1, 1.8, 1.8, 2.0, 2.0, 2.…\n$ year         &lt;int&gt; 1999, 1999, 2008, 2008, 1999, 1999, 2008, 1999, 1999, 200…\n$ cyl          &lt;int&gt; 4, 4, 4, 4, 6, 6, 6, 4, 4, 4, 4, 6, 6, 6, 6, 6, 6, 8, 8, …\n$ trans        &lt;chr&gt; \"auto(l5)\", \"manual(m5)\", \"manual(m6)\", \"auto(av)\", \"auto…\n$ drv          &lt;chr&gt; \"f\", \"f\", \"f\", \"f\", \"f\", \"f\", \"f\", \"4\", \"4\", \"4\", \"4\", \"4…\n$ cty          &lt;int&gt; 18, 21, 20, 21, 16, 18, 18, 18, 16, 20, 19, 15, 17, 17, 1…\n$ hwy          &lt;int&gt; 29, 29, 31, 30, 26, 26, 27, 26, 25, 28, 27, 25, 25, 25, 2…\n$ fl           &lt;chr&gt; \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p…\n$ class        &lt;chr&gt; \"compact\", \"compact\", \"compact\", \"compact\", \"compact\", \"c…"
+    "objectID": "slides/10-logicals/10-logicals.html#in",
+    "href": "slides/10-logicals/10-logicals.html#in",
+    "title": "Logical Vectors",
+    "section": "%in%",
+    "text": "%in%\n\nA useful shortcut for x == a | x == b | x == c is x %in% c(a, b, c).\nIt checks if each value in the left vector is present in the right vector."
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#visualizing-relationships",
-    "href": "slides/08-eda/08-eda.html#visualizing-relationships",
-    "title": "Exploratory Data Analysis",
-    "section": "Visualizing Relationships",
-    "text": "Visualizing Relationships\n\nCovariation: how do two variables change together? What is their relationship?\nVisualizing covariation helps you understand relationships between variables\nYou need to think and plan carefully about how to display multiple distributions in a single plot"
+    "objectID": "slides/10-logicals/10-logicals.html#numeric-summaries",
+    "href": "slides/10-logicals/10-logicals.html#numeric-summaries",
+    "title": "Logical Vectors",
+    "section": "Numeric Summaries",
+    "text": "Numeric Summaries\n\nWhen you use a logical vector in a numeric context, TRUE becomes 1 and FALSE becomes 0.\nsum(): counts the number of TRUEs.\nmean(): calculates the proportion of TRUEs."
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#recall-three-general-cases",
-    "href": "slides/08-eda/08-eda.html#recall-three-general-cases",
-    "title": "Exploratory Data Analysis",
-    "section": "Recall: Three general cases",
-    "text": "Recall: Three general cases\n\nCategorical + Categorical\n\nBoxplots\n\nCategorical + Numerical\n\nBoxplots, jitter plots, faceted histograms\n\nNumerical + Numerical\n\nScatterplots, jitter plots"
+    "objectID": "slides/10-logicals/10-logicals.html#practice-1",
+    "href": "slides/10-logicals/10-logicals.html#practice-1",
+    "title": "Logical Vectors",
+    "section": "Practice!",
+    "text": "Practice!\n\nDid Delta have any departure delays on Christmas Day? If so how many?\nHow many departure delays did AA, DL, and UA have on Christmas Day?\nPlot the total number of departure delays per month. Per day."
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#reordering-categories",
-    "href": "slides/08-eda/08-eda.html#reordering-categories",
-    "title": "Exploratory Data Analysis",
-    "section": "Reordering Categories",
-    "text": "Reordering Categories\n\nYou can reorder the categorical variable to make the plot easier to read.\nWhat kind of car get’s the best gas mileage?"
+    "objectID": "slides/10-logicals/10-logicals.html#if_else",
+    "href": "slides/10-logicals/10-logicals.html#if_else",
+    "title": "Logical Vectors",
+    "section": "if_else()",
+    "text": "if_else()\n\nif_else(condition, value_if_true, value_if_false)\nAll output values must be of the same type.\n\n\nx &lt;- c(-3, -1, 0, 1, 3)\nif_else(x &gt; 0, \"positive\", \"negative or zero\")\n\n[1] \"negative or zero\" \"negative or zero\" \"negative or zero\" \"positive\"        \n[5] \"positive\""
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#some-new-plots",
-    "href": "slides/08-eda/08-eda.html#some-new-plots",
-    "title": "Exploratory Data Analysis",
-    "section": "Some new plots",
-    "text": "Some new plots\n\nCategorical + Categorical\n\nMosaic plots, count plots, tile plots\n\nCategorical + Numerical\n\nViolin plots, sina plots, ridgeline plots, frequency polygons\n\nNumerical + Numerical\n\n2D-Histogram/heatmap of counts, hexbin plots"
+    "objectID": "slides/10-logicals/10-logicals.html#case_when",
+    "href": "slides/10-logicals/10-logicals.html#case_when",
+    "title": "Logical Vectors",
+    "section": "case_when()",
+    "text": "case_when()\n\nFor multiple conditions, case_when() is easier to read than nested if_else().\ncase_when(condition1 ~ value1, condition2 ~ value2, ...)\nThe first TRUE condition wins.\n\n\n\nCode\ncase_when(\n  x &lt; 0 ~ \"negative\",\n  x == 0 ~ \"zero\",\n  x &gt; 0 ~ \"positive\"\n)\n\n\n[1] \"negative\" \"negative\" \"zero\"     \"positive\" \"positive\""
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#practice-1",
-    "href": "slides/08-eda/08-eda.html#practice-1",
-    "title": "Exploratory Data Analysis",
-    "section": "Practice",
-    "text": "Practice\n\nLet’s practice exploring covariation in the our data sets"
+    "objectID": "slides/10-logicals/10-logicals.html#example-case_when",
+    "href": "slides/10-logicals/10-logicals.html#example-case_when",
+    "title": "Logical Vectors",
+    "section": "Example: case_when()",
+    "text": "Example: case_when()\n\nLet’s create a human-readable “season” variable."
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#patterns-1",
-    "href": "slides/08-eda/08-eda.html#patterns-1",
-    "title": "Exploratory Data Analysis",
-    "section": "Patterns",
-    "text": "Patterns\n\nPatterns in your data hint at relationships. If you can spot a pattern, ask yourself:\n\nCould this pattern be due to coincidence?\nHow can you describe the relationship implied by the pattern?\nHow strong is the relationship implied by the pattern?\nWhat other variables might affect the relationship?\nDoes the relationship change if you look at individual subgroups of the data?\n\nModels can help you extract the strong patterns and leave the weaker ones."
+    "objectID": "slides/10-logicals/10-logicals.html#logical-vectors-1",
+    "href": "slides/10-logicals/10-logicals.html#logical-vectors-1",
+    "title": "Logical Vectors",
+    "section": "Logical Vectors",
+    "text": "Logical Vectors\n\nCreate with comparisons: &lt;, ==, %in%, is.na().\nCombine with boolean operators: &, |, !.\nSummarize with any(), all(), sum(), mean().\nUse for conditional transformations with if_else() and case_when().\nLogical vectors are a fundamental tool for data manipulation in R."
   },
   {
-    "objectID": "slides/08-eda/08-eda.html#transformations",
-    "href": "slides/08-eda/08-eda.html#transformations",
-    "title": "Exploratory Data Analysis",
-    "section": "Transformations",
-    "text": "Transformations\n\nTransformations can help you see patterns more clearly.\nCommon transformations include:\n\nLogarithms\nLogarithms\nLogarithms\nSquare roots\nLogarithms\nStandardization (z-scores)\nLogarithms"
-  },
-  {
-    "objectID": "slides/08-eda/08-eda.html#the-power-of-logs",
-    "href": "slides/08-eda/08-eda.html#the-power-of-logs",
-    "title": "Exploratory Data Analysis",
-    "section": "The power of logs",
-    "text": "The power of logs\n\nPower law: when \\(y = ax^k\\)\n\nTaking the log of both sides gives: \\(\\log(y) = \\log(a) + k\\log(x)\\)\nIntuitively: multiplying x by a constant multiplies y by a constant.\n\nPower law’s are extremely common in nature:\n\nParetto principle (80/20 rule)\nCity sizes\nEarthquake magnitudes\nWealth distributions\nBacteria growth"
-  },
-  {
-    "objectID": "slides/08-eda/08-eda.html#practice-2",
-    "href": "slides/08-eda/08-eda.html#practice-2",
-    "title": "Exploratory Data Analysis",
-    "section": "Practice",
-    "text": "Practice\n\nLet’s practice looking for patterns in out data sets."
-  },
-  {
-    "objectID": "slides/08-eda/08-eda.html#eda-in-a-nutshell",
-    "href": "slides/08-eda/08-eda.html#eda-in-a-nutshell",
-    "title": "Exploratory Data Analysis",
-    "section": "EDA in a nutshell",
-    "text": "EDA in a nutshell\n\nEDA is about asking questions and using visualizations to find answers.\nStart by looking at the variation of each variable.\nThen, explore the covariation between variables.\nUse ggplot2 to create a wide range of plots to help you understand your data.\nDON’T FORGET TO THINK!"
-  },
-  {
-    "objectID": "slides/08-eda/08-eda.html#do-next",
-    "href": "slides/08-eda/08-eda.html#do-next",
-    "title": "Exploratory Data Analysis",
+    "objectID": "slides/10-logicals/10-logicals.html#do-next",
+    "href": "slides/10-logicals/10-logicals.html#do-next",
+    "title": "Logical Vectors",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 10: Exploratory data analysis from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 10” or work through some of the exercises in the text.\nThat’s it for today. See you tomorrow!"
+    "text": "Do Next\n\nRead Chapter 12: Logicals from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 12” or work through some of the exercises in the text.\nMove on the Lecture 11!"
+  },
+  {
+    "objectID": "slides/14-factors/14-factors.html#categorical-data-and-factors",
+    "href": "slides/14-factors/14-factors.html#categorical-data-and-factors",
+    "title": "Factors",
+    "section": "Categorical Data and Factors",
+    "text": "Categorical Data and Factors\n\nFactors are R’s data structure for categorical variables.\nThe forcats package (part of tidyverse) provides a suite of tools for working with factors.\nUseful for reordering and relabeling for better visualizations."
+  },
+  {
+    "objectID": "slides/14-factors/14-factors.html#factor-and-fct",
+    "href": "slides/14-factors/14-factors.html#factor-and-fct",
+    "title": "Factors",
+    "section": "factor() and fct()",
+    "text": "factor() and fct()\n\nCreate factors from a character vector.\nlevels() shows the categories of the factor.\nThe levels have an order (not to be confused with “ordered factors” which are different)\n\n\nx &lt;- c(\"Male\", \"Female\", \"Female\", \"Male\")\nf &lt;- factor(x)\nf\n\n[1] Male   Female Female Male  \nLevels: Female Male\n\nlevels(f)\n\n[1] \"Female\" \"Male\""
+  },
+  {
+    "objectID": "slides/14-factors/14-factors.html#data-idaho-naturalization",
+    "href": "slides/14-factors/14-factors.html#data-idaho-naturalization",
+    "title": "Factors",
+    "section": "Data: Idaho Naturalization",
+    "text": "Data: Idaho Naturalization\n\nWe’re going to use Naturalization data from the Idaho State Archives again\nThis dataset was assembled by Dr. Rachel Miller\nLink to Google Sheet\nLet’s load the data and convert the country of origin to a factor"
+  },
+  {
+    "objectID": "slides/14-factors/14-factors.html#fct_reorder",
+    "href": "slides/14-factors/14-factors.html#fct_reorder",
+    "title": "Factors",
+    "section": "fct_reorder()",
+    "text": "fct_reorder()\n\nReorders a factor by another variable, useful for plots.\nFor example, ordering bars in a bar chart.\nLet’s create a bar chart of country of origin ordered by the average year of arrival."
+  },
+  {
+    "objectID": "slides/14-factors/14-factors.html#fct_infreq",
+    "href": "slides/14-factors/14-factors.html#fct_infreq",
+    "title": "Factors",
+    "section": "fct_infreq()",
+    "text": "fct_infreq()\n\nReorders a factor by the frequency of its values.\nLet’s create a bar chart of country of origina by the frequency"
+  },
+  {
+    "objectID": "slides/14-factors/14-factors.html#fct_relevel",
+    "href": "slides/14-factors/14-factors.html#fct_relevel",
+    "title": "Factors",
+    "section": "fct_relevel()",
+    "text": "fct_relevel()\n\nManually move levels to the front.\nLet’s move “Spain” to the front."
+  },
+  {
+    "objectID": "slides/14-factors/14-factors.html#modifying-factor-levels",
+    "href": "slides/14-factors/14-factors.html#modifying-factor-levels",
+    "title": "Factors",
+    "section": "Modifying Factor Levels",
+    "text": "Modifying Factor Levels\n\nfct_recode(): Changes the names of factor levels.\nfct_collapse(): Combines several levels into one.\nfct_lump_*(): lump together the least/most frequent levels into an “Other” category."
+  },
+  {
+    "objectID": "slides/14-factors/14-factors.html#practice",
+    "href": "slides/14-factors/14-factors.html#practice",
+    "title": "Factors",
+    "section": "Practice",
+    "text": "Practice\n\nLet’s make the country of origin factor more manageable by lumping together the least frequent countries into “Other” and recoding some country names for clarity."
+  },
+  {
+    "objectID": "slides/14-factors/14-factors.html#ordered-factors",
+    "href": "slides/14-factors/14-factors.html#ordered-factors",
+    "title": "Factors",
+    "section": "Ordered Factors",
+    "text": "Ordered Factors\n\nA factor that enforces a strict ordering of levels\nUseful for ordinal data (e.g., ratings)\nThis class: only really matters if you tie it to a color aesthetic\n\nWill select a color scheme that implies an ordering"
+  },
+  {
+    "objectID": "slides/14-factors/14-factors.html#do-next",
+    "href": "slides/14-factors/14-factors.html#do-next",
+    "title": "Factors",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 16: Factors from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 16” or work through some of the exercises in the text.\nMove on to lecture 15."
   },
   {
     "objectID": "slides/06-importing/06-importing-data.html#this-lesson",
@@ -2746,139 +2907,6 @@
     "text": "Do Next\n\nRead Chapter 7: Data import from r4ds.\nNo need to practice this one and that’s all for today!"
   },
   {
-    "objectID": "slides/17-github/17-github.html#what-is-version-control",
-    "href": "slides/17-github/17-github.html#what-is-version-control",
-    "title": "Introduction to GitHub",
-    "section": "What is Version Control?",
-    "text": "What is Version Control?\n\nA system that records changes to a file or set of files over time so that you can recall specific versions later.\nIt allows you to revert files back to a previous state, revert the entire project back to a previous state, compare changes over time, see who last modified something that might be causing a problem, who introduced an issue and when.\nThink of it like “track changes” in a word processor, but for all your project files (code, data, text, etc.)."
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#why-is-it-useful",
-    "href": "slides/17-github/17-github.html#why-is-it-useful",
-    "title": "Introduction to GitHub",
-    "section": "Why is it useful?",
-    "text": "Why is it useful?\n\nCollaboration: Many people can work on the same project without overwriting each other’s changes.\nOrganization: Keeps a history of your project. No more final_report_v2_final_final.docx!\nBackup: Your project history is stored in a remote, safe place (like GitHub). If your computer crashes, your work is not lost.\nExperimentation: You can try out new ideas in a “branch” without messing up the main version of your project."
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#what-is-git",
-    "href": "slides/17-github/17-github.html#what-is-git",
-    "title": "Introduction to GitHub",
-    "section": "What is Git?",
-    "text": "What is Git?\n\nGit is a free and open source distributed version control system.\nIt’s a command-line tool that you run on your computer to track changes in your project files.\nIt’s the most popular version control system in the world."
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#what-is-github",
-    "href": "slides/17-github/17-github.html#what-is-github",
-    "title": "Introduction to GitHub",
-    "section": "What is GitHub?",
-    "text": "What is GitHub?\n\nGitHub is a web-based hosting service for Git repositories.\nIt’s a place to store your projects and collaborate with others.\nIt provides a graphical interface to Git, plus other features like issue tracking, project management, and more.\nGit is the tool, GitHub is the service."
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#cloning-a-repository",
-    "href": "slides/17-github/17-github.html#cloning-a-repository",
-    "title": "Introduction to GitHub",
-    "section": "Cloning a Repository",
-    "text": "Cloning a Repository\n\n“Cloning” is how you get a copy of a project from GitHub onto your computer.\nYou only need to do this once per project.\nYou’ll get a URL from the GitHub page of the repository.\n\n\ngit clone &lt;URL_of_the_repository&gt;\n\n\nThis creates a new directory on your computer with all the project files."
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#the-add-commit-push-cycle",
-    "href": "slides/17-github/17-github.html#the-add-commit-push-cycle",
-    "title": "Introduction to GitHub",
-    "section": "The Add-Commit-Push Cycle",
-    "text": "The Add-Commit-Push Cycle\nThis is the most common workflow you’ll use.\n\nMake changes: Edit your files, create new files, etc.\nAdd files: Tell Git which files you want to save in the next “snapshot” (commit).\nCommit files: Save the snapshot with a descriptive message.\nPush changes: Send your committed changes to GitHub.\n\nThis is represented well by this image from our own images folder!"
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#git-add",
-    "href": "slides/17-github/17-github.html#git-add",
-    "title": "Introduction to GitHub",
-    "section": "git add",
-    "text": "git add\n\nUse git add to stage your changes. Staging is the step before committing.\nYou can add specific files or all files with changes.\n\n\n# Add a specific file\ngit add path/to/your/file.R\n\n# Add all changed files in the current directory and subdirectories\ngit add ."
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#git-commit",
-    "href": "slides/17-github/17-github.html#git-commit",
-    "title": "Introduction to GitHub",
-    "section": "git commit",
-    "text": "git commit\n\nA “commit” is a snapshot of your staged changes.\nEach commit has a unique ID and a message.\nThe message is important! It should be a short, descriptive summary of the changes you made.\n\n\ngit commit -m \"Fix bug in data cleaning script\""
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#git-push",
-    "href": "slides/17-github/17-github.html#git-push",
-    "title": "Introduction to GitHub",
-    "section": "git push",
-    "text": "git push\n\ngit push sends your committed changes from your local computer to the remote repository on GitHub.\n\n\ngit push"
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#git-pull",
-    "href": "slides/17-github/17-github.html#git-pull",
-    "title": "Introduction to GitHub",
-    "section": "git pull",
-    "text": "git pull\n\nIf you’re working with others, they will merge changes into the main branch.\ngit pull fetches changes from the remote repository and merges them into your local copy.\nIt’s a critical habit to pull from main before you start working to make sure you have the latest version.\n\n\n\n# Make sure you're on the main branch first\ngit checkout main\ngit pull"
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#what-is-a-branch",
-    "href": "slides/17-github/17-github.html#what-is-a-branch",
-    "title": "Introduction to GitHub",
-    "section": "What is a Branch?",
-    "text": "What is a Branch?\n\nA branch is a parallel version of your repository.\nIt allows you to work on new features or fixes without affecting the main codebase (the main branch).\nThis is essential for teamwork."
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#the-branching-workflow-a-full-example",
-    "href": "slides/17-github/17-github.html#the-branching-workflow-a-full-example",
-    "title": "Introduction to GitHub",
-    "section": "The Branching Workflow: A Full Example",
-    "text": "The Branching Workflow: A Full Example\n\nSync your local main branch: git checkout main git pull\nCreate a new branch for your work: For the project, your team leader (the “GitHub Sentinel”) will do this. Branch names should be descriptive, like feature/team-name. git checkout -b feature/pod-1-enrollment\nWork on your branch: Now you do the familiar add-commit cycle. Edit files, create new R scripts… git add . git commit -m \"Add enrollment chart and data cleaning\"\nPush your branch to GitHub: The -u flag sets the upstream branch so you can just git push next time. git push -u origin feature/pod-1-enrollment"
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#what-is-a-pull-request",
-    "href": "slides/17-github/17-github.html#what-is-a-pull-request",
-    "title": "Introduction to GitHub",
-    "section": "What is a Pull Request?",
-    "text": "What is a Pull Request?\n\nA Pull Request (or PR) is a formal request to merge your changes.\nYou’re asking the project maintainer (the “Lead Architect” for your project) to “pull” your changes from your branch into the main branch.\nIt’s a place for code review and discussion before the changes are integrated."
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#how-the-sentinel-opens-a-pull-request",
-    "href": "slides/17-github/17-github.html#how-the-sentinel-opens-a-pull-request",
-    "title": "Introduction to GitHub",
-    "section": "How the Sentinel Opens a Pull Request",
-    "text": "How the Sentinel Opens a Pull Request\n\nAfter pushing the branch, go to the repository on GitHub.\nGitHub will usually show a banner prompting you to “Compare & pull request”. Click it!\nIf not, go to the “Pull requests” tab and click “New pull request”.\nSelect your team’s branch as the “compare” branch and main as the “base” branch.\nWrite a clear title and description for your changes. Explain what you did.\nClick “Create pull request”."
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#review-and-merging",
-    "href": "slides/17-github/17-github.html#review-and-merging",
-    "title": "Introduction to GitHub",
-    "section": "Review and Merging",
-    "text": "Review and Merging\n\nOnce the PR is open, the “Lead Architect” and other team members can review your code, add comments, and request changes.\nIf changes are requested, your team makes them on the local branch, then commits and pushes again. The PR will update automatically.\nOnce approved, the Lead Architect will merge your branch into main. Your work is now part of the official project!"
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#a-note-on-merge-conflicts",
-    "href": "slides/17-github/17-github.html#a-note-on-merge-conflicts",
-    "title": "Introduction to GitHub",
-    "section": "A Note on Merge Conflicts",
-    "text": "A Note on Merge Conflicts\n\nIf you and another person edit the same lines in the same file on different branches, Git won’t know which version to keep when merging.\nThis is a merge conflict.\nThe person merging the PR (or the Sentinel, before opening it) will need to manually resolve the conflict by choosing which code to keep.\nThe best way to avoid conflicts: Pull from main often and communicate with your team!"
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#good-commit-messages",
-    "href": "slides/17-github/17-github.html#good-commit-messages",
-    "title": "Introduction to GitHub",
-    "section": "Good Commit Messages",
-    "text": "Good Commit Messages\n\nKeep them short and descriptive.\nUse the imperative mood (e.g., “Add feature” not “Added feature”).\nExplain what the change is and why you made it.\n\nGood: - Fix typo in course syllabus - Update plot styling in HW1 - Feat: Add enrollment module skeleton - Docs: Explain data cleaning process\nBad: - stuff - fixed it - aaaaaaaa"
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#practice",
-    "href": "slides/17-github/17-github.html#practice",
-    "title": "Introduction to GitHub",
-    "section": "Practice!",
-    "text": "Practice!\nLet’s simulate the project workflow. countdown(minutes = 15)\nPartner A: The “Lead Architect” 1. Create a new public repository on GitHub named github-practice. 2. Initialize it with a README.md file. 3. Clone it to your computer. 4. Add Partner B as a collaborator (Settings &gt; Collaborators).\nPartner B: The “GitHub Sentinel” 1. Accept the collaborator invitation (check your email!). 2. Clone the repository. 3. Create a new branch: git checkout -b add-contrib-list. 4. Create a new file contributors.txt and add your name to it. 5. add, commit, and push your branch to the repository. 6. Go to GitHub and open a Pull Request to merge add-contrib-list into main.\nPartner A: The “Lead Architect” (again) 1. On GitHub, go to the “Pull requests” tab. 2. Review the PR. Leave a comment! Ask Partner B to add your name to the file.\nPartner B: The “GitHub Sentinel” (again) 1. Locally, on your branch, add Partner A’s name to contributors.txt. 2. add, commit, and push the change. Notice the PR on GitHub updates automatically!\nPartner A: The “Lead Architect” (last time) 1. On the PR, see the new commit. Looks good! 2. Merge the Pull Request.\nBoth Partners: 1. Locally, git checkout main and git pull to see the contributors.txt file with both names."
-  },
-  {
-    "objectID": "slides/17-github/17-github.html#do-next",
-    "href": "slides/17-github/17-github.html#do-next",
-    "title": "Introduction to GitHub",
-    "section": "Do Next",
-    "text": "Do Next\n\nMake sure you have Git installed on your computer.\nMake sure you have a GitHub account.\nAccept the invitation to our course organization on GitHub.\nThat’s it for tonight! See you tomorrow."
-  },
-  {
     "objectID": "course-faq.html",
     "href": "course-faq.html",
     "title": "FAQ",
@@ -2894,7 +2922,7 @@
     "href": "index.html",
     "title": "CSCI-2025: Data Manipulation and Visualization",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\nvideo-15\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\n\n\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\nvideo-15\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\nslides-16\n\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins\n\nslides-17",
     "crumbs": [
       "Course information",
       "Schedule"

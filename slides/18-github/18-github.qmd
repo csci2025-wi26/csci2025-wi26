@@ -1,6 +1,6 @@
 ---
 title: "Introduction to GitHub"
-subtitle: "Lecture 17"
+subtitle: "Lecture 18"
 ---
 
 ```{r}
@@ -82,10 +82,6 @@ This is the most common workflow you'll use.
 3.  **Commit files:** Save the snapshot with a descriptive message.
 4.  **Push changes:** Send your committed changes to GitHub.
 
-This is represented well by this image from our own `images` folder!
-
-![](/images/render-commit-push.png)
-
 ## `git add`
 
 - Use `git add` to stage your changes. Staging is the step before committing.
@@ -142,8 +138,6 @@ git checkout main
 git pull
 ```
 
----
-
 # A Collaborative Workflow: The Feature Branch
 
 For our group project, we will use a workflow that prevents accidentally breaking the main version of our app. **You will not push directly to `main`**.
@@ -176,8 +170,6 @@ The core idea is:
 4.  **Push your branch to GitHub:** The `-u` flag sets the upstream branch so you can just `git push` next time.
     `git push -u origin feature/pod-1-enrollment`
 
----
-
 # Pull Requests: Proposing Changes
 
 Now that your branch is on GitHub, the GitHub Sentinel needs to ask for it to be merged into `main`.
@@ -209,9 +201,8 @@ Now that your branch is on GitHub, the GitHub Sentinel needs to ask for it to be
 - The person merging the PR (or the Sentinel, before opening it) will need to manually resolve the conflict by choosing which code to keep.
 - **The best way to avoid conflicts: Pull from `main` often and communicate with your team!**
 
----
 
-# After a PR is Merged
+## After a PR is Merged
 
 Once your team's branch is merged by the Lead Architect, everyone should update their local repository.
 
@@ -223,27 +214,27 @@ Once your team's branch is merged by the Lead Architect, everyone should update 
 
 3.  Now your `main` is up to date, and you can create a new branch for the next feature!
 
----
-
 # Best Practices
 
-## Good Commit Messages
+## Good Commit Messages {.smaller}
 
 - Keep them short and descriptive.
 - Use the imperative mood (e.g., "Add feature" not "Added feature").
 - Explain *what* the change is and *why* you made it.
 
 **Good:**
+
 - `Fix typo in course syllabus`
 - `Update plot styling in HW1`
 - `Feat: Add enrollment module skeleton`
 - `Docs: Explain data cleaning process`
 
 **Bad:**
+
 - `stuff`
 - `fixed it`
 - `aaaaaaaa`
-
+<!-- 
 ## Practice!
 
 Let's simulate the project workflow. `countdown(minutes = 15)`
@@ -275,7 +266,7 @@ Let's simulate the project workflow. `countdown(minutes = 15)`
 2. **Merge the Pull Request.**
 
 **Both Partners:**
-1. Locally, `git checkout main` and `git pull` to see the `contributors.txt` file with both names.
+1. Locally, `git checkout main` and `git pull` to see the `contributors.txt` file with both names. -->
 
 # Wrap-Up
 

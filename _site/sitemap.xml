@@ -13,20 +13,20 @@
     <lastmod>2026-01-06T19:42:13.144Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/15-missing-values/15-missing-values.html</loc>
-    <lastmod>2026-01-05T14:19:31.522Z</lastmod>
-  </url>
-  <url>
     <loc>https://csci2025wi26.netlify.app/slides/11-numbers/11-numbers.html</loc>
     <lastmod>2026-01-08T15:58:00.966Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/14-factors/14-factors.html</loc>
-    <lastmod>2026-01-13T14:51:40.072Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/17-joins/17-joins.html</loc>
+    <lastmod>2026-01-14T14:40:55.371Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/10-logicals/10-logicals.html</loc>
-    <lastmod>2026-01-08T15:58:00.966Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/08-eda/08-eda.html</loc>
+    <lastmod>2026-01-07T14:09:57.392Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/16-missing-values/16-missing-values.html</loc>
+    <lastmod>2026-01-13T23:30:55.824Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/slides/00-welcome/00-welcome.html</loc>
@@ -37,8 +37,8 @@
     <lastmod>2026-01-08T15:58:00.966Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/07-layers/07-layers.html</loc>
-    <lastmod>2026-01-06T22:28:04.013Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/05-data-tidying/05-data-tidying.html</loc>
+    <lastmod>2026-01-06T17:17:16.726Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/slides/01-intro-to-R/01-intro-to-R.html</loc>
@@ -109,12 +109,12 @@
     <lastmod>2026-01-13T17:18:13.521Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/16-joins/16-joins.html</loc>
-    <lastmod>2026-01-05T14:19:31.522Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/07-layers/07-layers.html</loc>
+    <lastmod>2026-01-06T22:28:04.013Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/05-data-tidying/05-data-tidying.html</loc>
-    <lastmod>2026-01-06T17:17:16.726Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/18-github/18-github.html</loc>
+    <lastmod>2026-01-13T23:46:35.907Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/slides/02-first-viz/02-first-viz.html</loc>
@@ -125,16 +125,16 @@
     <lastmod>2026-01-13T19:30:44.333Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/08-eda/08-eda.html</loc>
-    <lastmod>2026-01-07T14:09:57.392Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/10-logicals/10-logicals.html</loc>
+    <lastmod>2026-01-08T15:58:00.966Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/14-factors/14-factors.html</loc>
+    <lastmod>2026-01-13T14:51:40.072Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/slides/06-importing/06-importing-data.html</loc>
     <lastmod>2026-01-06T17:17:16.726Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/17-github/17-github.html</loc>
-    <lastmod>2026-01-12T15:30:02.795Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/course-faq.html</loc>

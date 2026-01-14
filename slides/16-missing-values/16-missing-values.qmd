@@ -1,11 +1,6 @@
 ---
 title: "Missing Values"
-subtitle: "Lecture 15"
-title-slide-attributes:
-  data-background-image: ../vizdata-bg.png
-  data-background-size: stretch
-  data-slide-number: none
-format: revealjs
+subtitle: "Lecture 16"
 ---
 
 ```{r}
@@ -116,3 +111,11 @@ df |> complete(group, year)
 ## Practice!
 
 Let's practice!
+
+# Wrap Up
+
+## Do Next
+
+1. Read [Chapter 18: Missing Values](https://r4ds.hadley.nz/missing-values.html) from r4ds.
+2. Open the Recitation Gem and say "Provide me practice problems for Chapter 18" or work through some of the exercises in the text.
+3. Move on to Lecture 17!
