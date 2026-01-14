@@ -982,469 +982,937 @@
     "text": "Do Next\n\nRead Chapter 11: Communication from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 11” or work through some of the exercises in the text.\nMove on the Lecture 10!"
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#this-lesson",
-    "href": "slides/05-data-tidying/05-data-tidying.html#this-lesson",
-    "title": "Data Tidying",
+    "objectID": "slides/07-layers/07-layers.html#data-flights-from-nyc-in-2013",
+    "href": "slides/07-layers/07-layers.html#data-flights-from-nyc-in-2013",
+    "title": "ggplot2 layers",
+    "section": "Data: Flights from NYC in 2013",
+    "text": "Data: Flights from NYC in 2013\nWe will be using the nycflights13::flights dataset. This dataset contains information about all flights that departed from New York City (EWR, LGA, JFK) in 2013.\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#a-simple-scatterplot",
+    "href": "slides/07-layers/07-layers.html#a-simple-scatterplot",
+    "title": "ggplot2 layers",
+    "section": "A simple scatterplot",
+    "text": "A simple scatterplot\nLet’s create a simple scatterplot of departure delay vs. arrival delay."
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#adding-layers",
+    "href": "slides/07-layers/07-layers.html#adding-layers",
+    "title": "ggplot2 layers",
+    "section": "Adding layers",
+    "text": "Adding layers\nA plot is composed of layers. Each layer has:\n\nA geom: The geometric object that represents the data (e.g., points, lines, bars).\nAn aesthetic mapping: How variables are mapped to visual properties.\nA stat: A statistical transformation (e.g., counting, summarizing).\nA position adjustment: How to arrange elements that would otherwise overlap."
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#adding-a-layer-trend-line-with-geom_smooth",
+    "href": "slides/07-layers/07-layers.html#adding-a-layer-trend-line-with-geom_smooth",
+    "title": "ggplot2 layers",
+    "section": "Adding a layer: Trend line with geom_smooth()",
+    "text": "Adding a layer: Trend line with geom_smooth()\nLet’s add a trend line… What does se = FALSE do?"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#global-vs.-local-mappings",
+    "href": "slides/07-layers/07-layers.html#global-vs.-local-mappings",
+    "title": "ggplot2 layers",
+    "section": "Global vs. Local Mappings",
+    "text": "Global vs. Local Mappings\n\nAesthetic mappings can be:\nGlobal: specify in ggplot() so they apply to all layers\nLocal: specify in each geom_*() so they apply only to that layer"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#using-color-as-a-local-aesthetic",
+    "href": "slides/07-layers/07-layers.html#using-color-as-a-local-aesthetic",
+    "title": "ggplot2 layers",
+    "section": "Using color as a local aesthetic",
+    "text": "Using color as a local aesthetic\nLet see what happens when we use color as a global aesthetic mapping in geom_point().\nHow can we make a single color for all points but still have the smooth line?"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#why-isnt-this-plot-blue",
+    "href": "slides/07-layers/07-layers.html#why-isnt-this-plot-blue",
+    "title": "ggplot2 layers",
+    "section": "Why isn’t this plot blue?",
+    "text": "Why isn’t this plot blue?\n\n# This is probably not what you want\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(aes(color = \"blue\"))"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#setting-vs.-mapping",
+    "href": "slides/07-layers/07-layers.html#setting-vs.-mapping",
+    "title": "ggplot2 layers",
+    "section": "Setting vs. Mapping",
+    "text": "Setting vs. Mapping\n\nTo apply a constant property to all points, set it outside of aes()\n\n\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(color = \"blue\")"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#common-geoms",
+    "href": "slides/07-layers/07-layers.html#common-geoms",
+    "title": "ggplot2 layers",
+    "section": "Common geoms",
+    "text": "Common geoms\n\ngeom_point(): Scatterplots\ngeom_line(): Line charts\ngeom_bar(): Bar charts\ngeom_histogram(): Histograms\ngeom_boxplot(): Boxplots\ngeom_smooth(): Trend lines\ngeom_density(): Density plots\nMany more!"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#geom_bar-vs-geom_col",
+    "href": "slides/07-layers/07-layers.html#geom_bar-vs-geom_col",
+    "title": "ggplot2 layers",
+    "section": "geom_bar vs geom_col",
+    "text": "geom_bar vs geom_col\n\ngeom_bar() uses stat_count() by default to count the number of observations for each category\n\n\nggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar()"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#changing-the-stat-argument",
+    "href": "slides/07-layers/07-layers.html#changing-the-stat-argument",
+    "title": "ggplot2 layers",
+    "section": "Changing the stat argument",
+    "text": "Changing the stat argument\n\nYou can change the statistical transformation used by a geom with the stat argument…\n\n\nflights |&gt;\n  count(carrier) |&gt; \n  ggplot(mapping = aes(x = carrier, y = n)) +\n    geom_bar(stat = \"identity\")"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#changing-the-stat",
+    "href": "slides/07-layers/07-layers.html#changing-the-stat",
+    "title": "ggplot2 layers",
+    "section": "Changing the stat",
+    "text": "Changing the stat\n\nUsing after_stat() to modify computed variables from a stat\n\n\nggplot(data = flights) +\n  geom_bar(mapping = aes(x = carrier, y = after_stat(prop), group = 1)) +\n  labs(y = \"Proportion\")"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#practice",
+    "href": "slides/07-layers/07-layers.html#practice",
+    "title": "ggplot2 layers",
+    "section": "Practice",
+    "text": "Practice\nLet’s try to overlay a density plot on top of a histogram of dep_delay…"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#overplotting",
+    "href": "slides/07-layers/07-layers.html#overplotting",
+    "title": "ggplot2 layers",
+    "section": "Overplotting",
+    "text": "Overplotting\n\nOverplotting: When many points overlap in a scatterplot, making it hard to see the distribution of points\nCommon solution: Use transparency with alpha aesthetic\nAnother solution: Use position adjustments to spread out points"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#jittering-points",
+    "href": "slides/07-layers/07-layers.html#jittering-points",
+    "title": "ggplot2 layers",
+    "section": "Jittering points",
+    "text": "Jittering points\n\nlibrary(patchwork)\np1 &lt;- ggplot(flights, aes(x = month, y = dep_delay)) +\n  geom_point()\np2 &lt;- ggplot(flights, aes(x = month, y = dep_delay)) +\n  geom_jitter()\np1 + p2"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#bar-chart-adjustments",
+    "href": "slides/07-layers/07-layers.html#bar-chart-adjustments",
+    "title": "ggplot2 layers",
+    "section": "Bar chart adjustments",
+    "text": "Bar chart adjustments\nFor bar charts, you can use position to change how bars are arranged.\n\nstack (default): Stack bars on top of each other.\nfill: Stack bars, but standardize to have the same height. Good for comparing proportions.\ndodge: Place bars next to each other."
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#bar-chart-adjustments-1",
+    "href": "slides/07-layers/07-layers.html#bar-chart-adjustments-1",
+    "title": "ggplot2 layers",
+    "section": "Bar chart adjustments",
+    "text": "Bar chart adjustments\n\np1 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"stack\")\np2 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"fill\")\np3 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"dodge\") +\n  labs(title = \"dodge\")"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#bar-chart-stacked",
+    "href": "slides/07-layers/07-layers.html#bar-chart-stacked",
+    "title": "ggplot2 layers",
+    "section": "Bar chart: Stacked",
+    "text": "Bar chart: Stacked\n\np1"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#bar-chart-standardized",
+    "href": "slides/07-layers/07-layers.html#bar-chart-standardized",
+    "title": "ggplot2 layers",
+    "section": "Bar chart: Standardized",
+    "text": "Bar chart: Standardized\n\np2"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#bar-chart-dodged",
+    "href": "slides/07-layers/07-layers.html#bar-chart-dodged",
+    "title": "ggplot2 layers",
+    "section": "Bar chart: Dodged",
+    "text": "Bar chart: Dodged\n\np3"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#facet_wrap-and-facet_grid",
+    "href": "slides/07-layers/07-layers.html#facet_wrap-and-facet_grid",
+    "title": "ggplot2 layers",
+    "section": "facet_wrap and facet_grid",
+    "text": "facet_wrap and facet_grid\n\nFacets allow you to break your plot into subplots based on a categorical variable.\nfacet_wrap: Creates a series of plots wrapped into a rectangle\nfacet_grid: Creates a grid of plots based on two categorical variables"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#practice-1",
+    "href": "slides/07-layers/07-layers.html#practice-1",
+    "title": "ggplot2 layers",
+    "section": "Practice",
+    "text": "Practice\n\nLet’s visualize the relationship between origin, carrier, dep_delay, and arr_delay using facets!"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#flipping-coordinates",
+    "href": "slides/07-layers/07-layers.html#flipping-coordinates",
+    "title": "ggplot2 layers",
+    "section": "Flipping coordinates",
+    "text": "Flipping coordinates\n\np1 &lt;- ggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar()\n\np2 &lt;- ggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar() +\n  coord_flip()\np1 + p2"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#the-layered-grammar-in-summary",
+    "href": "slides/07-layers/07-layers.html#the-layered-grammar-in-summary",
+    "title": "ggplot2 layers",
+    "section": "The layered grammar in summary",
+    "text": "The layered grammar in summary\n#| eval: false\n`ggplot(data = &lt;DATA&gt;) +`\n`  &lt;GEOM_FUNCTION&gt;(`\n`    mapping = aes(&lt;AESTHETIC_MAPPINGS&gt;),`\n`    stat = &lt;STAT&gt;,`\n`    position = &lt;POSITION&gt;`\n`  ) +`\n`  &lt;COORDINATE_SYSTEM&gt; +`\n`  &lt;FACET_FUNCTION&gt;`"
+  },
+  {
+    "objectID": "slides/07-layers/07-layers.html#do-next",
+    "href": "slides/07-layers/07-layers.html#do-next",
+    "title": "ggplot2 layers",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 9: Layers from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 9” or work through some of the exercises in the text.\nMove on to Lecture 08."
+  },
+  {
+    "objectID": "slides/15-datetimes/15-datetimes.html#working-with-dates-and-times",
+    "href": "slides/15-datetimes/15-datetimes.html#working-with-dates-and-times",
+    "title": "Dates and Times",
+    "section": "Working with Dates and Times",
+    "text": "Working with Dates and Times\n\nDates and times can be complex due to daylight saving time (DST), time zones, and all the different formats that dates can come in\nDates are a very special kind of data: they are kind of “quantitative” but also kind of “categorical/ordinal”\nThe lubridate package in R makes working with dates and times easier"
+  },
+  {
+    "objectID": "slides/15-datetimes/15-datetimes.html#lubridate",
+    "href": "slides/15-datetimes/15-datetimes.html#lubridate",
+    "title": "Dates and Times",
+    "section": "lubridate",
+    "text": "lubridate\n\nPart of the core tidyverse.\nProvides functions for parsing, manipulating, and performing arithmetic with date-time data."
+  },
+  {
+    "objectID": "slides/15-datetimes/15-datetimes.html#from-strings",
+    "href": "slides/15-datetimes/15-datetimes.html#from-strings",
+    "title": "Dates and Times",
+    "section": "From Strings",
+    "text": "From Strings\n\nlubridate has helper functions that parse dates by identifying the order of year, month, and day components.\nFunctions are named after the order of components: ymd(), mdy(), dmy(), etc.\n\n\nymd(\"2017-01-31\")\n\n[1] \"2017-01-31\"\n\nmdy(\"January 31st, 2017\")\n\n[1] \"2017-01-31\"\n\ndmy(\"31-Jan-2017\")\n\n[1] \"2017-01-31\"\n\n\n\nFor date-times, add _hms, _hm, or _h.\n\n\nymd_hms(\"2017-01-31 20:11:59\")\n\n[1] \"2017-01-31 20:11:59 UTC\""
+  },
+  {
+    "objectID": "slides/15-datetimes/15-datetimes.html#from-components",
+    "href": "slides/15-datetimes/15-datetimes.html#from-components",
+    "title": "Dates and Times",
+    "section": "From Components",
+    "text": "From Components\n\nUse make_date() for dates and make_datetime() for date-times from individual components.\nLet’s do this with the flights data!"
+  },
+  {
+    "objectID": "slides/15-datetimes/15-datetimes.html#accessing-components",
+    "href": "slides/15-datetimes/15-datetimes.html#accessing-components",
+    "title": "Dates and Times",
+    "section": "Accessing Components",
+    "text": "Accessing Components\n\nFunctions like year(), month(), mday(), wday(), hour(), minute(), and second() extract components.\n\n\ndatetime &lt;- ymd_hms(\"2026-07-08 12:34:56\")\nyear(datetime)\n\n[1] 2026\n\nmonth(datetime, label = TRUE)\n\n[1] Jul\n12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; ... &lt; Dec\n\nwday(datetime, label = TRUE, abbr = FALSE)\n\n[1] Wednesday\n7 Levels: Sunday &lt; Monday &lt; Tuesday &lt; Wednesday &lt; Thursday &lt; ... &lt; Saturday"
+  },
+  {
+    "objectID": "slides/15-datetimes/15-datetimes.html#modifying-components",
+    "href": "slides/15-datetimes/15-datetimes.html#modifying-components",
+    "title": "Dates and Times",
+    "section": "Modifying Components",
+    "text": "Modifying Components\n\nYou can also set components using the same accessor functions.\n\n\ndatetime &lt;- ymd_hms(\"2026-07-08 12:34:56\")\nyear(datetime) &lt;- 2030\ndatetime\n\n[1] \"2030-07-08 12:34:56 UTC\"\n\n\n\nupdate() can modify multiple components.\n\n\nupdate(datetime, year = 2030, month = 2, mday = 2)\n\n[1] \"2030-02-02 12:34:56 UTC\""
+  },
+  {
+    "objectID": "slides/15-datetimes/15-datetimes.html#durations",
+    "href": "slides/15-datetimes/15-datetimes.html#durations",
+    "title": "Dates and Times",
+    "section": "Durations",
+    "text": "Durations\n\nRepresent an exact number of seconds.\nCreated with functions like dseconds(), dminutes(), dhours(), ddays().\n\n\nddays(1)\n\n[1] \"86400s (~1 days)\"\n\ndyears(1)\n\n[1] \"31557600s (~1 years)\"\n\n\n\nAdding a duration of a day can sometimes lead to unexpected results due to DST."
+  },
+  {
+    "objectID": "slides/15-datetimes/15-datetimes.html#periods",
+    "href": "slides/15-datetimes/15-datetimes.html#periods",
+    "title": "Dates and Times",
+    "section": "Periods",
+    "text": "Periods\n\nRepresent human units like weeks and months.\nMore intuitive for arithmetic.\n\n\none_am &lt;- ymd_hms(\"2026-03-08 01:00:00\", tz = \"America/New_York\")\none_am + ddays(1) # duration\n\n[1] \"2026-03-09 02:00:00 EDT\"\n\none_am + days(1)  # period\n\n[1] \"2026-03-09 01:00:00 EDT\""
+  },
+  {
+    "objectID": "slides/15-datetimes/15-datetimes.html#intervals",
+    "href": "slides/15-datetimes/15-datetimes.html#intervals",
+    "title": "Dates and Times",
+    "section": "Intervals",
+    "text": "Intervals\n\nRepresent a start and end point.\nUseful for calculating the exact length of a time span in human units.\n\n\ny2024 &lt;- ymd(\"2024-01-01\") %--% ymd(\"2025-01-01\")\ny2024 / days(1)\n\n[1] 366"
+  },
+  {
+    "objectID": "slides/15-datetimes/15-datetimes.html#iana-time-zones",
+    "href": "slides/15-datetimes/15-datetimes.html#iana-time-zones",
+    "title": "Dates and Times",
+    "section": "IANA Time Zones",
+    "text": "IANA Time Zones\n\nR uses IANA time zones, like \"America/New_York\".\nSys.timezone() gives your current time zone.\nOlsonNames() lists all available time zone names."
+  },
+  {
+    "objectID": "slides/15-datetimes/15-datetimes.html#changing-time-zones",
+    "href": "slides/15-datetimes/15-datetimes.html#changing-time-zones",
+    "title": "Dates and Times",
+    "section": "Changing Time Zones",
+    "text": "Changing Time Zones\n\nwith_tz(): changes how a time is displayed without changing the instant.\nforce_tz(): changes the instant in time.\n\n\nx1 &lt;- ymd_hms(\"2024-06-01 12:00:00\", tz = \"America/New_York\")\nwith_tz(x1, \"Europe/Paris\")\n\n[1] \"2024-06-01 18:00:00 CEST\"\n\nforce_tz(x1, \"Europe/Paris\")\n\n[1] \"2024-06-01 12:00:00 CEST\""
+  },
+  {
+    "objectID": "slides/15-datetimes/15-datetimes.html#practice",
+    "href": "slides/15-datetimes/15-datetimes.html#practice",
+    "title": "Dates and Times",
+    "section": "Practice!",
+    "text": "Practice!\nLet’s do some practice!"
+  },
+  {
+    "objectID": "slides/15-datetimes/15-datetimes.html#do-next",
+    "href": "slides/15-datetimes/15-datetimes.html#do-next",
+    "title": "Dates and Times",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 17: DateTimes from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 17” or work through some of the exercises in the text.\nThat’s it for today! See you tomorrow!"
+  },
+  {
+    "objectID": "slides/03-basics-of-R/03-basics-of-R.html#notebooklm",
+    "href": "slides/03-basics-of-R/03-basics-of-R.html#notebooklm",
+    "title": "R Basics",
+    "section": "NotebookLM",
+    "text": "NotebookLM\n\nNotebookLM is a Google AI tool that helps you learn from your documents.\nI’ve created a notebook for this course that you can use to ask questions about the material.\nHere is a lecture about Chapter 2 of the text from NotebookLM"
+  },
+  {
+    "objectID": "slides/03-basics-of-R/03-basics-of-R.html#do-next",
+    "href": "slides/03-basics-of-R/03-basics-of-R.html#do-next",
+    "title": "R Basics",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 2- Workflow: basics from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 2” or work through some of the exercises in the text.\nMove on to Lecture 04."
+  },
+  {
+    "objectID": "slides/04-first-transformations/04-first-transformations.html#this-lesson",
+    "href": "slides/04-first-transformations/04-first-transformations.html#this-lesson",
+    "title": "First Transformations",
     "section": "This lesson",
-    "text": "This lesson\n\nDefine “tidy data”\nLearn how to use tidyr to make data tidy\n\npivot_longer() for lengthening data\npivot_wider() for widening data"
+    "text": "This lesson\n\nIntroduce data transformation with dplyr\nWork through two scenarios involving transforming a single data frame"
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#what-is-tidy-data",
-    "href": "slides/05-data-tidying/05-data-tidying.html#what-is-tidy-data",
-    "title": "Data Tidying",
-    "section": "What is tidy data?",
-    "text": "What is tidy data?\nTidy data is a consistent way of structuring datasets that makes them easier to work with. A dataset is tidy if it follows three rules:\n\nEach variable has its own column.\nEach observation has its own row.\nEach value has its own cell.\n\nThis structure is a standard in the tidyverse."
+    "objectID": "slides/04-first-transformations/04-first-transformations.html#data-nycflights13",
+    "href": "slides/04-first-transformations/04-first-transformations.html#data-nycflights13",
+    "title": "First Transformations",
+    "section": "Data: nycflights13",
+    "text": "Data: nycflights13\n\nInstall nycflights13 package if you haven’t already\nLoad tidyverse and nycflights13\nnycflights113 contains on-time data for all flights that departed NYC in 2013\nLet’s take a quick look at the data set!"
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#setup",
-    "href": "slides/05-data-tidying/05-data-tidying.html#setup",
-    "title": "Data Tidying",
+    "objectID": "slides/04-first-transformations/04-first-transformations.html#setup",
+    "href": "slides/04-first-transformations/04-first-transformations.html#setup",
+    "title": "First Transformations",
     "section": "Setup",
-    "text": "Setup\nWe will be using functions from the tidyr package, which is part of the tidyverse.\n\n# load packages\nlibrary(tidyverse)"
+    "text": "Setup\n\n# load packages\nlibrary(tidyverse)\nlibrary(nycflights13)"
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#lengthening-data-with-pivot_longer",
-    "href": "slides/05-data-tidying/05-data-tidying.html#lengthening-data-with-pivot_longer",
-    "title": "Data Tidying",
-    "section": "Lengthening data with pivot_longer()",
-    "text": "Lengthening data with pivot_longer()\n\nWide Format: column names are actually values of a variable:\n\n\nrelig_income |&gt; head()\n\n# A tibble: 6 × 11\n  religion  `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`\n  &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n1 Agnostic       27        34        60        81        76       137        122\n2 Atheist        12        27        37        52        35        70         73\n3 Buddhist       27        21        30        34        33        58         62\n4 Catholic      418       617       732       670       638      1116        949\n5 Don’t kn…      15        14        15        11        10        35         21\n6 Evangeli…     575       869      1064       982       881      1486        949\n# ℹ 3 more variables: `$100-150k` &lt;dbl&gt;, `&gt;150k` &lt;dbl&gt;,\n#   `Don't know/refused` &lt;dbl&gt;\n\n\nThis is not tidy. The income brackets are variable names, not a variable."
+    "objectID": "slides/04-first-transformations/04-first-transformations.html#dplyr-101",
+    "href": "slides/04-first-transformations/04-first-transformations.html#dplyr-101",
+    "title": "First Transformations",
+    "section": "dplyr 101",
+    "text": "dplyr 101\n\ndplyr is a package in the tidyverse, designed for data manipulation\nProvides a set of functions (verbs) that help you transform data frames\nCommon properties of a dplyr verb:\n\nTakes a data frame as the first argument\nReturns a data frame as output\nAdditional arguments specify how to options for that verb\n\nIn practice: want to chain together lots of verbs to perform complex transformations\nUse the pipe operator (|&gt;) to chain together multiple verbs"
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_longer",
-    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_longer",
-    "title": "Data Tidying",
-    "section": "Using pivot_longer()",
-    "text": "Using pivot_longer()\n\n\n\nGoal: transform this so we have three columns: religion, income, and count.\nUse pivot_longer() to do this.\n\n\ntidy_relig_income &lt;- relig_income |&gt; \n  pivot_longer(\n    cols = !religion, \n    names_to = \"income\", \n    values_to = \"count\"\n  )\n\ntidy_relig_income |&gt; head()\n\n# A tibble: 6 × 3\n  religion income  count\n  &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt;\n1 Agnostic &lt;$10k      27\n2 Agnostic $10-20k    34\n3 Agnostic $20-30k    60\n4 Agnostic $30-40k    81\n5 Agnostic $40-50k    76\n6 Agnostic $50-75k   137\n\n\n\n\ncols: The columns to pivot into longer format. !religion means all columns except religion.\nnames_to: The name of the new column that will contain the names of the original columns.\nvalues_to: The name of the new column that will contain the values from the original columns."
+    "objectID": "slides/04-first-transformations/04-first-transformations.html#chaining-with-the-pipe-operator",
+    "href": "slides/04-first-transformations/04-first-transformations.html#chaining-with-the-pipe-operator",
+    "title": "First Transformations",
+    "section": "Chaining with the pipe operator",
+    "text": "Chaining with the pipe operator\n\nThe pipe operator (|&gt;) takes the output of one expression and “pipes” it as the first argument to the next expression\n\nWhen reading code with pipes use the phrase “and then” to understand the sequence of operations\n\nMore on this in a bit"
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#practice",
-    "href": "slides/05-data-tidying/05-data-tidying.html#practice",
-    "title": "Data Tidying",
+    "objectID": "slides/04-first-transformations/04-first-transformations.html#types-of-verbs",
+    "href": "slides/04-first-transformations/04-first-transformations.html#types-of-verbs",
+    "title": "First Transformations",
+    "section": "Types of verbs",
+    "text": "Types of verbs\ndplyr verbs can be grouped into a few categories based on what they do to the data frame:\n\nRows\nColumns\nGroups\nTables (not today)"
+  },
+  {
+    "objectID": "slides/04-first-transformations/04-first-transformations.html#verbs-that-act-on-rows",
+    "href": "slides/04-first-transformations/04-first-transformations.html#verbs-that-act-on-rows",
+    "title": "First Transformations",
+    "section": "Verbs that act on rows",
+    "text": "Verbs that act on rows\n\nfilter(): keep rows that meet certain criteria\n\nYou can use &gt;, &lt;, ==, !=, &gt;=, &lt;=, %in% for comparisons\nYou can also use & (and), | (or), and ! (not) to combine multiple conditions\n\narrange(): reorder rows\ndistinct(): keep only unique rows\nslice_ function: slice_head(), slice_tail(), slice_sample(), slice_min(), slice_max()"
+  },
+  {
+    "objectID": "slides/04-first-transformations/04-first-transformations.html#practice",
+    "href": "slides/04-first-transformations/04-first-transformations.html#practice",
+    "title": "First Transformations",
     "section": "Practice",
-    "text": "Practice\nLet’s practice with another dataset: billboard."
+    "text": "Practice\nLet’s do the following:\n\nUse filter to keep only flight in January\nUse arrange to sort by dep_delay (departure delay)\nUse distinct to keep only unique carrier values\nLet’s work through Exercise 1 from the textbook"
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#widening-data-with-pivot_wider",
-    "href": "slides/05-data-tidying/05-data-tidying.html#widening-data-with-pivot_wider",
-    "title": "Data Tidying",
-    "section": "Widening data with pivot_wider()",
-    "text": "Widening data with pivot_wider()\npivot_wider() is the opposite of pivot_longer(). It’s used when an observation is scattered across multiple rows.\n\nfish_encounters |&gt; head()\n\n# A tibble: 6 × 3\n  fish  station  seen\n  &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;\n1 4842  Release     1\n2 4842  I80_1       1\n3 4842  Lisbon      1\n4 4842  Rstr        1\n5 4842  Base_TD     1\n6 4842  BCE         1\n\n\n\nOne observation = one fishing station\nfish_encounters has two rows for each station: one for when a fish was seen and one for when it wasn’t\nstation column contains variable names\nseen column contains(0/1) values"
+    "objectID": "slides/04-first-transformations/04-first-transformations.html#verbs-that-act-on-columns",
+    "href": "slides/04-first-transformations/04-first-transformations.html#verbs-that-act-on-columns",
+    "title": "First Transformations",
+    "section": "Verbs that act on columns",
+    "text": "Verbs that act on columns\n\nmutate(): create new columns or modify and combine existing columns\nselect(): keep only specified columns\nrename(): rename columns"
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider",
-    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider",
-    "title": "Data Tidying",
-    "section": "Using pivot_wider()",
-    "text": "Using pivot_wider()\nGoal: one row per station, with columns indicating whether fish was seen or not.\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1    NA    NA    NA    NA    NA    NA\n5 4847        1     1      1    NA      NA    NA    NA    NA    NA    NA    NA\n6 4848        1     1      1     1      NA    NA    NA    NA    NA    NA    NA\n\n\nProblem: NA values where there should be zeros, can fix this with values_fill."
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider-with-values_fill",
-    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider-with-values_fill",
-    "title": "Data Tidying",
-    "section": "Using pivot_wider() with values_fill",
-    "text": "Using pivot_wider() with values_fill\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen,\n    values_fill = 0\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1     0     0     0     0     0     0\n5 4847        1     1      1     0       0     0     0     0     0     0     0\n6 4848        1     1      1     1       0     0     0     0     0     0     0\n\n\n\nnames_from: The column to get the new column names from.\nvalues_from: The column to get the cell values from.\nvalues_fill: A value to replace NAs with."
-  },
-  {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#practice-1",
-    "href": "slides/05-data-tidying/05-data-tidying.html#practice-1",
-    "title": "Data Tidying",
+    "objectID": "slides/04-first-transformations/04-first-transformations.html#practice-1",
+    "href": "slides/04-first-transformations/04-first-transformations.html#practice-1",
+    "title": "First Transformations",
     "section": "Practice",
-    "text": "Practice\nLet’s practice with cms_patient_care"
+    "text": "Practice\nLet’s do the following:\n\nUse mutate to create a new column speed (distance / air_time * 60)\nUse select to drop the tailnum column\nUse select to keep only flight, carrier, and speed\nUse rename to rename speed to avg_speed\nUse relocate to move avg_speed to be the first column\nLet’s work through Exercise 1 from the textbook"
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#summary",
-    "href": "slides/05-data-tidying/05-data-tidying.html#summary",
-    "title": "Data Tidying",
-    "section": "Summary",
-    "text": "Summary\n\nTidy data is a standard format that makes data analysis easier.\nUse pivot_longer() when your column names are actually values of a variable (to make data longer and narrower).\nUse pivot_wider() when an observation is scattered across multiple rows (to make data wider and shorter).\nYou will often need to use pivot_longer() and pivot_wider() when preparing data for plotting\n\nThese two functions are the foundation of data tidying in R."
+    "objectID": "slides/04-first-transformations/04-first-transformations.html#aggregating-data-verbs-that-act-on-groups",
+    "href": "slides/04-first-transformations/04-first-transformations.html#aggregating-data-verbs-that-act-on-groups",
+    "title": "First Transformations",
+    "section": "Aggregating data: verbs that act on groups",
+    "text": "Aggregating data: verbs that act on groups\n\nWhat you frequently want to do is summarize data by groups\n\ngroup_by(): specify one or more columns to group by\n\nCreates a new data frame where rows are grouped by unique combinations of the grouping columns\nSubsequent verbs will operate on each group separately\nUse ungroup() to remove grouping\n\nsummarize(): compute summary statistics for each group"
   },
   {
-    "objectID": "slides/05-data-tidying/05-data-tidying.html#do-next",
-    "href": "slides/05-data-tidying/05-data-tidying.html#do-next",
-    "title": "Data Tidying",
-    "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 5: Data Tidying from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 5” or work through some of the exercises in the text.\nComplete Lecture 6."
-  },
-  {
-    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#before-we-start",
-    "href": "slides/01-intro-to-R/01-intro-to-R.html#before-we-start",
-    "title": "R Basics",
-    "section": "Before we start…",
-    "text": "Before we start…\n\nMake sure you have done the following:\n\nDownloaded and installed R\nDownloaded and installed Positron (or R Studio)\nCreated a Gemini Pro AI account (free for students)"
-  },
-  {
-    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#what-is-r",
-    "href": "slides/01-intro-to-R/01-intro-to-R.html#what-is-r",
-    "title": "R Basics",
-    "section": "What is R?",
-    "text": "What is R?\n\nR is a statistical programming language\n\nInspired by the S programming language developed at Bell Labs in the 1970s\nCreated by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand in the early 1990s for teaching statistics\nNow one of the most popular programming languages for data science and statistics\n\nR is free and open source\n\nAnyone can download and use R for free\nAnyone can contribute to the development of R and its packages"
-  },
-  {
-    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#r-is-not-the-same-as-r-studio-r-markdown-or-positron",
-    "href": "slides/01-intro-to-R/01-intro-to-R.html#r-is-not-the-same-as-r-studio-r-markdown-or-positron",
-    "title": "R Basics",
-    "section": "R is not the same as R Studio, R Markdown, or Positron",
-    "text": "R is not the same as R Studio, R Markdown, or Positron\n\nR is the programming language\nR Studio (now Positron) is an integrated development environment (IDE) for R\n\nProvides a user-friendly interface for writing and running R code\n\n\n\n\n\nSource: Statistical Inference via Data Science"
-  },
-  {
-    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#writing-scripts-in-r",
-    "href": "slides/01-intro-to-R/01-intro-to-R.html#writing-scripts-in-r",
-    "title": "R Basics",
-    "section": "Writing Scripts in R",
-    "text": "Writing Scripts in R\n\nLet’s open up a script and run some R code!\n\nRunning R from the console\nRunning R from a script file"
-  },
-  {
-    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#r-packages",
-    "href": "slides/01-intro-to-R/01-intro-to-R.html#r-packages",
-    "title": "R Basics",
-    "section": "R Packages",
-    "text": "R Packages\n\nR has a rich ecosystem of packages that extend its functionality\n\nYou can install packages using install.packages(\"package_name\") (only do this once)\nLoad packages into your R session using library(package_name) (do this every time you start a new R session)\n\nAn important package for this class:\n\ntidyverse: A collection of packages for data manipulation, visualization, and modeling\n\nggplot2: A package for creating graphics using the Grammar of Graphics\ndplyr: A package for data manipulation\n\n\nLet’s install and load tidyverse"
-  },
-  {
-    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#palmer-penguins-dataset",
-    "href": "slides/01-intro-to-R/01-intro-to-R.html#palmer-penguins-dataset",
-    "title": "R Basics",
-    "section": "Palmer Penguins Dataset",
-    "text": "Palmer Penguins Dataset\n\nInstall the palmerpenguins package\nContains dataset on the famous Palmer Penguins: penguin species, island in Palmer Archipelago, size (flipper length, body mass, bill dimensions), and sex.\nExplore more with ?penguins"
-  },
-  {
-    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#important-vocabulary",
-    "href": "slides/01-intro-to-R/01-intro-to-R.html#important-vocabulary",
-    "title": "R Basics",
-    "section": "Important Vocabulary",
-    "text": "Important Vocabulary\n\nData frame: A table-like structure in R that holds data (penguins)\n\nIn the tidyverse data frames are referred to as tibbles\n\nVariable: is a quantity, quality, or property that you can measure (e.g. species, bill_length_mm, island)\nObservation or Data point: a single object that has been measured (e.g. one of the penguins in the data set)\nValue: the entry for a particular variable and observation (e.g. for the first penguin, the value of species is “Adelie”, the value of bill_length_mm is 39.1)\nTabular Data: data organized in rows and columns (like a spreadsheet or data frame)\nTidy Data: tabular data where each observation is a row, each variable is a column, and each type of observational unit forms a table"
-  },
-  {
-    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#taking-a-quick-look-at-penguins",
-    "href": "slides/01-intro-to-R/01-intro-to-R.html#taking-a-quick-look-at-penguins",
-    "title": "R Basics",
-    "section": "Taking a quick look at penguins",
-    "text": "Taking a quick look at penguins\n\nglimpse gives a quick overview of the data frame\nhead shows the first few rows of the data frame\ntail shows the last few rows of the data frame"
-  },
-  {
-    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#do-next",
-    "href": "slides/01-intro-to-R/01-intro-to-R.html#do-next",
-    "title": "R Basics",
-    "section": "Do Next",
-    "text": "Do Next\n\nRead the Introduction of R for Data Science\nPost any question you have to the HW channel in our Team.\nMove on to Lecture 02."
-  },
-  {
-    "objectID": "slides/12-strings/12-strings.html#working-with-strings",
-    "href": "slides/12-strings/12-strings.html#working-with-strings",
-    "title": "Strings",
-    "section": "Working with Strings",
-    "text": "Working with Strings\n\nText data, or “strings”, are very common.\nThe stringr package, part of the tidyverse, provides a modern and consistent interface for working with strings.\nAll functions in stringr start with str_."
-  },
-  {
-    "objectID": "slides/12-strings/12-strings.html#data-idaho-naturalization",
-    "href": "slides/12-strings/12-strings.html#data-idaho-naturalization",
-    "title": "Strings",
-    "section": "Data: Idaho Naturalization",
-    "text": "Data: Idaho Naturalization\n\nWe’re going to use Naturalization data from the Idaho State Archives\nThis dataset was assembled by Dr. Rachel Miller\nLink to Google Sheet\nLet’s load the data"
-  },
-  {
-    "objectID": "slides/12-strings/12-strings.html#basics",
-    "href": "slides/12-strings/12-strings.html#basics",
-    "title": "Strings",
-    "section": "Basics",
-    "text": "Basics\n\nYou can create strings with single (') or double (\") quotes.\nTo include a literal quote in your string, you need to “escape” it with a \\.\nLet’s work through a few examples…"
-  },
-  {
-    "objectID": "slides/12-strings/12-strings.html#combining-strings",
-    "href": "slides/12-strings/12-strings.html#combining-strings",
-    "title": "Strings",
-    "section": "Combining Strings",
-    "text": "Combining Strings\n\nstr_c() combines multiple vectors into a single character vector.\nstr_glue() from the glue package is great for embedding R code inside a string.\nWrap your R code in {}.\nLet’s create a full_name and greeting column using both functions."
-  },
-  {
-    "objectID": "slides/12-strings/12-strings.html#separating-into-columns",
-    "href": "slides/12-strings/12-strings.html#separating-into-columns",
-    "title": "Strings",
-    "section": "Separating into Columns",
-    "text": "Separating into Columns\n\ntidyr::separate_wider_delim() splits a column into multiple new columns based on a delimiter.\nYou must provide names for the new columns.\n\n\ndf &lt;- tibble(x = c(\"a_b_1\", \"c_d_2\", \"e_f_3\"))\ndf |&gt; separate_wider_delim(\n  x,\n  delim = \"_\",\n  names = c(\"first\", \"second\", \"third\")\n)\n\n# A tibble: 3 × 3\n  first second third\n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;\n1 a     b      1    \n2 c     d      2    \n3 e     f      3"
-  },
-  {
-    "objectID": "slides/12-strings/12-strings.html#separating-into-rows",
-    "href": "slides/12-strings/12-strings.html#separating-into-rows",
-    "title": "Strings",
-    "section": "Separating into Rows",
-    "text": "Separating into Rows\n\ntidyr::separate_longer_delim() splits a column into multiple new rows.\nUseful when each cell contains a varying number of items.\n\n\ndf &lt;- tibble(x = 1:2, y = c(\"a,b\", \"c,d,e\"))\ndf |&gt; separate_longer_delim(y, delim = \",\")\n\n# A tibble: 5 × 2\n      x y    \n  &lt;int&gt; &lt;chr&gt;\n1     1 a    \n2     1 b    \n3     2 c    \n4     2 d    \n5     2 e"
-  },
-  {
-    "objectID": "slides/12-strings/12-strings.html#practice",
-    "href": "slides/12-strings/12-strings.html#practice",
-    "title": "Strings",
+    "objectID": "slides/04-first-transformations/04-first-transformations.html#practice-2",
+    "href": "slides/04-first-transformations/04-first-transformations.html#practice-2",
+    "title": "First Transformations",
     "section": "Practice",
-    "text": "Practice\nLet’s extract the AR codes from the Naturalization data!"
+    "text": "Practice\n\nLet’s do the following:\n\nUse group_by to group by carrier\nUse summarize to compute the average dep_delay for each carrier\nArrange the results in descending order of average departure delay\nLet’s work through Exercise 3 from the textbook"
   },
   {
-    "objectID": "slides/12-strings/12-strings.html#length",
-    "href": "slides/12-strings/12-strings.html#length",
-    "title": "Strings",
-    "section": "Length",
-    "text": "Length\n\nstr_length() gives you the number of characters in a string.\n\n\nstr_length(c(\"a\", \"R for data science\", NA))\n\n[1]  1 18 NA"
-  },
-  {
-    "objectID": "slides/12-strings/12-strings.html#subsetting",
-    "href": "slides/12-strings/12-strings.html#subsetting",
-    "title": "Strings",
-    "section": "Subsetting",
-    "text": "Subsetting\n\nstr_sub() extracts a part of a string.\nYou provide the start and end positions (inclusive).\nNegative numbers count from the end of the string.\n\n\nx &lt;- c(\"Apple\", \"Banana\", \"Pear\")\nstr_sub(x, 1, 3)\n\n[1] \"App\" \"Ban\" \"Pea\"\n\nstr_sub(x, -2, -1)\n\n[1] \"le\" \"na\" \"ar\""
-  },
-  {
-    "objectID": "slides/12-strings/12-strings.html#case",
-    "href": "slides/12-strings/12-strings.html#case",
-    "title": "Strings",
-    "section": "Case",
-    "text": "Case\n\nstr_to_lower(): convert to lowercase.\nstr_to_upper(): convert to uppercase.\nstr_to_title(): convert to title case.\n\n\nstr_to_lower(\"I am shouting.\")\n\n[1] \"i am shouting.\"\n\nstr_to_title(\"a tale of two cities\")\n\n[1] \"A Tale Of Two Cities\""
-  },
-  {
-    "objectID": "slides/12-strings/12-strings.html#whitespace",
-    "href": "slides/12-strings/12-strings.html#whitespace",
-    "title": "Strings",
-    "section": "Whitespace",
-    "text": "Whitespace\n\nstr_trim() removes whitespace from the start and end of a string.\nstr_squish() also removes whitespace from the start and end, and reduces any internal whitespace to a single space.\n\n\ntext &lt;- \"  this   has  a lot of   whitespace   \"\nstr_trim(text)\n\n[1] \"this   has  a lot of   whitespace\"\n\nstr_squish(text)\n\n[1] \"this has a lot of whitespace\""
-  },
-  {
-    "objectID": "slides/12-strings/12-strings.html#strings",
-    "href": "slides/12-strings/12-strings.html#strings",
-    "title": "Strings",
-    "section": "Strings",
-    "text": "Strings\n\nThe stringr package provides a consistent set of tools for working with strings.\nCreate strings with str_c() and str_glue().\nExtract data with tidyr::separate_*() functions.\nManipulate letters with str_length(), str_sub(), str_to_*(), and str_trim()/str_squish().\nThe next step is to master pattern matching with regular expressions."
-  },
-  {
-    "objectID": "slides/12-strings/12-strings.html#do-next",
-    "href": "slides/12-strings/12-strings.html#do-next",
-    "title": "Strings",
+    "objectID": "slides/04-first-transformations/04-first-transformations.html#do-next",
+    "href": "slides/04-first-transformations/04-first-transformations.html#do-next",
+    "title": "First Transformations",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 14: Strings from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 14” or work through some of the exercises in the text.\nMove on the Lecture 13."
+    "text": "Do Next\n\nRead Chapter 3: Data Transformation from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 3” or work through some of the exercises in the text.\nThat’s it for today! See you in class!"
   },
   {
-    "objectID": "slides/13-regex/13-regex.html#regular-expressions-regex",
-    "href": "slides/13-regex/13-regex.html#regular-expressions-regex",
-    "title": "Regular Expressions",
-    "section": "Regular Expressions (Regex)",
-    "text": "Regular Expressions (Regex)\n\nA powerful tool for describing patterns in strings.\nUsed for finding, extracting, and replacing text.\nstringr provides a consistent interface for working with regex."
-  },
-  {
-    "objectID": "slides/13-regex/13-regex.html#str_detect",
-    "href": "slides/13-regex/13-regex.html#str_detect",
-    "title": "Regular Expressions",
-    "section": "str_detect()",
-    "text": "str_detect()\n\nstr_detect() returns TRUE if a pattern is found in a string, FALSE otherwise.\n\n\nx &lt;- c(\"apple\", \"banana\", \"pear\", \"pineapple\", \"naartjie\")\nstr_detect(x, \"an\")\n\n[1] FALSE  TRUE FALSE FALSE FALSE"
-  },
-  {
-    "objectID": "slides/13-regex/13-regex.html#str_count",
-    "href": "slides/13-regex/13-regex.html#str_count",
-    "title": "Regular Expressions",
-    "section": "str_count()",
-    "text": "str_count()\n\nstr_count() counts the number of matches in a string.\n\n\nstr_count(\"banana\", \"a\")\n\n[1] 3"
-  },
-  {
-    "objectID": "slides/13-regex/13-regex.html#str_extract-and-str_extract_all",
-    "href": "slides/13-regex/13-regex.html#str_extract-and-str_extract_all",
-    "title": "Regular Expressions",
-    "section": "str_extract() and str_extract_all()",
-    "text": "str_extract() and str_extract_all()\n\nstr_extract() extracts the first match.\nstr_extract_all() extracts all matches.\n\n\nstr_extract(\"banana\", \"an\")\n\n[1] \"an\"\n\nstr_extract_all(\"banana\", \"an\")\n\n[[1]]\n[1] \"an\" \"an\""
-  },
-  {
-    "objectID": "slides/13-regex/13-regex.html#str_replace-and-str_replace_all",
-    "href": "slides/13-regex/13-regex.html#str_replace-and-str_replace_all",
-    "title": "Regular Expressions",
-    "section": "str_replace() and str_replace_all()",
-    "text": "str_replace() and str_replace_all()\n\nReplaces the first or all matches with a new string.\n\n\nx &lt;- c(\"Dr_Eric_Friedlander\", \"Dr_Brandy_Wiegers\", \"Anthony_Campitelli\")\nstr_replace(x, \"_\", \" \")\n\n[1] \"Dr Eric_Friedlander\" \"Dr Brandy_Wiegers\"   \"Anthony Campitelli\" \n\nstr_replace_all(x, \" \", \" \")\n\n[1] \"Dr_Eric_Friedlander\" \"Dr_Brandy_Wiegers\"   \"Anthony_Campitelli\""
-  },
-  {
-    "objectID": "slides/13-regex/13-regex.html#regex",
-    "href": "slides/13-regex/13-regex.html#regex",
-    "title": "Regular Expressions",
-    "section": "Regex",
-    "text": "Regex\nInstead of inputting literal strings, you can use regex patterns to describe more complex matches.\n\nx &lt;- c(\"Dr_Eric_Friedlander\", \"Dr_Brandy_Wiegers\", \"Anthony_Campitelli\")\n# remove all vowels\nstr_replace_all(x, \"[aeiouAEIOU]\", \"\")\n\n[1] \"Dr_rc_Frdlndr\" \"Dr_Brndy_Wgrs\" \"nthny_Cmptll\""
-  },
-  {
-    "objectID": "slides/13-regex/13-regex.html#anchors",
-    "href": "slides/13-regex/13-regex.html#anchors",
-    "title": "Regular Expressions",
-    "section": "Anchors",
-    "text": "Anchors\n\n^ matches the start of the string.\n$ matches the end of the string.\n\n\nx &lt;- c(\"apple\", \"banana\", \"pear\")\nstr_detect(x, \"^a\")\n\n[1]  TRUE FALSE FALSE\n\nstr_detect(x, \"a$\")\n\n[1] FALSE  TRUE FALSE"
-  },
-  {
-    "objectID": "slides/13-regex/13-regex.html#character-classes",
-    "href": "slides/13-regex/13-regex.html#character-classes",
-    "title": "Regular Expressions",
-    "section": "Character Classes",
-    "text": "Character Classes\n\n. matches any character except a newline.\n\\d matches any digit.\n\\s matches any whitespace.\n[abc] matches a, b, or c.\n[^abc] matches anything except a, b, or c.\n| matches either the expression before or after the |."
-  },
-  {
-    "objectID": "slides/13-regex/13-regex.html#repetition",
-    "href": "slides/13-regex/13-regex.html#repetition",
-    "title": "Regular Expressions",
-    "section": "Repetition",
-    "text": "Repetition\n\n?: 0 or 1 time.\n+: 1 or more times.\n*: 0 or more times.\n{n}: exactly n times.\n{n,}: n or more times.\n{n,m}: between n and m times."
-  },
-  {
-    "objectID": "slides/13-regex/13-regex.html#practice",
-    "href": "slides/13-regex/13-regex.html#practice",
-    "title": "Regular Expressions",
-    "section": "Practice!",
-    "text": "Practice!\nWhat do each of these do?\n\n\"^b.*a$\"\n\"^.{5}$\"\n\"[aeiou]\"\nCreate a regular expression that will match telephone numbers as commonly written in your country."
-  },
-  {
-    "objectID": "slides/13-regex/13-regex.html#for-grouping",
-    "href": "slides/13-regex/13-regex.html#for-grouping",
-    "title": "Regular Expressions",
-    "section": "() for Grouping",
-    "text": "() for Grouping\n\nParentheses create a “capturing group” to extract parts of a match.\n\n\nstr_match(\"apple, banana, pear\", \"([a-z]+), ([a-z]+)\")\n\n     [,1]            [,2]    [,3]    \n[1,] \"apple, banana\" \"apple\" \"banana\""
-  },
-  {
-    "objectID": "slides/13-regex/13-regex.html#back-references",
-    "href": "slides/13-regex/13-regex.html#back-references",
-    "title": "Regular Expressions",
-    "section": "Back References",
-    "text": "Back References\n\n\\1, \\2, etc. refer to previously captured groups.\n\n\nstr_replace(\"abab\", \"(a)(b)\", \"\\\\2\\\\1\")\n\n[1] \"baab\""
-  },
-  {
-    "objectID": "slides/13-regex/13-regex.html#practice-1",
-    "href": "slides/13-regex/13-regex.html#practice-1",
-    "title": "Regular Expressions",
-    "section": "Practice!",
-    "text": "Practice!\nExercise 6 from 15.4.7."
-  },
-  {
-    "objectID": "slides/13-regex/13-regex.html#tidyrseparate_wider_regex",
-    "href": "slides/13-regex/13-regex.html#tidyrseparate_wider_regex",
-    "title": "Regular Expressions",
-    "section": "tidyr::separate_wider_regex()",
-    "text": "tidyr::separate_wider_regex()\n\nSeparates a column into multiple columns using regex with capture groups.\n\n\ndf &lt;- tibble(x = \"123-abc\")\ndf |&gt; separate_wider_regex(x, c(num = \"\\\\d+\", \"-\", chr = \"[a-z]+\"))\n\n# A tibble: 1 × 2\n  num   chr  \n  &lt;chr&gt; &lt;chr&gt;\n1 123   abc"
-  },
-  {
-    "objectID": "slides/13-regex/13-regex.html#fixed",
-    "href": "slides/13-regex/13-regex.html#fixed",
-    "title": "Regular Expressions",
-    "section": "fixed()",
-    "text": "fixed()\n\nUse fixed() to match a literal string without interpreting it as a regex.\n\n\nstr_detect(\"a.b\", fixed(\".\"))\n\n[1] TRUE"
-  },
-  {
-    "objectID": "slides/13-regex/13-regex.html#practice-2",
-    "href": "slides/13-regex/13-regex.html#practice-2",
-    "title": "Regular Expressions",
-    "section": "Practice!",
-    "text": "Practice!\nLet’s extract the AR codes and the county names from the Naturalization data!"
-  },
-  {
-    "objectID": "slides/13-regex/13-regex.html#do-next",
-    "href": "slides/13-regex/13-regex.html#do-next",
-    "title": "Regular Expressions",
-    "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 15: Regular Expression from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 15” or work through some of the exercises in the text.\nThat it for tonight! See you tomorrow."
-  },
-  {
-    "objectID": "course-support.html",
-    "href": "course-support.html",
-    "title": "Course support",
+    "objectID": "course-technology.html",
+    "href": "course-technology.html",
+    "title": "Technology",
     "section": "",
-    "text": "Most of you will need help at some point and we want to make sure you can identify when that is without getting too frustrated and feel comfortable seeking help.",
+    "text": "This page provides you links to getting directions for setting up the technology needed for this course.",
     "crumbs": [
       "Course information",
-      "Support"
+      "Technology"
     ]
   },
   {
-    "objectID": "course-support.html#lectures",
-    "href": "course-support.html#lectures",
-    "title": "Course support",
-    "section": "Lectures",
-    "text": "Lectures\nIf you have a question during lecture or lab, feel free to ask it! There are likely other students with the same question, so by asking you will create a learning opportunity for everyone.",
+    "objectID": "course-technology.html#r-and-positron",
+    "href": "course-technology.html#r-and-positron",
+    "title": "Technology",
+    "section": "R and Positron",
+    "text": "R and Positron\nNote that you must first install R before installing Positron.\n\nR\nFirst install R. You can follow the directions for your operating system on the R Project for Statistical Computing website.\n\n\nPositron\nNext install Positron. You can download Positron from the Positron Download page. Follow the installation instructions for your operating system. If you’d prefer to use RStudio rather than Positron, that is ok with me, but I recommend Positron for this course.",
     "crumbs": [
       "Course information",
-      "Support"
+      "Technology"
     ]
   },
   {
-    "objectID": "course-support.html#office-hours",
-    "href": "course-support.html#office-hours",
-    "title": "Course support",
-    "section": "Office hours",
-    "text": "Office hours\nI am here to help you be successful in the course. You are encouraged to attend office hours during the times posted on the home page to ask questions about the course content and assignments. A lot of questions are most effectively answered in-person, so office hours are a valuable resource. I encourage each and every one of you to take advantage of this resource! Make a pledge to stop by office hours at least once during the first three weeks of class. If you truly have no questions to ask, just stop by and say hi and introduce yourself.",
+    "objectID": "course-technology.html#google-ai-pro",
+    "href": "course-technology.html#google-ai-pro",
+    "title": "Technology",
+    "section": "Google AI Pro",
+    "text": "Google AI Pro\nMany of the things in this course require the use of AI products created by Google. Please sign up for a Google AI Pro account (you may use whatever email address you like). Normally this costs $20/month, but Google is offering it free for students for one year. To sign up for Google AI Pro, go to the Google AI Pro page and follow the instructions to sign up.",
     "crumbs": [
       "Course information",
-      "Support"
+      "Technology"
     ]
   },
   {
-    "objectID": "course-support.html#teams",
-    "href": "course-support.html#teams",
-    "title": "Course support",
-    "section": "Teams",
-    "text": "Teams\nHave a question that can’t wait for office hours? Prefer to write out your question in detail rather than asking in person? The course Team is the best venue for these! There is a chance another student has already asked a similar question, so please check the other posts on Teams before asking a new question. If you know the answer to a question that is posted, I encourage you to respond! Here is a link to the course Team (you should already have access).",
+    "objectID": "course-technology.html#git-github",
+    "href": "course-technology.html#git-github",
+    "title": "Technology",
+    "section": "Git & GitHub",
+    "text": "Git & GitHub\nYou need to create a GitHub account. You may want to use this to show off work to future employers so I recommend using something professional (like your name) as your username. Once you have done this, email it to Dr. Friedlander.\nGitHub provides its pro features free to students. To get these, however, you must be a verified learner. This process requires uploading a picture of your school ID and can take a few days. Please click the Get verified button on this page and complete the verification process.",
     "crumbs": [
       "Course information",
-      "Support"
+      "Technology"
     ]
   },
   {
-    "objectID": "course-support.html#email",
-    "href": "course-support.html#email",
-    "title": "Course support",
-    "section": "Email",
-    "text": "Email\nPlease refrain from emailing any course content questions (those should go to Slack), and only use email for questions about personal matters that may not be appropriate for the public course forum (e.g., illness, accommodations, etc.). For such matters, you may email Dr. Friedlander at efriedlander@collegeofidaho.edu.\nBarring extenuating circumstances, I will respond to CSCI 2025 emails within 48 hours Monday - Friday. Response time may be slower for emails sent Friday evening - Sunday.",
-    "crumbs": [
-      "Course information",
-      "Support"
-    ]
+    "objectID": "classwork/06-tools.html#today",
+    "href": "classwork/06-tools.html#today",
+    "title": "A Menagerie Of Tools",
+    "section": "Today",
+    "text": "Today\n\nQuarto\nJupyter Notebooks\nGit and GitHub\nEnvironment Mangement\nAI (Maybe)"
   },
   {
-    "objectID": "course-support.html#ai-tools",
-    "href": "course-support.html#ai-tools",
-    "title": "Course support",
-    "section": "AI tools",
-    "text": "AI tools\n\nNotebookLM\nThe first tool that may be useful is the course NotebookLM. NotebookLM is a really nice tool provided by Google that allows you to upload course materials (e.g., lecture slides, assignments, readings) and then ask questions about them in natural language as well as generate things like Mind Maps, Audio Overview, Videos, and Flashcards. You can access the NotebookLM for this course here. Note that you’ll need a Google AI Pro account to access this resource. Don’t worry, it’s free for a year for students.\n\n\nRecitation Leader Gem\nAnother tool that you will be asked to use is the Recitation Leader Gem. A Gem is kind of like the Gemini Chat but it is specialized for a particular task. The Recitation Leader Gem is designed to help you practice the material from lectures by generating practice problems based on the course material. You can access the Recitation Leader Gem here. To use the Recitation Leader Gem, simply say “I would like to practice material from Chapter 1” or “I would like to practice material from the first lecture”.\n\n\nAI Feedback\nPlease post any helpful tips or issues with using these AI tools to the AI channel in the course Teams.",
-    "crumbs": [
-      "Course information",
-      "Support"
-    ]
+    "objectID": "classwork/06-tools.html#quarto-basics",
+    "href": "classwork/06-tools.html#quarto-basics",
+    "title": "A Menagerie Of Tools",
+    "section": "Quarto Basics",
+    "text": "Quarto Basics\n\nQuarto is a unified authoring framework for data science\nCombines your code, its results, and your prose\nQuarto documents are fully reproducible\nSupports dozens of output formats:\n\nPDFs\nWord files\nPresentations (like this one!)\nWebsites\nBooks"
   },
   {
-    "objectID": "classwork/05-individual-project-intro.html#individual-project-tldr",
-    "href": "classwork/05-individual-project-intro.html#individual-project-tldr",
-    "title": "Individual Project Introduction",
-    "section": "Individual Project: TLDR",
-    "text": "Individual Project: TLDR\n\nFind an interesting dataset\nDo something cool/hard with it\nPresent your findings to the class\nDeliverables:\n\nQuarto document with code and narrative\nProject Defense: 5-minute presentation followed by Q&A\nAll your work will be uploaded to a Github assignment\n\nGoal: Practice your skills and learn something new"
+    "objectID": "classwork/06-tools.html#quarto-vs-r-markdown",
+    "href": "classwork/06-tools.html#quarto-vs-r-markdown",
+    "title": "A Menagerie Of Tools",
+    "section": "Quarto vs R Markdown",
+    "text": "Quarto vs R Markdown\n\nIf you’ve used R Markdown, Quarto will feel very familiar!\nQuarto unifies the functionality of many R Markdown packages (rmarkdown, bookdown, distill, xaringan, etc.)\nNative support for multiple languages:\n\nR\nPython\nJulia\nObservable\n\nQuarto is the “next generation” of R Markdown"
   },
   {
-    "objectID": "classwork/05-individual-project-intro.html#basic-mostly-vibes-based-requirements",
-    "href": "classwork/05-individual-project-intro.html#basic-mostly-vibes-based-requirements",
-    "title": "Individual Project Introduction",
-    "section": "Basic (Mostly Vibes Based) Requirements",
-    "text": "Basic (Mostly Vibes Based) Requirements\n\nDataset must be REAL (e.g. no simulated data)\nProject must be “substantial” # vibes\n\nTakes times to complete (if you start this the night before it’s due, I don’t care how good your analysis is)\nYou learn something new (i.e. something we didn’t cover in class)\n\nYou must challenge yourself # vibes\n\nLooks different for everyone"
+    "objectID": "classwork/06-tools.html#the-.qmd-file",
+    "href": "classwork/06-tools.html#the-.qmd-file",
+    "title": "A Menagerie Of Tools",
+    "section": "The .qmd File",
+    "text": "The .qmd File\n\nQuarto files are plain text files with the extension .qmd\nThey contain three types of content:\n\nYAML header: Metadata and settings (surrounded by ---)\nCode chunks: Blocks of code to execute\nMarkdown text: Prose with formatting\n\nLet’s do these things together. Open a new project in Positron."
   },
   {
-    "objectID": "classwork/05-individual-project-intro.html#taking-risks-is-ok",
-    "href": "classwork/05-individual-project-intro.html#taking-risks-is-ok",
-    "title": "Individual Project Introduction",
-    "section": "Taking Risks is OK",
-    "text": "Taking Risks is OK\n\nI spent a ton of time on this and couln’t quite get it to work by the deadline. - Future You Maybe\n\n\nIt’s OK to try something hard and fail"
+    "objectID": "classwork/06-tools.html#yaml-header",
+    "href": "classwork/06-tools.html#yaml-header",
+    "title": "A Menagerie Of Tools",
+    "section": "1. YAML Header",
+    "text": "1. YAML Header\n\nLocated at the very top of the file\nSurrounded by three dashes ---\nDefines document metadata and options\nExample:\n\n---\ntitle: \"Diamond sizes\"\ndate: 2024-01-14\nformat: html\n---"
   },
   {
-    "objectID": "classwork/05-individual-project-intro.html#ways-you-can-fail",
-    "href": "classwork/05-individual-project-intro.html#ways-you-can-fail",
-    "title": "Individual Project Introduction",
-    "section": "Way’s you can fail",
-    "text": "Way’s you can fail\n\nYou have nothing to show during class check-ins\nYou don’t turn in your work on time\nYou demonstrate a complete lack of understanding of your project when you present"
+    "objectID": "classwork/06-tools.html#markdown-text",
+    "href": "classwork/06-tools.html#markdown-text",
+    "title": "A Menagerie Of Tools",
+    "section": "2. Markdown Text",
+    "text": "2. Markdown Text\n\nUse markdown for text formatting:\n\nBold: **text**\nItalic: *text*\nCode: `code`\nLists: - Item or 1. Item\nHeaders: # Header 1, ## Header 2\nLinks: [text](url)\nImages: ![caption](path/to/image)"
   },
   {
-    "objectID": "classwork/05-individual-project-intro.html#ideas",
-    "href": "classwork/05-individual-project-intro.html#ideas",
-    "title": "Individual Project Introduction",
-    "section": "Ideas",
-    "text": "Ideas\n\nCreating your own Shiny App/Dashboard\nLearning to use a new plotting package (e.g. plotly) or software (e.g. Python)\nUsing APIs to get data (e.g. Twitter API)\nScraping data from the web"
+    "objectID": "classwork/06-tools.html#code-chunks",
+    "href": "classwork/06-tools.html#code-chunks",
+    "title": "A Menagerie Of Tools",
+    "section": "3. Code Chunks",
+    "text": "3. Code Chunks\n\nChunks are where your code lives and runs\nInsert a chunk:\n\nKeyboard shortcut: Cmd/Ctrl + Alt + I (or Cmd/Ctrl + Shift + I in some setups)\nManually type: ```{r} and ```\n\nRun code:\n\nCmd/Ctrl + Enter (run line)\nCmd/Ctrl + Shift + Enter (run entire chunk)"
   },
   {
-    "objectID": "classwork/05-individual-project-intro.html#today-soft-launch",
-    "href": "classwork/05-individual-project-intro.html#today-soft-launch",
-    "title": "Individual Project Introduction",
-    "section": "Today: Soft Launch",
-    "text": "Today: Soft Launch\n\nHard launch: next week\nToday: brainstorm project ideas and datasets"
+    "objectID": "classwork/06-tools.html#customizing-code-execution",
+    "href": "classwork/06-tools.html#customizing-code-execution",
+    "title": "A Menagerie Of Tools",
+    "section": "Customizing Code Execution",
+    "text": "Customizing Code Execution\n\nYou can control how code is executed and displayed using chunk options\nOptions are added at the top of the chunk with #|"
+  },
+  {
+    "objectID": "classwork/06-tools.html#common-options",
+    "href": "classwork/06-tools.html#common-options",
+    "title": "A Menagerie Of Tools",
+    "section": "Common Options",
+    "text": "Common Options\n\n\n\n\n\n\n\nOption\nEffect\n\n\n\n\neval: false\nCode is not run (no results generated). Useful for examples.\n\n\ninclude: false\nCode runs, but code AND results are hidden. Good for setup chunks.\n\n\necho: false\nCode is hidden, but results are shown. Great for reports for non-coders.\n\n\nmessage: false\nHides messages (like when loading packages).\n\n\nwarning: false\nHides warnings."
+  },
+  {
+    "objectID": "classwork/06-tools.html#inline-code",
+    "href": "classwork/06-tools.html#inline-code",
+    "title": "A Menagerie Of Tools",
+    "section": "Inline Code",
+    "text": "Inline Code\n\nYou can embed code directly into your text\nSyntax: `r code`\nUseful for reporting results dynamically\nExample:\n\nSource: We have `r nrow(diamonds)` diamonds.\nOutput: “We have 53940 diamonds.”"
+  },
+  {
+    "objectID": "classwork/06-tools.html#documents",
+    "href": "classwork/06-tools.html#documents",
+    "title": "A Menagerie Of Tools",
+    "section": "Documents",
+    "text": "Documents\n\nHTML (format: html): The default. Great for interactivity.\nPDF (format: pdf): Requires a LaTeX installation. Professional look.\nWord (format: docx): Useful for collaborating with non-data scientists."
+  },
+  {
+    "objectID": "classwork/06-tools.html#presentations",
+    "href": "classwork/06-tools.html#presentations",
+    "title": "A Menagerie Of Tools",
+    "section": "Presentations",
+    "text": "Presentations\n\nQuarto makes creating slides easy!\nrevealjs (format: revealjs): HTML presentations (code, interactivity).\nPowerPoint (format: pptx): Standard office slides.\nBeamer (format: beamer): PDF slides using LaTeX."
+  },
+  {
+    "objectID": "classwork/06-tools.html#slide-structure",
+    "href": "classwork/06-tools.html#slide-structure",
+    "title": "A Menagerie Of Tools",
+    "section": "Slide Structure",
+    "text": "Slide Structure\n\n## (Level 2 header) starts a new slide\n# (Level 1 header) starts a new section (title slide)"
+  },
+  {
+    "objectID": "classwork/06-tools.html#rendering",
+    "href": "classwork/06-tools.html#rendering",
+    "title": "A Menagerie Of Tools",
+    "section": "Rendering",
+    "text": "Rendering\n\nTo create your output file, you need to Render the .qmd file\nIn Positron:\n\nClick the Preview button (often an icon) or Render using the Render command\nOr run quarto preview in the terminal to see live updates\n\nThis executes all code and converts the markdown to your target format"
+  },
+  {
+    "objectID": "classwork/06-tools.html#summary",
+    "href": "classwork/06-tools.html#summary",
+    "title": "A Menagerie Of Tools",
+    "section": "Summary",
+    "text": "Summary\n\nQuarto is a powerful tool for combining code and prose.\nUse YAML for settings, Markdown for text, and Chunks for code.\nCustomize chunks with options like echo, eval, and message.\nRender to many formats: HTML, PDF, Slides.\nCheck the Quarto Documentation for more advanced features."
+  },
+  {
+    "objectID": "classwork/06-tools.html#what-is-jupyter",
+    "href": "classwork/06-tools.html#what-is-jupyter",
+    "title": "A Menagerie Of Tools",
+    "section": "What is Jupyter?",
+    "text": "What is Jupyter?\n\nAn open-source web application that allows you to create and share documents that contain live code, equations, visualizations, and narrative text.\nSupports many programming languages, including Python, R, and Julia.\nWidely used in data science, machine learning, and scientific computing.\nConsists of notebooks that are organized into cells.\nEach cell can contain either code or markdown text.\nNotebooks can be run interactively, allowing you to see results immediately."
+  },
+  {
+    "objectID": "classwork/06-tools.html#jupyter-vs.-quarto",
+    "href": "classwork/06-tools.html#jupyter-vs.-quarto",
+    "title": "A Menagerie Of Tools",
+    "section": "Jupyter vs. Quarto",
+    "text": "Jupyter vs. Quarto\n\nBoth are tools for combining code and prose.\nJupyter is more interactive and web-based, while Quarto is more document-focused.\nJupyter is great for exploratory data analysis, while Quarto is better for creating polished reports and presentations.\nQuarto supports multiple output formats, while Jupyter primarily focuses on notebooks."
+  },
+  {
+    "objectID": "classwork/06-tools.html#creating-a-jupyter-notebook",
+    "href": "classwork/06-tools.html#creating-a-jupyter-notebook",
+    "title": "A Menagerie Of Tools",
+    "section": "Creating a Jupyter Notebook",
+    "text": "Creating a Jupyter Notebook\n\nIn Positron:\n\nGo to File &gt; New File &gt; Jupyter Notebook.\nChoose the kernel (e.g., Python, R)."
+  },
+  {
+    "objectID": "classwork/06-tools.html#practice",
+    "href": "classwork/06-tools.html#practice",
+    "title": "A Menagerie Of Tools",
+    "section": "Practice!",
+    "text": "Practice!\nLet’s make a jupyter notebook together!"
+  },
+  {
+    "objectID": "classwork/06-tools.html#what-is-version-control",
+    "href": "classwork/06-tools.html#what-is-version-control",
+    "title": "A Menagerie Of Tools",
+    "section": "What is Version Control?",
+    "text": "What is Version Control?\n\nA system that records changes to a file or set of files over time so that you can recall specific versions later.\nIt allows you to revert files back to a previous state, revert the entire project back to a previous state, compare changes over time, see who last modified something that might be causing a problem, who introduced an issue and when.\nThink of it like “track changes” in a word processor, but for all your project files (code, data, text, etc.)."
+  },
+  {
+    "objectID": "classwork/06-tools.html#why-is-it-useful",
+    "href": "classwork/06-tools.html#why-is-it-useful",
+    "title": "A Menagerie Of Tools",
+    "section": "Why is it useful?",
+    "text": "Why is it useful?\n\nCollaboration: Many people can work on the same project without overwriting each other’s changes.\nOrganization: Keeps a history of your project. No more final_report_v2_final_final.docx!\nBackup: Your project history is stored in a remote, safe place (like GitHub). If your computer crashes, your work is not lost.\nExperimentation: You can try out new ideas in a “branch” without messing up the main version of your project."
+  },
+  {
+    "objectID": "classwork/06-tools.html#what-is-git",
+    "href": "classwork/06-tools.html#what-is-git",
+    "title": "A Menagerie Of Tools",
+    "section": "What is Git?",
+    "text": "What is Git?\n\nGit is a free and open source distributed version control system.\nIt’s a command-line tool that you run on your computer to track changes in your project files.\nIt’s the most popular version control system in the world."
+  },
+  {
+    "objectID": "classwork/06-tools.html#what-is-github",
+    "href": "classwork/06-tools.html#what-is-github",
+    "title": "A Menagerie Of Tools",
+    "section": "What is GitHub?",
+    "text": "What is GitHub?\n\nGitHub is a web-based hosting service for Git repositories.\nIt’s a place to store your projects and collaborate with others.\nIt provides a graphical interface to Git, plus other features like issue tracking, project management, and more.\nGit is the tool, GitHub is the service."
+  },
+  {
+    "objectID": "classwork/06-tools.html#cloning-a-repository",
+    "href": "classwork/06-tools.html#cloning-a-repository",
+    "title": "A Menagerie Of Tools",
+    "section": "Cloning a Repository",
+    "text": "Cloning a Repository\n\n“Cloning” is how you get a copy of a project from GitHub onto your computer.\nYou only need to do this once per project.\nYou’ll get a URL from the GitHub page of the repository.\nThis creates a new directory on your computer with all the project files."
+  },
+  {
+    "objectID": "classwork/06-tools.html#the-add-commit-push-cycle",
+    "href": "classwork/06-tools.html#the-add-commit-push-cycle",
+    "title": "A Menagerie Of Tools",
+    "section": "The Add-Commit-Push Cycle",
+    "text": "The Add-Commit-Push Cycle\nThis is the most common workflow you’ll use.\n\nMake changes: Edit your files, create new files, etc.\nAdd files: Tell Git which files you want to save in the next “snapshot” (commit).\nCommit files: Save the snapshot with a descriptive message.\nPush changes: Send your committed changes to GitHub."
+  },
+  {
+    "objectID": "classwork/06-tools.html#git-add",
+    "href": "classwork/06-tools.html#git-add",
+    "title": "A Menagerie Of Tools",
+    "section": "git add",
+    "text": "git add\n\nUse git add to stage your changes. Staging is the step before committing.\nYou can add specific files or all files with changes."
+  },
+  {
+    "objectID": "classwork/06-tools.html#git-commit",
+    "href": "classwork/06-tools.html#git-commit",
+    "title": "A Menagerie Of Tools",
+    "section": "git commit",
+    "text": "git commit\n\nA “commit” is a snapshot of your staged changes.\nEach commit has a unique ID and a message.\nThe message is important! It should be a short, descriptive summary of the changes you made."
+  },
+  {
+    "objectID": "classwork/06-tools.html#git-push",
+    "href": "classwork/06-tools.html#git-push",
+    "title": "A Menagerie Of Tools",
+    "section": "git push",
+    "text": "git push\n\ngit push sends your committed changes from your local computer to the remote repository on GitHub."
+  },
+  {
+    "objectID": "classwork/06-tools.html#good-commit-messages",
+    "href": "classwork/06-tools.html#good-commit-messages",
+    "title": "A Menagerie Of Tools",
+    "section": "Good Commit Messages",
+    "text": "Good Commit Messages\n\nKeep them short and descriptive.\nUse the imperative mood (e.g., “Add feature” not “Added feature”).\nExplain what the change is and why you made it.\n\nGood:\n\nFix typo in course syllabus\nUpdate plot styling in HW1\nFeat: Add enrollment module skeleton\nDocs: Explain data cleaning process\n\nBad:\n\nstuff\nfixed it\naaaaaaaa"
+  },
+  {
+    "objectID": "classwork/06-tools.html#git-pull",
+    "href": "classwork/06-tools.html#git-pull",
+    "title": "A Menagerie Of Tools",
+    "section": "git pull",
+    "text": "git pull\n\nIf you’re working with others, they will merge changes into the main branch.\ngit pull fetches changes from the remote repository and merges them into your local copy.\nIt’s a critical habit to pull from main before you start working to make sure you have the latest version."
+  },
+  {
+    "objectID": "classwork/06-tools.html#practice-1",
+    "href": "classwork/06-tools.html#practice-1",
+    "title": "A Menagerie Of Tools",
+    "section": "Practice!",
+    "text": "Practice!\nLet’s break up into groups. Have one person create a new repository on GitHub and add the others as collaborators:\n\n(Person A) Create a new public repository on GitHub. Add your teamates as collaborators.\n(Person A) Initialize it with a README.md file.\n(Person B/C) Accept the collaborator invitation (check your email!).\n(Everyone) Clone it to your computer.\n(Person A ONLY) Create a quarto file, load a package or dataset and make a very plain/vanilla plot, then add, commit, and push your changes.\n(Person B) pull the changes from GitHub to see Person A’s work, add a change to the plot, then add, commit, and push your changes.\n(Person C) pull the changes from GitHub to see Person B’s work, add a change to the plot, then add, commit, and push your changes.\n(Person A) pull the changes from GitHub to see Person C’s work."
+  },
+  {
+    "objectID": "classwork/06-tools.html#what-is-a-branch",
+    "href": "classwork/06-tools.html#what-is-a-branch",
+    "title": "A Menagerie Of Tools",
+    "section": "What is a Branch?",
+    "text": "What is a Branch?\n\nA branch is a parallel version of your repository.\nIt allows you to work on new features or fixes without affecting the main codebase (the main branch).\nThis is essential for teamwork."
+  },
+  {
+    "objectID": "classwork/06-tools.html#a-collaborative-workflow-the-feature-branch",
+    "href": "classwork/06-tools.html#a-collaborative-workflow-the-feature-branch",
+    "title": "A Menagerie Of Tools",
+    "section": "A Collaborative Workflow: The Feature Branch",
+    "text": "A Collaborative Workflow: The Feature Branch\nFor our group project, we will use a workflow that prevents accidentally breaking the main version of our app. You will not push directly to main.\nThe core idea is:\n\nCreate a copy of the project (a “branch”) where you can work safely.\nMake all your changes on that branch.\nWhen you’re ready, you’ll open a “Pull Request” to have your changes reviewed and merged into the main branch."
+  },
+  {
+    "objectID": "classwork/06-tools.html#the-branching-workflow-a-full-example",
+    "href": "classwork/06-tools.html#the-branching-workflow-a-full-example",
+    "title": "A Menagerie Of Tools",
+    "section": "The Branching Workflow: A Full Example",
+    "text": "The Branching Workflow: A Full Example\n\nSync your local main branch:\nCreate a new branch for your work: For the project, your team leader (the “GitHub Sentinel”) will do this. Branch names should be descriptive, like feature/team-name.\nWork on your branch: Now you do the familiar add-commit cycle.\nPush your branch to GitHub: The -u flag sets the upstream branch so you can just git push next time."
+  },
+  {
+    "objectID": "classwork/06-tools.html#pull-requests-proposing-changes",
+    "href": "classwork/06-tools.html#pull-requests-proposing-changes",
+    "title": "A Menagerie Of Tools",
+    "section": "Pull Requests: Proposing Changes",
+    "text": "Pull Requests: Proposing Changes\nNow that your branch is on GitHub, you needs to ask for it to be merged into main."
+  },
+  {
+    "objectID": "classwork/06-tools.html#what-is-a-pull-request",
+    "href": "classwork/06-tools.html#what-is-a-pull-request",
+    "title": "A Menagerie Of Tools",
+    "section": "What is a Pull Request?",
+    "text": "What is a Pull Request?\n\nA Pull Request (or PR) is a formal request to merge your changes.\nYou’re asking the project maintainer (the “Lead Architect” for your project) to “pull” your changes from your branch into the main branch.\nIt’s a place for code review and discussion before the changes are integrated."
+  },
+  {
+    "objectID": "classwork/06-tools.html#how-to-open-a-pull-request",
+    "href": "classwork/06-tools.html#how-to-open-a-pull-request",
+    "title": "A Menagerie Of Tools",
+    "section": "How to open a Pull Request",
+    "text": "How to open a Pull Request\n\nAfter pushing the branch, go to the repository on GitHub.\nGitHub will usually show a banner prompting you to “Compare & pull request”. Click it!\nIf not, go to the “Pull requests” tab and click “New pull request”.\nSelect your team’s branch as the “compare” branch and main as the “base” branch.\nWrite a clear title and description for your changes. Explain what you did.\nClick “Create pull request”."
+  },
+  {
+    "objectID": "classwork/06-tools.html#review-and-merging",
+    "href": "classwork/06-tools.html#review-and-merging",
+    "title": "A Menagerie Of Tools",
+    "section": "Review and Merging",
+    "text": "Review and Merging\n\nOnce the PR is open, the “Lead Architect” and other team members can review your code, add comments, and request changes.\nIf changes are requested, your team makes them on the local branch, then commits and pushes again. The PR will update automatically.\nOnce approved, the Lead Architect will merge your branch into main. Your work is now part of the official project!"
+  },
+  {
+    "objectID": "classwork/06-tools.html#a-note-on-merge-conflicts",
+    "href": "classwork/06-tools.html#a-note-on-merge-conflicts",
+    "title": "A Menagerie Of Tools",
+    "section": "A Note on Merge Conflicts",
+    "text": "A Note on Merge Conflicts\n\nIf you and another person edit the same lines in the same file on different branches, Git won’t know which version to keep when merging.\nThis is a merge conflict.\nThe person merging the PR (or the Sentinel, before opening it) will need to manually resolve the conflict by choosing which code to keep.\nThe best way to avoid conflicts: Pull from main often and communicate with your team!"
+  },
+  {
+    "objectID": "classwork/06-tools.html#after-a-pr-is-merged",
+    "href": "classwork/06-tools.html#after-a-pr-is-merged",
+    "title": "A Menagerie Of Tools",
+    "section": "After a PR is Merged",
+    "text": "After a PR is Merged\nOnce your team’s branch is merged by the Lead Architect, everyone should update their local repository.\n\nSwitch back to your main branch: git checkout main\nPull the latest changes (which now include the merged work): git pull\nNow your main is up to date, and you can create a new branch for the next feature!"
+  },
+  {
+    "objectID": "classwork/06-tools.html#practice-2",
+    "href": "classwork/06-tools.html#practice-2",
+    "title": "A Menagerie Of Tools",
+    "section": "Practice!",
+    "text": "Practice!\nIn the repo you just created:\n\nIgnore PRs for now, just practice branching and merging directly to main.\n(Everyone) Create a new branch for your work.\n(Everyone) Checkout your new branch.\n(Everyone) Create a new plot in your quarto file. Don’t edit any of the existing code.\n(A then B then C) Merge your changes into the main branch and push to GitHub.\n(Everyone) Pull the changes. Check them out to a new branch and change one of your partners plots! Don’t simply add to it, make sure you delete somethings too…\n(A then B then C) Merge yopur changes into the main branch and push to GitHub."
+  },
+  {
+    "objectID": "classwork/06-tools.html#the-problem-it-works-on-my-machine",
+    "href": "classwork/06-tools.html#the-problem-it-works-on-my-machine",
+    "title": "A Menagerie Of Tools",
+    "section": "The Problem: “It works on my machine”",
+    "text": "The Problem: “It works on my machine”\n\nYou share code with a colleague, but it fails on their machine.\nYou revisit an old project, but the code no longer runs because packages have updated.\nYou update a package for Project A, but it breaks Project B."
+  },
+  {
+    "objectID": "classwork/06-tools.html#the-solution-dependency-management",
+    "href": "classwork/06-tools.html#the-solution-dependency-management",
+    "title": "A Menagerie Of Tools",
+    "section": "The Solution: Dependency Management",
+    "text": "The Solution: Dependency Management\n\nDependency management ensures your project uses the correct package versions.\nIn R, renv is the standard tool for this.\nKey features:\n\nIsolation: Each project has its own library of packages.\nReproducibility: Records exact package versions in a lockfile.\nPortability: Easy to install the same environment on another machine."
+  },
+  {
+    "objectID": "classwork/06-tools.html#key-components",
+    "href": "classwork/06-tools.html#key-components",
+    "title": "A Menagerie Of Tools",
+    "section": "Key Components",
+    "text": "Key Components\n\nProject Library: Use a per-project library (renv/library) instead of the system library.\nLockfile (renv.lock): A JSON file recording the exact version and source of every package.\nActivation Script (renv/activate.R): Automatically loads the project environment when you open the project."
+  },
+  {
+    "objectID": "classwork/06-tools.html#the-workflow",
+    "href": "classwork/06-tools.html#the-workflow",
+    "title": "A Menagerie Of Tools",
+    "section": "The Workflow",
+    "text": "The Workflow\n\nInitialize: renv::init() (do this once)\nWork: install.packages() and get your code working\nSnapshot: renv::snapshot(), (each time you finish installing packages and get your code working)\nRestore: renv::restore(), (any time you download the project)"
+  },
+  {
+    "objectID": "classwork/06-tools.html#initialize",
+    "href": "classwork/06-tools.html#initialize",
+    "title": "A Menagerie Of Tools",
+    "section": "0. Initialize",
+    "text": "0. Initialize\n\nRun renv::init() to start using renv in a project.\nThis:\n\nSets up the project library.\nGenerates a lockfile (renv.lock) with currently installed packages.\nCreates an .Rprofile to activate renv on startup.\n\nRestart R to ensure the environment is active."
+  },
+  {
+    "objectID": "classwork/06-tools.html#work",
+    "href": "classwork/06-tools.html#work",
+    "title": "A Menagerie Of Tools",
+    "section": "1. Work",
+    "text": "1. Work\n\nInstall packages as usual:\n\ninstall.packages(\"dplyr\")\ninstall.packages(\"ggplot2\")\n\nThese go into your project library, not your global library.\nOther projects are unaffected!"
+  },
+  {
+    "objectID": "classwork/06-tools.html#snapshot",
+    "href": "classwork/06-tools.html#snapshot",
+    "title": "A Menagerie Of Tools",
+    "section": "2. Snapshot",
+    "text": "2. Snapshot\n\nWhen your code works, save the state of your library:\n\nrenv::snapshot()\n\nThis updates renv.lock with the versions you are currently using.\nCommit renv.lock to Git!"
+  },
+  {
+    "objectID": "classwork/06-tools.html#restore",
+    "href": "classwork/06-tools.html#restore",
+    "title": "A Menagerie Of Tools",
+    "section": "3. Restore",
+    "text": "3. Restore\n\nWhen you (or a collaborator) download the project:\n\nOpen the project (R will auto-activate renv).\nRun renv::restore().\n\nThis installs all packages exactly as specified in renv.lock."
+  },
+  {
+    "objectID": "classwork/06-tools.html#checking-status",
+    "href": "classwork/06-tools.html#checking-status",
+    "title": "A Menagerie Of Tools",
+    "section": "Checking Status",
+    "text": "Checking Status\n\nRun renv::status() to see if your library matches your lockfile.\nIt tells you if:\n\nYou installed packages but haven’t snapshotted them.\nYour lockfile has packages you haven’t installed yet."
+  },
+  {
+    "objectID": "classwork/06-tools.html#what-to-commit-to-git",
+    "href": "classwork/06-tools.html#what-to-commit-to-git",
+    "title": "A Menagerie Of Tools",
+    "section": "What to Commit to Git",
+    "text": "What to Commit to Git\n\nDo Commit:\n\nrenv.lock\n.Rprofile\nrenv/activate.R\nrenv/settings.json (if it exists)\n\nDo NOT Commit:\n\nrenv/library (these are the installed files, which are large and platform-specific)\nrenv/python (if using Python)\nrenv/staging"
+  },
+  {
+    "objectID": "classwork/06-tools.html#summary-1",
+    "href": "classwork/06-tools.html#summary-1",
+    "title": "A Menagerie Of Tools",
+    "section": "Summary",
+    "text": "Summary\n\nUse renv for every serious project.\ninit() to start.\nsnapshot() to save.\nrestore() to load.\nEnjoy reproducible data science!"
+  },
+  {
+    "objectID": "classwork/06-tools.html#practice-3",
+    "href": "classwork/06-tools.html#practice-3",
+    "title": "A Menagerie Of Tools",
+    "section": "Practice!",
+    "text": "Practice!\nIn the file you just created:\n\nHave one person initialize renv for the project.\nPractice installing new packages, adding them to the lockfile, pushing them to github, and then pulling/restoring."
+  },
+  {
+    "objectID": "classwork/06-tools.html#overview",
+    "href": "classwork/06-tools.html#overview",
+    "title": "A Menagerie Of Tools",
+    "section": "Overview",
+    "text": "Overview\n\nGithub Copilot\nGemini Code Assistant\nGemini CLI"
+  },
+  {
+    "objectID": "classwork/18-github.html#what-is-version-control",
+    "href": "classwork/18-github.html#what-is-version-control",
+    "title": "Introduction to GitHub",
+    "section": "What is Version Control?",
+    "text": "What is Version Control?\n\nA system that records changes to a file or set of files over time so that you can recall specific versions later.\nIt allows you to revert files back to a previous state, revert the entire project back to a previous state, compare changes over time, see who last modified something that might be causing a problem, who introduced an issue and when.\nThink of it like “track changes” in a word processor, but for all your project files (code, data, text, etc.)."
+  },
+  {
+    "objectID": "classwork/18-github.html#why-is-it-useful",
+    "href": "classwork/18-github.html#why-is-it-useful",
+    "title": "Introduction to GitHub",
+    "section": "Why is it useful?",
+    "text": "Why is it useful?\n\nCollaboration: Many people can work on the same project without overwriting each other’s changes.\nOrganization: Keeps a history of your project. No more final_report_v2_final_final.docx!\nBackup: Your project history is stored in a remote, safe place (like GitHub). If your computer crashes, your work is not lost.\nExperimentation: You can try out new ideas in a “branch” without messing up the main version of your project."
+  },
+  {
+    "objectID": "classwork/18-github.html#what-is-git",
+    "href": "classwork/18-github.html#what-is-git",
+    "title": "Introduction to GitHub",
+    "section": "What is Git?",
+    "text": "What is Git?\n\nGit is a free and open source distributed version control system.\nIt’s a command-line tool that you run on your computer to track changes in your project files.\nIt’s the most popular version control system in the world."
+  },
+  {
+    "objectID": "classwork/18-github.html#what-is-github",
+    "href": "classwork/18-github.html#what-is-github",
+    "title": "Introduction to GitHub",
+    "section": "What is GitHub?",
+    "text": "What is GitHub?\n\nGitHub is a web-based hosting service for Git repositories.\nIt’s a place to store your projects and collaborate with others.\nIt provides a graphical interface to Git, plus other features like issue tracking, project management, and more.\nGit is the tool, GitHub is the service."
+  },
+  {
+    "objectID": "classwork/18-github.html#cloning-a-repository",
+    "href": "classwork/18-github.html#cloning-a-repository",
+    "title": "Introduction to GitHub",
+    "section": "Cloning a Repository",
+    "text": "Cloning a Repository\n\n“Cloning” is how you get a copy of a project from GitHub onto your computer.\nYou only need to do this once per project.\nYou’ll get a URL from the GitHub page of the repository.\n\n\ngit clone &lt;URL_of_the_repository&gt;\n\n\nThis creates a new directory on your computer with all the project files."
+  },
+  {
+    "objectID": "classwork/18-github.html#the-add-commit-push-cycle",
+    "href": "classwork/18-github.html#the-add-commit-push-cycle",
+    "title": "Introduction to GitHub",
+    "section": "The Add-Commit-Push Cycle",
+    "text": "The Add-Commit-Push Cycle\nThis is the most common workflow you’ll use.\n\nMake changes: Edit your files, create new files, etc.\nAdd files: Tell Git which files you want to save in the next “snapshot” (commit).\nCommit files: Save the snapshot with a descriptive message.\nPush changes: Send your committed changes to GitHub."
+  },
+  {
+    "objectID": "classwork/18-github.html#git-add",
+    "href": "classwork/18-github.html#git-add",
+    "title": "Introduction to GitHub",
+    "section": "git add",
+    "text": "git add\n\nUse git add to stage your changes. Staging is the step before committing.\nYou can add specific files or all files with changes.\n\n\n# Add a specific file\ngit add path/to/your/file.R\n\n# Add all changed files in the current directory and subdirectories\ngit add ."
+  },
+  {
+    "objectID": "classwork/18-github.html#git-commit",
+    "href": "classwork/18-github.html#git-commit",
+    "title": "Introduction to GitHub",
+    "section": "git commit",
+    "text": "git commit\n\nA “commit” is a snapshot of your staged changes.\nEach commit has a unique ID and a message.\nThe message is important! It should be a short, descriptive summary of the changes you made.\n\n\ngit commit -m \"Fix bug in data cleaning script\""
+  },
+  {
+    "objectID": "classwork/18-github.html#git-push",
+    "href": "classwork/18-github.html#git-push",
+    "title": "Introduction to GitHub",
+    "section": "git push",
+    "text": "git push\n\ngit push sends your committed changes from your local computer to the remote repository on GitHub.\n\n\ngit push"
+  },
+  {
+    "objectID": "classwork/18-github.html#git-pull",
+    "href": "classwork/18-github.html#git-pull",
+    "title": "Introduction to GitHub",
+    "section": "git pull",
+    "text": "git pull\n\nIf you’re working with others, they will merge changes into the main branch.\ngit pull fetches changes from the remote repository and merges them into your local copy.\nIt’s a critical habit to pull from main before you start working to make sure you have the latest version.\n\n\n\n# Make sure you're on the main branch first\ngit checkout main\ngit pull"
+  },
+  {
+    "objectID": "classwork/18-github.html#what-is-a-branch",
+    "href": "classwork/18-github.html#what-is-a-branch",
+    "title": "Introduction to GitHub",
+    "section": "What is a Branch?",
+    "text": "What is a Branch?\n\nA branch is a parallel version of your repository.\nIt allows you to work on new features or fixes without affecting the main codebase (the main branch).\nThis is essential for teamwork."
+  },
+  {
+    "objectID": "classwork/18-github.html#the-branching-workflow-a-full-example",
+    "href": "classwork/18-github.html#the-branching-workflow-a-full-example",
+    "title": "Introduction to GitHub",
+    "section": "The Branching Workflow: A Full Example",
+    "text": "The Branching Workflow: A Full Example\n\nSync your local main branch: git checkout main git pull\nCreate a new branch for your work: For the project, your team leader (the “GitHub Sentinel”) will do this. Branch names should be descriptive, like feature/team-name. git checkout -b feature/pod-1-enrollment\nWork on your branch: Now you do the familiar add-commit cycle. Edit files, create new R scripts… git add . git commit -m \"Add enrollment chart and data cleaning\"\nPush your branch to GitHub: The -u flag sets the upstream branch so you can just git push next time. git push -u origin feature/pod-1-enrollment"
+  },
+  {
+    "objectID": "classwork/18-github.html#what-is-a-pull-request",
+    "href": "classwork/18-github.html#what-is-a-pull-request",
+    "title": "Introduction to GitHub",
+    "section": "What is a Pull Request?",
+    "text": "What is a Pull Request?\n\nA Pull Request (or PR) is a formal request to merge your changes.\nYou’re asking the project maintainer (the “Lead Architect” for your project) to “pull” your changes from your branch into the main branch.\nIt’s a place for code review and discussion before the changes are integrated."
+  },
+  {
+    "objectID": "classwork/18-github.html#how-the-sentinel-opens-a-pull-request",
+    "href": "classwork/18-github.html#how-the-sentinel-opens-a-pull-request",
+    "title": "Introduction to GitHub",
+    "section": "How the Sentinel Opens a Pull Request",
+    "text": "How the Sentinel Opens a Pull Request\n\nAfter pushing the branch, go to the repository on GitHub.\nGitHub will usually show a banner prompting you to “Compare & pull request”. Click it!\nIf not, go to the “Pull requests” tab and click “New pull request”.\nSelect your team’s branch as the “compare” branch and main as the “base” branch.\nWrite a clear title and description for your changes. Explain what you did.\nClick “Create pull request”."
+  },
+  {
+    "objectID": "classwork/18-github.html#review-and-merging",
+    "href": "classwork/18-github.html#review-and-merging",
+    "title": "Introduction to GitHub",
+    "section": "Review and Merging",
+    "text": "Review and Merging\n\nOnce the PR is open, the “Lead Architect” and other team members can review your code, add comments, and request changes.\nIf changes are requested, your team makes them on the local branch, then commits and pushes again. The PR will update automatically.\nOnce approved, the Lead Architect will merge your branch into main. Your work is now part of the official project!"
+  },
+  {
+    "objectID": "classwork/18-github.html#a-note-on-merge-conflicts",
+    "href": "classwork/18-github.html#a-note-on-merge-conflicts",
+    "title": "Introduction to GitHub",
+    "section": "A Note on Merge Conflicts",
+    "text": "A Note on Merge Conflicts\n\nIf you and another person edit the same lines in the same file on different branches, Git won’t know which version to keep when merging.\nThis is a merge conflict.\nThe person merging the PR (or the Sentinel, before opening it) will need to manually resolve the conflict by choosing which code to keep.\nThe best way to avoid conflicts: Pull from main often and communicate with your team!"
+  },
+  {
+    "objectID": "classwork/18-github.html#after-a-pr-is-merged",
+    "href": "classwork/18-github.html#after-a-pr-is-merged",
+    "title": "Introduction to GitHub",
+    "section": "After a PR is Merged",
+    "text": "After a PR is Merged\nOnce your team’s branch is merged by the Lead Architect, everyone should update their local repository.\n\nSwitch back to your main branch: git checkout main\nPull the latest changes (which now include the merged work): git pull\nNow your main is up to date, and you can create a new branch for the next feature!"
+  },
+  {
+    "objectID": "classwork/18-github.html#good-commit-messages",
+    "href": "classwork/18-github.html#good-commit-messages",
+    "title": "Introduction to GitHub",
+    "section": "Good Commit Messages",
+    "text": "Good Commit Messages\n\nKeep them short and descriptive.\nUse the imperative mood (e.g., “Add feature” not “Added feature”).\nExplain what the change is and why you made it.\n\nGood:\n\nFix typo in course syllabus\nUpdate plot styling in HW1\nFeat: Add enrollment module skeleton\nDocs: Explain data cleaning process\n\nBad:\n\nstuff\nfixed it\naaaaaaaa"
+  },
+  {
+    "objectID": "classwork/18-github.html#practice",
+    "href": "classwork/18-github.html#practice",
+    "title": "Introduction to GitHub",
+    "section": "Practice!",
+    "text": "Practice!\nLet’s simulate the project workflow. countdown(minutes = 15)\nPartner A: The “Lead Architect” 1. Create a new public repository on GitHub named github-practice. 2. Initialize it with a README.md file. 3. Clone it to your computer. 4. Add Partner B as a collaborator (Settings &gt; Collaborators).\nPartner B: The “GitHub Sentinel” 1. Accept the collaborator invitation (check your email!). 2. Clone the repository. 3. Create a new branch: git checkout -b add-contrib-list. 4. Create a new file contributors.txt and add your name to it. 5. add, commit, and push your branch to the repository. 6. Go to GitHub and open a Pull Request to merge add-contrib-list into main.\nPartner A: The “Lead Architect” (again) 1. On GitHub, go to the “Pull requests” tab. 2. Review the PR. Leave a comment! Ask Partner B to add your name to the file.\nPartner B: The “GitHub Sentinel” (again) 1. Locally, on your branch, add Partner A’s name to contributors.txt. 2. add, commit, and push the change. Notice the PR on GitHub updates automatically!\nPartner A: The “Lead Architect” (last time) 1. On the PR, see the new commit. Looks good! 2. Merge the Pull Request.\nBoth Partners: 1. Locally, git checkout main and git pull to see the contributors.txt file with both names."
+  },
+  {
+    "objectID": "classwork/18-github.html#do-next",
+    "href": "classwork/18-github.html#do-next",
+    "title": "Introduction to GitHub",
+    "section": "Do Next",
+    "text": "Do Next\n\nMake sure you have Git installed on your computer.\nMake sure you have a GitHub account.\nAccept the invitation to our course organization on GitHub.\nThat’s it for tonight! See you tomorrow."
   },
   {
     "objectID": "classwork/02-pivoting.html#today",
@@ -1841,552 +2309,546 @@
     "text": "Wrap Up\n\nBefore you leave, complete your reflection on Teams!"
   },
   {
-    "objectID": "course-technology.html",
-    "href": "course-technology.html",
-    "title": "Technology",
+    "objectID": "classwork/20-renv.html#the-problem-it-works-on-my-machine",
+    "href": "classwork/20-renv.html#the-problem-it-works-on-my-machine",
+    "title": "Introduction to renv",
+    "section": "The Problem: “It works on my machine”",
+    "text": "The Problem: “It works on my machine”\n\nYou share code with a colleague, but it fails on their machine.\nYou revisit an old project, but the code no longer runs because packages have updated.\nYou update a package for Project A, but it breaks Project B."
+  },
+  {
+    "objectID": "classwork/20-renv.html#the-solution-dependency-management",
+    "href": "classwork/20-renv.html#the-solution-dependency-management",
+    "title": "Introduction to renv",
+    "section": "The Solution: Dependency Management",
+    "text": "The Solution: Dependency Management\n\nDependency management ensures your project uses the correct package versions.\nIn R, renv is the standard tool for this.\nKey features:\n\nIsolation: Each project has its own library of packages.\nReproducibility: Records exact package versions in a lockfile.\nPortability: Easy to install the same environment on another machine."
+  },
+  {
+    "objectID": "classwork/20-renv.html#key-components",
+    "href": "classwork/20-renv.html#key-components",
+    "title": "Introduction to renv",
+    "section": "Key Components",
+    "text": "Key Components\n\nProject Library: Use a per-project library (renv/library) instead of the system library.\nLockfile (renv.lock): A JSON file recording the exact version and source of every package.\nActivation Script (renv/activate.R): Automatically loads the project environment when you open the project."
+  },
+  {
+    "objectID": "classwork/20-renv.html#the-workflow",
+    "href": "classwork/20-renv.html#the-workflow",
+    "title": "Introduction to renv",
+    "section": "The Workflow",
+    "text": "The Workflow\n\nInitialize: renv::init()\nWork: install.packages(), write code\nSnapshot: renv::snapshot()\nRestore: renv::restore()"
+  },
+  {
+    "objectID": "classwork/20-renv.html#initialize",
+    "href": "classwork/20-renv.html#initialize",
+    "title": "Introduction to renv",
+    "section": "1. Initialize",
+    "text": "1. Initialize\n\nRun renv::init() to start using renv in a project.\nThis:\n\nSets up the project library.\nGenerates a lockfile (renv.lock) with currently installed packages.\nCreates an .Rprofile to activate renv on startup.\n\nRestart R to ensure the environment is active."
+  },
+  {
+    "objectID": "classwork/20-renv.html#work",
+    "href": "classwork/20-renv.html#work",
+    "title": "Introduction to renv",
+    "section": "2. Work",
+    "text": "2. Work\n\nInstall packages as usual:\n\ninstall.packages(\"dplyr\")\ninstall.packages(\"ggplot2\")\n\nThese go into your project library, not your global library.\nOther projects are unaffected!"
+  },
+  {
+    "objectID": "classwork/20-renv.html#snapshot",
+    "href": "classwork/20-renv.html#snapshot",
+    "title": "Introduction to renv",
+    "section": "3. Snapshot",
+    "text": "3. Snapshot\n\nWhen your code works, save the state of your library:\n\nrenv::snapshot()\n\nThis updates renv.lock with the versions you are currently using.\nCommit renv.lock to Git!"
+  },
+  {
+    "objectID": "classwork/20-renv.html#restore",
+    "href": "classwork/20-renv.html#restore",
+    "title": "Introduction to renv",
+    "section": "4. Restore",
+    "text": "4. Restore\n\nWhen you (or a collaborator) download the project:\n\nOpen the project (R will auto-activate renv).\nRun renv::restore().\n\nThis installs all packages exactly as specified in renv.lock."
+  },
+  {
+    "objectID": "classwork/20-renv.html#checking-status",
+    "href": "classwork/20-renv.html#checking-status",
+    "title": "Introduction to renv",
+    "section": "Checking Status",
+    "text": "Checking Status\n\nRun renv::status() to see if your library matches your lockfile.\nIt tells you if:\n\nYou installed packages but haven’t snapshotted them.\nYour lockfile has packages you haven’t installed yet."
+  },
+  {
+    "objectID": "classwork/20-renv.html#what-to-commit-to-git",
+    "href": "classwork/20-renv.html#what-to-commit-to-git",
+    "title": "Introduction to renv",
+    "section": "What to Commit to Git",
+    "text": "What to Commit to Git\n\nDo Commit:\n\nrenv.lock\n.Rprofile\nrenv/activate.R\nrenv/settings.json (if it exists)\n\nDo NOT Commit:\n\nrenv/library (these are the installed files, which are large and platform-specific)\nrenv/python (if using Python)\nrenv/staging"
+  },
+  {
+    "objectID": "classwork/20-renv.html#summary",
+    "href": "classwork/20-renv.html#summary",
+    "title": "Introduction to renv",
+    "section": "Summary",
+    "text": "Summary\n\nUse renv for every serious project.\ninit() to start.\nsnapshot() to save.\nrestore() to load.\nEnjoy reproducible data science!"
+  },
+  {
+    "objectID": "classwork/05-individual-project-intro.html#individual-project-tldr",
+    "href": "classwork/05-individual-project-intro.html#individual-project-tldr",
+    "title": "Individual Project Introduction",
+    "section": "Individual Project: TLDR",
+    "text": "Individual Project: TLDR\n\nFind an interesting dataset\nDo something cool/hard with it\nPresent your findings to the class\nDeliverables:\n\nQuarto document with code and narrative\nProject Defense: 5-minute presentation followed by Q&A\nAll your work will be uploaded to a Github assignment\n\nGoal: Practice your skills and learn something new"
+  },
+  {
+    "objectID": "classwork/05-individual-project-intro.html#basic-mostly-vibes-based-requirements",
+    "href": "classwork/05-individual-project-intro.html#basic-mostly-vibes-based-requirements",
+    "title": "Individual Project Introduction",
+    "section": "Basic (Mostly Vibes Based) Requirements",
+    "text": "Basic (Mostly Vibes Based) Requirements\n\nDataset must be REAL (e.g. no simulated data)\nProject must be “substantial” # vibes\n\nTakes times to complete (if you start this the night before it’s due, I don’t care how good your analysis is)\nYou learn something new (i.e. something we didn’t cover in class)\n\nYou must challenge yourself # vibes\n\nLooks different for everyone"
+  },
+  {
+    "objectID": "classwork/05-individual-project-intro.html#taking-risks-is-ok",
+    "href": "classwork/05-individual-project-intro.html#taking-risks-is-ok",
+    "title": "Individual Project Introduction",
+    "section": "Taking Risks is OK",
+    "text": "Taking Risks is OK\n\nI spent a ton of time on this and couln’t quite get it to work by the deadline. - Future You Maybe\n\n\nIt’s OK to try something hard and fail"
+  },
+  {
+    "objectID": "classwork/05-individual-project-intro.html#ways-you-can-fail",
+    "href": "classwork/05-individual-project-intro.html#ways-you-can-fail",
+    "title": "Individual Project Introduction",
+    "section": "Way’s you can fail",
+    "text": "Way’s you can fail\n\nYou have nothing to show during class check-ins\nYou don’t turn in your work on time\nYou demonstrate a complete lack of understanding of your project when you present"
+  },
+  {
+    "objectID": "classwork/05-individual-project-intro.html#ideas",
+    "href": "classwork/05-individual-project-intro.html#ideas",
+    "title": "Individual Project Introduction",
+    "section": "Ideas",
+    "text": "Ideas\n\nCreating your own Shiny App/Dashboard\nLearning to use a new plotting package (e.g. plotly) or software (e.g. Python)\nUsing APIs to get data (e.g. Twitter API)\nScraping data from the web"
+  },
+  {
+    "objectID": "classwork/05-individual-project-intro.html#today-soft-launch",
+    "href": "classwork/05-individual-project-intro.html#today-soft-launch",
+    "title": "Individual Project Introduction",
+    "section": "Today: Soft Launch",
+    "text": "Today: Soft Launch\n\nHard launch: next week\nToday: brainstorm project ideas and datasets"
+  },
+  {
+    "objectID": "course-support.html",
+    "href": "course-support.html",
+    "title": "Course support",
     "section": "",
-    "text": "This page provides you links to getting directions for setting up the technology needed for this course.",
+    "text": "Most of you will need help at some point and we want to make sure you can identify when that is without getting too frustrated and feel comfortable seeking help.",
     "crumbs": [
       "Course information",
-      "Technology"
+      "Support"
     ]
   },
   {
-    "objectID": "course-technology.html#r-and-positron",
-    "href": "course-technology.html#r-and-positron",
-    "title": "Technology",
-    "section": "R and Positron",
-    "text": "R and Positron\nNote that you must first install R before installing Positron.\n\nR\nFirst install R. You can follow the directions for your operating system on the R Project for Statistical Computing website.\n\n\nPositron\nNext install Positron. You can download Positron from the Positron Download page. Follow the installation instructions for your operating system. If you’d prefer to use RStudio rather than Positron, that is ok with me, but I recommend Positron for this course.",
+    "objectID": "course-support.html#lectures",
+    "href": "course-support.html#lectures",
+    "title": "Course support",
+    "section": "Lectures",
+    "text": "Lectures\nIf you have a question during lecture or lab, feel free to ask it! There are likely other students with the same question, so by asking you will create a learning opportunity for everyone.",
     "crumbs": [
       "Course information",
-      "Technology"
+      "Support"
     ]
   },
   {
-    "objectID": "course-technology.html#google-ai-pro",
-    "href": "course-technology.html#google-ai-pro",
-    "title": "Technology",
-    "section": "Google AI Pro",
-    "text": "Google AI Pro\nMany of the things in this course require the use of AI products created by Google. Please sign up for a Google AI Pro account (you may use whatever email address you like). Normally this costs $20/month, but Google is offering it free for students for one year. To sign up for Google AI Pro, go to the Google AI Pro page and follow the instructions to sign up.",
+    "objectID": "course-support.html#office-hours",
+    "href": "course-support.html#office-hours",
+    "title": "Course support",
+    "section": "Office hours",
+    "text": "Office hours\nI am here to help you be successful in the course. You are encouraged to attend office hours during the times posted on the home page to ask questions about the course content and assignments. A lot of questions are most effectively answered in-person, so office hours are a valuable resource. I encourage each and every one of you to take advantage of this resource! Make a pledge to stop by office hours at least once during the first three weeks of class. If you truly have no questions to ask, just stop by and say hi and introduce yourself.",
     "crumbs": [
       "Course information",
-      "Technology"
+      "Support"
     ]
   },
   {
-    "objectID": "course-technology.html#git-github",
-    "href": "course-technology.html#git-github",
-    "title": "Technology",
-    "section": "Git & GitHub",
-    "text": "Git & GitHub\nYou need to create a GitHub account. You may want to use this to show off work to future employers so I recommend using something professional (like your name) as your username. Once you have done this, email it to Dr. Friedlander.\nGitHub provides its pro features free to students. To get these, however, you must be a verified learner. This process requires uploading a picture of your school ID and can take a few days. Please click the Get verified button on this page and complete the verification process.",
+    "objectID": "course-support.html#teams",
+    "href": "course-support.html#teams",
+    "title": "Course support",
+    "section": "Teams",
+    "text": "Teams\nHave a question that can’t wait for office hours? Prefer to write out your question in detail rather than asking in person? The course Team is the best venue for these! There is a chance another student has already asked a similar question, so please check the other posts on Teams before asking a new question. If you know the answer to a question that is posted, I encourage you to respond! Here is a link to the course Team (you should already have access).",
     "crumbs": [
       "Course information",
-      "Technology"
+      "Support"
     ]
   },
   {
-    "objectID": "slides/04-first-transformations/04-first-transformations.html#this-lesson",
-    "href": "slides/04-first-transformations/04-first-transformations.html#this-lesson",
-    "title": "First Transformations",
-    "section": "This lesson",
-    "text": "This lesson\n\nIntroduce data transformation with dplyr\nWork through two scenarios involving transforming a single data frame"
+    "objectID": "course-support.html#email",
+    "href": "course-support.html#email",
+    "title": "Course support",
+    "section": "Email",
+    "text": "Email\nPlease refrain from emailing any course content questions (those should go to Slack), and only use email for questions about personal matters that may not be appropriate for the public course forum (e.g., illness, accommodations, etc.). For such matters, you may email Dr. Friedlander at efriedlander@collegeofidaho.edu.\nBarring extenuating circumstances, I will respond to CSCI 2025 emails within 48 hours Monday - Friday. Response time may be slower for emails sent Friday evening - Sunday.",
+    "crumbs": [
+      "Course information",
+      "Support"
+    ]
   },
   {
-    "objectID": "slides/04-first-transformations/04-first-transformations.html#data-nycflights13",
-    "href": "slides/04-first-transformations/04-first-transformations.html#data-nycflights13",
-    "title": "First Transformations",
-    "section": "Data: nycflights13",
-    "text": "Data: nycflights13\n\nInstall nycflights13 package if you haven’t already\nLoad tidyverse and nycflights13\nnycflights113 contains on-time data for all flights that departed NYC in 2013\nLet’s take a quick look at the data set!"
+    "objectID": "course-support.html#ai-tools",
+    "href": "course-support.html#ai-tools",
+    "title": "Course support",
+    "section": "AI tools",
+    "text": "AI tools\n\nNotebookLM\nThe first tool that may be useful is the course NotebookLM. NotebookLM is a really nice tool provided by Google that allows you to upload course materials (e.g., lecture slides, assignments, readings) and then ask questions about them in natural language as well as generate things like Mind Maps, Audio Overview, Videos, and Flashcards. You can access the NotebookLM for this course here. Note that you’ll need a Google AI Pro account to access this resource. Don’t worry, it’s free for a year for students.\n\n\nRecitation Leader Gem\nAnother tool that you will be asked to use is the Recitation Leader Gem. A Gem is kind of like the Gemini Chat but it is specialized for a particular task. The Recitation Leader Gem is designed to help you practice the material from lectures by generating practice problems based on the course material. You can access the Recitation Leader Gem here. To use the Recitation Leader Gem, simply say “I would like to practice material from Chapter 1” or “I would like to practice material from the first lecture”.\n\n\nAI Feedback\nPlease post any helpful tips or issues with using these AI tools to the AI channel in the course Teams.",
+    "crumbs": [
+      "Course information",
+      "Support"
+    ]
   },
   {
-    "objectID": "slides/04-first-transformations/04-first-transformations.html#setup",
-    "href": "slides/04-first-transformations/04-first-transformations.html#setup",
-    "title": "First Transformations",
-    "section": "Setup",
-    "text": "Setup\n\n# load packages\nlibrary(tidyverse)\nlibrary(nycflights13)"
+    "objectID": "slides/13-regex/13-regex.html#regular-expressions-regex",
+    "href": "slides/13-regex/13-regex.html#regular-expressions-regex",
+    "title": "Regular Expressions",
+    "section": "Regular Expressions (Regex)",
+    "text": "Regular Expressions (Regex)\n\nA powerful tool for describing patterns in strings.\nUsed for finding, extracting, and replacing text.\nstringr provides a consistent interface for working with regex."
   },
   {
-    "objectID": "slides/04-first-transformations/04-first-transformations.html#dplyr-101",
-    "href": "slides/04-first-transformations/04-first-transformations.html#dplyr-101",
-    "title": "First Transformations",
-    "section": "dplyr 101",
-    "text": "dplyr 101\n\ndplyr is a package in the tidyverse, designed for data manipulation\nProvides a set of functions (verbs) that help you transform data frames\nCommon properties of a dplyr verb:\n\nTakes a data frame as the first argument\nReturns a data frame as output\nAdditional arguments specify how to options for that verb\n\nIn practice: want to chain together lots of verbs to perform complex transformations\nUse the pipe operator (|&gt;) to chain together multiple verbs"
+    "objectID": "slides/13-regex/13-regex.html#str_detect",
+    "href": "slides/13-regex/13-regex.html#str_detect",
+    "title": "Regular Expressions",
+    "section": "str_detect()",
+    "text": "str_detect()\n\nstr_detect() returns TRUE if a pattern is found in a string, FALSE otherwise.\n\n\nx &lt;- c(\"apple\", \"banana\", \"pear\", \"pineapple\", \"naartjie\")\nstr_detect(x, \"an\")\n\n[1] FALSE  TRUE FALSE FALSE FALSE"
   },
   {
-    "objectID": "slides/04-first-transformations/04-first-transformations.html#chaining-with-the-pipe-operator",
-    "href": "slides/04-first-transformations/04-first-transformations.html#chaining-with-the-pipe-operator",
-    "title": "First Transformations",
-    "section": "Chaining with the pipe operator",
-    "text": "Chaining with the pipe operator\n\nThe pipe operator (|&gt;) takes the output of one expression and “pipes” it as the first argument to the next expression\n\nWhen reading code with pipes use the phrase “and then” to understand the sequence of operations\n\nMore on this in a bit"
+    "objectID": "slides/13-regex/13-regex.html#str_count",
+    "href": "slides/13-regex/13-regex.html#str_count",
+    "title": "Regular Expressions",
+    "section": "str_count()",
+    "text": "str_count()\n\nstr_count() counts the number of matches in a string.\n\n\nstr_count(\"banana\", \"a\")\n\n[1] 3"
   },
   {
-    "objectID": "slides/04-first-transformations/04-first-transformations.html#types-of-verbs",
-    "href": "slides/04-first-transformations/04-first-transformations.html#types-of-verbs",
-    "title": "First Transformations",
-    "section": "Types of verbs",
-    "text": "Types of verbs\ndplyr verbs can be grouped into a few categories based on what they do to the data frame:\n\nRows\nColumns\nGroups\nTables (not today)"
+    "objectID": "slides/13-regex/13-regex.html#str_extract-and-str_extract_all",
+    "href": "slides/13-regex/13-regex.html#str_extract-and-str_extract_all",
+    "title": "Regular Expressions",
+    "section": "str_extract() and str_extract_all()",
+    "text": "str_extract() and str_extract_all()\n\nstr_extract() extracts the first match.\nstr_extract_all() extracts all matches.\n\n\nstr_extract(\"banana\", \"an\")\n\n[1] \"an\"\n\nstr_extract_all(\"banana\", \"an\")\n\n[[1]]\n[1] \"an\" \"an\""
   },
   {
-    "objectID": "slides/04-first-transformations/04-first-transformations.html#verbs-that-act-on-rows",
-    "href": "slides/04-first-transformations/04-first-transformations.html#verbs-that-act-on-rows",
-    "title": "First Transformations",
-    "section": "Verbs that act on rows",
-    "text": "Verbs that act on rows\n\nfilter(): keep rows that meet certain criteria\n\nYou can use &gt;, &lt;, ==, !=, &gt;=, &lt;=, %in% for comparisons\nYou can also use & (and), | (or), and ! (not) to combine multiple conditions\n\narrange(): reorder rows\ndistinct(): keep only unique rows\nslice_ function: slice_head(), slice_tail(), slice_sample(), slice_min(), slice_max()"
+    "objectID": "slides/13-regex/13-regex.html#str_replace-and-str_replace_all",
+    "href": "slides/13-regex/13-regex.html#str_replace-and-str_replace_all",
+    "title": "Regular Expressions",
+    "section": "str_replace() and str_replace_all()",
+    "text": "str_replace() and str_replace_all()\n\nReplaces the first or all matches with a new string.\n\n\nx &lt;- c(\"Dr_Eric_Friedlander\", \"Dr_Brandy_Wiegers\", \"Anthony_Campitelli\")\nstr_replace(x, \"_\", \" \")\n\n[1] \"Dr Eric_Friedlander\" \"Dr Brandy_Wiegers\"   \"Anthony Campitelli\" \n\nstr_replace_all(x, \" \", \" \")\n\n[1] \"Dr_Eric_Friedlander\" \"Dr_Brandy_Wiegers\"   \"Anthony_Campitelli\""
   },
   {
-    "objectID": "slides/04-first-transformations/04-first-transformations.html#practice",
-    "href": "slides/04-first-transformations/04-first-transformations.html#practice",
-    "title": "First Transformations",
-    "section": "Practice",
-    "text": "Practice\nLet’s do the following:\n\nUse filter to keep only flight in January\nUse arrange to sort by dep_delay (departure delay)\nUse distinct to keep only unique carrier values\nLet’s work through Exercise 1 from the textbook"
+    "objectID": "slides/13-regex/13-regex.html#regex",
+    "href": "slides/13-regex/13-regex.html#regex",
+    "title": "Regular Expressions",
+    "section": "Regex",
+    "text": "Regex\nInstead of inputting literal strings, you can use regex patterns to describe more complex matches.\n\nx &lt;- c(\"Dr_Eric_Friedlander\", \"Dr_Brandy_Wiegers\", \"Anthony_Campitelli\")\n# remove all vowels\nstr_replace_all(x, \"[aeiouAEIOU]\", \"\")\n\n[1] \"Dr_rc_Frdlndr\" \"Dr_Brndy_Wgrs\" \"nthny_Cmptll\""
   },
   {
-    "objectID": "slides/04-first-transformations/04-first-transformations.html#verbs-that-act-on-columns",
-    "href": "slides/04-first-transformations/04-first-transformations.html#verbs-that-act-on-columns",
-    "title": "First Transformations",
-    "section": "Verbs that act on columns",
-    "text": "Verbs that act on columns\n\nmutate(): create new columns or modify and combine existing columns\nselect(): keep only specified columns\nrename(): rename columns"
+    "objectID": "slides/13-regex/13-regex.html#anchors",
+    "href": "slides/13-regex/13-regex.html#anchors",
+    "title": "Regular Expressions",
+    "section": "Anchors",
+    "text": "Anchors\n\n^ matches the start of the string.\n$ matches the end of the string.\n\n\nx &lt;- c(\"apple\", \"banana\", \"pear\")\nstr_detect(x, \"^a\")\n\n[1]  TRUE FALSE FALSE\n\nstr_detect(x, \"a$\")\n\n[1] FALSE  TRUE FALSE"
   },
   {
-    "objectID": "slides/04-first-transformations/04-first-transformations.html#practice-1",
-    "href": "slides/04-first-transformations/04-first-transformations.html#practice-1",
-    "title": "First Transformations",
-    "section": "Practice",
-    "text": "Practice\nLet’s do the following:\n\nUse mutate to create a new column speed (distance / air_time * 60)\nUse select to drop the tailnum column\nUse select to keep only flight, carrier, and speed\nUse rename to rename speed to avg_speed\nUse relocate to move avg_speed to be the first column\nLet’s work through Exercise 1 from the textbook"
+    "objectID": "slides/13-regex/13-regex.html#character-classes",
+    "href": "slides/13-regex/13-regex.html#character-classes",
+    "title": "Regular Expressions",
+    "section": "Character Classes",
+    "text": "Character Classes\n\n. matches any character except a newline.\n\\d matches any digit.\n\\s matches any whitespace.\n[abc] matches a, b, or c.\n[^abc] matches anything except a, b, or c.\n| matches either the expression before or after the |."
   },
   {
-    "objectID": "slides/04-first-transformations/04-first-transformations.html#aggregating-data-verbs-that-act-on-groups",
-    "href": "slides/04-first-transformations/04-first-transformations.html#aggregating-data-verbs-that-act-on-groups",
-    "title": "First Transformations",
-    "section": "Aggregating data: verbs that act on groups",
-    "text": "Aggregating data: verbs that act on groups\n\nWhat you frequently want to do is summarize data by groups\n\ngroup_by(): specify one or more columns to group by\n\nCreates a new data frame where rows are grouped by unique combinations of the grouping columns\nSubsequent verbs will operate on each group separately\nUse ungroup() to remove grouping\n\nsummarize(): compute summary statistics for each group"
+    "objectID": "slides/13-regex/13-regex.html#repetition",
+    "href": "slides/13-regex/13-regex.html#repetition",
+    "title": "Regular Expressions",
+    "section": "Repetition",
+    "text": "Repetition\n\n?: 0 or 1 time.\n+: 1 or more times.\n*: 0 or more times.\n{n}: exactly n times.\n{n,}: n or more times.\n{n,m}: between n and m times."
   },
   {
-    "objectID": "slides/04-first-transformations/04-first-transformations.html#practice-2",
-    "href": "slides/04-first-transformations/04-first-transformations.html#practice-2",
-    "title": "First Transformations",
-    "section": "Practice",
-    "text": "Practice\n\nLet’s do the following:\n\nUse group_by to group by carrier\nUse summarize to compute the average dep_delay for each carrier\nArrange the results in descending order of average departure delay\nLet’s work through Exercise 3 from the textbook"
-  },
-  {
-    "objectID": "slides/04-first-transformations/04-first-transformations.html#do-next",
-    "href": "slides/04-first-transformations/04-first-transformations.html#do-next",
-    "title": "First Transformations",
-    "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 3: Data Transformation from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 3” or work through some of the exercises in the text.\nThat’s it for today! See you in class!"
-  },
-  {
-    "objectID": "slides/03-basics-of-R/03-basics-of-R.html#notebooklm",
-    "href": "slides/03-basics-of-R/03-basics-of-R.html#notebooklm",
-    "title": "R Basics",
-    "section": "NotebookLM",
-    "text": "NotebookLM\n\nNotebookLM is a Google AI tool that helps you learn from your documents.\nI’ve created a notebook for this course that you can use to ask questions about the material.\nHere is a lecture about Chapter 2 of the text from NotebookLM"
-  },
-  {
-    "objectID": "slides/03-basics-of-R/03-basics-of-R.html#do-next",
-    "href": "slides/03-basics-of-R/03-basics-of-R.html#do-next",
-    "title": "R Basics",
-    "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 2- Workflow: basics from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 2” or work through some of the exercises in the text.\nMove on to Lecture 04."
-  },
-  {
-    "objectID": "slides/15-datetimes/15-datetimes.html#working-with-dates-and-times",
-    "href": "slides/15-datetimes/15-datetimes.html#working-with-dates-and-times",
-    "title": "Dates and Times",
-    "section": "Working with Dates and Times",
-    "text": "Working with Dates and Times\n\nDates and times can be complex due to daylight saving time (DST), time zones, and all the different formats that dates can come in\nDates are a very special kind of data: they are kind of “quantitative” but also kind of “categorical/ordinal”\nThe lubridate package in R makes working with dates and times easier"
-  },
-  {
-    "objectID": "slides/15-datetimes/15-datetimes.html#lubridate",
-    "href": "slides/15-datetimes/15-datetimes.html#lubridate",
-    "title": "Dates and Times",
-    "section": "lubridate",
-    "text": "lubridate\n\nPart of the core tidyverse.\nProvides functions for parsing, manipulating, and performing arithmetic with date-time data."
-  },
-  {
-    "objectID": "slides/15-datetimes/15-datetimes.html#from-strings",
-    "href": "slides/15-datetimes/15-datetimes.html#from-strings",
-    "title": "Dates and Times",
-    "section": "From Strings",
-    "text": "From Strings\n\nlubridate has helper functions that parse dates by identifying the order of year, month, and day components.\nFunctions are named after the order of components: ymd(), mdy(), dmy(), etc.\n\n\nymd(\"2017-01-31\")\n\n[1] \"2017-01-31\"\n\nmdy(\"January 31st, 2017\")\n\n[1] \"2017-01-31\"\n\ndmy(\"31-Jan-2017\")\n\n[1] \"2017-01-31\"\n\n\n\nFor date-times, add _hms, _hm, or _h.\n\n\nymd_hms(\"2017-01-31 20:11:59\")\n\n[1] \"2017-01-31 20:11:59 UTC\""
-  },
-  {
-    "objectID": "slides/15-datetimes/15-datetimes.html#from-components",
-    "href": "slides/15-datetimes/15-datetimes.html#from-components",
-    "title": "Dates and Times",
-    "section": "From Components",
-    "text": "From Components\n\nUse make_date() for dates and make_datetime() for date-times from individual components.\nLet’s do this with the flights data!"
-  },
-  {
-    "objectID": "slides/15-datetimes/15-datetimes.html#accessing-components",
-    "href": "slides/15-datetimes/15-datetimes.html#accessing-components",
-    "title": "Dates and Times",
-    "section": "Accessing Components",
-    "text": "Accessing Components\n\nFunctions like year(), month(), mday(), wday(), hour(), minute(), and second() extract components.\n\n\ndatetime &lt;- ymd_hms(\"2026-07-08 12:34:56\")\nyear(datetime)\n\n[1] 2026\n\nmonth(datetime, label = TRUE)\n\n[1] Jul\n12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; ... &lt; Dec\n\nwday(datetime, label = TRUE, abbr = FALSE)\n\n[1] Wednesday\n7 Levels: Sunday &lt; Monday &lt; Tuesday &lt; Wednesday &lt; Thursday &lt; ... &lt; Saturday"
-  },
-  {
-    "objectID": "slides/15-datetimes/15-datetimes.html#modifying-components",
-    "href": "slides/15-datetimes/15-datetimes.html#modifying-components",
-    "title": "Dates and Times",
-    "section": "Modifying Components",
-    "text": "Modifying Components\n\nYou can also set components using the same accessor functions.\n\n\ndatetime &lt;- ymd_hms(\"2026-07-08 12:34:56\")\nyear(datetime) &lt;- 2030\ndatetime\n\n[1] \"2030-07-08 12:34:56 UTC\"\n\n\n\nupdate() can modify multiple components.\n\n\nupdate(datetime, year = 2030, month = 2, mday = 2)\n\n[1] \"2030-02-02 12:34:56 UTC\""
-  },
-  {
-    "objectID": "slides/15-datetimes/15-datetimes.html#durations",
-    "href": "slides/15-datetimes/15-datetimes.html#durations",
-    "title": "Dates and Times",
-    "section": "Durations",
-    "text": "Durations\n\nRepresent an exact number of seconds.\nCreated with functions like dseconds(), dminutes(), dhours(), ddays().\n\n\nddays(1)\n\n[1] \"86400s (~1 days)\"\n\ndyears(1)\n\n[1] \"31557600s (~1 years)\"\n\n\n\nAdding a duration of a day can sometimes lead to unexpected results due to DST."
-  },
-  {
-    "objectID": "slides/15-datetimes/15-datetimes.html#periods",
-    "href": "slides/15-datetimes/15-datetimes.html#periods",
-    "title": "Dates and Times",
-    "section": "Periods",
-    "text": "Periods\n\nRepresent human units like weeks and months.\nMore intuitive for arithmetic.\n\n\none_am &lt;- ymd_hms(\"2026-03-08 01:00:00\", tz = \"America/New_York\")\none_am + ddays(1) # duration\n\n[1] \"2026-03-09 02:00:00 EDT\"\n\none_am + days(1)  # period\n\n[1] \"2026-03-09 01:00:00 EDT\""
-  },
-  {
-    "objectID": "slides/15-datetimes/15-datetimes.html#intervals",
-    "href": "slides/15-datetimes/15-datetimes.html#intervals",
-    "title": "Dates and Times",
-    "section": "Intervals",
-    "text": "Intervals\n\nRepresent a start and end point.\nUseful for calculating the exact length of a time span in human units.\n\n\ny2024 &lt;- ymd(\"2024-01-01\") %--% ymd(\"2025-01-01\")\ny2024 / days(1)\n\n[1] 366"
-  },
-  {
-    "objectID": "slides/15-datetimes/15-datetimes.html#iana-time-zones",
-    "href": "slides/15-datetimes/15-datetimes.html#iana-time-zones",
-    "title": "Dates and Times",
-    "section": "IANA Time Zones",
-    "text": "IANA Time Zones\n\nR uses IANA time zones, like \"America/New_York\".\nSys.timezone() gives your current time zone.\nOlsonNames() lists all available time zone names."
-  },
-  {
-    "objectID": "slides/15-datetimes/15-datetimes.html#changing-time-zones",
-    "href": "slides/15-datetimes/15-datetimes.html#changing-time-zones",
-    "title": "Dates and Times",
-    "section": "Changing Time Zones",
-    "text": "Changing Time Zones\n\nwith_tz(): changes how a time is displayed without changing the instant.\nforce_tz(): changes the instant in time.\n\n\nx1 &lt;- ymd_hms(\"2024-06-01 12:00:00\", tz = \"America/New_York\")\nwith_tz(x1, \"Europe/Paris\")\n\n[1] \"2024-06-01 18:00:00 CEST\"\n\nforce_tz(x1, \"Europe/Paris\")\n\n[1] \"2024-06-01 12:00:00 CEST\""
-  },
-  {
-    "objectID": "slides/15-datetimes/15-datetimes.html#practice",
-    "href": "slides/15-datetimes/15-datetimes.html#practice",
-    "title": "Dates and Times",
+    "objectID": "slides/13-regex/13-regex.html#practice",
+    "href": "slides/13-regex/13-regex.html#practice",
+    "title": "Regular Expressions",
     "section": "Practice!",
-    "text": "Practice!\nLet’s do some practice!"
+    "text": "Practice!\nWhat do each of these do?\n\n\"^b.*a$\"\n\"^.{5}$\"\n\"[aeiou]\"\nCreate a regular expression that will match telephone numbers as commonly written in your country."
   },
   {
-    "objectID": "slides/15-datetimes/15-datetimes.html#do-next",
-    "href": "slides/15-datetimes/15-datetimes.html#do-next",
-    "title": "Dates and Times",
+    "objectID": "slides/13-regex/13-regex.html#for-grouping",
+    "href": "slides/13-regex/13-regex.html#for-grouping",
+    "title": "Regular Expressions",
+    "section": "() for Grouping",
+    "text": "() for Grouping\n\nParentheses create a “capturing group” to extract parts of a match.\n\n\nstr_match(\"apple, banana, pear\", \"([a-z]+), ([a-z]+)\")\n\n     [,1]            [,2]    [,3]    \n[1,] \"apple, banana\" \"apple\" \"banana\""
+  },
+  {
+    "objectID": "slides/13-regex/13-regex.html#back-references",
+    "href": "slides/13-regex/13-regex.html#back-references",
+    "title": "Regular Expressions",
+    "section": "Back References",
+    "text": "Back References\n\n\\1, \\2, etc. refer to previously captured groups.\n\n\nstr_replace(\"abab\", \"(a)(b)\", \"\\\\2\\\\1\")\n\n[1] \"baab\""
+  },
+  {
+    "objectID": "slides/13-regex/13-regex.html#practice-1",
+    "href": "slides/13-regex/13-regex.html#practice-1",
+    "title": "Regular Expressions",
+    "section": "Practice!",
+    "text": "Practice!\nExercise 6 from 15.4.7."
+  },
+  {
+    "objectID": "slides/13-regex/13-regex.html#tidyrseparate_wider_regex",
+    "href": "slides/13-regex/13-regex.html#tidyrseparate_wider_regex",
+    "title": "Regular Expressions",
+    "section": "tidyr::separate_wider_regex()",
+    "text": "tidyr::separate_wider_regex()\n\nSeparates a column into multiple columns using regex with capture groups.\n\n\ndf &lt;- tibble(x = \"123-abc\")\ndf |&gt; separate_wider_regex(x, c(num = \"\\\\d+\", \"-\", chr = \"[a-z]+\"))\n\n# A tibble: 1 × 2\n  num   chr  \n  &lt;chr&gt; &lt;chr&gt;\n1 123   abc"
+  },
+  {
+    "objectID": "slides/13-regex/13-regex.html#fixed",
+    "href": "slides/13-regex/13-regex.html#fixed",
+    "title": "Regular Expressions",
+    "section": "fixed()",
+    "text": "fixed()\n\nUse fixed() to match a literal string without interpreting it as a regex.\n\n\nstr_detect(\"a.b\", fixed(\".\"))\n\n[1] TRUE"
+  },
+  {
+    "objectID": "slides/13-regex/13-regex.html#practice-2",
+    "href": "slides/13-regex/13-regex.html#practice-2",
+    "title": "Regular Expressions",
+    "section": "Practice!",
+    "text": "Practice!\nLet’s extract the AR codes and the county names from the Naturalization data!"
+  },
+  {
+    "objectID": "slides/13-regex/13-regex.html#do-next",
+    "href": "slides/13-regex/13-regex.html#do-next",
+    "title": "Regular Expressions",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 17: DateTimes from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 17” or work through some of the exercises in the text.\nThat’s it for today! See you tomorrow!"
+    "text": "Do Next\n\nRead Chapter 15: Regular Expression from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 15” or work through some of the exercises in the text.\nThat it for tonight! See you tomorrow."
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#data-flights-from-nyc-in-2013",
-    "href": "slides/07-layers/07-layers.html#data-flights-from-nyc-in-2013",
-    "title": "ggplot2 layers",
-    "section": "Data: Flights from NYC in 2013",
-    "text": "Data: Flights from NYC in 2013\nWe will be using the nycflights13::flights dataset. This dataset contains information about all flights that departed from New York City (EWR, LGA, JFK) in 2013.\n\nglimpse(flights)\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…"
+    "objectID": "slides/12-strings/12-strings.html#working-with-strings",
+    "href": "slides/12-strings/12-strings.html#working-with-strings",
+    "title": "Strings",
+    "section": "Working with Strings",
+    "text": "Working with Strings\n\nText data, or “strings”, are very common.\nThe stringr package, part of the tidyverse, provides a modern and consistent interface for working with strings.\nAll functions in stringr start with str_."
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#a-simple-scatterplot",
-    "href": "slides/07-layers/07-layers.html#a-simple-scatterplot",
-    "title": "ggplot2 layers",
-    "section": "A simple scatterplot",
-    "text": "A simple scatterplot\nLet’s create a simple scatterplot of departure delay vs. arrival delay."
+    "objectID": "slides/12-strings/12-strings.html#data-idaho-naturalization",
+    "href": "slides/12-strings/12-strings.html#data-idaho-naturalization",
+    "title": "Strings",
+    "section": "Data: Idaho Naturalization",
+    "text": "Data: Idaho Naturalization\n\nWe’re going to use Naturalization data from the Idaho State Archives\nThis dataset was assembled by Dr. Rachel Miller\nLink to Google Sheet\nLet’s load the data"
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#adding-layers",
-    "href": "slides/07-layers/07-layers.html#adding-layers",
-    "title": "ggplot2 layers",
-    "section": "Adding layers",
-    "text": "Adding layers\nA plot is composed of layers. Each layer has:\n\nA geom: The geometric object that represents the data (e.g., points, lines, bars).\nAn aesthetic mapping: How variables are mapped to visual properties.\nA stat: A statistical transformation (e.g., counting, summarizing).\nA position adjustment: How to arrange elements that would otherwise overlap."
+    "objectID": "slides/12-strings/12-strings.html#basics",
+    "href": "slides/12-strings/12-strings.html#basics",
+    "title": "Strings",
+    "section": "Basics",
+    "text": "Basics\n\nYou can create strings with single (') or double (\") quotes.\nTo include a literal quote in your string, you need to “escape” it with a \\.\nLet’s work through a few examples…"
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#adding-a-layer-trend-line-with-geom_smooth",
-    "href": "slides/07-layers/07-layers.html#adding-a-layer-trend-line-with-geom_smooth",
-    "title": "ggplot2 layers",
-    "section": "Adding a layer: Trend line with geom_smooth()",
-    "text": "Adding a layer: Trend line with geom_smooth()\nLet’s add a trend line… What does se = FALSE do?"
+    "objectID": "slides/12-strings/12-strings.html#combining-strings",
+    "href": "slides/12-strings/12-strings.html#combining-strings",
+    "title": "Strings",
+    "section": "Combining Strings",
+    "text": "Combining Strings\n\nstr_c() combines multiple vectors into a single character vector.\nstr_glue() from the glue package is great for embedding R code inside a string.\nWrap your R code in {}.\nLet’s create a full_name and greeting column using both functions."
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#global-vs.-local-mappings",
-    "href": "slides/07-layers/07-layers.html#global-vs.-local-mappings",
-    "title": "ggplot2 layers",
-    "section": "Global vs. Local Mappings",
-    "text": "Global vs. Local Mappings\n\nAesthetic mappings can be:\nGlobal: specify in ggplot() so they apply to all layers\nLocal: specify in each geom_*() so they apply only to that layer"
+    "objectID": "slides/12-strings/12-strings.html#separating-into-columns",
+    "href": "slides/12-strings/12-strings.html#separating-into-columns",
+    "title": "Strings",
+    "section": "Separating into Columns",
+    "text": "Separating into Columns\n\ntidyr::separate_wider_delim() splits a column into multiple new columns based on a delimiter.\nYou must provide names for the new columns.\n\n\ndf &lt;- tibble(x = c(\"a_b_1\", \"c_d_2\", \"e_f_3\"))\ndf |&gt; separate_wider_delim(\n  x,\n  delim = \"_\",\n  names = c(\"first\", \"second\", \"third\")\n)\n\n# A tibble: 3 × 3\n  first second third\n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;\n1 a     b      1    \n2 c     d      2    \n3 e     f      3"
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#using-color-as-a-local-aesthetic",
-    "href": "slides/07-layers/07-layers.html#using-color-as-a-local-aesthetic",
-    "title": "ggplot2 layers",
-    "section": "Using color as a local aesthetic",
-    "text": "Using color as a local aesthetic\nLet see what happens when we use color as a global aesthetic mapping in geom_point().\nHow can we make a single color for all points but still have the smooth line?"
+    "objectID": "slides/12-strings/12-strings.html#separating-into-rows",
+    "href": "slides/12-strings/12-strings.html#separating-into-rows",
+    "title": "Strings",
+    "section": "Separating into Rows",
+    "text": "Separating into Rows\n\ntidyr::separate_longer_delim() splits a column into multiple new rows.\nUseful when each cell contains a varying number of items.\n\n\ndf &lt;- tibble(x = 1:2, y = c(\"a,b\", \"c,d,e\"))\ndf |&gt; separate_longer_delim(y, delim = \",\")\n\n# A tibble: 5 × 2\n      x y    \n  &lt;int&gt; &lt;chr&gt;\n1     1 a    \n2     1 b    \n3     2 c    \n4     2 d    \n5     2 e"
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#why-isnt-this-plot-blue",
-    "href": "slides/07-layers/07-layers.html#why-isnt-this-plot-blue",
-    "title": "ggplot2 layers",
-    "section": "Why isn’t this plot blue?",
-    "text": "Why isn’t this plot blue?\n\n# This is probably not what you want\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(aes(color = \"blue\"))"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#setting-vs.-mapping",
-    "href": "slides/07-layers/07-layers.html#setting-vs.-mapping",
-    "title": "ggplot2 layers",
-    "section": "Setting vs. Mapping",
-    "text": "Setting vs. Mapping\n\nTo apply a constant property to all points, set it outside of aes()\n\n\nggplot(flights, aes(x = dep_delay, y = arr_delay)) +\n  geom_point(color = \"blue\")"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#common-geoms",
-    "href": "slides/07-layers/07-layers.html#common-geoms",
-    "title": "ggplot2 layers",
-    "section": "Common geoms",
-    "text": "Common geoms\n\ngeom_point(): Scatterplots\ngeom_line(): Line charts\ngeom_bar(): Bar charts\ngeom_histogram(): Histograms\ngeom_boxplot(): Boxplots\ngeom_smooth(): Trend lines\ngeom_density(): Density plots\nMany more!"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#geom_bar-vs-geom_col",
-    "href": "slides/07-layers/07-layers.html#geom_bar-vs-geom_col",
-    "title": "ggplot2 layers",
-    "section": "geom_bar vs geom_col",
-    "text": "geom_bar vs geom_col\n\ngeom_bar() uses stat_count() by default to count the number of observations for each category\n\n\nggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar()"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#changing-the-stat-argument",
-    "href": "slides/07-layers/07-layers.html#changing-the-stat-argument",
-    "title": "ggplot2 layers",
-    "section": "Changing the stat argument",
-    "text": "Changing the stat argument\n\nYou can change the statistical transformation used by a geom with the stat argument…\n\n\nflights |&gt;\n  count(carrier) |&gt; \n  ggplot(mapping = aes(x = carrier, y = n)) +\n    geom_bar(stat = \"identity\")"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#changing-the-stat",
-    "href": "slides/07-layers/07-layers.html#changing-the-stat",
-    "title": "ggplot2 layers",
-    "section": "Changing the stat",
-    "text": "Changing the stat\n\nUsing after_stat() to modify computed variables from a stat\n\n\nggplot(data = flights) +\n  geom_bar(mapping = aes(x = carrier, y = after_stat(prop), group = 1)) +\n  labs(y = \"Proportion\")"
-  },
-  {
-    "objectID": "slides/07-layers/07-layers.html#practice",
-    "href": "slides/07-layers/07-layers.html#practice",
-    "title": "ggplot2 layers",
+    "objectID": "slides/12-strings/12-strings.html#practice",
+    "href": "slides/12-strings/12-strings.html#practice",
+    "title": "Strings",
     "section": "Practice",
-    "text": "Practice\nLet’s try to overlay a density plot on top of a histogram of dep_delay…"
+    "text": "Practice\nLet’s extract the AR codes from the Naturalization data!"
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#overplotting",
-    "href": "slides/07-layers/07-layers.html#overplotting",
-    "title": "ggplot2 layers",
-    "section": "Overplotting",
-    "text": "Overplotting\n\nOverplotting: When many points overlap in a scatterplot, making it hard to see the distribution of points\nCommon solution: Use transparency with alpha aesthetic\nAnother solution: Use position adjustments to spread out points"
+    "objectID": "slides/12-strings/12-strings.html#length",
+    "href": "slides/12-strings/12-strings.html#length",
+    "title": "Strings",
+    "section": "Length",
+    "text": "Length\n\nstr_length() gives you the number of characters in a string.\n\n\nstr_length(c(\"a\", \"R for data science\", NA))\n\n[1]  1 18 NA"
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#jittering-points",
-    "href": "slides/07-layers/07-layers.html#jittering-points",
-    "title": "ggplot2 layers",
-    "section": "Jittering points",
-    "text": "Jittering points\n\nlibrary(patchwork)\np1 &lt;- ggplot(flights, aes(x = month, y = dep_delay)) +\n  geom_point()\np2 &lt;- ggplot(flights, aes(x = month, y = dep_delay)) +\n  geom_jitter()\np1 + p2"
+    "objectID": "slides/12-strings/12-strings.html#subsetting",
+    "href": "slides/12-strings/12-strings.html#subsetting",
+    "title": "Strings",
+    "section": "Subsetting",
+    "text": "Subsetting\n\nstr_sub() extracts a part of a string.\nYou provide the start and end positions (inclusive).\nNegative numbers count from the end of the string.\n\n\nx &lt;- c(\"Apple\", \"Banana\", \"Pear\")\nstr_sub(x, 1, 3)\n\n[1] \"App\" \"Ban\" \"Pea\"\n\nstr_sub(x, -2, -1)\n\n[1] \"le\" \"na\" \"ar\""
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#bar-chart-adjustments",
-    "href": "slides/07-layers/07-layers.html#bar-chart-adjustments",
-    "title": "ggplot2 layers",
-    "section": "Bar chart adjustments",
-    "text": "Bar chart adjustments\nFor bar charts, you can use position to change how bars are arranged.\n\nstack (default): Stack bars on top of each other.\nfill: Stack bars, but standardize to have the same height. Good for comparing proportions.\ndodge: Place bars next to each other."
+    "objectID": "slides/12-strings/12-strings.html#case",
+    "href": "slides/12-strings/12-strings.html#case",
+    "title": "Strings",
+    "section": "Case",
+    "text": "Case\n\nstr_to_lower(): convert to lowercase.\nstr_to_upper(): convert to uppercase.\nstr_to_title(): convert to title case.\n\n\nstr_to_lower(\"I am shouting.\")\n\n[1] \"i am shouting.\"\n\nstr_to_title(\"a tale of two cities\")\n\n[1] \"A Tale Of Two Cities\""
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#bar-chart-adjustments-1",
-    "href": "slides/07-layers/07-layers.html#bar-chart-adjustments-1",
-    "title": "ggplot2 layers",
-    "section": "Bar chart adjustments",
-    "text": "Bar chart adjustments\n\np1 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"stack\")\np2 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"fill\")\np3 &lt;- ggplot(flights, aes(x = carrier, fill = origin)) +\n  geom_bar(position = \"dodge\") +\n  labs(title = \"dodge\")"
+    "objectID": "slides/12-strings/12-strings.html#whitespace",
+    "href": "slides/12-strings/12-strings.html#whitespace",
+    "title": "Strings",
+    "section": "Whitespace",
+    "text": "Whitespace\n\nstr_trim() removes whitespace from the start and end of a string.\nstr_squish() also removes whitespace from the start and end, and reduces any internal whitespace to a single space.\n\n\ntext &lt;- \"  this   has  a lot of   whitespace   \"\nstr_trim(text)\n\n[1] \"this   has  a lot of   whitespace\"\n\nstr_squish(text)\n\n[1] \"this has a lot of whitespace\""
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#bar-chart-stacked",
-    "href": "slides/07-layers/07-layers.html#bar-chart-stacked",
-    "title": "ggplot2 layers",
-    "section": "Bar chart: Stacked",
-    "text": "Bar chart: Stacked\n\np1"
+    "objectID": "slides/12-strings/12-strings.html#strings",
+    "href": "slides/12-strings/12-strings.html#strings",
+    "title": "Strings",
+    "section": "Strings",
+    "text": "Strings\n\nThe stringr package provides a consistent set of tools for working with strings.\nCreate strings with str_c() and str_glue().\nExtract data with tidyr::separate_*() functions.\nManipulate letters with str_length(), str_sub(), str_to_*(), and str_trim()/str_squish().\nThe next step is to master pattern matching with regular expressions."
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#bar-chart-standardized",
-    "href": "slides/07-layers/07-layers.html#bar-chart-standardized",
-    "title": "ggplot2 layers",
-    "section": "Bar chart: Standardized",
-    "text": "Bar chart: Standardized\n\np2"
+    "objectID": "slides/12-strings/12-strings.html#do-next",
+    "href": "slides/12-strings/12-strings.html#do-next",
+    "title": "Strings",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 14: Strings from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 14” or work through some of the exercises in the text.\nMove on the Lecture 13."
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#bar-chart-dodged",
-    "href": "slides/07-layers/07-layers.html#bar-chart-dodged",
-    "title": "ggplot2 layers",
-    "section": "Bar chart: Dodged",
-    "text": "Bar chart: Dodged\n\np3"
+    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#before-we-start",
+    "href": "slides/01-intro-to-R/01-intro-to-R.html#before-we-start",
+    "title": "R Basics",
+    "section": "Before we start…",
+    "text": "Before we start…\n\nMake sure you have done the following:\n\nDownloaded and installed R\nDownloaded and installed Positron (or R Studio)\nCreated a Gemini Pro AI account (free for students)"
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#facet_wrap-and-facet_grid",
-    "href": "slides/07-layers/07-layers.html#facet_wrap-and-facet_grid",
-    "title": "ggplot2 layers",
-    "section": "facet_wrap and facet_grid",
-    "text": "facet_wrap and facet_grid\n\nFacets allow you to break your plot into subplots based on a categorical variable.\nfacet_wrap: Creates a series of plots wrapped into a rectangle\nfacet_grid: Creates a grid of plots based on two categorical variables"
+    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#what-is-r",
+    "href": "slides/01-intro-to-R/01-intro-to-R.html#what-is-r",
+    "title": "R Basics",
+    "section": "What is R?",
+    "text": "What is R?\n\nR is a statistical programming language\n\nInspired by the S programming language developed at Bell Labs in the 1970s\nCreated by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand in the early 1990s for teaching statistics\nNow one of the most popular programming languages for data science and statistics\n\nR is free and open source\n\nAnyone can download and use R for free\nAnyone can contribute to the development of R and its packages"
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#practice-1",
-    "href": "slides/07-layers/07-layers.html#practice-1",
-    "title": "ggplot2 layers",
+    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#r-is-not-the-same-as-r-studio-r-markdown-or-positron",
+    "href": "slides/01-intro-to-R/01-intro-to-R.html#r-is-not-the-same-as-r-studio-r-markdown-or-positron",
+    "title": "R Basics",
+    "section": "R is not the same as R Studio, R Markdown, or Positron",
+    "text": "R is not the same as R Studio, R Markdown, or Positron\n\nR is the programming language\nR Studio (now Positron) is an integrated development environment (IDE) for R\n\nProvides a user-friendly interface for writing and running R code\n\n\n\n\n\nSource: Statistical Inference via Data Science"
+  },
+  {
+    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#writing-scripts-in-r",
+    "href": "slides/01-intro-to-R/01-intro-to-R.html#writing-scripts-in-r",
+    "title": "R Basics",
+    "section": "Writing Scripts in R",
+    "text": "Writing Scripts in R\n\nLet’s open up a script and run some R code!\n\nRunning R from the console\nRunning R from a script file"
+  },
+  {
+    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#r-packages",
+    "href": "slides/01-intro-to-R/01-intro-to-R.html#r-packages",
+    "title": "R Basics",
+    "section": "R Packages",
+    "text": "R Packages\n\nR has a rich ecosystem of packages that extend its functionality\n\nYou can install packages using install.packages(\"package_name\") (only do this once)\nLoad packages into your R session using library(package_name) (do this every time you start a new R session)\n\nAn important package for this class:\n\ntidyverse: A collection of packages for data manipulation, visualization, and modeling\n\nggplot2: A package for creating graphics using the Grammar of Graphics\ndplyr: A package for data manipulation\n\n\nLet’s install and load tidyverse"
+  },
+  {
+    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#palmer-penguins-dataset",
+    "href": "slides/01-intro-to-R/01-intro-to-R.html#palmer-penguins-dataset",
+    "title": "R Basics",
+    "section": "Palmer Penguins Dataset",
+    "text": "Palmer Penguins Dataset\n\nInstall the palmerpenguins package\nContains dataset on the famous Palmer Penguins: penguin species, island in Palmer Archipelago, size (flipper length, body mass, bill dimensions), and sex.\nExplore more with ?penguins"
+  },
+  {
+    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#important-vocabulary",
+    "href": "slides/01-intro-to-R/01-intro-to-R.html#important-vocabulary",
+    "title": "R Basics",
+    "section": "Important Vocabulary",
+    "text": "Important Vocabulary\n\nData frame: A table-like structure in R that holds data (penguins)\n\nIn the tidyverse data frames are referred to as tibbles\n\nVariable: is a quantity, quality, or property that you can measure (e.g. species, bill_length_mm, island)\nObservation or Data point: a single object that has been measured (e.g. one of the penguins in the data set)\nValue: the entry for a particular variable and observation (e.g. for the first penguin, the value of species is “Adelie”, the value of bill_length_mm is 39.1)\nTabular Data: data organized in rows and columns (like a spreadsheet or data frame)\nTidy Data: tabular data where each observation is a row, each variable is a column, and each type of observational unit forms a table"
+  },
+  {
+    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#taking-a-quick-look-at-penguins",
+    "href": "slides/01-intro-to-R/01-intro-to-R.html#taking-a-quick-look-at-penguins",
+    "title": "R Basics",
+    "section": "Taking a quick look at penguins",
+    "text": "Taking a quick look at penguins\n\nglimpse gives a quick overview of the data frame\nhead shows the first few rows of the data frame\ntail shows the last few rows of the data frame"
+  },
+  {
+    "objectID": "slides/01-intro-to-R/01-intro-to-R.html#do-next",
+    "href": "slides/01-intro-to-R/01-intro-to-R.html#do-next",
+    "title": "R Basics",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead the Introduction of R for Data Science\nPost any question you have to the HW channel in our Team.\nMove on to Lecture 02."
+  },
+  {
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#this-lesson",
+    "href": "slides/05-data-tidying/05-data-tidying.html#this-lesson",
+    "title": "Data Tidying",
+    "section": "This lesson",
+    "text": "This lesson\n\nDefine “tidy data”\nLearn how to use tidyr to make data tidy\n\npivot_longer() for lengthening data\npivot_wider() for widening data"
+  },
+  {
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#what-is-tidy-data",
+    "href": "slides/05-data-tidying/05-data-tidying.html#what-is-tidy-data",
+    "title": "Data Tidying",
+    "section": "What is tidy data?",
+    "text": "What is tidy data?\nTidy data is a consistent way of structuring datasets that makes them easier to work with. A dataset is tidy if it follows three rules:\n\nEach variable has its own column.\nEach observation has its own row.\nEach value has its own cell.\n\nThis structure is a standard in the tidyverse."
+  },
+  {
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#setup",
+    "href": "slides/05-data-tidying/05-data-tidying.html#setup",
+    "title": "Data Tidying",
+    "section": "Setup",
+    "text": "Setup\nWe will be using functions from the tidyr package, which is part of the tidyverse.\n\n# load packages\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#lengthening-data-with-pivot_longer",
+    "href": "slides/05-data-tidying/05-data-tidying.html#lengthening-data-with-pivot_longer",
+    "title": "Data Tidying",
+    "section": "Lengthening data with pivot_longer()",
+    "text": "Lengthening data with pivot_longer()\n\nWide Format: column names are actually values of a variable:\n\n\nrelig_income |&gt; head()\n\n# A tibble: 6 × 11\n  religion  `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`\n  &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n1 Agnostic       27        34        60        81        76       137        122\n2 Atheist        12        27        37        52        35        70         73\n3 Buddhist       27        21        30        34        33        58         62\n4 Catholic      418       617       732       670       638      1116        949\n5 Don’t kn…      15        14        15        11        10        35         21\n6 Evangeli…     575       869      1064       982       881      1486        949\n# ℹ 3 more variables: `$100-150k` &lt;dbl&gt;, `&gt;150k` &lt;dbl&gt;,\n#   `Don't know/refused` &lt;dbl&gt;\n\n\nThis is not tidy. The income brackets are variable names, not a variable."
+  },
+  {
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_longer",
+    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_longer",
+    "title": "Data Tidying",
+    "section": "Using pivot_longer()",
+    "text": "Using pivot_longer()\n\n\n\nGoal: transform this so we have three columns: religion, income, and count.\nUse pivot_longer() to do this.\n\n\ntidy_relig_income &lt;- relig_income |&gt; \n  pivot_longer(\n    cols = !religion, \n    names_to = \"income\", \n    values_to = \"count\"\n  )\n\ntidy_relig_income |&gt; head()\n\n# A tibble: 6 × 3\n  religion income  count\n  &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt;\n1 Agnostic &lt;$10k      27\n2 Agnostic $10-20k    34\n3 Agnostic $20-30k    60\n4 Agnostic $30-40k    81\n5 Agnostic $40-50k    76\n6 Agnostic $50-75k   137\n\n\n\n\ncols: The columns to pivot into longer format. !religion means all columns except religion.\nnames_to: The name of the new column that will contain the names of the original columns.\nvalues_to: The name of the new column that will contain the values from the original columns."
+  },
+  {
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#practice",
+    "href": "slides/05-data-tidying/05-data-tidying.html#practice",
+    "title": "Data Tidying",
     "section": "Practice",
-    "text": "Practice\n\nLet’s visualize the relationship between origin, carrier, dep_delay, and arr_delay using facets!"
+    "text": "Practice\nLet’s practice with another dataset: billboard."
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#flipping-coordinates",
-    "href": "slides/07-layers/07-layers.html#flipping-coordinates",
-    "title": "ggplot2 layers",
-    "section": "Flipping coordinates",
-    "text": "Flipping coordinates\n\np1 &lt;- ggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar()\n\np2 &lt;- ggplot(data = flights, mapping = aes(x = carrier)) +\n  geom_bar() +\n  coord_flip()\np1 + p2"
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#widening-data-with-pivot_wider",
+    "href": "slides/05-data-tidying/05-data-tidying.html#widening-data-with-pivot_wider",
+    "title": "Data Tidying",
+    "section": "Widening data with pivot_wider()",
+    "text": "Widening data with pivot_wider()\npivot_wider() is the opposite of pivot_longer(). It’s used when an observation is scattered across multiple rows.\n\nfish_encounters |&gt; head()\n\n# A tibble: 6 × 3\n  fish  station  seen\n  &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;\n1 4842  Release     1\n2 4842  I80_1       1\n3 4842  Lisbon      1\n4 4842  Rstr        1\n5 4842  Base_TD     1\n6 4842  BCE         1\n\n\n\nOne observation = one fishing station\nfish_encounters has two rows for each station: one for when a fish was seen and one for when it wasn’t\nstation column contains variable names\nseen column contains(0/1) values"
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#the-layered-grammar-in-summary",
-    "href": "slides/07-layers/07-layers.html#the-layered-grammar-in-summary",
-    "title": "ggplot2 layers",
-    "section": "The layered grammar in summary",
-    "text": "The layered grammar in summary\n#| eval: false\n`ggplot(data = &lt;DATA&gt;) +`\n`  &lt;GEOM_FUNCTION&gt;(`\n`    mapping = aes(&lt;AESTHETIC_MAPPINGS&gt;),`\n`    stat = &lt;STAT&gt;,`\n`    position = &lt;POSITION&gt;`\n`  ) +`\n`  &lt;COORDINATE_SYSTEM&gt; +`\n`  &lt;FACET_FUNCTION&gt;`"
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider",
+    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider",
+    "title": "Data Tidying",
+    "section": "Using pivot_wider()",
+    "text": "Using pivot_wider()\nGoal: one row per station, with columns indicating whether fish was seen or not.\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1    NA    NA    NA    NA    NA    NA\n5 4847        1     1      1    NA      NA    NA    NA    NA    NA    NA    NA\n6 4848        1     1      1     1      NA    NA    NA    NA    NA    NA    NA\n\n\nProblem: NA values where there should be zeros, can fix this with values_fill."
   },
   {
-    "objectID": "slides/07-layers/07-layers.html#do-next",
-    "href": "slides/07-layers/07-layers.html#do-next",
-    "title": "ggplot2 layers",
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider-with-values_fill",
+    "href": "slides/05-data-tidying/05-data-tidying.html#using-pivot_wider-with-values_fill",
+    "title": "Data Tidying",
+    "section": "Using pivot_wider() with values_fill",
+    "text": "Using pivot_wider() with values_fill\n\nfish_encounters |&gt;\n  pivot_wider(\n    names_from = station,\n    values_from = seen,\n    values_fill = 0\n  ) |&gt; \n    head()\n\n# A tibble: 6 × 12\n  fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n  &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 4842        1     1      1     1       1     1     1     1     1     1     1\n2 4843        1     1      1     1       1     1     1     1     1     1     1\n3 4844        1     1      1     1       1     1     1     1     1     1     1\n4 4845        1     1      1     1       1     0     0     0     0     0     0\n5 4847        1     1      1     0       0     0     0     0     0     0     0\n6 4848        1     1      1     1       0     0     0     0     0     0     0\n\n\n\nnames_from: The column to get the new column names from.\nvalues_from: The column to get the cell values from.\nvalues_fill: A value to replace NAs with."
+  },
+  {
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#practice-1",
+    "href": "slides/05-data-tidying/05-data-tidying.html#practice-1",
+    "title": "Data Tidying",
+    "section": "Practice",
+    "text": "Practice\nLet’s practice with cms_patient_care"
+  },
+  {
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#summary",
+    "href": "slides/05-data-tidying/05-data-tidying.html#summary",
+    "title": "Data Tidying",
+    "section": "Summary",
+    "text": "Summary\n\nTidy data is a standard format that makes data analysis easier.\nUse pivot_longer() when your column names are actually values of a variable (to make data longer and narrower).\nUse pivot_wider() when an observation is scattered across multiple rows (to make data wider and shorter).\nYou will often need to use pivot_longer() and pivot_wider() when preparing data for plotting\n\nThese two functions are the foundation of data tidying in R."
+  },
+  {
+    "objectID": "slides/05-data-tidying/05-data-tidying.html#do-next",
+    "href": "slides/05-data-tidying/05-data-tidying.html#do-next",
+    "title": "Data Tidying",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 9: Layers from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 9” or work through some of the exercises in the text.\nMove on to Lecture 08."
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#what-is-version-control",
-    "href": "slides/18-github/18-github.html#what-is-version-control",
-    "title": "Introduction to GitHub",
-    "section": "What is Version Control?",
-    "text": "What is Version Control?\n\nA system that records changes to a file or set of files over time so that you can recall specific versions later.\nIt allows you to revert files back to a previous state, revert the entire project back to a previous state, compare changes over time, see who last modified something that might be causing a problem, who introduced an issue and when.\nThink of it like “track changes” in a word processor, but for all your project files (code, data, text, etc.)."
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#why-is-it-useful",
-    "href": "slides/18-github/18-github.html#why-is-it-useful",
-    "title": "Introduction to GitHub",
-    "section": "Why is it useful?",
-    "text": "Why is it useful?\n\nCollaboration: Many people can work on the same project without overwriting each other’s changes.\nOrganization: Keeps a history of your project. No more final_report_v2_final_final.docx!\nBackup: Your project history is stored in a remote, safe place (like GitHub). If your computer crashes, your work is not lost.\nExperimentation: You can try out new ideas in a “branch” without messing up the main version of your project."
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#what-is-git",
-    "href": "slides/18-github/18-github.html#what-is-git",
-    "title": "Introduction to GitHub",
-    "section": "What is Git?",
-    "text": "What is Git?\n\nGit is a free and open source distributed version control system.\nIt’s a command-line tool that you run on your computer to track changes in your project files.\nIt’s the most popular version control system in the world."
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#what-is-github",
-    "href": "slides/18-github/18-github.html#what-is-github",
-    "title": "Introduction to GitHub",
-    "section": "What is GitHub?",
-    "text": "What is GitHub?\n\nGitHub is a web-based hosting service for Git repositories.\nIt’s a place to store your projects and collaborate with others.\nIt provides a graphical interface to Git, plus other features like issue tracking, project management, and more.\nGit is the tool, GitHub is the service."
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#cloning-a-repository",
-    "href": "slides/18-github/18-github.html#cloning-a-repository",
-    "title": "Introduction to GitHub",
-    "section": "Cloning a Repository",
-    "text": "Cloning a Repository\n\n“Cloning” is how you get a copy of a project from GitHub onto your computer.\nYou only need to do this once per project.\nYou’ll get a URL from the GitHub page of the repository.\n\n\ngit clone &lt;URL_of_the_repository&gt;\n\n\nThis creates a new directory on your computer with all the project files."
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#the-add-commit-push-cycle",
-    "href": "slides/18-github/18-github.html#the-add-commit-push-cycle",
-    "title": "Introduction to GitHub",
-    "section": "The Add-Commit-Push Cycle",
-    "text": "The Add-Commit-Push Cycle\nThis is the most common workflow you’ll use.\n\nMake changes: Edit your files, create new files, etc.\nAdd files: Tell Git which files you want to save in the next “snapshot” (commit).\nCommit files: Save the snapshot with a descriptive message.\nPush changes: Send your committed changes to GitHub."
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#git-add",
-    "href": "slides/18-github/18-github.html#git-add",
-    "title": "Introduction to GitHub",
-    "section": "git add",
-    "text": "git add\n\nUse git add to stage your changes. Staging is the step before committing.\nYou can add specific files or all files with changes.\n\n\n# Add a specific file\ngit add path/to/your/file.R\n\n# Add all changed files in the current directory and subdirectories\ngit add ."
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#git-commit",
-    "href": "slides/18-github/18-github.html#git-commit",
-    "title": "Introduction to GitHub",
-    "section": "git commit",
-    "text": "git commit\n\nA “commit” is a snapshot of your staged changes.\nEach commit has a unique ID and a message.\nThe message is important! It should be a short, descriptive summary of the changes you made.\n\n\ngit commit -m \"Fix bug in data cleaning script\""
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#git-push",
-    "href": "slides/18-github/18-github.html#git-push",
-    "title": "Introduction to GitHub",
-    "section": "git push",
-    "text": "git push\n\ngit push sends your committed changes from your local computer to the remote repository on GitHub.\n\n\ngit push"
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#git-pull",
-    "href": "slides/18-github/18-github.html#git-pull",
-    "title": "Introduction to GitHub",
-    "section": "git pull",
-    "text": "git pull\n\nIf you’re working with others, they will merge changes into the main branch.\ngit pull fetches changes from the remote repository and merges them into your local copy.\nIt’s a critical habit to pull from main before you start working to make sure you have the latest version.\n\n\n\n# Make sure you're on the main branch first\ngit checkout main\ngit pull"
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#what-is-a-branch",
-    "href": "slides/18-github/18-github.html#what-is-a-branch",
-    "title": "Introduction to GitHub",
-    "section": "What is a Branch?",
-    "text": "What is a Branch?\n\nA branch is a parallel version of your repository.\nIt allows you to work on new features or fixes without affecting the main codebase (the main branch).\nThis is essential for teamwork."
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#the-branching-workflow-a-full-example",
-    "href": "slides/18-github/18-github.html#the-branching-workflow-a-full-example",
-    "title": "Introduction to GitHub",
-    "section": "The Branching Workflow: A Full Example",
-    "text": "The Branching Workflow: A Full Example\n\nSync your local main branch: git checkout main git pull\nCreate a new branch for your work: For the project, your team leader (the “GitHub Sentinel”) will do this. Branch names should be descriptive, like feature/team-name. git checkout -b feature/pod-1-enrollment\nWork on your branch: Now you do the familiar add-commit cycle. Edit files, create new R scripts… git add . git commit -m \"Add enrollment chart and data cleaning\"\nPush your branch to GitHub: The -u flag sets the upstream branch so you can just git push next time. git push -u origin feature/pod-1-enrollment"
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#what-is-a-pull-request",
-    "href": "slides/18-github/18-github.html#what-is-a-pull-request",
-    "title": "Introduction to GitHub",
-    "section": "What is a Pull Request?",
-    "text": "What is a Pull Request?\n\nA Pull Request (or PR) is a formal request to merge your changes.\nYou’re asking the project maintainer (the “Lead Architect” for your project) to “pull” your changes from your branch into the main branch.\nIt’s a place for code review and discussion before the changes are integrated."
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#how-the-sentinel-opens-a-pull-request",
-    "href": "slides/18-github/18-github.html#how-the-sentinel-opens-a-pull-request",
-    "title": "Introduction to GitHub",
-    "section": "How the Sentinel Opens a Pull Request",
-    "text": "How the Sentinel Opens a Pull Request\n\nAfter pushing the branch, go to the repository on GitHub.\nGitHub will usually show a banner prompting you to “Compare & pull request”. Click it!\nIf not, go to the “Pull requests” tab and click “New pull request”.\nSelect your team’s branch as the “compare” branch and main as the “base” branch.\nWrite a clear title and description for your changes. Explain what you did.\nClick “Create pull request”."
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#review-and-merging",
-    "href": "slides/18-github/18-github.html#review-and-merging",
-    "title": "Introduction to GitHub",
-    "section": "Review and Merging",
-    "text": "Review and Merging\n\nOnce the PR is open, the “Lead Architect” and other team members can review your code, add comments, and request changes.\nIf changes are requested, your team makes them on the local branch, then commits and pushes again. The PR will update automatically.\nOnce approved, the Lead Architect will merge your branch into main. Your work is now part of the official project!"
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#a-note-on-merge-conflicts",
-    "href": "slides/18-github/18-github.html#a-note-on-merge-conflicts",
-    "title": "Introduction to GitHub",
-    "section": "A Note on Merge Conflicts",
-    "text": "A Note on Merge Conflicts\n\nIf you and another person edit the same lines in the same file on different branches, Git won’t know which version to keep when merging.\nThis is a merge conflict.\nThe person merging the PR (or the Sentinel, before opening it) will need to manually resolve the conflict by choosing which code to keep.\nThe best way to avoid conflicts: Pull from main often and communicate with your team!"
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#after-a-pr-is-merged",
-    "href": "slides/18-github/18-github.html#after-a-pr-is-merged",
-    "title": "Introduction to GitHub",
-    "section": "After a PR is Merged",
-    "text": "After a PR is Merged\nOnce your team’s branch is merged by the Lead Architect, everyone should update their local repository.\n\nSwitch back to your main branch: git checkout main\nPull the latest changes (which now include the merged work): git pull\nNow your main is up to date, and you can create a new branch for the next feature!"
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#good-commit-messages",
-    "href": "slides/18-github/18-github.html#good-commit-messages",
-    "title": "Introduction to GitHub",
-    "section": "Good Commit Messages",
-    "text": "Good Commit Messages\n\nKeep them short and descriptive.\nUse the imperative mood (e.g., “Add feature” not “Added feature”).\nExplain what the change is and why you made it.\n\nGood:\n\nFix typo in course syllabus\nUpdate plot styling in HW1\nFeat: Add enrollment module skeleton\nDocs: Explain data cleaning process\n\nBad:\n\nstuff\nfixed it\naaaaaaaa"
-  },
-  {
-    "objectID": "slides/18-github/18-github.html#do-next",
-    "href": "slides/18-github/18-github.html#do-next",
-    "title": "Introduction to GitHub",
-    "section": "Do Next",
-    "text": "Do Next\n\nMake sure you have Git installed on your computer.\nMake sure you have a GitHub account.\nAccept the invitation to our course organization on GitHub.\nThat’s it for tonight! See you tomorrow."
+    "text": "Do Next\n\nRead Chapter 5: Data Tidying from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 5” or work through some of the exercises in the text.\nComplete Lecture 6."
   },
   {
     "objectID": "slides/02-first-viz/02-first-viz.html#data-visualization",

@@ -37,28 +37,32 @@
     <lastmod>2026-01-08T15:58:00.966Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/05-data-tidying/05-data-tidying.html</loc>
-    <lastmod>2026-01-06T17:17:16.726Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/07-layers/07-layers.html</loc>
+    <lastmod>2026-01-06T22:28:04.013Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/01-intro-to-R/01-intro-to-R.html</loc>
-    <lastmod>2026-01-05T15:50:00.326Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/15-datetimes/15-datetimes.html</loc>
+    <lastmod>2026-01-13T17:18:13.521Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/12-strings/12-strings.html</loc>
-    <lastmod>2026-01-12T15:30:02.795Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/03-basics-of-R/03-basics-of-R.html</loc>
+    <lastmod>2026-01-05T14:19:31.520Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/13-regex/13-regex.html</loc>
-    <lastmod>2026-01-12T15:30:02.795Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/04-first-transformations/04-first-transformations.html</loc>
+    <lastmod>2026-01-05T14:19:31.520Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/course-support.html</loc>
-    <lastmod>2026-01-13T23:21:05.685Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/course-technology.html</loc>
+    <lastmod>2026-01-05T17:11:12.198Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/classwork/05-individual-project-intro.html</loc>
-    <lastmod>2026-01-13T17:48:50.995Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/classwork/06-tools.html</loc>
+    <lastmod>2026-01-14T19:26:47.409Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/classwork/18-github.html</loc>
+    <lastmod>2026-01-14T18:04:06.539Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/classwork/02-pivoting.html</loc>
@@ -93,28 +97,32 @@
     <lastmod>2026-01-06T17:21:03.966Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/course-technology.html</loc>
-    <lastmod>2026-01-05T17:11:12.198Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/classwork/20-renv.html</loc>
+    <lastmod>2026-01-14T17:43:38.028Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/04-first-transformations/04-first-transformations.html</loc>
-    <lastmod>2026-01-05T14:19:31.520Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/classwork/05-individual-project-intro.html</loc>
+    <lastmod>2026-01-13T17:48:50.995Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/03-basics-of-R/03-basics-of-R.html</loc>
-    <lastmod>2026-01-05T14:19:31.520Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/course-support.html</loc>
+    <lastmod>2026-01-13T23:21:05.685Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/15-datetimes/15-datetimes.html</loc>
-    <lastmod>2026-01-13T17:18:13.521Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/13-regex/13-regex.html</loc>
+    <lastmod>2026-01-12T15:30:02.795Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/07-layers/07-layers.html</loc>
-    <lastmod>2026-01-06T22:28:04.013Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/12-strings/12-strings.html</loc>
+    <lastmod>2026-01-12T15:30:02.795Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/18-github/18-github.html</loc>
-    <lastmod>2026-01-13T23:46:35.907Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/01-intro-to-R/01-intro-to-R.html</loc>
+    <lastmod>2026-01-05T15:50:00.326Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/05-data-tidying/05-data-tidying.html</loc>
+    <lastmod>2026-01-06T17:17:16.726Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/slides/02-first-viz/02-first-viz.html</loc>

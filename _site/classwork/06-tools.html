@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-html/tabby.min.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
-  <title>CSCI 2025 – Introduction to GitHub</title>
+  <title>CSCI 2025 – A Menagerie Of Tools</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -95,13 +95,13 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-19712d0536fb4af57e0e6d790f4cb4d1.css">
-  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-8bca78ff1bb92eb160b3f14c6bb84c86.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -194,8 +194,8 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Introduction to GitHub</h1>
+<section id="title-slide" data-background-image="title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
+  <h1 class="title">A Menagerie Of Tools</h1>
   <p class="subtitle">Lecture 18</p>
 
 <div class="quarto-title-authors">
@@ -210,6 +210,267 @@ Dr.&nbsp;Eric Friedlander
 </div>
 
 </section>
+<section id="today" class="slide level2">
+<h2>Today</h2>
+<ul>
+<li>Quarto</li>
+<li>Jupyter Notebooks</li>
+<li>Git and GitHub</li>
+<li>Environment Mangement</li>
+<li>AI (Maybe)</li>
+</ul>
+</section>
+<section>
+<section id="what-is-quarto" class="title-slide slide level1 center">
+<h1>What is Quarto?</h1>
+
+</section>
+<section id="quarto-basics" class="slide level2 smaller">
+<h2>Quarto Basics</h2>
+<ul>
+<li>Quarto is a unified authoring framework for data science</li>
+<li>Combines your <strong>code</strong>, its <strong>results</strong>, and your <strong>prose</strong></li>
+<li>Quarto documents are fully reproducible</li>
+<li>Supports dozens of output formats:
+<ul>
+<li>PDFs</li>
+<li>Word files</li>
+<li>Presentations (like this one!)</li>
+<li>Websites</li>
+<li>Books</li>
+</ul></li>
+</ul>
+</section>
+<section id="quarto-vs-r-markdown" class="slide level2 smaller">
+<h2>Quarto vs R Markdown</h2>
+<ul>
+<li>If you’ve used R Markdown, Quarto will feel very familiar!</li>
+<li>Quarto unifies the functionality of many R Markdown packages (<code>rmarkdown</code>, <code>bookdown</code>, <code>distill</code>, <code>xaringan</code>, etc.)</li>
+<li>Native support for multiple languages:
+<ul>
+<li><strong>R</strong></li>
+<li><strong>Python</strong></li>
+<li><strong>Julia</strong></li>
+<li><strong>Observable</strong></li>
+</ul></li>
+<li>Quarto is the “next generation” of R Markdown</li>
+</ul>
+</section></section>
+<section>
+<section id="quarto-files" class="title-slide slide level1 center">
+<h1>Quarto Files</h1>
+
+</section>
+<section id="the-.qmd-file" class="slide level2 smaller">
+<h2>The <code>.qmd</code> File</h2>
+<ul>
+<li>Quarto files are plain text files with the extension <code>.qmd</code></li>
+<li>They contain three types of content:
+<ol type="1">
+<li><strong>YAML header</strong>: Metadata and settings (surrounded by <code>---</code>)</li>
+<li><strong>Code chunks</strong>: Blocks of code to execute</li>
+<li><strong>Markdown text</strong>: Prose with formatting</li>
+</ol></li>
+<li>Let’s do these things together. Open a new project in Positron.</li>
+</ul>
+</section>
+<section id="yaml-header" class="slide level2">
+<h2>1. YAML Header</h2>
+<ul>
+<li>Located at the very top of the file</li>
+<li>Surrounded by three dashes <code>---</code></li>
+<li>Defines document metadata and options</li>
+<li>Example:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a></a><span class="pp">---</span></span>
+<span id="cb1-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Diamond sizes"</span></span>
+<span id="cb1-3"><a></a><span class="fu">date</span><span class="kw">:</span><span class="at"> 2024-01-14</span></span>
+<span id="cb1-4"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb1-5"><a></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="markdown-text" class="slide level2 smaller">
+<h2>2. Markdown Text</h2>
+<ul>
+<li>Use markdown for text formatting:
+<ul>
+<li><strong>Bold</strong>: <code>**text**</code></li>
+<li><em>Italic</em>: <code>*text*</code></li>
+<li><code>Code</code>: <code>`code`</code></li>
+<li>Lists: <code>- Item</code> or <code>1. Item</code></li>
+<li>Headers: <code># Header 1</code>, <code>## Header 2</code></li>
+<li>Links: <code>[text](url)</code></li>
+<li>Images: <code>![caption](path/to/image)</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="code-chunks" class="slide level2 smaller">
+<h2>3. Code Chunks</h2>
+<ul>
+<li>Chunks are where your code lives and runs</li>
+<li>Insert a chunk:
+<ul>
+<li>Keyboard shortcut: <code>Cmd/Ctrl + Alt + I</code> (or <code>Cmd/Ctrl + Shift + I</code> in some setups)</li>
+<li>Manually type: <code>```{r}</code> and <code>```</code></li>
+</ul></li>
+<li>Run code:
+<ul>
+<li><code>Cmd/Ctrl + Enter</code> (run line)</li>
+<li><code>Cmd/Ctrl + Shift + Enter</code> (run entire chunk)</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="chunk-options" class="title-slide slide level1 center">
+<h1>Chunk Options</h1>
+
+</section>
+<section id="customizing-code-execution" class="slide level2 smaller">
+<h2>Customizing Code Execution</h2>
+<ul>
+<li>You can control how code is executed and displayed using <strong>chunk options</strong></li>
+<li>Options are added at the top of the chunk with <code>#|</code></li>
+</ul>
+</section>
+<section id="common-options" class="slide level2 smaller">
+<h2>Common Options</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>eval: false</code></td>
+<td style="text-align: left;">Code is <strong>not</strong> run (no results generated). Useful for examples.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>include: false</code></td>
+<td style="text-align: left;">Code runs, but code AND results are hidden. Good for setup chunks.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>echo: false</code></td>
+<td style="text-align: left;">Code is hidden, but results are shown. Great for reports for non-coders.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>message: false</code></td>
+<td style="text-align: left;">Hides messages (like when loading packages).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>warning: false</code></td>
+<td style="text-align: left;">Hides warnings.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="inline-code" class="slide level2">
+<h2>Inline Code</h2>
+<ul>
+<li>You can embed code directly into your text</li>
+<li>Syntax: <code>`r code`</code></li>
+<li>Useful for reporting results dynamically</li>
+<li>Example:
+<ul>
+<li>Source: <code>We have `r nrow(diamonds)` diamonds.</code></li>
+<li>Output: “We have 53940 diamonds.”</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="output-formats" class="title-slide slide level1 center">
+<h1>Output Formats</h1>
+
+</section>
+<section id="documents" class="slide level2">
+<h2>Documents</h2>
+<ul>
+<li><strong>HTML</strong> (<code>format: html</code>): The default. Great for interactivity.</li>
+<li><strong>PDF</strong> (<code>format: pdf</code>): Requires a LaTeX installation. Professional look.</li>
+<li><strong>Word</strong> (<code>format: docx</code>): Useful for collaborating with non-data scientists.</li>
+</ul>
+</section>
+<section id="presentations" class="slide level2 smaller">
+<h2>Presentations</h2>
+<ul>
+<li><p>Quarto makes creating slides easy!</p></li>
+<li><p><strong>revealjs</strong> (<code>format: revealjs</code>): HTML presentations (code, interactivity).</p></li>
+<li><p><strong>PowerPoint</strong> (<code>format: pptx</code>): Standard office slides.</p></li>
+<li><p><strong>Beamer</strong> (<code>format: beamer</code>): PDF slides using LaTeX.</p></li>
+</ul>
+</section>
+<section id="slide-structure" class="slide level2">
+<h2>Slide Structure</h2>
+<ul>
+<li><code>##</code> (Level 2 header) starts a new slide</li>
+<li><code>#</code> (Level 1 header) starts a new section (title slide)</li>
+</ul>
+</section>
+<section id="rendering" class="slide level2">
+<h2>Rendering</h2>
+<ul>
+<li>To create your output file, you need to <strong>Render</strong> the <code>.qmd</code> file</li>
+<li>In <strong>Positron</strong>:
+<ul>
+<li>Click the <strong>Preview</strong> button (often an icon) or Render using the Render command</li>
+<li>Or run <code>quarto preview</code> in the terminal to see live updates</li>
+</ul></li>
+<li>This executes all code and converts the markdown to your target format</li>
+</ul>
+</section>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li><strong>Quarto</strong> is a powerful tool for combining code and prose.</li>
+<li>Use <strong>YAML</strong> for settings, <strong>Markdown</strong> for text, and <strong>Chunks</strong> for code.</li>
+<li>Customize chunks with options like <code>echo</code>, <code>eval</code>, and <code>message</code>.</li>
+<li>Render to many formats: HTML, PDF, Slides.</li>
+<li>Check the <a href="https://quarto.org/">Quarto Documentation</a> for more advanced features.</li>
+</ul>
+</section></section>
+<section>
+<section id="jupyter-notebooks" class="title-slide slide level1 center">
+<h1>Jupyter Notebooks</h1>
+
+</section>
+<section id="what-is-jupyter" class="slide level2">
+<h2>What is Jupyter?</h2>
+<ul>
+<li>An open-source web application that allows you to create and share documents that contain live code, equations, visualizations, and narrative text.</li>
+<li>Supports many programming languages, including Python, R, and Julia.</li>
+<li>Widely used in data science, machine learning, and scientific computing.</li>
+<li>Consists of <strong>notebooks</strong> that are organized into <strong>cells</strong>.</li>
+<li>Each cell can contain either code or markdown text.</li>
+<li>Notebooks can be run interactively, allowing you to see results immediately.</li>
+</ul>
+</section>
+<section id="jupyter-vs.-quarto" class="slide level2">
+<h2>Jupyter vs.&nbsp;Quarto</h2>
+<ul>
+<li>Both are tools for combining code and prose.</li>
+<li>Jupyter is more interactive and web-based, while Quarto is more document-focused.</li>
+<li>Jupyter is great for exploratory data analysis, while Quarto is better for creating polished reports and presentations.</li>
+<li>Quarto supports multiple output formats, while Jupyter primarily focuses on notebooks.</li>
+</ul>
+</section>
+<section id="creating-a-jupyter-notebook" class="slide level2">
+<h2>Creating a Jupyter Notebook</h2>
+<ul>
+<li>In Positron:
+<ul>
+<li>Go to <strong>File</strong> &gt; <strong>New File</strong> &gt; <strong>Jupyter Notebook</strong>.</li>
+<li>Choose the kernel (e.g., Python, R).</li>
+</ul></li>
+</ul>
+</section>
+<section id="practice" class="slide level2">
+<h2>Practice!</h2>
+<p>Let’s make a jupyter notebook together!</p>
+</section></section>
 <section>
 <section id="introduction" class="title-slide slide level1 center">
 <h1>Introduction</h1>
@@ -265,11 +526,6 @@ Dr.&nbsp;Eric Friedlander
 <li>“Cloning” is how you get a copy of a project from GitHub onto your computer.</li>
 <li>You only need to do this once per project.</li>
 <li>You’ll get a URL from the GitHub page of the repository.</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a></a><span class="fu">git</span> clone <span class="op">&lt;</span>URL_of_the_repository<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
 <li>This creates a new directory on your computer with all the project files.</li>
 </ul>
 </section></section>
@@ -294,13 +550,6 @@ Dr.&nbsp;Eric Friedlander
 <li>Use <code>git add</code> to stage your changes. Staging is the step before committing.</li>
 <li>You can add specific files or all files with changes.</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a></a><span class="co"># Add a specific file</span></span>
-<span id="cb2-2"><a></a><span class="fu">git</span> add path/to/your/file.R</span>
-<span id="cb2-3"><a></a></span>
-<span id="cb2-4"><a></a><span class="co"># Add all changed files in the current directory and subdirectories</span></span>
-<span id="cb2-5"><a></a><span class="fu">git</span> add .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="git-commit" class="slide level2">
 <h2><code>git commit</code></h2>
@@ -309,18 +558,33 @@ Dr.&nbsp;Eric Friedlander
 <li>Each commit has a unique ID and a message.</li>
 <li>The message is important! It should be a short, descriptive summary of the changes you made.</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Fix bug in data cleaning script"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="git-push" class="slide level2">
 <h2><code>git push</code></h2>
 <ul>
 <li><code>git push</code> sends your committed changes from your local computer to the remote repository on GitHub.</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+</section>
+<section id="good-commit-messages" class="slide level2 smaller">
+<h2>Good Commit Messages</h2>
+<ul>
+<li>Keep them short and descriptive.</li>
+<li>Use the imperative mood (e.g., “Add feature” not “Added feature”).</li>
+<li>Explain <em>what</em> the change is and <em>why</em> you made it.</li>
+</ul>
+<p><strong>Good:</strong></p>
+<ul>
+<li><code>Fix typo in course syllabus</code></li>
+<li><code>Update plot styling in HW1</code></li>
+<li><code>Feat: Add enrollment module skeleton</code></li>
+<li><code>Docs: Explain data cleaning process</code></li>
+</ul>
+<p><strong>Bad:</strong></p>
+<ul>
+<li><code>stuff</code></li>
+<li><code>fixed it</code></li>
+<li><code>aaaaaaaa</code></li>
+</ul>
 </section></section>
 <section>
 <section id="staying-in-sync" class="title-slide slide level1 center">
@@ -335,17 +599,20 @@ Dr.&nbsp;Eric Friedlander
 <li><strong>It’s a critical habit to <code>pull</code> from <code>main</code> before you start working to make sure you have the latest version.</strong></li>
 </ul>
 
-<img data-src="../../images/pull.png" class="r-stretch"><div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a></a><span class="co"># Make sure you're on the main branch first</span></span>
-<span id="cb5-2"><a></a><span class="fu">git</span> checkout main</span>
-<span id="cb5-3"><a></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section></section>
-<section>
-<section id="a-collaborative-workflow-the-feature-branch" class="title-slide slide level1 center">
-<h1>A Collaborative Workflow: The Feature Branch</h1>
-<p>For our group project, we will use a workflow that prevents accidentally breaking the main version of our app. <strong>You will not push directly to <code>main</code></strong>.</p>
-<p>The core idea is: 1. Create a copy of the project (a “branch”) where you can work safely. 2. Make all your changes on that branch. 3. When you’re ready, you’ll open a “Pull Request” to have your changes reviewed and merged into the <code>main</code> branch.</p>
+<img data-src="../images/pull.png" class="r-stretch"></section>
+<section id="practice-1" class="slide level2 smaller">
+<h2>Practice!</h2>
+<p>Let’s break up into groups. Have one person create a new repository on GitHub and add the others as collaborators:</p>
+<ol type="1">
+<li>(Person A) Create a new <strong>public</strong> repository on GitHub. Add your teamates as collaborators.</li>
+<li>(Person A) Initialize it with a <code>README.md</code> file.</li>
+<li>(Person B/C) Accept the collaborator invitation (check your email!).</li>
+<li>(Everyone) Clone it to your computer.</li>
+<li>(Person A ONLY) Create a quarto file, load a package or dataset and make a very plain/vanilla plot, then <code>add</code>, <code>commit</code>, and <code>push</code> your changes.</li>
+<li>(Person B) <code>pull</code> the changes from GitHub to see Person A’s work, add a change to the plot, then <code>add</code>, <code>commit</code>, and <code>push</code> your changes.</li>
+<li>(Person C) <code>pull</code> the changes from GitHub to see Person B’s work, add a change to the plot, then <code>add</code>, <code>commit</code>, and <code>push</code> your changes.</li>
+<li>(Person A) <code>pull</code> the changes from GitHub to see Person C’s work.</li>
+</ol>
 </section>
 <section id="what-is-a-branch" class="slide level2">
 <h2>What is a Branch?</h2>
@@ -355,19 +622,28 @@ Dr.&nbsp;Eric Friedlander
 <li>This is essential for teamwork.</li>
 </ul>
 </section>
+<section id="a-collaborative-workflow-the-feature-branch" class="slide level2 smaller">
+<h2>A Collaborative Workflow: The Feature Branch</h2>
+<p>For our group project, we will use a workflow that prevents accidentally breaking the main version of our app. <strong>You will not push directly to <code>main</code></strong>.</p>
+<p>The core idea is:</p>
+<ol type="1">
+<li>Create a copy of the project (a “branch”) where you can work safely.</li>
+<li>Make all your changes on that branch.</li>
+<li>When you’re ready, you’ll open a “Pull Request” to have your changes reviewed and merged into the <code>main</code> branch.</li>
+</ol>
+</section>
 <section id="the-branching-workflow-a-full-example" class="slide level2">
 <h2>The Branching Workflow: A Full Example</h2>
 <ol type="1">
-<li><p><strong>Sync your local <code>main</code> branch:</strong> <code>git checkout main</code> <code>git pull</code></p></li>
-<li><p><strong>Create a new branch for your work:</strong> For the project, your team leader (the “GitHub Sentinel”) will do this. Branch names should be descriptive, like <code>feature/team-name</code>. <code>git checkout -b feature/pod-1-enrollment</code></p></li>
-<li><p><strong>Work on your branch:</strong> Now you do the familiar add-commit cycle. <em>Edit files, create new R scripts…</em> <code>git add .</code> <code>git commit -m "Add enrollment chart and data cleaning"</code></p></li>
-<li><p><strong>Push your branch to GitHub:</strong> The <code>-u</code> flag sets the upstream branch so you can just <code>git push</code> next time. <code>git push -u origin feature/pod-1-enrollment</code></p></li>
+<li><strong>Sync your local <code>main</code> branch:</strong></li>
+<li><strong>Create a new branch for your work:</strong> For the project, your team leader (the “GitHub Sentinel”) will do this. Branch names should be descriptive, like <code>feature/team-name</code>.</li>
+<li><strong>Work on your branch:</strong> Now you do the familiar add-commit cycle.</li>
+<li><strong>Push your branch to GitHub:</strong> The <code>-u</code> flag sets the upstream branch so you can just <code>git push</code> next time.</li>
 </ol>
-</section></section>
-<section>
-<section id="pull-requests-proposing-changes" class="title-slide slide level1 center">
-<h1>Pull Requests: Proposing Changes</h1>
-<p>Now that your branch is on GitHub, the GitHub Sentinel needs to ask for it to be merged into <code>main</code>.</p>
+</section>
+<section id="pull-requests-proposing-changes" class="slide level2">
+<h2>Pull Requests: Proposing Changes</h2>
+<p>Now that your branch is on GitHub, you needs to ask for it to be merged into <code>main</code>.</p>
 </section>
 <section id="what-is-a-pull-request" class="slide level2">
 <h2>What is a Pull Request?</h2>
@@ -377,8 +653,8 @@ Dr.&nbsp;Eric Friedlander
 <li>It’s a place for <strong>code review</strong> and discussion before the changes are integrated.</li>
 </ul>
 </section>
-<section id="how-the-sentinel-opens-a-pull-request" class="slide level2">
-<h2>How the Sentinel Opens a Pull Request</h2>
+<section id="how-to-open-a-pull-request" class="slide level2">
+<h2>How to open a Pull Request</h2>
 <ol type="1">
 <li>After pushing the branch, go to the repository on GitHub.</li>
 <li>GitHub will usually show a banner prompting you to “Compare &amp; pull request”. Click it!</li>
@@ -413,104 +689,205 @@ Dr.&nbsp;Eric Friedlander
 <li><p>Pull the latest changes (which now include the merged work): <code>git pull</code></p></li>
 <li><p>Now your <code>main</code> is up to date, and you can create a new branch for the next feature!</p></li>
 </ol>
+</section>
+<section id="practice-2" class="slide level2 smaller">
+<h2>Practice!</h2>
+<p>In the repo you just created:</p>
+<ol start="0" type="1">
+<li>Ignore PRs for now, just practice branching and merging directly to main.</li>
+<li>(Everyone) Create a new branch for your work.</li>
+<li>(Everyone) Checkout your new branch.</li>
+<li>(Everyone) Create a new plot in your quarto file. Don’t edit any of the existing code.</li>
+<li>(A then B then C) Merge your changes into the main branch and push to GitHub.</li>
+<li>(Everyone) Pull the changes. Check them out to a new branch and change one of your partners plots! Don’t simply add to it, make sure you delete somethings too…</li>
+<li>(A then B then C) Merge yopur changes into the main branch and push to GitHub.</li>
+</ol>
+</section></section>
+<section>
+<section id="environment-management" class="title-slide slide level1 center">
+<h1>Environment Management</h1>
+
+</section>
+<section id="the-problem-it-works-on-my-machine" class="slide level2">
+<h2>The Problem: “It works on my machine”</h2>
+<ul>
+<li>You share code with a colleague, but it fails on their machine.</li>
+<li>You revisit an old project, but the code no longer runs because packages have updated.</li>
+<li>You update a package for Project A, but it breaks Project B.</li>
+</ul>
+</section>
+<section id="the-solution-dependency-management" class="slide level2 smaller">
+<h2>The Solution: Dependency Management</h2>
+<ul>
+<li><strong>Dependency management</strong> ensures your project uses the correct package versions.</li>
+<li>In R, <code>renv</code> is the standard tool for this.</li>
+<li>Key features:
+<ul>
+<li><strong>Isolation</strong>: Each project has its own library of packages.</li>
+<li><strong>Reproducibility</strong>: Records exact package versions in a lockfile.</li>
+<li><strong>Portability</strong>: Easy to install the same environment on another machine.</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="how-renv-works" class="title-slide slide level1 center">
+<h1>How <code>renv</code> Works</h1>
+
+</section>
+<section id="key-components" class="slide level2">
+<h2>Key Components</h2>
+<ul>
+<li><strong>Project Library</strong>: Use a per-project library (<code>renv/library</code>) instead of the system library.</li>
+<li><strong>Lockfile (<code>renv.lock</code>)</strong>: A JSON file recording the exact version and source of every package.</li>
+<li><strong>Activation Script (<code>renv/activate.R</code>)</strong>: Automatically loads the project environment when you open the project.</li>
+</ul>
+</section>
+<section id="the-workflow" class="slide level2">
+<h2>The Workflow</h2>
+<ol start="0" type="1">
+<li><strong>Initialize</strong>: <code>renv::init()</code> (do this once)</li>
+<li><strong>Work</strong>: <code>install.packages()</code> and get your code working</li>
+<li><strong>Snapshot</strong>: <code>renv::snapshot()</code>, (each time you finish installing packages and get your code working)</li>
+<li><strong>Restore</strong>: <code>renv::restore()</code>, (any time you download the project)</li>
+</ol>
+</section>
+<section id="initialize" class="slide level2 smaller">
+<h2>0. Initialize</h2>
+<ul>
+<li>Run <code>renv::init()</code> to start using <code>renv</code> in a project.</li>
+<li>This:
+<ul>
+<li>Sets up the project library.</li>
+<li>Generates a lockfile (<code>renv.lock</code>) with currently installed packages.</li>
+<li>Creates an <code>.Rprofile</code> to activate <code>renv</code> on startup.</li>
+</ul></li>
+<li><strong>Restart R</strong> to ensure the environment is active.</li>
+</ul>
+</section>
+<section id="work" class="slide level2">
+<h2>1. Work</h2>
+<ul>
+<li>Install packages as usual:
+<ul>
+<li><code>install.packages("dplyr")</code></li>
+<li><code>install.packages("ggplot2")</code></li>
+</ul></li>
+<li>These go into your <strong>project library</strong>, not your global library.</li>
+<li>Other projects are unaffected!</li>
+</ul>
+</section>
+<section id="snapshot" class="slide level2">
+<h2>2. Snapshot</h2>
+<ul>
+<li>When your code works, save the state of your library:
+<ul>
+<li><code>renv::snapshot()</code></li>
+</ul></li>
+<li>This updates <code>renv.lock</code> with the versions you are currently using.</li>
+<li>Commit <code>renv.lock</code> to Git!</li>
+</ul>
+</section>
+<section id="restore" class="slide level2">
+<h2>3. Restore</h2>
+<ul>
+<li>When you (or a collaborator) download the project:
+<ul>
+<li>Open the project (R will auto-activate <code>renv</code>).</li>
+<li>Run <code>renv::restore()</code>.</li>
+</ul></li>
+<li>This installs all packages exactly as specified in <code>renv.lock</code>.</li>
+</ul>
+</section>
+<section id="checking-status" class="slide level2">
+<h2>Checking Status</h2>
+<ul>
+<li>Run <code>renv::status()</code> to see if your library matches your lockfile.</li>
+<li>It tells you if:
+<ul>
+<li>You installed packages but haven’t snapshotted them.</li>
+<li>Your lockfile has packages you haven’t installed yet.</li>
+</ul></li>
+</ul>
 </section></section>
 <section>
 <section id="best-practices" class="title-slide slide level1 center">
 <h1>Best Practices</h1>
 
 </section>
-<section id="good-commit-messages" class="slide level2 smaller">
-<h2>Good Commit Messages</h2>
+<section id="what-to-commit-to-git" class="slide level2">
+<h2>What to Commit to Git</h2>
 <ul>
-<li>Keep them short and descriptive.</li>
-<li>Use the imperative mood (e.g., “Add feature” not “Added feature”).</li>
-<li>Explain <em>what</em> the change is and <em>why</em> you made it.</li>
-</ul>
-<p><strong>Good:</strong></p>
+<li><strong>Do Commit:</strong>
 <ul>
-<li><code>Fix typo in course syllabus</code></li>
-<li><code>Update plot styling in HW1</code></li>
-<li><code>Feat: Add enrollment module skeleton</code></li>
-<li><code>Docs: Explain data cleaning process</code></li>
-</ul>
-<p><strong>Bad:</strong></p>
+<li><code>renv.lock</code></li>
+<li><code>.Rprofile</code></li>
+<li><code>renv/activate.R</code></li>
+<li><code>renv/settings.json</code> (if it exists)</li>
+</ul></li>
+<li><strong>Do NOT Commit:</strong>
 <ul>
-<li><code>stuff</code></li>
-<li><code>fixed it</code></li>
-<li><code>aaaaaaaa</code> <!-- 
-## Practice!
-
-Let's simulate the project workflow. `countdown(minutes = 15)`
-
-**Partner A: The "Lead Architect"**
-1. Create a new **public** repository on GitHub named `github-practice`.
-2. Initialize it with a `README.md` file.
-3. Clone it to your computer.
-4. Add Partner B as a collaborator (`Settings` > `Collaborators`).
-
-**Partner B: The "GitHub Sentinel"**
-1. Accept the collaborator invitation (check your email!).
-2. Clone the repository.
-3. Create a new branch: `git checkout -b add-contrib-list`.
-4. Create a new file `contributors.txt` and add your name to it.
-5. `add`, `commit`, and `push` your branch to the repository.
-6. Go to GitHub and open a Pull Request to merge `add-contrib-list` into `main`.
-
-**Partner A: The "Lead Architect" (again)**
-1. On GitHub, go to the "Pull requests" tab.
-2. Review the PR. Leave a comment! Ask Partner B to add your name to the file.
-
-**Partner B: The "GitHub Sentinel" (again)**
-1. Locally, on your branch, add Partner A's name to `contributors.txt`.
-2. `add`, `commit`, and `push` the change. Notice the PR on GitHub updates automatically!
-
-**Partner A: The "Lead Architect" (last time)**
-1. On the PR, see the new commit. Looks good!
-2. **Merge the Pull Request.**
-
-**Both Partners:**
-1. Locally, `git checkout main` and `git pull` to see the `contributors.txt` file with both names. --></li>
+<li><code>renv/library</code> (these are the installed files, which are large and platform-specific)</li>
+<li><code>renv/python</code> (if using Python)</li>
+<li><code>renv/staging</code></li>
+</ul></li>
 </ul>
+</section>
+<section id="summary-1" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>Use <code>renv</code> for every serious project.</li>
+<li><code>init()</code> to start.</li>
+<li><code>snapshot()</code> to save.</li>
+<li><code>restore()</code> to load.</li>
+<li>Enjoy reproducible data science!</li>
+</ul>
+</section>
+<section id="practice-3" class="slide level2">
+<h2>Practice!</h2>
+<p>In the file you just created:</p>
+<ol type="1">
+<li>Have one person initialize renv for the project.</li>
+<li>Practice installing new packages, adding them to the lockfile, pushing them to github, and then pulling/restoring.</li>
+</ol>
 </section></section>
 <section>
-<section id="wrap-up" class="title-slide slide level1 center">
-<h1>Wrap-Up</h1>
+<section id="ai-tools" class="title-slide slide level1 center">
+<h1>AI Tools</h1>
 
 </section>
-<section id="do-next" class="slide level2">
-<h2>Do Next</h2>
-<ol type="1">
-<li>Make sure you have Git installed on your computer.</li>
-<li>Make sure you have a GitHub account.</li>
-<li>Accept the invitation to our course organization on GitHub.</li>
-<li>That’s it for tonight! See you tomorrow.</li>
-</ol>
+<section id="overview" class="slide level2">
+<h2>Overview</h2>
+<ul>
+<li>Github Copilot</li>
+<li>Gemini Code Assistant</li>
+<li>Gemini CLI</li>
+</ul>
 
 
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
-<p><img src="../logo.png" class="slide-logo"></p>
+<p><img src="logo.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p><a href="https://csci2025wi26.netlify.app/">🔗 https://csci2025wi26.netlify.app/</a></p>
 </div>
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -706,44 +1083,6 @@ Let's simulate the project workflow. `countdown(minutes = 15)`
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

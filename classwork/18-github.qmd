@@ -234,7 +234,7 @@ Once your team's branch is merged by the Lead Architect, everyone should update 
 - `stuff`
 - `fixed it`
 - `aaaaaaaa`
-<!-- 
+
 ## Practice!
 
 Let's simulate the project workflow. `countdown(minutes = 15)`
@@ -266,7 +266,7 @@ Let's simulate the project workflow. `countdown(minutes = 15)`
 2. **Merge the Pull Request.**
 
 **Both Partners:**
-1. Locally, `git checkout main` and `git pull` to see the `contributors.txt` file with both names. -->
+1. Locally, `git checkout main` and `git pull` to see the `contributors.txt` file with both names.
 
 # Wrap-Up
 

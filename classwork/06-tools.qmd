@@ -1,0 +1,481 @@
+---
+title: A Menagerie Of Tools
+subtitle: "Lecture 18"
+---
+
+## Today
+
+- Quarto
+- Jupyter Notebooks
+- Git and GitHub
+- Environment Mangement
+- AI (Maybe)
+
+# What is Quarto?
+
+## Quarto Basics {.smaller}
+
+- Quarto is a unified authoring framework for data science
+- Combines your **code**, its **results**, and your **prose**
+- Quarto documents are fully reproducible
+- Supports dozens of output formats:
+    - PDFs
+    - Word files
+    - Presentations (like this one!)
+    - Websites
+    - Books
+
+## Quarto vs R Markdown {.smaller}
+
+- If you've used R Markdown, Quarto will feel very familiar!
+- Quarto unifies the functionality of many R Markdown packages (`rmarkdown`, `bookdown`, `distill`, `xaringan`, etc.)
+- Native support for multiple languages:
+    - **R**
+    - **Python**
+    - **Julia**
+    - **Observable**
+- Quarto is the "next generation" of R Markdown
+
+# Quarto Files
+
+## The `.qmd` File {.smaller}
+
+- Quarto files are plain text files with the extension `.qmd`
+- They contain three types of content:
+    1.  **YAML header**: Metadata and settings (surrounded by `---`)
+    2.  **Code chunks**: Blocks of code to execute
+    3.  **Markdown text**: Prose with formatting
+- Let's do these things together. Open a new project in Positron.
+
+
+## 1. YAML Header
+
+- Located at the very top of the file
+- Surrounded by three dashes `---`
+- Defines document metadata and options
+- Example:
+
+```yaml
+---
+title: "Diamond sizes"
+date: 2024-01-14
+format: html
+---
+```
+
+## 2. Markdown Text {.smaller}
+
+- Use markdown for text formatting:
+    - **Bold**: `**text**`
+    - *Italic*: `*text*`
+    - `Code`: `` `code` ``
+    - Lists: `- Item` or `1. Item`
+    - Headers: `# Header 1`, `## Header 2`
+    - Links: `[text](url)`
+    - Images: `![caption](path/to/image)`
+
+## 3. Code Chunks {.smaller}
+
+- Chunks are where your code lives and runs
+- Insert a chunk:
+    - Keyboard shortcut: `Cmd/Ctrl + Alt + I` (or `Cmd/Ctrl + Shift + I` in some setups)
+    - Manually type: ` ```{r} ` and ` ``` `
+- Run code:
+    - `Cmd/Ctrl + Enter` (run line)
+    - `Cmd/Ctrl + Shift + Enter` (run entire chunk)
+
+# Chunk Options
+
+## Customizing Code Execution {.smaller}
+
+- You can control how code is executed and displayed using **chunk options**
+- Options are added at the top of the chunk with `#|`
+
+## Common Options {.smaller}
+
+| Option | Effect |
+|:---|:---|
+| `eval: false` | Code is **not** run (no results generated). Useful for examples. |
+| `include: false` | Code runs, but code AND results are hidden. Good for setup chunks. |
+| `echo: false` | Code is hidden, but results are shown. Great for reports for non-coders. |
+| `message: false` | Hides messages (like when loading packages). |
+| `warning: false` | Hides warnings. |
+
+## Inline Code
+
+- You can embed code directly into your text
+- Syntax: `` `r code` ``
+- Useful for reporting results dynamically
+- Example:
+    - Source: `` We have `r nrow(diamonds)` diamonds. ``
+    - Output: "We have 53940 diamonds."
+
+# Output Formats
+
+## Documents
+
+- **HTML** (`format: html`): The default. Great for interactivity.
+- **PDF** (`format: pdf`): Requires a LaTeX installation. Professional look.
+- **Word** (`format: docx`): Useful for collaborating with non-data scientists.
+
+## Presentations {.smaller}
+
+- Quarto makes creating slides easy!
+
+- **revealjs** (`format: revealjs`): HTML presentations (code, interactivity).
+- **PowerPoint** (`format: pptx`): Standard office slides.
+- **Beamer** (`format: beamer`): PDF slides using LaTeX.
+
+## Slide Structure
+
+- `##` (Level 2 header) starts a new slide
+- `#` (Level 1 header) starts a new section (title slide)
+
+## Rendering
+
+- To create your output file, you need to **Render** the `.qmd` file
+- In **Positron**:
+    - Click the **Preview** button (often an icon) or Render using the Render command
+    - Or run `quarto preview` in the terminal to see live updates
+- This executes all code and converts the markdown to your target format
+
+## Summary
+
+- **Quarto** is a powerful tool for combining code and prose.
+- Use **YAML** for settings, **Markdown** for text, and **Chunks** for code.
+- Customize chunks with options like `echo`, `eval`, and `message`.
+- Render to many formats: HTML, PDF, Slides.
+- Check the [Quarto Documentation](https://quarto.org/) for more advanced features.
+
+# Jupyter Notebooks
+
+## What is Jupyter?
+
+- An open-source web application that allows you to create and share documents that contain live code, equations, visualizations, and narrative text.
+- Supports many programming languages, including Python, R, and Julia.
+- Widely used in data science, machine learning, and scientific computing.
+- Consists of **notebooks** that are organized into **cells**.
+- Each cell can contain either code or markdown text.
+- Notebooks can be run interactively, allowing you to see results immediately.
+
+## Jupyter vs. Quarto
+
+- Both are tools for combining code and prose.
+- Jupyter is more interactive and web-based, while Quarto is more document-focused.
+- Jupyter is great for exploratory data analysis, while Quarto is better for creating polished reports and presentations.
+- Quarto supports multiple output formats, while Jupyter primarily focuses on notebooks.
+
+## Creating a Jupyter Notebook
+
+- In Positron:
+    - Go to **File** > **New File** > **Jupyter Notebook**.
+    - Choose the kernel (e.g., Python, R).
+
+## Practice!
+
+Let's make a jupyter notebook together!
+
+# Introduction
+
+## What is Version Control?
+
+- A system that records changes to a file or set of files over time so that you can recall specific versions later.
+- It allows you to revert files back to a previous state, revert the entire project back to a previous state, compare changes over time, see who last modified something that might be causing a problem, who introduced an issue and when.
+- Think of it like "track changes" in a word processor, but for all your project files (code, data, text, etc.).
+
+## Why is it useful?
+
+- **Collaboration:** Many people can work on the same project without overwriting each other's changes.
+- **Organization:** Keeps a history of your project. No more `final_report_v2_final_final.docx`!
+- **Backup:** Your project history is stored in a remote, safe place (like GitHub). If your computer crashes, your work is not lost.
+- **Experimentation:** You can try out new ideas in a "branch" without messing up the main version of your project.
+
+# Git and GitHub
+
+## What is Git?
+
+- Git is a free and open source **distributed version control system**.
+- It's a command-line tool that you run on your computer to track changes in your project files.
+- It's the most popular version control system in the world.
+
+## What is GitHub?
+
+- GitHub is a **web-based hosting service** for Git repositories.
+- It's a place to store your projects and collaborate with others.
+- It provides a graphical interface to Git, plus other features like issue tracking, project management, and more.
+- **Git** is the tool, **GitHub** is the service.
+
+# Getting Started
+
+## Cloning a Repository
+
+- "Cloning" is how you get a copy of a project from GitHub onto your computer.
+- You only need to do this once per project.
+- You'll get a URL from the GitHub page of the repository.
+- This creates a new directory on your computer with all the project files.
+
+# The Core Workflow
+
+## The Add-Commit-Push Cycle
+
+This is the most common workflow you'll use.
+
+1.  **Make changes:** Edit your files, create new files, etc.
+2.  **Add files:** Tell Git which files you want to save in the next "snapshot" (commit).
+3.  **Commit files:** Save the snapshot with a descriptive message.
+4.  **Push changes:** Send your committed changes to GitHub.
+
+## `git add`
+
+- Use `git add` to stage your changes. Staging is the step before committing.
+- You can add specific files or all files with changes.
+
+
+## `git commit`
+
+- A "commit" is a snapshot of your staged changes.
+- Each commit has a unique ID and a message.
+- The message is important! It should be a short, descriptive summary of the changes you made.
+
+## `git push`
+
+- `git push` sends your committed changes from your local computer to the remote repository on GitHub.
+
+## Good Commit Messages {.smaller}
+
+- Keep them short and descriptive.
+- Use the imperative mood (e.g., "Add feature" not "Added feature").
+- Explain *what* the change is and *why* you made it.
+
+**Good:**
+
+- `Fix typo in course syllabus`
+- `Update plot styling in HW1`
+- `Feat: Add enrollment module skeleton`
+- `Docs: Explain data cleaning process`
+
+**Bad:**
+
+- `stuff`
+- `fixed it`
+- `aaaaaaaa`
+
+# Staying in Sync
+
+## `git pull`
+
+- If you're working with others, they will merge changes into the `main` branch.
+- `git pull` fetches changes from the remote repository and merges them into your local copy.
+- **It's a critical habit to `pull` from `main` before you start working to make sure you have the latest version.**
+
+![](/images/pull.png)
+
+## Practice! {.smaller}
+
+Let's break up into groups. Have one person create a new repository on GitHub and add the others as collaborators:
+
+1. (Person A) Create a new **public** repository on GitHub. Add your teamates as collaborators.
+2. (Person A) Initialize it with a `README.md` file.
+3. (Person B/C) Accept the collaborator invitation (check your email!).
+4. (Everyone) Clone it to your computer.
+5. (Person A ONLY) Create a quarto file, load a package or dataset and make a very plain/vanilla plot, then `add`, `commit`, and `push` your changes.
+6. (Person B) `pull` the changes from GitHub to see Person A's work, add a change to the plot, then `add`, `commit`, and `push` your changes.
+7. (Person C) `pull` the changes from GitHub to see Person B's work, add a change to the plot, then `add`, `commit`, and `push` your changes.
+8. (Person A) `pull` the changes from GitHub to see Person C's work.
+
+
+## What is a Branch?
+
+- A branch is a parallel version of your repository.
+- It allows you to work on new features or fixes without affecting the main codebase (the `main` branch).
+- This is essential for teamwork.
+
+## A Collaborative Workflow: The Feature Branch {.smaller}
+
+For our group project, we will use a workflow that prevents accidentally breaking the main version of our app. **You will not push directly to `main`**.
+
+The core idea is:
+
+1.  Create a copy of the project (a "branch") where you can work safely.
+2.  Make all your changes on that branch.
+3.  When you're ready, you'll open a "Pull Request" to have your changes reviewed and merged into the `main` branch.
+
+
+
+## The Branching Workflow: A Full Example
+
+1.  **Sync your local `main` branch:**
+2.  **Create a new branch for your work:** For the project, your team leader (the "GitHub Sentinel") will do this. Branch names should be descriptive, like `feature/team-name`.
+3.  **Work on your branch:** Now you do the familiar add-commit cycle.
+4.  **Push your branch to GitHub:** The `-u` flag sets the upstream branch so you can just `git push` next time.
+
+## Pull Requests: Proposing Changes
+
+Now that your branch is on GitHub, you needs to ask for it to be merged into `main`.
+
+## What is a Pull Request?
+
+- A Pull Request (or PR) is a formal request to merge your changes.
+- You're asking the project maintainer (the "Lead Architect" for your project) to "pull" your changes from your branch into the `main` branch.
+- It's a place for **code review** and discussion before the changes are integrated.
+
+## How to open a Pull Request
+
+1.  After pushing the branch, go to the repository on GitHub.
+2.  GitHub will usually show a banner prompting you to "Compare & pull request". Click it!
+3.  If not, go to the "Pull requests" tab and click "New pull request".
+4.  Select your team's branch as the "compare" branch and `main` as the "base" branch.
+5.  Write a clear title and description for your changes. Explain what you did.
+6.  Click "Create pull request".
+
+## Review and Merging
+
+- Once the PR is open, the "Lead Architect" and other team members can review your code, add comments, and request changes.
+- If changes are requested, your team makes them on the local branch, then `commits` and `pushes` again. The PR will update automatically.
+- Once approved, the Lead Architect will **merge** your branch into `main`. Your work is now part of the official project!
+
+## A Note on Merge Conflicts
+- If you and another person edit the **same lines in the same file** on different branches, Git won't know which version to keep when merging.
+- This is a **merge conflict**.
+- The person merging the PR (or the Sentinel, before opening it) will need to manually resolve the conflict by choosing which code to keep.
+- **The best way to avoid conflicts: Pull from `main` often and communicate with your team!**
+
+
+
+## After a PR is Merged
+
+Once your team's branch is merged by the Lead Architect, everyone should update their local repository.
+
+1.  Switch back to your main branch:
+    `git checkout main`
+
+2.  Pull the latest changes (which now include the merged work):
+    `git pull`
+
+3.  Now your `main` is up to date, and you can create a new branch for the next feature!
+
+
+## Practice! {.smaller}
+
+In the repo you just created:
+
+0. Ignore PRs for now, just practice branching and merging directly to main.
+1. (Everyone) Create a new branch for your work.
+2. (Everyone) Checkout your new branch.
+3. (Everyone) Create a new plot in your quarto file. Don't edit any of the existing code.
+4. (A then B then C) Merge your changes into the main branch and push to GitHub.
+5. (Everyone) Pull the changes. Check them out to a new branch and change one of your partners plots! Don't simply add to it, make sure you delete somethings too...
+6. (A then B then C) Merge yopur changes into the main branch and push to GitHub.
+
+# Environment Management
+
+## The Problem: "It works on my machine"
+
+- You share code with a colleague, but it fails on their machine.
+- You revisit an old project, but the code no longer runs because packages have updated.
+- You update a package for Project A, but it breaks Project B.
+
+## The Solution: Dependency Management {.smaller}
+
+- **Dependency management** ensures your project uses the correct package versions.
+- In R, `renv` is the standard tool for this.
+- Key features:
+    + **Isolation**: Each project has its own library of packages.
+    + **Reproducibility**: Records exact package versions in a lockfile.
+    + **Portability**: Easy to install the same environment on another machine.
+
+# How `renv` Works
+
+## Key Components
+
+- **Project Library**: Use a per-project library (`renv/library`) instead of the system library.
+- **Lockfile (`renv.lock`)**: A JSON file recording the exact version and source of every package.
+- **Activation Script (`renv/activate.R`)**: Automatically loads the project environment when you open the project.
+
+## The Workflow
+
+0. **Initialize**: `renv::init()` (do this once)
+1. **Work**: `install.packages()` and get your code working
+2. **Snapshot**: `renv::snapshot()`, (each time you finish installing packages and get your code working)
+3. **Restore**: `renv::restore()`, (any time you download the project)
+
+## 0. Initialize {.smaller}
+
+- Run `renv::init()` to start using `renv` in a project.
+- This:
+    + Sets up the project library.
+    + Generates a lockfile (`renv.lock`) with currently installed packages.
+    + Creates an `.Rprofile` to activate `renv` on startup.
+- **Restart R** to ensure the environment is active.
+
+## 1. Work
+
+- Install packages as usual:
+    + `install.packages("dplyr")`
+    + `install.packages("ggplot2")`
+- These go into your **project library**, not your global library.
+- Other projects are unaffected!
+
+## 2. Snapshot
+
+- When your code works, save the state of your library:
+    + `renv::snapshot()`
+- This updates `renv.lock` with the versions you are currently using.
+- Commit `renv.lock` to Git!
+
+## 3. Restore
+
+- When you (or a collaborator) download the project:
+    + Open the project (R will auto-activate `renv`).
+    + Run `renv::restore()`.
+- This installs all packages exactly as specified in `renv.lock`.
+
+## Checking Status
+
+- Run `renv::status()` to see if your library matches your lockfile.
+- It tells you if:
+    + You installed packages but haven't snapshotted them.
+    + Your lockfile has packages you haven't installed yet.
+
+# Best Practices
+
+## What to Commit to Git
+
+- **Do Commit:**
+    + `renv.lock`
+    + `.Rprofile`
+    + `renv/activate.R`
+    + `renv/settings.json` (if it exists)
+- **Do NOT Commit:**
+    + `renv/library` (these are the installed files, which are large and platform-specific)
+    + `renv/python` (if using Python)
+    + `renv/staging`
+
+## Summary
+
+- Use `renv` for every serious project.
+- `init()` to start.
+- `snapshot()` to save.
+- `restore()` to load.
+- Enjoy reproducible data science!
+
+## Practice!
+
+In the file you just created:
+
+1. Have one person initialize renv for the project.
+2. Practice installing new packages, adding them to the lockfile, pushing them to github, and then pulling/restoring.
+
+# AI Tools
+
+## Overview
+
+- Github Copilot
+- Gemini Code Assistant
+- Gemini CLI
+
+
+
+
+
+

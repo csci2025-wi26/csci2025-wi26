@@ -1,0 +1,102 @@
+---
+title: Introduction to `renv`
+subtitle: Lecture 20
+title-slide-attributes:
+  data-background-image: ../title-bg.png
+  data-background-size: stretch
+  data-slide-number: none
+format: revealjs
+auto-stretch: false
+---
+
+# Why `renv`?
+
+## The Problem: "It works on my machine"
+
+- You share code with a colleague, but it fails on their machine.
+- You revisit an old project, but the code no longer runs because packages have updated.
+- You update a package for Project A, but it breaks Project B.
+
+## The Solution: Dependency Management {.smaller}
+
+- **Dependency management** ensures your project uses the correct package versions.
+- In R, `renv` is the standard tool for this.
+- Key features:
+    + **Isolation**: Each project has its own library of packages.
+    + **Reproducibility**: Records exact package versions in a lockfile.
+    + **Portability**: Easy to install the same environment on another machine.
+
+# How `renv` Works
+
+## Key Components
+
+- **Project Library**: Use a per-project library (`renv/library`) instead of the system library.
+- **Lockfile (`renv.lock`)**: A JSON file recording the exact version and source of every package.
+- **Activation Script (`renv/activate.R`)**: Automatically loads the project environment when you open the project.
+
+## The Workflow
+
+1. **Initialize**: `renv::init()`
+2. **Work**: `install.packages()`, write code
+3. **Snapshot**: `renv::snapshot()`
+4. **Restore**: `renv::restore()`
+
+## 1. Initialize {.smaller}
+
+- Run `renv::init()` to start using `renv` in a project.
+- This:
+    + Sets up the project library.
+    + Generates a lockfile (`renv.lock`) with currently installed packages.
+    + Creates an `.Rprofile` to activate `renv` on startup.
+- **Restart R** to ensure the environment is active.
+
+## 2. Work
+
+- Install packages as usual:
+    + `install.packages("dplyr")`
+    + `install.packages("ggplot2")`
+- These go into your **project library**, not your global library.
+- Other projects are unaffected!
+
+## 3. Snapshot
+
+- When your code works, save the state of your library:
+    + `renv::snapshot()`
+- This updates `renv.lock` with the versions you are currently using.
+- Commit `renv.lock` to Git!
+
+## 4. Restore
+
+- When you (or a collaborator) download the project:
+    + Open the project (R will auto-activate `renv`).
+    + Run `renv::restore()`.
+- This installs all packages exactly as specified in `renv.lock`.
+
+## Checking Status
+
+- Run `renv::status()` to see if your library matches your lockfile.
+- It tells you if:
+    + You installed packages but haven't snapshotted them.
+    + Your lockfile has packages you haven't installed yet.
+
+# Best Practices
+
+## What to Commit to Git
+
+- **Do Commit:**
+    + `renv.lock`
+    + `.Rprofile`
+    + `renv/activate.R`
+    + `renv/settings.json` (if it exists)
+- **Do NOT Commit:**
+    + `renv/library` (these are the installed files, which are large and platform-specific)
+    + `renv/python` (if using Python)
+    + `renv/staging`
+
+## Summary
+
+- Use `renv` for every serious project.
+- `init()` to start.
+- `snapshot()` to save.
+- `restore()` to load.
+- Enjoy reproducible data science!
