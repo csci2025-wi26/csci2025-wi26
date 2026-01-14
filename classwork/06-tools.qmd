@@ -1,6 +1,5 @@
 ---
 title: A Menagerie Of Tools
-subtitle: "Lecture 18"
 ---
 
 ## Today
