@@ -1,0 +1,104 @@
+---
+title: User Feedback
+subtitle: Lecture 25
+---
+
+# Validation
+
+## Cancelling Execution
+
+-   **Problem**: Missing inputs often cause ugly R errors.
+-   **Solution 1**: **`req()`** (Require).
+    -   `req(input$id)` stops execution silently if `input$id` is missing, NULL, FALSE, or empty.
+    -   Downstream outputs remain blank (or keep old value) instead of crashing.
+
+```r
+output$plot <- renderPlot({
+  req(input$x) # Stop here if input$x is missing
+  plot(input$x)
+})
+```
+
+## Explicit Validation
+
+-   **Solution 2**: **`validate()`** and **`need()`**.
+    -   Checks a condition and displays a specific error message if unsatisfied.
+
+```r
+output$table <- renderTable({
+  validate(
+    need(input$nrows > 0, "Number of rows must be positive")
+  )
+  head(mtcars, input$nrows)
+})
+```
+
+# Notifications
+
+## Sending Messages
+
+-   **`showNotification()`**: Displays a temporary message (toast) in the corner.
+-   **Usage**:
+    -   Confirmation ("Saved successfully").
+    -   Warnings.
+    -   Errors.
+
+```r
+observeEvent(input$save, {
+  saveData(data())
+  showNotification("Data saved successfully!", type = "message")
+})
+```
+
+# Progress Bars
+
+## Long-Running Tasks
+
+-   Feedback is critical for slow operations.
+-   **`withProgress()`**: Wraps a code block.
+-   **`incProgress()`**: Increments the bar.
+
+```r
+output$plot <- renderPlot({
+  withProgress(message = 'Making plot', value = 0, {
+    
+    incProgress(0.1, detail = "Part 1")
+    Sys.sleep(0.5) # Simulate work
+    
+    incProgress(0.5, detail = "Part 2")
+    Sys.sleep(0.5)
+    
+    plot(rnorm(100))
+  })
+})
+```
+
+# Confirmation
+
+## Modals
+
+-   Use **`modalDialog()`** for actions that require explicit confirmation (e.g., deleting data).
+-   Trigger with `showModal()`.
+
+```r
+observeEvent(input$delete, {
+  showModal(modalDialog(
+    title = "Delete Data?",
+    "Are you sure you want to delete this?",
+    footer = tagList(
+      modalButton("Cancel"),
+      actionButton("confirm_delete", "Delete", class = "btn-danger")
+    )
+  ))
+})
+```
+
+# Summary
+
+## Feedback Loops
+
+-   **Silent Rejection**: `req()` (Best for missing inputs).
+-   **Explicit Error**: `validate(need())` (Best for wrong inputs).
+-   **Status Update**: `showNotification()` (Best for success/info).
+-   **Waiting**: `withProgress()` (Best for slow tasks).
+-   **Confirmation**: `modalDialog()` (Best for dangerous actions).

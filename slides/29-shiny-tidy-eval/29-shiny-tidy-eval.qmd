@@ -1,0 +1,75 @@
+---
+title: Tidy Evaluation
+subtitle: Lecture 29
+---
+
+# The Problem
+
+## Indirection
+
+-   **Interactive R**: We type `diamonds %>% filter(carat > 1)`.
+    -   `carat` is a **data-variable** (lives in the dataframe).
+-   **Shiny R**: We have `input$var` which contains the string `"carat"`.
+    -   `input$var` is an **env-variable** (lives in the environment).
+-   **Issue**: `filter(diamonds, input$var > 1)` tries to compare the *string* `"carat"` to 1, which fails or does weird things.
+
+# Data Masking
+
+## The `.data` Pronoun
+
+-   **Solution**: Tell `dplyr` or `ggplot2` exactly where to look.
+-   **`.data[[ string ]]`**: Look up the column named `string` in the data frame.
+-   **`.env$var`**: Look up the variable `var` in the environment (safer than implicit lookup).
+
+## Example: Filtering
+
+```r
+server <- function(input, output, session) {
+  
+  filtered_data <- reactive({
+    # OLD/WRONG: filter(df, input$var > input$min)
+    
+    # CORRECT:
+    df %>% filter(.data[[input$var]] > .env$input$min)
+  })
+  
+}
+```
+
+## Example: Plotting
+
+-   `aes()` also uses data masking.
+-   Use `.data[[ ]]` to map inputs to aesthetics.
+
+```r
+output$plot <- renderPlot({
+  ggplot(df, aes(.data[[input$x]], .data[[input$y]])) +
+    geom_point()
+})
+```
+
+# Tidy Selection
+
+## Tidy Selectors
+
+-   Functions like `select()`, `pivot_longer()`, `across()` use **tidy selection**.
+-   **Interactive**: `select(df, carat, price)`.
+-   **Programmatic**: `select(df, all_of(input$cols))`.
+    -   `all_of()`: Errors if any column is missing (strict).
+    -   `any_of()`: Ignores missing columns (lenient).
+
+```r
+# If input$cols is c("carat", "price")
+selected_data <- reactive({
+  df %>% select(all_of(input$cols))
+})
+```
+
+# Summary
+
+## Rules of Thumb
+
+1.  **Data Masking** (`filter`, `mutate`, `aes`, `arrange`):
+    -   Use **`.data[[input$name]]`** to refer to a column by string.
+2.  **Tidy Selection** (`select`, `pivot_`, `across`):
+    -   Use **`all_of(input$names)`** to refer to columns by a vector of strings.

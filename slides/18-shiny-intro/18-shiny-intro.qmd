@@ -1,12 +1,6 @@
 ---
 title: Your First Shiny App
 subtitle: Lecture 18
-title-slide-attributes:
-  data-background-image: ../title-bg.png
-  data-background-size: stretch
-  data-slide-number: none
-format: revealjs
-auto-stretch: false
 ---
 
 # Introduction to Shiny
@@ -14,7 +8,7 @@ auto-stretch: false
 ## What is Shiny?
 
 -   **Shiny** is an R package that makes it easy to build interactive web apps straight from R.
--   Allows you to create standalone apps on a webpage or embed them in R Markdown/Quarto documents.
+-   Allows you to create standalone apps on a webpage or embed them in Quarto documents.
 -   **Key Components**:
     -   **UI (User Interface)**: Defines how your app *looks*.
     -   **Server**: Defines how your app *works*.
@@ -23,13 +17,14 @@ auto-stretch: false
 
 -   If you haven't installed it yet:
 
-```r
+```{r}
+#| eval: false
 install.packages("shiny")
 ```
 
 -   Load it in your R session:
 
-```r
+```{r}
 library(shiny)
 ```
 
@@ -40,7 +35,8 @@ library(shiny)
 -   The simplest way to create an app is a single file named `app.R`.
 -   It contains three main parts:
 
-```r
+```{r}
+#| eval: false
 library(shiny)
 
 ui <- fluidPage(
@@ -68,13 +64,15 @@ shinyApp(ui, server)
     -   Click the **Stop** sign in the console.
     -   Press `Esc`.
 
-## Adding UI Controls
+## Adding UI Controls {.smaller}
 
 -   Use **Layout Functions** to structure the page (e.g., `fluidPage`).
 -   Use **Inputs** to let users provide values.
 -   Use **Outputs** to show results.
 
-```r
+```{r}
+#| eval: false
+library(shiny)
 ui <- fluidPage(
   selectInput("dataset", label = "Dataset", choices = ls("package:datasets")),
   verbatimTextOutput("summary"),
@@ -98,7 +96,8 @@ ui <- fluidPage(
 
 ## Connecting Inputs to Outputs
 
-```r
+```{r}
+#| eval: false
 server <- function(input, output, session) {
   output$summary <- renderPrint({
     dataset <- get(input$dataset, "package:datasets")
@@ -129,7 +128,7 @@ dataset <- get(input$dataset, "package:datasets")
 -   **Don't** use regular variables or functions to solve this (they won't work as expected in the reactive graph).
 -   **Do** use **Reactive Expressions**.
 
-## Reactive Expressions
+## Reactive Expressions {.smaller}
 
 -   Wrap code in `reactive({...})`.
 -   Call it like a function: `my_reactive()`.

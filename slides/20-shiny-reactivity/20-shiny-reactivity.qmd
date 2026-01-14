@@ -1,0 +1,110 @@
+---
+title: Basic Reactivity
+subtitle: Lecture 20
+---
+
+# The Server Function
+
+## Overview
+
+-   **Frontend**: `ui` object (HTML).
+-   **Backend**: `server` function (Logic).
+    -   Invoked once **per session**.
+    -   Creates a new local environment for each user.
+    -   Isolates variables between sessions.
+
+```r
+server <- function(input, output, session) {
+  # Logic goes here
+}
+```
+
+## Input
+
+-   **`input`**: List-like object representing data sent from the browser.
+-   **Read-only**: Can't modify it directly (e.g., `input$x <- 5` throws an error).
+-   **Selective access**: Can only read `input` inside a **reactive context** (e.g., `render*` functions or `reactive()`).
+
+```r
+# Error: Can't access reactive value 'count' outside of reactive consumer
+message(input$count) 
+
+# OK
+renderText({ message(input$count) })
+```
+
+## Output
+
+-   **`output`**: List-like object for sending data to the browser.
+-   **Usage**: `output$ID <- render*({ ... })`.
+    -   Sets up a reactive context.
+    -   Converts R code to HTML.
+-   **Rules**:
+    -   Must use a `render` function.
+    -   Can only access in the server function.
+
+# Reactive Programming
+
+## The Reactive Graph
+
+-   **Declarative**: You specify *what* to do, not *when* to do it.
+-   **Lazy**: Code only runs when needed (when outputs are visible).
+-   **Dependencies**: Inputs $\rightarrow$ Computations $\rightarrow$ Outputs.
+    -   When an input changes, everything that depends on it invalidates.
+    -   Outputs re-calculate automatically.
+
+## Reactive Expressions
+
+-   **Problem**: Duplicated code re-running multiple times.
+-   **Solution**: **`reactive()`**.
+    -   Splits logic into reusable chunks.
+    -   **Cached** (Lazy): Only re-runs if inputs change; otherwise returns saved value.
+    -   Called like a function: `my_reactive()`.
+
+```r
+server <- function(input, output, session) {
+  # Calculate once
+  x_sq <- reactive({
+    input$x ^ 2
+  })
+  
+  # Use twice
+  output$txt <- renderText(x_sq())
+  output$plot <- renderPlot(plot(x_sq()))
+}
+```
+
+## Observers
+
+-   **Outputs**: Update the browser HTML.
+-   **Observers**: Perform **side effects** (e.g., printing, saving, API calls).
+    -   Use **`observeEvent()`**.
+    -   Triggered by an event (e.g., button click).
+    -   doesn't return a value.
+
+```r
+observeEvent(input$save, {
+  message("Saving data...")
+  write.csv(data(), "data.csv")
+})
+```
+
+## Reactive Graph Shapes
+
+-   **Input**: Source of truth (rounded rectangle).
+-   **Reactive Expression**: Calculation (angled sides).
+    -   Depends on inputs/reactives.
+    -   Fed into reactives/outputs.
+-   **Output/Observer**: Endpoint (circle/oval).
+    -   Side effects (updating display or world).
+
+# Summary
+
+## Mechanics
+
+-   **Server**: `function(input, output, session)`.
+-   **Input**: Read-only, use in reactive context.
+-   **Output**: Write-only (via `render*`).
+-   **Reactive Expressions**: `reactive({})` for calculations (cached).
+-   **Observers**: `observeEvent()` for side effects.
+-   **Laziness**: Nothing happens unless an output needs it.

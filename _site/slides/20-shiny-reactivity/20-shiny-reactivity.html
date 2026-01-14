@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
-  <title>CSCI 2025 – Your First Shiny App</title>
+  <title>CSCI 2025 – Basic Reactivity</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -195,8 +195,8 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Your First Shiny App</h1>
-  <p class="subtitle">Lecture 18</p>
+  <h1 class="title">Basic Reactivity</h1>
+  <p class="subtitle">Lecture 20</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -211,207 +211,138 @@ Dr.&nbsp;Eric Friedlander
 
 </section>
 <section>
-<section id="introduction-to-shiny" class="title-slide slide level1 center">
-<h1>Introduction to Shiny</h1>
+<section id="the-server-function" class="title-slide slide level1 center">
+<h1>The Server Function</h1>
 
 </section>
-<section id="what-is-shiny" class="slide level2">
-<h2>What is Shiny?</h2>
+<section id="overview" class="slide level2">
+<h2>Overview</h2>
 <ul>
-<li><strong>Shiny</strong> is an R package that makes it easy to build interactive web apps straight from R.</li>
-<li>Allows you to create standalone apps on a webpage or embed them in Quarto documents.</li>
-<li><strong>Key Components</strong>:
+<li><strong>Frontend</strong>: <code>ui</code> object (HTML).</li>
+<li><strong>Backend</strong>: <code>server</code> function (Logic).
 <ul>
-<li><strong>UI (User Interface)</strong>: Defines how your app <em>looks</em>.</li>
-<li><strong>Server</strong>: Defines how your app <em>works</em>.</li>
+<li>Invoked once <strong>per session</strong>.</li>
+<li>Creates a new local environment for each user.</li>
+<li>Isolates variables between sessions.</li>
 </ul></li>
 </ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb1-2"><a></a>  <span class="co"># Logic goes here</span></span>
+<span id="cb1-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="installation" class="slide level2">
-<h2>Installation</h2>
+<section id="input" class="slide level2">
+<h2>Input</h2>
 <ul>
-<li>If you haven’t installed it yet:</li>
+<li><strong><code>input</code></strong>: List-like object representing data sent from the browser.</li>
+<li><strong>Read-only</strong>: Can’t modify it directly (e.g., <code>input$x &lt;- 5</code> throws an error).</li>
+<li><strong>Selective access</strong>: Can only read <code>input</code> inside a <strong>reactive context</strong> (e.g., <code>render*</code> functions or <code>reactive()</code>).</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">install.packages</span>(<span class="st">"shiny"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Load it in your R session:</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(shiny)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section></section>
-<section>
-<section id="creating-an-app" class="title-slide slide level1 center">
-<h1>Creating an App</h1>
-
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># Error: Can't access reactive value 'count' outside of reactive consumer</span></span>
+<span id="cb2-2"><a></a><span class="fu">message</span>(input<span class="sc">$</span>count) </span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="co"># OK</span></span>
+<span id="cb2-5"><a></a><span class="fu">renderText</span>({ <span class="fu">message</span>(input<span class="sc">$</span>count) })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="app-structure-app.r" class="slide level2">
-<h2>App Structure (<code>app.R</code>)</h2>
+<section id="output" class="slide level2">
+<h2>Output</h2>
 <ul>
-<li>The simplest way to create an app is a single file named <code>app.R</code>.</li>
-<li>It contains three main parts:</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(shiny)</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb3-4"><a></a>  <span class="st">"Hello, world!"</span></span>
-<span id="cb3-5"><a></a>)</span>
-<span id="cb3-6"><a></a></span>
-<span id="cb3-7"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb3-8"><a></a>}</span>
-<span id="cb3-9"><a></a></span>
-<span id="cb3-10"><a></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol type="1">
-<li><strong>UI object</strong>: The HTML webpage humans interact with.</li>
-<li><strong>Server function</strong>: The logic that tells the app what to do.</li>
-<li><strong><code>shinyApp</code> call</strong>: Combines UI and server to run the app.</li>
-</ol>
-</section>
-<section id="running-the-app" class="slide level2">
-<h2>Running the App</h2>
+<li><strong><code>output</code></strong>: List-like object for sending data to the browser.</li>
+<li><strong>Usage</strong>: <code>output$ID &lt;- render*({ ... })</code>.
 <ul>
-<li><strong>In RStudio/Positron</strong>:
-<ul>
-<li>Click the <strong>Run App</strong> button (play icon) in the toolbar.</li>
-<li>Keyboard Shortcut: <code>Cmd/Ctrl + Shift + Enter</code>.</li>
+<li>Sets up a reactive context.</li>
+<li>Converts R code to HTML.</li>
 </ul></li>
-<li><strong>From Console</strong>:
-<ul>
-<li><code>shiny::runApp("path/to/app.R")</code></li>
-</ul></li>
-<li><strong>Stopping</strong>:
-<ul>
-<li>Click the <strong>Stop</strong> sign in the console.</li>
-<li>Press <code>Esc</code>.</li>
-</ul></li>
-</ul>
-</section>
-<section id="adding-ui-controls" class="slide level2 smaller">
-<h2>Adding UI Controls</h2>
-<ul>
-<li>Use <strong>Layout Functions</strong> to structure the page (e.g., <code>fluidPage</code>).</li>
-<li>Use <strong>Inputs</strong> to let users provide values.</li>
-<li>Use <strong>Outputs</strong> to show results.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(shiny)</span>
-<span id="cb4-2"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb4-3"><a></a>  <span class="fu">selectInput</span>(<span class="st">"dataset"</span>, <span class="at">label =</span> <span class="st">"Dataset"</span>, <span class="at">choices =</span> <span class="fu">ls</span>(<span class="st">"package:datasets"</span>)),</span>
-<span id="cb4-4"><a></a>  <span class="fu">verbatimTextOutput</span>(<span class="st">"summary"</span>),</span>
-<span id="cb4-5"><a></a>  <span class="fu">tableOutput</span>(<span class="st">"table"</span>)</span>
-<span id="cb4-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li><code>selectInput()</code>: A dropdown menu.</li>
-<li><code>verbatimTextOutput()</code>: Placeholder for code/text output.</li>
-<li><code>tableOutput()</code>: Placeholder for a table.</li>
-</ul>
-</section></section>
-<section>
-<section id="adding-behavior-server" class="title-slide slide level1 center">
-<h1>Adding Behavior (Server)</h1>
-
-</section>
-<section id="the-server-function" class="slide level2">
-<h2>The Server Function</h2>
-<ul>
-<li>Tells Shiny how to build the outputs from the inputs.</li>
 <li><strong>Rules</strong>:
-<ol type="1">
-<li>Save objects to <code>output$ID</code>.</li>
-<li>Build objects with <code>render{Type}()</code>.</li>
-<li>Access inputs with <code>input$ID</code>.</li>
-</ol></li>
-</ul>
-</section>
-<section id="connecting-inputs-to-outputs" class="slide level2">
-<h2>Connecting Inputs to Outputs</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb5-2"><a></a>  output<span class="sc">$</span>summary <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({</span>
-<span id="cb5-3"><a></a>    dataset <span class="ot">&lt;-</span> <span class="fu">get</span>(input<span class="sc">$</span>dataset, <span class="st">"package:datasets"</span>)</span>
-<span id="cb5-4"><a></a>    <span class="fu">summary</span>(dataset)</span>
-<span id="cb5-5"><a></a>  })</span>
-<span id="cb5-6"><a></a></span>
-<span id="cb5-7"><a></a>  output<span class="sc">$</span>table <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
-<span id="cb5-8"><a></a>    dataset <span class="ot">&lt;-</span> <span class="fu">get</span>(input<span class="sc">$</span>dataset, <span class="st">"package:datasets"</span>)</span>
-<span id="cb5-9"><a></a>    dataset</span>
-<span id="cb5-10"><a></a>  })</span>
-<span id="cb5-11"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <ul>
-<li><code>renderPrint()</code> pairs with <code>verbatimTextOutput()</code>.</li>
-<li><code>renderTable()</code> pairs with <code>tableOutput()</code>.</li>
-<li><strong>Reactivity</strong>: Outputs automatically update when <code>input$dataset</code> changes.</li>
+<li>Must use a <code>render</code> function.</li>
+<li>Can only access in the server function.</li>
+</ul></li>
 </ul>
 </section></section>
 <section>
-<section id="reactivity" class="title-slide slide level1 center">
-<h1>Reactivity</h1>
+<section id="reactive-programming" class="title-slide slide level1 center">
+<h1>Reactive Programming</h1>
 
 </section>
-<section id="reducing-duplication" class="slide level2">
-<h2>Reducing Duplication</h2>
+<section id="the-reactive-graph" class="slide level2">
+<h2>The Reactive Graph</h2>
 <ul>
-<li>In the previous example, we fetched the dataset twice:</li>
-</ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>dataset <span class="ot">&lt;-</span> <span class="fu">get</span>(input<span class="sc">$</span>dataset, <span class="st">"package:datasets"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<li><strong>Declarative</strong>: You specify <em>what</em> to do, not <em>when</em> to do it.</li>
+<li><strong>Lazy</strong>: Code only runs when needed (when outputs are visible).</li>
+<li><strong>Dependencies</strong>: Inputs <span class="math inline">\(\rightarrow\)</span> Computations <span class="math inline">\(\rightarrow\)</span> Outputs.
 <ul>
-<li><strong>Don’t</strong> use regular variables or functions to solve this (they won’t work as expected in the reactive graph).</li>
-<li><strong>Do</strong> use <strong>Reactive Expressions</strong>.</li>
+<li>When an input changes, everything that depends on it invalidates.</li>
+<li>Outputs re-calculate automatically.</li>
+</ul></li>
 </ul>
 </section>
-<section id="reactive-expressions" class="slide level2 smaller">
+<section id="reactive-expressions" class="slide level2">
 <h2>Reactive Expressions</h2>
 <ul>
-<li>Wrap code in <code>reactive({...})</code>.</li>
-<li>Call it like a function: <code>my_reactive()</code>.</li>
-<li><strong>Benefits</strong>:
+<li><strong>Problem</strong>: Duplicated code re-running multiple times.</li>
+<li><strong>Solution</strong>: <strong><code>reactive()</code></strong>.
 <ul>
-<li>Updates only when inputs change.</li>
-<li>Caches the result (lazy evaluation) - efficient!</li>
+<li>Splits logic into reusable chunks.</li>
+<li><strong>Cached</strong> (Lazy): Only re-runs if inputs change; otherwise returns saved value.</li>
+<li>Called like a function: <code>my_reactive()</code>.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb7-2"><a></a>  <span class="co"># Create a reactive expression</span></span>
-<span id="cb7-3"><a></a>  dataset <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb7-4"><a></a>    <span class="fu">get</span>(input<span class="sc">$</span>dataset, <span class="st">"package:datasets"</span>)</span>
-<span id="cb7-5"><a></a>  })</span>
-<span id="cb7-6"><a></a></span>
-<span id="cb7-7"><a></a>  output<span class="sc">$</span>summary <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({</span>
-<span id="cb7-8"><a></a>    <span class="co"># Call it like a function</span></span>
-<span id="cb7-9"><a></a>    <span class="fu">summary</span>(<span class="fu">dataset</span>())</span>
-<span id="cb7-10"><a></a>  })</span>
-<span id="cb7-11"><a></a></span>
-<span id="cb7-12"><a></a>  output<span class="sc">$</span>table <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
-<span id="cb7-13"><a></a>    <span class="fu">dataset</span>()</span>
-<span id="cb7-14"><a></a>  })</span>
-<span id="cb7-15"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb3-2"><a></a>  <span class="co"># Calculate once</span></span>
+<span id="cb3-3"><a></a>  x_sq <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb3-4"><a></a>    input<span class="sc">$</span>x <span class="sc">^</span> <span class="dv">2</span></span>
+<span id="cb3-5"><a></a>  })</span>
+<span id="cb3-6"><a></a>  </span>
+<span id="cb3-7"><a></a>  <span class="co"># Use twice</span></span>
+<span id="cb3-8"><a></a>  output<span class="sc">$</span>txt <span class="ot">&lt;-</span> <span class="fu">renderText</span>(<span class="fu">x_sq</span>())</span>
+<span id="cb3-9"><a></a>  output<span class="sc">$</span>plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>(<span class="fu">plot</span>(<span class="fu">x_sq</span>()))</span>
+<span id="cb3-10"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="observers" class="slide level2">
+<h2>Observers</h2>
+<ul>
+<li><strong>Outputs</strong>: Update the browser HTML.</li>
+<li><strong>Observers</strong>: Perform <strong>side effects</strong> (e.g., printing, saving, API calls).
+<ul>
+<li>Use <strong><code>observeEvent()</code></strong>.</li>
+<li>Triggered by an event (e.g., button click).</li>
+<li>doesn’t return a value.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">observeEvent</span>(input<span class="sc">$</span>save, {</span>
+<span id="cb4-2"><a></a>  <span class="fu">message</span>(<span class="st">"Saving data..."</span>)</span>
+<span id="cb4-3"><a></a>  <span class="fu">write.csv</span>(<span class="fu">data</span>(), <span class="st">"data.csv"</span>)</span>
+<span id="cb4-4"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="reactive-graph-shapes" class="slide level2">
+<h2>Reactive Graph Shapes</h2>
+<ul>
+<li><strong>Input</strong>: Source of truth (rounded rectangle).</li>
+<li><strong>Reactive Expression</strong>: Calculation (angled sides).
+<ul>
+<li>Depends on inputs/reactives.</li>
+<li>Fed into reactives/outputs.</li>
+</ul></li>
+<li><strong>Output/Observer</strong>: Endpoint (circle/oval).
+<ul>
+<li>Side effects (updating display or world).</li>
+</ul></li>
+</ul>
 </section></section>
 <section>
 <section id="summary" class="title-slide slide level1 center">
 <h1>Summary</h1>
 
 </section>
-<section id="recap" class="slide level2">
-<h2>Recap</h2>
+<section id="mechanics" class="slide level2">
+<h2>Mechanics</h2>
 <ul>
-<li><strong>UI</strong>: <code>fluidPage()</code>, <code>input*()</code>, <code>*Output()</code>.</li>
 <li><strong>Server</strong>: <code>function(input, output, session)</code>.</li>
-<li><strong>Wiring</strong>:
-<ul>
-<li><code>output$ID &lt;- render*({ code using input$ID })</code></li>
-</ul></li>
-<li><strong>Reactivity</strong>:
-<ul>
-<li><code>reactive()</code> calculates values and caches them.</li>
-<li>Outputs automatically “react” to input changes.</li>
-</ul></li>
-<li><strong>Next Steps</strong>: Basic UI, Basic Reactivity (Chapters 2 &amp; 3).</li>
+<li><strong>Input</strong>: Read-only, use in reactive context.</li>
+<li><strong>Output</strong>: Write-only (via <code>render*</code>).</li>
+<li><strong>Reactive Expressions</strong>: <code>reactive({})</code> for calculations (cached).</li>
+<li><strong>Observers</strong>: <code>observeEvent()</code> for side effects.</li>
+<li><strong>Laziness</strong>: Nothing happens unless an output needs it.</li>
 </ul>
 
 
@@ -634,44 +565,6 @@ Dr.&nbsp;Eric Friedlander
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

@@ -130,7 +130,7 @@
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/slides/18-shiny-intro/18-shiny-intro.html</loc>
-    <lastmod>2026-01-13T19:30:44.333Z</lastmod>
+    <lastmod>2026-01-14T23:28:40.049Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/slides/10-logicals/10-logicals.html</loc>
@@ -155,5 +155,21 @@
   <url>
     <loc>https://csci2025wi26.netlify.app/GEMINI.html</loc>
     <lastmod>2026-01-05T14:19:29.307Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/21-shiny-case-study/21-shiny-case-study.html</loc>
+    <lastmod>2026-01-14T23:50:47.361Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/29-shiny-tidy-eval/29-shiny-tidy-eval.html</loc>
+    <lastmod>2026-01-14T23:46:52.926Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/19-shiny-basic-ui/19-shiny-basic-ui.html</loc>
+    <lastmod>2026-01-14T23:54:57.619Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/20-shiny-reactivity/20-shiny-reactivity.html</loc>
+    <lastmod>2026-01-14T23:57:38.112Z</lastmod>
   </url>
 </urlset>

@@ -2946,21 +2946,21 @@
     "href": "slides/18-shiny-intro/18-shiny-intro.html#what-is-shiny",
     "title": "Your First Shiny App",
     "section": "What is Shiny?",
-    "text": "What is Shiny?\n\nShiny is an R package that makes it easy to build interactive web apps straight from R.\nAllows you to create standalone apps on a webpage or embed them in R Markdown/Quarto documents.\nKey Components:\n\nUI (User Interface): Defines how your app looks.\nServer: Defines how your app works."
+    "text": "What is Shiny?\n\nShiny is an R package that makes it easy to build interactive web apps straight from R.\nAllows you to create standalone apps on a webpage or embed them in Quarto documents.\nKey Components:\n\nUI (User Interface): Defines how your app looks.\nServer: Defines how your app works."
   },
   {
     "objectID": "slides/18-shiny-intro/18-shiny-intro.html#installation",
     "href": "slides/18-shiny-intro/18-shiny-intro.html#installation",
     "title": "Your First Shiny App",
     "section": "Installation",
-    "text": "Installation\n\nIf you haven’t installed it yet:\n\ninstall.packages(\"shiny\")\n\nLoad it in your R session:\n\nlibrary(shiny)"
+    "text": "Installation\n\nIf you haven’t installed it yet:\n\n\ninstall.packages(\"shiny\")\n\n\nLoad it in your R session:\n\n\nlibrary(shiny)"
   },
   {
     "objectID": "slides/18-shiny-intro/18-shiny-intro.html#app-structure-app.r",
     "href": "slides/18-shiny-intro/18-shiny-intro.html#app-structure-app.r",
     "title": "Your First Shiny App",
     "section": "App Structure (app.R)",
-    "text": "App Structure (app.R)\n\nThe simplest way to create an app is a single file named app.R.\nIt contains three main parts:\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  \"Hello, world!\"\n)\n\nserver &lt;- function(input, output, session) {\n}\n\nshinyApp(ui, server)\n\nUI object: The HTML webpage humans interact with.\nServer function: The logic that tells the app what to do.\nshinyApp call: Combines UI and server to run the app."
+    "text": "App Structure (app.R)\n\nThe simplest way to create an app is a single file named app.R.\nIt contains three main parts:\n\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  \"Hello, world!\"\n)\n\nserver &lt;- function(input, output, session) {\n}\n\nshinyApp(ui, server)\n\n\nUI object: The HTML webpage humans interact with.\nServer function: The logic that tells the app what to do.\nshinyApp call: Combines UI and server to run the app."
   },
   {
     "objectID": "slides/18-shiny-intro/18-shiny-intro.html#running-the-app",
@@ -2974,7 +2974,7 @@
     "href": "slides/18-shiny-intro/18-shiny-intro.html#adding-ui-controls",
     "title": "Your First Shiny App",
     "section": "Adding UI Controls",
-    "text": "Adding UI Controls\n\nUse Layout Functions to structure the page (e.g., fluidPage).\nUse Inputs to let users provide values.\nUse Outputs to show results.\n\nui &lt;- fluidPage(\n  selectInput(\"dataset\", label = \"Dataset\", choices = ls(\"package:datasets\")),\n  verbatimTextOutput(\"summary\"),\n  tableOutput(\"table\")\n)\n\nselectInput(): A dropdown menu.\nverbatimTextOutput(): Placeholder for code/text output.\ntableOutput(): Placeholder for a table."
+    "text": "Adding UI Controls\n\nUse Layout Functions to structure the page (e.g., fluidPage).\nUse Inputs to let users provide values.\nUse Outputs to show results.\n\n\nlibrary(shiny)\nui &lt;- fluidPage(\n  selectInput(\"dataset\", label = \"Dataset\", choices = ls(\"package:datasets\")),\n  verbatimTextOutput(\"summary\"),\n  tableOutput(\"table\")\n)\n\n\nselectInput(): A dropdown menu.\nverbatimTextOutput(): Placeholder for code/text output.\ntableOutput(): Placeholder for a table."
   },
   {
     "objectID": "slides/18-shiny-intro/18-shiny-intro.html#the-server-function",
@@ -2988,7 +2988,7 @@
     "href": "slides/18-shiny-intro/18-shiny-intro.html#connecting-inputs-to-outputs",
     "title": "Your First Shiny App",
     "section": "Connecting Inputs to Outputs",
-    "text": "Connecting Inputs to Outputs\nserver &lt;- function(input, output, session) {\n  output$summary &lt;- renderPrint({\n    dataset &lt;- get(input$dataset, \"package:datasets\")\n    summary(dataset)\n  })\n\n  output$table &lt;- renderTable({\n    dataset &lt;- get(input$dataset, \"package:datasets\")\n    dataset\n  })\n}\n\nrenderPrint() pairs with verbatimTextOutput().\nrenderTable() pairs with tableOutput().\nReactivity: Outputs automatically update when input$dataset changes."
+    "text": "Connecting Inputs to Outputs\n\nserver &lt;- function(input, output, session) {\n  output$summary &lt;- renderPrint({\n    dataset &lt;- get(input$dataset, \"package:datasets\")\n    summary(dataset)\n  })\n\n  output$table &lt;- renderTable({\n    dataset &lt;- get(input$dataset, \"package:datasets\")\n    dataset\n  })\n}\n\n\nrenderPrint() pairs with verbatimTextOutput().\nrenderTable() pairs with tableOutput().\nReactivity: Outputs automatically update when input$dataset changes."
   },
   {
     "objectID": "slides/18-shiny-intro/18-shiny-intro.html#reducing-duplication",
@@ -3431,5 +3431,250 @@
     "title": "GEMINI.md: Project Overview and Contributor Guide",
     "section": "",
     "text": "To work on this project, you will need to have Quarto installed. You can download it from the Quarto website.\n\n\nTo render and preview the website locally, run the following command in your terminal from the project’s root directory:\nquarto preview\nThis will start a local web server and open the site in your browser. The site will automatically refresh when you save changes to any of the source files.\n\n\n\nTo render the entire website without previewing it, use the following command:\nquarto render\nThis will generate all the static files and place them in the _site/ directory. This is typically done for deployment."
+  },
+  {
+    "objectID": "slides/21-shiny-case-study/21-shiny-case-study.html#the-goal",
+    "href": "slides/21-shiny-case-study/21-shiny-case-study.html#the-goal",
+    "title": "Case Study: ER Injuries",
+    "section": "The Goal",
+    "text": "The Goal\n\nObjective: Build a Shiny app to explore data from the National Electronic Injury Surveillance System (NEISS).\nData: Accidents seen in a representative sample of US hospitals.\nFocus: 2017 data (~250,000 observations).\nKey Steps:\n\nUnderstand the data.\nBuild a simple prototype.\nPolish and enhance."
+  },
+  {
+    "objectID": "slides/21-shiny-case-study/21-shiny-case-study.html#the-data",
+    "href": "slides/21-shiny-case-study/21-shiny-case-study.html#the-data",
+    "title": "Case Study: ER Injuries",
+    "section": "The Data",
+    "text": "The Data\n\ninjuries dataset:\n\ntrmt_date: Date seen in hospital.\nage, sex, race: Demographics.\nbody_part: Location of injury (e.g., ankle, ear).\ndiag: Diagnosis (e.g., fracture, laceration).\nlocation: Where accident occurred (e.g., home, school).\nprod_code: Product involved (e.g., 649 = toilets).\nweight: Statistical weight (to estimate national totals).\nnarrative: Short text description."
+  },
+  {
+    "objectID": "slides/21-shiny-case-study/21-shiny-case-study.html#exploring-before-building",
+    "href": "slides/21-shiny-case-study/21-shiny-case-study.html#exploring-before-building",
+    "title": "Case Study: ER Injuries",
+    "section": "Exploring Before Building",
+    "text": "Exploring Before Building\n\nAlways explore your data with R (dplyr/ggplot2) before building the app.\nExample: What happens with toilets (prod_code = 649)?\n\nselected &lt;- injuries %&gt;% filter(prod_code == 649)\nnrow(selected)\n# [1] 2993\n\nselected %&gt;% count(location, wt = weight, sort = TRUE)\n# Most occur at \"Home\"\n\nselected %&gt;% count(body_part, wt = weight, sort = TRUE)\n# Head and Lower Trunk are common"
+  },
+  {
+    "objectID": "slides/21-shiny-case-study/21-shiny-case-study.html#designing-the-ui",
+    "href": "slides/21-shiny-case-study/21-shiny-case-study.html#designing-the-ui",
+    "title": "Case Study: ER Injuries",
+    "section": "Designing the UI",
+    "text": "Designing the UI\n\nPrinciple: Start as simple as possible.\nSketch:\n\nRow 1: Input (Product Code).\nRow 2: Three tables (Diagnosis, Body Part, Location).\nRow 3: Plot (Age vs Sex).\n\n\nui &lt;- fluidPage(\n  fluidRow(\n    column(6, selectInput(\"code\", \"Product\", choices = prod_codes))\n  ),\n  fluidRow(\n    column(4, tableOutput(\"diag\")),\n    column(4, tableOutput(\"body_part\")),\n    column(4, tableOutput(\"location\"))\n  ),\n  fluidRow(\n    column(12, plotOutput(\"age_sex\"))\n  )\n)"
+  },
+  {
+    "objectID": "slides/21-shiny-case-study/21-shiny-case-study.html#server-logic",
+    "href": "slides/21-shiny-case-study/21-shiny-case-study.html#server-logic",
+    "title": "Case Study: ER Injuries",
+    "section": "Server Logic",
+    "text": "Server Logic\n\nReactive: Filter data based on selected product.\nTables: Summarize by variable (diag, body_part, location).\nPlot: Line chart of injury counts by age and sex.\n\nserver &lt;- function(input, output, session) {\n  selected &lt;- reactive(injuries %&gt;% filter(prod_code == input$code))\n  \n  output$diag &lt;- renderTable(\n    selected() %&gt;% count(diag, wt = weight, sort = TRUE)\n  )\n  # ... similar for body_part and location\n  \n  output$age_sex &lt;- renderPlot({\n    selected() %&gt;% \n      count(age, sex, wt = weight) %&gt;% \n      ggplot(aes(age, n, colour = sex)) + \n      geom_line() + \n      labs(y = \"Estimated number of injuries\")\n  })\n}"
+  },
+  {
+    "objectID": "slides/21-shiny-case-study/21-shiny-case-study.html#polishing-tables",
+    "href": "slides/21-shiny-case-study/21-shiny-case-study.html#polishing-tables",
+    "title": "Case Study: ER Injuries",
+    "section": "Polishing Tables",
+    "text": "Polishing Tables\n\nThe raw tables might be too long or ugly.\nFix: Truncate tables to top N rows.\nFix: Create a helper function/reactive to handle the summarization logic to avoid code duplication."
+  },
+  {
+    "objectID": "slides/21-shiny-case-study/21-shiny-case-study.html#rate-vs-count",
+    "href": "slides/21-shiny-case-study/21-shiny-case-study.html#rate-vs-count",
+    "title": "Case Study: ER Injuries",
+    "section": "Rate vs Count",
+    "text": "Rate vs Count\n\nProblem: Counts can be misleading if population groups differ in size (e.g., many babies, few 80-year-olds).\nSolution: Standardize by population rate (injuries per 10,000 people).\nAdd a toggle (selectInput) to switch between “Count” and “Rate”.\n\n# UI\nselectInput(\"y\", \"Y axis\", c(\"rate\", \"count\"))\n\n# Server (inside renderPlot)\nif (input$y == \"count\") {\n  # plot counts\n} else {\n  # plot rates\n}"
+  },
+  {
+    "objectID": "slides/21-shiny-case-study/21-shiny-case-study.html#exploring-narratives",
+    "href": "slides/21-shiny-case-study/21-shiny-case-study.html#exploring-narratives",
+    "title": "Case Study: ER Injuries",
+    "section": "Exploring Narratives",
+    "text": "Exploring Narratives\n\nNumbers don’t tell the whole story.\nFeature: Ability to browse individual narratives.\nImplementation:\n\nAdd buttons to step through narratives (Next/Prev).\nRandomly sample or step through the filtered data.\nThis requires actionButton and reactiveValues (more advanced, but good to know)."
+  },
+  {
+    "objectID": "slides/21-shiny-case-study/21-shiny-case-study.html#case-study-takeaways",
+    "href": "slides/21-shiny-case-study/21-shiny-case-study.html#case-study-takeaways",
+    "title": "Case Study: ER Injuries",
+    "section": "Case Study Takeaways",
+    "text": "Case Study Takeaways\n\nStart with Data: Understand what you are visualizing.\nPrototype: Build a Minimum Viable Product (MVP) first.\nIterate: Add features (Rate vs Count) and polish (Tables).\nContext: Narratives add human element to data."
+  },
+  {
+    "objectID": "slides/29-shiny-tidy-eval/29-shiny-tidy-eval.html#indirection",
+    "href": "slides/29-shiny-tidy-eval/29-shiny-tidy-eval.html#indirection",
+    "title": "Tidy Evaluation",
+    "section": "Indirection",
+    "text": "Indirection\n\nInteractive R: We type diamonds %&gt;% filter(carat &gt; 1).\n\ncarat is a data-variable (lives in the dataframe).\n\nShiny R: We have input$var which contains the string \"carat\".\n\ninput$var is an env-variable (lives in the environment).\n\nIssue: filter(diamonds, input$var &gt; 1) tries to compare the string \"carat\" to 1, which fails or does weird things."
+  },
+  {
+    "objectID": "slides/29-shiny-tidy-eval/29-shiny-tidy-eval.html#the-.data-pronoun",
+    "href": "slides/29-shiny-tidy-eval/29-shiny-tidy-eval.html#the-.data-pronoun",
+    "title": "Tidy Evaluation",
+    "section": "The .data Pronoun",
+    "text": "The .data Pronoun\n\nSolution: Tell dplyr or ggplot2 exactly where to look.\n.data[[ string ]]: Look up the column named string in the data frame.\n.env$var: Look up the variable var in the environment (safer than implicit lookup)."
+  },
+  {
+    "objectID": "slides/29-shiny-tidy-eval/29-shiny-tidy-eval.html#example-filtering",
+    "href": "slides/29-shiny-tidy-eval/29-shiny-tidy-eval.html#example-filtering",
+    "title": "Tidy Evaluation",
+    "section": "Example: Filtering",
+    "text": "Example: Filtering\nserver &lt;- function(input, output, session) {\n  \n  filtered_data &lt;- reactive({\n    # OLD/WRONG: filter(df, input$var &gt; input$min)\n    \n    # CORRECT:\n    df %&gt;% filter(.data[[input$var]] &gt; .env$input$min)\n  })\n  \n}"
+  },
+  {
+    "objectID": "slides/29-shiny-tidy-eval/29-shiny-tidy-eval.html#example-plotting",
+    "href": "slides/29-shiny-tidy-eval/29-shiny-tidy-eval.html#example-plotting",
+    "title": "Tidy Evaluation",
+    "section": "Example: Plotting",
+    "text": "Example: Plotting\n\naes() also uses data masking.\nUse .data[[ ]] to map inputs to aesthetics.\n\noutput$plot &lt;- renderPlot({\n  ggplot(df, aes(.data[[input$x]], .data[[input$y]])) +\n    geom_point()\n})"
+  },
+  {
+    "objectID": "slides/29-shiny-tidy-eval/29-shiny-tidy-eval.html#tidy-selectors",
+    "href": "slides/29-shiny-tidy-eval/29-shiny-tidy-eval.html#tidy-selectors",
+    "title": "Tidy Evaluation",
+    "section": "Tidy Selectors",
+    "text": "Tidy Selectors\n\nFunctions like select(), pivot_longer(), across() use tidy selection.\nInteractive: select(df, carat, price).\nProgrammatic: select(df, all_of(input$cols)).\n\nall_of(): Errors if any column is missing (strict).\nany_of(): Ignores missing columns (lenient).\n\n\n# If input$cols is c(\"carat\", \"price\")\nselected_data &lt;- reactive({\n  df %&gt;% select(all_of(input$cols))\n})"
+  },
+  {
+    "objectID": "slides/29-shiny-tidy-eval/29-shiny-tidy-eval.html#rules-of-thumb",
+    "href": "slides/29-shiny-tidy-eval/29-shiny-tidy-eval.html#rules-of-thumb",
+    "title": "Tidy Evaluation",
+    "section": "Rules of Thumb",
+    "text": "Rules of Thumb\n\nData Masking (filter, mutate, aes, arrange):\n\nUse .data[[input$name]] to refer to a column by string.\n\nTidy Selection (select, pivot_, across):\n\nUse all_of(input$names) to refer to columns by a vector of strings."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#basic-ui-overview",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#basic-ui-overview",
+    "title": "Basic UI",
+    "section": "Basic UI Overview",
+    "text": "Basic UI Overview\n\nGoal: detailed exploration of the inputs and outputs that make up the Shiny UI.\nInputs: allow users to provide values.\nOutputs: display results to users.\nSeparation of Concerns:\n\nUI defined in fluidPage().\nLogic defined in server()."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#common-structure",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#common-structure",
+    "title": "Basic UI",
+    "section": "Common Structure",
+    "text": "Common Structure\n\nAll input functions start with inputId and label.\ninputId: Unique identifier for accessing the input in the server (e.g., input$name).\n\nMust be a simple string (letters, numbers, underscores).\nMust be unique within the app.\n\nlabel: Human-readable label for the control.\nvalue: (Optional) Default value.\n\nsliderInput(\n  inputId = \"min\", \n  label = \"Limit (minimum)\", \n  value = 50, \n  min = 0, \n  max = 100\n)"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#free-text-inputs",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#free-text-inputs",
+    "title": "Basic UI",
+    "section": "Free Text Inputs",
+    "text": "Free Text Inputs\n\nCollect small amounts of text.\ntextInput(): Simple text box.\npasswordInput(): Text box with masked characters.\ntextAreaInput(): Multi-line text box.\n\nui &lt;- fluidPage(\n  textInput(\"name\", \"What's your name?\"),\n  passwordInput(\"password\", \"What's your password?\"),\n  textAreaInput(\"story\", \"Tell me about yourself\", rows = 3)\n)"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#numeric-inputs",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#numeric-inputs",
+    "title": "Basic UI",
+    "section": "Numeric Inputs",
+    "text": "Numeric Inputs\n\nnumericInput(): Text box allowing only numbers.\nsliderInput(): Slider for selecting a single value or a range.\n\nui &lt;- fluidPage(\n  numericInput(\"num\", \"Number one\", value = 0, min = 0, max = 100),\n  sliderInput(\"num2\", \"Number two\", value = 50, min = 0, max = 100),\n  sliderInput(\"rng\", \"Range\", value = c(10, 20), min = 0, max = 100)\n)"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#date-inputs",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#date-inputs",
+    "title": "Basic UI",
+    "section": "Date Inputs",
+    "text": "Date Inputs\n\ndateInput(): Select a single date.\ndateRangeInput(): Select a range of dates.\nDates are returned as standard R Date objects.\n\nui &lt;- fluidPage(\n  dateInput(\"dob\", \"When were you born?\"),\n  dateRangeInput(\"holiday\", \"When do you want to go on vacation?\")\n)"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#limited-choices",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#limited-choices",
+    "title": "Basic UI",
+    "section": "Limited Choices",
+    "text": "Limited Choices\n\nLet users choose from a pre-defined set of options.\nselectInput(): Dropdown menu (single or multiple selection).\nradioButtons(): Radio buttons (single selection).\ncheckboxGroupInput(): Checkboxes (multiple selection).\n\nanimals &lt;- c(\"dog\", \"cat\", \"mouse\", \"bird\", \"other\", \"I hate animals\")\nui &lt;- fluidPage(\n  selectInput(\"state\", \"What's your favourite state?\", state.name),\n  radioButtons(\"animal\", \"What's your favourite animal?\", animals)\n)"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#other-inputs",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#other-inputs",
+    "title": "Basic UI",
+    "section": "Other Inputs",
+    "text": "Other Inputs\n\nfileInput(): Upload files (Chapter 9).\nactionButton() / actionLink(): Trigger an action (e.g., reset, calculate).\ncheckboxInput(): Single checkbox (TRUE/FALSE)."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#common-structure-1",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#common-structure-1",
+    "title": "Basic UI",
+    "section": "Common Structure",
+    "text": "Common Structure\n\nUI: *Output(outputId)\n\nPlaceholders in the HTML.\n\nServer: output$ID &lt;- render*({ code })\n\nLogic to generate the output.\n\nMatching: render* function must match the *Output function."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#text-outputs",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#text-outputs",
+    "title": "Basic UI",
+    "section": "Text Outputs",
+    "text": "Text Outputs\n\ntextOutput(): pairs with renderText().\n\nCombines result into a single string.\n\nverbatimTextOutput(): pairs with renderPrint().\n\nPrints the result as if it were in the R console.\n\n\nui &lt;- fluidPage(\n  textOutput(\"text\"),\n  verbatimTextOutput(\"code\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$text &lt;- renderText(\"Hello Friend!\")\n  output$code &lt;- renderPrint(summary(1:10))\n}"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#table-outputs",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#table-outputs",
+    "title": "Basic UI",
+    "section": "Table Outputs",
+    "text": "Table Outputs\n\ntableOutput(): pairs with renderTable().\n\nStatic table (renders all data at once).\n\ndataTableOutput(): pairs with renderDataTable().\n\nInteractive table (pagination, search, sorting).\nFrom the DT package (often used instead of shiny::dataTableOutput).\n\n\nui &lt;- fluidPage(\n  tableOutput(\"static\"),\n  dataTableOutput(\"dynamic\")\n)\nserver &lt;- function(input, output, session) {\n  output$static &lt;- renderTable(head(mtcars))\n  output$dynamic &lt;- renderDataTable(mtcars, options = list(pageLength = 5))\n}"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#plot-outputs",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#plot-outputs",
+    "title": "Basic UI",
+    "section": "Plot Outputs",
+    "text": "Plot Outputs\n\nplotOutput(): pairs with renderPlot().\n\nDisplays any R graphic (base, ggplot2).\n\nResolution: Set res = 96 in renderPlot() for screen matching.\n\nui &lt;- fluidPage(\n  plotOutput(\"plot\", width = \"400px\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$plot &lt;- renderPlot(plot(1:5), res = 96)\n}"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#recap",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#recap",
+    "title": "Basic UI",
+    "section": "Recap",
+    "text": "Recap\n\nInputs: textInput, numericInput, sliderInput, selectInput, etc.\n\nAlways have inputId and label.\n\nOutputs: textOutput, tableOutput, plotOutput.\n\nUI: *Output(\"ID\").\nServer: output$ID &lt;- render*({ ... })."
+  },
+  {
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#overview",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#overview",
+    "title": "Basic Reactivity",
+    "section": "Overview",
+    "text": "Overview\n\nFrontend: ui object (HTML).\nBackend: server function (Logic).\n\nInvoked once per session.\nCreates a new local environment for each user.\nIsolates variables between sessions.\n\n\nserver &lt;- function(input, output, session) {\n  # Logic goes here\n}"
+  },
+  {
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#input",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#input",
+    "title": "Basic Reactivity",
+    "section": "Input",
+    "text": "Input\n\ninput: List-like object representing data sent from the browser.\nRead-only: Can’t modify it directly (e.g., input$x &lt;- 5 throws an error).\nSelective access: Can only read input inside a reactive context (e.g., render* functions or reactive()).\n\n# Error: Can't access reactive value 'count' outside of reactive consumer\nmessage(input$count) \n\n# OK\nrenderText({ message(input$count) })"
+  },
+  {
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#output",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#output",
+    "title": "Basic Reactivity",
+    "section": "Output",
+    "text": "Output\n\noutput: List-like object for sending data to the browser.\nUsage: output$ID &lt;- render*({ ... }).\n\nSets up a reactive context.\nConverts R code to HTML.\n\nRules:\n\nMust use a render function.\nCan only access in the server function."
+  },
+  {
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#the-reactive-graph",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#the-reactive-graph",
+    "title": "Basic Reactivity",
+    "section": "The Reactive Graph",
+    "text": "The Reactive Graph\n\nDeclarative: You specify what to do, not when to do it.\nLazy: Code only runs when needed (when outputs are visible).\nDependencies: Inputs \\(\\rightarrow\\) Computations \\(\\rightarrow\\) Outputs.\n\nWhen an input changes, everything that depends on it invalidates.\nOutputs re-calculate automatically."
+  },
+  {
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-expressions",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-expressions",
+    "title": "Basic Reactivity",
+    "section": "Reactive Expressions",
+    "text": "Reactive Expressions\n\nProblem: Duplicated code re-running multiple times.\nSolution: reactive().\n\nSplits logic into reusable chunks.\nCached (Lazy): Only re-runs if inputs change; otherwise returns saved value.\nCalled like a function: my_reactive().\n\n\nserver &lt;- function(input, output, session) {\n  # Calculate once\n  x_sq &lt;- reactive({\n    input$x ^ 2\n  })\n  \n  # Use twice\n  output$txt &lt;- renderText(x_sq())\n  output$plot &lt;- renderPlot(plot(x_sq()))\n}"
+  },
+  {
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#observers",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#observers",
+    "title": "Basic Reactivity",
+    "section": "Observers",
+    "text": "Observers\n\nOutputs: Update the browser HTML.\nObservers: Perform side effects (e.g., printing, saving, API calls).\n\nUse observeEvent().\nTriggered by an event (e.g., button click).\ndoesn’t return a value.\n\n\nobserveEvent(input$save, {\n  message(\"Saving data...\")\n  write.csv(data(), \"data.csv\")\n})"
+  },
+  {
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-graph-shapes",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-graph-shapes",
+    "title": "Basic Reactivity",
+    "section": "Reactive Graph Shapes",
+    "text": "Reactive Graph Shapes\n\nInput: Source of truth (rounded rectangle).\nReactive Expression: Calculation (angled sides).\n\nDepends on inputs/reactives.\nFed into reactives/outputs.\n\nOutput/Observer: Endpoint (circle/oval).\n\nSide effects (updating display or world)."
+  },
+  {
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#mechanics",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#mechanics",
+    "title": "Basic Reactivity",
+    "section": "Mechanics",
+    "text": "Mechanics\n\nServer: function(input, output, session).\nInput: Read-only, use in reactive context.\nOutput: Write-only (via render*).\nReactive Expressions: reactive({}) for calculations (cached).\nObservers: observeEvent() for side effects.\nLaziness: Nothing happens unless an output needs it."
   }
 ]

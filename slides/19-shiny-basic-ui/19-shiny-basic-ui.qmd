@@ -1,0 +1,172 @@
+---
+title: Basic UI
+subtitle: Lecture 19
+---
+
+# Introduction
+
+## Basic UI Overview
+
+-   **Goal**: detailed exploration of the inputs and outputs that make up the Shiny UI.
+-   **Inputs**: allow users to provide values.
+-   **Outputs**: display results to users.
+-   **Separation of Concerns**:
+    -   UI defined in `fluidPage()`.
+    -   Logic defined in `server()`.
+
+# Inputs
+
+## Common Structure
+
+-   All input functions start with `inputId` and `label`.
+-   **`inputId`**: Unique identifier for accessing the input in the server (e.g., `input$name`).
+    -   Must be a simple string (letters, numbers, underscores).
+    -   Must be unique within the app.
+-   **`label`**: Human-readable label for the control.
+-   **`value`**: (Optional) Default value.
+
+```r
+sliderInput(
+  inputId = "min", 
+  label = "Limit (minimum)", 
+  value = 50, 
+  min = 0, 
+  max = 100
+)
+```
+
+## Free Text Inputs
+
+-   Collect small amounts of text.
+-   **`textInput()`**: Simple text box.
+-   **`passwordInput()`**: Text box with masked characters.
+-   **`textAreaInput()`**: Multi-line text box.
+
+```r
+ui <- fluidPage(
+  textInput("name", "What's your name?"),
+  passwordInput("password", "What's your password?"),
+  textAreaInput("story", "Tell me about yourself", rows = 3)
+)
+```
+
+## Numeric Inputs
+
+-   **`numericInput()`**: Text box allowing only numbers.
+-   **`sliderInput()`**: Slider for selecting a single value or a range.
+
+```r
+ui <- fluidPage(
+  numericInput("num", "Number one", value = 0, min = 0, max = 100),
+  sliderInput("num2", "Number two", value = 50, min = 0, max = 100),
+  sliderInput("rng", "Range", value = c(10, 20), min = 0, max = 100)
+)
+```
+
+## Date Inputs
+
+-   **`dateInput()`**: Select a single date.
+-   **`dateRangeInput()`**: Select a range of dates.
+-   Dates are returned as standard R `Date` objects.
+
+```r
+ui <- fluidPage(
+  dateInput("dob", "When were you born?"),
+  dateRangeInput("holiday", "When do you want to go on vacation?")
+)
+```
+
+## Limited Choices
+
+-   Let users choose from a pre-defined set of options.
+-   **`selectInput()`**: Dropdown menu (single or multiple selection).
+-   **`radioButtons()`**: Radio buttons (single selection).
+-   **`checkboxGroupInput()`**: Checkboxes (multiple selection).
+
+```r
+animals <- c("dog", "cat", "mouse", "bird", "other", "I hate animals")
+ui <- fluidPage(
+  selectInput("state", "What's your favourite state?", state.name),
+  radioButtons("animal", "What's your favourite animal?", animals)
+)
+```
+
+## Other Inputs
+
+-   **`fileInput()`**: Upload files (Chapter 9).
+-   **`actionButton()`** / **`actionLink()`**: Trigger an action (e.g., reset, calculate).
+-   **`checkboxInput()`**: Single checkbox (TRUE/FALSE).
+
+# Outputs
+
+## Common Structure
+
+-   **UI**: `*Output(outputId)`
+    -   Placeholders in the HTML.
+-   **Server**: `output$ID <- render*({ code })`
+    -   Logic to generate the output.
+-   **Matching**: `render*` function must match the `*Output` function.
+
+## Text Outputs
+
+-   **`textOutput()`**: pairs with **`renderText()`**.
+    -   Combines result into a single string.
+-   **`verbatimTextOutput()`**: pairs with **`renderPrint()`**.
+    -   Prints the result as if it were in the R console.
+
+```r
+ui <- fluidPage(
+  textOutput("text"),
+  verbatimTextOutput("code")
+)
+
+server <- function(input, output, session) {
+  output$text <- renderText("Hello Friend!")
+  output$code <- renderPrint(summary(1:10))
+}
+```
+
+## Table Outputs
+
+-   **`tableOutput()`**: pairs with **`renderTable()`**.
+    -   Static table (renders all data at once).
+-   **`dataTableOutput()`**: pairs with **`renderDataTable()`**.
+    -   Interactive table (pagination, search, sorting).
+    -   From the `DT` package (often used instead of `shiny::dataTableOutput`).
+
+```r
+ui <- fluidPage(
+  tableOutput("static"),
+  dataTableOutput("dynamic")
+)
+server <- function(input, output, session) {
+  output$static <- renderTable(head(mtcars))
+  output$dynamic <- renderDataTable(mtcars, options = list(pageLength = 5))
+}
+```
+
+## Plot Outputs
+
+-   **`plotOutput()`**: pairs with **`renderPlot()`**.
+    -   Displays any R graphic (base, ggplot2).
+-   **Resolution**: Set `res = 96` in `renderPlot()` for screen matching.
+
+```r
+ui <- fluidPage(
+  plotOutput("plot", width = "400px")
+)
+
+server <- function(input, output, session) {
+  output$plot <- renderPlot(plot(1:5), res = 96)
+}
+```
+
+# Summary
+
+## Recap
+
+-   **Inputs**: `textInput`, `numericInput`, `sliderInput`, `selectInput`, etc.
+    -   Always have `inputId` and `label`.
+-   **Outputs**: `textOutput`, `tableOutput`, `plotOutput`.
+    -   UI: `*Output("ID")`.
+    -   Server: `output$ID <- render*({ ... })`.

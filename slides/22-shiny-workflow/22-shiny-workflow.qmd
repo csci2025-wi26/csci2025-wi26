@@ -1,0 +1,124 @@
+---
+title: Workflow
+subtitle: Lecture 22
+---
+
+# Development Workflow
+
+## Creating and Running
+
+-   **Creation**:
+    -   *File -> New Project -> Shiny App* (creates directory structure).
+    -   Or create `app.R` manually in a new folder.
+-   **Running**:
+    -   Click **Run App**.
+    -   Shortcut: `Cmd/Ctrl + Shift + Enter`.
+-   **Stopping**:
+    -   Click **Stop** icon in console.
+    -   Press `Esc`.
+
+## Optimizing Iteration
+
+-   Goal: Reduce time between change and result.
+-   **Auto-reload**:
+    -   App reloads automatically when you save `app.R`.
+    -   `options(shiny.autoreload = TRUE)`
+    -   Or in RStudio: Run App -> (Dropdown) -> Run External -> (Check) Auto-reload.
+
+# Debugging
+
+## Three Types of Problems
+
+1.  **Unexpected Error**: You get a traceback.
+    -   Easiest to fix.
+2.  **Incorrect Value**: No error, but wrong result.
+    -   Requires investigation (`browser()`).
+3.  **Incorrect Logic**: Updates happen at wrong time (or not at all).
+    -   Hardest. Unique to Shiny's reactivity.
+
+## Tracebacks and `browser()`
+
+-   **Traceback**: Read from bottom to top to find *your* code.
+-   **`browser()`**:
+    -   Place `browser()` inside your server function.
+    -   Execution pauses when it hits that line.
+    -   You can inspect `input`, `output`, and intermediate variables in the console.
+
+```r
+server <- function(input, output, session) {
+  observeEvent(input$go, {
+    browser() # Execution pauses here
+    # Inspect input$x, calculated values, etc.
+  })
+}
+```
+
+## Print Debugging
+
+-   Classic technique: Print values to see what's happening.
+-   **Use `message()`** instead of `print()`.
+    -   Goes to standard error (logs).
+-   **Use `glue::glue()`** for easy formatting.
+
+```r
+library(glue)
+server <- function(input, output, session) {
+  val <- reactive({
+    message(glue("Updating val. input$x is {input$x}"))
+    input$x * 2
+  })
+}
+```
+
+## Debugging Reactivity
+
+-   Reactivity is **lazy** and **non-linear**.
+-   Code doesn't run top-to-bottom.
+-   Visualizing the **Reactive Graph** helps.
+-   Use `message()` inside `reactive()` to verify:
+    1.  Is it running?
+    2.  Is it running *too often*?
+    3.  Is it running in the *expected order*?
+
+# Getting Help
+
+## The Reprex
+
+-   **Reprex**: **Repr**oducible **Ex**ample.
+-   Critical for getting help (StackOverflow, RStudio Community).
+-   **Properties**:
+    -   **Minimal**: Remove everything not related to the bug.
+    -   **Self-contained**: Copy/pasteable. runs on anyone's machine.
+        -   No `read.csv("C:/MyFiles/data.csv")`.
+        -   Use code to generate dummy data.
+
+## Creating a Shiny Reprex
+
+1.  Isolate the problem (remove unrelated UI/Server code).
+2.  Use built-in datasets (e.g., `mtcars`).
+3.  Combine UI and Server in one file.
+
+```r
+library(shiny)
+
+ui <- fluidPage(
+  numericInput("n", "N", 5),
+  textOutput("txt")
+)
+
+server <- function(input, output, session) {
+  output$txt <- renderText(input$n * 2)
+}
+
+shinyApp(ui, server)
+```
+
+# Summary
+
+## Workflow Tips
+
+-   Use **Auto-reload** to move fast.
+-   **Read tracebacks** carefully.
+-   Use **`browser()`** to stop and inspect.
+-   Use **`message()`** to track reactive execution.
+-   When stuck, create a **Reprex**.

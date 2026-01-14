@@ -1,0 +1,83 @@
+---
+title: Interactive Graphics
+subtitle: Lecture 24
+---
+
+# Interactive Plots
+
+## The Concept
+
+-   **Static Plots**: Display data (output).
+-   **Interactive Plots**: Display data AND accept user input (output + input).
+-   **Mechanism**:
+    -   `plotOutput()` can accept pointer events (clicks, double clicks, hovers, brushes).
+    -   Sends these events to the server as `input$ID`.
+
+## Clicking
+
+-   **UI**: Add `click = "ID"` to `plotOutput()`.
+-   **Server**: Access `input$ID` (contains x, y coordinates).
+-   **Helper**: `nearPoints()` returns rows from the dataframe near the click.
+
+```r
+ui <- fluidPage(
+  plotOutput("plot", click = "plot_click"),
+  tableOutput("data")
+)
+
+server <- function(input, output, session) {
+  output$plot <- renderPlot({
+    ggplot(mtcars, aes(wt, mpg)) + geom_point()
+  }, res = 96)
+  
+  output$data <- renderTable({
+    nearPoints(mtcars, input$plot_click)
+  })
+}
+```
+
+## Brushing
+
+-   **Brush**: A rectangular selection tool.
+-   **UI**: Add `brush = "ID"` to `plotOutput()`.
+-   **Helper**: `brushedPoints()` returns rows inside the brush.
+
+```r
+ui <- fluidPage(
+  plotOutput("plot", brush = "plot_brush"),
+  tableOutput("data")
+)
+
+server <- function(input, output, session) {
+  output$data <- renderTable({
+    brushedPoints(mtcars, input$plot_brush)
+  })
+}
+```
+
+## Plot Options
+
+-   **`click`**: Single click.
+-   **`dblclick`**: Double click.
+-   **`hover`**: Mouse hover (triggers frequently).
+-   **`brush`**: Drag-to-select rectangle.
+    -   Can constrain to x or y axis: `brush = brushOpts(direction = "x")`.
+
+## Linked Plots
+
+-   **Goal**: interacting with one plot changes another.
+-   **Pattern**:
+    1.  Create a plot with a brush.
+    2.  Use `brushedPoints()` to filter the data.
+    3.  Create a second plot (or table) based on the filtered data.
+-   Result: Highlighting or zooming into data subsets.
+
+# Summary
+
+## Mechanics
+
+-   **UI**: `plotOutput(..., click = "click_id", brush = "brush_id")`.
+-   **Server Helpers**:
+    -   `nearPoints(df, input$click_id)`: Find single point.
+    -   `brushedPoints(df, input$brush_id)`: Find multiple points.
+-   **Power**: Enables "drill-down" data exploration.

@@ -1,0 +1,123 @@
+---
+title: Layouts, Themes, HTML
+subtitle: Lecture 23
+---
+
+# Layout Basics
+
+## Hierarchy
+
+-   **Structure**: The hierarchy of R functions matches the hierarchy of the generated HTML.
+-   **Function**: Layout functions provide high-level visual structure.
+
+```r
+fluidPage(
+  titlePanel("Hello Shiny!"),
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("obs", "Observations:", min = 0, max = 1000, value = 500)
+    ),
+    mainPanel(
+      plotOutput("distPlot")
+    )
+  )
+)
+```
+
+## Grid Layout
+
+-   **Rows**: `fluidRow()`.
+-   **Columns**: `column(width, ...)`
+    -   Width is between 1 and 12.
+    -   Columns within a row must sum to 12.
+
+```r
+fluidPage(
+  fluidRow(
+    column(4, "Column 1"),
+    column(8, "Column 2")
+  ),
+  fluidRow(
+    column(6, "Column 3"),
+    column(6, "Column 4")
+  )
+)
+```
+
+# Multi-Page Layouts
+
+## Tabsets
+
+-   **`tabsetPanel()`**: Creates a region with tabs.
+-   **`tabPanel()`**: Defines the content for a single tab.
+-   Usage: Split complex content into smaller chunks.
+
+```r
+mainPanel(
+  tabsetPanel(
+    tabPanel("Plot", plotOutput("plot")),
+    tabPanel("Summary", verbatimTextOutput("summary")),
+    tabPanel("Table", tableOutput("table"))
+  )
+)
+```
+
+## Navbar Pages
+
+-   **`navbarPage()`**: Creates a top-level navigation bar.
+-   Replaces `fluidPage()` as the top-level container.
+-   Each `tabPanel()` within it becomes a "page".
+
+```r
+ui <- navbarPage(
+  "My App",
+  tabPanel("Page 1", "Content 1"),
+  tabPanel("Page 2", "Content 2"),
+  navbarMenu("More",
+    tabPanel("Page 3a", "Content 3a"),
+    tabPanel("Page 3b", "Content 3b")
+  )
+)
+```
+
+# Themes
+
+## Bootstrap
+
+-   Shiny is built on **Bootstrap**, a popular HTML/CSS framework.
+-   Provides the default look and feel (grid system, buttons, inputs).
+-   To change the look, we customize the Bootstrap theme.
+
+## Using `bslib`
+
+-   The **`bslib`** package makes theming easy.
+-   **`bs_theme()`**: Create a theme object.
+    -   `bootswatch`: Preset themes (e.g., "minty", "flatly", "darkly").
+    -   `bg`, `fg`: Background and foreground colors.
+    -   `primary`, `secondary`: Accent colors.
+    -   `base_font`: Custom fonts.
+
+```r
+library(bslib)
+
+ui <- fluidPage(
+  theme = bs_theme(bootswatch = "minty"),
+  # ... rest of UI ...
+)
+```
+
+## Real-time Theming
+
+-   `bs_theme_preview()`: preview a theme in your browser and tweak it interactively.
+
+```r
+bs_theme_preview(bs_theme(bootswatch = "darkly"))
+```
+
+# Summary
+
+## Takeaways
+
+-   **Layouts**: Use `sidebarLayout()` for simple apps, `fluidRow()`/`column()` for custom grids.
+-   **Navigation**: Use `tabsetPanel()` for local tabs, `navbarPage()` for whole-page navigation.
+-   **Theming**: Use `bslib` and `bs_theme()` to make your app look professional and unique.

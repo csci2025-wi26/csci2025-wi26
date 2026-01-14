@@ -1,0 +1,110 @@
+---
+title: Dynamic UI
+subtitle: Lecture 27
+---
+
+# Updating Inputs
+
+## The `update*` Family
+
+-   **Goal**: Change an input's state (value, choices, label) from the server.
+-   **Functions**: `updateTextInput()`, `updateSliderInput()`, `updateSelectInput()`, etc.
+-   **Mechanism**:
+    -   User action triggers an `observeEvent()`.
+    -   Server sends a message to the browser to update the specific control.
+
+```r
+observeEvent(input$reset, {
+  updateSliderInput(inputId = "s1", value = 0)
+})
+```
+
+## Hierarchical Selects
+
+-   **Scenario**: The choices in select B depend on the value of select A.
+    -   Example: Select "Continent" -> Update "Country" choices.
+
+```r
+ui <- fluidPage(
+  selectInput("continent", "Continent", choices = unique(data$continent)),
+  selectInput("country", "Country", choices = NULL) # Empty initially
+)
+
+server <- function(input, output, session) {
+  observeEvent(input$continent, {
+    # Filter data based on selection
+    countries <- data %>% 
+      filter(continent == input$continent) %>% 
+      pull(country)
+      
+    # Update the second input
+    updateSelectInput(inputId = "country", choices = countries)
+  })
+}
+```
+
+# Dynamic Visibility
+
+## Hiding and Showing
+
+-   **Goal**: Show different UI elements based on user actions.
+-   **Technique**: Hidden Tabsets.
+    -   `tabsetPanel(id = "wizard", type = "hidden", ...)`
+    -   `updateTabsetPanel(inputId = "wizard", selected = "panel2")`
+
+```r
+ui <- fluidPage(
+  actionButton("go_next", "Next"),
+  tabsetPanel(id = "wizard", type = "hidden",
+    tabPanel("page1", "First step content..."),
+    tabPanel("page2", "Second step content...")
+  )
+)
+
+server <- function(input, output, session) {
+  observeEvent(input$go_next, {
+    updateTabsetPanel(inputId = "wizard", selected = "page2")
+  })
+}
+```
+
+# Generative UI
+
+## `uiOutput` and `renderUI`
+
+-   **Goal**: Generate HTML or Inputs entirely from Python/R code.
+-   **Usage**:
+    1.  **UI**: Place `uiOutput("id")` where you want the content.
+    2.  **Server**: Assign `renderUI({ ... })` to `output$id`.
+    3.  **Return**: The `renderUI` block must return Shiny tags (e.g., `tagList`, `div`, inputs).
+
+```r
+ui <- fluidPage(
+  numericInput("n", "How many inputs?", value = 1),
+  uiOutput("input_container")
+)
+
+server <- function(input, output, session) {
+  output$input_container <- renderUI({
+    # Create N text inputs dynamically
+    inputs <- lapply(1:input$n, function(i) {
+      textInput(paste0("col", i), label = paste("Column", i))
+    })
+    do.call(tagList, inputs)
+  })
+}
+```
+
+## Circular References
+
+-   **Warning**: Be careful when creating inputs that trigger the same code that created them.
+-   **Loop**: `renderUI` -> creates input -> input changes -> triggers `renderUI` -> re-creates input.
+-   Rate limiting or logic checks are often needed.
+
+# Summary
+
+## Levels of Dynamism
+
+1.  **Update**: Modify existing inputs (`update*Input`).
+2.  **Visibility**: Show/Hide pre-defined sections (`tabsetPanel`).
+3.  **Generation**: Create new UI from scratch (`uiOutput`/`renderUI`).

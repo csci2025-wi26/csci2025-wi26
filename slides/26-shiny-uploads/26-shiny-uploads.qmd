@@ -1,0 +1,91 @@
+---
+title: Uploads and Downloads
+subtitle: Lecture 26
+---
+
+# File Uploads
+
+## UI: `fileInput`
+
+-   **`fileInput(inputId, label, ...)`**: Creates a file upload control.
+-   **Options**:
+    -   `multiple = TRUE`: Allow selecting multiple files.
+    -   `accept`: MIME types or extensions to accept (advice to browser, not security).
+
+```r
+fileInput("upload", "Upload a file", multiple = TRUE)
+```
+
+## Server: `input$upload`
+
+-   Accessing the input returns a **data frame** with one row per file:
+    -   **`name`**: Original filename (e.g., "data.csv").
+    -   **`size`**: Size in bytes.
+    -   **`type`**: MIME type.
+    -   **`datapath`**: Temporary path where the file is saved on the server.
+-   **Note**: `datapath` is temporary. Read the data from there immediately.
+
+```r
+output$contents <- renderTable({
+  req(input$upload)
+  read.csv(input$upload$datapath)
+})
+```
+
+## File Size Limits
+
+-   Default limit is **5 MB**.
+-   Increase it by setting an option (usually at the top of `app.R` or `server.R`):
+
+```r
+options(shiny.maxRequestSize = 30 * 1024^2) # 30 MB
+```
+
+# File Downloads
+
+## UI: `downloadButton`
+
+-   **`downloadButton(outputId, label)`**: A button to initiate a download.
+-   **`downloadLink(outputId, label)`**: A link to initiate a download.
+
+```r
+downloadButton("downloadData", "Download CSV")
+```
+
+## Server: `downloadHandler`
+
+-   **Important**: Use `downloadHandler()` NOT `render*()`.
+-   **Arguments**:
+    -   **`filename`**: A function that returns the filename (string).
+    -   **`content`**: A function that takes a `file` path argument and writes content to it.
+
+```r
+output$downloadData <- downloadHandler(
+  filename = function() {
+    paste("data-", Sys.Date(), ".csv", sep="")
+  },
+  content = function(file) {
+    write.csv(data(), file)
+  }
+)
+```
+
+## Downloading Reports
+
+-   You can also download generated reports (HTML, PDF, Word) using R Markdown.
+-   In `content` function:
+    1.  Copy `.Rmd` to a temporary directory.
+    2.  Render it with `rmarkdown::render()`.
+    3.  Output to the `file` path.
+
+# Summary
+
+## Mechanics
+
+-   **Upload**:
+    -   UI: `fileInput()`.
+    -   Server: `input$id` (dataframe w/ `datapath`).
+-   **Download**:
+    -   UI: `downloadButton()`.
+    -   Server: `downloadHandler(filename, content)`.
+    -   **Logic**: `content` function writes to a special temporary path provided by Shiny.

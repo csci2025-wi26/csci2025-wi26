@@ -1,0 +1,79 @@
+---
+title: Bookmarking
+subtitle: Lecture 28
+---
+
+# The Basics
+
+## The Problem
+
+-   **State**: Shiny apps are dynamic. Users change inputs to explore data.
+-   **Issue**: If you copy the URL, it points to the *initial* state, not the *current* state.
+-   **Solution**: **Bookmarking** encodes the current state (inputs) into the URL.
+
+## Enabling Bookmarking
+
+1.  **UI**: Add a `bookmarkButton()`.
+2.  **ShinyApp**: Set `enableBookmarking = "url"`.
+
+```r
+ui <- function(request) {
+  fluidPage(
+    textInput("txt", "Text"),
+    bookmarkButton()
+  )
+}
+
+server <- function(input, output, session) { }
+
+shinyApp(ui, server, enableBookmarking = "url")
+```
+
+**Note**: `ui` must be a function that takes `request` as an argument.
+
+# Advanced Bookmarking
+
+## Automatic URL Update
+
+-   **Goal**: Update the URL bar *automatically* as inputs change (no button needed).
+-   **Server Logic**:
+    1.  Observe changes to `input`.
+    2.  Call `session$doBookmark()`.
+    3.  Use `onBookmarked` to update the query string.
+
+```r
+server <- function(input, output, session) {
+  # Trigger bookmarking on input change
+  observe({
+    reactiveValuesToList(input)
+    session$doBookmark()
+  })
+  
+  # Update URL in browser
+  onBookmarked(updateQueryString)
+}
+```
+
+## Storing State on Server
+
+-   **`enableBookmarking = "server"`**:
+    -   Saves state to a file on the server.
+    -   URL becomes short (e.g., `?_state_id=123`).
+    -   Useful when state is too large for a URL.
+
+## Storing Custom State
+
+-   Sometimes `input` isn't enough (e.g., you have `reactiveValues` to save).
+-   **`onBookmark(function(state) { ... })`**: Save extra data to `state$values`.
+-   **`onRestore(function(state) { ... })`**: Read data from `state$values` and restore `reactiveValues`.
+
+# Summary
+
+## Takeaways
+
+-   **Bookmarking** makes apps shareable.
+-   **Function UI**: `ui <- function(request) { ... }` is required.
+-   **Modes**:
+    -   `"url"`: State in URL (portable, limited size).
+    -   `"server"`: State on server (short URL, requires storage).
+-   **Automation**: Use `onBookmarked(updateQueryString)` for seamless experience.
