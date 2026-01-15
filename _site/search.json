@@ -1741,400 +1741,6 @@
     "text": "Summary\n\nUse renv for every serious project.\ninit() to start.\nsnapshot() to save.\nrestore() to load.\nEnjoy reproducible data science!"
   },
   {
-    "objectID": "classwork/01-tidy-tuesday.html#today",
-    "href": "classwork/01-tidy-tuesday.html#today",
-    "title": "Our First Analysis",
-    "section": "Today",
-    "text": "Today\n\nToday we’re going to split up into groups and each analyze a data set of our choice\nWe will take turns presenting on what we’ve done\nAfter each presentation, we’ll have a brief discussion where we critique each other’s analysis"
-  },
-  {
-    "objectID": "classwork/01-tidy-tuesday.html#tidytuesday",
-    "href": "classwork/01-tidy-tuesday.html#tidytuesday",
-    "title": "Our First Analysis",
-    "section": "#TidyTuesday",
-    "text": "#TidyTuesday\n\nTidyTuesday is a weekly data project aimed at the R community\nEach week a new data set is released along with a short description\nPeople analyze the data set and share their work on social media using the hashtag #TidyTuesday\nYou can find the data sets and more information at the TidyTuesday GitHub repository"
-  },
-  {
-    "objectID": "classwork/01-tidy-tuesday.html#today-1",
-    "href": "classwork/01-tidy-tuesday.html#today-1",
-    "title": "Our First Analysis",
-    "section": "Today",
-    "text": "Today\n\nEach group will pick a data set from the TidyTuesday repository\nEach group will do their best to analyze that data\nAdvice:\n\nTry to choose a more recent data set, and one that already has questions associated with it\nThere is usually an import script at the bottom of each dataset\nIt is likely that you will need to install some packages to work with the data\nDon’t worry about being perfect\nFocus on exploring the data and telling a story with it\nAsk for help when you need it"
-  },
-  {
-    "objectID": "classwork/01-tidy-tuesday.html#group-roles",
-    "href": "classwork/01-tidy-tuesday.html#group-roles",
-    "title": "Our First Analysis",
-    "section": "Group Roles",
-    "text": "Group Roles\n\nCoder: responsible for typing for your group\nReporter: responsible for sharing your group’s work with the class\nResearcher: responsible for looking up any questions your group has\nEveryone should contribute to the discussion and help with writing the code\nThere will be several parts of this activity, between each part, rotate roles\n\nCoder -&gt; Reporter -&gt; Researcher -&gt; Coder …\nFor now, old Coder copy and paste script in Teams chat to new Coder"
-  },
-  {
-    "objectID": "classwork/01-tidy-tuesday.html#get-in-your-groups",
-    "href": "classwork/01-tidy-tuesday.html#get-in-your-groups",
-    "title": "Our First Analysis",
-    "section": "Get in your groups",
-    "text": "Get in your groups\n\nYou can find a spreadsheet in the Jan 6th Activities Module in the Classword section on Teams with your team assignments\nGet in your groups now\nIntroduce yourselves\nDecide who will be the first Coder, Reporter, and Researcher\nDecide on a group name\nCreate a post in the Activities Channel on Teams with all of this information\n\n\ncountdown::countdown(minutes = 5)"
-  },
-  {
-    "objectID": "classwork/01-tidy-tuesday.html#selecting-a-dataset",
-    "href": "classwork/01-tidy-tuesday.html#selecting-a-dataset",
-    "title": "Our First Analysis",
-    "section": "Selecting a Dataset",
-    "text": "Selecting a Dataset\n\nDo the following:\n\nFind the data set on the TidyTuesday GitHub repository\nLoad that data set into R\nPost a link to the dataset as a response to your group’s post in the Activities Channel on Teams\n\nAnswer the following questions (be prepared to give a 2-minute report to the class):\n\nWhat is the data about?\nWhat question(s) are you interested in answering with this data?\nHow many data frames are there and how many rows and columns does it have?\nWhat data frames and variables are you going to focus on?\n\n\n\ncountdown::countdown(minutes = 20)"
-  },
-  {
-    "objectID": "classwork/01-tidy-tuesday.html#explore-the-data",
-    "href": "classwork/01-tidy-tuesday.html#explore-the-data",
-    "title": "Our First Analysis",
-    "section": "Explore the Data",
-    "text": "Explore the Data\n\nBe prepared to present the following (less than 5 minutes per group):\n\nCreate up to 5 visualizations or tables that help answer your questions\nExplain what each visualization or table shows\nExplain what you learned from each visualization or table\nExplain any challenges you had while working with the data\nBe prepared to answer questions and explain your code if you are asked\n\nCopy and paste your entire script (up to this point) into Teams as a response to your group’s post\n\n\ncountdown::countdown(minutes = 20)"
-  },
-  {
-    "objectID": "classwork/01-tidy-tuesday.html#time-permitting-refine-and-extend",
-    "href": "classwork/01-tidy-tuesday.html#time-permitting-refine-and-extend",
-    "title": "Our First Analysis",
-    "section": "Time Permitting: Refine and Extend",
-    "text": "Time Permitting: Refine and Extend\n\nIf you have time left, refine your visualizations and analyses based on our discussions"
-  },
-  {
-    "objectID": "classwork/01-tidy-tuesday.html#wrap-up",
-    "href": "classwork/01-tidy-tuesday.html#wrap-up",
-    "title": "Our First Analysis",
-    "section": "Wrap Up",
-    "text": "Wrap Up\n\nBefore you leave, complete your reflection on Teams!"
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#academic-program-review-1",
-    "href": "classwork/04-group-project-intro.html#academic-program-review-1",
-    "title": "Group Project Introduction",
-    "section": "Academic Program Review",
-    "text": "Academic Program Review\n\nDepartments review their programs every 5 years.\nThis “program review” is then submitted to our accrediting body.\nLet’s take a look at the Guidelines Document"
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#our-part",
-    "href": "classwork/04-group-project-intro.html#our-part",
-    "title": "Group Project Introduction",
-    "section": "Our part",
-    "text": "Our part\n\nHow is disaggregated data utilized in exploring whether there are equity gaps and what steps have resulted for its use? (1.D.2) (1.D.4)\nReview Criteria 1.D.2 and 1.D.4 in the Guidelines Document."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#project-overview",
-    "href": "classwork/04-group-project-intro.html#project-overview",
-    "title": "Group Project Introduction",
-    "section": "Project Overview",
-    "text": "Project Overview\n\nClient: Mark Heidrich (AVP for Institutional Effectiveness)\nObjective: Build a unified Dashboard for analyzing equity gaps in academic programs.\nOne Data Science Consultancy: The entire class working together."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#project-hierarchy",
-    "href": "classwork/04-group-project-intro.html#project-hierarchy",
-    "title": "Group Project Introduction",
-    "section": "Project Hierarchy",
-    "text": "Project Hierarchy\n\nd3 = require(\"d3@7\")\n\ndata = ({\n  name: \"Equity Analysis Project\",\n  children: [\n    {\n      name: \"Core Team\",\n      children: [\n        { name: \"Lead Architect\",\n            children: [\n                { name: \"Code Guild\", \n                    children: [{ name: \"Sentinels\" }]\n                },\n                { name: \"Data Guild\", \n                    children: [{ name: \"Data Stewards\" }], \n                },\n            ]\n        },\n        { name: \"Product Owner\",\n            children: [\n                { name: \"UI Guild\", children: [{ name: \"Chart Artists\" }] },\n                { name: \"Shiny Guild\", children: [{ name: \"Interface Architects\" }] },\n                { name: \"Narrative Guild\", children: [{ name: \"Narrative Leads\" }] }\n            ]\n         },\n        {\n          name: \"Team Leads\",\n          children: [\n            { name: \"Feature 1: Enrollment\", \n                children: [\n                    { name: \"Github Sentinel (Team Lead)\" },\n                    { name: \"Data Steward (Data Eng)\" },\n                    { name: \"Chart Artist (Viz)\" },\n                    { name: \"Interface Architect (Shiny)\" },\n                    { name: \"Narrative Lead (Context)\" }\n          ]\n            },\n            { name: \"Feature 2: Performance\", \n                children: [\n                    { name: \"Github Sentinel (Team Lead)\" },\n                    { name: \"Data Steward (Data Eng)\" },\n                    { name: \"Chart Artist (Viz)\" },\n                    { name: \"Interface Architect (Shiny)\" },\n                    { name: \"Narrative Lead (Context)\" }\n          ] },\n            { name: \"Feature 3: Retention\", \n                children: [\n                    { name: \"Github Sentinel (Team Lead)\" },\n                    { name: \"Data Steward (Data Eng)\" },\n                    { name: \"Chart Artist (Viz)\" },\n                    { name: \"Interface Architect (Shiny)\" },\n                    { name: \"Narrative Lead (Context)\" }\n          ] },\n            { name: \"Feature 4: Outcomes\", \n                children: [\n                    { name: \"Github Sentinel (Team Lead)\" },\n                    { name: \"Data Steward (Data Eng)\" },\n                    { name: \"Chart Artist (Viz)\" },\n                    { name: \"Interface Architect (Shiny)\" },\n                    { name: \"Narrative Lead (Context)\" }\n          ] }\n          ]\n          \n        }\n      ]\n    }\n  ]\n})\n\n\nchart = {\n  const width = 2000;\n  const height = 600;\n  \n  // Increased dx for better vertical spacing to prevent overlap\n  const dx = 35; \n  const dy = width / 6;\n\n  const root = d3.hierarchy(data);\n\n  const tree = d3.tree().nodeSize([dx, dy]);\n  \n  // Initial collapsed state logic\n  root.descendants().slice(1).forEach(d =&gt; {\n    // Keep high level branches open, collapse details deeper down\n    if (d.data.name === \"Guilds\" || d.data.name === \"Feature Teams (x5)\" || d.data.name === \"Core Team\") {\n        // Keep open\n    } else if (d.depth &gt; 1) {\n       // Collapse grandchildren initially\n       d._children = d.children;\n       d.children = null; \n    }\n  });\n\n  const svg = d3.create(\"svg\")\n      .attr(\"viewBox\", [-400, -50, width, height]) \n      .style(\"font\", \"14px sans-serif\")\n      .style(\"user-select\", \"none\")\n      .style(\"max-width\", \"100%\")\n      .style(\"height\", \"auto\");\n\n  // Add Zoom\n  const gLink = svg.append(\"g\")\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"#999\")\n      .attr(\"stroke-opacity\", 0.4)\n      .attr(\"stroke-width\", 1.5);\n\n  const gNode = svg.append(\"g\")\n      .attr(\"cursor\", \"pointer\")\n      .attr(\"pointer-events\", \"all\");\n\n  function update(source) {\n      const duration = 250;\n      const nodes = root.descendants().reverse();\n      const links = root.links();\n      tree(root);\n\n      let left = root;\n      let right = root;\n      root.eachBefore(node =&gt; {\n        if (node.x &lt; left.x) left = node;\n        if (node.x &gt; right.x) right = node;\n      });\n\n      const height = right.x - left.x + 100;\n\n      const transition = svg.transition()\n          .duration(duration)\n          .attr(\"viewBox\", [-400, left.x - 50, width, height]);\n\n      const node = gNode.selectAll(\"g\")\n        .data(nodes, d =&gt; d.id || (d.id = Math.random()));\n\n      const nodeEnter = node.enter().append(\"g\")\n          .attr(\"transform\", d =&gt; `translate(${source.y0 || source.y},${source.x0 || source.x})`)\n          .attr(\"fill-opacity\", 0)\n          .attr(\"stroke-opacity\", 0)\n          .on(\"click\", (event, d) =&gt; {\n            // Fix: properly toggle children and _children\n            if (d.children) {\n                d._children = d.children;\n                d.children = null;\n            } else {\n                d.children = d._children;\n                d._children = null;\n            }\n            update(d);\n          });\n\n      nodeEnter.append(\"circle\")\n          .attr(\"r\", 6)\n          .attr(\"fill\", d =&gt; d._children ? \"#007bff\" : \"#999\") \n          .attr(\"stroke-width\", 10);\n\n      nodeEnter.append(\"text\")\n          .attr(\"dy\", \"0.31em\")\n          .attr(\"x\", d =&gt; d._children ? -8 : 8)\n          .attr(\"text-anchor\", d =&gt; d._children ? \"end\" : \"start\")\n          .text(d =&gt; d.data.name)\n          .clone(true).lower()\n          .attr(\"stroke-linejoin\", \"round\")\n          .attr(\"stroke-width\", 3)\n          .attr(\"stroke\", \"white\");\n\n      const nodeUpdate = node.merge(nodeEnter).transition().duration(duration)\n          .attr(\"transform\", d =&gt; `translate(${d.y},${d.x})`)\n          .attr(\"fill-opacity\", 1)\n          .attr(\"stroke-opacity\", 1);\n      \n      // Update color based on whether it effectively has children (expanded or collapsed)\n      nodeUpdate.select(\"circle\")\n        .attr(\"fill\", d =&gt; (d.children || d._children) ? \"#533860\" : \"#999\");\n\n      const nodeExit = node.exit().transition().duration(duration).remove()\n          .attr(\"transform\", d =&gt; `translate(${source.y},${source.x})`)\n          .attr(\"fill-opacity\", 0)\n          .attr(\"stroke-opacity\", 0);\n\n      const link = gLink.selectAll(\"path\")\n        .data(links, d =&gt; d.target.id);\n\n      const linkEnter = link.enter().append(\"path\")\n          .attr(\"d\", d =&gt; {\n            const o = {x: source.x0 || source.x, y: source.y0 || source.y};\n            return d3.linkHorizontal()({source: o, target: o});\n          });\n\n      link.merge(linkEnter).transition().duration(duration)\n          .attr(\"d\", d3.linkHorizontal()\n              .x(d =&gt; d.y)\n              .y(d =&gt; d.x));\n\n      link.exit().transition().duration(duration).remove()\n          .attr(\"d\", d =&gt; {\n            const o = {x: source.x, y: source.y};\n            return d3.linkHorizontal()({source: o, target: o});\n          });\n\n      root.eachBefore(d =&gt; {\n        d.x0 = d.x;\n        d.y0 = d.y;\n      });\n  }\n\n  root.x0 = dy / 2;\n  root.y0 = 0;\n  \n  update(root);\n\n  // Zoom Logic\n  svg.call(d3.zoom()\n      .extent([[0, 0], [width, height]])\n      .scaleExtent([0.5, 4])\n      .on(\"zoom\", ({transform}) =&gt; {\n          gLink.attr(\"transform\", transform);\n          gNode.attr(\"transform\", transform);\n      }));\n\n  return svg.node();\n}"
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#github-sentinel-team-lead",
-    "href": "classwork/04-group-project-intro.html#github-sentinel-team-lead",
-    "title": "Group Project Introduction",
-    "section": "1. Github Sentinel (Team Lead)",
-    "text": "1. Github Sentinel (Team Lead)\n\nSkills: Git, Organization, Conflict Resolution, Jack-Of-All trades.\nResponsibility:\n\nManages the team’s “branch” (workspace).\nResolves “merge conflicts” (when code clashes).\nEnsures the team’s code safely enters the main project.\nSet’s deadlines and keeps the team on track.\nUltimately responsible for the team’s success.\n\nThe only person authorized to submit code updates to the Tech VP."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#data-steward-data-engineer",
-    "href": "classwork/04-group-project-intro.html#data-steward-data-engineer",
-    "title": "Group Project Introduction",
-    "section": "2. Data Steward (Data Engineer)",
-    "text": "2. Data Steward (Data Engineer)\n\nSkills: dplyr, Data Cleaning, Ethics.\nResponsibility:\n\nWrites clean_data.R.\nPrivacy Protection: Ensures no student is identifiable (masks data if sample size too small).\nCreates clean, anonymized datasets for the team.\nWorks with other Data Stewards to standardize definitions."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#chart-artist-viz-specialist",
-    "href": "classwork/04-group-project-intro.html#chart-artist-viz-specialist",
-    "title": "Group Project Introduction",
-    "section": "3. Chart Artist (Viz Specialist)",
-    "text": "3. Chart Artist (Viz Specialist)\n\nSkills: ggplot2, Visualization Design.\nResponsibility:\n\nCreates high-quality static visualizations.\nWrites plot functions (e.g., plot_gpa()).\nEnsures all charts match the design system (colors, fonts).\nWorks with other Chart Artists to ensure consistency across modules."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#interface-architect-shiny-dev",
-    "href": "classwork/04-group-project-intro.html#interface-architect-shiny-dev",
-    "title": "Group Project Introduction",
-    "section": "4. Interface Architect (Shiny Dev)",
-    "text": "4. Interface Architect (Shiny Dev)\n\nSkills: Shiny UI/Server, Layouts.\nResponsibility:\n\nWires the User Interface (buttons, sliders, tabs).\nConnects inputs to the Chart Artist’s plots.\nEnsures the interactive elements work smoothly."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#narrative-lead-contextqa",
-    "href": "classwork/04-group-project-intro.html#narrative-lead-contextqa",
-    "title": "Group Project Introduction",
-    "section": "5. Narrative Lead (Context/QA)",
-    "text": "5. Narrative Lead (Context/QA)\n\nSkills: Writing, Interpretation, stringr.\nResponsibility:\n\nWrites dynamic text to interpret charts automatically (“Mad Libs” style).\nExplains what the data shows to the user.\nActs as Quality Assurance for the team’s module.\nTake notes at team meetings and documents decisions and timelines."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#the-guilds",
-    "href": "classwork/04-group-project-intro.html#the-guilds",
-    "title": "Group Project Introduction",
-    "section": "The Guilds",
-    "text": "The Guilds\n\nCode Guild: Sentinels + Lead Architect (Git & Process).\nUI Guild: Chart Artists + Product Owner (Design & Style).\nData Guild: Data Stewards (Definitions & Privacy).\nShiny Guild: Interface Architects (Layouts & Inputs).\nNarrative Guild: Narrative Leads (Tone & Consistency)."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#core-team-roles",
-    "href": "classwork/04-group-project-intro.html#core-team-roles",
-    "title": "Group Project Introduction",
-    "section": "Core Team Roles",
-    "text": "Core Team Roles\n\nProduct Owner (Client VP)\n\n“Voice of the Client”\nManages the Landing Page, global.R, and styles.css.\nLeads the UI Guild, Shiny Guild, and Narrative Guild.\n\nLead Architect (Tech VP)\n\nRepository Health & Integration.\nManages app.R and Deployment.\nLeads the Code Guild and Data Guild.\n\nTeam Leads"
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#next-steps",
-    "href": "classwork/04-group-project-intro.html#next-steps",
-    "title": "Group Project Introduction",
-    "section": "Next Steps",
-    "text": "Next Steps\n\nReview the full job descriptions.\nThink about which role fits your skills and interests best.\nSubmit this Microsoft Form ranking your preferred roles."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#reviewing-the-data-set",
-    "href": "classwork/04-group-project-intro.html#reviewing-the-data-set",
-    "title": "Group Project Introduction",
-    "section": "Reviewing the data set",
-    "text": "Reviewing the data set\nWhile Mark is here let’s review the data set and make sure we don’t have specific questions about the columns."
-  },
-  {
-    "objectID": "course-links.html",
-    "href": "course-links.html",
-    "title": "Useful links",
-    "section": "",
-    "text": "Course GitHub organization\n🔗 on GitHub\n\n\nGradebook\n🔗 on Teams\n\n\nArtificial Intelligence\n🔗 Course NotebookLM\n🔗 Recitation Leader Gem\n\n\nTextbooks\n🔗 R for Data Science\n🔗 Mastering Shiny\n\n\nPackage documentation\n🔗 ggplot2: ggplot2.tidyverse.org\n🔗 dplyr: dplyr.tidyverse.org\n🔗 tidyr: tidyr.tidyverse.org\n🔗 forcats: forcats.tidyverse.org\n🔗 stringr: stringr.tidyverse.org\n🔗 lubridate: lubridate.tidyverse.org\n🔗 readr: readr.tidyverse.org\n🔗 shiny: shiny.posit.co",
-    "crumbs": [
-      "Course information",
-      "Useful links"
-    ]
-  },
-  {
-    "objectID": "projects/individual_project/individual-overview.html",
-    "href": "projects/individual_project/individual-overview.html",
-    "title": "Individual Project: Data Analysis & Presentation",
-    "section": "",
-    "text": "The goal of the individual project is to give you the opportunity to find a dataset that interests you, analyze it using the tools we’ve learned in class, and present your findings to your peers."
-  },
-  {
-    "objectID": "projects/individual_project/individual-overview.html#goals",
-    "href": "projects/individual_project/individual-overview.html#goals",
-    "title": "Individual Project: Data Analysis & Presentation",
-    "section": "Goals",
-    "text": "Goals\n\nData Acquisition: Find a dataset that is interesting to you. This could be from a public repository (e.g., Kaggle, TidyTuesday, government data) or data you have collected yourself.\nData Cleaning: Demonstrate your ability to clean and prepare data for analysis.\nExploratory Data Analysis (EDA): Use summary statistics and visualizations to understand the structure and relationships in your data.\nCommunication: Effectively communicate your findings through a presentation."
-  },
-  {
-    "objectID": "projects/individual_project/individual-overview.html#deliverables",
-    "href": "projects/individual_project/individual-overview.html#deliverables",
-    "title": "Individual Project: Data Analysis & Presentation",
-    "section": "Deliverables",
-    "text": "Deliverables\n\n1. Quarto Document\nYou will submit a Quarto document (.qmd) and the rendered HTML file. This document should contain all the code used for your analysis, along with narrative text explaining your steps and findings.\n\nIntroduction: Briefly describe the dataset and why you chose it.\nData Preparation: Show how you loaded and cleaned the data.\nAnalysis: Present your visualizations and summary statistics. Explain what they show.\nConclusion: Summarize your main takeaways.\n\n\n\n2. Presentation\nYou will give a 5-minute presentation to the class.\n\nSlides: You are required to use slides for your presentation. You can create them using Quarto (Revealjs), PowerPoint, Google Slides, or any other tool you prefer.\nContent: Focus on the most interesting findings from your analysis. Do not walk us through your code line-by-line; focus on the insights."
-  },
-  {
-    "objectID": "projects/individual_project/individual-overview.html#timeline",
-    "href": "projects/individual_project/individual-overview.html#timeline",
-    "title": "Individual Project: Data Analysis & Presentation",
-    "section": "Timeline",
-    "text": "Timeline\n\nProposal Due: [Date TBD] mechanism to submit dataset chioce.\nProject Due: End of Term.\nPresentations: Final week of class."
-  },
-  {
-    "objectID": "projects/individual_project/individual-overview.html#grading-rubric",
-    "href": "projects/individual_project/individual-overview.html#grading-rubric",
-    "title": "Individual Project: Data Analysis & Presentation",
-    "section": "Grading Rubric",
-    "text": "Grading Rubric\n\n\n\n\n\n\n\n\nCategory\nDescription\nPoints\n\n\n\n\nData Preparation\nData is loaded correctly, cleaned, and tidy.\n20\n\n\nAnalysis & Viz\nAppropriate visualizations and summary stats are used.\n30\n\n\nNarrative\nThe Quarto doc is well-written and explains the analysis clearly.\n20\n\n\nPresentation\nClear, engaging, and within the time limit.\n20\n\n\nCreativity/Effort\nDataset choice and depth of analysis.\n10\n\n\nTotal\n\n100"
-  },
-  {
-    "objectID": "projects/individual_project/individual-overview.html#resources-for-data",
-    "href": "projects/individual_project/individual-overview.html#resources-for-data",
-    "title": "Individual Project: Data Analysis & Presentation",
-    "section": "Resources for Data",
-    "text": "Resources for Data\n\nTidyTuesday\nKaggle\nFiveThirtyEight\nData.gov"
-  },
-  {
-    "objectID": "projects/group_project/project-overview.html",
-    "href": "projects/group_project/project-overview.html",
-    "title": "Project Specification: Equity Analysis Dashboard",
-    "section": "",
-    "text": "Course: CSCI-2025: Data Manipulation and Visualization (Winter Term)\nClient: Mark Heidrich, Associate Vice President for Institutional Effectiveness and Registrar\n\n\nThe class will function as a single data science consultancy divided into four “Feature Pods.” The goal is to build one unified Shiny Dashboard that allows academic departments to analyze equity gaps in their programs.\nInstead of building four separate apps, we are building four Modules that integrate into a single “Golden Github Repository.”\n\n\n\n\n\nA team of students responsible for overall project health and cross-team consistency. The team will be led by two VPs and Dr. Friedlander.\n1. The Product Owner (The “Client VP”) * Responsibility: The “Voice of the Client” and Narrative consistency. * Concrete Deliverables (Coding): * Codes the Landing Page (The “Home” tab). * Writes global.R (loading data and packages). * Writes styles.css (defining colors/fonts). * Management Duty: Leads the UI, Shiny, and Narrative, Guilds. Directs teams on styling.\n2. The Lead Architect (The “Tech VP”) * Responsibility: Repository health and final integration. * Concrete Deliverables (Coding): * Maintains app.R (the shell application). * Manages site deployment. * Codes the “About/Methodology” page. * Management Duty: Leads the Code and Data guilds. Accepts/rejects Pull Requests from Feature Teams.\n3. Remaining Team Leads: See section on Guilds below.\n\n\n\nThe rest of the class is divided into four pods. Each pod owns one “tab” of the final application.\n\nPod 1: Enrollment\nPod 2: Performance\nPod 3: Retention\nPod 4: Outcomes\n\n\n\nEvery student has a specific title and responsibility within their team.\n\n\n\n\n\n\n\n\nRole\nResponsibility\nKey Deliverable\n\n\n\n\nGitHub Sentinel / Team Leader\nManages the git branch, resolves merge conflicts, and manages renv.lock.\nThe clean Merge; Repo health.\n\n\nData Steward (Data Engineer)\nETL processes and Privacy Protection. Masks data if N &lt; 5.\nclean_data.R; Anonymized datasets.\n\n\nChart Artist (Viz Specialist)\nCreates high-quality static visualizations.\nPlot functions (e.g., plot_gpa()).\n\n\nInterface Architect (Shiny Dev)\nWires the UI/Server logic. Connects inputs to the plots.\nui and server module code.\n\n\nNarrative Lead (Context/QA)\nWrites dynamic “Mad Libs” text to interpret charts automatically.\nrenderText() logic; Help tooltips.\n\n\n\n\n\n\n\n\nTo ensure the dashboard looks cohesive, students with matching roles across teams will meet in “Guilds”.\n\nThe Code Guild (Sentinels): Led by the Lead Architect. Agrees on Git branching and dependencies.\nThe UI Guild (Chart Artists): Led by the Product Owner. Decides aesthetic conventions (colors, fonts, themes).\nThe Data Guild (Stewards): Agrees on variable naming conventions and the “Small N” suppression threshold.\nThe Shiny Guild (Interface Architects): Standardizes UI layout and input types across modules.\nThe Narrative Guild (Narrative Leads): Standardizes the “Mad Libs” text structure for consistency takes and maintains notes.\n\n\n\n\n\n\nStudents will clone a repository pre-scaffolded by the instructor.\n\nglobal.R: Shared libraries and data loading (Read-Only).\napp.R: The main shell application (Read-Only).\nmodules/:\n\nmod_enrollment.R (Pod 1 Workspace)\nmod_performance.R (Pod 2 Workspace)\nmod_retention.R (Pod 3 Workspace)\nmod_outcomes.R (Pod 4 Workspace)\n\ndata/: Stores the clean data files.\nrenv/: Manages package dependencies.\n\n\n\n\n\n\nBranching: Use Trunk-Based Development. Branch from main -&gt; feature/team-name -&gt; PR back to main.\nNo Direct Pushes: All code must enter main via a Pull Request (PR).\nThe “Sentinel” Rule: Only the Team GitHub Sentinel is authorized to open a PR.\nDependency Lockdown: Do not install new library packages without instructor approval. If approved, renv::snapshot() must be run immediately."
-  },
-  {
-    "objectID": "projects/group_project/project-overview.html#project-overview",
-    "href": "projects/group_project/project-overview.html#project-overview",
-    "title": "Project Specification: Equity Analysis Dashboard",
-    "section": "",
-    "text": "The class will function as a single data science consultancy divided into four “Feature Pods.” The goal is to build one unified Shiny Dashboard that allows academic departments to analyze equity gaps in their programs.\nInstead of building four separate apps, we are building four Modules that integrate into a single “Golden Github Repository.”"
-  },
-  {
-    "objectID": "projects/group_project/project-overview.html#team-structure",
-    "href": "projects/group_project/project-overview.html#team-structure",
-    "title": "Project Specification: Equity Analysis Dashboard",
-    "section": "",
-    "text": "A team of students responsible for overall project health and cross-team consistency. The team will be led by two VPs and Dr. Friedlander.\n1. The Product Owner (The “Client VP”) * Responsibility: The “Voice of the Client” and Narrative consistency. * Concrete Deliverables (Coding): * Codes the Landing Page (The “Home” tab). * Writes global.R (loading data and packages). * Writes styles.css (defining colors/fonts). * Management Duty: Leads the UI, Shiny, and Narrative, Guilds. Directs teams on styling.\n2. The Lead Architect (The “Tech VP”) * Responsibility: Repository health and final integration. * Concrete Deliverables (Coding): * Maintains app.R (the shell application). * Manages site deployment. * Codes the “About/Methodology” page. * Management Duty: Leads the Code and Data guilds. Accepts/rejects Pull Requests from Feature Teams.\n3. Remaining Team Leads: See section on Guilds below.\n\n\n\nThe rest of the class is divided into four pods. Each pod owns one “tab” of the final application.\n\nPod 1: Enrollment\nPod 2: Performance\nPod 3: Retention\nPod 4: Outcomes\n\n\n\nEvery student has a specific title and responsibility within their team.\n\n\n\n\n\n\n\n\nRole\nResponsibility\nKey Deliverable\n\n\n\n\nGitHub Sentinel / Team Leader\nManages the git branch, resolves merge conflicts, and manages renv.lock.\nThe clean Merge; Repo health.\n\n\nData Steward (Data Engineer)\nETL processes and Privacy Protection. Masks data if N &lt; 5.\nclean_data.R; Anonymized datasets.\n\n\nChart Artist (Viz Specialist)\nCreates high-quality static visualizations.\nPlot functions (e.g., plot_gpa()).\n\n\nInterface Architect (Shiny Dev)\nWires the UI/Server logic. Connects inputs to the plots.\nui and server module code.\n\n\nNarrative Lead (Context/QA)\nWrites dynamic “Mad Libs” text to interpret charts automatically.\nrenderText() logic; Help tooltips."
-  },
-  {
-    "objectID": "projects/group_project/project-overview.html#collaboration-the-guilds",
-    "href": "projects/group_project/project-overview.html#collaboration-the-guilds",
-    "title": "Project Specification: Equity Analysis Dashboard",
-    "section": "",
-    "text": "To ensure the dashboard looks cohesive, students with matching roles across teams will meet in “Guilds”.\n\nThe Code Guild (Sentinels): Led by the Lead Architect. Agrees on Git branching and dependencies.\nThe UI Guild (Chart Artists): Led by the Product Owner. Decides aesthetic conventions (colors, fonts, themes).\nThe Data Guild (Stewards): Agrees on variable naming conventions and the “Small N” suppression threshold.\nThe Shiny Guild (Interface Architects): Standardizes UI layout and input types across modules.\nThe Narrative Guild (Narrative Leads): Standardizes the “Mad Libs” text structure for consistency takes and maintains notes."
-  },
-  {
-    "objectID": "projects/group_project/project-overview.html#technical-architecture",
-    "href": "projects/group_project/project-overview.html#technical-architecture",
-    "title": "Project Specification: Equity Analysis Dashboard",
-    "section": "",
-    "text": "Students will clone a repository pre-scaffolded by the instructor.\n\nglobal.R: Shared libraries and data loading (Read-Only).\napp.R: The main shell application (Read-Only).\nmodules/:\n\nmod_enrollment.R (Pod 1 Workspace)\nmod_performance.R (Pod 2 Workspace)\nmod_retention.R (Pod 3 Workspace)\nmod_outcomes.R (Pod 4 Workspace)\n\ndata/: Stores the clean data files.\nrenv/: Manages package dependencies."
-  },
-  {
-    "objectID": "projects/group_project/project-overview.html#development-workflow-rules",
-    "href": "projects/group_project/project-overview.html#development-workflow-rules",
-    "title": "Project Specification: Equity Analysis Dashboard",
-    "section": "",
-    "text": "Branching: Use Trunk-Based Development. Branch from main -&gt; feature/team-name -&gt; PR back to main.\nNo Direct Pushes: All code must enter main via a Pull Request (PR).\nThe “Sentinel” Rule: Only the Team GitHub Sentinel is authorized to open a PR.\nDependency Lockdown: Do not install new library packages without instructor approval. If approved, renv::snapshot() must be run immediately."
-  },
-  {
-    "objectID": "course-overview.html",
-    "href": "course-overview.html",
-    "title": "Course overview",
-    "section": "",
-    "text": "This is the homepage for CSCI 2025 - Data Manipulation and Visualization taught by Dr. Eric Friedlander in the Winter term of 2026 at the College of Idaho. All course materials will be posted on this site.\nYou can find the course syllabus here and the course schedule here.",
-    "crumbs": [
-      "Course information",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "course-overview.html#class-meetings-and-office-hours",
-    "href": "course-overview.html#class-meetings-and-office-hours",
-    "title": "Course overview",
-    "section": "Class meetings and office hours",
-    "text": "Class meetings and office hours\n\n\n\n\n\n\n\n\nMeeting\nLocation\nTime\n\n\n\n\nLecture\nCruzen-Murray Library, 208\nMon-Thurs 1 - 3 pm\n\n\nOffice Hours\nBoone 126B\nMon-Thurs 10 - 11 am",
-    "crumbs": [
-      "Course information",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "course-overview.html#license",
-    "href": "course-overview.html#license",
-    "title": "Course overview",
-    "section": "License",
-    "text": "License\nMuch of the work on this website is adapted from Mine Çetinkaya-Rundel’s Advanced Data Visualization Course Materials. However, significant alterations have been made to fit the specific needs of this course.\n\nThis online work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International. Visit here for more information about the license.",
-    "crumbs": [
-      "Course information",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "classwork/03-day-3.html#today",
-    "href": "classwork/03-day-3.html#today",
-    "title": "Challenges!",
-    "section": "Today",
-    "text": "Today\n\nSome challenges to practice your skills!"
-  },
-  {
-    "objectID": "classwork/03-day-3.html#challenge-1a-parks",
-    "href": "classwork/03-day-3.html#challenge-1a-parks",
-    "title": "Challenges!",
-    "section": "Challenge 1A: Parks",
-    "text": "Challenge 1A: Parks\n\nUse the parks.csv found in Teams to make this plot."
-  },
-  {
-    "objectID": "classwork/03-day-3.html#challenge-1b-parks",
-    "href": "classwork/03-day-3.html#challenge-1b-parks",
-    "title": "Challenges!",
-    "section": "Challenge 1B: Parks",
-    "text": "Challenge 1B: Parks\n\nUse the parks.csv found in Teams to make this plot."
-  },
-  {
-    "objectID": "classwork/03-day-3.html#challenge-1c-parks",
-    "href": "classwork/03-day-3.html#challenge-1c-parks",
-    "title": "Challenges!",
-    "section": "Challenge 1C: Parks",
-    "text": "Challenge 1C: Parks\n\nUse the parks.csv found in Teams to make this plot."
-  },
-  {
-    "objectID": "classwork/03-day-3.html#challenge-2-valentines-day",
-    "href": "classwork/03-day-3.html#challenge-2-valentines-day",
-    "title": "Challenges!",
-    "section": "Challenge 2: Valentine’s Day",
-    "text": "Challenge 2: Valentine’s Day\nGenerate this plot (without usiung AI):"
-  },
-  {
-    "objectID": "classwork/03-day-3.html#challenge-3-pokemon",
-    "href": "classwork/03-day-3.html#challenge-3-pokemon",
-    "title": "Challenges!",
-    "section": "Challenge 3: Pokemon",
-    "text": "Challenge 3: Pokemon\nGenerate the following data frame from the pokemon data (no AI):"
-  },
-  {
-    "objectID": "classwork/03-day-3.html#groups-for-today",
-    "href": "classwork/03-day-3.html#groups-for-today",
-    "title": "Challenges!",
-    "section": "Groups for Today",
-    "text": "Groups for Today\n\nSelf sort:\n\nEasy: Table 1 (near the windows)\n\nChallenge 1A, 1B, 1C\n\nMedium: Table 2 (middle of the room)\n\nChallenge 2 and 1A\n\nHard: Table 3 (near the TVs)\n\nChallenge 3\n\n\nStart by sketching a plan on the white board…"
-  },
-  {
-    "objectID": "classwork/03-day-3.html#for-next-class",
-    "href": "classwork/03-day-3.html#for-next-class",
-    "title": "Challenges!",
-    "section": "For Next Class",
-    "text": "For Next Class\n\nComplete reflection\nComplete next three lectures"
-  },
-  {
-    "objectID": "classwork/02-pivoting.html#today",
-    "href": "classwork/02-pivoting.html#today",
-    "title": "More Analysis",
-    "section": "Today",
-    "text": "Today\n\nReturn to TidyTuesday analysis from last class\nWork with some real experimental data generated from by Dr. Belissimo’s class"
-  },
-  {
-    "objectID": "classwork/02-pivoting.html#group-roles-reminder",
-    "href": "classwork/02-pivoting.html#group-roles-reminder",
-    "title": "More Analysis",
-    "section": "Group Roles: Reminder",
-    "text": "Group Roles: Reminder\n\nCoder: responsible for typing for your group\nReporter: responsible for sharing your group’s work with the class\nResearcher: responsible for looking up any questions your group has\nEveryone should contribute to the discussion and help with writing the code\nThere will be several parts of this activity, between each part, rotate roles\n\nCoder -&gt; Reporter -&gt; Researcher -&gt; Coder …\nFor now, old Coder copy and paste script in Teams chat to new Coder"
-  },
-  {
-    "objectID": "classwork/02-pivoting.html#groups-for-today",
-    "href": "classwork/02-pivoting.html#groups-for-today",
-    "title": "More Analysis",
-    "section": "Groups for Today",
-    "text": "Groups for Today\n\nIf you didn’t present yesterday, same groups as yesterday\nIf you did present yesterday, you’ve been assigned a new group (check Teams)"
-  },
-  {
-    "objectID": "classwork/02-pivoting.html#reasearch-question",
-    "href": "classwork/02-pivoting.html#reasearch-question",
-    "title": "More Analysis",
-    "section": "Reasearch Question",
-    "text": "Reasearch Question\n\nTraditional Resistance Training (TRT): Involves performing a set number of repetitions continuously until the set is complete, followed by a rest period.\n\nExample: 3 sets of 10 repetitions with 60 seconds rest between sets.\n\nCluster Resistance Training (CRT): Involves breaking a set into smaller clusters of repetitions with short rest intervals in between, allowing for brief recovery periods during the set.\n\nExample: 3 sets of 10 repetitions performed as 2 clusters of 5 repetitions with 15 seconds rest between clusters and 60 seconds rest between sets.\n\nPrimary research goal: characterize the intensity of TRT vs CRT\nToday’s Question: Are there differences in heart rate response between traditional and cluster resistance volume-matched protocols?"
-  },
-  {
-    "objectID": "classwork/02-pivoting.html#experimental-design",
-    "href": "classwork/02-pivoting.html#experimental-design",
-    "title": "More Analysis",
-    "section": "Experimental Design",
-    "text": "Experimental Design\n\nParticipants: 10 college students\nCross-over design\n\nEach participant completed both the TRT and CRTprotocols… why?\nRandomized (flipped a coin) which protocol was completed first… why?\nOne week washout period between protocols… why?\nMeasured heart rate, before and after exercise\n\nThis was a class project conducted by Jayva Anderson, Emily Lettenmaier, Sayre Schreiner, and Greta Valaika"
-  },
-  {
-    "objectID": "classwork/02-pivoting.html#the-data",
-    "href": "classwork/02-pivoting.html#the-data",
-    "title": "More Analysis",
-    "section": "The Data",
-    "text": "The Data\n\nStored in TRAD_CLU_group.csv on Teams in the Jan 7th Activities Module in the Classwork section\nColumns:\n\nID : Participant identifier\nCondition: TRAD or CLU (traditional or cluster)\nTime: PRE or POST (before or after exercise)\nHR: Heart Rate (in beats per minute)"
-  },
-  {
-    "objectID": "classwork/02-pivoting.html#challenge",
-    "href": "classwork/02-pivoting.html#challenge",
-    "title": "More Analysis",
-    "section": "Challenge",
-    "text": "Challenge\nMake a visualization that addresses the research question.\nBest viz wins. Once you’re complete post your image in the Activities Channel on Teams."
-  },
-  {
-    "objectID": "classwork/02-pivoting.html#for-next-class",
-    "href": "classwork/02-pivoting.html#for-next-class",
-    "title": "More Analysis",
-    "section": "For Next Class",
-    "text": "For Next Class\n\nComplete reflection\nComplete next two lectures"
-  },
-  {
     "objectID": "classwork/18-github.html#what-is-version-control",
     "href": "classwork/18-github.html#what-is-version-control",
     "title": "Introduction to GitHub",
@@ -2273,6 +1879,708 @@
     "title": "Introduction to GitHub",
     "section": "Do Next",
     "text": "Do Next\n\nMake sure you have Git installed on your computer.\nMake sure you have a GitHub account.\nAccept the invitation to our course organization on GitHub.\nThat’s it for tonight! See you tomorrow."
+  },
+  {
+    "objectID": "classwork/02-pivoting.html#today",
+    "href": "classwork/02-pivoting.html#today",
+    "title": "More Analysis",
+    "section": "Today",
+    "text": "Today\n\nReturn to TidyTuesday analysis from last class\nWork with some real experimental data generated from by Dr. Belissimo’s class"
+  },
+  {
+    "objectID": "classwork/02-pivoting.html#group-roles-reminder",
+    "href": "classwork/02-pivoting.html#group-roles-reminder",
+    "title": "More Analysis",
+    "section": "Group Roles: Reminder",
+    "text": "Group Roles: Reminder\n\nCoder: responsible for typing for your group\nReporter: responsible for sharing your group’s work with the class\nResearcher: responsible for looking up any questions your group has\nEveryone should contribute to the discussion and help with writing the code\nThere will be several parts of this activity, between each part, rotate roles\n\nCoder -&gt; Reporter -&gt; Researcher -&gt; Coder …\nFor now, old Coder copy and paste script in Teams chat to new Coder"
+  },
+  {
+    "objectID": "classwork/02-pivoting.html#groups-for-today",
+    "href": "classwork/02-pivoting.html#groups-for-today",
+    "title": "More Analysis",
+    "section": "Groups for Today",
+    "text": "Groups for Today\n\nIf you didn’t present yesterday, same groups as yesterday\nIf you did present yesterday, you’ve been assigned a new group (check Teams)"
+  },
+  {
+    "objectID": "classwork/02-pivoting.html#reasearch-question",
+    "href": "classwork/02-pivoting.html#reasearch-question",
+    "title": "More Analysis",
+    "section": "Reasearch Question",
+    "text": "Reasearch Question\n\nTraditional Resistance Training (TRT): Involves performing a set number of repetitions continuously until the set is complete, followed by a rest period.\n\nExample: 3 sets of 10 repetitions with 60 seconds rest between sets.\n\nCluster Resistance Training (CRT): Involves breaking a set into smaller clusters of repetitions with short rest intervals in between, allowing for brief recovery periods during the set.\n\nExample: 3 sets of 10 repetitions performed as 2 clusters of 5 repetitions with 15 seconds rest between clusters and 60 seconds rest between sets.\n\nPrimary research goal: characterize the intensity of TRT vs CRT\nToday’s Question: Are there differences in heart rate response between traditional and cluster resistance volume-matched protocols?"
+  },
+  {
+    "objectID": "classwork/02-pivoting.html#experimental-design",
+    "href": "classwork/02-pivoting.html#experimental-design",
+    "title": "More Analysis",
+    "section": "Experimental Design",
+    "text": "Experimental Design\n\nParticipants: 10 college students\nCross-over design\n\nEach participant completed both the TRT and CRTprotocols… why?\nRandomized (flipped a coin) which protocol was completed first… why?\nOne week washout period between protocols… why?\nMeasured heart rate, before and after exercise\n\nThis was a class project conducted by Jayva Anderson, Emily Lettenmaier, Sayre Schreiner, and Greta Valaika"
+  },
+  {
+    "objectID": "classwork/02-pivoting.html#the-data",
+    "href": "classwork/02-pivoting.html#the-data",
+    "title": "More Analysis",
+    "section": "The Data",
+    "text": "The Data\n\nStored in TRAD_CLU_group.csv on Teams in the Jan 7th Activities Module in the Classwork section\nColumns:\n\nID : Participant identifier\nCondition: TRAD or CLU (traditional or cluster)\nTime: PRE or POST (before or after exercise)\nHR: Heart Rate (in beats per minute)"
+  },
+  {
+    "objectID": "classwork/02-pivoting.html#challenge",
+    "href": "classwork/02-pivoting.html#challenge",
+    "title": "More Analysis",
+    "section": "Challenge",
+    "text": "Challenge\nMake a visualization that addresses the research question.\nBest viz wins. Once you’re complete post your image in the Activities Channel on Teams."
+  },
+  {
+    "objectID": "classwork/02-pivoting.html#for-next-class",
+    "href": "classwork/02-pivoting.html#for-next-class",
+    "title": "More Analysis",
+    "section": "For Next Class",
+    "text": "For Next Class\n\nComplete reflection\nComplete next two lectures"
+  },
+  {
+    "objectID": "classwork/03-day-3.html#today",
+    "href": "classwork/03-day-3.html#today",
+    "title": "Challenges!",
+    "section": "Today",
+    "text": "Today\n\nSome challenges to practice your skills!"
+  },
+  {
+    "objectID": "classwork/03-day-3.html#challenge-1a-parks",
+    "href": "classwork/03-day-3.html#challenge-1a-parks",
+    "title": "Challenges!",
+    "section": "Challenge 1A: Parks",
+    "text": "Challenge 1A: Parks\n\nUse the parks.csv found in Teams to make this plot."
+  },
+  {
+    "objectID": "classwork/03-day-3.html#challenge-1b-parks",
+    "href": "classwork/03-day-3.html#challenge-1b-parks",
+    "title": "Challenges!",
+    "section": "Challenge 1B: Parks",
+    "text": "Challenge 1B: Parks\n\nUse the parks.csv found in Teams to make this plot."
+  },
+  {
+    "objectID": "classwork/03-day-3.html#challenge-1c-parks",
+    "href": "classwork/03-day-3.html#challenge-1c-parks",
+    "title": "Challenges!",
+    "section": "Challenge 1C: Parks",
+    "text": "Challenge 1C: Parks\n\nUse the parks.csv found in Teams to make this plot."
+  },
+  {
+    "objectID": "classwork/03-day-3.html#challenge-2-valentines-day",
+    "href": "classwork/03-day-3.html#challenge-2-valentines-day",
+    "title": "Challenges!",
+    "section": "Challenge 2: Valentine’s Day",
+    "text": "Challenge 2: Valentine’s Day\nGenerate this plot (without usiung AI):"
+  },
+  {
+    "objectID": "classwork/03-day-3.html#challenge-3-pokemon",
+    "href": "classwork/03-day-3.html#challenge-3-pokemon",
+    "title": "Challenges!",
+    "section": "Challenge 3: Pokemon",
+    "text": "Challenge 3: Pokemon\nGenerate the following data frame from the pokemon data (no AI):"
+  },
+  {
+    "objectID": "classwork/03-day-3.html#groups-for-today",
+    "href": "classwork/03-day-3.html#groups-for-today",
+    "title": "Challenges!",
+    "section": "Groups for Today",
+    "text": "Groups for Today\n\nSelf sort:\n\nEasy: Table 1 (near the windows)\n\nChallenge 1A, 1B, 1C\n\nMedium: Table 2 (middle of the room)\n\nChallenge 2 and 1A\n\nHard: Table 3 (near the TVs)\n\nChallenge 3\n\n\nStart by sketching a plan on the white board…"
+  },
+  {
+    "objectID": "classwork/03-day-3.html#for-next-class",
+    "href": "classwork/03-day-3.html#for-next-class",
+    "title": "Challenges!",
+    "section": "For Next Class",
+    "text": "For Next Class\n\nComplete reflection\nComplete next three lectures"
+  },
+  {
+    "objectID": "course-overview.html",
+    "href": "course-overview.html",
+    "title": "Course overview",
+    "section": "",
+    "text": "This is the homepage for CSCI 2025 - Data Manipulation and Visualization taught by Dr. Eric Friedlander in the Winter term of 2026 at the College of Idaho. All course materials will be posted on this site.\nYou can find the course syllabus here and the course schedule here.",
+    "crumbs": [
+      "Course information",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "course-overview.html#class-meetings-and-office-hours",
+    "href": "course-overview.html#class-meetings-and-office-hours",
+    "title": "Course overview",
+    "section": "Class meetings and office hours",
+    "text": "Class meetings and office hours\n\n\n\n\n\n\n\n\nMeeting\nLocation\nTime\n\n\n\n\nLecture\nCruzen-Murray Library, 208\nMon-Thurs 1 - 3 pm\n\n\nOffice Hours\nBoone 126B\nMon-Thurs 10 - 11 am",
+    "crumbs": [
+      "Course information",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "course-overview.html#license",
+    "href": "course-overview.html#license",
+    "title": "Course overview",
+    "section": "License",
+    "text": "License\nMuch of the work on this website is adapted from Mine Çetinkaya-Rundel’s Advanced Data Visualization Course Materials. However, significant alterations have been made to fit the specific needs of this course.\n\nThis online work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International. Visit here for more information about the license.",
+    "crumbs": [
+      "Course information",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "projects/group_project/project-overview.html",
+    "href": "projects/group_project/project-overview.html",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "Course: CSCI-2025: Data Manipulation and Visualization (Winter Term)\nClient: Mark Heidrich, Associate Vice President for Institutional Effectiveness and Registrar\n\n\nThe class will function as a single data science consultancy divided into four “Feature Pods.” The goal is to build one unified Shiny Dashboard that allows academic departments to analyze equity gaps in their programs.\nInstead of building four separate apps, we are building four Modules that integrate into a single “Golden Github Repository.”\n\n\n\n\n\nA team of students responsible for overall project health and cross-team consistency. The team will be led by two VPs and Dr. Friedlander.\n1. The Product Owner (The “Client VP”) * Responsibility: The “Voice of the Client” and Narrative consistency. * Concrete Deliverables (Coding): * Codes the Landing Page (The “Home” tab). * Writes global.R (loading data and packages). * Writes styles.css (defining colors/fonts). * Management Duty: Leads the UI, Shiny, and Narrative, Guilds. Directs teams on styling.\n2. The Lead Architect (The “Tech VP”) * Responsibility: Repository health and final integration. * Concrete Deliverables (Coding): * Maintains app.R (the shell application). * Manages site deployment. * Codes the “About/Methodology” page. * Management Duty: Leads the Code and Data guilds. Accepts/rejects Pull Requests from Feature Teams.\n3. Remaining Team Leads: See section on Guilds below.\n\n\n\nThe rest of the class is divided into four pods. Each pod owns one “tab” of the final application.\n\nPod 1: Enrollment\nPod 2: Performance\nPod 3: Retention\nPod 4: Outcomes\n\n\n\nEvery student has a specific title and responsibility within their team.\n\n\n\n\n\n\n\n\nRole\nResponsibility\nKey Deliverable\n\n\n\n\nGitHub Sentinel / Team Leader\nManages the git branch, resolves merge conflicts, and manages renv.lock.\nThe clean Merge; Repo health.\n\n\nData Steward (Data Engineer)\nETL processes and Privacy Protection. Masks data if N &lt; 5.\nclean_data.R; Anonymized datasets.\n\n\nChart Artist (Viz Specialist)\nCreates high-quality static visualizations.\nPlot functions (e.g., plot_gpa()).\n\n\nInterface Architect (Shiny Dev)\nWires the UI/Server logic. Connects inputs to the plots.\nui and server module code.\n\n\nNarrative Lead (Context/QA)\nWrites dynamic “Mad Libs” text to interpret charts automatically.\nrenderText() logic; Help tooltips.\n\n\n\n\n\n\n\n\nTo ensure the dashboard looks cohesive, students with matching roles across teams will meet in “Guilds”.\n\nThe Code Guild (Sentinels): Led by the Lead Architect. Agrees on Git branching and dependencies.\nThe UI Guild (Chart Artists): Led by the Product Owner. Decides aesthetic conventions (colors, fonts, themes).\nThe Data Guild (Stewards): Agrees on variable naming conventions and the “Small N” suppression threshold.\nThe Shiny Guild (Interface Architects): Standardizes UI layout and input types across modules.\nThe Narrative Guild (Narrative Leads): Standardizes the “Mad Libs” text structure for consistency takes and maintains notes.\n\n\n\n\n\n\nStudents will clone a repository pre-scaffolded by the instructor.\n\nglobal.R: Shared libraries and data loading (Read-Only).\napp.R: The main shell application (Read-Only).\nmodules/:\n\nmod_enrollment.R (Pod 1 Workspace)\nmod_performance.R (Pod 2 Workspace)\nmod_retention.R (Pod 3 Workspace)\nmod_outcomes.R (Pod 4 Workspace)\n\ndata/: Stores the clean data files.\nrenv/: Manages package dependencies.\n\n\n\n\n\n\nBranching: Use Trunk-Based Development. Branch from main -&gt; feature/team-name -&gt; PR back to main.\nNo Direct Pushes: All code must enter main via a Pull Request (PR).\nThe “Sentinel” Rule: Only the Team GitHub Sentinel is authorized to open a PR.\nDependency Lockdown: Do not install new library packages without instructor approval. If approved, renv::snapshot() must be run immediately."
+  },
+  {
+    "objectID": "projects/group_project/project-overview.html#project-overview",
+    "href": "projects/group_project/project-overview.html#project-overview",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "The class will function as a single data science consultancy divided into four “Feature Pods.” The goal is to build one unified Shiny Dashboard that allows academic departments to analyze equity gaps in their programs.\nInstead of building four separate apps, we are building four Modules that integrate into a single “Golden Github Repository.”"
+  },
+  {
+    "objectID": "projects/group_project/project-overview.html#team-structure",
+    "href": "projects/group_project/project-overview.html#team-structure",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "A team of students responsible for overall project health and cross-team consistency. The team will be led by two VPs and Dr. Friedlander.\n1. The Product Owner (The “Client VP”) * Responsibility: The “Voice of the Client” and Narrative consistency. * Concrete Deliverables (Coding): * Codes the Landing Page (The “Home” tab). * Writes global.R (loading data and packages). * Writes styles.css (defining colors/fonts). * Management Duty: Leads the UI, Shiny, and Narrative, Guilds. Directs teams on styling.\n2. The Lead Architect (The “Tech VP”) * Responsibility: Repository health and final integration. * Concrete Deliverables (Coding): * Maintains app.R (the shell application). * Manages site deployment. * Codes the “About/Methodology” page. * Management Duty: Leads the Code and Data guilds. Accepts/rejects Pull Requests from Feature Teams.\n3. Remaining Team Leads: See section on Guilds below.\n\n\n\nThe rest of the class is divided into four pods. Each pod owns one “tab” of the final application.\n\nPod 1: Enrollment\nPod 2: Performance\nPod 3: Retention\nPod 4: Outcomes\n\n\n\nEvery student has a specific title and responsibility within their team.\n\n\n\n\n\n\n\n\nRole\nResponsibility\nKey Deliverable\n\n\n\n\nGitHub Sentinel / Team Leader\nManages the git branch, resolves merge conflicts, and manages renv.lock.\nThe clean Merge; Repo health.\n\n\nData Steward (Data Engineer)\nETL processes and Privacy Protection. Masks data if N &lt; 5.\nclean_data.R; Anonymized datasets.\n\n\nChart Artist (Viz Specialist)\nCreates high-quality static visualizations.\nPlot functions (e.g., plot_gpa()).\n\n\nInterface Architect (Shiny Dev)\nWires the UI/Server logic. Connects inputs to the plots.\nui and server module code.\n\n\nNarrative Lead (Context/QA)\nWrites dynamic “Mad Libs” text to interpret charts automatically.\nrenderText() logic; Help tooltips."
+  },
+  {
+    "objectID": "projects/group_project/project-overview.html#collaboration-the-guilds",
+    "href": "projects/group_project/project-overview.html#collaboration-the-guilds",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "To ensure the dashboard looks cohesive, students with matching roles across teams will meet in “Guilds”.\n\nThe Code Guild (Sentinels): Led by the Lead Architect. Agrees on Git branching and dependencies.\nThe UI Guild (Chart Artists): Led by the Product Owner. Decides aesthetic conventions (colors, fonts, themes).\nThe Data Guild (Stewards): Agrees on variable naming conventions and the “Small N” suppression threshold.\nThe Shiny Guild (Interface Architects): Standardizes UI layout and input types across modules.\nThe Narrative Guild (Narrative Leads): Standardizes the “Mad Libs” text structure for consistency takes and maintains notes."
+  },
+  {
+    "objectID": "projects/group_project/project-overview.html#technical-architecture",
+    "href": "projects/group_project/project-overview.html#technical-architecture",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "Students will clone a repository pre-scaffolded by the instructor.\n\nglobal.R: Shared libraries and data loading (Read-Only).\napp.R: The main shell application (Read-Only).\nmodules/:\n\nmod_enrollment.R (Pod 1 Workspace)\nmod_performance.R (Pod 2 Workspace)\nmod_retention.R (Pod 3 Workspace)\nmod_outcomes.R (Pod 4 Workspace)\n\ndata/: Stores the clean data files.\nrenv/: Manages package dependencies."
+  },
+  {
+    "objectID": "projects/group_project/project-overview.html#development-workflow-rules",
+    "href": "projects/group_project/project-overview.html#development-workflow-rules",
+    "title": "Project Specification: Equity Analysis Dashboard",
+    "section": "",
+    "text": "Branching: Use Trunk-Based Development. Branch from main -&gt; feature/team-name -&gt; PR back to main.\nNo Direct Pushes: All code must enter main via a Pull Request (PR).\nThe “Sentinel” Rule: Only the Team GitHub Sentinel is authorized to open a PR.\nDependency Lockdown: Do not install new library packages without instructor approval. If approved, renv::snapshot() must be run immediately."
+  },
+  {
+    "objectID": "projects/individual_project/individual-overview.html",
+    "href": "projects/individual_project/individual-overview.html",
+    "title": "Individual Project: Data Analysis & Presentation",
+    "section": "",
+    "text": "The goal of the individual project is to give you the opportunity to find a dataset that interests you, analyze it using the tools we’ve learned in class, and present your findings to your peers."
+  },
+  {
+    "objectID": "projects/individual_project/individual-overview.html#goals",
+    "href": "projects/individual_project/individual-overview.html#goals",
+    "title": "Individual Project: Data Analysis & Presentation",
+    "section": "Goals",
+    "text": "Goals\n\nData Acquisition: Find a dataset that is interesting to you. This could be from a public repository (e.g., Kaggle, TidyTuesday, government data) or data you have collected yourself.\nData Cleaning: Demonstrate your ability to clean and prepare data for analysis.\nExploratory Data Analysis (EDA): Use summary statistics and visualizations to understand the structure and relationships in your data.\nCommunication: Effectively communicate your findings through a presentation."
+  },
+  {
+    "objectID": "projects/individual_project/individual-overview.html#deliverables",
+    "href": "projects/individual_project/individual-overview.html#deliverables",
+    "title": "Individual Project: Data Analysis & Presentation",
+    "section": "Deliverables",
+    "text": "Deliverables\n\n1. Quarto Document\nYou will submit a Quarto document (.qmd) and the rendered HTML file. This document should contain all the code used for your analysis, along with narrative text explaining your steps and findings.\n\nIntroduction: Briefly describe the dataset and why you chose it.\nData Preparation: Show how you loaded and cleaned the data.\nAnalysis: Present your visualizations and summary statistics. Explain what they show.\nConclusion: Summarize your main takeaways.\n\n\n\n2. Presentation\nYou will give a 5-minute presentation to the class.\n\nSlides: You are required to use slides for your presentation. You can create them using Quarto (Revealjs), PowerPoint, Google Slides, or any other tool you prefer.\nContent: Focus on the most interesting findings from your analysis. Do not walk us through your code line-by-line; focus on the insights."
+  },
+  {
+    "objectID": "projects/individual_project/individual-overview.html#timeline",
+    "href": "projects/individual_project/individual-overview.html#timeline",
+    "title": "Individual Project: Data Analysis & Presentation",
+    "section": "Timeline",
+    "text": "Timeline\n\nProposal Due: [Date TBD] mechanism to submit dataset chioce.\nProject Due: End of Term.\nPresentations: Final week of class."
+  },
+  {
+    "objectID": "projects/individual_project/individual-overview.html#grading-rubric",
+    "href": "projects/individual_project/individual-overview.html#grading-rubric",
+    "title": "Individual Project: Data Analysis & Presentation",
+    "section": "Grading Rubric",
+    "text": "Grading Rubric\n\n\n\n\n\n\n\n\nCategory\nDescription\nPoints\n\n\n\n\nData Preparation\nData is loaded correctly, cleaned, and tidy.\n20\n\n\nAnalysis & Viz\nAppropriate visualizations and summary stats are used.\n30\n\n\nNarrative\nThe Quarto doc is well-written and explains the analysis clearly.\n20\n\n\nPresentation\nClear, engaging, and within the time limit.\n20\n\n\nCreativity/Effort\nDataset choice and depth of analysis.\n10\n\n\nTotal\n\n100"
+  },
+  {
+    "objectID": "projects/individual_project/individual-overview.html#resources-for-data",
+    "href": "projects/individual_project/individual-overview.html#resources-for-data",
+    "title": "Individual Project: Data Analysis & Presentation",
+    "section": "Resources for Data",
+    "text": "Resources for Data\n\nTidyTuesday\nKaggle\nFiveThirtyEight\nData.gov"
+  },
+  {
+    "objectID": "course-links.html",
+    "href": "course-links.html",
+    "title": "Useful links",
+    "section": "",
+    "text": "Course GitHub organization\n🔗 on GitHub\n\n\nGradebook\n🔗 on Teams\n\n\nArtificial Intelligence\n🔗 Course NotebookLM\n🔗 Recitation Leader Gem\n\n\nTextbooks\n🔗 R for Data Science\n🔗 Mastering Shiny\n\n\nPackage documentation\n🔗 ggplot2: ggplot2.tidyverse.org\n🔗 dplyr: dplyr.tidyverse.org\n🔗 tidyr: tidyr.tidyverse.org\n🔗 forcats: forcats.tidyverse.org\n🔗 stringr: stringr.tidyverse.org\n🔗 lubridate: lubridate.tidyverse.org\n🔗 readr: readr.tidyverse.org\n🔗 shiny: shiny.posit.co",
+    "crumbs": [
+      "Course information",
+      "Useful links"
+    ]
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#academic-program-review-1",
+    "href": "classwork/04-group-project-intro.html#academic-program-review-1",
+    "title": "Group Project Introduction",
+    "section": "Academic Program Review",
+    "text": "Academic Program Review\n\nDepartments review their programs every 5 years.\nThis “program review” is then submitted to our accrediting body.\nLet’s take a look at the Guidelines Document"
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#our-part",
+    "href": "classwork/04-group-project-intro.html#our-part",
+    "title": "Group Project Introduction",
+    "section": "Our part",
+    "text": "Our part\n\nHow is disaggregated data utilized in exploring whether there are equity gaps and what steps have resulted for its use? (1.D.2) (1.D.4)\nReview Criteria 1.D.2 and 1.D.4 in the Guidelines Document."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#project-overview",
+    "href": "classwork/04-group-project-intro.html#project-overview",
+    "title": "Group Project Introduction",
+    "section": "Project Overview",
+    "text": "Project Overview\n\nClient: Mark Heidrich (AVP for Institutional Effectiveness)\nObjective: Build a unified Dashboard for analyzing equity gaps in academic programs.\nOne Data Science Consultancy: The entire class working together."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#project-hierarchy",
+    "href": "classwork/04-group-project-intro.html#project-hierarchy",
+    "title": "Group Project Introduction",
+    "section": "Project Hierarchy",
+    "text": "Project Hierarchy\n\nd3 = require(\"d3@7\")\n\ndata = ({\n  name: \"Equity Analysis Project\",\n  children: [\n    {\n      name: \"Core Team\",\n      children: [\n        { name: \"Lead Architect\",\n            children: [\n                { name: \"Code Guild\", \n                    children: [{ name: \"Sentinels\" }]\n                },\n                { name: \"Data Guild\", \n                    children: [{ name: \"Data Stewards\" }], \n                },\n            ]\n        },\n        { name: \"Product Owner\",\n            children: [\n                { name: \"UI Guild\", children: [{ name: \"Chart Artists\" }] },\n                { name: \"Shiny Guild\", children: [{ name: \"Interface Architects\" }] },\n                { name: \"Narrative Guild\", children: [{ name: \"Narrative Leads\" }] }\n            ]\n         },\n        {\n          name: \"Team Leads\",\n          children: [\n            { name: \"Feature 1: Enrollment\", \n                children: [\n                    { name: \"Github Sentinel (Team Lead)\" },\n                    { name: \"Data Steward (Data Eng)\" },\n                    { name: \"Chart Artist (Viz)\" },\n                    { name: \"Interface Architect (Shiny)\" },\n                    { name: \"Narrative Lead (Context)\" }\n          ]\n            },\n            { name: \"Feature 2: Performance\", \n                children: [\n                    { name: \"Github Sentinel (Team Lead)\" },\n                    { name: \"Data Steward (Data Eng)\" },\n                    { name: \"Chart Artist (Viz)\" },\n                    { name: \"Interface Architect (Shiny)\" },\n                    { name: \"Narrative Lead (Context)\" }\n          ] },\n            { name: \"Feature 3: Retention\", \n                children: [\n                    { name: \"Github Sentinel (Team Lead)\" },\n                    { name: \"Data Steward (Data Eng)\" },\n                    { name: \"Chart Artist (Viz)\" },\n                    { name: \"Interface Architect (Shiny)\" },\n                    { name: \"Narrative Lead (Context)\" }\n          ] },\n            { name: \"Feature 4: Outcomes\", \n                children: [\n                    { name: \"Github Sentinel (Team Lead)\" },\n                    { name: \"Data Steward (Data Eng)\" },\n                    { name: \"Chart Artist (Viz)\" },\n                    { name: \"Interface Architect (Shiny)\" },\n                    { name: \"Narrative Lead (Context)\" }\n          ] }\n          ]\n          \n        }\n      ]\n    }\n  ]\n})\n\n\nchart = {\n  const width = 2000;\n  const height = 600;\n  \n  // Increased dx for better vertical spacing to prevent overlap\n  const dx = 35; \n  const dy = width / 6;\n\n  const root = d3.hierarchy(data);\n\n  const tree = d3.tree().nodeSize([dx, dy]);\n  \n  // Initial collapsed state logic\n  root.descendants().slice(1).forEach(d =&gt; {\n    // Keep high level branches open, collapse details deeper down\n    if (d.data.name === \"Guilds\" || d.data.name === \"Feature Teams (x5)\" || d.data.name === \"Core Team\") {\n        // Keep open\n    } else if (d.depth &gt; 1) {\n       // Collapse grandchildren initially\n       d._children = d.children;\n       d.children = null; \n    }\n  });\n\n  const svg = d3.create(\"svg\")\n      .attr(\"viewBox\", [-400, -50, width, height]) \n      .style(\"font\", \"14px sans-serif\")\n      .style(\"user-select\", \"none\")\n      .style(\"max-width\", \"100%\")\n      .style(\"height\", \"auto\");\n\n  // Add Zoom\n  const gLink = svg.append(\"g\")\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"#999\")\n      .attr(\"stroke-opacity\", 0.4)\n      .attr(\"stroke-width\", 1.5);\n\n  const gNode = svg.append(\"g\")\n      .attr(\"cursor\", \"pointer\")\n      .attr(\"pointer-events\", \"all\");\n\n  function update(source) {\n      const duration = 250;\n      const nodes = root.descendants().reverse();\n      const links = root.links();\n      tree(root);\n\n      let left = root;\n      let right = root;\n      root.eachBefore(node =&gt; {\n        if (node.x &lt; left.x) left = node;\n        if (node.x &gt; right.x) right = node;\n      });\n\n      const height = right.x - left.x + 100;\n\n      const transition = svg.transition()\n          .duration(duration)\n          .attr(\"viewBox\", [-400, left.x - 50, width, height]);\n\n      const node = gNode.selectAll(\"g\")\n        .data(nodes, d =&gt; d.id || (d.id = Math.random()));\n\n      const nodeEnter = node.enter().append(\"g\")\n          .attr(\"transform\", d =&gt; `translate(${source.y0 || source.y},${source.x0 || source.x})`)\n          .attr(\"fill-opacity\", 0)\n          .attr(\"stroke-opacity\", 0)\n          .on(\"click\", (event, d) =&gt; {\n            // Fix: properly toggle children and _children\n            if (d.children) {\n                d._children = d.children;\n                d.children = null;\n            } else {\n                d.children = d._children;\n                d._children = null;\n            }\n            update(d);\n          });\n\n      nodeEnter.append(\"circle\")\n          .attr(\"r\", 6)\n          .attr(\"fill\", d =&gt; d._children ? \"#007bff\" : \"#999\") \n          .attr(\"stroke-width\", 10);\n\n      nodeEnter.append(\"text\")\n          .attr(\"dy\", \"0.31em\")\n          .attr(\"x\", d =&gt; d._children ? -8 : 8)\n          .attr(\"text-anchor\", d =&gt; d._children ? \"end\" : \"start\")\n          .text(d =&gt; d.data.name)\n          .clone(true).lower()\n          .attr(\"stroke-linejoin\", \"round\")\n          .attr(\"stroke-width\", 3)\n          .attr(\"stroke\", \"white\");\n\n      const nodeUpdate = node.merge(nodeEnter).transition().duration(duration)\n          .attr(\"transform\", d =&gt; `translate(${d.y},${d.x})`)\n          .attr(\"fill-opacity\", 1)\n          .attr(\"stroke-opacity\", 1);\n      \n      // Update color based on whether it effectively has children (expanded or collapsed)\n      nodeUpdate.select(\"circle\")\n        .attr(\"fill\", d =&gt; (d.children || d._children) ? \"#533860\" : \"#999\");\n\n      const nodeExit = node.exit().transition().duration(duration).remove()\n          .attr(\"transform\", d =&gt; `translate(${source.y},${source.x})`)\n          .attr(\"fill-opacity\", 0)\n          .attr(\"stroke-opacity\", 0);\n\n      const link = gLink.selectAll(\"path\")\n        .data(links, d =&gt; d.target.id);\n\n      const linkEnter = link.enter().append(\"path\")\n          .attr(\"d\", d =&gt; {\n            const o = {x: source.x0 || source.x, y: source.y0 || source.y};\n            return d3.linkHorizontal()({source: o, target: o});\n          });\n\n      link.merge(linkEnter).transition().duration(duration)\n          .attr(\"d\", d3.linkHorizontal()\n              .x(d =&gt; d.y)\n              .y(d =&gt; d.x));\n\n      link.exit().transition().duration(duration).remove()\n          .attr(\"d\", d =&gt; {\n            const o = {x: source.x, y: source.y};\n            return d3.linkHorizontal()({source: o, target: o});\n          });\n\n      root.eachBefore(d =&gt; {\n        d.x0 = d.x;\n        d.y0 = d.y;\n      });\n  }\n\n  root.x0 = dy / 2;\n  root.y0 = 0;\n  \n  update(root);\n\n  // Zoom Logic\n  svg.call(d3.zoom()\n      .extent([[0, 0], [width, height]])\n      .scaleExtent([0.5, 4])\n      .on(\"zoom\", ({transform}) =&gt; {\n          gLink.attr(\"transform\", transform);\n          gNode.attr(\"transform\", transform);\n      }));\n\n  return svg.node();\n}"
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#github-sentinel-team-lead",
+    "href": "classwork/04-group-project-intro.html#github-sentinel-team-lead",
+    "title": "Group Project Introduction",
+    "section": "1. Github Sentinel (Team Lead)",
+    "text": "1. Github Sentinel (Team Lead)\n\nSkills: Git, Organization, Conflict Resolution, Jack-Of-All trades.\nResponsibility:\n\nManages the team’s “branch” (workspace).\nResolves “merge conflicts” (when code clashes).\nEnsures the team’s code safely enters the main project.\nSet’s deadlines and keeps the team on track.\nUltimately responsible for the team’s success.\n\nThe only person authorized to submit code updates to the Tech VP."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#data-steward-data-engineer",
+    "href": "classwork/04-group-project-intro.html#data-steward-data-engineer",
+    "title": "Group Project Introduction",
+    "section": "2. Data Steward (Data Engineer)",
+    "text": "2. Data Steward (Data Engineer)\n\nSkills: dplyr, Data Cleaning, Ethics.\nResponsibility:\n\nWrites clean_data.R.\nPrivacy Protection: Ensures no student is identifiable (masks data if sample size too small).\nCreates clean, anonymized datasets for the team.\nWorks with other Data Stewards to standardize definitions."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#chart-artist-viz-specialist",
+    "href": "classwork/04-group-project-intro.html#chart-artist-viz-specialist",
+    "title": "Group Project Introduction",
+    "section": "3. Chart Artist (Viz Specialist)",
+    "text": "3. Chart Artist (Viz Specialist)\n\nSkills: ggplot2, Visualization Design.\nResponsibility:\n\nCreates high-quality static visualizations.\nWrites plot functions (e.g., plot_gpa()).\nEnsures all charts match the design system (colors, fonts).\nWorks with other Chart Artists to ensure consistency across modules."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#interface-architect-shiny-dev",
+    "href": "classwork/04-group-project-intro.html#interface-architect-shiny-dev",
+    "title": "Group Project Introduction",
+    "section": "4. Interface Architect (Shiny Dev)",
+    "text": "4. Interface Architect (Shiny Dev)\n\nSkills: Shiny UI/Server, Layouts.\nResponsibility:\n\nWires the User Interface (buttons, sliders, tabs).\nConnects inputs to the Chart Artist’s plots.\nEnsures the interactive elements work smoothly."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#narrative-lead-contextqa",
+    "href": "classwork/04-group-project-intro.html#narrative-lead-contextqa",
+    "title": "Group Project Introduction",
+    "section": "5. Narrative Lead (Context/QA)",
+    "text": "5. Narrative Lead (Context/QA)\n\nSkills: Writing, Interpretation, stringr.\nResponsibility:\n\nWrites dynamic text to interpret charts automatically (“Mad Libs” style).\nExplains what the data shows to the user.\nActs as Quality Assurance for the team’s module.\nTake notes at team meetings and documents decisions and timelines."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#the-guilds",
+    "href": "classwork/04-group-project-intro.html#the-guilds",
+    "title": "Group Project Introduction",
+    "section": "The Guilds",
+    "text": "The Guilds\n\nCode Guild: Sentinels + Lead Architect (Git & Process).\nUI Guild: Chart Artists + Product Owner (Design & Style).\nData Guild: Data Stewards (Definitions & Privacy).\nShiny Guild: Interface Architects (Layouts & Inputs).\nNarrative Guild: Narrative Leads (Tone & Consistency)."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#core-team-roles",
+    "href": "classwork/04-group-project-intro.html#core-team-roles",
+    "title": "Group Project Introduction",
+    "section": "Core Team Roles",
+    "text": "Core Team Roles\n\nProduct Owner (Client VP)\n\n“Voice of the Client”\nManages the Landing Page, global.R, and styles.css.\nLeads the UI Guild, Shiny Guild, and Narrative Guild.\n\nLead Architect (Tech VP)\n\nRepository Health & Integration.\nManages app.R and Deployment.\nLeads the Code Guild and Data Guild.\n\nTeam Leads"
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#next-steps",
+    "href": "classwork/04-group-project-intro.html#next-steps",
+    "title": "Group Project Introduction",
+    "section": "Next Steps",
+    "text": "Next Steps\n\nReview the full job descriptions.\nThink about which role fits your skills and interests best.\nSubmit this Microsoft Form ranking your preferred roles."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#reviewing-the-data-set",
+    "href": "classwork/04-group-project-intro.html#reviewing-the-data-set",
+    "title": "Group Project Introduction",
+    "section": "Reviewing the data set",
+    "text": "Reviewing the data set\nWhile Mark is here let’s review the data set and make sure we don’t have specific questions about the columns."
+  },
+  {
+    "objectID": "classwork/01-tidy-tuesday.html#today",
+    "href": "classwork/01-tidy-tuesday.html#today",
+    "title": "Our First Analysis",
+    "section": "Today",
+    "text": "Today\n\nToday we’re going to split up into groups and each analyze a data set of our choice\nWe will take turns presenting on what we’ve done\nAfter each presentation, we’ll have a brief discussion where we critique each other’s analysis"
+  },
+  {
+    "objectID": "classwork/01-tidy-tuesday.html#tidytuesday",
+    "href": "classwork/01-tidy-tuesday.html#tidytuesday",
+    "title": "Our First Analysis",
+    "section": "#TidyTuesday",
+    "text": "#TidyTuesday\n\nTidyTuesday is a weekly data project aimed at the R community\nEach week a new data set is released along with a short description\nPeople analyze the data set and share their work on social media using the hashtag #TidyTuesday\nYou can find the data sets and more information at the TidyTuesday GitHub repository"
+  },
+  {
+    "objectID": "classwork/01-tidy-tuesday.html#today-1",
+    "href": "classwork/01-tidy-tuesday.html#today-1",
+    "title": "Our First Analysis",
+    "section": "Today",
+    "text": "Today\n\nEach group will pick a data set from the TidyTuesday repository\nEach group will do their best to analyze that data\nAdvice:\n\nTry to choose a more recent data set, and one that already has questions associated with it\nThere is usually an import script at the bottom of each dataset\nIt is likely that you will need to install some packages to work with the data\nDon’t worry about being perfect\nFocus on exploring the data and telling a story with it\nAsk for help when you need it"
+  },
+  {
+    "objectID": "classwork/01-tidy-tuesday.html#group-roles",
+    "href": "classwork/01-tidy-tuesday.html#group-roles",
+    "title": "Our First Analysis",
+    "section": "Group Roles",
+    "text": "Group Roles\n\nCoder: responsible for typing for your group\nReporter: responsible for sharing your group’s work with the class\nResearcher: responsible for looking up any questions your group has\nEveryone should contribute to the discussion and help with writing the code\nThere will be several parts of this activity, between each part, rotate roles\n\nCoder -&gt; Reporter -&gt; Researcher -&gt; Coder …\nFor now, old Coder copy and paste script in Teams chat to new Coder"
+  },
+  {
+    "objectID": "classwork/01-tidy-tuesday.html#get-in-your-groups",
+    "href": "classwork/01-tidy-tuesday.html#get-in-your-groups",
+    "title": "Our First Analysis",
+    "section": "Get in your groups",
+    "text": "Get in your groups\n\nYou can find a spreadsheet in the Jan 6th Activities Module in the Classword section on Teams with your team assignments\nGet in your groups now\nIntroduce yourselves\nDecide who will be the first Coder, Reporter, and Researcher\nDecide on a group name\nCreate a post in the Activities Channel on Teams with all of this information\n\n\ncountdown::countdown(minutes = 5)"
+  },
+  {
+    "objectID": "classwork/01-tidy-tuesday.html#selecting-a-dataset",
+    "href": "classwork/01-tidy-tuesday.html#selecting-a-dataset",
+    "title": "Our First Analysis",
+    "section": "Selecting a Dataset",
+    "text": "Selecting a Dataset\n\nDo the following:\n\nFind the data set on the TidyTuesday GitHub repository\nLoad that data set into R\nPost a link to the dataset as a response to your group’s post in the Activities Channel on Teams\n\nAnswer the following questions (be prepared to give a 2-minute report to the class):\n\nWhat is the data about?\nWhat question(s) are you interested in answering with this data?\nHow many data frames are there and how many rows and columns does it have?\nWhat data frames and variables are you going to focus on?\n\n\n\ncountdown::countdown(minutes = 20)"
+  },
+  {
+    "objectID": "classwork/01-tidy-tuesday.html#explore-the-data",
+    "href": "classwork/01-tidy-tuesday.html#explore-the-data",
+    "title": "Our First Analysis",
+    "section": "Explore the Data",
+    "text": "Explore the Data\n\nBe prepared to present the following (less than 5 minutes per group):\n\nCreate up to 5 visualizations or tables that help answer your questions\nExplain what each visualization or table shows\nExplain what you learned from each visualization or table\nExplain any challenges you had while working with the data\nBe prepared to answer questions and explain your code if you are asked\n\nCopy and paste your entire script (up to this point) into Teams as a response to your group’s post\n\n\ncountdown::countdown(minutes = 20)"
+  },
+  {
+    "objectID": "classwork/01-tidy-tuesday.html#time-permitting-refine-and-extend",
+    "href": "classwork/01-tidy-tuesday.html#time-permitting-refine-and-extend",
+    "title": "Our First Analysis",
+    "section": "Time Permitting: Refine and Extend",
+    "text": "Time Permitting: Refine and Extend\n\nIf you have time left, refine your visualizations and analyses based on our discussions"
+  },
+  {
+    "objectID": "classwork/01-tidy-tuesday.html#wrap-up",
+    "href": "classwork/01-tidy-tuesday.html#wrap-up",
+    "title": "Our First Analysis",
+    "section": "Wrap Up",
+    "text": "Wrap Up\n\nBefore you leave, complete your reflection on Teams!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#today",
+    "href": "classwork/07-tools-2.html#today",
+    "title": "A Menagerie Of Tools",
+    "section": "Today",
+    "text": "Today\n\nGit and GitHub\nEnvironment Mangement\nAI (Maybe)"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#first-project-roles",
+    "href": "classwork/07-tools-2.html#first-project-roles",
+    "title": "A Menagerie Of Tools",
+    "section": "First: Project Roles",
+    "text": "First: Project Roles\n\nTo TEAMS!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#what-is-version-control",
+    "href": "classwork/07-tools-2.html#what-is-version-control",
+    "title": "A Menagerie Of Tools",
+    "section": "What is Version Control?",
+    "text": "What is Version Control?\n\nA system that records changes to a file or set of files over time so that you can recall specific versions later.\nIt allows you to revert files back to a previous state, revert the entire project back to a previous state, compare changes over time, see who last modified something that might be causing a problem, who introduced an issue and when.\nThink of it like “track changes” in a word processor, but for all your project files (code, data, text, etc.)."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#why-is-it-useful",
+    "href": "classwork/07-tools-2.html#why-is-it-useful",
+    "title": "A Menagerie Of Tools",
+    "section": "Why is it useful?",
+    "text": "Why is it useful?\n\nCollaboration: Many people can work on the same project without overwriting each other’s changes.\nOrganization: Keeps a history of your project. No more final_report_v2_final_final.docx!\nBackup: Your project history is stored in a remote, safe place (like GitHub). If your computer crashes, your work is not lost.\nExperimentation: You can try out new ideas in a “branch” without messing up the main version of your project."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#what-is-git",
+    "href": "classwork/07-tools-2.html#what-is-git",
+    "title": "A Menagerie Of Tools",
+    "section": "What is Git?",
+    "text": "What is Git?\n\nGit is a free and open source distributed version control system.\nIt’s a command-line tool that you run on your computer to track changes in your project files.\nIt’s the most popular version control system in the world."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#what-is-github",
+    "href": "classwork/07-tools-2.html#what-is-github",
+    "title": "A Menagerie Of Tools",
+    "section": "What is GitHub?",
+    "text": "What is GitHub?\n\nGitHub is a web-based hosting service for Git repositories.\nIt’s a place to store your projects and collaborate with others.\nIt provides a graphical interface to Git, plus other features like issue tracking, project management, and more.\nGit is the tool, GitHub is the service."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#no-more-passwords",
+    "href": "classwork/07-tools-2.html#no-more-passwords",
+    "title": "A Menagerie Of Tools",
+    "section": "No More Passwords",
+    "text": "No More Passwords\n\nGitHub removed support for password authentication in 2021.\nYou must use a Personal Access Token (PAT) or SSH keys to push code.\nIf you try to use your password, you will get an authentication error."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#setting-up-a-pat-rpositron-users",
+    "href": "classwork/07-tools-2.html#setting-up-a-pat-rpositron-users",
+    "title": "A Menagerie Of Tools",
+    "section": "Setting up a PAT (R/Positron Users)",
+    "text": "Setting up a PAT (R/Positron Users)\nThe easiest way to set this up is using R helper packages:\n\nInstall helpers: install.packages(c(\"usethis\", \"gitcreds\"))\nCreate token: usethis::create_github_token()\n\nThis opens a browser.\nClick “Generate token”.\nCopy the token (it starts with ghp_).\n\nStore credentials: gitcreds::gitcreds_set()\n\nPaste your token when asked for a password.\n\n\nThat’s it! You only need to do this once per computer. Your credentials are stored system-wide and will work for all your projects."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#cloning-a-repository",
+    "href": "classwork/07-tools-2.html#cloning-a-repository",
+    "title": "A Menagerie Of Tools",
+    "section": "Cloning a Repository",
+    "text": "Cloning a Repository\n\n“Cloning” is how you get a copy of a project from GitHub onto your computer.\nYou only need to do this once per project.\nYou’ll get a URL from the GitHub page of the repository.\nThis creates a new directory on your computer with all the project files."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#the-add-commit-push-cycle",
+    "href": "classwork/07-tools-2.html#the-add-commit-push-cycle",
+    "title": "A Menagerie Of Tools",
+    "section": "The Add-Commit-Push Cycle",
+    "text": "The Add-Commit-Push Cycle\nThis is the most common workflow you’ll use.\n\nMake changes: Edit your files, create new files, etc.\nAdd files: Tell Git which files you want to save in the next “snapshot” (commit).\nCommit files: Save the snapshot with a descriptive message.\nPush changes: Send your committed changes to GitHub."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#git-add",
+    "href": "classwork/07-tools-2.html#git-add",
+    "title": "A Menagerie Of Tools",
+    "section": "git add",
+    "text": "git add\n\nUse git add to stage your changes. Staging is the step before committing.\nYou can add specific files or all files with changes."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#git-commit",
+    "href": "classwork/07-tools-2.html#git-commit",
+    "title": "A Menagerie Of Tools",
+    "section": "git commit",
+    "text": "git commit\n\nA “commit” is a snapshot of your staged changes.\nEach commit has a unique ID and a message.\nThe message is important! It should be a short, descriptive summary of the changes you made."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#git-push",
+    "href": "classwork/07-tools-2.html#git-push",
+    "title": "A Menagerie Of Tools",
+    "section": "git push",
+    "text": "git push\n\ngit push sends your committed changes from your local computer to the remote repository on GitHub."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#good-commit-messages",
+    "href": "classwork/07-tools-2.html#good-commit-messages",
+    "title": "A Menagerie Of Tools",
+    "section": "Good Commit Messages",
+    "text": "Good Commit Messages\n\nKeep them short and descriptive.\nUse the imperative mood (e.g., “Add feature” not “Added feature”).\nExplain what the change is and why you made it.\n\nGood:\n\nFix typo in course syllabus\nUpdate plot styling in HW1\nFeat: Add enrollment module skeleton\nDocs: Explain data cleaning process\n\nBad:\n\nstuff\nfixed it\naaaaaaaa"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#git-pull",
+    "href": "classwork/07-tools-2.html#git-pull",
+    "title": "A Menagerie Of Tools",
+    "section": "git pull",
+    "text": "git pull\n\nIf you’re working with others, they will merge changes into the main branch.\ngit pull fetches changes from the remote repository and merges them into your local copy.\nIt’s a critical habit to pull from main before you start working to make sure you have the latest version."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#practice",
+    "href": "classwork/07-tools-2.html#practice",
+    "title": "A Menagerie Of Tools",
+    "section": "Practice!",
+    "text": "Practice!\n\nEveryone: create a new Github Repository for your Individual Project.\nClone it to your computer.\nAdd all the stuff you’ve been working on.\nAdd, commit, and push your changes to Github.\nTry making a small change, then add, commit, push again.\nSend Dr. F your repo link when done!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#the-problem-it-works-on-my-machine",
+    "href": "classwork/07-tools-2.html#the-problem-it-works-on-my-machine",
+    "title": "A Menagerie Of Tools",
+    "section": "The Problem: “It works on my machine”",
+    "text": "The Problem: “It works on my machine”\n\nYou share code with a colleague, but it fails on their machine.\nYou revisit an old project, but the code no longer runs because packages have updated.\nYou update a package for Project A, but it breaks Project B."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#the-solution-dependency-management",
+    "href": "classwork/07-tools-2.html#the-solution-dependency-management",
+    "title": "A Menagerie Of Tools",
+    "section": "The Solution: Dependency Management",
+    "text": "The Solution: Dependency Management\n\nDependency management ensures your project uses the correct package versions.\nIn R, renv is the standard tool for this.\nKey features:\n\nIsolation: Each project has its own library of packages.\nReproducibility: Records exact package versions in a lockfile.\nPortability: Easy to install the same environment on another machine."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#key-components",
+    "href": "classwork/07-tools-2.html#key-components",
+    "title": "A Menagerie Of Tools",
+    "section": "Key Components",
+    "text": "Key Components\n\nProject Library: Use a per-project library (renv/library) instead of the system library.\nLockfile (renv.lock): A JSON file recording the exact version and source of every package.\nActivation Script (renv/activate.R): Automatically loads the project environment when you open the project."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#the-workflow",
+    "href": "classwork/07-tools-2.html#the-workflow",
+    "title": "A Menagerie Of Tools",
+    "section": "The Workflow",
+    "text": "The Workflow\n\nInitialize: renv::init() (do this once)\nWork: install.packages() and get your code working\nSnapshot: renv::snapshot(), (each time you finish installing packages and get your code working)\nRestore: renv::restore(), (any time you download the project)"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#initialize",
+    "href": "classwork/07-tools-2.html#initialize",
+    "title": "A Menagerie Of Tools",
+    "section": "0. Initialize",
+    "text": "0. Initialize\n\nRun renv::init() to start using renv in a project.\nThis:\n\nSets up the project library.\nGenerates a lockfile (renv.lock) with currently installed packages.\nCreates an .Rprofile to activate renv on startup.\n\nRestart R to ensure the environment is active."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#work",
+    "href": "classwork/07-tools-2.html#work",
+    "title": "A Menagerie Of Tools",
+    "section": "1. Work",
+    "text": "1. Work\n\nInstall packages as usual:\n\ninstall.packages(\"dplyr\")\ninstall.packages(\"ggplot2\")\n\nThese go into your project library, not your global library.\nOther projects are unaffected!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#snapshot",
+    "href": "classwork/07-tools-2.html#snapshot",
+    "title": "A Menagerie Of Tools",
+    "section": "2. Snapshot",
+    "text": "2. Snapshot\n\nWhen your code works, save the state of your library:\n\nrenv::snapshot()\n\nThis updates renv.lock with the versions you are currently using.\nCommit renv.lock to Git!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#restore",
+    "href": "classwork/07-tools-2.html#restore",
+    "title": "A Menagerie Of Tools",
+    "section": "3. Restore",
+    "text": "3. Restore\n\nWhen you (or a collaborator) download the project:\n\nOpen the project (R will auto-activate renv).\nRun renv::restore().\n\nThis installs all packages exactly as specified in renv.lock."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#checking-status",
+    "href": "classwork/07-tools-2.html#checking-status",
+    "title": "A Menagerie Of Tools",
+    "section": "Checking Status",
+    "text": "Checking Status\n\nRun renv::status() to see if your library matches your lockfile.\nIt tells you if:\n\nYou installed packages but haven’t snapshotted them.\nYour lockfile has packages you haven’t installed yet."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#what-to-commit-to-git",
+    "href": "classwork/07-tools-2.html#what-to-commit-to-git",
+    "title": "A Menagerie Of Tools",
+    "section": "What to Commit to Git",
+    "text": "What to Commit to Git\n\nDo Commit:\n\nrenv.lock\n.Rprofile\nrenv/activate.R\nrenv/settings.json (if it exists)\n\nDo NOT Commit:\n\nrenv/library (these are the installed files, which are large and platform-specific)\nrenv/python (if using Python)\nrenv/staging"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#summary",
+    "href": "classwork/07-tools-2.html#summary",
+    "title": "A Menagerie Of Tools",
+    "section": "Summary",
+    "text": "Summary\n\nUse renv for every serious project.\ninit() to start.\nsnapshot() to save.\nrestore() to load.\nEnjoy reproducible data science!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#practice-1",
+    "href": "classwork/07-tools-2.html#practice-1",
+    "title": "A Menagerie Of Tools",
+    "section": "Practice!",
+    "text": "Practice!\nIn your Individual Project repository:\n\nInitialize renv for the project.\nAdd the following lines to your .gitignore file to avoid committing the library:\n\n/renv/library/\n/renv/python/\n/renv/staging/\n\nPractice installing new packages, adding them to the lockfile, pushing them to github, and then pulling/restoring."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#what-is-a-branch",
+    "href": "classwork/07-tools-2.html#what-is-a-branch",
+    "title": "A Menagerie Of Tools",
+    "section": "What is a Branch?",
+    "text": "What is a Branch?\n\nA branch is a parallel version of your repository.\nIt allows you to work on new features or fixes without affecting the main codebase (the main branch).\nThis is essential for teamwork."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#a-collaborative-workflow-the-feature-branch",
+    "href": "classwork/07-tools-2.html#a-collaborative-workflow-the-feature-branch",
+    "title": "A Menagerie Of Tools",
+    "section": "A Collaborative Workflow: The Feature Branch",
+    "text": "A Collaborative Workflow: The Feature Branch\nFor our group project, we will use a workflow that prevents accidentally breaking the main version of our app. You will not push directly to main.\nThe core idea is:\n\nCreate a copy of the project (a “branch”) where you can work safely.\nMake all your changes on that branch.\nWhen you’re ready, you’ll open a “Pull Request” to have your changes reviewed and merged into the main branch."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#the-branching-workflow-a-full-example",
+    "href": "classwork/07-tools-2.html#the-branching-workflow-a-full-example",
+    "title": "A Menagerie Of Tools",
+    "section": "The Branching Workflow: A Full Example",
+    "text": "The Branching Workflow: A Full Example\n\nSync your local main branch:\nCreate a new branch for your work: For the project, your team leader (the “GitHub Sentinel”) will do this. Branch names should be descriptive, like feature/team-name.\nWork on your branch: Now you do the familiar add-commit cycle.\nPush your branch to GitHub: The -u flag sets the upstream branch so you can just git push next time."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#pull-requests-proposing-changes",
+    "href": "classwork/07-tools-2.html#pull-requests-proposing-changes",
+    "title": "A Menagerie Of Tools",
+    "section": "Pull Requests: Proposing Changes",
+    "text": "Pull Requests: Proposing Changes\nNow that your branch is on GitHub, you needs to ask for it to be merged into main."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#what-is-a-pull-request",
+    "href": "classwork/07-tools-2.html#what-is-a-pull-request",
+    "title": "A Menagerie Of Tools",
+    "section": "What is a Pull Request?",
+    "text": "What is a Pull Request?\n\nA Pull Request (or PR) is a formal request to merge your changes.\nYou’re asking the project maintainer (the “Lead Architect” for your project) to “pull” your changes from your branch into the main branch.\nIt’s a place for code review and discussion before the changes are integrated."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#how-to-open-a-pull-request",
+    "href": "classwork/07-tools-2.html#how-to-open-a-pull-request",
+    "title": "A Menagerie Of Tools",
+    "section": "How to open a Pull Request",
+    "text": "How to open a Pull Request\n\nAfter pushing the branch, go to the repository on GitHub.\nGitHub will usually show a banner prompting you to “Compare & pull request”. Click it!\nIf not, go to the “Pull requests” tab and click “New pull request”.\nSelect your team’s branch as the “compare” branch and main as the “base” branch.\nWrite a clear title and description for your changes. Explain what you did.\nClick “Create pull request”."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#review-and-merging",
+    "href": "classwork/07-tools-2.html#review-and-merging",
+    "title": "A Menagerie Of Tools",
+    "section": "Review and Merging",
+    "text": "Review and Merging\n\nOnce the PR is open, the “Lead Architect” and other team members can review your code, add comments, and request changes.\nIf changes are requested, your team makes them on the local branch, then commits and pushes again. The PR will update automatically.\nOnce approved, the Lead Architect will merge your branch into main. Your work is now part of the official project!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#a-note-on-merge-conflicts",
+    "href": "classwork/07-tools-2.html#a-note-on-merge-conflicts",
+    "title": "A Menagerie Of Tools",
+    "section": "A Note on Merge Conflicts",
+    "text": "A Note on Merge Conflicts\n\nIf you and another person edit the same lines in the same file on different branches, Git won’t know which version to keep when merging.\nThis is a merge conflict.\nThe person merging the PR (or the Sentinel, before opening it) will need to manually resolve the conflict by choosing which code to keep.\nThe best way to avoid conflicts: Pull from main often and communicate with your team!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#after-a-pr-is-merged",
+    "href": "classwork/07-tools-2.html#after-a-pr-is-merged",
+    "title": "A Menagerie Of Tools",
+    "section": "After a PR is Merged",
+    "text": "After a PR is Merged\nOnce your team’s branch is merged by the Lead Architect, everyone should update their local repository.\n\nSwitch back to your main branch: git checkout main\nPull the latest changes (which now include the merged work): git pull\nNow your main is up to date, and you can create a new branch for the next feature!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#group-practice-1",
+    "href": "classwork/07-tools-2.html#group-practice-1",
+    "title": "A Menagerie Of Tools",
+    "section": "Group Practice 1!",
+    "text": "Group Practice 1!\nLet’s break up into groups. Have one person create a new repository on GitHub and add the others as collaborators:\n\n(Person A) Create a new public repository on GitHub. Add your teamates as collaborators.\n(Person A) Initialize it with a README.md file.\n(Person B/C) Accept the collaborator invitation (check your email!).\n(Everyone) Clone it to your computer."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#on-person-as-computer",
+    "href": "classwork/07-tools-2.html#on-person-as-computer",
+    "title": "A Menagerie Of Tools",
+    "section": "On Person A’s Computer",
+    "text": "On Person A’s Computer\nRecreate this graph from the duke_forest dataset in the openintro package:"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#on-person-bs-computer",
+    "href": "classwork/07-tools-2.html#on-person-bs-computer",
+    "title": "A Menagerie Of Tools",
+    "section": "On Person B’s Computer",
+    "text": "On Person B’s Computer\nModify the plot above so it looks like this:"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#on-person-cs-computer",
+    "href": "classwork/07-tools-2.html#on-person-cs-computer",
+    "title": "A Menagerie Of Tools",
+    "section": "On Person C’s Computer",
+    "text": "On Person C’s Computer\nModify the plot above so it looks like this (Hint: look up ggMarginal from the ggExtra package):"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#group-practice-2",
+    "href": "classwork/07-tools-2.html#group-practice-2",
+    "title": "A Menagerie Of Tools",
+    "section": "Group Practice 2!",
+    "text": "Group Practice 2!\nIn the repo you just created:\n\nIgnore PRs for now, just practice branching and merging directly to main.\n(Everyone) Create a new branch for your work. (Click ... -&gt; Branch -&gt; Create Branch..., then give the it a name, and push it to GitHub)\n(Everyone) Checkout your new branch. (Click ... -&gt; Checkout to..., then select the branch you just created)\n(Everyone) Modify the plot you just created! Make it your own and push to Github on the new branch."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#merging-your-changes",
+    "href": "classwork/07-tools-2.html#merging-your-changes",
+    "title": "A Menagerie Of Tools",
+    "section": "Merging Your Changes",
+    "text": "Merging Your Changes\n\nVote on one person to go first.\nPull the latest changes from main to your branch and checkout main.\n... -&gt; Branch -&gt; Merge. This will initiate the merge process. You now need to resolve any conflicts that arise.\n\n\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\n    This is what is in your main branch\n=======\n    This is what is in the branch your mergeing\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-ca\n\nYou need to clean this up so it look exactly what you it should look like. Then save the file. Positron provides some really nice merge tools that make this easy.\n\nOnce there are no more merge conflicts, commit the merge.\nPush the updated main branch to GitHub.\nMove on to the next person!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#overview",
+    "href": "classwork/07-tools-2.html#overview",
+    "title": "A Menagerie Of Tools",
+    "section": "Overview",
+    "text": "Overview\n\nGithub Copilot\nGemini Code Assistant\nGemini CLI"
   },
   {
     "objectID": "classwork/06-tools.html#today",
@@ -2434,6 +2742,20 @@
     "title": "A Menagerie Of Tools",
     "section": "What is GitHub?",
     "text": "What is GitHub?\n\nGitHub is a web-based hosting service for Git repositories.\nIt’s a place to store your projects and collaborate with others.\nIt provides a graphical interface to Git, plus other features like issue tracking, project management, and more.\nGit is the tool, GitHub is the service."
+  },
+  {
+    "objectID": "classwork/06-tools.html#no-more-passwords",
+    "href": "classwork/06-tools.html#no-more-passwords",
+    "title": "A Menagerie Of Tools",
+    "section": "No More Passwords",
+    "text": "No More Passwords\n\nGitHub removed support for password authentication in 2021.\nYou must use a Personal Access Token (PAT) or SSH keys to push code.\nIf you try to use your password, you will get an authentication error."
+  },
+  {
+    "objectID": "classwork/06-tools.html#setting-up-a-pat-rpositron-users",
+    "href": "classwork/06-tools.html#setting-up-a-pat-rpositron-users",
+    "title": "A Menagerie Of Tools",
+    "section": "Setting up a PAT (R/Positron Users)",
+    "text": "Setting up a PAT (R/Positron Users)\nThe easiest way to set this up is using R helper packages:\n\nInstall helpers: install.packages(c(\"usethis\", \"gitcreds\"))\nCreate token: usethis::create_github_token()\n\nThis opens a browser.\nClick “Generate token”.\nCopy the token (it starts with ghp_).\n\nStore credentials: gitcreds::gitcreds_set()\n\nPaste your token when asked for a password.\n\n\nThat’s it! You only need to do this once per computer. Your credentials are stored system-wide and will work for all your projects."
   },
   {
     "objectID": "classwork/06-tools.html#cloning-a-repository",
@@ -4110,306 +4432,5 @@
     "title": "GEMINI.md: Project Overview and Contributor Guide",
     "section": "",
     "text": "To work on this project, you will need to have Quarto installed. You can download it from the Quarto website.\n\n\nTo render and preview the website locally, run the following command in your terminal from the project’s root directory:\nquarto preview\nThis will start a local web server and open the site in your browser. The site will automatically refresh when you save changes to any of the source files.\n\n\n\nTo render the entire website without previewing it, use the following command:\nquarto render\nThis will generate all the static files and place them in the _site/ directory. This is typically done for deployment."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#today",
-    "href": "classwork/07-tools-2.html#today",
-    "title": "A Menagerie Of Tools",
-    "section": "Today",
-    "text": "Today\n\nGit and GitHub\nEnvironment Mangement\nAI (Maybe)"
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#first-project-roles",
-    "href": "classwork/07-tools-2.html#first-project-roles",
-    "title": "A Menagerie Of Tools",
-    "section": "First: Project Roles",
-    "text": "First: Project Roles\n\nTo TEAMS!"
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#what-is-version-control",
-    "href": "classwork/07-tools-2.html#what-is-version-control",
-    "title": "A Menagerie Of Tools",
-    "section": "What is Version Control?",
-    "text": "What is Version Control?\n\nA system that records changes to a file or set of files over time so that you can recall specific versions later.\nIt allows you to revert files back to a previous state, revert the entire project back to a previous state, compare changes over time, see who last modified something that might be causing a problem, who introduced an issue and when.\nThink of it like “track changes” in a word processor, but for all your project files (code, data, text, etc.)."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#why-is-it-useful",
-    "href": "classwork/07-tools-2.html#why-is-it-useful",
-    "title": "A Menagerie Of Tools",
-    "section": "Why is it useful?",
-    "text": "Why is it useful?\n\nCollaboration: Many people can work on the same project without overwriting each other’s changes.\nOrganization: Keeps a history of your project. No more final_report_v2_final_final.docx!\nBackup: Your project history is stored in a remote, safe place (like GitHub). If your computer crashes, your work is not lost.\nExperimentation: You can try out new ideas in a “branch” without messing up the main version of your project."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#what-is-git",
-    "href": "classwork/07-tools-2.html#what-is-git",
-    "title": "A Menagerie Of Tools",
-    "section": "What is Git?",
-    "text": "What is Git?\n\nGit is a free and open source distributed version control system.\nIt’s a command-line tool that you run on your computer to track changes in your project files.\nIt’s the most popular version control system in the world."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#what-is-github",
-    "href": "classwork/07-tools-2.html#what-is-github",
-    "title": "A Menagerie Of Tools",
-    "section": "What is GitHub?",
-    "text": "What is GitHub?\n\nGitHub is a web-based hosting service for Git repositories.\nIt’s a place to store your projects and collaborate with others.\nIt provides a graphical interface to Git, plus other features like issue tracking, project management, and more.\nGit is the tool, GitHub is the service."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#no-more-passwords",
-    "href": "classwork/07-tools-2.html#no-more-passwords",
-    "title": "A Menagerie Of Tools",
-    "section": "No More Passwords",
-    "text": "No More Passwords\n\nGitHub removed support for password authentication in 2021.\nYou must use a Personal Access Token (PAT) or SSH keys to push code.\nIf you try to use your password, you will get an authentication error."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#setting-up-a-pat-rpositron-users",
-    "href": "classwork/07-tools-2.html#setting-up-a-pat-rpositron-users",
-    "title": "A Menagerie Of Tools",
-    "section": "Setting up a PAT (R/Positron Users)",
-    "text": "Setting up a PAT (R/Positron Users)\nThe easiest way to set this up is using R helper packages:\n\nInstall helpers: install.packages(c(\"usethis\", \"gitcreds\"))\nCreate token: usethis::create_github_token()\n\nThis opens a browser.\nClick “Generate token”.\nCopy the token (it starts with ghp_).\n\nStore credentials: gitcreds::gitcreds_set()\n\nPaste your token when asked for a password.\n\n\nThat’s it! You only need to do this once per computer. Your credentials are stored system-wide and will work for all your projects."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#cloning-a-repository",
-    "href": "classwork/07-tools-2.html#cloning-a-repository",
-    "title": "A Menagerie Of Tools",
-    "section": "Cloning a Repository",
-    "text": "Cloning a Repository\n\n“Cloning” is how you get a copy of a project from GitHub onto your computer.\nYou only need to do this once per project.\nYou’ll get a URL from the GitHub page of the repository.\nThis creates a new directory on your computer with all the project files."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#the-add-commit-push-cycle",
-    "href": "classwork/07-tools-2.html#the-add-commit-push-cycle",
-    "title": "A Menagerie Of Tools",
-    "section": "The Add-Commit-Push Cycle",
-    "text": "The Add-Commit-Push Cycle\nThis is the most common workflow you’ll use.\n\nMake changes: Edit your files, create new files, etc.\nAdd files: Tell Git which files you want to save in the next “snapshot” (commit).\nCommit files: Save the snapshot with a descriptive message.\nPush changes: Send your committed changes to GitHub."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#git-add",
-    "href": "classwork/07-tools-2.html#git-add",
-    "title": "A Menagerie Of Tools",
-    "section": "git add",
-    "text": "git add\n\nUse git add to stage your changes. Staging is the step before committing.\nYou can add specific files or all files with changes."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#git-commit",
-    "href": "classwork/07-tools-2.html#git-commit",
-    "title": "A Menagerie Of Tools",
-    "section": "git commit",
-    "text": "git commit\n\nA “commit” is a snapshot of your staged changes.\nEach commit has a unique ID and a message.\nThe message is important! It should be a short, descriptive summary of the changes you made."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#git-push",
-    "href": "classwork/07-tools-2.html#git-push",
-    "title": "A Menagerie Of Tools",
-    "section": "git push",
-    "text": "git push\n\ngit push sends your committed changes from your local computer to the remote repository on GitHub."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#good-commit-messages",
-    "href": "classwork/07-tools-2.html#good-commit-messages",
-    "title": "A Menagerie Of Tools",
-    "section": "Good Commit Messages",
-    "text": "Good Commit Messages\n\nKeep them short and descriptive.\nUse the imperative mood (e.g., “Add feature” not “Added feature”).\nExplain what the change is and why you made it.\n\nGood:\n\nFix typo in course syllabus\nUpdate plot styling in HW1\nFeat: Add enrollment module skeleton\nDocs: Explain data cleaning process\n\nBad:\n\nstuff\nfixed it\naaaaaaaa"
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#git-pull",
-    "href": "classwork/07-tools-2.html#git-pull",
-    "title": "A Menagerie Of Tools",
-    "section": "git pull",
-    "text": "git pull\n\nIf you’re working with others, they will merge changes into the main branch.\ngit pull fetches changes from the remote repository and merges them into your local copy.\nIt’s a critical habit to pull from main before you start working to make sure you have the latest version."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#practice",
-    "href": "classwork/07-tools-2.html#practice",
-    "title": "A Menagerie Of Tools",
-    "section": "Practice!",
-    "text": "Practice!\n\nEveryone: create a new Github Repository for your Individual Project.\nClone it to your computer.\nAdd all the stuff you’ve been working on.\nAdd, commit, and push your changes to Github.\nTry making a small change, then add, commit, push again.\nSend Dr. F your repo link when done!"
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#what-is-a-branch",
-    "href": "classwork/07-tools-2.html#what-is-a-branch",
-    "title": "A Menagerie Of Tools",
-    "section": "What is a Branch?",
-    "text": "What is a Branch?\n\nA branch is a parallel version of your repository.\nIt allows you to work on new features or fixes without affecting the main codebase (the main branch).\nThis is essential for teamwork."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#a-collaborative-workflow-the-feature-branch",
-    "href": "classwork/07-tools-2.html#a-collaborative-workflow-the-feature-branch",
-    "title": "A Menagerie Of Tools",
-    "section": "A Collaborative Workflow: The Feature Branch",
-    "text": "A Collaborative Workflow: The Feature Branch\nFor our group project, we will use a workflow that prevents accidentally breaking the main version of our app. You will not push directly to main.\nThe core idea is:\n\nCreate a copy of the project (a “branch”) where you can work safely.\nMake all your changes on that branch.\nWhen you’re ready, you’ll open a “Pull Request” to have your changes reviewed and merged into the main branch."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#the-branching-workflow-a-full-example",
-    "href": "classwork/07-tools-2.html#the-branching-workflow-a-full-example",
-    "title": "A Menagerie Of Tools",
-    "section": "The Branching Workflow: A Full Example",
-    "text": "The Branching Workflow: A Full Example\n\nSync your local main branch:\nCreate a new branch for your work: For the project, your team leader (the “GitHub Sentinel”) will do this. Branch names should be descriptive, like feature/team-name.\nWork on your branch: Now you do the familiar add-commit cycle.\nPush your branch to GitHub: The -u flag sets the upstream branch so you can just git push next time."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#pull-requests-proposing-changes",
-    "href": "classwork/07-tools-2.html#pull-requests-proposing-changes",
-    "title": "A Menagerie Of Tools",
-    "section": "Pull Requests: Proposing Changes",
-    "text": "Pull Requests: Proposing Changes\nNow that your branch is on GitHub, you needs to ask for it to be merged into main."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#what-is-a-pull-request",
-    "href": "classwork/07-tools-2.html#what-is-a-pull-request",
-    "title": "A Menagerie Of Tools",
-    "section": "What is a Pull Request?",
-    "text": "What is a Pull Request?\n\nA Pull Request (or PR) is a formal request to merge your changes.\nYou’re asking the project maintainer (the “Lead Architect” for your project) to “pull” your changes from your branch into the main branch.\nIt’s a place for code review and discussion before the changes are integrated."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#how-to-open-a-pull-request",
-    "href": "classwork/07-tools-2.html#how-to-open-a-pull-request",
-    "title": "A Menagerie Of Tools",
-    "section": "How to open a Pull Request",
-    "text": "How to open a Pull Request\n\nAfter pushing the branch, go to the repository on GitHub.\nGitHub will usually show a banner prompting you to “Compare & pull request”. Click it!\nIf not, go to the “Pull requests” tab and click “New pull request”.\nSelect your team’s branch as the “compare” branch and main as the “base” branch.\nWrite a clear title and description for your changes. Explain what you did.\nClick “Create pull request”."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#review-and-merging",
-    "href": "classwork/07-tools-2.html#review-and-merging",
-    "title": "A Menagerie Of Tools",
-    "section": "Review and Merging",
-    "text": "Review and Merging\n\nOnce the PR is open, the “Lead Architect” and other team members can review your code, add comments, and request changes.\nIf changes are requested, your team makes them on the local branch, then commits and pushes again. The PR will update automatically.\nOnce approved, the Lead Architect will merge your branch into main. Your work is now part of the official project!"
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#a-note-on-merge-conflicts",
-    "href": "classwork/07-tools-2.html#a-note-on-merge-conflicts",
-    "title": "A Menagerie Of Tools",
-    "section": "A Note on Merge Conflicts",
-    "text": "A Note on Merge Conflicts\n\nIf you and another person edit the same lines in the same file on different branches, Git won’t know which version to keep when merging.\nThis is a merge conflict.\nThe person merging the PR (or the Sentinel, before opening it) will need to manually resolve the conflict by choosing which code to keep.\nThe best way to avoid conflicts: Pull from main often and communicate with your team!"
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#after-a-pr-is-merged",
-    "href": "classwork/07-tools-2.html#after-a-pr-is-merged",
-    "title": "A Menagerie Of Tools",
-    "section": "After a PR is Merged",
-    "text": "After a PR is Merged\nOnce your team’s branch is merged by the Lead Architect, everyone should update their local repository.\n\nSwitch back to your main branch: git checkout main\nPull the latest changes (which now include the merged work): git pull\nNow your main is up to date, and you can create a new branch for the next feature!"
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#group-practice-1",
-    "href": "classwork/07-tools-2.html#group-practice-1",
-    "title": "A Menagerie Of Tools",
-    "section": "Group Practice 1!",
-    "text": "Group Practice 1!\nLet’s break up into groups. Have one person create a new repository on GitHub and add the others as collaborators:\n\n(Person A) Create a new public repository on GitHub. Add your teamates as collaborators.\n(Person A) Initialize it with a README.md file.\n(Person B/C) Accept the collaborator invitation (check your email!).\n(Everyone) Clone it to your computer."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#on-person-as-computer",
-    "href": "classwork/07-tools-2.html#on-person-as-computer",
-    "title": "A Menagerie Of Tools",
-    "section": "On Person A’s Computer",
-    "text": "On Person A’s Computer\nRecreate this graph from the duke_forest dataset in the openintro package:"
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#group-practice-2",
-    "href": "classwork/07-tools-2.html#group-practice-2",
-    "title": "A Menagerie Of Tools",
-    "section": "Group Practice 2!",
-    "text": "Group Practice 2!\nIn the repo you just created:\n\nIgnore PRs for now, just practice branching and merging directly to main.\n(Everyone) Create a new branch for your work.\n(Everyone) Checkout your new branch.\n(Everyone) Create a new plot in your quarto file. Don’t edit any of the existing code.\n(A then B then C) Merge your changes into the main branch and push to GitHub.\n(Everyone) Pull the changes. Check them out to a new branch and change one of your partners plots! Don’t simply add to it, make sure you delete somethings too…\n(A then B then C) Merge yopur changes into the main branch and push to GitHub."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#the-problem-it-works-on-my-machine",
-    "href": "classwork/07-tools-2.html#the-problem-it-works-on-my-machine",
-    "title": "A Menagerie Of Tools",
-    "section": "The Problem: “It works on my machine”",
-    "text": "The Problem: “It works on my machine”\n\nYou share code with a colleague, but it fails on their machine.\nYou revisit an old project, but the code no longer runs because packages have updated.\nYou update a package for Project A, but it breaks Project B."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#the-solution-dependency-management",
-    "href": "classwork/07-tools-2.html#the-solution-dependency-management",
-    "title": "A Menagerie Of Tools",
-    "section": "The Solution: Dependency Management",
-    "text": "The Solution: Dependency Management\n\nDependency management ensures your project uses the correct package versions.\nIn R, renv is the standard tool for this.\nKey features:\n\nIsolation: Each project has its own library of packages.\nReproducibility: Records exact package versions in a lockfile.\nPortability: Easy to install the same environment on another machine."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#key-components",
-    "href": "classwork/07-tools-2.html#key-components",
-    "title": "A Menagerie Of Tools",
-    "section": "Key Components",
-    "text": "Key Components\n\nProject Library: Use a per-project library (renv/library) instead of the system library.\nLockfile (renv.lock): A JSON file recording the exact version and source of every package.\nActivation Script (renv/activate.R): Automatically loads the project environment when you open the project."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#the-workflow",
-    "href": "classwork/07-tools-2.html#the-workflow",
-    "title": "A Menagerie Of Tools",
-    "section": "The Workflow",
-    "text": "The Workflow\n\nInitialize: renv::init() (do this once)\nWork: install.packages() and get your code working\nSnapshot: renv::snapshot(), (each time you finish installing packages and get your code working)\nRestore: renv::restore(), (any time you download the project)"
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#initialize",
-    "href": "classwork/07-tools-2.html#initialize",
-    "title": "A Menagerie Of Tools",
-    "section": "0. Initialize",
-    "text": "0. Initialize\n\nRun renv::init() to start using renv in a project.\nThis:\n\nSets up the project library.\nGenerates a lockfile (renv.lock) with currently installed packages.\nCreates an .Rprofile to activate renv on startup.\n\nRestart R to ensure the environment is active."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#work",
-    "href": "classwork/07-tools-2.html#work",
-    "title": "A Menagerie Of Tools",
-    "section": "1. Work",
-    "text": "1. Work\n\nInstall packages as usual:\n\ninstall.packages(\"dplyr\")\ninstall.packages(\"ggplot2\")\n\nThese go into your project library, not your global library.\nOther projects are unaffected!"
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#snapshot",
-    "href": "classwork/07-tools-2.html#snapshot",
-    "title": "A Menagerie Of Tools",
-    "section": "2. Snapshot",
-    "text": "2. Snapshot\n\nWhen your code works, save the state of your library:\n\nrenv::snapshot()\n\nThis updates renv.lock with the versions you are currently using.\nCommit renv.lock to Git!"
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#restore",
-    "href": "classwork/07-tools-2.html#restore",
-    "title": "A Menagerie Of Tools",
-    "section": "3. Restore",
-    "text": "3. Restore\n\nWhen you (or a collaborator) download the project:\n\nOpen the project (R will auto-activate renv).\nRun renv::restore().\n\nThis installs all packages exactly as specified in renv.lock."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#checking-status",
-    "href": "classwork/07-tools-2.html#checking-status",
-    "title": "A Menagerie Of Tools",
-    "section": "Checking Status",
-    "text": "Checking Status\n\nRun renv::status() to see if your library matches your lockfile.\nIt tells you if:\n\nYou installed packages but haven’t snapshotted them.\nYour lockfile has packages you haven’t installed yet."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#what-to-commit-to-git",
-    "href": "classwork/07-tools-2.html#what-to-commit-to-git",
-    "title": "A Menagerie Of Tools",
-    "section": "What to Commit to Git",
-    "text": "What to Commit to Git\n\nDo Commit:\n\nrenv.lock\n.Rprofile\nrenv/activate.R\nrenv/settings.json (if it exists)\n\nDo NOT Commit:\n\nrenv/library (these are the installed files, which are large and platform-specific)\nrenv/python (if using Python)\nrenv/staging"
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#summary",
-    "href": "classwork/07-tools-2.html#summary",
-    "title": "A Menagerie Of Tools",
-    "section": "Summary",
-    "text": "Summary\n\nUse renv for every serious project.\ninit() to start.\nsnapshot() to save.\nrestore() to load.\nEnjoy reproducible data science!"
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#practice-1",
-    "href": "classwork/07-tools-2.html#practice-1",
-    "title": "A Menagerie Of Tools",
-    "section": "Practice!",
-    "text": "Practice!\nIn your Individual Project repository:\n\nInitialize renv for the project.\nAdd the following lines to your .gitignore file to avoid committing the library:\n\n/renv/library/\n/renv/python/\n/renv/staging/\n\nPractice installing new packages, adding them to the lockfile, pushing them to github, and then pulling/restoring."
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#overview",
-    "href": "classwork/07-tools-2.html#overview",
-    "title": "A Menagerie Of Tools",
-    "section": "Overview",
-    "text": "Overview\n\nGithub Copilot\nGemini Code Assistant\nGemini CLI"
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#on-person-bs-computer",
-    "href": "classwork/07-tools-2.html#on-person-bs-computer",
-    "title": "A Menagerie Of Tools",
-    "section": "On Person B’s Computer",
-    "text": "On Person B’s Computer\nModify the plot above so it looks like this:"
-  },
-  {
-    "objectID": "classwork/07-tools-2.html#on-person-cs-computer",
-    "href": "classwork/07-tools-2.html#on-person-cs-computer",
-    "title": "A Menagerie Of Tools",
-    "section": "On Person C’s Computer",
-    "text": "On Person C’s Computer\nModify the plot above so it looks like this (Hint: look up ggMarginal from the ggExtra package):"
   }
 ]

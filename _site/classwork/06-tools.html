@@ -514,6 +514,37 @@ Dr.&nbsp;Eric Friedlander
 </ul>
 </section></section>
 <section>
+<section id="authentication" class="title-slide slide level1 center">
+<h1>Authentication</h1>
+
+</section>
+<section id="no-more-passwords" class="slide level2">
+<h2>No More Passwords</h2>
+<ul>
+<li>GitHub removed support for password authentication in 2021.</li>
+<li>You must use a <strong>Personal Access Token (PAT)</strong> or SSH keys to push code.</li>
+<li>If you try to use your password, you will get an authentication error.</li>
+</ul>
+</section>
+<section id="setting-up-a-pat-rpositron-users" class="slide level2 smaller">
+<h2>Setting up a PAT (R/Positron Users)</h2>
+<p>The easiest way to set this up is using R helper packages:</p>
+<ol type="1">
+<li>Install helpers: <code>install.packages(c("usethis", "gitcreds"))</code></li>
+<li>Create token: <code>usethis::create_github_token()</code>
+<ul>
+<li>This opens a browser.</li>
+<li>Click “Generate token”.</li>
+<li><strong>Copy the token</strong> (it starts with <code>ghp_</code>).</li>
+</ul></li>
+<li>Store credentials: <code>gitcreds::gitcreds_set()</code>
+<ul>
+<li>Paste your token when asked for a password.</li>
+</ul></li>
+</ol>
+<p><strong>That’s it!</strong> You only need to do this <strong>once per computer</strong>. Your credentials are stored system-wide and will work for all your projects.</p>
+</section></section>
+<section>
 <section id="getting-started" class="title-slide slide level1 center">
 <h1>Getting Started</h1>
 

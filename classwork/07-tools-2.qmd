@@ -404,10 +404,27 @@ In the repo you just created:
 2. (Everyone) Checkout your new branch. (Click `... -> Checkout to...`, then select the branch you just created)
 3. (Everyone) Modify the plot you just created! Make it your own and push to Github on the new branch.
 
-## Merging Your Changes
+## Merging Your Changes {.smaller}
 
 0. Vote on one person to go first. 
-1. Begin the merge process `... -> 
+1. Pull the latest changes from `main` to your branch and checkout `main`.
+2. `... -> Branch -> Merge`. This will initiate the merge process. You now need to resolve any conflicts that arise.
+
+```{r}
+#| eval: false
+<<<<<<< HEAD
+    This is what is in your main branch
+=======
+    This is what is in the branch your mergeing
+>>>>>>> feature-ca
+```
+
+You need to clean this up so it look exactly what you it should look like. Then save the file. Positron provides some really nice merge tools that make this easy.
+
+3. Once there are no more merge conflicts, commit the merge.
+4. Push the updated `main` branch to GitHub.
+5. Move on to the next person!
+
 
 
 

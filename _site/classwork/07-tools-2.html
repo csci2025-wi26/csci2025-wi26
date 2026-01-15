@@ -28,6 +28,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #97947a;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #97947a;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2; background-color: #2b2b2b; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #dcc6e0; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #ffd700; } /* Attribute */
+    code span.bn { color: #dcc6e0; } /* BaseN */
+    code span.bu { color: #f5ab35; } /* BuiltIn */
+    code span.cf { color: #ffa07a; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffa07a; } /* Constant */
+    code span.co { color: #d4d0ab; } /* Comment */
+    code span.cv { color: #d4d0ab; font-style: italic; } /* CommentVar */
+    code span.do { color: #d4d0ab; font-style: italic; } /* Documentation */
+    code span.dt { color: #dcc6e0; } /* DataType */
+    code span.dv { color: #dcc6e0; } /* DecVal */
+    code span.er { color: #dcc6e0; } /* Error */
+    code span.ex { color: #ffd700; } /* Extension */
+    code span.fl { color: #f5ab35; } /* Float */
+    code span.fu { color: #ffd700; } /* Function */
+    code span.im { color: #f8f8f2; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; } /* Keyword */
+    code span.op { color: #00e0e0; } /* Operator */
+    code span.ot { color: #ffa07a; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.sc { color: #00e0e0; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #f5ab35; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-7f6bfc7265f42cd5b316c1c039b6211a.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -592,12 +657,30 @@ Dr.&nbsp;Eric Friedlander
 <p>In the repo you just created:</p>
 <ol start="0" type="1">
 <li>Ignore PRs for now, just practice branching and merging directly to main.</li>
-<li>(Everyone) Create a new branch for your work.</li>
-<li>(Everyone) Checkout your new branch.</li>
-<li>(Everyone) Create a new plot in your quarto file. Don’t edit any of the existing code.</li>
-<li>(A then B then C) Merge your changes into the main branch and push to GitHub.</li>
-<li>(Everyone) Pull the changes. Check them out to a new branch and change one of your partners plots! Don’t simply add to it, make sure you delete somethings too…</li>
-<li>(A then B then C) Merge yopur changes into the main branch and push to GitHub.</li>
+<li>(Everyone) Create a new branch for your work. (Click <code>... -&gt; Branch -&gt; Create Branch...</code>, then give the it a name, and push it to GitHub)</li>
+<li>(Everyone) Checkout your new branch. (Click <code>... -&gt; Checkout to...</code>, then select the branch you just created)</li>
+<li>(Everyone) Modify the plot you just created! Make it your own and push to Github on the new branch.</li>
+</ol>
+</section>
+<section id="merging-your-changes" class="slide level2 smaller">
+<h2>Merging Your Changes</h2>
+<ol start="0" type="1">
+<li>Vote on one person to go first.</li>
+<li>Pull the latest changes from <code>main</code> to your branch and checkout <code>main</code>.</li>
+<li><code>... -&gt; Branch -&gt; Merge</code>. This will initiate the merge process. You now need to resolve any conflicts that arise.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="sc">&lt;</span><span class="er">&lt;&lt;&lt;&lt;&lt;&lt;</span> HEAD</span>
+<span id="cb2-2"><a></a>    This is what is <span class="cf">in</span> your main branch</span>
+<span id="cb2-3"><a></a><span class="sc">==</span><span class="er">=====</span></span>
+<span id="cb2-4"><a></a>    This is what is <span class="cf">in</span> the branch your mergeing</span>
+<span id="cb2-5"><a></a><span class="sc">&gt;</span><span class="er">&gt;&gt;&gt;&gt;&gt;&gt;</span> feature<span class="sc">-</span>ca</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You need to clean this up so it look exactly what you it should look like. Then save the file. Positron provides some really nice merge tools that make this easy.</p>
+<ol start="3" type="1">
+<li>Once there are no more merge conflicts, commit the merge.</li>
+<li>Push the updated <code>main</code> branch to GitHub.</li>
+<li>Move on to the next person!</li>
 </ol>
 </section></section>
 <section>
