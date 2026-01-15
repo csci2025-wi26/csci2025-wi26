@@ -12,6 +12,8 @@ title: "Useful links"
 |                            | 🔗 [Recitation Leader Gem](https://tinyurl.com/rec-leader)                |
 +----------------------------+---------------------------------------------------------------------------+
 | Textbooks                  | 🔗 [R for Data Science](https://r4ds.hadley.nz/)                          |
+|                            |                                                                           |
+|                            | 🔗 [Mastering Shiny](https://mastering-shiny.org/)                        |
 +----------------------------+---------------------------------------------------------------------------+
 | Package documentation      | 🔗 ggplot2: [ggplot2.tidyverse.org](https://ggplot2.tidyverse.org/)       |
 |                            |                                                                           |
