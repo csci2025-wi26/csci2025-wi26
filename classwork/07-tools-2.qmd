@@ -406,7 +406,7 @@ In the repo you just created:
 
 ## Merging Your Changes
 
-0. Person A person to go first. 
+0. Vote on one person to go first. 
 1. Begin the merge process `... -> 
 
 
