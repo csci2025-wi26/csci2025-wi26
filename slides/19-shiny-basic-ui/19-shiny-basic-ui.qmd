@@ -25,6 +25,8 @@ subtitle: Lecture 19
 -   **`label`**: Human-readable label for the control.
 -   **`value`**: (Optional) Default value.
 
+## Example
+
 ```r
 sliderInput(
   inputId = "min", 
@@ -42,6 +44,8 @@ sliderInput(
 -   **`passwordInput()`**: Text box with masked characters.
 -   **`textAreaInput()`**: Multi-line text box.
 
+## Example
+
 ```r
 ui <- fluidPage(
   textInput("name", "What's your name?"),
@@ -54,6 +58,8 @@ ui <- fluidPage(
 
 -   **`numericInput()`**: Text box allowing only numbers.
 -   **`sliderInput()`**: Slider for selecting a single value or a range.
+
+## Example
 
 ```r
 ui <- fluidPage(
@@ -69,6 +75,8 @@ ui <- fluidPage(
 -   **`dateRangeInput()`**: Select a range of dates.
 -   Dates are returned as standard R `Date` objects.
 
+## Example
+
 ```r
 ui <- fluidPage(
   dateInput("dob", "When were you born?"),
@@ -82,6 +90,8 @@ ui <- fluidPage(
 -   **`selectInput()`**: Dropdown menu (single or multiple selection).
 -   **`radioButtons()`**: Radio buttons (single selection).
 -   **`checkboxGroupInput()`**: Checkboxes (multiple selection).
+
+## Example
 
 ```r
 animals <- c("dog", "cat", "mouse", "bird", "other", "I hate animals")
@@ -114,6 +124,8 @@ ui <- fluidPage(
 -   **`verbatimTextOutput()`**: pairs with **`renderPrint()`**.
     -   Prints the result as if it were in the R console.
 
+## Example
+
 ```r
 ui <- fluidPage(
   textOutput("text"),
@@ -134,6 +146,8 @@ server <- function(input, output, session) {
     -   Interactive table (pagination, search, sorting).
     -   From the `DT` package (often used instead of `shiny::dataTableOutput`).
 
+## Example
+
 ```r
 ui <- fluidPage(
   tableOutput("static"),
@@ -150,6 +164,8 @@ server <- function(input, output, session) {
 -   **`plotOutput()`**: pairs with **`renderPlot()`**.
     -   Displays any R graphic (base, ggplot2).
 -   **Resolution**: `res = 96` in `renderPlot()` is a good default.
+
+## Example
 
 ```r
 ui <- fluidPage(

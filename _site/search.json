@@ -160,35 +160,35 @@
     "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#common-structure",
     "title": "Basic UI",
     "section": "Common Structure",
-    "text": "Common Structure\n\nAll input functions start with inputId and label.\ninputId: Unique identifier for accessing the input in the server (e.g., input$name).\n\nMust be a simple string (letters, numbers, underscores).\nMust be unique within the app.\n\nlabel: Human-readable label for the control.\nvalue: (Optional) Default value.\n\nsliderInput(\n  inputId = \"min\", \n  label = \"Limit (minimum)\", \n  value = 50, \n  min = 0, \n  max = 100\n)"
+    "text": "Common Structure\n\nAll input functions start with inputId and label.\ninputId: Unique identifier for accessing the input in the server (e.g., input$name).\n\nMust be a simple string (letters, numbers, underscores).\nMust be unique within the app.\n\nlabel: Human-readable label for the control.\nvalue: (Optional) Default value."
   },
   {
     "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#free-text-inputs",
     "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#free-text-inputs",
     "title": "Basic UI",
     "section": "Free Text Inputs",
-    "text": "Free Text Inputs\n\nCollect small amounts of text.\ntextInput(): Simple text box.\npasswordInput(): Text box with masked characters.\ntextAreaInput(): Multi-line text box.\n\nui &lt;- fluidPage(\n  textInput(\"name\", \"What's your name?\"),\n  passwordInput(\"password\", \"What's your password?\"),\n  textAreaInput(\"story\", \"Tell me about yourself\", rows = 3)\n)"
+    "text": "Free Text Inputs\n\nCollect small amounts of text.\ntextInput(): Simple text box.\npasswordInput(): Text box with masked characters.\ntextAreaInput(): Multi-line text box."
   },
   {
     "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#numeric-inputs",
     "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#numeric-inputs",
     "title": "Basic UI",
     "section": "Numeric Inputs",
-    "text": "Numeric Inputs\n\nnumericInput(): Text box allowing only numbers.\nsliderInput(): Slider for selecting a single value or a range.\n\nui &lt;- fluidPage(\n  numericInput(\"num\", \"Number one\", value = 0, min = 0, max = 100),\n  sliderInput(\"num2\", \"Number two\", value = 50, min = 0, max = 100),\n  sliderInput(\"rng\", \"Range\", value = c(10, 20), min = 0, max = 100)\n)"
+    "text": "Numeric Inputs\n\nnumericInput(): Text box allowing only numbers.\nsliderInput(): Slider for selecting a single value or a range."
   },
   {
     "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#date-inputs",
     "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#date-inputs",
     "title": "Basic UI",
     "section": "Date Inputs",
-    "text": "Date Inputs\n\ndateInput(): Select a single date.\ndateRangeInput(): Select a range of dates.\nDates are returned as standard R Date objects.\n\nui &lt;- fluidPage(\n  dateInput(\"dob\", \"When were you born?\"),\n  dateRangeInput(\"holiday\", \"When do you want to go on vacation?\")\n)"
+    "text": "Date Inputs\n\ndateInput(): Select a single date.\ndateRangeInput(): Select a range of dates.\nDates are returned as standard R Date objects."
   },
   {
     "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#limited-choices",
     "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#limited-choices",
     "title": "Basic UI",
     "section": "Limited Choices",
-    "text": "Limited Choices\n\nLet users choose from a pre-defined set of options.\nselectInput(): Dropdown menu (single or multiple selection).\nradioButtons(): Radio buttons (single selection).\ncheckboxGroupInput(): Checkboxes (multiple selection).\n\nanimals &lt;- c(\"dog\", \"cat\", \"mouse\", \"bird\", \"other\", \"I hate animals\")\nui &lt;- fluidPage(\n  selectInput(\"state\", \"What's your favourite state?\", state.name),\n  radioButtons(\"animal\", \"What's your favourite animal?\", animals)\n)"
+    "text": "Limited Choices\n\nLet users choose from a pre-defined set of options.\nselectInput(): Dropdown menu (single or multiple selection).\nradioButtons(): Radio buttons (single selection).\ncheckboxGroupInput(): Checkboxes (multiple selection)."
   },
   {
     "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#other-inputs",
@@ -209,21 +209,21 @@
     "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#text-outputs",
     "title": "Basic UI",
     "section": "Text Outputs",
-    "text": "Text Outputs\n\ntextOutput(): pairs with renderText().\n\nCombines result into a single string.\n\nverbatimTextOutput(): pairs with renderPrint().\n\nPrints the result as if it were in the R console.\n\n\nui &lt;- fluidPage(\n  textOutput(\"text\"),\n  verbatimTextOutput(\"code\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$text &lt;- renderText(\"Hello Friend!\")\n  output$code &lt;- renderPrint(summary(1:10))\n}"
+    "text": "Text Outputs\n\ntextOutput(): pairs with renderText().\n\nCombines result into a single string.\n\nverbatimTextOutput(): pairs with renderPrint().\n\nPrints the result as if it were in the R console."
   },
   {
     "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#table-outputs",
     "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#table-outputs",
     "title": "Basic UI",
     "section": "Table Outputs",
-    "text": "Table Outputs\n\ntableOutput(): pairs with renderTable().\n\nStatic table (renders all data at once).\n\ndataTableOutput(): pairs with renderDataTable().\n\nInteractive table (pagination, search, sorting).\nFrom the DT package (often used instead of shiny::dataTableOutput).\n\n\nui &lt;- fluidPage(\n  tableOutput(\"static\"),\n  dataTableOutput(\"dynamic\")\n)\nserver &lt;- function(input, output, session) {\n  output$static &lt;- renderTable(head(mtcars))\n  output$dynamic &lt;- renderDataTable(mtcars, options = list(pageLength = 5))\n}"
+    "text": "Table Outputs\n\ntableOutput(): pairs with renderTable().\n\nStatic table (renders all data at once).\n\ndataTableOutput(): pairs with renderDataTable().\n\nInteractive table (pagination, search, sorting).\nFrom the DT package (often used instead of shiny::dataTableOutput)."
   },
   {
     "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#plot-outputs",
     "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#plot-outputs",
     "title": "Basic UI",
     "section": "Plot Outputs",
-    "text": "Plot Outputs\n\nplotOutput(): pairs with renderPlot().\n\nDisplays any R graphic (base, ggplot2).\n\nResolution: res = 96 in renderPlot() is a good default.\n\nui &lt;- fluidPage(\n  plotOutput(\"plot\", width = \"400px\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$plot &lt;- renderPlot(plot(1:5), res = 96)\n}"
+    "text": "Plot Outputs\n\nplotOutput(): pairs with renderPlot().\n\nDisplays any R graphic (base, ggplot2).\n\nResolution: res = 96 in renderPlot() is a good default."
   },
   {
     "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#practice",
@@ -4040,5 +4040,61 @@
     "title": "GEMINI.md: Project Overview and Contributor Guide",
     "section": "",
     "text": "To work on this project, you will need to have Quarto installed. You can download it from the Quarto website.\n\n\nTo render and preview the website locally, run the following command in your terminal from the project’s root directory:\nquarto preview\nThis will start a local web server and open the site in your browser. The site will automatically refresh when you save changes to any of the source files.\n\n\n\nTo render the entire website without previewing it, use the following command:\nquarto render\nThis will generate all the static files and place them in the _site/ directory. This is typically done for deployment."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nsliderInput(\n  inputId = \"min\", \n  label = \"Limit (minimum)\", \n  value = 50, \n  min = 0, \n  max = 100\n)"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-1",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-1",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  textInput(\"name\", \"What's your name?\"),\n  passwordInput(\"password\", \"What's your password?\"),\n  textAreaInput(\"story\", \"Tell me about yourself\", rows = 3)\n)"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-2",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-2",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  numericInput(\"num\", \"Number one\", value = 0, min = 0, max = 100),\n  sliderInput(\"num2\", \"Number two\", value = 50, min = 0, max = 100),\n  sliderInput(\"rng\", \"Range\", value = c(10, 20), min = 0, max = 100)\n)"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-3",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-3",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  dateInput(\"dob\", \"When were you born?\"),\n  dateRangeInput(\"holiday\", \"When do you want to go on vacation?\")\n)"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-4",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-4",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nanimals &lt;- c(\"dog\", \"cat\", \"mouse\", \"bird\", \"other\", \"I hate animals\")\nui &lt;- fluidPage(\n  selectInput(\"state\", \"What's your favourite state?\", state.name),\n  radioButtons(\"animal\", \"What's your favourite animal?\", animals)\n)"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-5",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-5",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  textOutput(\"text\"),\n  verbatimTextOutput(\"code\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$text &lt;- renderText(\"Hello Friend!\")\n  output$code &lt;- renderPrint(summary(1:10))\n}"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-6",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-6",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  tableOutput(\"static\"),\n  dataTableOutput(\"dynamic\")\n)\nserver &lt;- function(input, output, session) {\n  output$static &lt;- renderTable(head(mtcars))\n  output$dynamic &lt;- renderDataTable(mtcars, options = list(pageLength = 5))\n}"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-7",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-7",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  plotOutput(\"plot\", width = \"400px\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$plot &lt;- renderPlot(plot(1:5), res = 96)\n}"
   }
 ]

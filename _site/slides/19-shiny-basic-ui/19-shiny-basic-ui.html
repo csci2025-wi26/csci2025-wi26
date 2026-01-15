@@ -244,6 +244,9 @@ Dr.&nbsp;Eric Friedlander
 <li><strong><code>label</code></strong>: Human-readable label for the control.</li>
 <li><strong><code>value</code></strong>: (Optional) Default value.</li>
 </ul>
+</section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">sliderInput</span>(</span>
 <span id="cb1-2"><a></a>  <span class="at">inputId =</span> <span class="st">"min"</span>, </span>
 <span id="cb1-3"><a></a>  <span class="at">label =</span> <span class="st">"Limit (minimum)"</span>, </span>
@@ -260,6 +263,9 @@ Dr.&nbsp;Eric Friedlander
 <li><strong><code>passwordInput()</code></strong>: Text box with masked characters.</li>
 <li><strong><code>textAreaInput()</code></strong>: Multi-line text box.</li>
 </ul>
+</section>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb2-2"><a></a>  <span class="fu">textInput</span>(<span class="st">"name"</span>, <span class="st">"What's your name?"</span>),</span>
 <span id="cb2-3"><a></a>  <span class="fu">passwordInput</span>(<span class="st">"password"</span>, <span class="st">"What's your password?"</span>),</span>
@@ -272,6 +278,9 @@ Dr.&nbsp;Eric Friedlander
 <li><strong><code>numericInput()</code></strong>: Text box allowing only numbers.</li>
 <li><strong><code>sliderInput()</code></strong>: Slider for selecting a single value or a range.</li>
 </ul>
+</section>
+<section id="example-2" class="slide level2">
+<h2>Example</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb3-2"><a></a>  <span class="fu">numericInput</span>(<span class="st">"num"</span>, <span class="st">"Number one"</span>, <span class="at">value =</span> <span class="dv">0</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>),</span>
 <span id="cb3-3"><a></a>  <span class="fu">sliderInput</span>(<span class="st">"num2"</span>, <span class="st">"Number two"</span>, <span class="at">value =</span> <span class="dv">50</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>),</span>
@@ -285,6 +294,9 @@ Dr.&nbsp;Eric Friedlander
 <li><strong><code>dateRangeInput()</code></strong>: Select a range of dates.</li>
 <li>Dates are returned as standard R <code>Date</code> objects.</li>
 </ul>
+</section>
+<section id="example-3" class="slide level2">
+<h2>Example</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb4-2"><a></a>  <span class="fu">dateInput</span>(<span class="st">"dob"</span>, <span class="st">"When were you born?"</span>),</span>
 <span id="cb4-3"><a></a>  <span class="fu">dateRangeInput</span>(<span class="st">"holiday"</span>, <span class="st">"When do you want to go on vacation?"</span>)</span>
@@ -298,6 +310,9 @@ Dr.&nbsp;Eric Friedlander
 <li><strong><code>radioButtons()</code></strong>: Radio buttons (single selection).</li>
 <li><strong><code>checkboxGroupInput()</code></strong>: Checkboxes (multiple selection).</li>
 </ul>
+</section>
+<section id="example-4" class="slide level2">
+<h2>Example</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dog"</span>, <span class="st">"cat"</span>, <span class="st">"mouse"</span>, <span class="st">"bird"</span>, <span class="st">"other"</span>, <span class="st">"I hate animals"</span>)</span>
 <span id="cb5-2"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb5-3"><a></a>  <span class="fu">selectInput</span>(<span class="st">"state"</span>, <span class="st">"What's your favourite state?"</span>, state.name),</span>
@@ -343,6 +358,9 @@ Dr.&nbsp;Eric Friedlander
 <li>Prints the result as if it were in the R console.</li>
 </ul></li>
 </ul>
+</section>
+<section id="example-5" class="slide level2">
+<h2>Example</h2>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb6-2"><a></a>  <span class="fu">textOutput</span>(<span class="st">"text"</span>),</span>
 <span id="cb6-3"><a></a>  <span class="fu">verbatimTextOutput</span>(<span class="st">"code"</span>)</span>
@@ -366,6 +384,9 @@ Dr.&nbsp;Eric Friedlander
 <li>From the <code>DT</code> package (often used instead of <code>shiny::dataTableOutput</code>).</li>
 </ul></li>
 </ul>
+</section>
+<section id="example-6" class="slide level2">
+<h2>Example</h2>
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb7-2"><a></a>  <span class="fu">tableOutput</span>(<span class="st">"static"</span>),</span>
 <span id="cb7-3"><a></a>  <span class="fu">dataTableOutput</span>(<span class="st">"dynamic"</span>)</span>
@@ -384,6 +405,9 @@ Dr.&nbsp;Eric Friedlander
 </ul></li>
 <li><strong>Resolution</strong>: <code>res = 96</code> in <code>renderPlot()</code> is a good default.</li>
 </ul>
+</section>
+<section id="example-7" class="slide level2">
+<h2>Example</h2>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb8-2"><a></a>  <span class="fu">plotOutput</span>(<span class="st">"plot"</span>, <span class="at">width =</span> <span class="st">"400px"</span>)</span>
 <span id="cb8-3"><a></a>)</span>
