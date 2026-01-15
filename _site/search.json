@@ -163,11 +163,25 @@
     "text": "Common Structure\n\nAll input functions start with inputId and label.\ninputId: Unique identifier for accessing the input in the server (e.g., input$name).\n\nMust be a simple string (letters, numbers, underscores).\nMust be unique within the app.\n\nlabel: Human-readable label for the control.\nvalue: (Optional) Default value."
   },
   {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nsliderInput(\n  inputId = \"min\", \n  label = \"Limit (minimum)\", \n  value = 50, \n  min = 0, \n  max = 100\n)"
+  },
+  {
     "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#free-text-inputs",
     "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#free-text-inputs",
     "title": "Basic UI",
     "section": "Free Text Inputs",
     "text": "Free Text Inputs\n\nCollect small amounts of text.\ntextInput(): Simple text box.\npasswordInput(): Text box with masked characters.\ntextAreaInput(): Multi-line text box."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-1",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-1",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  textInput(\"name\", \"What's your name?\"),\n  passwordInput(\"password\", \"What's your password?\"),\n  textAreaInput(\"story\", \"Tell me about yourself\", rows = 3)\n)"
   },
   {
     "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#numeric-inputs",
@@ -177,6 +191,13 @@
     "text": "Numeric Inputs\n\nnumericInput(): Text box allowing only numbers.\nsliderInput(): Slider for selecting a single value or a range."
   },
   {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-2",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-2",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  numericInput(\"num\", \"Number one\", value = 0, min = 0, max = 100),\n  sliderInput(\"num2\", \"Number two\", value = 50, min = 0, max = 100),\n  sliderInput(\"rng\", \"Range\", value = c(10, 20), min = 0, max = 100)\n)"
+  },
+  {
     "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#date-inputs",
     "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#date-inputs",
     "title": "Basic UI",
@@ -184,11 +205,25 @@
     "text": "Date Inputs\n\ndateInput(): Select a single date.\ndateRangeInput(): Select a range of dates.\nDates are returned as standard R Date objects."
   },
   {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-3",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-3",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  dateInput(\"dob\", \"When were you born?\"),\n  dateRangeInput(\"holiday\", \"When do you want to go on vacation?\")\n)"
+  },
+  {
     "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#limited-choices",
     "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#limited-choices",
     "title": "Basic UI",
     "section": "Limited Choices",
     "text": "Limited Choices\n\nLet users choose from a pre-defined set of options.\nselectInput(): Dropdown menu (single or multiple selection).\nradioButtons(): Radio buttons (single selection).\ncheckboxGroupInput(): Checkboxes (multiple selection)."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-4",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-4",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nanimals &lt;- c(\"dog\", \"cat\", \"mouse\", \"bird\", \"other\", \"I hate animals\")\nui &lt;- fluidPage(\n  selectInput(\"state\", \"What's your favourite state?\", state.name),\n  radioButtons(\"animal\", \"What's your favourite animal?\", animals)\n)"
   },
   {
     "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#other-inputs",
@@ -212,6 +247,13 @@
     "text": "Text Outputs\n\ntextOutput(): pairs with renderText().\n\nCombines result into a single string.\n\nverbatimTextOutput(): pairs with renderPrint().\n\nPrints the result as if it were in the R console."
   },
   {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-5",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-5",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  textOutput(\"text\"),\n  verbatimTextOutput(\"code\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$text &lt;- renderText(\"Hello Friend!\")\n  output$code &lt;- renderPrint(summary(1:10))\n}"
+  },
+  {
     "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#table-outputs",
     "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#table-outputs",
     "title": "Basic UI",
@@ -219,11 +261,25 @@
     "text": "Table Outputs\n\ntableOutput(): pairs with renderTable().\n\nStatic table (renders all data at once).\n\ndataTableOutput(): pairs with renderDataTable().\n\nInteractive table (pagination, search, sorting).\nFrom the DT package (often used instead of shiny::dataTableOutput)."
   },
   {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-6",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-6",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  tableOutput(\"static\"),\n  dataTableOutput(\"dynamic\")\n)\nserver &lt;- function(input, output, session) {\n  output$static &lt;- renderTable(head(mtcars))\n  output$dynamic &lt;- renderDataTable(mtcars, options = list(pageLength = 5))\n}"
+  },
+  {
     "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#plot-outputs",
     "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#plot-outputs",
     "title": "Basic UI",
     "section": "Plot Outputs",
     "text": "Plot Outputs\n\nplotOutput(): pairs with renderPlot().\n\nDisplays any R graphic (base, ggplot2).\n\nResolution: res = 96 in renderPlot() is a good default."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-7",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-7",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  plotOutput(\"plot\", width = \"400px\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$plot &lt;- renderPlot(plot(1:5), res = 96)\n}"
   },
   {
     "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#practice",
@@ -1056,7 +1112,7 @@
     "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#the-reactive-graph",
     "title": "Basic Reactivity",
     "section": "The Reactive Graph",
-    "text": "The Reactive Graph\n\nDeclarative: You specify what to do, not when to do it.\nLazy: Code only runs when needed (when outputs are visible).\nDependencies: Inputs \\(\\rightarrow\\) Computations \\(\\rightarrow\\) Outputs.\n\nWhen an input changes, everything that depends on it invalidates.\nOutputs re-calculate automatically."
+    "text": "The Reactive Graph\n\nDeclarative: You specify what to do, not when to do it.\nLazy: Code only runs when needed (when outputs are visible). When something upstream has changed we say that it invalidates.\nDependencies: Inputs \\(\\rightarrow\\) Computations \\(\\rightarrow\\) Outputs.\n\nWhen an input changes, everything that depends on it invalidates.\nOutputs re-calculate automatically."
   },
   {
     "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-expressions",
@@ -1066,18 +1122,25 @@
     "text": "Reactive Expressions\n\nProblem: Duplicated code re-running multiple times.\nSolution: reactive().\n\nSplits logic into reusable chunks.\nCached (Lazy): Only re-runs if inputs change; otherwise returns saved value.\nCalled like a function: my_reactive().\n\n\nserver &lt;- function(input, output, session) {\n  # Calculate once\n  x_sq &lt;- reactive({\n    input$x ^ 2\n  })\n  \n  # Use twice\n  output$txt &lt;- renderText(x_sq())\n  output$plot &lt;- renderPlot(plot(x_sq()))\n}"
   },
   {
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#timing",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#timing",
+    "title": "Basic Reactivity",
+    "section": "Timing",
+    "text": "Timing\n\nYou can use reactiveTimer to create time-based invalidation.\nYou can use eventReactive to create reactive expressions that only update in response to specific events (e.g., button clicks)."
+  },
+  {
     "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#observers",
     "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#observers",
     "title": "Basic Reactivity",
     "section": "Observers",
-    "text": "Observers\n\nOutputs: Update the browser HTML.\nObservers: Perform side effects (e.g., printing, saving, API calls).\n\nUse observeEvent().\nTriggered by an event (e.g., button click).\ndoesn’t return a value.\n\n\nobserveEvent(input$save, {\n  message(\"Saving data...\")\n  write.csv(data(), \"data.csv\")\n})"
+    "text": "Observers\n\nOutputs: Update the browser HTML.\nObservers: Perform side effects (e.g., printing, saving, API calls).\n\nUse observeEvent().\nTriggered by an event (e.g., button click).\ndoesn’t return a value.\n\n\nobserveEvent(input$save, {\n  write.csv(data(), \"data.csv\")\n})"
   },
   {
-    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-graph-shapes",
-    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-graph-shapes",
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-graph",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-graph",
     "title": "Basic Reactivity",
-    "section": "Reactive Graph Shapes",
-    "text": "Reactive Graph Shapes\n\nInput: Source of truth (rounded rectangle).\nReactive Expression: Calculation (angled sides).\n\nDepends on inputs/reactives.\nFed into reactives/outputs.\n\nOutput/Observer: Endpoint (circle/oval).\n\nSide effects (updating display or world)."
+    "section": "Reactive Graph",
+    "text": "Reactive Graph\n\nLet’s look at some examples in the text."
   },
   {
     "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#mechanics",
@@ -1085,6 +1148,13 @@
     "title": "Basic Reactivity",
     "section": "Mechanics",
     "text": "Mechanics\n\nServer: function(input, output, session).\nInput: Read-only, use in reactive context.\nOutput: Write-only (via render*).\nReactive Expressions: reactive({}) for calculations (cached).\nObservers: observeEvent() for side effects.\nLaziness: Nothing happens unless an output needs it."
+  },
+  {
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#do-next",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#do-next",
+    "title": "Basic Reactivity",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 3: Reactivity from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 21!"
   },
   {
     "objectID": "slides/05-data-tidying/05-data-tidying.html#this-lesson",
@@ -3993,7 +4063,7 @@
     "href": "index.html",
     "title": "CSCI-2025: Data Manipulation and Visualization",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\nvideo-15\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\nslides-16\nvideo-16\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins\n\nslides-17\nvideo-17\n\n\n3\nTue, Jan 20\nLec\nYour first Shiny app\n📚 ms - first-app\n\nslides-18\nvideo-18\n\n\n3\nTue, Jan 20\nLec\nBasic UI\n📚 ms - basic-ui\n\nslides-19\n\n\n\n3\nTue, Jan 20\nLec\nBasic reactivity\n📚 ms - basic-reactivity",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\nvideo-15\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\nslides-16\nvideo-16\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins\n\nslides-17\nvideo-17\n\n\n3\nTue, Jan 20\nLec\nYour first Shiny app\n📚 ms - first-app\n\nslides-18\nvideo-18\n\n\n3\nTue, Jan 20\nLec\nBasic UI\n📚 ms - basic-ui\n\nslides-19\nvideo-19\n\n\n3\nTue, Jan 20\nLec\nBasic reactivity\n📚 ms - basic-reactivity\n\nslides-20",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -4040,61 +4110,5 @@
     "title": "GEMINI.md: Project Overview and Contributor Guide",
     "section": "",
     "text": "To work on this project, you will need to have Quarto installed. You can download it from the Quarto website.\n\n\nTo render and preview the website locally, run the following command in your terminal from the project’s root directory:\nquarto preview\nThis will start a local web server and open the site in your browser. The site will automatically refresh when you save changes to any of the source files.\n\n\n\nTo render the entire website without previewing it, use the following command:\nquarto render\nThis will generate all the static files and place them in the _site/ directory. This is typically done for deployment."
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example",
-    "title": "Basic UI",
-    "section": "Example",
-    "text": "Example\nsliderInput(\n  inputId = \"min\", \n  label = \"Limit (minimum)\", \n  value = 50, \n  min = 0, \n  max = 100\n)"
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-1",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-1",
-    "title": "Basic UI",
-    "section": "Example",
-    "text": "Example\nui &lt;- fluidPage(\n  textInput(\"name\", \"What's your name?\"),\n  passwordInput(\"password\", \"What's your password?\"),\n  textAreaInput(\"story\", \"Tell me about yourself\", rows = 3)\n)"
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-2",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-2",
-    "title": "Basic UI",
-    "section": "Example",
-    "text": "Example\nui &lt;- fluidPage(\n  numericInput(\"num\", \"Number one\", value = 0, min = 0, max = 100),\n  sliderInput(\"num2\", \"Number two\", value = 50, min = 0, max = 100),\n  sliderInput(\"rng\", \"Range\", value = c(10, 20), min = 0, max = 100)\n)"
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-3",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-3",
-    "title": "Basic UI",
-    "section": "Example",
-    "text": "Example\nui &lt;- fluidPage(\n  dateInput(\"dob\", \"When were you born?\"),\n  dateRangeInput(\"holiday\", \"When do you want to go on vacation?\")\n)"
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-4",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-4",
-    "title": "Basic UI",
-    "section": "Example",
-    "text": "Example\nanimals &lt;- c(\"dog\", \"cat\", \"mouse\", \"bird\", \"other\", \"I hate animals\")\nui &lt;- fluidPage(\n  selectInput(\"state\", \"What's your favourite state?\", state.name),\n  radioButtons(\"animal\", \"What's your favourite animal?\", animals)\n)"
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-5",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-5",
-    "title": "Basic UI",
-    "section": "Example",
-    "text": "Example\nui &lt;- fluidPage(\n  textOutput(\"text\"),\n  verbatimTextOutput(\"code\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$text &lt;- renderText(\"Hello Friend!\")\n  output$code &lt;- renderPrint(summary(1:10))\n}"
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-6",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-6",
-    "title": "Basic UI",
-    "section": "Example",
-    "text": "Example\nui &lt;- fluidPage(\n  tableOutput(\"static\"),\n  dataTableOutput(\"dynamic\")\n)\nserver &lt;- function(input, output, session) {\n  output$static &lt;- renderTable(head(mtcars))\n  output$dynamic &lt;- renderDataTable(mtcars, options = list(pageLength = 5))\n}"
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-7",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-7",
-    "title": "Basic UI",
-    "section": "Example",
-    "text": "Example\nui &lt;- fluidPage(\n  plotOutput(\"plot\", width = \"400px\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$plot &lt;- renderPlot(plot(1:5), res = 96)\n}"
   }
 ]

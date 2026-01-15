@@ -267,10 +267,10 @@ Dr.&nbsp;Eric Friedlander
 <h2>The Reactive Graph</h2>
 <ul>
 <li><strong>Declarative</strong>: You specify <em>what</em> to do, not <em>when</em> to do it.</li>
-<li><strong>Lazy</strong>: Code only runs when needed (when outputs are visible).</li>
+<li><strong>Lazy</strong>: Code only runs when needed (when outputs are visible). When something upstream has changed we say that it <strong>invalidates</strong>.</li>
 <li><strong>Dependencies</strong>: Inputs <span class="math inline">\(\rightarrow\)</span> Computations <span class="math inline">\(\rightarrow\)</span> Outputs.
 <ul>
-<li>When an input changes, everything that depends on it invalidates.</li>
+<li>When an input changes, everything that depends on it <strong>invalidates</strong>.</li>
 <li>Outputs re-calculate automatically.</li>
 </ul></li>
 </ul>
@@ -297,6 +297,13 @@ Dr.&nbsp;Eric Friedlander
 <span id="cb3-9"><a></a>  output<span class="sc">$</span>plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>(<span class="fu">plot</span>(<span class="fu">x_sq</span>()))</span>
 <span id="cb3-10"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="timing" class="slide level2">
+<h2>Timing</h2>
+<ul>
+<li>You can use <code>reactiveTimer</code> to create time-based invalidation.</li>
+<li>You can use <code>eventReactive</code> to create reactive expressions that only update in response to specific events (e.g., button clicks).</li>
+</ul>
+</section>
 <section id="observers" class="slide level2">
 <h2>Observers</h2>
 <ul>
@@ -309,23 +316,13 @@ Dr.&nbsp;Eric Friedlander
 </ul></li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">observeEvent</span>(input<span class="sc">$</span>save, {</span>
-<span id="cb4-2"><a></a>  <span class="fu">message</span>(<span class="st">"Saving data..."</span>)</span>
-<span id="cb4-3"><a></a>  <span class="fu">write.csv</span>(<span class="fu">data</span>(), <span class="st">"data.csv"</span>)</span>
-<span id="cb4-4"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a></a>  <span class="fu">write.csv</span>(<span class="fu">data</span>(), <span class="st">"data.csv"</span>)</span>
+<span id="cb4-3"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="reactive-graph-shapes" class="slide level2">
-<h2>Reactive Graph Shapes</h2>
+<section id="reactive-graph" class="slide level2">
+<h2>Reactive Graph</h2>
 <ul>
-<li><strong>Input</strong>: Source of truth (rounded rectangle).</li>
-<li><strong>Reactive Expression</strong>: Calculation (angled sides).
-<ul>
-<li>Depends on inputs/reactives.</li>
-<li>Fed into reactives/outputs.</li>
-</ul></li>
-<li><strong>Output/Observer</strong>: Endpoint (circle/oval).
-<ul>
-<li>Side effects (updating display or world).</li>
-</ul></li>
+<li>Let’s look at some examples in the text.</li>
 </ul>
 </section></section>
 <section>
@@ -343,6 +340,15 @@ Dr.&nbsp;Eric Friedlander
 <li><strong>Observers</strong>: <code>observeEvent()</code> for side effects.</li>
 <li><strong>Laziness</strong>: Nothing happens unless an output needs it.</li>
 </ul>
+</section>
+<section id="do-next" class="slide level2">
+<h2>Do Next</h2>
+<ol type="1">
+<li>Read <a href="https://mastering-shiny.org/basic-reactivity.html">Chapter 3: Reactivity</a> from Mastering Shiny.</li>
+<li>There’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.</li>
+<li>I reommend working through the Exercises in the textbook.</li>
+<li>Move on to Lecture 21!</li>
+</ol>
 
 
 </section></section>

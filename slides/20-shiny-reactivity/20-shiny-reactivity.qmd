@@ -48,9 +48,9 @@ renderText({ message(input$count) })
 ## The Reactive Graph
 
 -   **Declarative**: You specify *what* to do, not *when* to do it.
--   **Lazy**: Code only runs when needed (when outputs are visible).
+-   **Lazy**: Code only runs when needed (when outputs are visible). When something upstream has changed we say that it **invalidates**.
 -   **Dependencies**: Inputs $\rightarrow$ Computations $\rightarrow$ Outputs.
-    -   When an input changes, everything that depends on it invalidates.
+    -   When an input changes, everything that depends on it **invalidates**.
     -   Outputs re-calculate automatically.
 
 ## Reactive Expressions
@@ -74,6 +74,11 @@ server <- function(input, output, session) {
 }
 ```
 
+## Timing
+
+-   You can use `reactiveTimer` to create time-based invalidation.
+-   You can use `eventReactive` to create reactive expressions that only update in response to specific events (e.g., button clicks).
+
 ## Observers
 
 -   **Outputs**: Update the browser HTML.
@@ -84,19 +89,13 @@ server <- function(input, output, session) {
 
 ```r
 observeEvent(input$save, {
-  message("Saving data...")
   write.csv(data(), "data.csv")
 })
 ```
 
-## Reactive Graph Shapes
+## Reactive Graph
 
--   **Input**: Source of truth (rounded rectangle).
--   **Reactive Expression**: Calculation (angled sides).
-    -   Depends on inputs/reactives.
-    -   Fed into reactives/outputs.
--   **Output/Observer**: Endpoint (circle/oval).
-    -   Side effects (updating display or world).
+- Let's look at some examples in the text.
 
 # Summary
 
@@ -108,3 +107,11 @@ observeEvent(input$save, {
 -   **Reactive Expressions**: `reactive({})` for calculations (cached).
 -   **Observers**: `observeEvent()` for side effects.
 -   **Laziness**: Nothing happens unless an output needs it.
+
+
+## Do Next
+
+1. Read [Chapter 3: Reactivity](https://mastering-shiny.org/basic-reactivity.html) from Mastering Shiny.
+2. There's NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.
+3. I reommend working through the Exercises in the textbook.
+4. Move on to Lecture 21!
