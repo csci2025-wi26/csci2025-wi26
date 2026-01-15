@@ -34,6 +34,11 @@ library(shiny)
 
 -   The simplest way to create an app is a single file named `app.R`.
 -   It contains three main parts:
+  1.  **UI object**: The HTML webpage humans interact with.
+  2.  **Server function**: The logic that tells the app what to do.
+  3.  **`shinyApp` call**: Combines UI and server to run the app.
+
+## Example
 
 ```{r}
 #| eval: false
@@ -49,20 +54,13 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 ```
 
-1.  **UI object**: The HTML webpage humans interact with.
-2.  **Server function**: The logic that tells the app what to do.
-3.  **`shinyApp` call**: Combines UI and server to run the app.
-
 ## Running the App
 
 -   **In RStudio/Positron**:
     -   Click the **Run App** button (play icon) in the toolbar.
-    -   Keyboard Shortcut: `Cmd/Ctrl + Shift + Enter`.
--   **From Console**:
-    -   `shiny::runApp("path/to/app.R")`
 -   **Stopping**:
     -   Click the **Stop** sign in the console.
-    -   Press `Esc`.
+
 
 ## Adding UI Controls {.smaller}
 
@@ -136,7 +134,8 @@ dataset <- get(input$dataset, "package:datasets")
     -   Updates only when inputs change.
     -   Caches the result (lazy evaluation) - efficient!
 
-```r
+```{r}
+#| eval: false
 server <- function(input, output, session) {
   # Create a reactive expression
   dataset <- reactive({
@@ -166,3 +165,12 @@ server <- function(input, output, session) {
     -   `reactive()` calculates values and caches them.
     -   Outputs automatically "react" to input changes.
 -   **Next Steps**: Basic UI, Basic Reactivity (Chapters 2 & 3).
+
+## Do Next
+
+1. Read [Chapter 1: Your First Shiny App](https://mastering-shiny.org/basic-app.html) from Mastering Shiny.
+2. There's NO recitation Gem for this textbook. I recommend doing the following:
+  - Create your own NotebookLM for this text book. Upload the Chapters as we go along and the slides we use (don't forget to use press`e` before imputting the link to the slides).
+  - Use the NotebookLM as a tutor!
+  - You can also use the NotebookLM as context within your Gemini chats.
+3. Move on to Lecture 18!

@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.6.39">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
-  <title>CSCI 2025 – Joins</title>
+  <title>CSCI 2025 – Dynamic UI</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -194,8 +194,8 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Joins</h1>
-  <p class="subtitle">Lecture 17</p>
+  <h1 class="title">Dynamic UI</h1>
+  <p class="subtitle">Lecture 27</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -210,205 +210,129 @@ Dr.&nbsp;Eric Friedlander
 
 </section>
 <section>
-<section id="introduction" class="title-slide slide level1 center">
-<h1>Introduction</h1>
+<section id="updating-inputs" class="title-slide slide level1 center">
+<h1>Updating Inputs</h1>
 
 </section>
-<section id="combining-datasets" class="slide level2">
-<h2>Combining Datasets</h2>
+<section id="the-update-family" class="slide level2">
+<h2>The <code>update*</code> Family</h2>
 <ul>
-<li>Joins are used to combine data from different tables based on a set of common variables (“keys”).</li>
-<li><code>dplyr</code> provides a family of join functions.</li>
-<li>We will use data from the <code>nycflights13</code> package.</li>
+<li><strong>Goal</strong>: Change an input’s state (value, choices, label) from the server.</li>
+<li><strong>Functions</strong>: <code>updateTextInput()</code>, <code>updateSliderInput()</code>, <code>updateSelectInput()</code>, etc.</li>
+<li><strong>Mechanism</strong>:
+<ul>
+<li>User action triggers an <code>observeEvent()</code>.</li>
+<li>Server sends a message to the browser to update the specific control.</li>
+</ul></li>
 </ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">observeEvent</span>(input<span class="sc">$</span>reset, {</span>
+<span id="cb1-2"><a></a>  <span class="fu">updateSliderInput</span>(<span class="at">inputId =</span> <span class="st">"s1"</span>, <span class="at">value =</span> <span class="dv">0</span>)</span>
+<span id="cb1-3"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="hierarchical-selects" class="slide level2">
+<h2>Hierarchical Selects</h2>
+<ul>
+<li><strong>Scenario</strong>: The choices in select B depend on the value of select A.
+<ul>
+<li>Example: Select “Continent” -&gt; Update “Country” choices.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb2-2"><a></a>  <span class="fu">selectInput</span>(<span class="st">"continent"</span>, <span class="st">"Continent"</span>, <span class="at">choices =</span> <span class="fu">unique</span>(data<span class="sc">$</span>continent)),</span>
+<span id="cb2-3"><a></a>  <span class="fu">selectInput</span>(<span class="st">"country"</span>, <span class="st">"Country"</span>, <span class="at">choices =</span> <span class="cn">NULL</span>) <span class="co"># Empty initially</span></span>
+<span id="cb2-4"><a></a>)</span>
+<span id="cb2-5"><a></a></span>
+<span id="cb2-6"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb2-7"><a></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>continent, {</span>
+<span id="cb2-8"><a></a>    <span class="co"># Filter data based on selection</span></span>
+<span id="cb2-9"><a></a>    countries <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb2-10"><a></a>      <span class="fu">filter</span>(continent <span class="sc">==</span> input<span class="sc">$</span>continent) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-11"><a></a>      <span class="fu">pull</span>(country)</span>
+<span id="cb2-12"><a></a>      </span>
+<span id="cb2-13"><a></a>    <span class="co"># Update the second input</span></span>
+<span id="cb2-14"><a></a>    <span class="fu">updateSelectInput</span>(<span class="at">inputId =</span> <span class="st">"country"</span>, <span class="at">choices =</span> countries)</span>
+<span id="cb2-15"><a></a>  })</span>
+<span id="cb2-16"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
-<section id="keys" class="title-slide slide level1 center">
-<h1>Keys</h1>
+<section id="dynamic-visibility" class="title-slide slide level1 center">
+<h1>Dynamic Visibility</h1>
 
 </section>
-<section id="primary-and-foreign-keys" class="slide level2">
-<h2>Primary and Foreign Keys</h2>
+<section id="hiding-and-showing" class="slide level2">
+<h2>Hiding and Showing</h2>
 <ul>
-<li>A <strong>primary key</strong> is a variable (or set of variables) that uniquely identifies each observation in a table.</li>
-<li>A <strong>foreign key</strong> is a variable (or set of variables) in one table that corresponds to a primary key in another table.</li>
-<li>Keys are what link tables together.</li>
+<li><strong>Goal</strong>: Show different UI elements based on user actions.</li>
+<li><strong>Technique</strong>: Hidden Tabsets.
+<ul>
+<li><code>tabsetPanel(id = "wizard", type = "hidden", ...)</code></li>
+<li><code>updateTabsetPanel(inputId = "wizard", selected = "panel2")</code></li>
+</ul></li>
 </ul>
-</section>
-<section id="dataset-1-flights" class="slide level2">
-<h2>Dataset 1: <code>flights</code></h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">glimpse</span>(flights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 336,776
-Columns: 19
-$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…
-$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …
-$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …
-$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…
-$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…
-$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…
-$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…
-$ carrier        &lt;chr&gt; "UA", "UA", "AA", "B6", "DL", "UA", "B6", "EV", "B6", "…
-$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…
-$ tailnum        &lt;chr&gt; "N14228", "N24211", "N619AA", "N804JB", "N668DN", "N394…
-$ origin         &lt;chr&gt; "EWR", "LGA", "JFK", "JFK", "LGA", "EWR", "EWR", "LGA",…
-$ dest           &lt;chr&gt; "IAH", "IAH", "MIA", "BQN", "ATL", "ORD", "FLL", "IAD",…
-$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…
-$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …
-$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…
-$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…
-$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…</code></pre>
-</div>
-</div>
-</section>
-<section id="dataset-2-airlines" class="slide level2">
-<h2>Dataset 2: <code>airlines</code></h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">glimpse</span>(airlines)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 16
-Columns: 2
-$ carrier &lt;chr&gt; "9E", "AA", "AS", "B6", "DL", "EV", "F9", "FL", "HA", "MQ", "O…
-$ name    &lt;chr&gt; "Endeavor Air Inc.", "American Airlines Inc.", "Alaska Airline…</code></pre>
-</div>
-</div>
-</section>
-<section id="dataset-3-weather" class="slide level2">
-<h2>Dataset 3: <code>weather</code></h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">glimpse</span>(weather)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 26,115
-Columns: 15
-$ origin     &lt;chr&gt; "EWR", "EWR", "EWR", "EWR", "EWR", "EWR", "EWR", "EWR", "EW…
-$ year       &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013,…
-$ month      &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
-$ day        &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
-$ hour       &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, …
-$ temp       &lt;dbl&gt; 39.02, 39.02, 39.02, 39.92, 39.02, 37.94, 39.02, 39.92, 39.…
-$ dewp       &lt;dbl&gt; 26.06, 26.96, 28.04, 28.04, 28.04, 28.04, 28.04, 28.04, 28.…
-$ humid      &lt;dbl&gt; 59.37, 61.63, 64.43, 62.21, 64.43, 67.21, 64.43, 62.21, 62.…
-$ wind_dir   &lt;dbl&gt; 270, 250, 240, 250, 260, 240, 240, 250, 260, 260, 260, 330,…
-$ wind_speed &lt;dbl&gt; 10.35702, 8.05546, 11.50780, 12.65858, 12.65858, 11.50780, …
-$ wind_gust  &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 20.…
-$ precip     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-$ pressure   &lt;dbl&gt; 1012.0, 1012.3, 1012.5, 1012.2, 1011.9, 1012.4, 1012.2, 101…
-$ visib      &lt;dbl&gt; 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,…
-$ time_hour  &lt;dttm&gt; 2013-01-01 01:00:00, 2013-01-01 02:00:00, 2013-01-01 03:00…</code></pre>
-</div>
-</div>
-</section>
-<section id="dataset-4-planes" class="slide level2">
-<h2>Dataset 4: <code>planes</code></h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">glimpse</span>(planes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 3,322
-Columns: 9
-$ tailnum      &lt;chr&gt; "N10156", "N102UW", "N103US", "N104UW", "N10575", "N105UW…
-$ year         &lt;int&gt; 2004, 1998, 1999, 1999, 2002, 1999, 1999, 1999, 1999, 199…
-$ type         &lt;chr&gt; "Fixed wing multi engine", "Fixed wing multi engine", "Fi…
-$ manufacturer &lt;chr&gt; "EMBRAER", "AIRBUS INDUSTRIE", "AIRBUS INDUSTRIE", "AIRBU…
-$ model        &lt;chr&gt; "EMB-145XR", "A320-214", "A320-214", "A320-214", "EMB-145…
-$ engines      &lt;int&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …
-$ seats        &lt;int&gt; 55, 182, 182, 182, 55, 182, 182, 182, 182, 182, 55, 55, 5…
-$ speed        &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ engine       &lt;chr&gt; "Turbo-fan", "Turbo-fan", "Turbo-fan", "Turbo-fan", "Turb…</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb3-2"><a></a>  <span class="fu">actionButton</span>(<span class="st">"go_next"</span>, <span class="st">"Next"</span>),</span>
+<span id="cb3-3"><a></a>  <span class="fu">tabsetPanel</span>(<span class="at">id =</span> <span class="st">"wizard"</span>, <span class="at">type =</span> <span class="st">"hidden"</span>,</span>
+<span id="cb3-4"><a></a>    <span class="fu">tabPanel</span>(<span class="st">"page1"</span>, <span class="st">"First step content..."</span>),</span>
+<span id="cb3-5"><a></a>    <span class="fu">tabPanel</span>(<span class="st">"page2"</span>, <span class="st">"Second step content..."</span>)</span>
+<span id="cb3-6"><a></a>  )</span>
+<span id="cb3-7"><a></a>)</span>
+<span id="cb3-8"><a></a></span>
+<span id="cb3-9"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb3-10"><a></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>go_next, {</span>
+<span id="cb3-11"><a></a>    <span class="fu">updateTabsetPanel</span>(<span class="at">inputId =</span> <span class="st">"wizard"</span>, <span class="at">selected =</span> <span class="st">"page2"</span>)</span>
+<span id="cb3-12"><a></a>  })</span>
+<span id="cb3-13"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
-<section id="mutating-joins" class="title-slide slide level1 center">
-<h1>Mutating Joins</h1>
+<section id="generative-ui" class="title-slide slide level1 center">
+<h1>Generative UI</h1>
 
 </section>
-<section id="left_join" class="slide level2">
-<h2><code>left_join()</code></h2>
+<section id="uioutput-and-renderui" class="slide level2">
+<h2><code>uiOutput</code> and <code>renderUI</code></h2>
 <ul>
-<li><code>left_join()</code> is the most commonly used join.</li>
-<li>It returns all rows from the left table (<code>x</code>), and all columns from both tables (<code>x</code> and <code>y</code>).</li>
-<li>Rows in <code>x</code> with no match in <code>y</code> will have <code>NA</code> values in the new columns.</li>
-<li>Rows in <code>y</code> with no match in <code>x</code> are ignored.</li>
-<li>Rows in <code>y</code> that match multiple rows in <code>x</code> will result in duplicated rows in the output (and vice versa).</li>
-</ul>
-</section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
-<p>Let’s join <code>flights</code> with <code>airlines</code> with <code>weather</code> with <code>planes</code> to get the full airline names, weather data, and flight data.</p>
-</section>
-<section id="other-mutating-joins" class="slide level2">
-<h2>Other Mutating Joins</h2>
-<ul>
-<li><code>inner_join()</code>: returns only rows that have a match in both tables.</li>
-<li><code>right_join()</code>: returns all rows from the right table.</li>
-<li><code>full_join()</code>: returns all rows from both tables.</li>
-</ul>
-</section></section>
-<section>
-<section id="filtering-joins" class="title-slide slide level1 center">
-<h1>Filtering Joins</h1>
-
-</section>
-<section id="semi_join" class="slide level2">
-<h2><code>semi_join()</code></h2>
-<ul>
-<li><code>semi_join()</code> keeps all rows from the left table (<code>x</code>) that have a match in the right table (<code>y</code>).</li>
-<li>It does not add any columns from <code>y</code>.</li>
-</ul>
-</section>
-<section id="example-1" class="slide level2">
-<h2>Example</h2>
-<p>Let’s use a <code>semi_join()</code> to find all the flights heading to the top 10 destinations.</p>
-</section>
-<section id="anti_join" class="slide level2">
-<h2><code>anti_join()</code></h2>
-<ul>
-<li><code>anti_join()</code> returns all rows from <code>x</code> that do <strong>not</strong> have a match in <code>y</code>.</li>
-<li>Useful for finding observations that don’t have a match.</li>
-</ul>
-</section>
-<section id="example-2" class="slide level2">
-<h2>Example</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>flights <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a></a>  <span class="fu">anti_join</span>(planes, <span class="at">by =</span> <span class="st">"tailnum"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a></a>  <span class="fu">count</span>(tailnum, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 722 × 2
-   tailnum     n
-   &lt;chr&gt;   &lt;int&gt;
- 1 &lt;NA&gt;     2512
- 2 N725MQ    575
- 3 N722MQ    513
- 4 N723MQ    507
- 5 N713MQ    483
- 6 N735MQ    396
- 7 N0EGMQ    371
- 8 N534MQ    364
- 9 N542MQ    363
-10 N531MQ    349
-# ℹ 712 more rows</code></pre>
-</div>
-</div>
-</section>
-<section id="practice" class="slide level2">
-<h2>Practice!</h2>
-<p>Let’s practice joins!</p>
-</section></section>
-<section>
-<section id="wrap-up" class="title-slide slide level1 center">
-<h1>Wrap Up</h1>
-
-</section>
-<section id="do-next" class="slide level2">
-<h2>Do Next</h2>
+<li><strong>Goal</strong>: Generate HTML or Inputs entirely from Python/R code.</li>
+<li><strong>Usage</strong>:
 <ol type="1">
-<li>Read <a href="https://r4ds.hadley.nz/joins.html">Chapter 19: Joins</a> from r4ds.</li>
-<li>Open the Recitation Gem and say “Provide me practice problems for Chapter 19” or work through some of the exercises in the text.</li>
-<li>That’s it for tonight!</li>
+<li><strong>UI</strong>: Place <code>uiOutput("id")</code> where you want the content.</li>
+<li><strong>Server</strong>: Assign <code>renderUI({ ... })</code> to <code>output$id</code>.</li>
+<li><strong>Return</strong>: The <code>renderUI</code> block must return Shiny tags (e.g., <code>tagList</code>, <code>div</code>, inputs).</li>
+</ol></li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb4-2"><a></a>  <span class="fu">numericInput</span>(<span class="st">"n"</span>, <span class="st">"How many inputs?"</span>, <span class="at">value =</span> <span class="dv">1</span>),</span>
+<span id="cb4-3"><a></a>  <span class="fu">uiOutput</span>(<span class="st">"input_container"</span>)</span>
+<span id="cb4-4"><a></a>)</span>
+<span id="cb4-5"><a></a></span>
+<span id="cb4-6"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb4-7"><a></a>  output<span class="sc">$</span>input_container <span class="ot">&lt;-</span> <span class="fu">renderUI</span>({</span>
+<span id="cb4-8"><a></a>    <span class="co"># Create N text inputs dynamically</span></span>
+<span id="cb4-9"><a></a>    inputs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>input<span class="sc">$</span>n, <span class="cf">function</span>(i) {</span>
+<span id="cb4-10"><a></a>      <span class="fu">textInput</span>(<span class="fu">paste0</span>(<span class="st">"col"</span>, i), <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"Column"</span>, i))</span>
+<span id="cb4-11"><a></a>    })</span>
+<span id="cb4-12"><a></a>    <span class="fu">do.call</span>(tagList, inputs)</span>
+<span id="cb4-13"><a></a>  })</span>
+<span id="cb4-14"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="circular-references" class="slide level2">
+<h2>Circular References</h2>
+<ul>
+<li><strong>Warning</strong>: Be careful when creating inputs that trigger the same code that created them.</li>
+<li><strong>Loop</strong>: <code>renderUI</code> -&gt; creates input -&gt; input changes -&gt; triggers <code>renderUI</code> -&gt; re-creates input.</li>
+<li>Rate limiting or logic checks are often needed.</li>
+</ul>
+</section></section>
+<section>
+<section id="summary" class="title-slide slide level1 center">
+<h1>Summary</h1>
+
+</section>
+<section id="levels-of-dynamism" class="slide level2">
+<h2>Levels of Dynamism</h2>
+<ol type="1">
+<li><strong>Update</strong>: Modify existing inputs (<code>update*Input</code>).</li>
+<li><strong>Visibility</strong>: Show/Hide pre-defined sections (<code>tabsetPanel</code>).</li>
+<li><strong>Generation</strong>: Create new UI from scratch (<code>uiOutput</code>/<code>renderUI</code>).</li>
 </ol>
 
 
@@ -631,44 +555,6 @@ $ engine       &lt;chr&gt; "Turbo-fan", "Turbo-fan", "Turbo-fan", "Turbo-fan", "
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
