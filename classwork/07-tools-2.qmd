@@ -400,7 +400,7 @@ ggMarginal(
 In the repo you just created:
 
 0. Ignore PRs for now, just practice branching and merging directly to main.
-1. (Everyone) Create a new branch for your work. (Click `... -> Branch -> Create Branch...`, then give the branch a name)
+1. (Everyone) Create a new branch for your work. (Click `... -> Branch -> Create Branch...`, then give the it a name, and push it to GitHub)
 2. (Everyone) Checkout your new branch. (Click `... -> Checkout to...`, then select the branch you just created)
 3. (Everyone) Modify the plot you just created! Make it your own!
 
