@@ -223,7 +223,14 @@
     "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#plot-outputs",
     "title": "Basic UI",
     "section": "Plot Outputs",
-    "text": "Plot Outputs\n\nplotOutput(): pairs with renderPlot().\n\nDisplays any R graphic (base, ggplot2).\n\nResolution: Set res = 96 in renderPlot() for screen matching.\n\nui &lt;- fluidPage(\n  plotOutput(\"plot\", width = \"400px\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$plot &lt;- renderPlot(plot(1:5), res = 96)\n}"
+    "text": "Plot Outputs\n\nplotOutput(): pairs with renderPlot().\n\nDisplays any R graphic (base, ggplot2).\n\nResolution: res = 96 in renderPlot() is a good default.\n\nui &lt;- fluidPage(\n  plotOutput(\"plot\", width = \"400px\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$plot &lt;- renderPlot(plot(1:5), res = 96)\n}"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#practice",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#practice",
+    "title": "Basic UI",
+    "section": "Practice!",
+    "text": "Practice!\nLet’s do some practice!"
   },
   {
     "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#recap",
@@ -231,6 +238,13 @@
     "title": "Basic UI",
     "section": "Recap",
     "text": "Recap\n\nInputs: textInput, numericInput, sliderInput, selectInput, etc.\n\nAlways have inputId and label.\n\nOutputs: textOutput, tableOutput, plotOutput.\n\nUI: *Output(\"ID\").\nServer: output$ID &lt;- render*({ ... })."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#do-next",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#do-next",
+    "title": "Basic UI",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 2: Basic UI from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 20!"
   },
   {
     "objectID": "slides/11-numbers/11-numbers.html#working-with-numbers",
@@ -874,7 +888,7 @@
     "href": "slides/18-shiny-intro/18-shiny-intro.html#do-next",
     "title": "Your First Shiny App",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 1: Your First Shiny App from Mastering Shiny.\nThere’s NO recitation Gem for this textbook. I recommend doing the following:\n\n\nCreate your own NotebookLM for this text book. Upload the Chapters as we go along and the slides we use (don’t forget to use presse before imputting the link to the slides).\nUse the NotebookLM as a tutor!\nYou can also use the NotebookLM as context within your Gemini chats.\n\n\nMove on to Lecture 18!"
+    "text": "Do Next\n\nRead Chapter 1: Your First Shiny App from Mastering Shiny.\nThere’s NO recitation Gem for this textbook. I recommend doing the following:\n\n\nCreate your own NotebookLM for this text book. Upload the Chapters as we go along and the slides we use (don’t forget to use presse before imputting the link to the slides).\nUse the NotebookLM as a tutor!\nYou can also use the NotebookLM as context within your Gemini chats.\n\n\nMove on to Lecture 19!"
   },
   {
     "objectID": "slides/02-first-viz/02-first-viz.html#data-visualization",
@@ -3979,7 +3993,7 @@
     "href": "index.html",
     "title": "CSCI-2025: Data Manipulation and Visualization",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\nvideo-15\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\nslides-16\nvideo-16\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins\n\nslides-17\nvideo-17\n\n\n3\nTue, Jan 20\nLec\nYour first Shiny app\n📚 ms - first-app\n\nslides-18\n\n\n\n3\nTue, Jan 20\nLec\nBasic UI\n📚 ms - basic-ui\n\n\n\n\n\n3\nTue, Jan 20\nLec\nBasic reactivity\n📚 ms - basic-reactivity",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\nvideo-15\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\nslides-16\nvideo-16\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins\n\nslides-17\nvideo-17\n\n\n3\nTue, Jan 20\nLec\nYour first Shiny app\n📚 ms - first-app\n\nslides-18\nvideo-18\n\n\n3\nTue, Jan 20\nLec\nBasic UI\n📚 ms - basic-ui\n\nslides-19\n\n\n\n3\nTue, Jan 20\nLec\nBasic reactivity\n📚 ms - basic-reactivity",
     "crumbs": [
       "Course information",
       "Schedule"

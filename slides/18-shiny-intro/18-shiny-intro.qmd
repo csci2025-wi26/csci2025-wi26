@@ -173,4 +173,4 @@ server <- function(input, output, session) {
   - Create your own NotebookLM for this text book. Upload the Chapters as we go along and the slides we use (don't forget to use press`e` before imputting the link to the slides).
   - Use the NotebookLM as a tutor!
   - You can also use the NotebookLM as context within your Gemini chats.
-3. Move on to Lecture 18!
+3. Move on to Lecture 19!

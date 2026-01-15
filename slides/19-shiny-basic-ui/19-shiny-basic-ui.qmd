@@ -149,7 +149,7 @@ server <- function(input, output, session) {
 
 -   **`plotOutput()`**: pairs with **`renderPlot()`**.
     -   Displays any R graphic (base, ggplot2).
--   **Resolution**: Set `res = 96` in `renderPlot()` for screen matching.
+-   **Resolution**: `res = 96` in `renderPlot()` is a good default.
 
 ```r
 ui <- fluidPage(
@@ -163,6 +163,10 @@ server <- function(input, output, session) {
 
 # Summary
 
+## Practice!
+
+Let's do some practice!
+
 ## Recap
 
 -   **Inputs**: `textInput`, `numericInput`, `sliderInput`, `selectInput`, etc.
@@ -170,3 +174,11 @@ server <- function(input, output, session) {
 -   **Outputs**: `textOutput`, `tableOutput`, `plotOutput`.
     -   UI: `*Output("ID")`.
     -   Server: `output$ID <- render*({ ... })`.
+
+
+## Do Next
+
+1. Read [Chapter 2: Basic UI](https://mastering-shiny.org/basic-ui.html) from Mastering Shiny.
+2. There's NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.
+3. I reommend working through the Exercises in the textbook.
+4. Move on to Lecture 20!
