@@ -28,4 +28,7 @@ title: "Useful links"
 |                            | 🔗 lubridate: [lubridate.tidyverse.org](https://lubridate.tidyverse.org/) |
 |                            |                                                                           |
 |                            | 🔗 readr: [readr.tidyverse.org](https://readr.tidyverse.org/)             |
+|                            |                                                                           |
+|                            | 🔗 shiny: [shiny.posit.co](https://shiny.posit.co/)                       |
 +----------------------------+---------------------------------------------------------------------------+
+

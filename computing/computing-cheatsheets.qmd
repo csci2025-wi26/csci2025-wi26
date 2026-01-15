@@ -18,6 +18,10 @@ The following cheatsheets come from <https://posit.co/resources/cheatsheets>. We
 
 <br>
 
+[![](cheatsheets/shiny-1.png){fig-alt="shiny cheatsheet" fig-align="right" width="300"}](https://rstudio.github.io/cheatsheets/html/shiny.html)
+
+<br>
+
 [![](cheatsheets/lubridate.png){fig-alt="ggplot2 cheat sheet" fig-align="left" width="300"}](https://raw.githubusercontent.com/rstudio/cheatsheets/main/lubridate.pdf)
 :::
 
@@ -31,5 +35,9 @@ The following cheatsheets come from <https://posit.co/resources/cheatsheets>. We
 <br>
 
 [![](cheatsheets/factors.png){fig-alt="ggplot2 cheat sheet" fig-align="right" width="300"}](https://raw.githubusercontent.com/rstudio/cheatsheets/main/factors.pdf)
+
+<br>
+
+[![](cheatsheets/shiny-2.png){fig-alt="shiny cheat sheet" fig-align="right" width="300"}](https://rstudio.github.io/cheatsheets/html/shiny.html)
 :::
 :::
