@@ -4110,5 +4110,306 @@
     "title": "GEMINI.md: Project Overview and Contributor Guide",
     "section": "",
     "text": "To work on this project, you will need to have Quarto installed. You can download it from the Quarto website.\n\n\nTo render and preview the website locally, run the following command in your terminal from the project’s root directory:\nquarto preview\nThis will start a local web server and open the site in your browser. The site will automatically refresh when you save changes to any of the source files.\n\n\n\nTo render the entire website without previewing it, use the following command:\nquarto render\nThis will generate all the static files and place them in the _site/ directory. This is typically done for deployment."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#today",
+    "href": "classwork/07-tools-2.html#today",
+    "title": "A Menagerie Of Tools",
+    "section": "Today",
+    "text": "Today\n\nGit and GitHub\nEnvironment Mangement\nAI (Maybe)"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#first-project-roles",
+    "href": "classwork/07-tools-2.html#first-project-roles",
+    "title": "A Menagerie Of Tools",
+    "section": "First: Project Roles",
+    "text": "First: Project Roles\n\nTo TEAMS!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#what-is-version-control",
+    "href": "classwork/07-tools-2.html#what-is-version-control",
+    "title": "A Menagerie Of Tools",
+    "section": "What is Version Control?",
+    "text": "What is Version Control?\n\nA system that records changes to a file or set of files over time so that you can recall specific versions later.\nIt allows you to revert files back to a previous state, revert the entire project back to a previous state, compare changes over time, see who last modified something that might be causing a problem, who introduced an issue and when.\nThink of it like “track changes” in a word processor, but for all your project files (code, data, text, etc.)."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#why-is-it-useful",
+    "href": "classwork/07-tools-2.html#why-is-it-useful",
+    "title": "A Menagerie Of Tools",
+    "section": "Why is it useful?",
+    "text": "Why is it useful?\n\nCollaboration: Many people can work on the same project without overwriting each other’s changes.\nOrganization: Keeps a history of your project. No more final_report_v2_final_final.docx!\nBackup: Your project history is stored in a remote, safe place (like GitHub). If your computer crashes, your work is not lost.\nExperimentation: You can try out new ideas in a “branch” without messing up the main version of your project."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#what-is-git",
+    "href": "classwork/07-tools-2.html#what-is-git",
+    "title": "A Menagerie Of Tools",
+    "section": "What is Git?",
+    "text": "What is Git?\n\nGit is a free and open source distributed version control system.\nIt’s a command-line tool that you run on your computer to track changes in your project files.\nIt’s the most popular version control system in the world."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#what-is-github",
+    "href": "classwork/07-tools-2.html#what-is-github",
+    "title": "A Menagerie Of Tools",
+    "section": "What is GitHub?",
+    "text": "What is GitHub?\n\nGitHub is a web-based hosting service for Git repositories.\nIt’s a place to store your projects and collaborate with others.\nIt provides a graphical interface to Git, plus other features like issue tracking, project management, and more.\nGit is the tool, GitHub is the service."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#no-more-passwords",
+    "href": "classwork/07-tools-2.html#no-more-passwords",
+    "title": "A Menagerie Of Tools",
+    "section": "No More Passwords",
+    "text": "No More Passwords\n\nGitHub removed support for password authentication in 2021.\nYou must use a Personal Access Token (PAT) or SSH keys to push code.\nIf you try to use your password, you will get an authentication error."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#setting-up-a-pat-rpositron-users",
+    "href": "classwork/07-tools-2.html#setting-up-a-pat-rpositron-users",
+    "title": "A Menagerie Of Tools",
+    "section": "Setting up a PAT (R/Positron Users)",
+    "text": "Setting up a PAT (R/Positron Users)\nThe easiest way to set this up is using R helper packages:\n\nInstall helpers: install.packages(c(\"usethis\", \"gitcreds\"))\nCreate token: usethis::create_github_token()\n\nThis opens a browser.\nClick “Generate token”.\nCopy the token (it starts with ghp_).\n\nStore credentials: gitcreds::gitcreds_set()\n\nPaste your token when asked for a password.\n\n\nThat’s it! You only need to do this once per computer. Your credentials are stored system-wide and will work for all your projects."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#cloning-a-repository",
+    "href": "classwork/07-tools-2.html#cloning-a-repository",
+    "title": "A Menagerie Of Tools",
+    "section": "Cloning a Repository",
+    "text": "Cloning a Repository\n\n“Cloning” is how you get a copy of a project from GitHub onto your computer.\nYou only need to do this once per project.\nYou’ll get a URL from the GitHub page of the repository.\nThis creates a new directory on your computer with all the project files."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#the-add-commit-push-cycle",
+    "href": "classwork/07-tools-2.html#the-add-commit-push-cycle",
+    "title": "A Menagerie Of Tools",
+    "section": "The Add-Commit-Push Cycle",
+    "text": "The Add-Commit-Push Cycle\nThis is the most common workflow you’ll use.\n\nMake changes: Edit your files, create new files, etc.\nAdd files: Tell Git which files you want to save in the next “snapshot” (commit).\nCommit files: Save the snapshot with a descriptive message.\nPush changes: Send your committed changes to GitHub."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#git-add",
+    "href": "classwork/07-tools-2.html#git-add",
+    "title": "A Menagerie Of Tools",
+    "section": "git add",
+    "text": "git add\n\nUse git add to stage your changes. Staging is the step before committing.\nYou can add specific files or all files with changes."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#git-commit",
+    "href": "classwork/07-tools-2.html#git-commit",
+    "title": "A Menagerie Of Tools",
+    "section": "git commit",
+    "text": "git commit\n\nA “commit” is a snapshot of your staged changes.\nEach commit has a unique ID and a message.\nThe message is important! It should be a short, descriptive summary of the changes you made."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#git-push",
+    "href": "classwork/07-tools-2.html#git-push",
+    "title": "A Menagerie Of Tools",
+    "section": "git push",
+    "text": "git push\n\ngit push sends your committed changes from your local computer to the remote repository on GitHub."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#good-commit-messages",
+    "href": "classwork/07-tools-2.html#good-commit-messages",
+    "title": "A Menagerie Of Tools",
+    "section": "Good Commit Messages",
+    "text": "Good Commit Messages\n\nKeep them short and descriptive.\nUse the imperative mood (e.g., “Add feature” not “Added feature”).\nExplain what the change is and why you made it.\n\nGood:\n\nFix typo in course syllabus\nUpdate plot styling in HW1\nFeat: Add enrollment module skeleton\nDocs: Explain data cleaning process\n\nBad:\n\nstuff\nfixed it\naaaaaaaa"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#git-pull",
+    "href": "classwork/07-tools-2.html#git-pull",
+    "title": "A Menagerie Of Tools",
+    "section": "git pull",
+    "text": "git pull\n\nIf you’re working with others, they will merge changes into the main branch.\ngit pull fetches changes from the remote repository and merges them into your local copy.\nIt’s a critical habit to pull from main before you start working to make sure you have the latest version."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#practice",
+    "href": "classwork/07-tools-2.html#practice",
+    "title": "A Menagerie Of Tools",
+    "section": "Practice!",
+    "text": "Practice!\n\nEveryone: create a new Github Repository for your Individual Project.\nClone it to your computer.\nAdd all the stuff you’ve been working on.\nAdd, commit, and push your changes to Github.\nTry making a small change, then add, commit, push again.\nSend Dr. F your repo link when done!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#what-is-a-branch",
+    "href": "classwork/07-tools-2.html#what-is-a-branch",
+    "title": "A Menagerie Of Tools",
+    "section": "What is a Branch?",
+    "text": "What is a Branch?\n\nA branch is a parallel version of your repository.\nIt allows you to work on new features or fixes without affecting the main codebase (the main branch).\nThis is essential for teamwork."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#a-collaborative-workflow-the-feature-branch",
+    "href": "classwork/07-tools-2.html#a-collaborative-workflow-the-feature-branch",
+    "title": "A Menagerie Of Tools",
+    "section": "A Collaborative Workflow: The Feature Branch",
+    "text": "A Collaborative Workflow: The Feature Branch\nFor our group project, we will use a workflow that prevents accidentally breaking the main version of our app. You will not push directly to main.\nThe core idea is:\n\nCreate a copy of the project (a “branch”) where you can work safely.\nMake all your changes on that branch.\nWhen you’re ready, you’ll open a “Pull Request” to have your changes reviewed and merged into the main branch."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#the-branching-workflow-a-full-example",
+    "href": "classwork/07-tools-2.html#the-branching-workflow-a-full-example",
+    "title": "A Menagerie Of Tools",
+    "section": "The Branching Workflow: A Full Example",
+    "text": "The Branching Workflow: A Full Example\n\nSync your local main branch:\nCreate a new branch for your work: For the project, your team leader (the “GitHub Sentinel”) will do this. Branch names should be descriptive, like feature/team-name.\nWork on your branch: Now you do the familiar add-commit cycle.\nPush your branch to GitHub: The -u flag sets the upstream branch so you can just git push next time."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#pull-requests-proposing-changes",
+    "href": "classwork/07-tools-2.html#pull-requests-proposing-changes",
+    "title": "A Menagerie Of Tools",
+    "section": "Pull Requests: Proposing Changes",
+    "text": "Pull Requests: Proposing Changes\nNow that your branch is on GitHub, you needs to ask for it to be merged into main."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#what-is-a-pull-request",
+    "href": "classwork/07-tools-2.html#what-is-a-pull-request",
+    "title": "A Menagerie Of Tools",
+    "section": "What is a Pull Request?",
+    "text": "What is a Pull Request?\n\nA Pull Request (or PR) is a formal request to merge your changes.\nYou’re asking the project maintainer (the “Lead Architect” for your project) to “pull” your changes from your branch into the main branch.\nIt’s a place for code review and discussion before the changes are integrated."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#how-to-open-a-pull-request",
+    "href": "classwork/07-tools-2.html#how-to-open-a-pull-request",
+    "title": "A Menagerie Of Tools",
+    "section": "How to open a Pull Request",
+    "text": "How to open a Pull Request\n\nAfter pushing the branch, go to the repository on GitHub.\nGitHub will usually show a banner prompting you to “Compare & pull request”. Click it!\nIf not, go to the “Pull requests” tab and click “New pull request”.\nSelect your team’s branch as the “compare” branch and main as the “base” branch.\nWrite a clear title and description for your changes. Explain what you did.\nClick “Create pull request”."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#review-and-merging",
+    "href": "classwork/07-tools-2.html#review-and-merging",
+    "title": "A Menagerie Of Tools",
+    "section": "Review and Merging",
+    "text": "Review and Merging\n\nOnce the PR is open, the “Lead Architect” and other team members can review your code, add comments, and request changes.\nIf changes are requested, your team makes them on the local branch, then commits and pushes again. The PR will update automatically.\nOnce approved, the Lead Architect will merge your branch into main. Your work is now part of the official project!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#a-note-on-merge-conflicts",
+    "href": "classwork/07-tools-2.html#a-note-on-merge-conflicts",
+    "title": "A Menagerie Of Tools",
+    "section": "A Note on Merge Conflicts",
+    "text": "A Note on Merge Conflicts\n\nIf you and another person edit the same lines in the same file on different branches, Git won’t know which version to keep when merging.\nThis is a merge conflict.\nThe person merging the PR (or the Sentinel, before opening it) will need to manually resolve the conflict by choosing which code to keep.\nThe best way to avoid conflicts: Pull from main often and communicate with your team!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#after-a-pr-is-merged",
+    "href": "classwork/07-tools-2.html#after-a-pr-is-merged",
+    "title": "A Menagerie Of Tools",
+    "section": "After a PR is Merged",
+    "text": "After a PR is Merged\nOnce your team’s branch is merged by the Lead Architect, everyone should update their local repository.\n\nSwitch back to your main branch: git checkout main\nPull the latest changes (which now include the merged work): git pull\nNow your main is up to date, and you can create a new branch for the next feature!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#group-practice-1",
+    "href": "classwork/07-tools-2.html#group-practice-1",
+    "title": "A Menagerie Of Tools",
+    "section": "Group Practice 1!",
+    "text": "Group Practice 1!\nLet’s break up into groups. Have one person create a new repository on GitHub and add the others as collaborators:\n\n(Person A) Create a new public repository on GitHub. Add your teamates as collaborators.\n(Person A) Initialize it with a README.md file.\n(Person B/C) Accept the collaborator invitation (check your email!).\n(Everyone) Clone it to your computer."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#on-person-as-computer",
+    "href": "classwork/07-tools-2.html#on-person-as-computer",
+    "title": "A Menagerie Of Tools",
+    "section": "On Person A’s Computer",
+    "text": "On Person A’s Computer\nRecreate this graph from the duke_forest dataset in the openintro package:"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#group-practice-2",
+    "href": "classwork/07-tools-2.html#group-practice-2",
+    "title": "A Menagerie Of Tools",
+    "section": "Group Practice 2!",
+    "text": "Group Practice 2!\nIn the repo you just created:\n\nIgnore PRs for now, just practice branching and merging directly to main.\n(Everyone) Create a new branch for your work.\n(Everyone) Checkout your new branch.\n(Everyone) Create a new plot in your quarto file. Don’t edit any of the existing code.\n(A then B then C) Merge your changes into the main branch and push to GitHub.\n(Everyone) Pull the changes. Check them out to a new branch and change one of your partners plots! Don’t simply add to it, make sure you delete somethings too…\n(A then B then C) Merge yopur changes into the main branch and push to GitHub."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#the-problem-it-works-on-my-machine",
+    "href": "classwork/07-tools-2.html#the-problem-it-works-on-my-machine",
+    "title": "A Menagerie Of Tools",
+    "section": "The Problem: “It works on my machine”",
+    "text": "The Problem: “It works on my machine”\n\nYou share code with a colleague, but it fails on their machine.\nYou revisit an old project, but the code no longer runs because packages have updated.\nYou update a package for Project A, but it breaks Project B."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#the-solution-dependency-management",
+    "href": "classwork/07-tools-2.html#the-solution-dependency-management",
+    "title": "A Menagerie Of Tools",
+    "section": "The Solution: Dependency Management",
+    "text": "The Solution: Dependency Management\n\nDependency management ensures your project uses the correct package versions.\nIn R, renv is the standard tool for this.\nKey features:\n\nIsolation: Each project has its own library of packages.\nReproducibility: Records exact package versions in a lockfile.\nPortability: Easy to install the same environment on another machine."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#key-components",
+    "href": "classwork/07-tools-2.html#key-components",
+    "title": "A Menagerie Of Tools",
+    "section": "Key Components",
+    "text": "Key Components\n\nProject Library: Use a per-project library (renv/library) instead of the system library.\nLockfile (renv.lock): A JSON file recording the exact version and source of every package.\nActivation Script (renv/activate.R): Automatically loads the project environment when you open the project."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#the-workflow",
+    "href": "classwork/07-tools-2.html#the-workflow",
+    "title": "A Menagerie Of Tools",
+    "section": "The Workflow",
+    "text": "The Workflow\n\nInitialize: renv::init() (do this once)\nWork: install.packages() and get your code working\nSnapshot: renv::snapshot(), (each time you finish installing packages and get your code working)\nRestore: renv::restore(), (any time you download the project)"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#initialize",
+    "href": "classwork/07-tools-2.html#initialize",
+    "title": "A Menagerie Of Tools",
+    "section": "0. Initialize",
+    "text": "0. Initialize\n\nRun renv::init() to start using renv in a project.\nThis:\n\nSets up the project library.\nGenerates a lockfile (renv.lock) with currently installed packages.\nCreates an .Rprofile to activate renv on startup.\n\nRestart R to ensure the environment is active."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#work",
+    "href": "classwork/07-tools-2.html#work",
+    "title": "A Menagerie Of Tools",
+    "section": "1. Work",
+    "text": "1. Work\n\nInstall packages as usual:\n\ninstall.packages(\"dplyr\")\ninstall.packages(\"ggplot2\")\n\nThese go into your project library, not your global library.\nOther projects are unaffected!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#snapshot",
+    "href": "classwork/07-tools-2.html#snapshot",
+    "title": "A Menagerie Of Tools",
+    "section": "2. Snapshot",
+    "text": "2. Snapshot\n\nWhen your code works, save the state of your library:\n\nrenv::snapshot()\n\nThis updates renv.lock with the versions you are currently using.\nCommit renv.lock to Git!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#restore",
+    "href": "classwork/07-tools-2.html#restore",
+    "title": "A Menagerie Of Tools",
+    "section": "3. Restore",
+    "text": "3. Restore\n\nWhen you (or a collaborator) download the project:\n\nOpen the project (R will auto-activate renv).\nRun renv::restore().\n\nThis installs all packages exactly as specified in renv.lock."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#checking-status",
+    "href": "classwork/07-tools-2.html#checking-status",
+    "title": "A Menagerie Of Tools",
+    "section": "Checking Status",
+    "text": "Checking Status\n\nRun renv::status() to see if your library matches your lockfile.\nIt tells you if:\n\nYou installed packages but haven’t snapshotted them.\nYour lockfile has packages you haven’t installed yet."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#what-to-commit-to-git",
+    "href": "classwork/07-tools-2.html#what-to-commit-to-git",
+    "title": "A Menagerie Of Tools",
+    "section": "What to Commit to Git",
+    "text": "What to Commit to Git\n\nDo Commit:\n\nrenv.lock\n.Rprofile\nrenv/activate.R\nrenv/settings.json (if it exists)\n\nDo NOT Commit:\n\nrenv/library (these are the installed files, which are large and platform-specific)\nrenv/python (if using Python)\nrenv/staging"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#summary",
+    "href": "classwork/07-tools-2.html#summary",
+    "title": "A Menagerie Of Tools",
+    "section": "Summary",
+    "text": "Summary\n\nUse renv for every serious project.\ninit() to start.\nsnapshot() to save.\nrestore() to load.\nEnjoy reproducible data science!"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#practice-1",
+    "href": "classwork/07-tools-2.html#practice-1",
+    "title": "A Menagerie Of Tools",
+    "section": "Practice!",
+    "text": "Practice!\nIn your Individual Project repository:\n\nInitialize renv for the project.\nAdd the following lines to your .gitignore file to avoid committing the library:\n\n/renv/library/\n/renv/python/\n/renv/staging/\n\nPractice installing new packages, adding them to the lockfile, pushing them to github, and then pulling/restoring."
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#overview",
+    "href": "classwork/07-tools-2.html#overview",
+    "title": "A Menagerie Of Tools",
+    "section": "Overview",
+    "text": "Overview\n\nGithub Copilot\nGemini Code Assistant\nGemini CLI"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#on-person-bs-computer",
+    "href": "classwork/07-tools-2.html#on-person-bs-computer",
+    "title": "A Menagerie Of Tools",
+    "section": "On Person B’s Computer",
+    "text": "On Person B’s Computer\nModify the plot above so it looks like this:"
+  },
+  {
+    "objectID": "classwork/07-tools-2.html#on-person-cs-computer",
+    "href": "classwork/07-tools-2.html#on-person-cs-computer",
+    "title": "A Menagerie Of Tools",
+    "section": "On Person C’s Computer",
+    "text": "On Person C’s Computer\nModify the plot above so it looks like this (Hint: look up ggMarginal from the ggExtra package):"
   }
 ]

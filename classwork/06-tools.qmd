@@ -204,6 +204,28 @@ Let's make a jupyter notebook together!
 - It provides a graphical interface to Git, plus other features like issue tracking, project management, and more.
 - **Git** is the tool, **GitHub** is the service.
 
+# Authentication
+
+## No More Passwords
+
+- GitHub removed support for password authentication in 2021.
+- You must use a **Personal Access Token (PAT)** or SSH keys to push code.
+- If you try to use your password, you will get an authentication error.
+
+## Setting up a PAT (R/Positron Users) {.smaller}
+
+The easiest way to set this up is using R helper packages:
+
+1.  Install helpers: `install.packages(c("usethis", "gitcreds"))`
+2.  Create token: `usethis::create_github_token()`
+    - This opens a browser.
+    - Click "Generate token".
+    - **Copy the token** (it starts with `ghp_`).
+3.  Store credentials: `gitcreds::gitcreds_set()`
+    - Paste your token when asked for a password.
+
+**That's it!** You only need to do this **once per computer**. Your credentials are stored system-wide and will work for all your projects.
+
 # Getting Started
 
 ## Cloning a Repository
