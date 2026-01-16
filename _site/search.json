@@ -1119,7 +1119,7 @@
     "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-expressions",
     "title": "Basic Reactivity",
     "section": "Reactive Expressions",
-    "text": "Reactive Expressions\n\nProblem: Duplicated code re-running multiple times.\nSolution: reactive().\n\nSplits logic into reusable chunks.\nCached (Lazy): Only re-runs if inputs change; otherwise returns saved value.\nCalled like a function: my_reactive().\n\n\nserver &lt;- function(input, output, session) {\n  # Calculate once\n  x_sq &lt;- reactive({\n    input$x ^ 2\n  })\n  \n  # Use twice\n  output$txt &lt;- renderText(x_sq())\n  output$plot &lt;- renderPlot(plot(x_sq()))\n}"
+    "text": "Reactive Expressions\n\nProblem: Duplicated code re-running multiple times.\nSolution: reactive().\n\nSplits logic into reusable chunks.\nCached (Lazy): Only re-runs if inputs change; otherwise returns saved value.\nCalled like a function: my_reactive()."
   },
   {
     "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#timing",
@@ -4432,5 +4432,12 @@
     "title": "GEMINI.md: Project Overview and Contributor Guide",
     "section": "",
     "text": "To work on this project, you will need to have Quarto installed. You can download it from the Quarto website.\n\n\nTo render and preview the website locally, run the following command in your terminal from the project’s root directory:\nquarto preview\nThis will start a local web server and open the site in your browser. The site will automatically refresh when you save changes to any of the source files.\n\n\n\nTo render the entire website without previewing it, use the following command:\nquarto render\nThis will generate all the static files and place them in the _site/ directory. This is typically done for deployment."
+  },
+  {
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#example",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#example",
+    "title": "Basic Reactivity",
+    "section": "Example",
+    "text": "Example\nserver &lt;- function(input, output, session) {\n  # Calculate once\n  x_sq &lt;- reactive({\n    input$x ^ 2\n  })\n  \n  # Use twice\n  output$txt &lt;- renderText(x_sq())\n  output$plot &lt;- renderPlot(plot(x_sq()))\n}"
   }
 ]

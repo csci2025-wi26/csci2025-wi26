@@ -61,6 +61,8 @@ renderText({ message(input$count) })
     -   **Cached** (Lazy): Only re-runs if inputs change; otherwise returns saved value.
     -   Called like a function: `my_reactive()`.
 
+## Example
+
 ```r
 server <- function(input, output, session) {
   # Calculate once
