@@ -14,6 +14,8 @@ title: "Useful links"
 | Textbooks                  | 🔗 [R for Data Science](https://r4ds.hadley.nz/)                          |
 |                            |                                                                           |
 |                            | 🔗 [Mastering Shiny](https://mastering-shiny.org/)                        |
+|                            |                                                                           |
+|                            | 🔗 [Happy Git and Github for the useR](https://happygitwithr.com/)        |
 +----------------------------+---------------------------------------------------------------------------+
 | Package documentation      | 🔗 ggplot2: [ggplot2.tidyverse.org](https://ggplot2.tidyverse.org/)       |
 |                            |                                                                           |
@@ -31,4 +33,3 @@ title: "Useful links"
 |                            |                                                                           |
 |                            | 🔗 shiny: [shiny.posit.co](https://shiny.posit.co/)                       |
 +----------------------------+---------------------------------------------------------------------------+
-
