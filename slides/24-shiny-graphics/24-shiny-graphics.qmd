@@ -19,7 +19,8 @@ subtitle: Lecture 24
 -   **Server**: Access `input$ID` (contains x, y coordinates).
 -   **Helper**: `nearPoints()` returns rows from the dataframe near the click.
 
-```r
+```{r}
+#| eval: false
 ui <- fluidPage(
   plotOutput("plot", click = "plot_click"),
   tableOutput("data")
@@ -42,7 +43,8 @@ server <- function(input, output, session) {
 -   **UI**: Add `brush = "ID"` to `plotOutput()`.
 -   **Helper**: `brushedPoints()` returns rows inside the brush.
 
-```r
+```{r}
+#| eval: false
 ui <- fluidPage(
   plotOutput("plot", brush = "plot_brush"),
   tableOutput("data")

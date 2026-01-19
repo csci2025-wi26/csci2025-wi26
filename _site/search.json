@@ -4031,14 +4031,14 @@
     "href": "slides/24-shiny-graphics/24-shiny-graphics.html#clicking",
     "title": "Interactive Graphics",
     "section": "Clicking",
-    "text": "Clicking\n\nUI: Add click = \"ID\" to plotOutput().\nServer: Access input$ID (contains x, y coordinates).\nHelper: nearPoints() returns rows from the dataframe near the click.\n\nui &lt;- fluidPage(\n  plotOutput(\"plot\", click = \"plot_click\"),\n  tableOutput(\"data\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$plot &lt;- renderPlot({\n    ggplot(mtcars, aes(wt, mpg)) + geom_point()\n  }, res = 96)\n  \n  output$data &lt;- renderTable({\n    nearPoints(mtcars, input$plot_click)\n  })\n}"
+    "text": "Clicking\n\nUI: Add click = \"ID\" to plotOutput().\nServer: Access input$ID (contains x, y coordinates).\nHelper: nearPoints() returns rows from the dataframe near the click.\n\n\nui &lt;- fluidPage(\n  plotOutput(\"plot\", click = \"plot_click\"),\n  tableOutput(\"data\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$plot &lt;- renderPlot({\n    ggplot(mtcars, aes(wt, mpg)) + geom_point()\n  }, res = 96)\n  \n  output$data &lt;- renderTable({\n    nearPoints(mtcars, input$plot_click)\n  })\n}"
   },
   {
     "objectID": "slides/24-shiny-graphics/24-shiny-graphics.html#brushing",
     "href": "slides/24-shiny-graphics/24-shiny-graphics.html#brushing",
     "title": "Interactive Graphics",
     "section": "Brushing",
-    "text": "Brushing\n\nBrush: A rectangular selection tool.\nUI: Add brush = \"ID\" to plotOutput().\nHelper: brushedPoints() returns rows inside the brush.\n\nui &lt;- fluidPage(\n  plotOutput(\"plot\", brush = \"plot_brush\"),\n  tableOutput(\"data\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$data &lt;- renderTable({\n    brushedPoints(mtcars, input$plot_brush)\n  })\n}"
+    "text": "Brushing\n\nBrush: A rectangular selection tool.\nUI: Add brush = \"ID\" to plotOutput().\nHelper: brushedPoints() returns rows inside the brush.\n\n\nui &lt;- fluidPage(\n  plotOutput(\"plot\", brush = \"plot_brush\"),\n  tableOutput(\"data\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$data &lt;- renderTable({\n    brushedPoints(mtcars, input$plot_brush)\n  })\n}"
   },
   {
     "objectID": "slides/24-shiny-graphics/24-shiny-graphics.html#plot-options",

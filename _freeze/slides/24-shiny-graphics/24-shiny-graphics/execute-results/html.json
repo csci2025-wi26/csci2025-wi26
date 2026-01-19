@@ -1,0 +1,19 @@
+{
+  "hash": "39407e41c34ca1342e697ff22009212b",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: Interactive Graphics\nsubtitle: Lecture 24\n---\n\n# Interactive Plots\n\n## The Concept\n\n-   **Static Plots**: Display data (output).\n-   **Interactive Plots**: Display data AND accept user input (output + input).\n-   **Mechanism**:\n    -   `plotOutput()` can accept pointer events (clicks, double clicks, hovers, brushes).\n    -   Sends these events to the server as `input$ID`.\n\n## Clicking\n\n-   **UI**: Add `click = \"ID\"` to `plotOutput()`.\n-   **Server**: Access `input$ID` (contains x, y coordinates).\n-   **Helper**: `nearPoints()` returns rows from the dataframe near the click.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nui <- fluidPage(\n  plotOutput(\"plot\", click = \"plot_click\"),\n  tableOutput(\"data\")\n)\n\nserver <- function(input, output, session) {\n  output$plot <- renderPlot({\n    ggplot(mtcars, aes(wt, mpg)) + geom_point()\n  }, res = 96)\n  \n  output$data <- renderTable({\n    nearPoints(mtcars, input$plot_click)\n  })\n}\n```\n:::\n\n\n## Brushing\n\n-   **Brush**: A rectangular selection tool.\n-   **UI**: Add `brush = \"ID\"` to `plotOutput()`.\n-   **Helper**: `brushedPoints()` returns rows inside the brush.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nui <- fluidPage(\n  plotOutput(\"plot\", brush = \"plot_brush\"),\n  tableOutput(\"data\")\n)\n\nserver <- function(input, output, session) {\n  output$data <- renderTable({\n    brushedPoints(mtcars, input$plot_brush)\n  })\n}\n```\n:::\n\n\n## Plot Options\n\n-   **`click`**: Single click.\n-   **`dblclick`**: Double click.\n-   **`hover`**: Mouse hover (triggers frequently).\n-   **`brush`**: Drag-to-select rectangle.\n    -   Can constrain to x or y axis: `brush = brushOpts(direction = \"x\")`.\n\n## Linked Plots\n\n-   **Goal**: interacting with one plot changes another.\n-   **Pattern**:\n    1.  Create a plot with a brush.\n    2.  Use `brushedPoints()` to filter the data.\n    3.  Create a second plot (or table) based on the filtered data.\n-   Result: Highlighting or zooming into data subsets.\n\n# Summary\n\n## Mechanics\n\n-   **UI**: `plotOutput(..., click = \"click_id\", brush = \"brush_id\")`.\n-   **Server Helpers**:\n    -   `nearPoints(df, input$click_id)`: Find single point.\n    -   `brushedPoints(df, input$brush_id)`: Find multiple points.\n-   **Power**: Enables \"drill-down\" data exploration.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-after-body": [
+        "\n<script>\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\n  // slide changes (different for each slide format).\n  (function () {\n    // dispatch for htmlwidgets\n    function fireSlideEnter() {\n      const event = window.document.createEvent(\"Event\");\n      event.initEvent(\"slideenter\", true, true);\n      window.document.dispatchEvent(event);\n    }\n\n    function fireSlideChanged(previousSlide, currentSlide) {\n      fireSlideEnter();\n\n      // dispatch for shiny\n      if (window.jQuery) {\n        if (previousSlide) {\n          window.jQuery(previousSlide).trigger(\"hidden\");\n        }\n        if (currentSlide) {\n          window.jQuery(currentSlide).trigger(\"shown\");\n        }\n      }\n    }\n\n    // hookup for slidy\n    if (window.w3c_slidy) {\n      window.w3c_slidy.add_observer(function (slide_num) {\n        // slide_num starts at position 1\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\n      });\n    }\n\n  })();\n</script>\n\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
