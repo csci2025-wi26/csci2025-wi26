@@ -1,6 +1,6 @@
 ---
-title: "Page Layout"
-subtitle: "Mastering Shiny, Chapter 6"
+title: Page Layout
+subtitle: Lecture 23
 ---
 
 # Single Page layout
@@ -236,54 +236,7 @@ my_theme <- bslib::bs_theme(
 )
 ```
 
-# The Underlying HTML
-
-## HTML Basics
-
-- Shiny UIs are converted into HTML, CSS, and JavaScript.
-- HTML (HyperText Markup Language) provides the structure.
-- Tags (`<tag>`) create elements. They can have attributes (`<tag attribute="value">`).
-- Tags are nested to form a hierarchy.
-
-```html
-<p>A <strong>very</strong> important paragraph.</p>
-```
-
-## Using HTML in Shiny
-
-- Shiny functions like `p()`, `h1()`, `strong()` create common HTML tags.
-- For any tag, you can use `tags$<tag>()`.
-- All tag functions take child elements and named attributes.
-
-```{r}
-#| eval: false
-tags$p(
-  "A ",
-  tags$strong("very"),
-  " important paragraph."
-)
-```
-
-## Including CSS
-
-- CSS (Cascading Style Sheets) controls the appearance.
-- Use the `includeCSS()` function to include a custom CSS file.
-- Place your CSS file in a `www` subdirectory of your app.
-
-```{r}
-#| eval: false
-# In ui.R
-fluidPage(
-  includeCSS("www/styles.css"),
-)
-
-/* In www/styles.css */
-body {
-  color: purple;
-}
-```
-
-## When to use raw HTML
+## You can use Raw HTML and CSS
 
 - When you need a tag that Shiny doesn't provide a function for.
 - For minor tweaks to the UI.

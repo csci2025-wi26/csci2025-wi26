@@ -195,7 +195,7 @@
 
 <section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
   <h1 class="title">Page Layout</h1>
-  <p class="subtitle">Mastering Shiny, Chapter 6</p>
+  <p class="subtitle">Lecture 23</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -461,58 +461,9 @@ Dr.&nbsp;Eric Friedlander
 <span id="cb12-6"><a></a>  <span class="st">"font-size-base"</span> <span class="ot">=</span> <span class="st">"1.1rem"</span></span>
 <span id="cb12-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section>
-<section>
-<section id="the-underlying-html" class="title-slide slide level1 center">
-<h1>The Underlying HTML</h1>
-
 </section>
-<section id="html-basics" class="slide level2">
-<h2>HTML Basics</h2>
-<ul>
-<li>Shiny UIs are converted into HTML, CSS, and JavaScript.</li>
-<li>HTML (HyperText Markup Language) provides the structure.</li>
-<li>Tags (<code>&lt;tag&gt;</code>) create elements. They can have attributes (<code>&lt;tag attribute="value"&gt;</code>).</li>
-<li>Tags are nested to form a hierarchy.</li>
-</ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb13-1"><a></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>A <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>very<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span> important paragraph.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="using-html-in-shiny" class="slide level2">
-<h2>Using HTML in Shiny</h2>
-<ul>
-<li>Shiny functions like <code>p()</code>, <code>h1()</code>, <code>strong()</code> create common HTML tags.</li>
-<li>For any tag, you can use <code>tags$&lt;tag&gt;()</code>.</li>
-<li>All tag functions take child elements and named attributes.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>tags<span class="sc">$</span><span class="fu">p</span>(</span>
-<span id="cb14-2"><a></a>  <span class="st">"A "</span>,</span>
-<span id="cb14-3"><a></a>  tags<span class="sc">$</span><span class="fu">strong</span>(<span class="st">"very"</span>),</span>
-<span id="cb14-4"><a></a>  <span class="st">" important paragraph."</span></span>
-<span id="cb14-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="including-css" class="slide level2">
-<h2>Including CSS</h2>
-<ul>
-<li>CSS (Cascading Style Sheets) controls the appearance.</li>
-<li>Use the <code>includeCSS()</code> function to include a custom CSS file.</li>
-<li>Place your CSS file in a <code>www</code> subdirectory of your app.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># In ui.R</span></span>
-<span id="cb15-2"><a></a><span class="fu">fluidPage</span>(</span>
-<span id="cb15-3"><a></a>  <span class="fu">includeCSS</span>(<span class="st">"www/styles.css"</span>),</span>
-<span id="cb15-4"><a></a>)</span>
-<span id="cb15-5"><a></a></span>
-<span id="cb15-6"><a></a><span class="sc">/</span><span class="er">*</span> In www<span class="sc">/</span>styles.css <span class="sc">*</span><span class="er">/</span></span>
-<span id="cb15-7"><a></a>body {</span>
-<span id="cb15-8"><a></a>  color<span class="sc">:</span> purple;</span>
-<span id="cb15-9"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="when-to-use-raw-html" class="slide level2">
-<h2>When to use raw HTML</h2>
+<section id="you-can-use-raw-html-and-css" class="slide level2">
+<h2>You can use Raw HTML and CSS</h2>
 <ul>
 <li>When you need a tag that Shiny doesn’t provide a function for.</li>
 <li>For minor tweaks to the UI.</li>
