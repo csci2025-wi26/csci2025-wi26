@@ -18,6 +18,7 @@ subtitle: Lecture 22
 ## Shiny Skeleton
 
 ```{r}
+#| eval: false
 library(shiny)
 ui <- fluidPage(
 )
@@ -46,6 +47,7 @@ shinyApp(ui, server)
     -   You can inspect `input`, `output`, and intermediate variables in the console.
 
 ```{r}
+#| eval: false
 server <- function(input, output, session) {
   observeEvent(input$go, {
     browser() # Execution pauses here
@@ -62,6 +64,7 @@ server <- function(input, output, session) {
 -   **Use `glue::glue()`** for easy formatting.
 
 ```{r}
+#| eval: false
 library(glue)
 server <- function(input, output, session) {
   val <- reactive({
@@ -100,6 +103,7 @@ server <- function(input, output, session) {
 3.  Combine UI and Server in one file.
 
 ```{r}
+#| eval: false
 library(shiny)
 
 ui <- fluidPage(

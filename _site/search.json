@@ -1042,7 +1042,7 @@
     "href": "slides/22-shiny-workflow/22-shiny-workflow.html#shiny-skeleton",
     "title": "Workflow",
     "section": "Shiny Skeleton",
-    "text": "Shiny Skeleton\n\nlibrary(shiny)\nui &lt;- fluidPage(\n)\nserver &lt;- function(input, output, session) {\n}\nshinyApp(ui, server)\n\nShiny applications not supported in static R Markdown documents"
+    "text": "Shiny Skeleton\n\nlibrary(shiny)\nui &lt;- fluidPage(\n)\nserver &lt;- function(input, output, session) {\n}\nshinyApp(ui, server)"
   },
   {
     "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#three-types-of-problems",
@@ -1084,7 +1084,7 @@
     "href": "slides/22-shiny-workflow/22-shiny-workflow.html#creating-a-shiny-reprex",
     "title": "Workflow",
     "section": "Creating a Shiny Reprex",
-    "text": "Creating a Shiny Reprex\n\nIsolate the problem (remove unrelated UI/Server code).\nUse built-in datasets (e.g., mtcars).\nCombine UI and Server in one file.\n\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  numericInput(\"n\", \"N\", 5),\n  textOutput(\"txt\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$txt &lt;- renderText(input$n * 2)\n}\n\nshinyApp(ui, server)\n\nShiny applications not supported in static R Markdown documents"
+    "text": "Creating a Shiny Reprex\n\nIsolate the problem (remove unrelated UI/Server code).\nUse built-in datasets (e.g., mtcars).\nCombine UI and Server in one file.\n\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  numericInput(\"n\", \"N\", 5),\n  textOutput(\"txt\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$txt &lt;- renderText(input$n * 2)\n}\n\nshinyApp(ui, server)"
   },
   {
     "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#practice",
