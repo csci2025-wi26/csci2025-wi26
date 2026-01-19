@@ -13,7 +13,7 @@ subtitle: Lecture 24
     -   `plotOutput()` can accept pointer events (clicks, double clicks, hovers, brushes).
     -   Sends these events to the server as `input$ID`.
 
-## Clicking
+## Clicking {.smaller}
 
 -   **UI**: Add `click = "ID"` to `plotOutput()`.
 -   **Server**: Access `input$ID` (contains x, y coordinates).
