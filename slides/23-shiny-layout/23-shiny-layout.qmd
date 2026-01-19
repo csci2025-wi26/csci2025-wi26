@@ -1,123 +1,300 @@
 ---
-title: Layouts, Themes, HTML
-subtitle: Lecture 23
+title: "Page Layout"
+subtitle: "Mastering Shiny, Chapter 6"
 ---
 
-# Layout Basics
+# Single Page layout
 
-## Hierarchy
+## `fluidPage()`
 
--   **Structure**: The hierarchy of R functions matches the hierarchy of the generated HTML.
--   **Function**: Layout functions provide high-level visual structure.
+- The foundation of most Shiny app layouts.
+- Creates a "fluid" page that automatically adjusts to the browser window size.
+- All UI elements are typically placed inside `fluidPage()`.
 
-```r
-fluidPage(
-  titlePanel("Hello Shiny!"),
+```{r}
+#| eval: false
+ui <- fluidPage(
+  "Hello, world!"
+)
+```
+
+## `titlePanel()`
+
+- A common first element in `fluidPage()` is `titlePanel()`.
+- It creates a large heading, suitable for the app's title.
+- It also sets the window title of the browser.
+
+```{r}
+#| eval: false
+ui <- fluidPage(
+  titlePanel("My Shiny App")
+)
+```
+
+## `sidebarLayout()`
+
+- A classic two-column layout.
+- Consists of `sidebarPanel()` (for inputs) and `mainPanel()` (for outputs).
+- `sidebarPanel()` is typically placed on the left.
+
+```{r}
+#| eval: false
+ui <- fluidPage(
+  titlePanel("My App"),
   sidebarLayout(
     sidebarPanel(
-      sliderInput("obs", "Observations:", min = 0, max = 1000, value = 500)
+      # inputs
     ),
     mainPanel(
-      plotOutput("distPlot")
+      # outputs
     )
   )
 )
 ```
 
-## Grid Layout
+## `sidebarLayout()` positions
 
--   **Rows**: `fluidRow()`.
--   **Columns**: `column(width, ...)`
-    -   Width is between 1 and 12.
-    -   Columns within a row must sum to 12.
+- You can control the position of the sidebar with the `position` argument.
+- `position = "left"` (default)
+- `position = "right"`
 
-```r
+```{r}
+#| eval: false
+sidebarLayout(
+  sidebarPanel(
+    # inputs
+  ),
+  mainPanel(
+    # outputs
+  ),
+  position = "right"
+)
+```
+
+## Multi-row Layouts with `fluidRow()` {.smaller}
+
+- For more complex layouts, you can build your own grid.
+- `fluidRow()` creates a row.
+- `column()` creates columns within a row.
+- The total width of columns in a row must be 12.
+
+```{r}
+#| eval: false
 fluidPage(
   fluidRow(
-    column(4, "Column 1"),
-    column(8, "Column 2")
+    column(4, 
+      "First column"
+    ),
+    column(8, 
+      "Second column"
+    )
   ),
   fluidRow(
-    column(6, "Column 3"),
-    column(6, "Column 4")
+    column(6, 
+      "Third column"
+    ),
+    column(6, 
+      "Fourth column"
+    )
   )
 )
 ```
 
-# Multi-Page Layouts
+## Nesting Layouts
 
-## Tabsets
+- You can nest `fluidRow()` and `column()` to create more complex layouts.
+- You can also nest `sidebarLayout()` inside a `column()`.
 
--   **`tabsetPanel()`**: Creates a region with tabs.
--   **`tabPanel()`**: Defines the content for a single tab.
--   Usage: Split complex content into smaller chunks.
+# `tabsetPanel()` and `navlistPanel()`
 
-```r
+## `tabsetPanel()`
+
+- Useful for breaking down a complex app into smaller pieces.
+- Creates a set of tabs.
+- Each tab is created with `tabPanel()`.
+
+```{r}
+#| eval: false
 mainPanel(
   tabsetPanel(
-    tabPanel("Plot", plotOutput("plot")),
-    tabPanel("Summary", verbatimTextOutput("summary")),
+    tabPanel("Plot", plotOutput("plot")), 
+    tabPanel("Summary", verbatimTextOutput("summary")), 
     tabPanel("Table", tableOutput("table"))
   )
 )
 ```
 
-## Navbar Pages
+## `tabsetPanel()` options
 
--   **`navbarPage()`**: Creates a top-level navigation bar.
--   Replaces `fluidPage()` as the top-level container.
--   Each `tabPanel()` within it becomes a "page".
+- `id`: Assign an ID to get the currently selected tab in the `server`.
+- `selected`: Set the initially selected tab.
+- `type`: Change the appearance of the tabs (e.g., "tabs", "pills").
+- `position`: Place tabs on "top", "bottom", "left", or "right".
 
-```r
+## `navlistPanel()`
+
+- An alternative to `tabsetPanel()`.
+- Renders tabs as a sidebar navigation list.
+- Well-suited for a sequence of linear steps.
+- Cannot be used inside `sidebarLayout`.
+
+```{r}
+#| eval: false
+navlistPanel(
+  "Header",
+  tabPanel("First", "First content"),
+  tabPanel("Second", "Second content"),
+  tabPanel("Third", "Third content")
+)
+```
+
+# `navbarPage()`
+
+## Page-level navigation
+
+- For multi-page apps, `navbarPage()` is the tool of choice.
+- It creates a navigation bar at the top of the page.
+- It replaces `fluidPage()` as the top-level UI function.
+- Each `tabPanel` becomes a "page".
+
+```{r}
+#| eval: false
 ui <- navbarPage(
   "My App",
-  tabPanel("Page 1", "Content 1"),
-  tabPanel("Page 2", "Content 2"),
+  tabPanel("Page 1", "Content for page 1"),
+  tabPanel("Page 2", "Content for page 2")
+)
+```
+
+## Menus in `navbarPage()`
+
+- You can group related pages into a menu using `navbarMenu()`.
+- This is useful for organizing a large number of pages.
+
+```{r}
+#| eval: false
+navbarPage(
+  "My App",
+  tabPanel("Page 1", ),
+  tabPanel("Page 2", ),
   navbarMenu("More",
-    tabPanel("Page 3a", "Content 3a"),
-    tabPanel("Page 3b", "Content 3b")
+    tabPanel("Sub-page A", ),
+    tabPanel("Sub-page B", )
   )
 )
 ```
 
+## `navbarPage()` options
+
+- `title`: The title of the app, shown in the navbar.
+- `id`: To access the selected tab from the server.
+- `collapsible = TRUE`: The navbar collapses on small screens.
+- `theme`: To apply a custom theme.
+
 # Themes
 
-## Bootstrap
+## Getting started with `bslib`
 
--   Shiny is built on **Bootstrap**, a popular HTML/CSS framework.
--   Provides the default look and feel (grid system, buttons, inputs).
--   To change the look, we customize the Bootstrap theme.
+- Shiny's appearance is controlled by the Bootstrap CSS framework.
+- The `bslib` package makes it easy to customize Bootstrap themes.
+- Use `bs_theme()` to create a theme and pass it to the `theme` argument of the page layout function.
 
-## Using `bslib`
-
--   The **`bslib`** package makes theming easy.
--   **`bs_theme()`**: Create a theme object.
-    -   `bootswatch`: Preset themes (e.g., "minty", "flatly", "darkly").
-    -   `bg`, `fg`: Background and foreground colors.
-    -   `primary`, `secondary`: Accent colors.
-    -   `base_font`: Custom fonts.
-
-```r
-library(bslib)
-
+```{r}
+#| eval: false
 ui <- fluidPage(
-  theme = bs_theme(bootswatch = "minty"),
-  # ... rest of UI ...
+  theme = bslib::bs_theme(bootswatch = "darkly"),
 )
 ```
 
-## Real-time Theming
+## Real-time theming
 
--   `bs_theme_preview()`: preview a theme in your browser and tweak it interactively.
+- `bslib` offers an interactive theming tool.
+- Run `bs_theme_preview()` on your UI to launch a special version of your app where you can tweak theme settings in real-time.
 
-```r
-bs_theme_preview(bs_theme(bootswatch = "darkly"))
+```{r}
+#| eval: false
+# In the R console
+my_ui <- fluidPage()
+bslib::bs_theme_preview(my_ui)
 ```
 
-# Summary
+## Customizing components
 
-## Takeaways
+- `bs_theme()` allows you to customize many aspects of the theme.
+  - `bg`, `fg`: Background and foreground colors.
+  - `primary`, `secondary`: Accent colors.
+  - `base_font`, `heading_font`, `code_font`: Fonts.
 
--   **Layouts**: Use `sidebarLayout()` for simple apps, `fluidRow()`/`column()` for custom grids.
--   **Navigation**: Use `tabsetPanel()` for local tabs, `navbarPage()` for whole-page navigation.
--   **Theming**: Use `bslib` and `bs_theme()` to make your app look professional and unique.
+```{r}
+#| eval: false
+my_theme <- bslib::bs_theme(
+  bg = "#202123",
+  fg = "#B8BCC2",
+  primary = "#EA80FC",
+  base_font = bslib::font_google("Inter"),
+  "font-size-base" = "1.1rem"
+)
+```
+
+# The Underlying HTML
+
+## HTML Basics
+
+- Shiny UIs are converted into HTML, CSS, and JavaScript.
+- HTML (HyperText Markup Language) provides the structure.
+- Tags (`<tag>`) create elements. They can have attributes (`<tag attribute="value">`).
+- Tags are nested to form a hierarchy.
+
+```html
+<p>A <strong>very</strong> important paragraph.</p>
+```
+
+## Using HTML in Shiny
+
+- Shiny functions like `p()`, `h1()`, `strong()` create common HTML tags.
+- For any tag, you can use `tags$<tag>()`.
+- All tag functions take child elements and named attributes.
+
+```{r}
+#| eval: false
+tags$p(
+  "A ",
+  tags$strong("very"),
+  " important paragraph."
+)
+```
+
+## Including CSS
+
+- CSS (Cascading Style Sheets) controls the appearance.
+- Use the `includeCSS()` function to include a custom CSS file.
+- Place your CSS file in a `www` subdirectory of your app.
+
+```{r}
+#| eval: false
+# In ui.R
+fluidPage(
+  includeCSS("www/styles.css"),
+)
+
+/* In www/styles.css */
+body {
+  color: purple;
+}
+```
+
+## When to use raw HTML
+
+- When you need a tag that Shiny doesn't provide a function for.
+- For minor tweaks to the UI.
+- To integrate with other JavaScript libraries that require a specific HTML structure.
+- But for major style changes, prefer `bslib`.
+
+# Wrap Up
+
+## Do Next
+
+1. Read [Chapter 6: Layouts, Themes, and HTML](https://mastering-shiny.org/action-layout.html) from Mastering Shiny.
+2. There's NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.
+3. I reommend working through the Exercises in the textbook.
+4. Move on to Lecture 24!
