@@ -1035,7 +1035,7 @@
     "href": "slides/22-shiny-workflow/22-shiny-workflow.html#creating-and-running",
     "title": "Workflow",
     "section": "Creating and Running",
-    "text": "Creating and Running\n\nCreation:\n\nFile -&gt; New Project -&gt; Shiny App (creates directory structure).\nOr create app.R manually in a new folder.\n\nRunning:\n\nClick Run App.\nShortcut: Cmd/Ctrl + Shift + Enter.\n\nStopping:\n\nClick Stop icon in console.\nPress Esc."
+    "text": "Creating and Running\n\nCreation:\n\nOne file app: app.R\nTwo file app: ui.R and server.R\n\nIn RStudio/Positron:\n\nClick the Run App button (play icon) in the toolbar.\n\nStopping:\n\nClick the Stop sign in the console."
   },
   {
     "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#optimizing-iteration",
@@ -1056,14 +1056,14 @@
     "href": "slides/22-shiny-workflow/22-shiny-workflow.html#tracebacks-and-browser",
     "title": "Workflow",
     "section": "Tracebacks and browser()",
-    "text": "Tracebacks and browser()\n\nTraceback: Read from bottom to top to find your code.\nbrowser():\n\nPlace browser() inside your server function.\nExecution pauses when it hits that line.\nYou can inspect input, output, and intermediate variables in the console.\n\n\nserver &lt;- function(input, output, session) {\n  observeEvent(input$go, {\n    browser() # Execution pauses here\n    # Inspect input$x, calculated values, etc.\n  })\n}"
+    "text": "Tracebacks and browser()\n\nTraceback: Read from bottom to top to find your code.\nbrowser():\n\nPlace browser() inside your server function.\nExecution pauses when it hits that line.\nYou can inspect input, output, and intermediate variables in the console.\n\n\n\nserver &lt;- function(input, output, session) {\n  observeEvent(input$go, {\n    browser() # Execution pauses here\n    # Inspect input$x, calculated values, etc.\n  })\n}"
   },
   {
     "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#print-debugging",
     "href": "slides/22-shiny-workflow/22-shiny-workflow.html#print-debugging",
     "title": "Workflow",
     "section": "Print Debugging",
-    "text": "Print Debugging\n\nClassic technique: Print values to see what’s happening.\nUse message() instead of print().\n\nGoes to standard error (logs).\n\nUse glue::glue() for easy formatting.\n\nlibrary(glue)\nserver &lt;- function(input, output, session) {\n  val &lt;- reactive({\n    message(glue(\"Updating val. input$x is {input$x}\"))\n    input$x * 2\n  })\n}"
+    "text": "Print Debugging\n\nClassic technique: Print values to see what’s happening.\nUse message() instead of print().\n\nGoes to standard error (logs).\n\nUse glue::glue() for easy formatting.\n\n\nlibrary(glue)\nserver &lt;- function(input, output, session) {\n  val &lt;- reactive({\n    message(glue(\"Updating val. input$x is {input$x}\"))\n    input$x * 2\n  })\n}"
   },
   {
     "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#debugging-reactivity",
@@ -1084,14 +1084,14 @@
     "href": "slides/22-shiny-workflow/22-shiny-workflow.html#creating-a-shiny-reprex",
     "title": "Workflow",
     "section": "Creating a Shiny Reprex",
-    "text": "Creating a Shiny Reprex\n\nIsolate the problem (remove unrelated UI/Server code).\nUse built-in datasets (e.g., mtcars).\nCombine UI and Server in one file.\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  numericInput(\"n\", \"N\", 5),\n  textOutput(\"txt\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$txt &lt;- renderText(input$n * 2)\n}\n\nshinyApp(ui, server)"
+    "text": "Creating a Shiny Reprex\n\nIsolate the problem (remove unrelated UI/Server code).\nUse built-in datasets (e.g., mtcars).\nCombine UI and Server in one file.\n\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  numericInput(\"n\", \"N\", 5),\n  textOutput(\"txt\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$txt &lt;- renderText(input$n * 2)\n}\n\nshinyApp(ui, server)\n\nShiny applications not supported in static R Markdown documents"
   },
   {
     "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#workflow-tips",
     "href": "slides/22-shiny-workflow/22-shiny-workflow.html#workflow-tips",
     "title": "Workflow",
     "section": "Workflow Tips",
-    "text": "Workflow Tips\n\nUse Auto-reload to move fast.\nRead tracebacks carefully.\nUse browser() to stop and inspect.\nUse message() to track reactive execution.\nWhen stuck, create a Reprex."
+    "text": "Workflow Tips\n\nRead tracebacks carefully.\nUse browser() to stop and inspect.\nUse message() to track reactive execution.\nWhen stuck, create a Reprex."
   },
   {
     "objectID": "slides/09-communication/09-communication.html#communicating-results",
@@ -4376,5 +4376,26 @@
     "title": "GEMINI.md: Project Overview and Contributor Guide",
     "section": "",
     "text": "To work on this project, you will need to have Quarto installed. You can download it from the Quarto website.\n\n\nTo render and preview the website locally, run the following command in your terminal from the project’s root directory:\nquarto preview\nThis will start a local web server and open the site in your browser. The site will automatically refresh when you save changes to any of the source files.\n\n\n\nTo render the entire website without previewing it, use the following command:\nquarto render\nThis will generate all the static files and place them in the _site/ directory. This is typically done for deployment."
+  },
+  {
+    "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#shiny-skeleton",
+    "href": "slides/22-shiny-workflow/22-shiny-workflow.html#shiny-skeleton",
+    "title": "Workflow",
+    "section": "Shiny Skeleton",
+    "text": "Shiny Skeleton\n\nlibrary(shiny)\nui &lt;- fluidPage(\n)\nserver &lt;- function(input, output, session) {\n}\nshinyApp(ui, server)\n\nShiny applications not supported in static R Markdown documents"
+  },
+  {
+    "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#practice",
+    "href": "slides/22-shiny-workflow/22-shiny-workflow.html#practice",
+    "title": "Workflow",
+    "section": "Practice!",
+    "text": "Practice!\nLet’s work through the case study in the text!"
+  },
+  {
+    "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#do-next",
+    "href": "slides/22-shiny-workflow/22-shiny-workflow.html#do-next",
+    "title": "Workflow",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 5: Workflow from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 23!"
   }
 ]

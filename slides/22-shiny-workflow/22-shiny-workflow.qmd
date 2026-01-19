@@ -8,22 +8,23 @@ subtitle: Lecture 22
 ## Creating and Running
 
 -   **Creation**:
-    -   *File -> New Project -> Shiny App* (creates directory structure).
-    -   Or create `app.R` manually in a new folder.
--   **Running**:
-    -   Click **Run App**.
-    -   Shortcut: `Cmd/Ctrl + Shift + Enter`.
+    -   One file app: `app.R`
+    -   Two file app: `ui.R` and `server.R`
+-   **In RStudio/Positron**:
+    -   Click the **Run App** button (play icon) in the toolbar.
 -   **Stopping**:
-    -   Click **Stop** icon in console.
-    -   Press `Esc`.
+    -   Click the **Stop** sign in the console.
 
-## Optimizing Iteration
+## Shiny Skeleton
 
--   Goal: Reduce time between change and result.
--   **Auto-reload**:
-    -   App reloads automatically when you save `app.R`.
-    -   `options(shiny.autoreload = TRUE)`
-    -   Or in RStudio: Run App -> (Dropdown) -> Run External -> (Check) Auto-reload.
+```{r}
+library(shiny)
+ui <- fluidPage(
+)
+server <- function(input, output, session) {
+}
+shinyApp(ui, server)
+```
 
 # Debugging
 
@@ -44,7 +45,7 @@ subtitle: Lecture 22
     -   Execution pauses when it hits that line.
     -   You can inspect `input`, `output`, and intermediate variables in the console.
 
-```r
+```{r}
 server <- function(input, output, session) {
   observeEvent(input$go, {
     browser() # Execution pauses here
@@ -60,7 +61,7 @@ server <- function(input, output, session) {
     -   Goes to standard error (logs).
 -   **Use `glue::glue()`** for easy formatting.
 
-```r
+```{r}
 library(glue)
 server <- function(input, output, session) {
   val <- reactive({
@@ -98,7 +99,7 @@ server <- function(input, output, session) {
 2.  Use built-in datasets (e.g., `mtcars`).
 3.  Combine UI and Server in one file.
 
-```r
+```{r}
 library(shiny)
 
 ui <- fluidPage(
@@ -113,12 +114,22 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 ```
 
+## Practice!
+
+Let's work through the case study in the text!
+
 # Summary
 
 ## Workflow Tips
 
--   Use **Auto-reload** to move fast.
 -   **Read tracebacks** carefully.
 -   Use **`browser()`** to stop and inspect.
 -   Use **`message()`** to track reactive execution.
 -   When stuck, create a **Reprex**.
+
+## Do Next
+
+1. Read [Chapter 5: Workflow](https://mastering-shiny.org/action-workflow.html) from Mastering Shiny.
+2. There's NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.
+3. I reommend working through the Exercises in the textbook.
+4. Move on to Lecture 23!
