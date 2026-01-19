@@ -1038,11 +1038,11 @@
     "text": "Creating and Running\n\nCreation:\n\nOne file app: app.R\nTwo file app: ui.R and server.R\n\nIn RStudio/Positron:\n\nClick the Run App button (play icon) in the toolbar.\n\nStopping:\n\nClick the Stop sign in the console."
   },
   {
-    "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#optimizing-iteration",
-    "href": "slides/22-shiny-workflow/22-shiny-workflow.html#optimizing-iteration",
+    "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#shiny-skeleton",
+    "href": "slides/22-shiny-workflow/22-shiny-workflow.html#shiny-skeleton",
     "title": "Workflow",
-    "section": "Optimizing Iteration",
-    "text": "Optimizing Iteration\n\nGoal: Reduce time between change and result.\nAuto-reload:\n\nApp reloads automatically when you save app.R.\noptions(shiny.autoreload = TRUE)\nOr in RStudio: Run App -&gt; (Dropdown) -&gt; Run External -&gt; (Check) Auto-reload."
+    "section": "Shiny Skeleton",
+    "text": "Shiny Skeleton\n\nlibrary(shiny)\nui &lt;- fluidPage(\n)\nserver &lt;- function(input, output, session) {\n}\nshinyApp(ui, server)\n\nShiny applications not supported in static R Markdown documents"
   },
   {
     "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#three-types-of-problems",
@@ -1087,11 +1087,25 @@
     "text": "Creating a Shiny Reprex\n\nIsolate the problem (remove unrelated UI/Server code).\nUse built-in datasets (e.g., mtcars).\nCombine UI and Server in one file.\n\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  numericInput(\"n\", \"N\", 5),\n  textOutput(\"txt\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$txt &lt;- renderText(input$n * 2)\n}\n\nshinyApp(ui, server)\n\nShiny applications not supported in static R Markdown documents"
   },
   {
+    "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#practice",
+    "href": "slides/22-shiny-workflow/22-shiny-workflow.html#practice",
+    "title": "Workflow",
+    "section": "Practice!",
+    "text": "Practice!\nLet’s work through the case study in the text!"
+  },
+  {
     "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#workflow-tips",
     "href": "slides/22-shiny-workflow/22-shiny-workflow.html#workflow-tips",
     "title": "Workflow",
     "section": "Workflow Tips",
     "text": "Workflow Tips\n\nRead tracebacks carefully.\nUse browser() to stop and inspect.\nUse message() to track reactive execution.\nWhen stuck, create a Reprex."
+  },
+  {
+    "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#do-next",
+    "href": "slides/22-shiny-workflow/22-shiny-workflow.html#do-next",
+    "title": "Workflow",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 5: Workflow from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 23!"
   },
   {
     "objectID": "slides/09-communication/09-communication.html#communicating-results",
@@ -4062,46 +4076,95 @@
     "text": "Mechanics\n\nUI: plotOutput(..., click = \"click_id\", brush = \"brush_id\").\nServer Helpers:\n\nnearPoints(df, input$click_id): Find single point.\nbrushedPoints(df, input$brush_id): Find multiple points.\n\nPower: Enables “drill-down” data exploration."
   },
   {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#hierarchy",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#hierarchy",
-    "title": "Layouts, Themes, HTML",
-    "section": "Hierarchy",
-    "text": "Hierarchy\n\nStructure: The hierarchy of R functions matches the hierarchy of the generated HTML.\nFunction: Layout functions provide high-level visual structure.\n\n\nfluidPage(\n  titlePanel(\"Hello Shiny!\"),\n  sidebarLayout(\n    sidebarPanel(\n      sliderInput(\"obs\", \"Observations:\", min = 0, max = 1000, value = 500)\n    ),\n    mainPanel(\n      plotOutput(\"distPlot\")\n    )\n  )\n)"
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#fluidpage",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#fluidpage",
+    "title": "Page Layout",
+    "section": "fluidPage()",
+    "text": "fluidPage()\n\nThe foundation of most Shiny app layouts.\nCreates a “fluid” page that automatically adjusts to the browser window size.\nAll UI elements are typically placed inside fluidPage().\n\n\nui &lt;- fluidPage(\n  \"Hello, world!\"\n)"
   },
   {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#grid-layout",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#grid-layout",
-    "title": "Layouts, Themes, HTML",
-    "section": "Grid Layout",
-    "text": "Grid Layout\n\nRows: fluidRow().\nColumns: column(width, ...)\n\nWidth is between 1 and 12.\nColumns within a row must sum to 12.\n\n\nfluidPage(\n  fluidRow(\n    column(4, \"Column 1\"),\n    column(8, \"Column 2\")\n  ),\n  fluidRow(\n    column(6, \"Column 3\"),\n    column(6, \"Column 4\")\n  )\n)"
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#titlepanel",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#titlepanel",
+    "title": "Page Layout",
+    "section": "titlePanel()",
+    "text": "titlePanel()\n\nA common first element in fluidPage() is titlePanel().\nIt creates a large heading, suitable for the app’s title.\nIt also sets the window title of the browser.\n\n\nui &lt;- fluidPage(\n  titlePanel(\"My Shiny App\")\n)"
   },
   {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#tabsets",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#tabsets",
-    "title": "Layouts, Themes, HTML",
-    "section": "Tabsets",
-    "text": "Tabsets\n\ntabsetPanel(): Creates a region with tabs.\ntabPanel(): Defines the content for a single tab.\nUsage: Split complex content into smaller chunks.\n\nmainPanel(\n  tabsetPanel(\n    tabPanel(\"Plot\", plotOutput(\"plot\")),\n    tabPanel(\"Summary\", verbatimTextOutput(\"summary\")),\n    tabPanel(\"Table\", tableOutput(\"table\"))\n  )\n)"
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#sidebarlayout",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#sidebarlayout",
+    "title": "Page Layout",
+    "section": "sidebarLayout()",
+    "text": "sidebarLayout()\n\nA classic two-column layout.\nConsists of sidebarPanel() (for inputs) and mainPanel() (for outputs).\nsidebarPanel() is typically placed on the left.\n\n\nui &lt;- fluidPage(\n  titlePanel(\"My App\"),\n  sidebarLayout(\n    sidebarPanel(\n      # inputs\n    ),\n    mainPanel(\n      # outputs\n    )\n  )\n)"
   },
   {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#navbar-pages",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#navbar-pages",
-    "title": "Layouts, Themes, HTML",
-    "section": "Navbar Pages",
-    "text": "Navbar Pages\n\nnavbarPage(): Creates a top-level navigation bar.\nReplaces fluidPage() as the top-level container.\nEach tabPanel() within it becomes a “page”.\n\nui &lt;- navbarPage(\n  \"My App\",\n  tabPanel(\"Page 1\", \"Content 1\"),\n  tabPanel(\"Page 2\", \"Content 2\"),\n  navbarMenu(\"More\",\n    tabPanel(\"Page 3a\", \"Content 3a\"),\n    tabPanel(\"Page 3b\", \"Content 3b\")\n  )\n)"
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#sidebarlayout-positions",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#sidebarlayout-positions",
+    "title": "Page Layout",
+    "section": "sidebarLayout() positions",
+    "text": "sidebarLayout() positions\n\nYou can control the position of the sidebar with the position argument.\nposition = \"left\" (default)\nposition = \"right\"\n\n\nsidebarLayout(\n  sidebarPanel(\n    # inputs\n  ),\n  mainPanel(\n    # outputs\n  ),\n  position = \"right\"\n)"
   },
   {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#bootstrap",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#bootstrap",
-    "title": "Layouts, Themes, HTML",
-    "section": "Bootstrap",
-    "text": "Bootstrap\n\nShiny is built on Bootstrap, a popular HTML/CSS framework.\nProvides the default look and feel (grid system, buttons, inputs).\nTo change the look, we customize the Bootstrap theme."
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#multi-row-layouts-with-fluidrow",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#multi-row-layouts-with-fluidrow",
+    "title": "Page Layout",
+    "section": "Multi-row Layouts with fluidRow()",
+    "text": "Multi-row Layouts with fluidRow()\n\nFor more complex layouts, you can build your own grid.\nfluidRow() creates a row.\ncolumn() creates columns within a row.\nThe total width of columns in a row must be 12.\n\n\nfluidPage(\n  fluidRow(\n    column(4, \n      \"First column\"\n    ),\n    column(8, \n      \"Second column\"\n    )\n  ),\n  fluidRow(\n    column(6, \n      \"Third column\"\n    ),\n    column(6, \n      \"Fourth column\"\n    )\n  )\n)"
   },
   {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#using-bslib",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#using-bslib",
-    "title": "Layouts, Themes, HTML",
-    "section": "Using bslib",
-    "text": "Using bslib\n\nThe bslib package makes theming easy.\nbs_theme(): Create a theme object.\n\nbootswatch: Preset themes (e.g., “minty”, “flatly”, “darkly”).\nbg, fg: Background and foreground colors.\nprimary, secondary: Accent colors.\nbase_font: Custom fonts.\n\n\nlibrary(bslib)\n\nui &lt;- fluidPage(\n  theme = bs_theme(bootswatch = \"minty\"),\n  # ... rest of UI ...\n)"
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#nesting-layouts",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#nesting-layouts",
+    "title": "Page Layout",
+    "section": "Nesting Layouts",
+    "text": "Nesting Layouts\n\nYou can nest fluidRow() and column() to create more complex layouts.\nYou can also nest sidebarLayout() inside a column()."
+  },
+  {
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#tabsetpanel",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#tabsetpanel",
+    "title": "Page Layout",
+    "section": "tabsetPanel()",
+    "text": "tabsetPanel()\n\nUseful for breaking down a complex app into smaller pieces.\nCreates a set of tabs.\nEach tab is created with tabPanel().\n\n\nmainPanel(\n  tabsetPanel(\n    tabPanel(\"Plot\", plotOutput(\"plot\")), \n    tabPanel(\"Summary\", verbatimTextOutput(\"summary\")), \n    tabPanel(\"Table\", tableOutput(\"table\"))\n  )\n)"
+  },
+  {
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#tabsetpanel-options",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#tabsetpanel-options",
+    "title": "Page Layout",
+    "section": "tabsetPanel() options",
+    "text": "tabsetPanel() options\n\nid: Assign an ID to get the currently selected tab in the server.\nselected: Set the initially selected tab.\ntype: Change the appearance of the tabs (e.g., “tabs”, “pills”).\nposition: Place tabs on “top”, “bottom”, “left”, or “right”."
+  },
+  {
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#navlistpanel",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#navlistpanel",
+    "title": "Page Layout",
+    "section": "navlistPanel()",
+    "text": "navlistPanel()\n\nAn alternative to tabsetPanel().\nRenders tabs as a sidebar navigation list.\nWell-suited for a sequence of linear steps.\nCannot be used inside sidebarLayout.\n\n\nnavlistPanel(\n  \"Header\",\n  tabPanel(\"First\", \"First content\"),\n  tabPanel(\"Second\", \"Second content\"),\n  tabPanel(\"Third\", \"Third content\")\n)"
+  },
+  {
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#page-level-navigation",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#page-level-navigation",
+    "title": "Page Layout",
+    "section": "Page-level navigation",
+    "text": "Page-level navigation\n\nFor multi-page apps, navbarPage() is the tool of choice.\nIt creates a navigation bar at the top of the page.\nIt replaces fluidPage() as the top-level UI function.\nEach tabPanel becomes a “page”.\n\n\nui &lt;- navbarPage(\n  \"My App\",\n  tabPanel(\"Page 1\", \"Content for page 1\"),\n  tabPanel(\"Page 2\", \"Content for page 2\")\n)"
+  },
+  {
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#menus-in-navbarpage",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#menus-in-navbarpage",
+    "title": "Page Layout",
+    "section": "Menus in navbarPage()",
+    "text": "Menus in navbarPage()\n\nYou can group related pages into a menu using navbarMenu().\nThis is useful for organizing a large number of pages.\n\n\nnavbarPage(\n  \"My App\",\n  tabPanel(\"Page 1\", ),\n  tabPanel(\"Page 2\", ),\n  navbarMenu(\"More\",\n    tabPanel(\"Sub-page A\", ),\n    tabPanel(\"Sub-page B\", )\n  )\n)"
+  },
+  {
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#navbarpage-options",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#navbarpage-options",
+    "title": "Page Layout",
+    "section": "navbarPage() options",
+    "text": "navbarPage() options\n\ntitle: The title of the app, shown in the navbar.\nid: To access the selected tab from the server.\ncollapsible = TRUE: The navbar collapses on small screens.\ntheme: To apply a custom theme."
+  },
+  {
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#getting-started-with-bslib",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#getting-started-with-bslib",
+    "title": "Page Layout",
+    "section": "Getting started with bslib",
+    "text": "Getting started with bslib\n\nShiny’s appearance is controlled by the Bootstrap CSS framework.\nThe bslib package makes it easy to customize Bootstrap themes.\nUse bs_theme() to create a theme and pass it to the theme argument of the page layout function.\n\n\nui &lt;- fluidPage(\n  theme = bslib::bs_theme(bootswatch = \"darkly\"),\n)"
   },
   {
     "objectID": "slides/23-shiny-layout/23-shiny-layout.html#real-time-theming",
@@ -4111,11 +4174,46 @@
     "text": "Real-time theming\n\nbslib offers an interactive theming tool.\nRun bs_theme_preview() on your UI to launch a special version of your app where you can tweak theme settings in real-time.\n\n\n# In the R console\nmy_ui &lt;- fluidPage()\nbslib::bs_theme_preview(my_ui)"
   },
   {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#takeaways",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#takeaways",
-    "title": "Layouts, Themes, HTML",
-    "section": "Takeaways",
-    "text": "Takeaways\n\nLayouts: Use sidebarLayout() for simple apps, fluidRow()/column() for custom grids.\nNavigation: Use tabsetPanel() for local tabs, navbarPage() for whole-page navigation.\nTheming: Use bslib and bs_theme() to make your app look professional and unique."
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#customizing-components",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#customizing-components",
+    "title": "Page Layout",
+    "section": "Customizing components",
+    "text": "Customizing components\n\nbs_theme() allows you to customize many aspects of the theme.\n\nbg, fg: Background and foreground colors.\nprimary, secondary: Accent colors.\nbase_font, heading_font, code_font: Fonts.\n\n\n\nmy_theme &lt;- bslib::bs_theme(\n  bg = \"#202123\",\n  fg = \"#B8BCC2\",\n  primary = \"#EA80FC\",\n  base_font = bslib::font_google(\"Inter\"),\n  \"font-size-base\" = \"1.1rem\"\n)"
+  },
+  {
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#html-basics",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#html-basics",
+    "title": "Page Layout",
+    "section": "HTML Basics",
+    "text": "HTML Basics\n\nShiny UIs are converted into HTML, CSS, and JavaScript.\nHTML (HyperText Markup Language) provides the structure.\nTags (&lt;tag&gt;) create elements. They can have attributes (&lt;tag attribute=\"value\"&gt;).\nTags are nested to form a hierarchy.\n\n&lt;p&gt;A &lt;strong&gt;very&lt;/strong&gt; important paragraph.&lt;/p&gt;"
+  },
+  {
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#using-html-in-shiny",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#using-html-in-shiny",
+    "title": "Page Layout",
+    "section": "Using HTML in Shiny",
+    "text": "Using HTML in Shiny\n\nShiny functions like p(), h1(), strong() create common HTML tags.\nFor any tag, you can use tags$&lt;tag&gt;().\nAll tag functions take child elements and named attributes.\n\n\ntags$p(\n  \"A \",\n  tags$strong(\"very\"),\n  \" important paragraph.\"\n)"
+  },
+  {
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#including-css",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#including-css",
+    "title": "Page Layout",
+    "section": "Including CSS",
+    "text": "Including CSS\n\nCSS (Cascading Style Sheets) controls the appearance.\nUse the includeCSS() function to include a custom CSS file.\nPlace your CSS file in a www subdirectory of your app.\n\n\n# In ui.R\nfluidPage(\n  includeCSS(\"www/styles.css\"),\n)\n\n/* In www/styles.css */\nbody {\n  color: purple;\n}"
+  },
+  {
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#when-to-use-raw-html",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#when-to-use-raw-html",
+    "title": "Page Layout",
+    "section": "When to use raw HTML",
+    "text": "When to use raw HTML\n\nWhen you need a tag that Shiny doesn’t provide a function for.\nFor minor tweaks to the UI.\nTo integrate with other JavaScript libraries that require a specific HTML structure.\nBut for major style changes, prefer bslib."
+  },
+  {
+    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#do-next",
+    "href": "slides/23-shiny-layout/23-shiny-layout.html#do-next",
+    "title": "Page Layout",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 6: Layouts, Themes, and HTML from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 24!"
   },
   {
     "objectID": "slides/06-importing/06-importing-data.html#this-lesson",
@@ -4329,7 +4427,7 @@
     "href": "index.html",
     "title": "CSCI-2025: Data Manipulation and Visualization",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\nvideo-15\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\nslides-16\nvideo-16\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins\n\nslides-17\nvideo-17\n\n\n3\nTue, Jan 20\nLec\nYour first Shiny app\n📚 ms - first-app\n\nslides-18\nvideo-18\n\n\n3\nTue, Jan 20\nLec\nBasic UI\n📚 ms - basic-ui\n\nslides-19\nvideo-19\n\n\n3\nTue, Jan 20\nLec\nBasic reactivity\n📚 ms - basic-reactivity\n\nslides-20\nvideo-20\n\n\n3\nTue, Jan 20\nLec\nCase Study: ER\n📚 ms - case-study-er\n\n\nvideo-21",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\nvideo-15\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\nslides-16\nvideo-16\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins\n\nslides-17\nvideo-17\n\n\n3\nTue, Jan 20\nLec\nYour first Shiny app\n📚 ms - first-app\n\nslides-18\nvideo-18\n\n\n3\nTue, Jan 20\nLec\nBasic UI\n📚 ms - basic-ui\n\nslides-19\nvideo-19\n\n\n3\nTue, Jan 20\nLec\nBasic reactivity\n📚 ms - basic-reactivity\n\nslides-20\nvideo-20\n\n\n3\nTue, Jan 20\nLec\nCase Study: ER\n📚 ms - case-study-er\n\n\nvideo-21\n\n\n3\nWed, Jan 21\nLec\nWorkflow\n📚 ms - workflow\n\nslides-22",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -4376,173 +4474,5 @@
     "title": "GEMINI.md: Project Overview and Contributor Guide",
     "section": "",
     "text": "To work on this project, you will need to have Quarto installed. You can download it from the Quarto website.\n\n\nTo render and preview the website locally, run the following command in your terminal from the project’s root directory:\nquarto preview\nThis will start a local web server and open the site in your browser. The site will automatically refresh when you save changes to any of the source files.\n\n\n\nTo render the entire website without previewing it, use the following command:\nquarto render\nThis will generate all the static files and place them in the _site/ directory. This is typically done for deployment."
-  },
-  {
-    "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#shiny-skeleton",
-    "href": "slides/22-shiny-workflow/22-shiny-workflow.html#shiny-skeleton",
-    "title": "Workflow",
-    "section": "Shiny Skeleton",
-    "text": "Shiny Skeleton\n\nlibrary(shiny)\nui &lt;- fluidPage(\n)\nserver &lt;- function(input, output, session) {\n}\nshinyApp(ui, server)\n\nShiny applications not supported in static R Markdown documents"
-  },
-  {
-    "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#practice",
-    "href": "slides/22-shiny-workflow/22-shiny-workflow.html#practice",
-    "title": "Workflow",
-    "section": "Practice!",
-    "text": "Practice!\nLet’s work through the case study in the text!"
-  },
-  {
-    "objectID": "slides/22-shiny-workflow/22-shiny-workflow.html#do-next",
-    "href": "slides/22-shiny-workflow/22-shiny-workflow.html#do-next",
-    "title": "Workflow",
-    "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 5: Workflow from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 23!"
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#layout-functions",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#layout-functions",
-    "title": "Layouts, Themes, HTML",
-    "section": "Layout Functions",
-    "text": "Layout Functions\n\nStructure: The hierarchy of R functions matches the hierarchy of the generated HTML.\nFunction: Layout functions provide high-level visual structure.\n\n\nFull CodeStructure\n\n\n\nfluidPage(\n  titlePanel(\"Hello Shiny!\"),\n  sidebarLayout(\n    sidebarPanel(\n      sliderInput(\"obs\", \"Observations:\", min = 0, max = 1000, value = 500)\n    ),\n    mainPanel(\n      plotOutput(\"distPlot\")\n    )\n  )\n)\n\n\n\n\nfluidPage(\n  titlePanel(),\n  sidebarLayout(\n    sidebarPanel(),\n    mainPanel()\n  )\n)"
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#layout",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#layout",
-    "title": "Layouts, Themes, HTML",
-    "section": "Layout",
-    "text": "Layout\n\nStructure: The hierarchy of R functions matches the hierarchy of the generated HTML.\nFunction: Layout functions provide high-level visual structure.\n\n\nFull CodeStructure\n\n\n\nfluidPage(\n  titlePanel(\"Hello Shiny!\"),\n  sidebarLayout(\n    sidebarPanel(\n      sliderInput(\"obs\", \"Observations:\", min = 0, max = 1000, value = 500)\n    ),\n    mainPanel(\n      plotOutput(\"distPlot\")\n    )\n  )\n)\n\n\n\n\nfluidPage(\n  titlePanel(),\n  sidebarLayout(\n    sidebarPanel(),\n    mainPanel()\n  )\n)"
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#fluidpage",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#fluidpage",
-    "title": "Page Layout",
-    "section": "fluidPage()",
-    "text": "fluidPage()\n\nThe foundation of most Shiny app layouts.\nCreates a “fluid” page that automatically adjusts to the browser window size.\nAll UI elements are typically placed inside fluidPage().\n\n\nui &lt;- fluidPage(\n  \"Hello, world!\"\n)"
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#titlepanel",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#titlepanel",
-    "title": "Page Layout",
-    "section": "titlePanel()",
-    "text": "titlePanel()\n\nA common first element in fluidPage() is titlePanel().\nIt creates a large heading, suitable for the app’s title.\nIt also sets the window title of the browser.\n\n\nui &lt;- fluidPage(\n  titlePanel(\"My Shiny App\")\n)"
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#sidebarlayout",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#sidebarlayout",
-    "title": "Page Layout",
-    "section": "sidebarLayout()",
-    "text": "sidebarLayout()\n\nA classic two-column layout.\nConsists of sidebarPanel() (for inputs) and mainPanel() (for outputs).\nsidebarPanel() is typically placed on the left.\n\n\nui &lt;- fluidPage(\n  titlePanel(\"My App\"),\n  sidebarLayout(\n    sidebarPanel(\n      # inputs\n    ),\n    mainPanel(\n      # outputs\n    )\n  )\n)"
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#sidebarlayout-positions",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#sidebarlayout-positions",
-    "title": "Page Layout",
-    "section": "sidebarLayout() positions",
-    "text": "sidebarLayout() positions\n\nYou can control the position of the sidebar with the position argument.\nposition = \"left\" (default)\nposition = \"right\"\n\n\nsidebarLayout(\n  sidebarPanel(\n    # inputs\n  ),\n  mainPanel(\n    # outputs\n  ),\n  position = \"right\"\n)"
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#multi-row-layouts-with-fluidrow",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#multi-row-layouts-with-fluidrow",
-    "title": "Page Layout",
-    "section": "Multi-row Layouts with fluidRow()",
-    "text": "Multi-row Layouts with fluidRow()\n\nFor more complex layouts, you can build your own grid.\nfluidRow() creates a row.\ncolumn() creates columns within a row.\nThe total width of columns in a row must be 12.\n\n\nfluidPage(\n  fluidRow(\n    column(4, \n      \"First column\"\n    ),\n    column(8, \n      \"Second column\"\n    )\n  ),\n  fluidRow(\n    column(6, \n      \"Third column\"\n    ),\n    column(6, \n      \"Fourth column\"\n    )\n  )\n)"
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#nesting-layouts",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#nesting-layouts",
-    "title": "Page Layout",
-    "section": "Nesting Layouts",
-    "text": "Nesting Layouts\n\nYou can nest fluidRow() and column() to create more complex layouts.\nYou can also nest sidebarLayout() inside a column()."
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#tabsetpanel",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#tabsetpanel",
-    "title": "Page Layout",
-    "section": "tabsetPanel()",
-    "text": "tabsetPanel()\n\nUseful for breaking down a complex app into smaller pieces.\nCreates a set of tabs.\nEach tab is created with tabPanel().\n\n\nmainPanel(\n  tabsetPanel(\n    tabPanel(\"Plot\", plotOutput(\"plot\")), \n    tabPanel(\"Summary\", verbatimTextOutput(\"summary\")), \n    tabPanel(\"Table\", tableOutput(\"table\"))\n  )\n)"
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#tabsetpanel-options",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#tabsetpanel-options",
-    "title": "Page Layout",
-    "section": "tabsetPanel() options",
-    "text": "tabsetPanel() options\n\nid: Assign an ID to get the currently selected tab in the server.\nselected: Set the initially selected tab.\ntype: Change the appearance of the tabs (e.g., “tabs”, “pills”).\nposition: Place tabs on “top”, “bottom”, “left”, or “right”."
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#navlistpanel",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#navlistpanel",
-    "title": "Page Layout",
-    "section": "navlistPanel()",
-    "text": "navlistPanel()\n\nAn alternative to tabsetPanel().\nRenders tabs as a sidebar navigation list.\nWell-suited for a sequence of linear steps.\nCannot be used inside sidebarLayout.\n\n\nnavlistPanel(\n  \"Header\",\n  tabPanel(\"First\", \"First content\"),\n  tabPanel(\"Second\", \"Second content\"),\n  tabPanel(\"Third\", \"Third content\")\n)"
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#page-level-navigation",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#page-level-navigation",
-    "title": "Page Layout",
-    "section": "Page-level navigation",
-    "text": "Page-level navigation\n\nFor multi-page apps, navbarPage() is the tool of choice.\nIt creates a navigation bar at the top of the page.\nIt replaces fluidPage() as the top-level UI function.\nEach tabPanel becomes a “page”.\n\n\nui &lt;- navbarPage(\n  \"My App\",\n  tabPanel(\"Page 1\", \"Content for page 1\"),\n  tabPanel(\"Page 2\", \"Content for page 2\")\n)"
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#menus-in-navbarpage",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#menus-in-navbarpage",
-    "title": "Page Layout",
-    "section": "Menus in navbarPage()",
-    "text": "Menus in navbarPage()\n\nYou can group related pages into a menu using navbarMenu().\nThis is useful for organizing a large number of pages.\n\n\nnavbarPage(\n  \"My App\",\n  tabPanel(\"Page 1\", ),\n  tabPanel(\"Page 2\", ),\n  navbarMenu(\"More\",\n    tabPanel(\"Sub-page A\", ),\n    tabPanel(\"Sub-page B\", )\n  )\n)"
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#navbarpage-options",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#navbarpage-options",
-    "title": "Page Layout",
-    "section": "navbarPage() options",
-    "text": "navbarPage() options\n\ntitle: The title of the app, shown in the navbar.\nid: To access the selected tab from the server.\ncollapsible = TRUE: The navbar collapses on small screens.\ntheme: To apply a custom theme."
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#getting-started-with-bslib",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#getting-started-with-bslib",
-    "title": "Page Layout",
-    "section": "Getting started with bslib",
-    "text": "Getting started with bslib\n\nShiny’s appearance is controlled by the Bootstrap CSS framework.\nThe bslib package makes it easy to customize Bootstrap themes.\nUse bs_theme() to create a theme and pass it to the theme argument of the page layout function.\n\n\nui &lt;- fluidPage(\n  theme = bslib::bs_theme(bootswatch = \"darkly\"),\n)"
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#customizing-components",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#customizing-components",
-    "title": "Page Layout",
-    "section": "Customizing components",
-    "text": "Customizing components\n\nbs_theme() allows you to customize many aspects of the theme.\n\nbg, fg: Background and foreground colors.\nprimary, secondary: Accent colors.\nbase_font, heading_font, code_font: Fonts.\n\n\n\nmy_theme &lt;- bslib::bs_theme(\n  bg = \"#202123\",\n  fg = \"#B8BCC2\",\n  primary = \"#EA80FC\",\n  base_font = bslib::font_google(\"Inter\"),\n  \"font-size-base\" = \"1.1rem\"\n)"
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#html-basics",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#html-basics",
-    "title": "Page Layout",
-    "section": "HTML Basics",
-    "text": "HTML Basics\n\nShiny UIs are converted into HTML, CSS, and JavaScript.\nHTML (HyperText Markup Language) provides the structure.\nTags (&lt;tag&gt;) create elements. They can have attributes (&lt;tag attribute=\"value\"&gt;).\nTags are nested to form a hierarchy.\n\n&lt;p&gt;A &lt;strong&gt;very&lt;/strong&gt; important paragraph.&lt;/p&gt;"
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#using-html-in-shiny",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#using-html-in-shiny",
-    "title": "Page Layout",
-    "section": "Using HTML in Shiny",
-    "text": "Using HTML in Shiny\n\nShiny functions like p(), h1(), strong() create common HTML tags.\nFor any tag, you can use tags$&lt;tag&gt;().\nAll tag functions take child elements and named attributes.\n\n\ntags$p(\n  \"A \",\n  tags$strong(\"very\"),\n  \" important paragraph.\"\n)"
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#including-css",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#including-css",
-    "title": "Page Layout",
-    "section": "Including CSS",
-    "text": "Including CSS\n\nCSS (Cascading Style Sheets) controls the appearance.\nUse the includeCSS() function to include a custom CSS file.\nPlace your CSS file in a www subdirectory of your app.\n\n\n# In ui.R\nfluidPage(\n  includeCSS(\"www/styles.css\"),\n)\n\n/* In www/styles.css */\nbody {\n  color: purple;\n}"
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#when-to-use-raw-html",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#when-to-use-raw-html",
-    "title": "Page Layout",
-    "section": "When to use raw HTML",
-    "text": "When to use raw HTML\n\nWhen you need a tag that Shiny doesn’t provide a function for.\nFor minor tweaks to the UI.\nTo integrate with other JavaScript libraries that require a specific HTML structure.\nBut for major style changes, prefer bslib."
-  },
-  {
-    "objectID": "slides/23-shiny-layout/23-shiny-layout.html#do-next",
-    "href": "slides/23-shiny-layout/23-shiny-layout.html#do-next",
-    "title": "Page Layout",
-    "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 6: Layouts, Themes, and HTML from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 24!"
   }
 ]
