@@ -74,7 +74,7 @@ server <- function(input, output, session) {
     3.  Create a second plot (or table) based on the filtered data.
 -   Result: Highlighting or zooming into data subsets.
 
-# Summary
+# Wrap Up
 
 ## Mechanics
 
@@ -83,3 +83,10 @@ server <- function(input, output, session) {
     -   `nearPoints(df, input$click_id)`: Find single point.
     -   `brushedPoints(df, input$brush_id)`: Find multiple points.
 -   **Power**: Enables "drill-down" data exploration.
+
+## Do Next
+
+1. Read [Chapter 7: Graphics](https://mastering-shiny.org/graphics.html) from Mastering Shiny.
+2. There's NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.
+3. I reommend working through the Exercises in the textbook.
+4. Move on to Lecture 25!
