@@ -3324,35 +3324,42 @@
     "href": "slides/25-shiny-feedback/25-shiny-feedback.html#cancelling-execution",
     "title": "User Feedback",
     "section": "Cancelling Execution",
-    "text": "Cancelling Execution\n\nProblem: Missing inputs often cause ugly R errors.\nSolution 1: req() (Require).\n\nreq(input$id) stops execution silently if input$id is missing, NULL, FALSE, or empty.\nDownstream outputs remain blank (or keep old value) instead of crashing.\n\n\noutput$plot &lt;- renderPlot({\n  req(input$x) # Stop here if input$x is missing\n  plot(input$x)\n})"
+    "text": "Cancelling Execution\n\nProblem: Missing inputs often cause ugly R errors.\nSolution 1: req() (Require).\n\nreq(input$id) stops execution silently if input$id is missing, NULL, FALSE, or empty.\nDownstream outputs remain blank (or keep old value) instead of crashing.\n\n\n\noutput$plot &lt;- renderPlot({\n  req(input$x) # Stop here if input$x is missing\n  plot(input$x)\n})"
   },
   {
     "objectID": "slides/25-shiny-feedback/25-shiny-feedback.html#explicit-validation",
     "href": "slides/25-shiny-feedback/25-shiny-feedback.html#explicit-validation",
     "title": "User Feedback",
     "section": "Explicit Validation",
-    "text": "Explicit Validation\n\nSolution 2: validate() and need().\n\nChecks a condition and displays a specific error message if unsatisfied.\n\n\noutput$table &lt;- renderTable({\n  validate(\n    need(input$nrows &gt; 0, \"Number of rows must be positive\")\n  )\n  head(mtcars, input$nrows)\n})"
+    "text": "Explicit Validation\n\nSolution 2: validate() and need().\n\nChecks a condition and displays a specific error message if unsatisfied.\n\n\n\noutput$table &lt;- renderTable({\n  validate(\n    need(input$nrows &gt; 0, \"Number of rows must be positive\")\n  )\n  head(mtcars, input$nrows)\n})"
   },
   {
     "objectID": "slides/25-shiny-feedback/25-shiny-feedback.html#sending-messages",
     "href": "slides/25-shiny-feedback/25-shiny-feedback.html#sending-messages",
     "title": "User Feedback",
     "section": "Sending Messages",
-    "text": "Sending Messages\n\nshowNotification(): Displays a temporary message (toast) in the corner.\nUsage:\n\nConfirmation (“Saved successfully”).\nWarnings.\nErrors.\n\n\nobserveEvent(input$save, {\n  saveData(data())\n  showNotification(\"Data saved successfully!\", type = \"message\")\n})"
+    "text": "Sending Messages\n\nshowNotification(): Displays a temporary message in the corner.\nUsage:\n\nConfirmation (“Saved successfully”).\nWarnings.\nErrors.\n\n\n\nobserveEvent(input$save, {\n  saveData(data())\n  showNotification(\"Data saved successfully!\", type = \"message\")\n})"
   },
   {
     "objectID": "slides/25-shiny-feedback/25-shiny-feedback.html#long-running-tasks",
     "href": "slides/25-shiny-feedback/25-shiny-feedback.html#long-running-tasks",
     "title": "User Feedback",
     "section": "Long-Running Tasks",
-    "text": "Long-Running Tasks\n\nFeedback is critical for slow operations.\nwithProgress(): Wraps a code block.\nincProgress(): Increments the bar.\n\noutput$plot &lt;- renderPlot({\n  withProgress(message = 'Making plot', value = 0, {\n    \n    incProgress(0.1, detail = \"Part 1\")\n    Sys.sleep(0.5) # Simulate work\n    \n    incProgress(0.5, detail = \"Part 2\")\n    Sys.sleep(0.5)\n    \n    plot(rnorm(100))\n  })\n})"
+    "text": "Long-Running Tasks\n\nFeedback is critical for slow operations.\nwithProgress(): Wraps a code block.\nincProgress(): Increments the bar.\n\n\noutput$plot &lt;- renderPlot({\n  withProgress(message = 'Making plot', value = 0, {\n    \n    incProgress(0.1, detail = \"Part 1\")\n    Sys.sleep(0.5) # Simulate work\n    \n    incProgress(0.5, detail = \"Part 2\")\n    Sys.sleep(0.5)\n    \n    plot(rnorm(100))\n  })\n})"
+  },
+  {
+    "objectID": "slides/25-shiny-feedback/25-shiny-feedback.html#spinners",
+    "href": "slides/25-shiny-feedback/25-shiny-feedback.html#spinners",
+    "title": "User Feedback",
+    "section": "Spinners",
+    "text": "Spinners\n\nThe shinycssloaders package is a simpler way to add spinners.\nSetup: Wrap an output with withSpinner() in the UI.\nNo server-side changes are needed.\n\n\n# In UI\nlibrary(shinycssloaders)\nwithSpinner(plotOutput(\"plot\"))\n\n# In server\noutput$plot &lt;- renderPlot({\n  Sys.sleep(2) # Simulate work\n  plot(rnorm(100))\n})"
   },
   {
     "objectID": "slides/25-shiny-feedback/25-shiny-feedback.html#modals",
     "href": "slides/25-shiny-feedback/25-shiny-feedback.html#modals",
     "title": "User Feedback",
     "section": "Modals",
-    "text": "Modals\n\nUse modalDialog() for actions that require explicit confirmation (e.g., deleting data).\nTrigger with showModal().\n\nobserveEvent(input$delete, {\n  showModal(modalDialog(\n    title = \"Delete Data?\",\n    \"Are you sure you want to delete this?\",\n    footer = tagList(\n      modalButton(\"Cancel\"),\n      actionButton(\"confirm_delete\", \"Delete\", class = \"btn-danger\")\n    )\n  ))\n})"
+    "text": "Modals\n\nUse modalDialog() for actions that require explicit confirmation (e.g., deleting data).\nTrigger with showModal().\n\n\nobserveEvent(input$delete, {\n  showModal(modalDialog(\n    title = \"Delete Data?\",\n    \"Are you sure you want to delete this?\",\n    footer = tagList(\n      modalButton(\"Cancel\"),\n      actionButton(\"confirm_delete\", \"Delete\", class = \"btn-danger\")\n    )\n  ))\n})"
   },
   {
     "objectID": "slides/25-shiny-feedback/25-shiny-feedback.html#feedback-loops",
@@ -3360,6 +3367,13 @@
     "title": "User Feedback",
     "section": "Feedback Loops",
     "text": "Feedback Loops\n\nSilent Rejection: req() (Best for missing inputs).\nExplicit Error: validate(need()) (Best for wrong inputs).\nStatus Update: showNotification() (Best for success/info).\nWaiting: withProgress() (Best for slow tasks).\nConfirmation: modalDialog() (Best for dangerous actions)."
+  },
+  {
+    "objectID": "slides/25-shiny-feedback/25-shiny-feedback.html#do-next",
+    "href": "slides/25-shiny-feedback/25-shiny-feedback.html#do-next",
+    "title": "User Feedback",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 8: User feedback from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nThat’s it for tonight! See you tomorrow!"
   },
   {
     "objectID": "slides/15-datetimes/15-datetimes.html#working-with-dates-and-times",
@@ -4413,7 +4427,7 @@
     "href": "index.html",
     "title": "CSCI-2025: Data Manipulation and Visualization",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\nvideo-15\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\nslides-16\nvideo-16\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins\n\nslides-17\nvideo-17\n\n\n3\nTue, Jan 20\nLec\nYour first Shiny app\n📚 ms - first-app\n\nslides-18\nvideo-18\n\n\n3\nTue, Jan 20\nLec\nBasic UI\n📚 ms - basic-ui\n\nslides-19\nvideo-19\n\n\n3\nTue, Jan 20\nLec\nBasic reactivity\n📚 ms - basic-reactivity\n\nslides-20\nvideo-20\n\n\n3\nTue, Jan 20\nLec\nCase Study: ER\n📚 ms - case-study-er\n\n\nvideo-21\n\n\n3\nWed, Jan 21\nLec\nWorkflow\n📚 ms - workflow\n\nslides-22\nvideo-22\n\n\n3\nWed, Jan 21\nLec\nLayout, Themes, and HTML\n📚 ms - layout\n\nslides-23\nvideo-23\n\n\n3\nWed, Jan 21\nLec\nGraphics\n📚 ms - graphics\n\nslides-24",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\nvideo-15\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\nslides-16\nvideo-16\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins\n\nslides-17\nvideo-17\n\n\n3\nTue, Jan 20\nLec\nYour first Shiny app\n📚 ms - first-app\n\nslides-18\nvideo-18\n\n\n3\nTue, Jan 20\nLec\nBasic UI\n📚 ms - basic-ui\n\nslides-19\nvideo-19\n\n\n3\nTue, Jan 20\nLec\nBasic reactivity\n📚 ms - basic-reactivity\n\nslides-20\nvideo-20\n\n\n3\nTue, Jan 20\nLec\nCase Study: ER\n📚 ms - case-study-er\n\n\nvideo-21\n\n\n3\nWed, Jan 21\nLec\nWorkflow\n📚 ms - workflow\n\nslides-22\nvideo-22\n\n\n3\nWed, Jan 21\nLec\nLayout, Themes, and HTML\n📚 ms - layout\n\nslides-23\nvideo-23\n\n\n3\nWed, Jan 21\nLec\nGraphics\n📚 ms - graphics\n\nslides-24\nvideo-24\n\n\n3\nWed, Jan 21\nLec\nUser Feedback\n📚 ms - user-input\n\nslides-25",
     "crumbs": [
       "Course information",
       "Schedule"

@@ -12,7 +12,8 @@ subtitle: Lecture 25
     -   `req(input$id)` stops execution silently if `input$id` is missing, NULL, FALSE, or empty.
     -   Downstream outputs remain blank (or keep old value) instead of crashing.
 
-```r
+```{r}
+#| eval: false
 output$plot <- renderPlot({
   req(input$x) # Stop here if input$x is missing
   plot(input$x)
@@ -24,7 +25,8 @@ output$plot <- renderPlot({
 -   **Solution 2**: **`validate()`** and **`need()`**.
     -   Checks a condition and displays a specific error message if unsatisfied.
 
-```r
+```{r}
+#| eval: false
 output$table <- renderTable({
   validate(
     need(input$nrows > 0, "Number of rows must be positive")
@@ -37,13 +39,14 @@ output$table <- renderTable({
 
 ## Sending Messages
 
--   **`showNotification()`**: Displays a temporary message (toast) in the corner.
+-   **`showNotification()`**: Displays a temporary message in the corner.
 -   **Usage**:
     -   Confirmation ("Saved successfully").
     -   Warnings.
     -   Errors.
 
-```r
+```{r}
+#| eval: false
 observeEvent(input$save, {
   saveData(data())
   showNotification("Data saved successfully!", type = "message")
@@ -58,7 +61,8 @@ observeEvent(input$save, {
 -   **`withProgress()`**: Wraps a code block.
 -   **`incProgress()`**: Increments the bar.
 
-```r
+```{r}
+#| eval: false
 output$plot <- renderPlot({
   withProgress(message = 'Making plot', value = 0, {
     
@@ -73,6 +77,28 @@ output$plot <- renderPlot({
 })
 ```
 
+
+## Spinners
+
+- The **`shinycssloaders`** package is a simpler way to add spinners.
+- **Setup**: Wrap an output with `withSpinner()` in the UI.
+- No server-side changes are needed.
+
+```{r}
+#| eval: false
+# In UI
+library(shinycssloaders)
+withSpinner(plotOutput("plot"))
+
+# In server
+output$plot <- renderPlot({
+  Sys.sleep(2) # Simulate work
+  plot(rnorm(100))
+})
+```
+
+
+
 # Confirmation
 
 ## Modals
@@ -80,7 +106,8 @@ output$plot <- renderPlot({
 -   Use **`modalDialog()`** for actions that require explicit confirmation (e.g., deleting data).
 -   Trigger with `showModal()`.
 
-```r
+```{r}
+#| eval: false
 observeEvent(input$delete, {
   showModal(modalDialog(
     title = "Delete Data?",
@@ -93,7 +120,7 @@ observeEvent(input$delete, {
 })
 ```
 
-# Summary
+# Wrap-Up
 
 ## Feedback Loops
 
@@ -102,3 +129,11 @@ observeEvent(input$delete, {
 -   **Status Update**: `showNotification()` (Best for success/info).
 -   **Waiting**: `withProgress()` (Best for slow tasks).
 -   **Confirmation**: `modalDialog()` (Best for dangerous actions).
+
+
+## Do Next
+
+1. Read [Chapter 8: User feedback](https://mastering-shiny.org/action-feedback.html) from Mastering Shiny.
+2. There's NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.
+3. I reommend working through the Exercises in the textbook.
+4. That's it for tonight! See you tomorrow!
