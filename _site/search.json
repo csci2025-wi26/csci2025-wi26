@@ -2482,158 +2482,116 @@
     "text": "Overview\n\nGithub Copilot\nGemini Code Assistant\nGemini CLI"
   },
   {
-    "objectID": "classwork/01-tidy-tuesday.html#today",
-    "href": "classwork/01-tidy-tuesday.html#today",
-    "title": "Our First Analysis",
+    "objectID": "classwork/02-pivoting.html#today",
+    "href": "classwork/02-pivoting.html#today",
+    "title": "More Analysis",
     "section": "Today",
-    "text": "Today\n\nToday we’re going to split up into groups and each analyze a data set of our choice\nWe will take turns presenting on what we’ve done\nAfter each presentation, we’ll have a brief discussion where we critique each other’s analysis"
+    "text": "Today\n\nReturn to TidyTuesday analysis from last class\nWork with some real experimental data generated from by Dr. Belissimo’s class"
   },
   {
-    "objectID": "classwork/01-tidy-tuesday.html#tidytuesday",
-    "href": "classwork/01-tidy-tuesday.html#tidytuesday",
-    "title": "Our First Analysis",
-    "section": "#TidyTuesday",
-    "text": "#TidyTuesday\n\nTidyTuesday is a weekly data project aimed at the R community\nEach week a new data set is released along with a short description\nPeople analyze the data set and share their work on social media using the hashtag #TidyTuesday\nYou can find the data sets and more information at the TidyTuesday GitHub repository"
+    "objectID": "classwork/02-pivoting.html#group-roles-reminder",
+    "href": "classwork/02-pivoting.html#group-roles-reminder",
+    "title": "More Analysis",
+    "section": "Group Roles: Reminder",
+    "text": "Group Roles: Reminder\n\nCoder: responsible for typing for your group\nReporter: responsible for sharing your group’s work with the class\nResearcher: responsible for looking up any questions your group has\nEveryone should contribute to the discussion and help with writing the code\nThere will be several parts of this activity, between each part, rotate roles\n\nCoder -&gt; Reporter -&gt; Researcher -&gt; Coder …\nFor now, old Coder copy and paste script in Teams chat to new Coder"
   },
   {
-    "objectID": "classwork/01-tidy-tuesday.html#today-1",
-    "href": "classwork/01-tidy-tuesday.html#today-1",
-    "title": "Our First Analysis",
+    "objectID": "classwork/02-pivoting.html#groups-for-today",
+    "href": "classwork/02-pivoting.html#groups-for-today",
+    "title": "More Analysis",
+    "section": "Groups for Today",
+    "text": "Groups for Today\n\nIf you didn’t present yesterday, same groups as yesterday\nIf you did present yesterday, you’ve been assigned a new group (check Teams)"
+  },
+  {
+    "objectID": "classwork/02-pivoting.html#reasearch-question",
+    "href": "classwork/02-pivoting.html#reasearch-question",
+    "title": "More Analysis",
+    "section": "Reasearch Question",
+    "text": "Reasearch Question\n\nTraditional Resistance Training (TRT): Involves performing a set number of repetitions continuously until the set is complete, followed by a rest period.\n\nExample: 3 sets of 10 repetitions with 60 seconds rest between sets.\n\nCluster Resistance Training (CRT): Involves breaking a set into smaller clusters of repetitions with short rest intervals in between, allowing for brief recovery periods during the set.\n\nExample: 3 sets of 10 repetitions performed as 2 clusters of 5 repetitions with 15 seconds rest between clusters and 60 seconds rest between sets.\n\nPrimary research goal: characterize the intensity of TRT vs CRT\nToday’s Question: Are there differences in heart rate response between traditional and cluster resistance volume-matched protocols?"
+  },
+  {
+    "objectID": "classwork/02-pivoting.html#experimental-design",
+    "href": "classwork/02-pivoting.html#experimental-design",
+    "title": "More Analysis",
+    "section": "Experimental Design",
+    "text": "Experimental Design\n\nParticipants: 10 college students\nCross-over design\n\nEach participant completed both the TRT and CRTprotocols… why?\nRandomized (flipped a coin) which protocol was completed first… why?\nOne week washout period between protocols… why?\nMeasured heart rate, before and after exercise\n\nThis was a class project conducted by Jayva Anderson, Emily Lettenmaier, Sayre Schreiner, and Greta Valaika"
+  },
+  {
+    "objectID": "classwork/02-pivoting.html#the-data",
+    "href": "classwork/02-pivoting.html#the-data",
+    "title": "More Analysis",
+    "section": "The Data",
+    "text": "The Data\n\nStored in TRAD_CLU_group.csv on Teams in the Jan 7th Activities Module in the Classwork section\nColumns:\n\nID : Participant identifier\nCondition: TRAD or CLU (traditional or cluster)\nTime: PRE or POST (before or after exercise)\nHR: Heart Rate (in beats per minute)"
+  },
+  {
+    "objectID": "classwork/02-pivoting.html#challenge",
+    "href": "classwork/02-pivoting.html#challenge",
+    "title": "More Analysis",
+    "section": "Challenge",
+    "text": "Challenge\nMake a visualization that addresses the research question.\nBest viz wins. Once you’re complete post your image in the Activities Channel on Teams."
+  },
+  {
+    "objectID": "classwork/02-pivoting.html#for-next-class",
+    "href": "classwork/02-pivoting.html#for-next-class",
+    "title": "More Analysis",
+    "section": "For Next Class",
+    "text": "For Next Class\n\nComplete reflection\nComplete next two lectures"
+  },
+  {
+    "objectID": "classwork/03-day-3.html#today",
+    "href": "classwork/03-day-3.html#today",
+    "title": "Challenges!",
     "section": "Today",
-    "text": "Today\n\nEach group will pick a data set from the TidyTuesday repository\nEach group will do their best to analyze that data\nAdvice:\n\nTry to choose a more recent data set, and one that already has questions associated with it\nThere is usually an import script at the bottom of each dataset\nIt is likely that you will need to install some packages to work with the data\nDon’t worry about being perfect\nFocus on exploring the data and telling a story with it\nAsk for help when you need it"
+    "text": "Today\n\nSome challenges to practice your skills!"
   },
   {
-    "objectID": "classwork/01-tidy-tuesday.html#group-roles",
-    "href": "classwork/01-tidy-tuesday.html#group-roles",
-    "title": "Our First Analysis",
-    "section": "Group Roles",
-    "text": "Group Roles\n\nCoder: responsible for typing for your group\nReporter: responsible for sharing your group’s work with the class\nResearcher: responsible for looking up any questions your group has\nEveryone should contribute to the discussion and help with writing the code\nThere will be several parts of this activity, between each part, rotate roles\n\nCoder -&gt; Reporter -&gt; Researcher -&gt; Coder …\nFor now, old Coder copy and paste script in Teams chat to new Coder"
+    "objectID": "classwork/03-day-3.html#challenge-1a-parks",
+    "href": "classwork/03-day-3.html#challenge-1a-parks",
+    "title": "Challenges!",
+    "section": "Challenge 1A: Parks",
+    "text": "Challenge 1A: Parks\n\nUse the parks.csv found in Teams to make this plot."
   },
   {
-    "objectID": "classwork/01-tidy-tuesday.html#get-in-your-groups",
-    "href": "classwork/01-tidy-tuesday.html#get-in-your-groups",
-    "title": "Our First Analysis",
-    "section": "Get in your groups",
-    "text": "Get in your groups\n\nYou can find a spreadsheet in the Jan 6th Activities Module in the Classword section on Teams with your team assignments\nGet in your groups now\nIntroduce yourselves\nDecide who will be the first Coder, Reporter, and Researcher\nDecide on a group name\nCreate a post in the Activities Channel on Teams with all of this information\n\n\ncountdown::countdown(minutes = 5)"
+    "objectID": "classwork/03-day-3.html#challenge-1b-parks",
+    "href": "classwork/03-day-3.html#challenge-1b-parks",
+    "title": "Challenges!",
+    "section": "Challenge 1B: Parks",
+    "text": "Challenge 1B: Parks\n\nUse the parks.csv found in Teams to make this plot."
   },
   {
-    "objectID": "classwork/01-tidy-tuesday.html#selecting-a-dataset",
-    "href": "classwork/01-tidy-tuesday.html#selecting-a-dataset",
-    "title": "Our First Analysis",
-    "section": "Selecting a Dataset",
-    "text": "Selecting a Dataset\n\nDo the following:\n\nFind the data set on the TidyTuesday GitHub repository\nLoad that data set into R\nPost a link to the dataset as a response to your group’s post in the Activities Channel on Teams\n\nAnswer the following questions (be prepared to give a 2-minute report to the class):\n\nWhat is the data about?\nWhat question(s) are you interested in answering with this data?\nHow many data frames are there and how many rows and columns does it have?\nWhat data frames and variables are you going to focus on?\n\n\n\ncountdown::countdown(minutes = 20)"
+    "objectID": "classwork/03-day-3.html#challenge-1c-parks",
+    "href": "classwork/03-day-3.html#challenge-1c-parks",
+    "title": "Challenges!",
+    "section": "Challenge 1C: Parks",
+    "text": "Challenge 1C: Parks\n\nUse the parks.csv found in Teams to make this plot."
   },
   {
-    "objectID": "classwork/01-tidy-tuesday.html#explore-the-data",
-    "href": "classwork/01-tidy-tuesday.html#explore-the-data",
-    "title": "Our First Analysis",
-    "section": "Explore the Data",
-    "text": "Explore the Data\n\nBe prepared to present the following (less than 5 minutes per group):\n\nCreate up to 5 visualizations or tables that help answer your questions\nExplain what each visualization or table shows\nExplain what you learned from each visualization or table\nExplain any challenges you had while working with the data\nBe prepared to answer questions and explain your code if you are asked\n\nCopy and paste your entire script (up to this point) into Teams as a response to your group’s post\n\n\ncountdown::countdown(minutes = 20)"
+    "objectID": "classwork/03-day-3.html#challenge-2-valentines-day",
+    "href": "classwork/03-day-3.html#challenge-2-valentines-day",
+    "title": "Challenges!",
+    "section": "Challenge 2: Valentine’s Day",
+    "text": "Challenge 2: Valentine’s Day\nGenerate this plot (without usiung AI):"
   },
   {
-    "objectID": "classwork/01-tidy-tuesday.html#time-permitting-refine-and-extend",
-    "href": "classwork/01-tidy-tuesday.html#time-permitting-refine-and-extend",
-    "title": "Our First Analysis",
-    "section": "Time Permitting: Refine and Extend",
-    "text": "Time Permitting: Refine and Extend\n\nIf you have time left, refine your visualizations and analyses based on our discussions"
+    "objectID": "classwork/03-day-3.html#challenge-3-pokemon",
+    "href": "classwork/03-day-3.html#challenge-3-pokemon",
+    "title": "Challenges!",
+    "section": "Challenge 3: Pokemon",
+    "text": "Challenge 3: Pokemon\nGenerate the following data frame from the pokemon data (no AI):"
   },
   {
-    "objectID": "classwork/01-tidy-tuesday.html#wrap-up",
-    "href": "classwork/01-tidy-tuesday.html#wrap-up",
-    "title": "Our First Analysis",
-    "section": "Wrap Up",
-    "text": "Wrap Up\n\nBefore you leave, complete your reflection on Teams!"
+    "objectID": "classwork/03-day-3.html#groups-for-today",
+    "href": "classwork/03-day-3.html#groups-for-today",
+    "title": "Challenges!",
+    "section": "Groups for Today",
+    "text": "Groups for Today\n\nSelf sort:\n\nEasy: Table 1 (near the windows)\n\nChallenge 1A, 1B, 1C\n\nMedium: Table 2 (middle of the room)\n\nChallenge 2 and 1A\n\nHard: Table 3 (near the TVs)\n\nChallenge 3\n\n\nStart by sketching a plan on the white board…"
   },
   {
-    "objectID": "classwork/04-group-project-intro.html#academic-program-review-1",
-    "href": "classwork/04-group-project-intro.html#academic-program-review-1",
-    "title": "Group Project Introduction",
-    "section": "Academic Program Review",
-    "text": "Academic Program Review\n\nDepartments review their programs every 5 years.\nThis “program review” is then submitted to our accrediting body.\nLet’s take a look at the Guidelines Document"
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#our-part",
-    "href": "classwork/04-group-project-intro.html#our-part",
-    "title": "Group Project Introduction",
-    "section": "Our part",
-    "text": "Our part\n\nHow is disaggregated data utilized in exploring whether there are equity gaps and what steps have resulted for its use? (1.D.2) (1.D.4)\nReview Criteria 1.D.2 and 1.D.4 in the Guidelines Document."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#project-overview",
-    "href": "classwork/04-group-project-intro.html#project-overview",
-    "title": "Group Project Introduction",
-    "section": "Project Overview",
-    "text": "Project Overview\n\nClient: Mark Heidrich (AVP for Institutional Effectiveness)\nObjective: Build a unified Dashboard for analyzing equity gaps in academic programs.\nOne Data Science Consultancy: The entire class working together."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#project-hierarchy",
-    "href": "classwork/04-group-project-intro.html#project-hierarchy",
-    "title": "Group Project Introduction",
-    "section": "Project Hierarchy",
-    "text": "Project Hierarchy\n\nd3 = require(\"d3@7\")\n\ndata = ({\n  name: \"Equity Analysis Project\",\n  children: [\n    {\n      name: \"Core Team\",\n      children: [\n        { name: \"Lead Architect\",\n            children: [\n                { name: \"Code Guild\", \n                    children: [{ name: \"Sentinels\" }]\n                },\n                { name: \"Data Guild\", \n                    children: [{ name: \"Data Stewards\" }], \n                },\n            ]\n        },\n        { name: \"Product Owner\",\n            children: [\n                { name: \"UI Guild\", children: [{ name: \"Chart Artists\" }] },\n                { name: \"Shiny Guild\", children: [{ name: \"Interface Architects\" }] },\n                { name: \"Narrative Guild\", children: [{ name: \"Narrative Leads\" }] }\n            ]\n         },\n        {\n          name: \"Team Leads\",\n          children: [\n            { name: \"Feature 1: Enrollment\", \n                children: [\n                    { name: \"Github Sentinel (Team Lead)\" },\n                    { name: \"Data Steward (Data Eng)\" },\n                    { name: \"Chart Artist (Viz)\" },\n                    { name: \"Interface Architect (Shiny)\" },\n                    { name: \"Narrative Lead (Context)\" }\n          ]\n            },\n            { name: \"Feature 2: Performance\", \n                children: [\n                    { name: \"Github Sentinel (Team Lead)\" },\n                    { name: \"Data Steward (Data Eng)\" },\n                    { name: \"Chart Artist (Viz)\" },\n                    { name: \"Interface Architect (Shiny)\" },\n                    { name: \"Narrative Lead (Context)\" }\n          ] },\n            { name: \"Feature 3: Retention\", \n                children: [\n                    { name: \"Github Sentinel (Team Lead)\" },\n                    { name: \"Data Steward (Data Eng)\" },\n                    { name: \"Chart Artist (Viz)\" },\n                    { name: \"Interface Architect (Shiny)\" },\n                    { name: \"Narrative Lead (Context)\" }\n          ] },\n            { name: \"Feature 4: Outcomes\", \n                children: [\n                    { name: \"Github Sentinel (Team Lead)\" },\n                    { name: \"Data Steward (Data Eng)\" },\n                    { name: \"Chart Artist (Viz)\" },\n                    { name: \"Interface Architect (Shiny)\" },\n                    { name: \"Narrative Lead (Context)\" }\n          ] }\n          ]\n          \n        }\n      ]\n    }\n  ]\n})\n\n\nchart = {\n  const width = 2000;\n  const height = 600;\n  \n  // Increased dx for better vertical spacing to prevent overlap\n  const dx = 35; \n  const dy = width / 6;\n\n  const root = d3.hierarchy(data);\n\n  const tree = d3.tree().nodeSize([dx, dy]);\n  \n  // Initial collapsed state logic\n  root.descendants().slice(1).forEach(d =&gt; {\n    // Keep high level branches open, collapse details deeper down\n    if (d.data.name === \"Guilds\" || d.data.name === \"Feature Teams (x5)\" || d.data.name === \"Core Team\") {\n        // Keep open\n    } else if (d.depth &gt; 1) {\n       // Collapse grandchildren initially\n       d._children = d.children;\n       d.children = null; \n    }\n  });\n\n  const svg = d3.create(\"svg\")\n      .attr(\"viewBox\", [-400, -50, width, height]) \n      .style(\"font\", \"14px sans-serif\")\n      .style(\"user-select\", \"none\")\n      .style(\"max-width\", \"100%\")\n      .style(\"height\", \"auto\");\n\n  // Add Zoom\n  const gLink = svg.append(\"g\")\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"#999\")\n      .attr(\"stroke-opacity\", 0.4)\n      .attr(\"stroke-width\", 1.5);\n\n  const gNode = svg.append(\"g\")\n      .attr(\"cursor\", \"pointer\")\n      .attr(\"pointer-events\", \"all\");\n\n  function update(source) {\n      const duration = 250;\n      const nodes = root.descendants().reverse();\n      const links = root.links();\n      tree(root);\n\n      let left = root;\n      let right = root;\n      root.eachBefore(node =&gt; {\n        if (node.x &lt; left.x) left = node;\n        if (node.x &gt; right.x) right = node;\n      });\n\n      const height = right.x - left.x + 100;\n\n      const transition = svg.transition()\n          .duration(duration)\n          .attr(\"viewBox\", [-400, left.x - 50, width, height]);\n\n      const node = gNode.selectAll(\"g\")\n        .data(nodes, d =&gt; d.id || (d.id = Math.random()));\n\n      const nodeEnter = node.enter().append(\"g\")\n          .attr(\"transform\", d =&gt; `translate(${source.y0 || source.y},${source.x0 || source.x})`)\n          .attr(\"fill-opacity\", 0)\n          .attr(\"stroke-opacity\", 0)\n          .on(\"click\", (event, d) =&gt; {\n            // Fix: properly toggle children and _children\n            if (d.children) {\n                d._children = d.children;\n                d.children = null;\n            } else {\n                d.children = d._children;\n                d._children = null;\n            }\n            update(d);\n          });\n\n      nodeEnter.append(\"circle\")\n          .attr(\"r\", 6)\n          .attr(\"fill\", d =&gt; d._children ? \"#007bff\" : \"#999\") \n          .attr(\"stroke-width\", 10);\n\n      nodeEnter.append(\"text\")\n          .attr(\"dy\", \"0.31em\")\n          .attr(\"x\", d =&gt; d._children ? -8 : 8)\n          .attr(\"text-anchor\", d =&gt; d._children ? \"end\" : \"start\")\n          .text(d =&gt; d.data.name)\n          .clone(true).lower()\n          .attr(\"stroke-linejoin\", \"round\")\n          .attr(\"stroke-width\", 3)\n          .attr(\"stroke\", \"white\");\n\n      const nodeUpdate = node.merge(nodeEnter).transition().duration(duration)\n          .attr(\"transform\", d =&gt; `translate(${d.y},${d.x})`)\n          .attr(\"fill-opacity\", 1)\n          .attr(\"stroke-opacity\", 1);\n      \n      // Update color based on whether it effectively has children (expanded or collapsed)\n      nodeUpdate.select(\"circle\")\n        .attr(\"fill\", d =&gt; (d.children || d._children) ? \"#533860\" : \"#999\");\n\n      const nodeExit = node.exit().transition().duration(duration).remove()\n          .attr(\"transform\", d =&gt; `translate(${source.y},${source.x})`)\n          .attr(\"fill-opacity\", 0)\n          .attr(\"stroke-opacity\", 0);\n\n      const link = gLink.selectAll(\"path\")\n        .data(links, d =&gt; d.target.id);\n\n      const linkEnter = link.enter().append(\"path\")\n          .attr(\"d\", d =&gt; {\n            const o = {x: source.x0 || source.x, y: source.y0 || source.y};\n            return d3.linkHorizontal()({source: o, target: o});\n          });\n\n      link.merge(linkEnter).transition().duration(duration)\n          .attr(\"d\", d3.linkHorizontal()\n              .x(d =&gt; d.y)\n              .y(d =&gt; d.x));\n\n      link.exit().transition().duration(duration).remove()\n          .attr(\"d\", d =&gt; {\n            const o = {x: source.x, y: source.y};\n            return d3.linkHorizontal()({source: o, target: o});\n          });\n\n      root.eachBefore(d =&gt; {\n        d.x0 = d.x;\n        d.y0 = d.y;\n      });\n  }\n\n  root.x0 = dy / 2;\n  root.y0 = 0;\n  \n  update(root);\n\n  // Zoom Logic\n  svg.call(d3.zoom()\n      .extent([[0, 0], [width, height]])\n      .scaleExtent([0.5, 4])\n      .on(\"zoom\", ({transform}) =&gt; {\n          gLink.attr(\"transform\", transform);\n          gNode.attr(\"transform\", transform);\n      }));\n\n  return svg.node();\n}"
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#github-sentinel-team-lead",
-    "href": "classwork/04-group-project-intro.html#github-sentinel-team-lead",
-    "title": "Group Project Introduction",
-    "section": "1. Github Sentinel (Team Lead)",
-    "text": "1. Github Sentinel (Team Lead)\n\nSkills: Git, Organization, Conflict Resolution, Jack-Of-All trades.\nResponsibility:\n\nManages the team’s “branch” (workspace).\nResolves “merge conflicts” (when code clashes).\nEnsures the team’s code safely enters the main project.\nSet’s deadlines and keeps the team on track.\nUltimately responsible for the team’s success.\n\nThe only person authorized to submit code updates to the Tech VP."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#data-steward-data-engineer",
-    "href": "classwork/04-group-project-intro.html#data-steward-data-engineer",
-    "title": "Group Project Introduction",
-    "section": "2. Data Steward (Data Engineer)",
-    "text": "2. Data Steward (Data Engineer)\n\nSkills: dplyr, Data Cleaning, Ethics.\nResponsibility:\n\nWrites clean_data.R.\nPrivacy Protection: Ensures no student is identifiable (masks data if sample size too small).\nCreates clean, anonymized datasets for the team.\nWorks with other Data Stewards to standardize definitions."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#chart-artist-viz-specialist",
-    "href": "classwork/04-group-project-intro.html#chart-artist-viz-specialist",
-    "title": "Group Project Introduction",
-    "section": "3. Chart Artist (Viz Specialist)",
-    "text": "3. Chart Artist (Viz Specialist)\n\nSkills: ggplot2, Visualization Design.\nResponsibility:\n\nCreates high-quality static visualizations.\nWrites plot functions (e.g., plot_gpa()).\nEnsures all charts match the design system (colors, fonts).\nWorks with other Chart Artists to ensure consistency across modules."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#interface-architect-shiny-dev",
-    "href": "classwork/04-group-project-intro.html#interface-architect-shiny-dev",
-    "title": "Group Project Introduction",
-    "section": "4. Interface Architect (Shiny Dev)",
-    "text": "4. Interface Architect (Shiny Dev)\n\nSkills: Shiny UI/Server, Layouts.\nResponsibility:\n\nWires the User Interface (buttons, sliders, tabs).\nConnects inputs to the Chart Artist’s plots.\nEnsures the interactive elements work smoothly."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#narrative-lead-contextqa",
-    "href": "classwork/04-group-project-intro.html#narrative-lead-contextqa",
-    "title": "Group Project Introduction",
-    "section": "5. Narrative Lead (Context/QA)",
-    "text": "5. Narrative Lead (Context/QA)\n\nSkills: Writing, Interpretation, stringr.\nResponsibility:\n\nWrites dynamic text to interpret charts automatically (“Mad Libs” style).\nExplains what the data shows to the user.\nActs as Quality Assurance for the team’s module.\nTake notes at team meetings and documents decisions and timelines."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#the-guilds",
-    "href": "classwork/04-group-project-intro.html#the-guilds",
-    "title": "Group Project Introduction",
-    "section": "The Guilds",
-    "text": "The Guilds\n\nCode Guild: Sentinels + Lead Architect (Git & Process).\nUI Guild: Chart Artists + Product Owner (Design & Style).\nData Guild: Data Stewards (Definitions & Privacy).\nShiny Guild: Interface Architects (Layouts & Inputs).\nNarrative Guild: Narrative Leads (Tone & Consistency)."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#core-team-roles",
-    "href": "classwork/04-group-project-intro.html#core-team-roles",
-    "title": "Group Project Introduction",
-    "section": "Core Team Roles",
-    "text": "Core Team Roles\n\nProduct Owner (Client VP)\n\n“Voice of the Client”\nManages the Landing Page, global.R, and styles.css.\nLeads the UI Guild, Shiny Guild, and Narrative Guild.\n\nLead Architect (Tech VP)\n\nRepository Health & Integration.\nManages app.R and Deployment.\nLeads the Code Guild and Data Guild.\n\nTeam Leads"
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#next-steps",
-    "href": "classwork/04-group-project-intro.html#next-steps",
-    "title": "Group Project Introduction",
-    "section": "Next Steps",
-    "text": "Next Steps\n\nReview the full job descriptions.\nThink about which role fits your skills and interests best.\nSubmit this Microsoft Form ranking your preferred roles."
-  },
-  {
-    "objectID": "classwork/04-group-project-intro.html#reviewing-the-data-set",
-    "href": "classwork/04-group-project-intro.html#reviewing-the-data-set",
-    "title": "Group Project Introduction",
-    "section": "Reviewing the data set",
-    "text": "Reviewing the data set\nWhile Mark is here let’s review the data set and make sure we don’t have specific questions about the columns."
+    "objectID": "classwork/03-day-3.html#for-next-class",
+    "href": "classwork/03-day-3.html#for-next-class",
+    "title": "Challenges!",
+    "section": "For Next Class",
+    "text": "For Next Class\n\nComplete reflection\nComplete next three lectures"
   },
   {
     "objectID": "course-links.html",
@@ -2764,256 +2722,214 @@
     ]
   },
   {
-    "objectID": "classwork/03-day-3.html#today",
-    "href": "classwork/03-day-3.html#today",
-    "title": "Challenges!",
+    "objectID": "classwork/08-project-kickoff.html#pfeapplied-learning",
+    "href": "classwork/08-project-kickoff.html#pfeapplied-learning",
+    "title": "Project Work",
+    "section": "PFE/Applied Learning",
+    "text": "PFE/Applied Learning\n\nThis class counts as Applied Learning\nIf you haven’t submitted a link to your individual project repo, please do so ASAP:\n\nRight now: Add you Github username to the spreadsheet in the Dashboard- General channel on Teams\nLater: Submit a link to your individual project assignment on Teams"
+  },
+  {
+    "objectID": "classwork/08-project-kickoff.html#rest-of-the-term",
+    "href": "classwork/08-project-kickoff.html#rest-of-the-term",
+    "title": "Project Work",
+    "section": "Rest of the term",
+    "text": "Rest of the term\n\n\nProject work & Presentations\n\nIndividual presentations (M-TH, next week, about 5 per day)\n\nSign-up for a presentation slow on Teams\n\n\nClasstime will be used for project work"
+  },
+  {
+    "objectID": "classwork/08-project-kickoff.html#mindset-until-end-of-semester",
+    "href": "classwork/08-project-kickoff.html#mindset-until-end-of-semester",
+    "title": "Project Work",
+    "section": "Mindset Until End of Semester",
+    "text": "Mindset Until End of Semester\n\nYou are an employee for a Data Science Company\nYou have two projects: your individual and your group project\nIt is up to you to manage your time:\n\nWork on your individual project when you have down time from your group project\n\nYour Sentinel is your boss\nReagan/Keion are your bosses boss"
+  },
+  {
+    "objectID": "classwork/08-project-kickoff.html#expectations",
+    "href": "classwork/08-project-kickoff.html#expectations",
+    "title": "Project Work",
+    "section": "Expectations",
+    "text": "Expectations\n\nGroup Project:\n\nYou complete the tasks assigned to you by your manager in a timely fashion\nYou communicate with your manager and team members if you are having trouble completing your tasks on time\nCarefully document all meetings so tasks can be tracked\n\nIndividual Project:\n\nYou spend a minimum of 10 hours working on this project\nIf you finish in under 10 hours… you didn’t pick a project that was hard enough, so do more\nBe regularly committing your work so I can see your progress"
+  },
+  {
+    "objectID": "classwork/08-project-kickoff.html#evaluation",
+    "href": "classwork/08-project-kickoff.html#evaluation",
+    "title": "Project Work",
+    "section": "Evaluation",
+    "text": "Evaluation\n\nGroup Project (due end of term):\n\nSelf reflection/evaluation\nManager evaluations\n\nIndividual Project(due end of term):\n\nSelf reflection/evaluation\nPublic defense/presentation"
+  },
+  {
+    "objectID": "classwork/08-project-kickoff.html#group-project-how-you-can-fail",
+    "href": "classwork/08-project-kickoff.html#group-project-how-you-can-fail",
+    "title": "Project Work",
+    "section": "Group Project: How you can fail",
+    "text": "Group Project: How you can fail\n\nNot completing your assigned tasks on time\n\nIf you are not making a good faith effort to complete your assigned tasks, your manager will notify me and I will step in. You will receive one warning\nIf you are unable to complete your tasks you MUST ask for help early. Waiting until the last minute to ask for help will be viewed as not completing your tasks on time\n\nIf someone else has to complete your work for you"
+  },
+  {
+    "objectID": "classwork/08-project-kickoff.html#individual-project-how-you-can-fail",
+    "href": "classwork/08-project-kickoff.html#individual-project-how-you-can-fail",
+    "title": "Project Work",
+    "section": "Individual Project: How you can fail",
+    "text": "Individual Project: How you can fail\n\nYou fail to complete your work by the deadline\nYou demonstrate a complete lack of understanding of your project during your defense\n\nYou cannot explain what you did and why you did it\nYou cannot answer basic follow-up questions about your project\nYou cannot explain what you learned"
+  },
+  {
+    "objectID": "classwork/08-project-kickoff.html#goal-for-today-brainstorm-and-proposal",
+    "href": "classwork/08-project-kickoff.html#goal-for-today-brainstorm-and-proposal",
+    "title": "Project Work",
+    "section": "Goal for Today: Brainstorm and Proposal",
+    "text": "Goal for Today: Brainstorm and Proposal\n\nExplore data for group project\nEach Feature Team should find a breakout room:\n\nAdd your location in the Dashboard - General channel on Teams\nSentinel: Create and/or checkout feature branch on GitHub for your team and push it to GitHub\nEveryone else: Clone repo, checkout feature branch, create your own branch off of the feature branch\nStart exploring and brainstorming (conduct your work in the scartch folder)\nDeliverable for Wednesday morning: Quarto presentation in docs on a proposal for visualizing your feature (Narrator Should Generate This for Sentinnel)\nOnce complete: Create a pull request to merge your work back to the feature branch\nUseful video"
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#academic-program-review-1",
+    "href": "classwork/04-group-project-intro.html#academic-program-review-1",
+    "title": "Group Project Introduction",
+    "section": "Academic Program Review",
+    "text": "Academic Program Review\n\nDepartments review their programs every 5 years.\nThis “program review” is then submitted to our accrediting body.\nLet’s take a look at the Guidelines Document"
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#our-part",
+    "href": "classwork/04-group-project-intro.html#our-part",
+    "title": "Group Project Introduction",
+    "section": "Our part",
+    "text": "Our part\n\nHow is disaggregated data utilized in exploring whether there are equity gaps and what steps have resulted for its use? (1.D.2) (1.D.4)\nReview Criteria 1.D.2 and 1.D.4 in the Guidelines Document."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#project-overview",
+    "href": "classwork/04-group-project-intro.html#project-overview",
+    "title": "Group Project Introduction",
+    "section": "Project Overview",
+    "text": "Project Overview\n\nClient: Mark Heidrich (AVP for Institutional Effectiveness)\nObjective: Build a unified Dashboard for analyzing equity gaps in academic programs.\nOne Data Science Consultancy: The entire class working together."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#project-hierarchy",
+    "href": "classwork/04-group-project-intro.html#project-hierarchy",
+    "title": "Group Project Introduction",
+    "section": "Project Hierarchy",
+    "text": "Project Hierarchy\n\nd3 = require(\"d3@7\")\n\ndata = ({\n  name: \"Equity Analysis Project\",\n  children: [\n    {\n      name: \"Core Team\",\n      children: [\n        { name: \"Lead Architect\",\n            children: [\n                { name: \"Code Guild\", \n                    children: [{ name: \"Sentinels\" }]\n                },\n                { name: \"Data Guild\", \n                    children: [{ name: \"Data Stewards\" }], \n                },\n            ]\n        },\n        { name: \"Product Owner\",\n            children: [\n                { name: \"UI Guild\", children: [{ name: \"Chart Artists\" }] },\n                { name: \"Shiny Guild\", children: [{ name: \"Interface Architects\" }] },\n                { name: \"Narrative Guild\", children: [{ name: \"Narrative Leads\" }] }\n            ]\n         },\n        {\n          name: \"Team Leads\",\n          children: [\n            { name: \"Feature 1: Enrollment\", \n                children: [\n                    { name: \"Github Sentinel (Team Lead)\" },\n                    { name: \"Data Steward (Data Eng)\" },\n                    { name: \"Chart Artist (Viz)\" },\n                    { name: \"Interface Architect (Shiny)\" },\n                    { name: \"Narrative Lead (Context)\" }\n          ]\n            },\n            { name: \"Feature 2: Performance\", \n                children: [\n                    { name: \"Github Sentinel (Team Lead)\" },\n                    { name: \"Data Steward (Data Eng)\" },\n                    { name: \"Chart Artist (Viz)\" },\n                    { name: \"Interface Architect (Shiny)\" },\n                    { name: \"Narrative Lead (Context)\" }\n          ] },\n            { name: \"Feature 3: Retention\", \n                children: [\n                    { name: \"Github Sentinel (Team Lead)\" },\n                    { name: \"Data Steward (Data Eng)\" },\n                    { name: \"Chart Artist (Viz)\" },\n                    { name: \"Interface Architect (Shiny)\" },\n                    { name: \"Narrative Lead (Context)\" }\n          ] },\n            { name: \"Feature 4: Outcomes\", \n                children: [\n                    { name: \"Github Sentinel (Team Lead)\" },\n                    { name: \"Data Steward (Data Eng)\" },\n                    { name: \"Chart Artist (Viz)\" },\n                    { name: \"Interface Architect (Shiny)\" },\n                    { name: \"Narrative Lead (Context)\" }\n          ] }\n          ]\n          \n        }\n      ]\n    }\n  ]\n})\n\n\nchart = {\n  const width = 2000;\n  const height = 600;\n  \n  // Increased dx for better vertical spacing to prevent overlap\n  const dx = 35; \n  const dy = width / 6;\n\n  const root = d3.hierarchy(data);\n\n  const tree = d3.tree().nodeSize([dx, dy]);\n  \n  // Initial collapsed state logic\n  root.descendants().slice(1).forEach(d =&gt; {\n    // Keep high level branches open, collapse details deeper down\n    if (d.data.name === \"Guilds\" || d.data.name === \"Feature Teams (x5)\" || d.data.name === \"Core Team\") {\n        // Keep open\n    } else if (d.depth &gt; 1) {\n       // Collapse grandchildren initially\n       d._children = d.children;\n       d.children = null; \n    }\n  });\n\n  const svg = d3.create(\"svg\")\n      .attr(\"viewBox\", [-400, -50, width, height]) \n      .style(\"font\", \"14px sans-serif\")\n      .style(\"user-select\", \"none\")\n      .style(\"max-width\", \"100%\")\n      .style(\"height\", \"auto\");\n\n  // Add Zoom\n  const gLink = svg.append(\"g\")\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"#999\")\n      .attr(\"stroke-opacity\", 0.4)\n      .attr(\"stroke-width\", 1.5);\n\n  const gNode = svg.append(\"g\")\n      .attr(\"cursor\", \"pointer\")\n      .attr(\"pointer-events\", \"all\");\n\n  function update(source) {\n      const duration = 250;\n      const nodes = root.descendants().reverse();\n      const links = root.links();\n      tree(root);\n\n      let left = root;\n      let right = root;\n      root.eachBefore(node =&gt; {\n        if (node.x &lt; left.x) left = node;\n        if (node.x &gt; right.x) right = node;\n      });\n\n      const height = right.x - left.x + 100;\n\n      const transition = svg.transition()\n          .duration(duration)\n          .attr(\"viewBox\", [-400, left.x - 50, width, height]);\n\n      const node = gNode.selectAll(\"g\")\n        .data(nodes, d =&gt; d.id || (d.id = Math.random()));\n\n      const nodeEnter = node.enter().append(\"g\")\n          .attr(\"transform\", d =&gt; `translate(${source.y0 || source.y},${source.x0 || source.x})`)\n          .attr(\"fill-opacity\", 0)\n          .attr(\"stroke-opacity\", 0)\n          .on(\"click\", (event, d) =&gt; {\n            // Fix: properly toggle children and _children\n            if (d.children) {\n                d._children = d.children;\n                d.children = null;\n            } else {\n                d.children = d._children;\n                d._children = null;\n            }\n            update(d);\n          });\n\n      nodeEnter.append(\"circle\")\n          .attr(\"r\", 6)\n          .attr(\"fill\", d =&gt; d._children ? \"#007bff\" : \"#999\") \n          .attr(\"stroke-width\", 10);\n\n      nodeEnter.append(\"text\")\n          .attr(\"dy\", \"0.31em\")\n          .attr(\"x\", d =&gt; d._children ? -8 : 8)\n          .attr(\"text-anchor\", d =&gt; d._children ? \"end\" : \"start\")\n          .text(d =&gt; d.data.name)\n          .clone(true).lower()\n          .attr(\"stroke-linejoin\", \"round\")\n          .attr(\"stroke-width\", 3)\n          .attr(\"stroke\", \"white\");\n\n      const nodeUpdate = node.merge(nodeEnter).transition().duration(duration)\n          .attr(\"transform\", d =&gt; `translate(${d.y},${d.x})`)\n          .attr(\"fill-opacity\", 1)\n          .attr(\"stroke-opacity\", 1);\n      \n      // Update color based on whether it effectively has children (expanded or collapsed)\n      nodeUpdate.select(\"circle\")\n        .attr(\"fill\", d =&gt; (d.children || d._children) ? \"#533860\" : \"#999\");\n\n      const nodeExit = node.exit().transition().duration(duration).remove()\n          .attr(\"transform\", d =&gt; `translate(${source.y},${source.x})`)\n          .attr(\"fill-opacity\", 0)\n          .attr(\"stroke-opacity\", 0);\n\n      const link = gLink.selectAll(\"path\")\n        .data(links, d =&gt; d.target.id);\n\n      const linkEnter = link.enter().append(\"path\")\n          .attr(\"d\", d =&gt; {\n            const o = {x: source.x0 || source.x, y: source.y0 || source.y};\n            return d3.linkHorizontal()({source: o, target: o});\n          });\n\n      link.merge(linkEnter).transition().duration(duration)\n          .attr(\"d\", d3.linkHorizontal()\n              .x(d =&gt; d.y)\n              .y(d =&gt; d.x));\n\n      link.exit().transition().duration(duration).remove()\n          .attr(\"d\", d =&gt; {\n            const o = {x: source.x, y: source.y};\n            return d3.linkHorizontal()({source: o, target: o});\n          });\n\n      root.eachBefore(d =&gt; {\n        d.x0 = d.x;\n        d.y0 = d.y;\n      });\n  }\n\n  root.x0 = dy / 2;\n  root.y0 = 0;\n  \n  update(root);\n\n  // Zoom Logic\n  svg.call(d3.zoom()\n      .extent([[0, 0], [width, height]])\n      .scaleExtent([0.5, 4])\n      .on(\"zoom\", ({transform}) =&gt; {\n          gLink.attr(\"transform\", transform);\n          gNode.attr(\"transform\", transform);\n      }));\n\n  return svg.node();\n}"
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#github-sentinel-team-lead",
+    "href": "classwork/04-group-project-intro.html#github-sentinel-team-lead",
+    "title": "Group Project Introduction",
+    "section": "1. Github Sentinel (Team Lead)",
+    "text": "1. Github Sentinel (Team Lead)\n\nSkills: Git, Organization, Conflict Resolution, Jack-Of-All trades.\nResponsibility:\n\nManages the team’s “branch” (workspace).\nResolves “merge conflicts” (when code clashes).\nEnsures the team’s code safely enters the main project.\nSet’s deadlines and keeps the team on track.\nUltimately responsible for the team’s success.\n\nThe only person authorized to submit code updates to the Tech VP."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#data-steward-data-engineer",
+    "href": "classwork/04-group-project-intro.html#data-steward-data-engineer",
+    "title": "Group Project Introduction",
+    "section": "2. Data Steward (Data Engineer)",
+    "text": "2. Data Steward (Data Engineer)\n\nSkills: dplyr, Data Cleaning, Ethics.\nResponsibility:\n\nWrites clean_data.R.\nPrivacy Protection: Ensures no student is identifiable (masks data if sample size too small).\nCreates clean, anonymized datasets for the team.\nWorks with other Data Stewards to standardize definitions."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#chart-artist-viz-specialist",
+    "href": "classwork/04-group-project-intro.html#chart-artist-viz-specialist",
+    "title": "Group Project Introduction",
+    "section": "3. Chart Artist (Viz Specialist)",
+    "text": "3. Chart Artist (Viz Specialist)\n\nSkills: ggplot2, Visualization Design.\nResponsibility:\n\nCreates high-quality static visualizations.\nWrites plot functions (e.g., plot_gpa()).\nEnsures all charts match the design system (colors, fonts).\nWorks with other Chart Artists to ensure consistency across modules."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#interface-architect-shiny-dev",
+    "href": "classwork/04-group-project-intro.html#interface-architect-shiny-dev",
+    "title": "Group Project Introduction",
+    "section": "4. Interface Architect (Shiny Dev)",
+    "text": "4. Interface Architect (Shiny Dev)\n\nSkills: Shiny UI/Server, Layouts.\nResponsibility:\n\nWires the User Interface (buttons, sliders, tabs).\nConnects inputs to the Chart Artist’s plots.\nEnsures the interactive elements work smoothly."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#narrative-lead-contextqa",
+    "href": "classwork/04-group-project-intro.html#narrative-lead-contextqa",
+    "title": "Group Project Introduction",
+    "section": "5. Narrative Lead (Context/QA)",
+    "text": "5. Narrative Lead (Context/QA)\n\nSkills: Writing, Interpretation, stringr.\nResponsibility:\n\nWrites dynamic text to interpret charts automatically (“Mad Libs” style).\nExplains what the data shows to the user.\nActs as Quality Assurance for the team’s module.\nTake notes at team meetings and documents decisions and timelines."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#the-guilds",
+    "href": "classwork/04-group-project-intro.html#the-guilds",
+    "title": "Group Project Introduction",
+    "section": "The Guilds",
+    "text": "The Guilds\n\nCode Guild: Sentinels + Lead Architect (Git & Process).\nUI Guild: Chart Artists + Product Owner (Design & Style).\nData Guild: Data Stewards (Definitions & Privacy).\nShiny Guild: Interface Architects (Layouts & Inputs).\nNarrative Guild: Narrative Leads (Tone & Consistency)."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#core-team-roles",
+    "href": "classwork/04-group-project-intro.html#core-team-roles",
+    "title": "Group Project Introduction",
+    "section": "Core Team Roles",
+    "text": "Core Team Roles\n\nProduct Owner (Client VP)\n\n“Voice of the Client”\nManages the Landing Page, global.R, and styles.css.\nLeads the UI Guild, Shiny Guild, and Narrative Guild.\n\nLead Architect (Tech VP)\n\nRepository Health & Integration.\nManages app.R and Deployment.\nLeads the Code Guild and Data Guild.\n\nTeam Leads"
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#next-steps",
+    "href": "classwork/04-group-project-intro.html#next-steps",
+    "title": "Group Project Introduction",
+    "section": "Next Steps",
+    "text": "Next Steps\n\nReview the full job descriptions.\nThink about which role fits your skills and interests best.\nSubmit this Microsoft Form ranking your preferred roles."
+  },
+  {
+    "objectID": "classwork/04-group-project-intro.html#reviewing-the-data-set",
+    "href": "classwork/04-group-project-intro.html#reviewing-the-data-set",
+    "title": "Group Project Introduction",
+    "section": "Reviewing the data set",
+    "text": "Reviewing the data set\nWhile Mark is here let’s review the data set and make sure we don’t have specific questions about the columns."
+  },
+  {
+    "objectID": "classwork/01-tidy-tuesday.html#today",
+    "href": "classwork/01-tidy-tuesday.html#today",
+    "title": "Our First Analysis",
     "section": "Today",
-    "text": "Today\n\nSome challenges to practice your skills!"
+    "text": "Today\n\nToday we’re going to split up into groups and each analyze a data set of our choice\nWe will take turns presenting on what we’ve done\nAfter each presentation, we’ll have a brief discussion where we critique each other’s analysis"
   },
   {
-    "objectID": "classwork/03-day-3.html#challenge-1a-parks",
-    "href": "classwork/03-day-3.html#challenge-1a-parks",
-    "title": "Challenges!",
-    "section": "Challenge 1A: Parks",
-    "text": "Challenge 1A: Parks\n\nUse the parks.csv found in Teams to make this plot."
+    "objectID": "classwork/01-tidy-tuesday.html#tidytuesday",
+    "href": "classwork/01-tidy-tuesday.html#tidytuesday",
+    "title": "Our First Analysis",
+    "section": "#TidyTuesday",
+    "text": "#TidyTuesday\n\nTidyTuesday is a weekly data project aimed at the R community\nEach week a new data set is released along with a short description\nPeople analyze the data set and share their work on social media using the hashtag #TidyTuesday\nYou can find the data sets and more information at the TidyTuesday GitHub repository"
   },
   {
-    "objectID": "classwork/03-day-3.html#challenge-1b-parks",
-    "href": "classwork/03-day-3.html#challenge-1b-parks",
-    "title": "Challenges!",
-    "section": "Challenge 1B: Parks",
-    "text": "Challenge 1B: Parks\n\nUse the parks.csv found in Teams to make this plot."
-  },
-  {
-    "objectID": "classwork/03-day-3.html#challenge-1c-parks",
-    "href": "classwork/03-day-3.html#challenge-1c-parks",
-    "title": "Challenges!",
-    "section": "Challenge 1C: Parks",
-    "text": "Challenge 1C: Parks\n\nUse the parks.csv found in Teams to make this plot."
-  },
-  {
-    "objectID": "classwork/03-day-3.html#challenge-2-valentines-day",
-    "href": "classwork/03-day-3.html#challenge-2-valentines-day",
-    "title": "Challenges!",
-    "section": "Challenge 2: Valentine’s Day",
-    "text": "Challenge 2: Valentine’s Day\nGenerate this plot (without usiung AI):"
-  },
-  {
-    "objectID": "classwork/03-day-3.html#challenge-3-pokemon",
-    "href": "classwork/03-day-3.html#challenge-3-pokemon",
-    "title": "Challenges!",
-    "section": "Challenge 3: Pokemon",
-    "text": "Challenge 3: Pokemon\nGenerate the following data frame from the pokemon data (no AI):"
-  },
-  {
-    "objectID": "classwork/03-day-3.html#groups-for-today",
-    "href": "classwork/03-day-3.html#groups-for-today",
-    "title": "Challenges!",
-    "section": "Groups for Today",
-    "text": "Groups for Today\n\nSelf sort:\n\nEasy: Table 1 (near the windows)\n\nChallenge 1A, 1B, 1C\n\nMedium: Table 2 (middle of the room)\n\nChallenge 2 and 1A\n\nHard: Table 3 (near the TVs)\n\nChallenge 3\n\n\nStart by sketching a plan on the white board…"
-  },
-  {
-    "objectID": "classwork/03-day-3.html#for-next-class",
-    "href": "classwork/03-day-3.html#for-next-class",
-    "title": "Challenges!",
-    "section": "For Next Class",
-    "text": "For Next Class\n\nComplete reflection\nComplete next three lectures"
-  },
-  {
-    "objectID": "classwork/02-pivoting.html#today",
-    "href": "classwork/02-pivoting.html#today",
-    "title": "More Analysis",
+    "objectID": "classwork/01-tidy-tuesday.html#today-1",
+    "href": "classwork/01-tidy-tuesday.html#today-1",
+    "title": "Our First Analysis",
     "section": "Today",
-    "text": "Today\n\nReturn to TidyTuesday analysis from last class\nWork with some real experimental data generated from by Dr. Belissimo’s class"
+    "text": "Today\n\nEach group will pick a data set from the TidyTuesday repository\nEach group will do their best to analyze that data\nAdvice:\n\nTry to choose a more recent data set, and one that already has questions associated with it\nThere is usually an import script at the bottom of each dataset\nIt is likely that you will need to install some packages to work with the data\nDon’t worry about being perfect\nFocus on exploring the data and telling a story with it\nAsk for help when you need it"
   },
   {
-    "objectID": "classwork/02-pivoting.html#group-roles-reminder",
-    "href": "classwork/02-pivoting.html#group-roles-reminder",
-    "title": "More Analysis",
-    "section": "Group Roles: Reminder",
-    "text": "Group Roles: Reminder\n\nCoder: responsible for typing for your group\nReporter: responsible for sharing your group’s work with the class\nResearcher: responsible for looking up any questions your group has\nEveryone should contribute to the discussion and help with writing the code\nThere will be several parts of this activity, between each part, rotate roles\n\nCoder -&gt; Reporter -&gt; Researcher -&gt; Coder …\nFor now, old Coder copy and paste script in Teams chat to new Coder"
+    "objectID": "classwork/01-tidy-tuesday.html#group-roles",
+    "href": "classwork/01-tidy-tuesday.html#group-roles",
+    "title": "Our First Analysis",
+    "section": "Group Roles",
+    "text": "Group Roles\n\nCoder: responsible for typing for your group\nReporter: responsible for sharing your group’s work with the class\nResearcher: responsible for looking up any questions your group has\nEveryone should contribute to the discussion and help with writing the code\nThere will be several parts of this activity, between each part, rotate roles\n\nCoder -&gt; Reporter -&gt; Researcher -&gt; Coder …\nFor now, old Coder copy and paste script in Teams chat to new Coder"
   },
   {
-    "objectID": "classwork/02-pivoting.html#groups-for-today",
-    "href": "classwork/02-pivoting.html#groups-for-today",
-    "title": "More Analysis",
-    "section": "Groups for Today",
-    "text": "Groups for Today\n\nIf you didn’t present yesterday, same groups as yesterday\nIf you did present yesterday, you’ve been assigned a new group (check Teams)"
+    "objectID": "classwork/01-tidy-tuesday.html#get-in-your-groups",
+    "href": "classwork/01-tidy-tuesday.html#get-in-your-groups",
+    "title": "Our First Analysis",
+    "section": "Get in your groups",
+    "text": "Get in your groups\n\nYou can find a spreadsheet in the Jan 6th Activities Module in the Classword section on Teams with your team assignments\nGet in your groups now\nIntroduce yourselves\nDecide who will be the first Coder, Reporter, and Researcher\nDecide on a group name\nCreate a post in the Activities Channel on Teams with all of this information\n\n\ncountdown::countdown(minutes = 5)"
   },
   {
-    "objectID": "classwork/02-pivoting.html#reasearch-question",
-    "href": "classwork/02-pivoting.html#reasearch-question",
-    "title": "More Analysis",
-    "section": "Reasearch Question",
-    "text": "Reasearch Question\n\nTraditional Resistance Training (TRT): Involves performing a set number of repetitions continuously until the set is complete, followed by a rest period.\n\nExample: 3 sets of 10 repetitions with 60 seconds rest between sets.\n\nCluster Resistance Training (CRT): Involves breaking a set into smaller clusters of repetitions with short rest intervals in between, allowing for brief recovery periods during the set.\n\nExample: 3 sets of 10 repetitions performed as 2 clusters of 5 repetitions with 15 seconds rest between clusters and 60 seconds rest between sets.\n\nPrimary research goal: characterize the intensity of TRT vs CRT\nToday’s Question: Are there differences in heart rate response between traditional and cluster resistance volume-matched protocols?"
+    "objectID": "classwork/01-tidy-tuesday.html#selecting-a-dataset",
+    "href": "classwork/01-tidy-tuesday.html#selecting-a-dataset",
+    "title": "Our First Analysis",
+    "section": "Selecting a Dataset",
+    "text": "Selecting a Dataset\n\nDo the following:\n\nFind the data set on the TidyTuesday GitHub repository\nLoad that data set into R\nPost a link to the dataset as a response to your group’s post in the Activities Channel on Teams\n\nAnswer the following questions (be prepared to give a 2-minute report to the class):\n\nWhat is the data about?\nWhat question(s) are you interested in answering with this data?\nHow many data frames are there and how many rows and columns does it have?\nWhat data frames and variables are you going to focus on?\n\n\n\ncountdown::countdown(minutes = 20)"
   },
   {
-    "objectID": "classwork/02-pivoting.html#experimental-design",
-    "href": "classwork/02-pivoting.html#experimental-design",
-    "title": "More Analysis",
-    "section": "Experimental Design",
-    "text": "Experimental Design\n\nParticipants: 10 college students\nCross-over design\n\nEach participant completed both the TRT and CRTprotocols… why?\nRandomized (flipped a coin) which protocol was completed first… why?\nOne week washout period between protocols… why?\nMeasured heart rate, before and after exercise\n\nThis was a class project conducted by Jayva Anderson, Emily Lettenmaier, Sayre Schreiner, and Greta Valaika"
+    "objectID": "classwork/01-tidy-tuesday.html#explore-the-data",
+    "href": "classwork/01-tidy-tuesday.html#explore-the-data",
+    "title": "Our First Analysis",
+    "section": "Explore the Data",
+    "text": "Explore the Data\n\nBe prepared to present the following (less than 5 minutes per group):\n\nCreate up to 5 visualizations or tables that help answer your questions\nExplain what each visualization or table shows\nExplain what you learned from each visualization or table\nExplain any challenges you had while working with the data\nBe prepared to answer questions and explain your code if you are asked\n\nCopy and paste your entire script (up to this point) into Teams as a response to your group’s post\n\n\ncountdown::countdown(minutes = 20)"
   },
   {
-    "objectID": "classwork/02-pivoting.html#the-data",
-    "href": "classwork/02-pivoting.html#the-data",
-    "title": "More Analysis",
-    "section": "The Data",
-    "text": "The Data\n\nStored in TRAD_CLU_group.csv on Teams in the Jan 7th Activities Module in the Classwork section\nColumns:\n\nID : Participant identifier\nCondition: TRAD or CLU (traditional or cluster)\nTime: PRE or POST (before or after exercise)\nHR: Heart Rate (in beats per minute)"
+    "objectID": "classwork/01-tidy-tuesday.html#time-permitting-refine-and-extend",
+    "href": "classwork/01-tidy-tuesday.html#time-permitting-refine-and-extend",
+    "title": "Our First Analysis",
+    "section": "Time Permitting: Refine and Extend",
+    "text": "Time Permitting: Refine and Extend\n\nIf you have time left, refine your visualizations and analyses based on our discussions"
   },
   {
-    "objectID": "classwork/02-pivoting.html#challenge",
-    "href": "classwork/02-pivoting.html#challenge",
-    "title": "More Analysis",
-    "section": "Challenge",
-    "text": "Challenge\nMake a visualization that addresses the research question.\nBest viz wins. Once you’re complete post your image in the Activities Channel on Teams."
-  },
-  {
-    "objectID": "classwork/02-pivoting.html#for-next-class",
-    "href": "classwork/02-pivoting.html#for-next-class",
-    "title": "More Analysis",
-    "section": "For Next Class",
-    "text": "For Next Class\n\nComplete reflection\nComplete next two lectures"
-  },
-  {
-    "objectID": "classwork/18-github.html#what-is-version-control",
-    "href": "classwork/18-github.html#what-is-version-control",
-    "title": "Introduction to GitHub",
-    "section": "What is Version Control?",
-    "text": "What is Version Control?\n\nA system that records changes to a file or set of files over time so that you can recall specific versions later.\nIt allows you to revert files back to a previous state, revert the entire project back to a previous state, compare changes over time, see who last modified something that might be causing a problem, who introduced an issue and when.\nThink of it like “track changes” in a word processor, but for all your project files (code, data, text, etc.)."
-  },
-  {
-    "objectID": "classwork/18-github.html#why-is-it-useful",
-    "href": "classwork/18-github.html#why-is-it-useful",
-    "title": "Introduction to GitHub",
-    "section": "Why is it useful?",
-    "text": "Why is it useful?\n\nCollaboration: Many people can work on the same project without overwriting each other’s changes.\nOrganization: Keeps a history of your project. No more final_report_v2_final_final.docx!\nBackup: Your project history is stored in a remote, safe place (like GitHub). If your computer crashes, your work is not lost.\nExperimentation: You can try out new ideas in a “branch” without messing up the main version of your project."
-  },
-  {
-    "objectID": "classwork/18-github.html#what-is-git",
-    "href": "classwork/18-github.html#what-is-git",
-    "title": "Introduction to GitHub",
-    "section": "What is Git?",
-    "text": "What is Git?\n\nGit is a free and open source distributed version control system.\nIt’s a command-line tool that you run on your computer to track changes in your project files.\nIt’s the most popular version control system in the world."
-  },
-  {
-    "objectID": "classwork/18-github.html#what-is-github",
-    "href": "classwork/18-github.html#what-is-github",
-    "title": "Introduction to GitHub",
-    "section": "What is GitHub?",
-    "text": "What is GitHub?\n\nGitHub is a web-based hosting service for Git repositories.\nIt’s a place to store your projects and collaborate with others.\nIt provides a graphical interface to Git, plus other features like issue tracking, project management, and more.\nGit is the tool, GitHub is the service."
-  },
-  {
-    "objectID": "classwork/18-github.html#cloning-a-repository",
-    "href": "classwork/18-github.html#cloning-a-repository",
-    "title": "Introduction to GitHub",
-    "section": "Cloning a Repository",
-    "text": "Cloning a Repository\n\n“Cloning” is how you get a copy of a project from GitHub onto your computer.\nYou only need to do this once per project.\nYou’ll get a URL from the GitHub page of the repository.\n\n\ngit clone &lt;URL_of_the_repository&gt;\n\n\nThis creates a new directory on your computer with all the project files."
-  },
-  {
-    "objectID": "classwork/18-github.html#the-add-commit-push-cycle",
-    "href": "classwork/18-github.html#the-add-commit-push-cycle",
-    "title": "Introduction to GitHub",
-    "section": "The Add-Commit-Push Cycle",
-    "text": "The Add-Commit-Push Cycle\nThis is the most common workflow you’ll use.\n\nMake changes: Edit your files, create new files, etc.\nAdd files: Tell Git which files you want to save in the next “snapshot” (commit).\nCommit files: Save the snapshot with a descriptive message.\nPush changes: Send your committed changes to GitHub."
-  },
-  {
-    "objectID": "classwork/18-github.html#git-add",
-    "href": "classwork/18-github.html#git-add",
-    "title": "Introduction to GitHub",
-    "section": "git add",
-    "text": "git add\n\nUse git add to stage your changes. Staging is the step before committing.\nYou can add specific files or all files with changes.\n\n\n# Add a specific file\ngit add path/to/your/file.R\n\n# Add all changed files in the current directory and subdirectories\ngit add ."
-  },
-  {
-    "objectID": "classwork/18-github.html#git-commit",
-    "href": "classwork/18-github.html#git-commit",
-    "title": "Introduction to GitHub",
-    "section": "git commit",
-    "text": "git commit\n\nA “commit” is a snapshot of your staged changes.\nEach commit has a unique ID and a message.\nThe message is important! It should be a short, descriptive summary of the changes you made.\n\n\ngit commit -m \"Fix bug in data cleaning script\""
-  },
-  {
-    "objectID": "classwork/18-github.html#git-push",
-    "href": "classwork/18-github.html#git-push",
-    "title": "Introduction to GitHub",
-    "section": "git push",
-    "text": "git push\n\ngit push sends your committed changes from your local computer to the remote repository on GitHub.\n\n\ngit push"
-  },
-  {
-    "objectID": "classwork/18-github.html#git-pull",
-    "href": "classwork/18-github.html#git-pull",
-    "title": "Introduction to GitHub",
-    "section": "git pull",
-    "text": "git pull\n\nIf you’re working with others, they will merge changes into the main branch.\ngit pull fetches changes from the remote repository and merges them into your local copy.\nIt’s a critical habit to pull from main before you start working to make sure you have the latest version.\n\n\n\n# Make sure you're on the main branch first\ngit checkout main\ngit pull"
-  },
-  {
-    "objectID": "classwork/18-github.html#what-is-a-branch",
-    "href": "classwork/18-github.html#what-is-a-branch",
-    "title": "Introduction to GitHub",
-    "section": "What is a Branch?",
-    "text": "What is a Branch?\n\nA branch is a parallel version of your repository.\nIt allows you to work on new features or fixes without affecting the main codebase (the main branch).\nThis is essential for teamwork."
-  },
-  {
-    "objectID": "classwork/18-github.html#the-branching-workflow-a-full-example",
-    "href": "classwork/18-github.html#the-branching-workflow-a-full-example",
-    "title": "Introduction to GitHub",
-    "section": "The Branching Workflow: A Full Example",
-    "text": "The Branching Workflow: A Full Example\n\nSync your local main branch: git checkout main git pull\nCreate a new branch for your work: For the project, your team leader (the “GitHub Sentinel”) will do this. Branch names should be descriptive, like feature/team-name. git checkout -b feature/pod-1-enrollment\nWork on your branch: Now you do the familiar add-commit cycle. Edit files, create new R scripts… git add . git commit -m \"Add enrollment chart and data cleaning\"\nPush your branch to GitHub: The -u flag sets the upstream branch so you can just git push next time. git push -u origin feature/pod-1-enrollment"
-  },
-  {
-    "objectID": "classwork/18-github.html#what-is-a-pull-request",
-    "href": "classwork/18-github.html#what-is-a-pull-request",
-    "title": "Introduction to GitHub",
-    "section": "What is a Pull Request?",
-    "text": "What is a Pull Request?\n\nA Pull Request (or PR) is a formal request to merge your changes.\nYou’re asking the project maintainer (the “Lead Architect” for your project) to “pull” your changes from your branch into the main branch.\nIt’s a place for code review and discussion before the changes are integrated."
-  },
-  {
-    "objectID": "classwork/18-github.html#how-the-sentinel-opens-a-pull-request",
-    "href": "classwork/18-github.html#how-the-sentinel-opens-a-pull-request",
-    "title": "Introduction to GitHub",
-    "section": "How the Sentinel Opens a Pull Request",
-    "text": "How the Sentinel Opens a Pull Request\n\nAfter pushing the branch, go to the repository on GitHub.\nGitHub will usually show a banner prompting you to “Compare & pull request”. Click it!\nIf not, go to the “Pull requests” tab and click “New pull request”.\nSelect your team’s branch as the “compare” branch and main as the “base” branch.\nWrite a clear title and description for your changes. Explain what you did.\nClick “Create pull request”."
-  },
-  {
-    "objectID": "classwork/18-github.html#review-and-merging",
-    "href": "classwork/18-github.html#review-and-merging",
-    "title": "Introduction to GitHub",
-    "section": "Review and Merging",
-    "text": "Review and Merging\n\nOnce the PR is open, the “Lead Architect” and other team members can review your code, add comments, and request changes.\nIf changes are requested, your team makes them on the local branch, then commits and pushes again. The PR will update automatically.\nOnce approved, the Lead Architect will merge your branch into main. Your work is now part of the official project!"
-  },
-  {
-    "objectID": "classwork/18-github.html#a-note-on-merge-conflicts",
-    "href": "classwork/18-github.html#a-note-on-merge-conflicts",
-    "title": "Introduction to GitHub",
-    "section": "A Note on Merge Conflicts",
-    "text": "A Note on Merge Conflicts\n\nIf you and another person edit the same lines in the same file on different branches, Git won’t know which version to keep when merging.\nThis is a merge conflict.\nThe person merging the PR (or the Sentinel, before opening it) will need to manually resolve the conflict by choosing which code to keep.\nThe best way to avoid conflicts: Pull from main often and communicate with your team!"
-  },
-  {
-    "objectID": "classwork/18-github.html#after-a-pr-is-merged",
-    "href": "classwork/18-github.html#after-a-pr-is-merged",
-    "title": "Introduction to GitHub",
-    "section": "After a PR is Merged",
-    "text": "After a PR is Merged\nOnce your team’s branch is merged by the Lead Architect, everyone should update their local repository.\n\nSwitch back to your main branch: git checkout main\nPull the latest changes (which now include the merged work): git pull\nNow your main is up to date, and you can create a new branch for the next feature!"
-  },
-  {
-    "objectID": "classwork/18-github.html#good-commit-messages",
-    "href": "classwork/18-github.html#good-commit-messages",
-    "title": "Introduction to GitHub",
-    "section": "Good Commit Messages",
-    "text": "Good Commit Messages\n\nKeep them short and descriptive.\nUse the imperative mood (e.g., “Add feature” not “Added feature”).\nExplain what the change is and why you made it.\n\nGood:\n\nFix typo in course syllabus\nUpdate plot styling in HW1\nFeat: Add enrollment module skeleton\nDocs: Explain data cleaning process\n\nBad:\n\nstuff\nfixed it\naaaaaaaa"
-  },
-  {
-    "objectID": "classwork/18-github.html#practice",
-    "href": "classwork/18-github.html#practice",
-    "title": "Introduction to GitHub",
-    "section": "Practice!",
-    "text": "Practice!\nLet’s simulate the project workflow. countdown(minutes = 15)\nPartner A: The “Lead Architect” 1. Create a new public repository on GitHub named github-practice. 2. Initialize it with a README.md file. 3. Clone it to your computer. 4. Add Partner B as a collaborator (Settings &gt; Collaborators).\nPartner B: The “GitHub Sentinel” 1. Accept the collaborator invitation (check your email!). 2. Clone the repository. 3. Create a new branch: git checkout -b add-contrib-list. 4. Create a new file contributors.txt and add your name to it. 5. add, commit, and push your branch to the repository. 6. Go to GitHub and open a Pull Request to merge add-contrib-list into main.\nPartner A: The “Lead Architect” (again) 1. On GitHub, go to the “Pull requests” tab. 2. Review the PR. Leave a comment! Ask Partner B to add your name to the file.\nPartner B: The “GitHub Sentinel” (again) 1. Locally, on your branch, add Partner A’s name to contributors.txt. 2. add, commit, and push the change. Notice the PR on GitHub updates automatically!\nPartner A: The “Lead Architect” (last time) 1. On the PR, see the new commit. Looks good! 2. Merge the Pull Request.\nBoth Partners: 1. Locally, git checkout main and git pull to see the contributors.txt file with both names."
-  },
-  {
-    "objectID": "classwork/18-github.html#do-next",
-    "href": "classwork/18-github.html#do-next",
-    "title": "Introduction to GitHub",
-    "section": "Do Next",
-    "text": "Do Next\n\nMake sure you have Git installed on your computer.\nMake sure you have a GitHub account.\nAccept the invitation to our course organization on GitHub.\nThat’s it for tonight! See you tomorrow."
+    "objectID": "classwork/01-tidy-tuesday.html#wrap-up",
+    "href": "classwork/01-tidy-tuesday.html#wrap-up",
+    "title": "Our First Analysis",
+    "section": "Wrap Up",
+    "text": "Wrap Up\n\nBefore you leave, complete your reflection on Teams!"
   },
   {
     "objectID": "classwork/20-renv.html#the-problem-it-works-on-my-machine",

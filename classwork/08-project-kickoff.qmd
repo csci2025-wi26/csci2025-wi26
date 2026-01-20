@@ -71,3 +71,4 @@ title: "Project Work"
     - Start exploring and brainstorming (conduct your work in the `scartch` folder)
     - Deliverable for Wednesday morning: Quarto presentation  in `docs` on a proposal for visualizing your feature (Narrator Should Generate This for Sentinnel)
     - Once complete: Create a pull request to merge your work back to the feature branch
+    - [Useful video](https://www.youtube.com/watch?v=IIzkivdQoio)
