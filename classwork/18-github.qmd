@@ -1,278 +1,73 @@
 ---
-title: "Introduction to GitHub"
-subtitle: "Lecture 18"
+title: "Project Work"
 ---
 
-```{r}
-#| label: setup
-#| message: false
-#| echo: false
-
-# load packages
-library(tidyverse)
-library(countdown)
-
-# set theme for ggplot2
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
-
-# set figure parameters for knitr
-knitr::opts_chunk$set(
-  fig.width = 7,        # 7" width
-  fig.asp = 0.618,      # the golden ratio
-  fig.retina = 3,       # dpi multiplier for displaying HTML output on retina
-  fig.align = "center", # center align figures
-  dpi = 300             # higher dpi, sharper image
-)
-```
-
-# Introduction
-
-## What is Version Control?
-
-- A system that records changes to a file or set of files over time so that you can recall specific versions later.
-- It allows you to revert files back to a previous state, revert the entire project back to a previous state, compare changes over time, see who last modified something that might be causing a problem, who introduced an issue and when.
-- Think of it like "track changes" in a word processor, but for all your project files (code, data, text, etc.).
-
-## Why is it useful?
-
-- **Collaboration:** Many people can work on the same project without overwriting each other's changes.
-- **Organization:** Keeps a history of your project. No more `final_report_v2_final_final.docx`!
-- **Backup:** Your project history is stored in a remote, safe place (like GitHub). If your computer crashes, your work is not lost.
-- **Experimentation:** You can try out new ideas in a "branch" without messing up the main version of your project.
-
-# Git and GitHub
-
-## What is Git?
-
-- Git is a free and open source **distributed version control system**.
-- It's a command-line tool that you run on your computer to track changes in your project files.
-- It's the most popular version control system in the world.
-
-## What is GitHub?
-
-- GitHub is a **web-based hosting service** for Git repositories.
-- It's a place to store your projects and collaborate with others.
-- It provides a graphical interface to Git, plus other features like issue tracking, project management, and more.
-- **Git** is the tool, **GitHub** is the service.
-
-# Getting Started
-
-## Cloning a Repository
-
-- "Cloning" is how you get a copy of a project from GitHub onto your computer.
-- You only need to do this once per project.
-- You'll get a URL from the GitHub page of the repository.
-
-```{bash}
-#| echo: true
-#| eval: false
-git clone <URL_of_the_repository>
-```
-
-- This creates a new directory on your computer with all the project files.
-
-# The Core Workflow
-
-## The Add-Commit-Push Cycle
-
-This is the most common workflow you'll use.
-
-1.  **Make changes:** Edit your files, create new files, etc.
-2.  **Add files:** Tell Git which files you want to save in the next "snapshot" (commit).
-3.  **Commit files:** Save the snapshot with a descriptive message.
-4.  **Push changes:** Send your committed changes to GitHub.
-
-## `git add`
-
-- Use `git add` to stage your changes. Staging is the step before committing.
-- You can add specific files or all files with changes.
-
-```{bash}
-#| echo: true
-#| eval: false
-
-# Add a specific file
-git add path/to/your/file.R
-
-# Add all changed files in the current directory and subdirectories
-git add .
-```
-
-## `git commit`
-
-- A "commit" is a snapshot of your staged changes.
-- Each commit has a unique ID and a message.
-- The message is important! It should be a short, descriptive summary of the changes you made.
-
-```{bash}
-#| echo: true
-#| eval: false
-git commit -m "Fix bug in data cleaning script"
-```
-
-## `git push`
-
-- `git push` sends your committed changes from your local computer to the remote repository on GitHub.
-
-```{bash}
-#| echo: true
-#| eval: false
-git push
-```
-
-# Staying in Sync
-
-## `git pull`
-
-- If you're working with others, they will merge changes into the `main` branch.
-- `git pull` fetches changes from the remote repository and merges them into your local copy.
-- **It's a critical habit to `pull` from `main` before you start working to make sure you have the latest version.**
-
-![](/images/pull.png)
-
-```{bash}
-#| echo: true
-#| eval: false
-# Make sure you're on the main branch first
-git checkout main
-git pull
-```
-
-# A Collaborative Workflow: The Feature Branch
-
-For our group project, we will use a workflow that prevents accidentally breaking the main version of our app. **You will not push directly to `main`**.
-
-The core idea is:
-1.  Create a copy of the project (a "branch") where you can work safely.
-2.  Make all your changes on that branch.
-3.  When you're ready, you'll open a "Pull Request" to have your changes reviewed and merged into the `main` branch.
-
-## What is a Branch?
-
-- A branch is a parallel version of your repository.
-- It allows you to work on new features or fixes without affecting the main codebase (the `main` branch).
-- This is essential for teamwork.
-
-## The Branching Workflow: A Full Example
-
-1.  **Sync your local `main` branch:**
-    `git checkout main`
-    `git pull`
-
-2.  **Create a new branch for your work:** For the project, your team leader (the "GitHub Sentinel") will do this. Branch names should be descriptive, like `feature/team-name`.
-    `git checkout -b feature/pod-1-enrollment`
-
-3.  **Work on your branch:** Now you do the familiar add-commit cycle.
-    *Edit files, create new R scripts...*
-    `git add .`
-    `git commit -m "Add enrollment chart and data cleaning"`
-
-4.  **Push your branch to GitHub:** The `-u` flag sets the upstream branch so you can just `git push` next time.
-    `git push -u origin feature/pod-1-enrollment`
-
-# Pull Requests: Proposing Changes
-
-Now that your branch is on GitHub, the GitHub Sentinel needs to ask for it to be merged into `main`.
-
-## What is a Pull Request?
-
-- A Pull Request (or PR) is a formal request to merge your changes.
-- You're asking the project maintainer (the "Lead Architect" for your project) to "pull" your changes from your branch into the `main` branch.
-- It's a place for **code review** and discussion before the changes are integrated.
-
-## How the Sentinel Opens a Pull Request
-
-1.  After pushing the branch, go to the repository on GitHub.
-2.  GitHub will usually show a banner prompting you to "Compare & pull request". Click it!
-3.  If not, go to the "Pull requests" tab and click "New pull request".
-4.  Select your team's branch as the "compare" branch and `main` as the "base" branch.
-5.  Write a clear title and description for your changes. Explain what you did.
-6.  Click "Create pull request".
-
-## Review and Merging
-
-- Once the PR is open, the "Lead Architect" and other team members can review your code, add comments, and request changes.
-- If changes are requested, your team makes them on the local branch, then `commits` and `pushes` again. The PR will update automatically.
-- Once approved, the Lead Architect will **merge** your branch into `main`. Your work is now part of the official project!
-
-## A Note on Merge Conflicts
-- If you and another person edit the **same lines in the same file** on different branches, Git won't know which version to keep when merging.
-- This is a **merge conflict**.
-- The person merging the PR (or the Sentinel, before opening it) will need to manually resolve the conflict by choosing which code to keep.
-- **The best way to avoid conflicts: Pull from `main` often and communicate with your team!**
-
-
-## After a PR is Merged
-
-Once your team's branch is merged by the Lead Architect, everyone should update their local repository.
-
-1.  Switch back to your main branch:
-    `git checkout main`
-
-2.  Pull the latest changes (which now include the merged work):
-    `git pull`
-
-3.  Now your `main` is up to date, and you can create a new branch for the next feature!
-
-# Best Practices
-
-## Good Commit Messages {.smaller}
-
-- Keep them short and descriptive.
-- Use the imperative mood (e.g., "Add feature" not "Added feature").
-- Explain *what* the change is and *why* you made it.
-
-**Good:**
-
-- `Fix typo in course syllabus`
-- `Update plot styling in HW1`
-- `Feat: Add enrollment module skeleton`
-- `Docs: Explain data cleaning process`
-
-**Bad:**
-
-- `stuff`
-- `fixed it`
-- `aaaaaaaa`
-
-## Practice!
-
-Let's simulate the project workflow. `countdown(minutes = 15)`
-
-**Partner A: The "Lead Architect"**
-1. Create a new **public** repository on GitHub named `github-practice`.
-2. Initialize it with a `README.md` file.
-3. Clone it to your computer.
-4. Add Partner B as a collaborator (`Settings` > `Collaborators`).
-
-**Partner B: The "GitHub Sentinel"**
-1. Accept the collaborator invitation (check your email!).
-2. Clone the repository.
-3. Create a new branch: `git checkout -b add-contrib-list`.
-4. Create a new file `contributors.txt` and add your name to it.
-5. `add`, `commit`, and `push` your branch to the repository.
-6. Go to GitHub and open a Pull Request to merge `add-contrib-list` into `main`.
-
-**Partner A: The "Lead Architect" (again)**
-1. On GitHub, go to the "Pull requests" tab.
-2. Review the PR. Leave a comment! Ask Partner B to add your name to the file.
-
-**Partner B: The "GitHub Sentinel" (again)**
-1. Locally, on your branch, add Partner A's name to `contributors.txt`.
-2. `add`, `commit`, and `push` the change. Notice the PR on GitHub updates automatically!
-
-**Partner A: The "Lead Architect" (last time)**
-1. On the PR, see the new commit. Looks good!
-2. **Merge the Pull Request.**
-
-**Both Partners:**
-1. Locally, `git checkout main` and `git pull` to see the `contributors.txt` file with both names.
-
-# Wrap-Up
-
-## Do Next
-
-1.  Make sure you have Git installed on your computer.
-2.  Make sure you have a GitHub account.
-3.  Accept the invitation to our course organization on GitHub.
-4.  That's it for tonight! See you tomorrow.
+## PFE/Applied Learning
+
+- This class counts as *Applied Learning*
+- If you haven't submitted a link to your individual project repo, please do so ASAP:
+    + Right now: Add you Github username to the spreadsheet in the **Dashboard- General** channel on Teams
+    + Later: Submit a link to your individual project assignment on Teams
+
+## Rest of the term
+::: incremental
+- Project work & Presentations
+    + Individual presentations (M-TH, next week, about 5 per day)
+        + Sign-up for a presentation slow on Teams
+- Classtime will be used for project work
+:::
+
+## Mindset Until End of Semester
+
+- You are an employee for a Data Science Company
+- You have two projects: your individual and your group project
+- It is up to you to manage your time:
+    + Work on your individual project when you have down time from your group project
+- Your Sentinel is your boss
+- Reagan/Keion are your bosses boss
+
+## Expectations
+
+- Group Project:
+    - You complete the tasks assigned to you by your manager in a timely fashion
+    - You communicate with your manager and team members if you are having trouble completing your tasks on time
+    - Carefully document all meetings so tasks can be tracked
+- Individual Project:
+    - You spend a minimum of 10 hours working on this project
+    - If you finish in under 10 hours... you didn't pick a project that was hard enough, so do more
+    - Be regularly committing your work so I can see your progress
+
+## Evaluation
+
+- Group Project (due end of term):
+    + Self reflection/evaluation
+    + Manager evaluations
+- Individual Project(due end of term):
+    + Self reflection/evaluation
+    + Public defense/presentation
+
+## Group Project: How you can fail
+
+- Not completing your assigned tasks on time
+    + If you are not making a good faith effort to complete your assigned tasks, your manager will notify me and I will step in. You will receive one warning
+    + If you are unable to complete your tasks you MUST ask for help early. Waiting until the last minute to ask for help will be viewed as not completing your tasks on time
+- If someone else has to complete your work for you
+
+## Individual Project: How you can fail
+
+- You fail to complete your work by the deadline
+- You demonstrate a complete lack of understanding of your project during your defense
+    + You cannot explain what you did and why you did it
+    + You cannot answer basic follow-up questions about your project
+    + You cannot explain what you learned
+
+## Goal for Today: Brainstorm and Proposal {.smaller}
+
+- Explore data for group project
+- Each Feature Team should find a breakout room:
+    - Add your location in the Dashboard - General channel on Teams
+    - Sentinel: Create and/or checkout feature branch on GitHub for your team and push it to GitHub
+    - Everyone else: Clone repo, checkout feature branch, create your own branch off of the feature branch
+    - Start exploring and brainstorming (conduct your work in the `scartch` folder)
+    - Deliverable for Wednesday morning: Quarto presentation  in `docs` on a proposal for visualizing your feature (Narrator Should Generate This for Sentinnel)
+    - Once complete: Create a pull request to merge your work back to the feature branch
