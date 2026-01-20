@@ -1,6 +1,6 @@
 ---
 title: Page Layout
-subtitle: Lecture 23
+subtitle: Lecture 24
 ---
 
 # Single Page layout

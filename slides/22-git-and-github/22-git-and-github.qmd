@@ -1,0 +1,195 @@
+---
+title: Git and GitHub for Version Control
+subtitle: Lecture 25
+---
+
+## What is Version Control?
+
+<br>
+
+Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later.
+
+<br>
+
+It's like having a time machine for your code!
+
+
+
+
+## Git and GitHub
+
+<br>
+
+**Git** is a free and open source distributed version control system.
+
+<br>
+
+**GitHub** is a web-based hosting service for version control using Git. It's a place to store your code and collaborate with others.
+
+
+
+## The Basic Workflow
+
+<br>
+
+The basic Git workflow looks like this:
+
+1.  **Clone** a repository from GitHub to your local machine.
+2.  **Modify** files in your working directory.
+3.  **Stage** the files that you want to include in your next commit.
+4.  **Commit** the staged files to your local repository.
+5.  **Push** your changes to the remote repository on GitHub.
+
+
+
+## `git clone`
+
+<br>
+
+`git clone` is used to create a local copy of a remote repository.
+
+<br>
+
+```bash
+git clone <repository-url>
+```
+
+<br>
+
+You can find the repository URL on the GitHub page for the repository.
+
+
+
+## `git add`
+
+<br>
+
+`git add` is used to stage changes for the next commit.
+
+<br>
+
+```bash
+# Add a specific file
+git add <file-name>
+
+# Add all changed files
+git add .
+```
+
+<br>
+
+Staging is an intermediate step before committing. It allows you to choose which changes you want to include in the next commit.
+
+
+
+## `git commit`
+
+<br>
+
+`git commit` is used to save your staged changes to the local repository.
+
+<br>
+
+```bash
+git commit -m "Your commit message here"
+```
+
+<br>
+
+
+Commit messages are important! They should be a short, descriptive summary of the changes you made.
+
+
+
+## `git push`
+
+<br>
+
+`git push` is used to send your committed changes to a remote repository.
+
+<br>
+
+```bash
+git push
+```
+
+<br>
+
+This is how you share your work with others and back it up to GitHub.
+
+
+
+## `git pull`
+
+<br>
+
+`git pull` is used to fetch and download content from a remote repository and immediately update the local repository to match that content.
+
+<br>
+
+```bash
+git pull
+```
+
+<br>
+
+It's a good practice to pull changes from the remote repository before you start working to make sure you have the latest version of the code.
+
+
+
+## `git branch`
+
+<br>
+
+`git branch` is used to create, list, or delete branches.
+
+<br>
+
+```bash
+# Create a new branch
+git branch <branch-name>
+
+# Switch to the new branch
+git checkout <branch-name>
+
+# Create and switch to a new branch in one command
+git checkout -b <branch-name>
+```
+
+<br>
+
+Branches allow you to work on new features or bug fixes without affecting the main codebase.
+
+
+
+## `git merge`
+
+<br>
+
+`git merge` is used to join two or more development histories together.
+
+<br>
+
+```bash
+# Switch to the branch you want to merge into
+git checkout main
+
+# Merge the other branch into the current branch
+git merge <branch-name>
+```
+
+<br>
+
+This is how you integrate changes from a feature branch into the main branch.
+
+
+
+## Pull Requests
+
+<br>
+
+A pull request is a way to propose changes to a repository. It's a feature of GitHub, not Git.
+
+<br>
+
+It allows you to tell others about changes you've pushed to a branch in a repository on GitHub. Once a pull request is opened, you can discuss and review the potential changes with collaborators and add follow-up commits before your changes are merged into the base branch.
