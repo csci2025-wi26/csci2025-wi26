@@ -1,6 +1,6 @@
 ---
 title: Interactive Graphics
-subtitle: Lecture 24
+subtitle: Lecture 25
 ---
 
 # Interactive Plots
