@@ -1,6 +1,6 @@
 ---
 title: Uploads and Downloads
-subtitle: Lecture 26
+subtitle: Lecture 27
 ---
 
 # File Uploads
@@ -8,27 +8,27 @@ subtitle: Lecture 26
 ## UI: `fileInput`
 
 -   **`fileInput(inputId, label, ...)`**: Creates a file upload control.
--   **Options**:
-    -   `multiple = TRUE`: Allow selecting multiple files.
-    -   `accept`: MIME types or extensions to accept (advice to browser, not security).
+-   Let's look at the documentation with `?fileInput`.
 
-```r
+```{r}
+#| eval: false
 fileInput("upload", "Upload a file", multiple = TRUE)
 ```
 
-## Server: `input$upload`
+## Server: `input$upload` {.smaller}
 
 -   Accessing the input returns a **data frame** with one row per file:
     -   **`name`**: Original filename (e.g., "data.csv").
     -   **`size`**: Size in bytes.
-    -   **`type`**: MIME type.
+    -   **`type`**: [MIME type](https://en.wikipedia.org/wiki/MIME) (don't usually need to worry about this).
     -   **`datapath`**: Temporary path where the file is saved on the server.
 -   **Note**: `datapath` is temporary. Read the data from there immediately.
 
-```r
+```{r}
+#| eval: false
 output$contents <- renderTable({
   req(input$upload)
-  read.csv(input$upload$datapath)
+  read_csv(input$upload$datapath)
 })
 ```
 
@@ -37,7 +37,8 @@ output$contents <- renderTable({
 -   Default limit is **5 MB**.
 -   Increase it by setting an option (usually at the top of `app.R` or `server.R`):
 
-```r
+```{r}
+#| eval: false
 options(shiny.maxRequestSize = 30 * 1024^2) # 30 MB
 ```
 
@@ -48,7 +49,8 @@ options(shiny.maxRequestSize = 30 * 1024^2) # 30 MB
 -   **`downloadButton(outputId, label)`**: A button to initiate a download.
 -   **`downloadLink(outputId, label)`**: A link to initiate a download.
 
-```r
+```{r}
+#| eval: false
 downloadButton("downloadData", "Download CSV")
 ```
 
@@ -59,7 +61,8 @@ downloadButton("downloadData", "Download CSV")
     -   **`filename`**: A function that returns the filename (string).
     -   **`content`**: A function that takes a `file` path argument and writes content to it.
 
-```r
+```{r}
+#| eval: false
 output$downloadData <- downloadHandler(
   filename = function() {
     paste("data-", Sys.Date(), ".csv", sep="")
@@ -72,13 +75,10 @@ output$downloadData <- downloadHandler(
 
 ## Downloading Reports
 
--   You can also download generated reports (HTML, PDF, Word) using R Markdown.
--   In `content` function:
-    1.  Copy `.Rmd` to a temporary directory.
-    2.  Render it with `rmarkdown::render()`.
-    3.  Output to the `file` path.
+-   You can also download generated reports (HTML, PDF, Word) using R Markdown or Quarto.
+-   This is quite difficult so we won't address it here.
 
-# Summary
+# Wrap Up
 
 ## Mechanics
 
@@ -88,4 +88,10 @@ output$downloadData <- downloadHandler(
 -   **Download**:
     -   UI: `downloadButton()`.
     -   Server: `downloadHandler(filename, content)`.
-    -   **Logic**: `content` function writes to a special temporary path provided by Shiny.
+
+## Do Next
+
+1. Read [Chapter 9: Uploads and Downlaods](https://mastering-shiny.org/action-transfer.html) from Mastering Shiny.
+2. There's NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.
+3. I reommend working through the Exercises in the textbook.
+4. That's it for tonight! See you tomorrow!

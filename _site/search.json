@@ -989,179 +989,81 @@
     "text": "Do Next\n\nRead Chapter 1: Data Visualization from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 1” or work through some of the exercises in the text.\n\nNote that you can say “This is too hard. Give me some easier problems.”\n\nMove on to Lecture 03."
   },
   {
-    "objectID": "slides/09-communication/09-communication.html#communicating-results",
-    "href": "slides/09-communication/09-communication.html#communicating-results",
-    "title": "Communication",
-    "section": "Communicating Results",
-    "text": "Communicating Results\n\nSo far, we’ve focused on using ggplot2 for exploration.\nNow, we’ll focus on how to use ggplot2 to create explanatory graphics.\nThe goal is to communicate your findings to others.\nWe will learn how to polish your plots for communication."
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#overview",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#overview",
+    "title": "Basic Reactivity",
+    "section": "Overview",
+    "text": "Overview\n\nFrontend: ui object (HTML).\nBackend: server function (Logic).\n\nInvoked once per session.\nCreates a new local environment for each user.\nIsolates variables between sessions.\n\n\nserver &lt;- function(input, output, session) {\n  # Logic goes here\n}"
   },
   {
-    "objectID": "slides/09-communication/09-communication.html#labs",
-    "href": "slides/09-communication/09-communication.html#labs",
-    "title": "Communication",
-    "section": "labs()",
-    "text": "labs()\n\nUse the labs() function to add labels to your plot.\nYou can add a title, subtitle, caption, tag, and new x and y axis labels.\n\n\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = class)) +\n  geom_smooth(se = FALSE) +\n  labs(\n    title = \"Fuel efficiency generally decreases with engine size\",\n    subtitle = \"Two seaters (sports cars) are an exception because of their light weight\",\n    caption = \"Data from fueleconomy.gov\",\n    x = \"Engine displacement (L)\",\n    y = \"Highway fuel efficiency (mpg)\",\n    color = \"Car type\"\n  )"
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#input",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#input",
+    "title": "Basic Reactivity",
+    "section": "Input",
+    "text": "Input\n\ninput: List-like object representing data sent from the browser.\nRead-only: Can’t modify it directly (e.g., input$x &lt;- 5 throws an error).\nSelective access: Can only read input inside a reactive context (e.g., render* functions or reactive()).\n\n# Error: Can't access reactive value 'count' outside of reactive consumer\nmessage(input$count) \n\n# OK\nrenderText({ message(input$count) })"
   },
   {
-    "objectID": "slides/09-communication/09-communication.html#adding-text",
-    "href": "slides/09-communication/09-communication.html#adding-text",
-    "title": "Communication",
-    "section": "Adding Text",
-    "text": "Adding Text\n\nYou can use geom_text() to add text to your plot.\nIt’s similar to other geoms, but has an label aesthetic.\nggrepel package for making text and labels that repel away from each other to avoid overlapping."
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#output",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#output",
+    "title": "Basic Reactivity",
+    "section": "Output",
+    "text": "Output\n\noutput: List-like object for sending data to the browser.\nUsage: output$ID &lt;- render*({ ... }).\n\nSets up a reactive context.\nConverts R code to HTML.\n\nRules:\n\nMust use a render function.\nCan only access in the server function."
   },
   {
-    "objectID": "slides/09-communication/09-communication.html#practice",
-    "href": "slides/09-communication/09-communication.html#practice",
-    "title": "Communication",
-    "section": "Practice",
-    "text": "Practice\nLet’s create a scatter plot of engine size vs. highway fuel efficiency, and label the best car in each class."
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#the-reactive-graph",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#the-reactive-graph",
+    "title": "Basic Reactivity",
+    "section": "The Reactive Graph",
+    "text": "The Reactive Graph\n\nDeclarative: You specify what to do, not when to do it.\nLazy: Code only runs when needed (when outputs are visible). When something upstream has changed we say that it invalidates.\nDependencies: Inputs \\(\\rightarrow\\) Computations \\(\\rightarrow\\) Outputs.\n\nWhen an input changes, everything that depends on it invalidates.\nOutputs re-calculate automatically."
   },
   {
-    "objectID": "slides/09-communication/09-communication.html#annotate",
-    "href": "slides/09-communication/09-communication.html#annotate",
-    "title": "Communication",
-    "section": "annotate()",
-    "text": "annotate()\n\nYou can use annotate() to add a single annotation to a plot.\nThis is useful for adding a text label or a rectangle to highlight something."
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-expressions",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-expressions",
+    "title": "Basic Reactivity",
+    "section": "Reactive Expressions",
+    "text": "Reactive Expressions\n\nProblem: Duplicated code re-running multiple times.\nSolution: reactive().\n\nSplits logic into reusable chunks.\nCached (Lazy): Only re-runs if inputs change; otherwise returns saved value.\nCalled like a function: my_reactive()."
   },
   {
-    "objectID": "slides/09-communication/09-communication.html#example",
-    "href": "slides/09-communication/09-communication.html#example",
-    "title": "Communication",
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#example",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#example",
+    "title": "Basic Reactivity",
     "section": "Example",
-    "text": "Example\n\n\nCode\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point() +\n  annotate(\n    \"rect\", \n    xmin = 5, xmax = 7, ymin = 10, ymax = 25, \n    fill = \"red\", alpha = 0.2\n  ) +\n  annotate(\n    \"text\", x = 6, y = 12, label = \"Large engines are inefficient\",\n    color = \"red\", hjust = 0.5\n  )"
+    "text": "Example\nserver &lt;- function(input, output, session) {\n  # Calculate once\n  x_sq &lt;- reactive({\n    input$x ^ 2\n  })\n  \n  # Use twice\n  output$txt &lt;- renderText(x_sq())\n  output$plot &lt;- renderPlot(plot(x_sq()))\n}"
   },
   {
-    "objectID": "slides/09-communication/09-communication.html#axis-ticks",
-    "href": "slides/09-communication/09-communication.html#axis-ticks",
-    "title": "Communication",
-    "section": "Axis Ticks",
-    "text": "Axis Ticks\n\nScales control the mapping from data values to aesthetics.\nYou can customize scales to change axis ticks, legend keys, and more.\nUse breaks and labels to customize the ticks on an axis."
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#timing",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#timing",
+    "title": "Basic Reactivity",
+    "section": "Timing",
+    "text": "Timing\n\nYou can use reactiveTimer to create time-based invalidation.\nYou can use eventReactive to create reactive expressions that only update in response to specific events (e.g., button clicks)."
   },
   {
-    "objectID": "slides/09-communication/09-communication.html#example-ticks",
-    "href": "slides/09-communication/09-communication.html#example-ticks",
-    "title": "Communication",
-    "section": "Example: Ticks",
-    "text": "Example: Ticks\n\n\nCode\nggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  scale_x_continuous(\n    breaks = seq(0, 5, by = 1), \n    labels = c(\"0\", \"1 carat\", \"2 carats\", \"3 carats\", \"4 carats\", \"5 carats\")\n  ) +\n  scale_y_continuous(labels = scales::dollar)"
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#observers",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#observers",
+    "title": "Basic Reactivity",
+    "section": "Observers",
+    "text": "Observers\n\nOutputs: Update the browser HTML.\nObservers: Perform side effects (e.g., printing, saving, API calls).\n\nUse observeEvent().\nTriggered by an event (e.g., button click).\ndoesn’t return a value.\n\n\nobserveEvent(input$save, {\n  write.csv(data(), \"data.csv\")\n})"
   },
   {
-    "objectID": "slides/09-communication/09-communication.html#legend-layout",
-    "href": "slides/09-communication/09-communication.html#legend-layout",
-    "title": "Communication",
-    "section": "Legend Layout",
-    "text": "Legend Layout\n\nUse theme(legend.position = ...) to move the legend.\n\nValues: \"right\", \"left\", \"top\", \"bottom\", \"none\".\n\nUse guides() to control legend appearance, like the number of rows."
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-graph",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-graph",
+    "title": "Basic Reactivity",
+    "section": "Reactive Graph",
+    "text": "Reactive Graph\n\nLet’s look at some examples in the text."
   },
   {
-    "objectID": "slides/09-communication/09-communication.html#example-legend",
-    "href": "slides/09-communication/09-communication.html#example-legend",
-    "title": "Communication",
-    "section": "Example: Legend",
-    "text": "Example: Legend\n\n\nCode\nbase &lt;- ggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = class))\n\nbase + \n  theme(legend.position = \"bottom\") +\n  guides(color = guide_legend(nrow = 2, override.aes = list(size = 4)))"
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#mechanics",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#mechanics",
+    "title": "Basic Reactivity",
+    "section": "Mechanics",
+    "text": "Mechanics\n\nServer: function(input, output, session).\nInput: Read-only, use in reactive context.\nOutput: Write-only (via render*).\nReactive Expressions: reactive({}) for calculations (cached).\nObservers: observeEvent() for side effects.\nLaziness: Nothing happens unless an output needs it."
   },
   {
-    "objectID": "slides/09-communication/09-communication.html#color-scales",
-    "href": "slides/09-communication/09-communication.html#color-scales",
-    "title": "Communication",
-    "section": "Color Scales",
-    "text": "Color Scales\n\nUse scale_color_*() functions to control color scales.\nscale_color_brewer() uses hand-picked, colorblind-friendly palettes.\nscale_color_viridis_c() is a continuous color scale that is perceptually uniform and colorblind friendly."
-  },
-  {
-    "objectID": "slides/09-communication/09-communication.html#example-color-brewer",
-    "href": "slides/09-communication/09-communication.html#example-color-brewer",
-    "title": "Communication",
-    "section": "Example: Color Brewer",
-    "text": "Example: Color Brewer\n\n\nCode\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = drv)) +\n  scale_color_brewer(palette = \"Set1\")"
-  },
-  {
-    "objectID": "slides/09-communication/09-communication.html#manual-color-scale",
-    "href": "slides/09-communication/09-communication.html#manual-color-scale",
-    "title": "Communication",
-    "section": "Manual Color Scale",
-    "text": "Manual Color Scale\n\nWhen you have a predefined mapping between values and colors, use scale_color_manual().\n\n\n\nCode\nggplot(mpg, aes(x = displ, y = hwy, color = drv)) +\n  geom_point() +\n  scale_color_manual(values = c(\"4\" = \"navy\", \"f\" = \"darkred\", \"r\" = \"darkgreen\"))"
-  },
-  {
-    "objectID": "slides/09-communication/09-communication.html#axis-transformations",
-    "href": "slides/09-communication/09-communication.html#axis-transformations",
-    "title": "Communication",
-    "section": "Axis Transformations",
-    "text": "Axis Transformations\n\nYou can transform a variable inside the aesthetic mapping, e.g. aes(y = log10(price)).\nOr, you can transform the scale, e.g. scale_y_log10(). This is usually better because the axis is labeled on the original data scale."
-  },
-  {
-    "objectID": "slides/09-communication/09-communication.html#example-1",
-    "href": "slides/09-communication/09-communication.html#example-1",
-    "title": "Communication",
-    "section": "Example",
-    "text": "Example\n\n\n\n\nCode\n# Transformed in aesthetic\nggplot(diamonds, aes(x = log10(carat), y = log10(price))) +\n  geom_bin2d()\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nggplot(diamonds, aes(x = carat, y = price)) +\n  geom_bin2d() +\n  scale_x_log10() +\n  scale_y_log10()"
-  },
-  {
-    "objectID": "slides/09-communication/09-communication.html#coord_cartesian",
-    "href": "slides/09-communication/09-communication.html#coord_cartesian",
-    "title": "Communication",
-    "section": "coord_cartesian()",
-    "text": "coord_cartesian()\n\nTo zoom in on a part of the plot, use coord_cartesian().\nIt’s better than xlim() or ylim() because it doesn’t throw away data… this matters if you’re using statistics or fitting curves"
-  },
-  {
-    "objectID": "slides/09-communication/09-communication.html#example-2",
-    "href": "slides/09-communication/09-communication.html#example-2",
-    "title": "Communication",
-    "section": "Example",
-    "text": "Example\n\n\nCode\np1 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1)\n\np2 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  coord_cartesian(xlim = c(0, 1), ylim = c(0, 5000))\n\np3 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  coord_cartesian(xlim = c(0, 0.5), ylim = c(0, 3000))\n\np1 + p2 + p3"
-  },
-  {
-    "objectID": "slides/09-communication/09-communication.html#built-in-themes",
-    "href": "slides/09-communication/09-communication.html#built-in-themes",
-    "title": "Communication",
-    "section": "Built-in Themes",
-    "text": "Built-in Themes\n\nggplot2 comes with several built-in themes: theme_gray(), theme_bw(), theme_minimal(), theme_classic(), theme_light(), and theme_dark().\nYou can set a theme globally with theme_set()."
-  },
-  {
-    "objectID": "slides/09-communication/09-communication.html#example-3",
-    "href": "slides/09-communication/09-communication.html#example-3",
-    "title": "Communication",
-    "section": "Example",
-    "text": "Example\n\n\nCode\nggplot(mpg, aes(x = displ, y = hwy, color = class)) +\n  geom_point() +\n  theme_classic()"
-  },
-  {
-    "objectID": "slides/09-communication/09-communication.html#ggthemes",
-    "href": "slides/09-communication/09-communication.html#ggthemes",
-    "title": "Communication",
-    "section": "ggthemes",
-    "text": "ggthemes\n\nThe ggthemes package provides a variety of addition complete themes.\nTry theme_economist(), theme_solarized(), theme_wsj()."
-  },
-  {
-    "objectID": "slides/09-communication/09-communication.html#example-4",
-    "href": "slides/09-communication/09-communication.html#example-4",
-    "title": "Communication",
-    "section": "Example",
-    "text": "Example\n\nlibrary(ggthemes)\nggplot(mpg, aes(x = displ, y = hwy, color = class)) +\n  geom_point() +\n  theme_economist() + \n  scale_color_economist()"
-  },
-  {
-    "objectID": "slides/09-communication/09-communication.html#theme",
-    "href": "slides/09-communication/09-communication.html#theme",
-    "title": "Communication",
-    "section": "theme()",
-    "text": "theme()\n\nUse theme() to customize non-data elements of your plot.\nYou can change fonts, backgrounds, gridlines, legend position, and more."
-  },
-  {
-    "objectID": "slides/09-communication/09-communication.html#ggsave",
-    "href": "slides/09-communication/09-communication.html#ggsave",
-    "title": "Communication",
-    "section": "ggsave()",
-    "text": "ggsave()\n\nUse ggsave() to save your plots.\nIt saves the last plot by default.\nYou can specify the width, height, and dpi.\n\n\np &lt;- ggplot(mpg, aes(x = displ, y = hwy)) + geom_point()\nggsave(\"my-plot.png\", plot = p, width = 6, height = 4, dpi = 300)"
-  },
-  {
-    "objectID": "slides/09-communication/09-communication.html#communication-best-practices",
-    "href": "slides/09-communication/09-communication.html#communication-best-practices",
-    "title": "Communication",
-    "section": "Communication Best Practices",
-    "text": "Communication Best Practices\n\nLabel your plots clearly and concisely.\nUse annotations to highlight important features.\nChoose appropriate scales and colors.\nUse themes to create a consistent and polished look.\nSave your plots in a suitable format and resolution.\nYour goal is to make your plots easy to understand for your audience."
-  },
-  {
-    "objectID": "slides/09-communication/09-communication.html#do-next",
-    "href": "slides/09-communication/09-communication.html#do-next",
-    "title": "Communication",
+    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#do-next",
+    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#do-next",
+    "title": "Basic Reactivity",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 11: Communication from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 11” or work through some of the exercises in the text.\nMove on the Lecture 10!"
+    "text": "Do Next\n\nRead Chapter 3: Reactivity from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 21!"
   },
   {
     "objectID": "slides/29-shiny-tidy-eval/29-shiny-tidy-eval.html#indirection",
@@ -3509,130 +3411,235 @@
     "text": "Do Next\n\nRead Chapter 5: Data Tidying from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 5” or work through some of the exercises in the text.\nComplete Lecture 6."
   },
   {
-    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#overview",
-    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#overview",
-    "title": "Basic Reactivity",
-    "section": "Overview",
-    "text": "Overview\n\nFrontend: ui object (HTML).\nBackend: server function (Logic).\n\nInvoked once per session.\nCreates a new local environment for each user.\nIsolates variables between sessions.\n\n\nserver &lt;- function(input, output, session) {\n  # Logic goes here\n}"
-  },
-  {
-    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#input",
-    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#input",
-    "title": "Basic Reactivity",
-    "section": "Input",
-    "text": "Input\n\ninput: List-like object representing data sent from the browser.\nRead-only: Can’t modify it directly (e.g., input$x &lt;- 5 throws an error).\nSelective access: Can only read input inside a reactive context (e.g., render* functions or reactive()).\n\n# Error: Can't access reactive value 'count' outside of reactive consumer\nmessage(input$count) \n\n# OK\nrenderText({ message(input$count) })"
-  },
-  {
-    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#output",
-    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#output",
-    "title": "Basic Reactivity",
-    "section": "Output",
-    "text": "Output\n\noutput: List-like object for sending data to the browser.\nUsage: output$ID &lt;- render*({ ... }).\n\nSets up a reactive context.\nConverts R code to HTML.\n\nRules:\n\nMust use a render function.\nCan only access in the server function."
-  },
-  {
-    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#the-reactive-graph",
-    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#the-reactive-graph",
-    "title": "Basic Reactivity",
-    "section": "The Reactive Graph",
-    "text": "The Reactive Graph\n\nDeclarative: You specify what to do, not when to do it.\nLazy: Code only runs when needed (when outputs are visible). When something upstream has changed we say that it invalidates.\nDependencies: Inputs \\(\\rightarrow\\) Computations \\(\\rightarrow\\) Outputs.\n\nWhen an input changes, everything that depends on it invalidates.\nOutputs re-calculate automatically."
-  },
-  {
-    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-expressions",
-    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-expressions",
-    "title": "Basic Reactivity",
-    "section": "Reactive Expressions",
-    "text": "Reactive Expressions\n\nProblem: Duplicated code re-running multiple times.\nSolution: reactive().\n\nSplits logic into reusable chunks.\nCached (Lazy): Only re-runs if inputs change; otherwise returns saved value.\nCalled like a function: my_reactive()."
-  },
-  {
-    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#example",
-    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#example",
-    "title": "Basic Reactivity",
-    "section": "Example",
-    "text": "Example\nserver &lt;- function(input, output, session) {\n  # Calculate once\n  x_sq &lt;- reactive({\n    input$x ^ 2\n  })\n  \n  # Use twice\n  output$txt &lt;- renderText(x_sq())\n  output$plot &lt;- renderPlot(plot(x_sq()))\n}"
-  },
-  {
-    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#timing",
-    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#timing",
-    "title": "Basic Reactivity",
-    "section": "Timing",
-    "text": "Timing\n\nYou can use reactiveTimer to create time-based invalidation.\nYou can use eventReactive to create reactive expressions that only update in response to specific events (e.g., button clicks)."
-  },
-  {
-    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#observers",
-    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#observers",
-    "title": "Basic Reactivity",
-    "section": "Observers",
-    "text": "Observers\n\nOutputs: Update the browser HTML.\nObservers: Perform side effects (e.g., printing, saving, API calls).\n\nUse observeEvent().\nTriggered by an event (e.g., button click).\ndoesn’t return a value.\n\n\nobserveEvent(input$save, {\n  write.csv(data(), \"data.csv\")\n})"
-  },
-  {
-    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-graph",
-    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#reactive-graph",
-    "title": "Basic Reactivity",
-    "section": "Reactive Graph",
-    "text": "Reactive Graph\n\nLet’s look at some examples in the text."
-  },
-  {
-    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#mechanics",
-    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#mechanics",
-    "title": "Basic Reactivity",
-    "section": "Mechanics",
-    "text": "Mechanics\n\nServer: function(input, output, session).\nInput: Read-only, use in reactive context.\nOutput: Write-only (via render*).\nReactive Expressions: reactive({}) for calculations (cached).\nObservers: observeEvent() for side effects.\nLaziness: Nothing happens unless an output needs it."
-  },
-  {
-    "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#do-next",
-    "href": "slides/20-shiny-reactivity/20-shiny-reactivity.html#do-next",
-    "title": "Basic Reactivity",
-    "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 3: Reactivity from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 21!"
-  },
-  {
-    "objectID": "slides/26-shiny-uploads/26-shiny-uploads.html#ui-fileinput",
-    "href": "slides/26-shiny-uploads/26-shiny-uploads.html#ui-fileinput",
+    "objectID": "slides/27-shiny-uploads/27-shiny-uploads.html#ui-fileinput",
+    "href": "slides/27-shiny-uploads/27-shiny-uploads.html#ui-fileinput",
     "title": "Uploads and Downloads",
     "section": "UI: fileInput",
-    "text": "UI: fileInput\n\nfileInput(inputId, label, ...): Creates a file upload control.\nOptions:\n\nmultiple = TRUE: Allow selecting multiple files.\naccept: MIME types or extensions to accept (advice to browser, not security).\n\n\nfileInput(\"upload\", \"Upload a file\", multiple = TRUE)"
+    "text": "UI: fileInput\n\nfileInput(inputId, label, ...): Creates a file upload control.\nLet’s look at the documentation with ?fileInput.\n\n\nfileInput(\"upload\", \"Upload a file\", multiple = TRUE)"
   },
   {
-    "objectID": "slides/26-shiny-uploads/26-shiny-uploads.html#server-inputupload",
-    "href": "slides/26-shiny-uploads/26-shiny-uploads.html#server-inputupload",
+    "objectID": "slides/27-shiny-uploads/27-shiny-uploads.html#server-inputupload",
+    "href": "slides/27-shiny-uploads/27-shiny-uploads.html#server-inputupload",
     "title": "Uploads and Downloads",
     "section": "Server: input$upload",
-    "text": "Server: input$upload\n\nAccessing the input returns a data frame with one row per file:\n\nname: Original filename (e.g., “data.csv”).\nsize: Size in bytes.\ntype: MIME type.\ndatapath: Temporary path where the file is saved on the server.\n\nNote: datapath is temporary. Read the data from there immediately.\n\noutput$contents &lt;- renderTable({\n  req(input$upload)\n  read.csv(input$upload$datapath)\n})"
+    "text": "Server: input$upload\n\nAccessing the input returns a data frame with one row per file:\n\nname: Original filename (e.g., “data.csv”).\nsize: Size in bytes.\ntype: MIME type (don’t usually need to worry about this).\ndatapath: Temporary path where the file is saved on the server.\n\nNote: datapath is temporary. Read the data from there immediately.\n\n\noutput$contents &lt;- renderTable({\n  req(input$upload)\n  read_csv(input$upload$datapath)\n})"
   },
   {
-    "objectID": "slides/26-shiny-uploads/26-shiny-uploads.html#file-size-limits",
-    "href": "slides/26-shiny-uploads/26-shiny-uploads.html#file-size-limits",
+    "objectID": "slides/27-shiny-uploads/27-shiny-uploads.html#file-size-limits",
+    "href": "slides/27-shiny-uploads/27-shiny-uploads.html#file-size-limits",
     "title": "Uploads and Downloads",
     "section": "File Size Limits",
-    "text": "File Size Limits\n\nDefault limit is 5 MB.\nIncrease it by setting an option (usually at the top of app.R or server.R):\n\noptions(shiny.maxRequestSize = 30 * 1024^2) # 30 MB"
+    "text": "File Size Limits\n\nDefault limit is 5 MB.\nIncrease it by setting an option (usually at the top of app.R or server.R):\n\n\noptions(shiny.maxRequestSize = 30 * 1024^2) # 30 MB"
   },
   {
-    "objectID": "slides/26-shiny-uploads/26-shiny-uploads.html#ui-downloadbutton",
-    "href": "slides/26-shiny-uploads/26-shiny-uploads.html#ui-downloadbutton",
+    "objectID": "slides/27-shiny-uploads/27-shiny-uploads.html#ui-downloadbutton",
+    "href": "slides/27-shiny-uploads/27-shiny-uploads.html#ui-downloadbutton",
     "title": "Uploads and Downloads",
     "section": "UI: downloadButton",
-    "text": "UI: downloadButton\n\ndownloadButton(outputId, label): A button to initiate a download.\ndownloadLink(outputId, label): A link to initiate a download.\n\ndownloadButton(\"downloadData\", \"Download CSV\")"
+    "text": "UI: downloadButton\n\ndownloadButton(outputId, label): A button to initiate a download.\ndownloadLink(outputId, label): A link to initiate a download.\n\n\ndownloadButton(\"downloadData\", \"Download CSV\")"
   },
   {
-    "objectID": "slides/26-shiny-uploads/26-shiny-uploads.html#server-downloadhandler",
-    "href": "slides/26-shiny-uploads/26-shiny-uploads.html#server-downloadhandler",
+    "objectID": "slides/27-shiny-uploads/27-shiny-uploads.html#server-downloadhandler",
+    "href": "slides/27-shiny-uploads/27-shiny-uploads.html#server-downloadhandler",
     "title": "Uploads and Downloads",
     "section": "Server: downloadHandler",
-    "text": "Server: downloadHandler\n\nImportant: Use downloadHandler() NOT render*().\nArguments:\n\nfilename: A function that returns the filename (string).\ncontent: A function that takes a file path argument and writes content to it.\n\n\noutput$downloadData &lt;- downloadHandler(\n  filename = function() {\n    paste(\"data-\", Sys.Date(), \".csv\", sep=\"\")\n  },\n  content = function(file) {\n    write.csv(data(), file)\n  }\n)"
+    "text": "Server: downloadHandler\n\nImportant: Use downloadHandler() NOT render*().\nArguments:\n\nfilename: A function that returns the filename (string).\ncontent: A function that takes a file path argument and writes content to it.\n\n\n\noutput$downloadData &lt;- downloadHandler(\n  filename = function() {\n    paste(\"data-\", Sys.Date(), \".csv\", sep=\"\")\n  },\n  content = function(file) {\n    write.csv(data(), file)\n  }\n)"
   },
   {
-    "objectID": "slides/26-shiny-uploads/26-shiny-uploads.html#downloading-reports",
-    "href": "slides/26-shiny-uploads/26-shiny-uploads.html#downloading-reports",
+    "objectID": "slides/27-shiny-uploads/27-shiny-uploads.html#downloading-reports",
+    "href": "slides/27-shiny-uploads/27-shiny-uploads.html#downloading-reports",
     "title": "Uploads and Downloads",
     "section": "Downloading Reports",
-    "text": "Downloading Reports\n\nYou can also download generated reports (HTML, PDF, Word) using R Markdown.\nIn content function:\n\nCopy .Rmd to a temporary directory.\nRender it with rmarkdown::render().\nOutput to the file path."
+    "text": "Downloading Reports\n\nYou can also download generated reports (HTML, PDF, Word) using R Markdown or Quarto.\nThis is quite difficult so we won’t address it here."
   },
   {
-    "objectID": "slides/26-shiny-uploads/26-shiny-uploads.html#mechanics",
-    "href": "slides/26-shiny-uploads/26-shiny-uploads.html#mechanics",
+    "objectID": "slides/27-shiny-uploads/27-shiny-uploads.html#mechanics",
+    "href": "slides/27-shiny-uploads/27-shiny-uploads.html#mechanics",
     "title": "Uploads and Downloads",
     "section": "Mechanics",
-    "text": "Mechanics\n\nUpload:\n\nUI: fileInput().\nServer: input$id (dataframe w/ datapath).\n\nDownload:\n\nUI: downloadButton().\nServer: downloadHandler(filename, content).\nLogic: content function writes to a special temporary path provided by Shiny."
+    "text": "Mechanics\n\nUpload:\n\nUI: fileInput().\nServer: input$id (dataframe w/ datapath).\n\nDownload:\n\nUI: downloadButton().\nServer: downloadHandler(filename, content)."
+  },
+  {
+    "objectID": "slides/27-shiny-uploads/27-shiny-uploads.html#do-next",
+    "href": "slides/27-shiny-uploads/27-shiny-uploads.html#do-next",
+    "title": "Uploads and Downloads",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 9: Uploads and Downlaods from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nThat’s it for tonight! See you tomorrow!"
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#communicating-results",
+    "href": "slides/09-communication/09-communication.html#communicating-results",
+    "title": "Communication",
+    "section": "Communicating Results",
+    "text": "Communicating Results\n\nSo far, we’ve focused on using ggplot2 for exploration.\nNow, we’ll focus on how to use ggplot2 to create explanatory graphics.\nThe goal is to communicate your findings to others.\nWe will learn how to polish your plots for communication."
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#labs",
+    "href": "slides/09-communication/09-communication.html#labs",
+    "title": "Communication",
+    "section": "labs()",
+    "text": "labs()\n\nUse the labs() function to add labels to your plot.\nYou can add a title, subtitle, caption, tag, and new x and y axis labels.\n\n\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = class)) +\n  geom_smooth(se = FALSE) +\n  labs(\n    title = \"Fuel efficiency generally decreases with engine size\",\n    subtitle = \"Two seaters (sports cars) are an exception because of their light weight\",\n    caption = \"Data from fueleconomy.gov\",\n    x = \"Engine displacement (L)\",\n    y = \"Highway fuel efficiency (mpg)\",\n    color = \"Car type\"\n  )"
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#adding-text",
+    "href": "slides/09-communication/09-communication.html#adding-text",
+    "title": "Communication",
+    "section": "Adding Text",
+    "text": "Adding Text\n\nYou can use geom_text() to add text to your plot.\nIt’s similar to other geoms, but has an label aesthetic.\nggrepel package for making text and labels that repel away from each other to avoid overlapping."
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#practice",
+    "href": "slides/09-communication/09-communication.html#practice",
+    "title": "Communication",
+    "section": "Practice",
+    "text": "Practice\nLet’s create a scatter plot of engine size vs. highway fuel efficiency, and label the best car in each class."
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#annotate",
+    "href": "slides/09-communication/09-communication.html#annotate",
+    "title": "Communication",
+    "section": "annotate()",
+    "text": "annotate()\n\nYou can use annotate() to add a single annotation to a plot.\nThis is useful for adding a text label or a rectangle to highlight something."
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#example",
+    "href": "slides/09-communication/09-communication.html#example",
+    "title": "Communication",
+    "section": "Example",
+    "text": "Example\n\n\nCode\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point() +\n  annotate(\n    \"rect\", \n    xmin = 5, xmax = 7, ymin = 10, ymax = 25, \n    fill = \"red\", alpha = 0.2\n  ) +\n  annotate(\n    \"text\", x = 6, y = 12, label = \"Large engines are inefficient\",\n    color = \"red\", hjust = 0.5\n  )"
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#axis-ticks",
+    "href": "slides/09-communication/09-communication.html#axis-ticks",
+    "title": "Communication",
+    "section": "Axis Ticks",
+    "text": "Axis Ticks\n\nScales control the mapping from data values to aesthetics.\nYou can customize scales to change axis ticks, legend keys, and more.\nUse breaks and labels to customize the ticks on an axis."
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#example-ticks",
+    "href": "slides/09-communication/09-communication.html#example-ticks",
+    "title": "Communication",
+    "section": "Example: Ticks",
+    "text": "Example: Ticks\n\n\nCode\nggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  scale_x_continuous(\n    breaks = seq(0, 5, by = 1), \n    labels = c(\"0\", \"1 carat\", \"2 carats\", \"3 carats\", \"4 carats\", \"5 carats\")\n  ) +\n  scale_y_continuous(labels = scales::dollar)"
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#legend-layout",
+    "href": "slides/09-communication/09-communication.html#legend-layout",
+    "title": "Communication",
+    "section": "Legend Layout",
+    "text": "Legend Layout\n\nUse theme(legend.position = ...) to move the legend.\n\nValues: \"right\", \"left\", \"top\", \"bottom\", \"none\".\n\nUse guides() to control legend appearance, like the number of rows."
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#example-legend",
+    "href": "slides/09-communication/09-communication.html#example-legend",
+    "title": "Communication",
+    "section": "Example: Legend",
+    "text": "Example: Legend\n\n\nCode\nbase &lt;- ggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = class))\n\nbase + \n  theme(legend.position = \"bottom\") +\n  guides(color = guide_legend(nrow = 2, override.aes = list(size = 4)))"
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#color-scales",
+    "href": "slides/09-communication/09-communication.html#color-scales",
+    "title": "Communication",
+    "section": "Color Scales",
+    "text": "Color Scales\n\nUse scale_color_*() functions to control color scales.\nscale_color_brewer() uses hand-picked, colorblind-friendly palettes.\nscale_color_viridis_c() is a continuous color scale that is perceptually uniform and colorblind friendly."
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#example-color-brewer",
+    "href": "slides/09-communication/09-communication.html#example-color-brewer",
+    "title": "Communication",
+    "section": "Example: Color Brewer",
+    "text": "Example: Color Brewer\n\n\nCode\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(aes(color = drv)) +\n  scale_color_brewer(palette = \"Set1\")"
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#manual-color-scale",
+    "href": "slides/09-communication/09-communication.html#manual-color-scale",
+    "title": "Communication",
+    "section": "Manual Color Scale",
+    "text": "Manual Color Scale\n\nWhen you have a predefined mapping between values and colors, use scale_color_manual().\n\n\n\nCode\nggplot(mpg, aes(x = displ, y = hwy, color = drv)) +\n  geom_point() +\n  scale_color_manual(values = c(\"4\" = \"navy\", \"f\" = \"darkred\", \"r\" = \"darkgreen\"))"
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#axis-transformations",
+    "href": "slides/09-communication/09-communication.html#axis-transformations",
+    "title": "Communication",
+    "section": "Axis Transformations",
+    "text": "Axis Transformations\n\nYou can transform a variable inside the aesthetic mapping, e.g. aes(y = log10(price)).\nOr, you can transform the scale, e.g. scale_y_log10(). This is usually better because the axis is labeled on the original data scale."
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#example-1",
+    "href": "slides/09-communication/09-communication.html#example-1",
+    "title": "Communication",
+    "section": "Example",
+    "text": "Example\n\n\n\n\nCode\n# Transformed in aesthetic\nggplot(diamonds, aes(x = log10(carat), y = log10(price))) +\n  geom_bin2d()\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nggplot(diamonds, aes(x = carat, y = price)) +\n  geom_bin2d() +\n  scale_x_log10() +\n  scale_y_log10()"
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#coord_cartesian",
+    "href": "slides/09-communication/09-communication.html#coord_cartesian",
+    "title": "Communication",
+    "section": "coord_cartesian()",
+    "text": "coord_cartesian()\n\nTo zoom in on a part of the plot, use coord_cartesian().\nIt’s better than xlim() or ylim() because it doesn’t throw away data… this matters if you’re using statistics or fitting curves"
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#example-2",
+    "href": "slides/09-communication/09-communication.html#example-2",
+    "title": "Communication",
+    "section": "Example",
+    "text": "Example\n\n\nCode\np1 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1)\n\np2 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  coord_cartesian(xlim = c(0, 1), ylim = c(0, 5000))\n\np3 &lt;- ggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1) +\n  coord_cartesian(xlim = c(0, 0.5), ylim = c(0, 3000))\n\np1 + p2 + p3"
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#built-in-themes",
+    "href": "slides/09-communication/09-communication.html#built-in-themes",
+    "title": "Communication",
+    "section": "Built-in Themes",
+    "text": "Built-in Themes\n\nggplot2 comes with several built-in themes: theme_gray(), theme_bw(), theme_minimal(), theme_classic(), theme_light(), and theme_dark().\nYou can set a theme globally with theme_set()."
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#example-3",
+    "href": "slides/09-communication/09-communication.html#example-3",
+    "title": "Communication",
+    "section": "Example",
+    "text": "Example\n\n\nCode\nggplot(mpg, aes(x = displ, y = hwy, color = class)) +\n  geom_point() +\n  theme_classic()"
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#ggthemes",
+    "href": "slides/09-communication/09-communication.html#ggthemes",
+    "title": "Communication",
+    "section": "ggthemes",
+    "text": "ggthemes\n\nThe ggthemes package provides a variety of addition complete themes.\nTry theme_economist(), theme_solarized(), theme_wsj()."
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#example-4",
+    "href": "slides/09-communication/09-communication.html#example-4",
+    "title": "Communication",
+    "section": "Example",
+    "text": "Example\n\nlibrary(ggthemes)\nggplot(mpg, aes(x = displ, y = hwy, color = class)) +\n  geom_point() +\n  theme_economist() + \n  scale_color_economist()"
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#theme",
+    "href": "slides/09-communication/09-communication.html#theme",
+    "title": "Communication",
+    "section": "theme()",
+    "text": "theme()\n\nUse theme() to customize non-data elements of your plot.\nYou can change fonts, backgrounds, gridlines, legend position, and more."
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#ggsave",
+    "href": "slides/09-communication/09-communication.html#ggsave",
+    "title": "Communication",
+    "section": "ggsave()",
+    "text": "ggsave()\n\nUse ggsave() to save your plots.\nIt saves the last plot by default.\nYou can specify the width, height, and dpi.\n\n\np &lt;- ggplot(mpg, aes(x = displ, y = hwy)) + geom_point()\nggsave(\"my-plot.png\", plot = p, width = 6, height = 4, dpi = 300)"
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#communication-best-practices",
+    "href": "slides/09-communication/09-communication.html#communication-best-practices",
+    "title": "Communication",
+    "section": "Communication Best Practices",
+    "text": "Communication Best Practices\n\nLabel your plots clearly and concisely.\nUse annotations to highlight important features.\nChoose appropriate scales and colors.\nUse themes to create a consistent and polished look.\nSave your plots in a suitable format and resolution.\nYour goal is to make your plots easy to understand for your audience."
+  },
+  {
+    "objectID": "slides/09-communication/09-communication.html#do-next",
+    "href": "slides/09-communication/09-communication.html#do-next",
+    "title": "Communication",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 11: Communication from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 11” or work through some of the exercises in the text.\nMove on the Lecture 10!"
   },
   {
     "objectID": "slides/00-welcome/00-welcome.html#instructor",
@@ -4420,7 +4427,7 @@
     "href": "index.html",
     "title": "CSCI-2025: Data Manipulation and Visualization",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\nvideo-15\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\nslides-16\nvideo-16\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins\n\nslides-17\nvideo-17\n\n\n3\nTue, Jan 20\nLec\nYour first Shiny app\n📚 ms - first-app\n\nslides-18\nvideo-18\n\n\n3\nTue, Jan 20\nLec\nBasic UI\n📚 ms - basic-ui\n\nslides-19\nvideo-19\n\n\n3\nTue, Jan 20\nLec\nBasic reactivity\n📚 ms - basic-reactivity\n\nslides-20\nvideo-20\n\n\n3\nTue, Jan 20\nLec\nCase Study: ER\n📚 ms - case-study-er\n\n\nvideo-21\n\n\n3\nWed, Jan 21\nLec\nGit and Github\n\nslides-22\nvideo-22\n\n\n3\nWed, Jan 21\nLec\nWorkflow\n📚 ms - workflow\n\nslides-23\nvideo-23\n\n\n3\nWed, Jan 21\nLec\nLayout, Themes, and HTML\n📚 ms - layout\n\nslides-24\nvideo-24\n\n\n3\nThu, Jan 22\nLec\nGraphics\n📚 ms - graphics\n\nslides-25\nvideo-25\n\n\n3\nThu, Jan 22\nLec\nUser Feedback\n📚 ms - user-input\n\nslides-26\nvideo-26\n\n\n3\nThu, Jan 22\nLec\nUpload and Downloads\n📚 ms - upload-download\n\n\n\n\n\n3\nThu, Jan 22\nLec\nDynamic UI\n📚 ms - dynamic-ui\n\n\n\n\n\n4\nMon, Jan 26\nLec\nBookmarking\n📚 ms - bookmarking\n\n\n\n\n\n4\nMon, Jan 26\nLec\nTidy Evaluation\n📚 ms - tidy-eval",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\nvideo-15\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\nslides-16\nvideo-16\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins\n\nslides-17\nvideo-17\n\n\n3\nTue, Jan 20\nLec\nYour first Shiny app\n📚 ms - first-app\n\nslides-18\nvideo-18\n\n\n3\nTue, Jan 20\nLec\nBasic UI\n📚 ms - basic-ui\n\nslides-19\nvideo-19\n\n\n3\nTue, Jan 20\nLec\nBasic reactivity\n📚 ms - basic-reactivity\n\nslides-20\nvideo-20\n\n\n3\nTue, Jan 20\nLec\nCase Study: ER\n📚 ms - case-study-er\n\n\nvideo-21\n\n\n3\nWed, Jan 21\nLec\nGit and Github\n\nslides-22\nvideo-22\n\n\n3\nWed, Jan 21\nLec\nWorkflow\n📚 ms - workflow\n\nslides-23\nvideo-23\n\n\n3\nWed, Jan 21\nLec\nLayout, Themes, and HTML\n📚 ms - layout\n\nslides-24\nvideo-24\n\n\n3\nThu, Jan 22\nLec\nGraphics\n📚 ms - graphics\n\nslides-25\nvideo-25\n\n\n3\nThu, Jan 22\nLec\nUser Feedback\n📚 ms - user-input\n\nslides-26\nvideo-26\n\n\n3\nThu, Jan 22\nLec\nUpload and Downloads\n📚 ms - upload-download\n\nslides-27\n\n\n\n4\nMon, Jan 26\nLec\nDynamic UI\n📚 ms - dynamic-ui\n\n\n\n\n\n4\nMon, Jan 26\nLec\nBookmarking\n📚 ms - bookmarking\n\n\n\n\n\n4\nMon, Jan 26\nLec\nTidy Evaluation\n📚 ms - tidy-eval",
     "crumbs": [
       "Course information",
       "Schedule"

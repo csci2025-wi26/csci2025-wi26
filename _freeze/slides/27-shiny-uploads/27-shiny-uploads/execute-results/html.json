@@ -1,0 +1,21 @@
+{
+  "hash": "678ba07da8079bd706a2b3fadc1ccdc3",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: Uploads and Downloads\nsubtitle: Lecture 27\n---\n\n\n\n# File Uploads\n\n## UI: `fileInput`\n\n-   **`fileInput(inputId, label, ...)`**: Creates a file upload control.\n-   Let's look at the documentation with `?fileInput`.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nfileInput(\"upload\", \"Upload a file\", multiple = TRUE)\n```\n:::\n\n\n\n## Server: `input$upload` {.smaller}\n\n-   Accessing the input returns a **data frame** with one row per file:\n    -   **`name`**: Original filename (e.g., \"data.csv\").\n    -   **`size`**: Size in bytes.\n    -   **`type`**: [MIME type](https://en.wikipedia.org/wiki/MIME) (don't usually need to worry about this).\n    -   **`datapath`**: Temporary path where the file is saved on the server.\n-   **Note**: `datapath` is temporary. Read the data from there immediately.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\noutput$contents <- renderTable({\n  req(input$upload)\n  read_csv(input$upload$datapath)\n})\n```\n:::\n\n\n\n## File Size Limits\n\n-   Default limit is **5 MB**.\n-   Increase it by setting an option (usually at the top of `app.R` or `server.R`):\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\noptions(shiny.maxRequestSize = 30 * 1024^2) # 30 MB\n```\n:::\n\n\n\n# File Downloads\n\n## UI: `downloadButton`\n\n-   **`downloadButton(outputId, label)`**: A button to initiate a download.\n-   **`downloadLink(outputId, label)`**: A link to initiate a download.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndownloadButton(\"downloadData\", \"Download CSV\")\n```\n:::\n\n\n\n## Server: `downloadHandler`\n\n-   **Important**: Use `downloadHandler()` NOT `render*()`.\n-   **Arguments**:\n    -   **`filename`**: A function that returns the filename (string).\n    -   **`content`**: A function that takes a `file` path argument and writes content to it.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\noutput$downloadData <- downloadHandler(\n  filename = function() {\n    paste(\"data-\", Sys.Date(), \".csv\", sep=\"\")\n  },\n  content = function(file) {\n    write.csv(data(), file)\n  }\n)\n```\n:::\n\n\n\n## Downloading Reports\n\n-   You can also download generated reports (HTML, PDF, Word) using R Markdown or Quarto.\n-   This is quite difficult so we won't address it here.\n\n# Wrap Up\n\n## Mechanics\n\n-   **Upload**:\n    -   UI: `fileInput()`.\n    -   Server: `input$id` (dataframe w/ `datapath`).\n-   **Download**:\n    -   UI: `downloadButton()`.\n    -   Server: `downloadHandler(filename, content)`.\n\n## Do Next\n\n1. Read [Chapter 9: Uploads and Downlaods](https://mastering-shiny.org/action-transfer.html) from Mastering Shiny.\n2. There's NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\n3. I reommend working through the Exercises in the textbook.\n4. That's it for tonight! See you tomorrow!",
+    "supporting": [
+      "27-shiny-uploads_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-after-body": [
+        "\n<script>\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\n  // slide changes (different for each slide format).\n  (function () {\n    // dispatch for htmlwidgets\n    function fireSlideEnter() {\n      const event = window.document.createEvent(\"Event\");\n      event.initEvent(\"slideenter\", true, true);\n      window.document.dispatchEvent(event);\n    }\n\n    function fireSlideChanged(previousSlide, currentSlide) {\n      fireSlideEnter();\n\n      // dispatch for shiny\n      if (window.jQuery) {\n        if (previousSlide) {\n          window.jQuery(previousSlide).trigger(\"hidden\");\n        }\n        if (currentSlide) {\n          window.jQuery(currentSlide).trigger(\"shown\");\n        }\n      }\n    }\n\n    // hookup for slidy\n    if (window.w3c_slidy) {\n      window.w3c_slidy.add_observer(function (slide_num) {\n        // slide_num starts at position 1\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\n      });\n    }\n\n  })();\n</script>\n\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
