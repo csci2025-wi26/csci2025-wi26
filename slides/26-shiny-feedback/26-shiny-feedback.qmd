@@ -136,4 +136,4 @@ observeEvent(input$delete, {
 1. Read [Chapter 8: User feedback](https://mastering-shiny.org/action-feedback.html) from Mastering Shiny.
 2. There's NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.
 3. I reommend working through the Exercises in the textbook.
-4. That's it for tonight! See you tomorrow!
+4. Move on to Lecture 27!
