@@ -4474,5 +4474,47 @@
     "title": "GEMINI.md: Project Overview and Contributor Guide",
     "section": "",
     "text": "To work on this project, you will need to have Quarto installed. You can download it from the Quarto website.\n\n\nTo render and preview the website locally, run the following command in your terminal from the project’s root directory:\nquarto preview\nThis will start a local web server and open the site in your browser. The site will automatically refresh when you save changes to any of the source files.\n\n\n\nTo render the entire website without previewing it, use the following command:\nquarto render\nThis will generate all the static files and place them in the _site/ directory. This is typically done for deployment."
+  },
+  {
+    "objectID": "slides/28-shiny-dynamic/28-shiny-dynamic.html#the-update-family",
+    "href": "slides/28-shiny-dynamic/28-shiny-dynamic.html#the-update-family",
+    "title": "Dynamic UI",
+    "section": "The update* Family",
+    "text": "The update* Family\n\nGoal: Change an input’s state (value, choices, label) from the server.\nFunctions: updateTextInput(), updateSliderInput(), updateSelectInput(), etc.\nMechanism:\n\nUser action triggers an observeEvent().\nServer sends a message to the browser to update the specific control.\n\n\n\nobserveEvent(input$reset, {\n  updateSliderInput(inputId = \"s1\", value = 0)\n})"
+  },
+  {
+    "objectID": "slides/28-shiny-dynamic/28-shiny-dynamic.html#hierarchical-selects",
+    "href": "slides/28-shiny-dynamic/28-shiny-dynamic.html#hierarchical-selects",
+    "title": "Dynamic UI",
+    "section": "Hierarchical Selects",
+    "text": "Hierarchical Selects\nConsider this scenario from Chapter 9 of the textbook.\n\nCreate an app that lets the user upload a csv file, select one variable, draw a histogram, and then download the histogram. For an additional challenge, allow the user to select from .png, .pdf, and .svg output formats."
+  },
+  {
+    "objectID": "slides/28-shiny-dynamic/28-shiny-dynamic.html#hiding-and-showing",
+    "href": "slides/28-shiny-dynamic/28-shiny-dynamic.html#hiding-and-showing",
+    "title": "Dynamic UI",
+    "section": "Hiding and Showing",
+    "text": "Hiding and Showing\n\nGoal: Show different UI elements based on user actions.\nTechnique: Hidden Tabsets.\n\ntabsetPanel(id = \"wizard\", type = \"hidden\", ...)\nupdateTabsetPanel(inputId = \"wizard\", selected = \"panel2\")\n\n\n\nui &lt;- fluidPage(\n  actionButton(\"go_next\", \"Next\"),\n  tabsetPanel(id = \"wizard\", type = \"hidden\",\n    tabPanel(\"page1\", \"First step content...\"),\n    tabPanel(\"page2\", \"Second step content...\")\n  )\n)\n\nserver &lt;- function(input, output, session) {\n  observeEvent(input$go_next, {\n    updateTabsetPanel(inputId = \"wizard\", selected = \"page2\")\n  })\n}"
+  },
+  {
+    "objectID": "slides/28-shiny-dynamic/28-shiny-dynamic.html#uioutput-and-renderui",
+    "href": "slides/28-shiny-dynamic/28-shiny-dynamic.html#uioutput-and-renderui",
+    "title": "Dynamic UI",
+    "section": "uiOutput and renderUI",
+    "text": "uiOutput and renderUI\n\nGoal: Generate HTML or Inputs entirely from Python/R code.\nUsage:\n\nUI: Place uiOutput(\"id\") where you want the content.\nServer: Assign renderUI({ ... }) to output$id.\nReturn: The renderUI block must return Shiny tags (e.g., tagList, div, inputs)."
+  },
+  {
+    "objectID": "slides/28-shiny-dynamic/28-shiny-dynamic.html#circular-references",
+    "href": "slides/28-shiny-dynamic/28-shiny-dynamic.html#circular-references",
+    "title": "Dynamic UI",
+    "section": "Circular References",
+    "text": "Circular References\n\nWarning: Be careful when creating inputs that trigger the same code that created them.\nLoop: renderUI -&gt; creates input -&gt; input changes -&gt; triggers renderUI -&gt; re-creates input.\nRate limiting or logic checks are often needed."
+  },
+  {
+    "objectID": "slides/28-shiny-dynamic/28-shiny-dynamic.html#levels-of-dynamism",
+    "href": "slides/28-shiny-dynamic/28-shiny-dynamic.html#levels-of-dynamism",
+    "title": "Dynamic UI",
+    "section": "Levels of Dynamism",
+    "text": "Levels of Dynamism\n\nUpdate: Modify existing inputs (update*Input).\nVisibility: Show/Hide pre-defined sections (tabsetPanel).\nGeneration: Create new UI from scratch (uiOutput/renderUI)."
   }
 ]

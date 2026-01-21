@@ -1,0 +1,19 @@
+{
+  "hash": "ad749e49db4191f8d12c657969610f1e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: Dynamic UI\nsubtitle: Lecture 28\n---\n\n\n\n# Updating Inputs\n\n## The `update*` Family\n\n-   **Goal**: Change an input's state (value, choices, label) from the server.\n-   **Functions**: `updateTextInput()`, `updateSliderInput()`, `updateSelectInput()`, etc.\n-   **Mechanism**:\n    -   User action triggers an `observeEvent()`.\n    -   Server sends a message to the browser to update the specific control.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nobserveEvent(input$reset, {\n  updateSliderInput(inputId = \"s1\", value = 0)\n})\n```\n:::\n\n\n\n## Hierarchical Selects {.smaller}\n\nConsider this scenario from Chapter 9 of the textbook. \n\n> Create an app that lets the user upload a csv file, select one variable, draw a histogram, and then download the histogram. For an additional challenge, allow the user to select from .png, .pdf, and .svg output formats.\n\n# Dynamic Visibility\n\n## Hiding and Showing {.smaller}\n\n-   **Goal**: Show different UI elements based on user actions.\n-   **Technique**: Hidden Tabsets.\n    -   `tabsetPanel(id = \"wizard\", type = \"hidden\", ...)`\n    -   `updateTabsetPanel(inputId = \"wizard\", selected = \"panel2\")`\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nui <- fluidPage(\n  actionButton(\"go_next\", \"Next\"),\n  tabsetPanel(id = \"wizard\", type = \"hidden\",\n    tabPanel(\"page1\", \"First step content...\"),\n    tabPanel(\"page2\", \"Second step content...\")\n  )\n)\n\nserver <- function(input, output, session) {\n  observeEvent(input$go_next, {\n    updateTabsetPanel(inputId = \"wizard\", selected = \"page2\")\n  })\n}\n```\n:::\n\n\n\n# Generative UI\n\n## `uiOutput` and `renderUI`\n\n-   **Goal**: Generate HTML or Inputs entirely from Python/R code.\n-   **Usage**:\n    1.  **UI**: Place `uiOutput(\"id\")` where you want the content.\n    2.  **Server**: Assign `renderUI({ ... })` to `output$id`.\n    3.  **Return**: The `renderUI` block must return Shiny tags (e.g., `tagList`, `div`, inputs).\n\n## Circular References\n\n-   **Warning**: Be careful when creating inputs that trigger the same code that created them.\n-   **Loop**: `renderUI` -> creates input -> input changes -> triggers `renderUI` -> re-creates input.\n-   Rate limiting or logic checks are often needed.\n\n# Summary\n\n## Levels of Dynamism\n\n1.  **Update**: Modify existing inputs (`update*Input`).\n2.  **Visibility**: Show/Hide pre-defined sections (`tabsetPanel`).\n3.  **Generation**: Create new UI from scratch (`uiOutput`/`renderUI`).\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-after-body": [
+        "\n<script>\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\n  // slide changes (different for each slide format).\n  (function () {\n    // dispatch for htmlwidgets\n    function fireSlideEnter() {\n      const event = window.document.createEvent(\"Event\");\n      event.initEvent(\"slideenter\", true, true);\n      window.document.dispatchEvent(event);\n    }\n\n    function fireSlideChanged(previousSlide, currentSlide) {\n      fireSlideEnter();\n\n      // dispatch for shiny\n      if (window.jQuery) {\n        if (previousSlide) {\n          window.jQuery(previousSlide).trigger(\"hidden\");\n        }\n        if (currentSlide) {\n          window.jQuery(currentSlide).trigger(\"shown\");\n        }\n      }\n    }\n\n    // hookup for slidy\n    if (window.w3c_slidy) {\n      window.w3c_slidy.add_observer(function (slide_num) {\n        // slide_num starts at position 1\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\n      });\n    }\n\n  })();\n</script>\n\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
