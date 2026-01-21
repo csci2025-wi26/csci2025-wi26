@@ -7,7 +7,7 @@ subtitle: Lecture 30
 
 ## Indirection
 
--   **Interactive R**: We type `diamonds %>% filter(carat > 1)`.
+-   **Interactive R**: We type `diamonds |> filter(carat > 1)`.
     -   `carat` is a **data-variable** (lives in the dataframe).
 -   **Shiny R**: We have `input$var` which contains the string `"carat"`.
     -   `input$var` is an **env-variable** (lives in the environment).
@@ -23,14 +23,15 @@ subtitle: Lecture 30
 
 ## Example: Filtering
 
-```r
+```{r}
+#| eval: false
 server <- function(input, output, session) {
   
   filtered_data <- reactive({
     # OLD/WRONG: filter(df, input$var > input$min)
     
     # CORRECT:
-    df %>% filter(.data[[input$var]] > .env$input$min)
+    df |> filter(.data[[input$var]] > .env$input$min)
   })
   
 }
@@ -41,7 +42,8 @@ server <- function(input, output, session) {
 -   `aes()` also uses data masking.
 -   Use `.data[[ ]]` to map inputs to aesthetics.
 
-```r
+```{r}
+#| eval: false
 output$plot <- renderPlot({
   ggplot(df, aes(.data[[input$x]], .data[[input$y]])) +
     geom_point()
@@ -58,14 +60,15 @@ output$plot <- renderPlot({
     -   `all_of()`: Errors if any column is missing (strict).
     -   `any_of()`: Ignores missing columns (lenient).
 
-```r
+```{r}
+#| eval: false
 # If input$cols is c("carat", "price")
 selected_data <- reactive({
-  df %>% select(all_of(input$cols))
+  df |> select(all_of(input$cols))
 })
 ```
 
-# Summary
+# Wrap Up
 
 ## Rules of Thumb
 
@@ -73,3 +76,10 @@ selected_data <- reactive({
     -   Use **`.data[[input$name]]`** to refer to a column by string.
 2.  **Tidy Selection** (`select`, `pivot_`, `across`):
     -   Use **`all_of(input$names)`** to refer to columns by a vector of strings.
+
+## Do Next
+
+1. Read [Chapter 12: Tidy Evaluation](https://mastering-shiny.org/action-tidy.html) from Mastering Shiny.
+2. There's NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.
+3. I reommend working through the Exercises in the textbook.
+4. That's it for tonight!

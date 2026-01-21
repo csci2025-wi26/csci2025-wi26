@@ -4565,5 +4565,54 @@
     "title": "Bookmarking",
     "section": "Do Next",
     "text": "Do Next\n\nRead Chapter 11: Bookmarking from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 30!"
+  },
+  {
+    "objectID": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#indirection",
+    "href": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#indirection",
+    "title": "Tidy Evaluation",
+    "section": "Indirection",
+    "text": "Indirection\n\nInteractive R: We type diamonds |&gt; filter(carat &gt; 1).\n\ncarat is a data-variable (lives in the dataframe).\n\nShiny R: We have input$var which contains the string \"carat\".\n\ninput$var is an env-variable (lives in the environment).\n\nIssue: filter(diamonds, input$var &gt; 1) tries to compare the string \"carat\" to 1, which fails or does weird things."
+  },
+  {
+    "objectID": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#the-.data-pronoun",
+    "href": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#the-.data-pronoun",
+    "title": "Tidy Evaluation",
+    "section": "The .data Pronoun",
+    "text": "The .data Pronoun\n\nSolution: Tell dplyr or ggplot2 exactly where to look.\n.data[[ string ]]: Look up the column named string in the data frame.\n.env$var: Look up the variable var in the environment (safer than implicit lookup)."
+  },
+  {
+    "objectID": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#example-filtering",
+    "href": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#example-filtering",
+    "title": "Tidy Evaluation",
+    "section": "Example: Filtering",
+    "text": "Example: Filtering\nserver &lt;- function(input, output, session) {\n  \n  filtered_data &lt;- reactive({\n    # OLD/WRONG: filter(df, input$var &gt; input$min)\n    \n    # CORRECT:\n    df |&gt; filter(.data[[input$var]] &gt; .env$input$min)\n  })\n  \n}"
+  },
+  {
+    "objectID": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#example-plotting",
+    "href": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#example-plotting",
+    "title": "Tidy Evaluation",
+    "section": "Example: Plotting",
+    "text": "Example: Plotting\n\naes() also uses data masking.\nUse .data[[ ]] to map inputs to aesthetics.\n\noutput$plot &lt;- renderPlot({\n  ggplot(df, aes(.data[[input$x]], .data[[input$y]])) +\n    geom_point()\n})"
+  },
+  {
+    "objectID": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#tidy-selectors",
+    "href": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#tidy-selectors",
+    "title": "Tidy Evaluation",
+    "section": "Tidy Selectors",
+    "text": "Tidy Selectors\n\nFunctions like select(), pivot_longer(), across() use tidy selection.\nInteractive: select(df, carat, price).\nProgrammatic: select(df, all_of(input$cols)).\n\nall_of(): Errors if any column is missing (strict).\nany_of(): Ignores missing columns (lenient).\n\n\n# If input$cols is c(\"carat\", \"price\")\nselected_data &lt;- reactive({\n  df |&gt; select(all_of(input$cols))\n})"
+  },
+  {
+    "objectID": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#rules-of-thumb",
+    "href": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#rules-of-thumb",
+    "title": "Tidy Evaluation",
+    "section": "Rules of Thumb",
+    "text": "Rules of Thumb\n\nData Masking (filter, mutate, aes, arrange):\n\nUse .data[[input$name]] to refer to a column by string.\n\nTidy Selection (select, pivot_, across):\n\nUse all_of(input$names) to refer to columns by a vector of strings."
+  },
+  {
+    "objectID": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#several-ways-to-deploy-an-app",
+    "href": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#several-ways-to-deploy-an-app",
+    "title": "Bookmarking",
+    "section": "Several ways to deploy an app",
+    "text": "Several ways to deploy an app\n\nOption 1: shinyapps.io (has a free tier)\nOption 2: shinylive\nOption 3+: Ad-hoc deployment (e.g. AWS, a server you have, some other hosting service)"
   }
 ]

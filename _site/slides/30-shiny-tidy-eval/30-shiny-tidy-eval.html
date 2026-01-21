@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
-  <title>CSCI 2025 – Bookmarking</title>
+  <title>CSCI 2025 – Tidy Evaluation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -195,8 +195,8 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Bookmarking</h1>
-  <p class="subtitle">Lecture 28</p>
+  <h1 class="title">Tidy Evaluation</h1>
+  <p class="subtitle">Lecture 30</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -211,120 +211,98 @@ Dr.&nbsp;Eric Friedlander
 
 </section>
 <section>
-<section id="deploying" class="title-slide slide level1 center">
-<h1>Deploying</h1>
+<section id="the-problem" class="title-slide slide level1 center">
+<h1>The Problem</h1>
 
 </section>
-<section id="several-ways-to-deploy-an-app" class="slide level2">
-<h2>Several ways to deploy an app</h2>
+<section id="indirection" class="slide level2">
+<h2>Indirection</h2>
 <ul>
-<li>Option 1: <a href="https://www.shinyapps.io/">shinyapps.io</a> (has a free tier)</li>
-<li>Option 2: <a href="https://posit-dev.github.io/r-shinylive/">shinylive</a></li>
-<li>Option 3+: Ad-hoc deployment (e.g.&nbsp;AWS, a server you have, some other hosting service)</li>
+<li><strong>Interactive R</strong>: We type <code>diamonds |&gt; filter(carat &gt; 1)</code>.
+<ul>
+<li><code>carat</code> is a <strong>data-variable</strong> (lives in the dataframe).</li>
+</ul></li>
+<li><strong>Shiny R</strong>: We have <code>input$var</code> which contains the string <code>"carat"</code>.
+<ul>
+<li><code>input$var</code> is an <strong>env-variable</strong> (lives in the environment).</li>
+</ul></li>
+<li><strong>Issue</strong>: <code>filter(diamonds, input$var &gt; 1)</code> tries to compare the <em>string</em> <code>"carat"</code> to 1, which fails or does weird things.</li>
 </ul>
 </section></section>
 <section>
-<section id="the-basics" class="title-slide slide level1 center">
-<h1>The Basics</h1>
+<section id="data-masking" class="title-slide slide level1 center">
+<h1>Data Masking</h1>
 
 </section>
-<section id="the-problem" class="slide level2">
-<h2>The Problem</h2>
+<section id="the-.data-pronoun" class="slide level2">
+<h2>The <code>.data</code> Pronoun</h2>
 <ul>
-<li><strong>State</strong>: Shiny apps are dynamic. Users change inputs to explore data.</li>
-<li><strong>Issue</strong>: If you copy the URL, it points to the <em>initial</em> state, not the <em>current</em> state.</li>
-<li><strong>Solution</strong>: <strong>Bookmarking</strong> encodes the current state (inputs) into the URL.</li>
+<li><strong>Solution</strong>: Tell <code>dplyr</code> or <code>ggplot2</code> exactly where to look.</li>
+<li><strong><code>.data[[ string ]]</code></strong>: Look up the column named <code>string</code> in the data frame.</li>
+<li><strong><code>.env$var</code></strong>: Look up the variable <code>var</code> in the environment (safer than implicit lookup).</li>
 </ul>
 </section>
-<section id="enabling-bookmarking" class="slide level2">
-<h2>Enabling Bookmarking</h2>
-<ol type="1">
-<li><strong>UI</strong>: Add a <code>bookmarkButton()</code>.</li>
-<li><strong>ShinyApp</strong>: Set <code>enableBookmarking = "url"</code>.</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>ui <span class="ot">&lt;-</span> <span class="cf">function</span>(request) {</span>
-<span id="cb1-2"><a></a>  <span class="fu">fluidPage</span>(</span>
-<span id="cb1-3"><a></a>    <span class="fu">textInput</span>(<span class="st">"txt"</span>, <span class="st">"Text"</span>),</span>
-<span id="cb1-4"><a></a>    <span class="fu">bookmarkButton</span>()</span>
-<span id="cb1-5"><a></a>  )</span>
-<span id="cb1-6"><a></a>}</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) { }</span>
-<span id="cb1-9"><a></a></span>
-<span id="cb1-10"><a></a><span class="fu">shinyApp</span>(ui, server, <span class="at">enableBookmarking =</span> <span class="st">"url"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Note</strong>: <code>ui</code> must be a function that takes <code>request</code> as an argument.</p>
+<section id="example-filtering" class="slide level2">
+<h2>Example: Filtering</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb1-2"><a></a>  </span>
+<span id="cb1-3"><a></a>  filtered_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb1-4"><a></a>    <span class="co"># OLD/WRONG: filter(df, input$var &gt; input$min)</span></span>
+<span id="cb1-5"><a></a>    </span>
+<span id="cb1-6"><a></a>    <span class="co"># CORRECT:</span></span>
+<span id="cb1-7"><a></a>    df <span class="sc">|&gt;</span> <span class="fu">filter</span>(.data[[input<span class="sc">$</span>var]] <span class="sc">&gt;</span> .env<span class="sc">$</span>input<span class="sc">$</span>min)</span>
+<span id="cb1-8"><a></a>  })</span>
+<span id="cb1-9"><a></a>  </span>
+<span id="cb1-10"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="example-plotting" class="slide level2">
+<h2>Example: Plotting</h2>
+<ul>
+<li><code>aes()</code> also uses data masking.</li>
+<li>Use <code>.data[[ ]]</code> to map inputs to aesthetics.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>output<span class="sc">$</span>plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb2-2"><a></a>  <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(.data[[input<span class="sc">$</span>x]], .data[[input<span class="sc">$</span>y]])) <span class="sc">+</span></span>
+<span id="cb2-3"><a></a>    <span class="fu">geom_point</span>()</span>
+<span id="cb2-4"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section></section>
 <section>
-<section id="advanced-bookmarking" class="title-slide slide level1 center">
-<h1>Advanced Bookmarking</h1>
+<section id="tidy-selection" class="title-slide slide level1 center">
+<h1>Tidy Selection</h1>
 
 </section>
-<section id="automatic-url-update" class="slide level2">
-<h2>Automatic URL Update</h2>
+<section id="tidy-selectors" class="slide level2">
+<h2>Tidy Selectors</h2>
 <ul>
-<li><strong>Goal</strong>: Update the URL bar <em>automatically</em> as inputs change (no button needed).</li>
-<li><strong>Server Logic</strong>:
-<ol type="1">
-<li>Observe changes to <code>input</code>.</li>
-<li>Call <code>session$doBookmark()</code>.</li>
-<li>Use <code>onBookmarked</code> to update the query string.</li>
-</ol></li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb2-2"><a></a>  <span class="co"># Trigger bookmarking on input change</span></span>
-<span id="cb2-3"><a></a>  <span class="fu">observe</span>({</span>
-<span id="cb2-4"><a></a>    <span class="fu">reactiveValuesToList</span>(input)</span>
-<span id="cb2-5"><a></a>    session<span class="sc">$</span><span class="fu">doBookmark</span>()</span>
-<span id="cb2-6"><a></a>  })</span>
-<span id="cb2-7"><a></a>  </span>
-<span id="cb2-8"><a></a>  <span class="co"># Update URL in browser</span></span>
-<span id="cb2-9"><a></a>  <span class="fu">onBookmarked</span>(updateQueryString)</span>
-<span id="cb2-10"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="storing-state-on-server" class="slide level2">
-<h2>Storing State on Server</h2>
+<li>Functions like <code>select()</code>, <code>pivot_longer()</code>, <code>across()</code> use <strong>tidy selection</strong>.</li>
+<li><strong>Interactive</strong>: <code>select(df, carat, price)</code>.</li>
+<li><strong>Programmatic</strong>: <code>select(df, all_of(input$cols))</code>.
 <ul>
-<li><strong><code>enableBookmarking = "server"</code></strong>:
-<ul>
-<li>Saves state to a file on the server.</li>
-<li>URL becomes short (e.g., <code>?_state_id=123</code>).</li>
-<li>Useful when state is too large for a URL.</li>
+<li><code>all_of()</code>: Errors if any column is missing (strict).</li>
+<li><code>any_of()</code>: Ignores missing columns (lenient).</li>
 </ul></li>
 </ul>
-</section>
-<section id="storing-custom-state" class="slide level2">
-<h2>Storing Custom State</h2>
-<ul>
-<li>Sometimes <code>input</code> isn’t enough (e.g., you have <code>reactiveValues</code> to save).</li>
-<li><strong><code>onBookmark(function(state) { ... })</code></strong>: Save extra data to <code>state$values</code>.</li>
-<li><strong><code>onRestore(function(state) { ... })</code></strong>: Read data from <code>state$values</code> and restore <code>reactiveValues</code>.</li>
-</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># If input$cols is c("carat", "price")</span></span>
+<span id="cb3-2"><a></a>selected_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb3-3"><a></a>  df <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="fu">all_of</span>(input<span class="sc">$</span>cols))</span>
+<span id="cb3-4"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section></section>
 <section>
-<section id="wrap-up" class="title-slide slide level1 center">
-<h1>Wrap-Up</h1>
+<section id="summary" class="title-slide slide level1 center">
+<h1>Summary</h1>
 
 </section>
-<section id="takeaways" class="slide level2">
-<h2>Takeaways</h2>
-<ul>
-<li><strong>Bookmarking</strong> makes apps shareable.</li>
-<li><strong>Function UI</strong>: <code>ui &lt;- function(request) { ... }</code> is required.</li>
-<li><strong>Modes</strong>:
-<ul>
-<li><code>"url"</code>: State in URL (portable, limited size).</li>
-<li><code>"server"</code>: State on server (short URL, requires storage).</li>
-</ul></li>
-<li><strong>Automation</strong>: Use <code>onBookmarked(updateQueryString)</code> for seamless experience.</li>
-</ul>
-</section>
-<section id="do-next" class="slide level2">
-<h2>Do Next</h2>
+<section id="rules-of-thumb" class="slide level2">
+<h2>Rules of Thumb</h2>
 <ol type="1">
-<li>Read <a href="https://mastering-shiny.org/action-bookmark.html">Chapter 11: Bookmarking</a> from Mastering Shiny.</li>
-<li>There’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.</li>
-<li>I reommend working through the Exercises in the textbook.</li>
-<li>Move on to Lecture 30!</li>
+<li><strong>Data Masking</strong> (<code>filter</code>, <code>mutate</code>, <code>aes</code>, <code>arrange</code>):
+<ul>
+<li>Use <strong><code>.data[[input$name]]</code></strong> to refer to a column by string.</li>
+</ul></li>
+<li><strong>Tidy Selection</strong> (<code>select</code>, <code>pivot_</code>, <code>across</code>):
+<ul>
+<li>Use <strong><code>all_of(input$names)</code></strong> to refer to columns by a vector of strings.</li>
+</ul></li>
 </ol>
 
 

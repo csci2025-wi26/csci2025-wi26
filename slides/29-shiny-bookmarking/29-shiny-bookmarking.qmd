@@ -3,6 +3,14 @@ title: Bookmarking
 subtitle: Lecture 28
 ---
 
+# Deploying
+
+## Several ways to deploy an app
+
+- Option 1: [shinyapps.io](https://www.shinyapps.io/) (has a free tier)
+- Option 2: [shinylive](https://posit-dev.github.io/r-shinylive/)
+- Option 3+: Ad-hoc deployment (e.g. AWS, a server you have, some other hosting service)
+
 # The Basics
 
 ## The Problem
