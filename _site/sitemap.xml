@@ -17,20 +17,20 @@
     <lastmod>2026-01-15T15:21:01.053Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/11-numbers/11-numbers.html</loc>
+    <loc>https://csci2025wi26.netlify.app/slides/06-importing/06-importing-data.html</loc>
+    <lastmod>2026-01-06T17:17:16.726Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/14-factors/14-factors.html</loc>
+    <lastmod>2026-01-13T14:51:40.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/10-logicals/10-logicals.html</loc>
     <lastmod>2026-01-08T15:58:00.966Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/17-joins/17-joins.html</loc>
-    <lastmod>2026-01-14T14:40:55.371Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/08-eda/08-eda.html</loc>
-    <lastmod>2026-01-07T14:09:57.392Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/16-missing-values/16-missing-values.html</loc>
-    <lastmod>2026-01-13T23:30:55.824Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html</loc>
+    <lastmod>2026-01-21T23:27:16.168Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/slides/25-shiny-graphics/25-shiny-graphics.html</loc>
@@ -49,16 +49,16 @@
     <lastmod>2026-01-16T13:35:15.834Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/29-shiny-tidy-eval/29-shiny-tidy-eval.html</loc>
-    <lastmod>2026-01-14T23:46:52.926Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/05-data-tidying/05-data-tidying.html</loc>
+    <lastmod>2026-01-06T17:17:16.726Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/07-layers/07-layers.html</loc>
-    <lastmod>2026-01-06T22:28:04.013Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/01-intro-to-R/01-intro-to-R.html</loc>
+    <lastmod>2026-01-05T15:50:00.326Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/22-git-and-github/22-git-and-github.html</loc>
-    <lastmod>2026-01-20T22:55:43.171Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/29-shiny-bookmarking/29-shiny-bookmarking.html</loc>
+    <lastmod>2026-01-21T23:27:16.168Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/slides/15-datetimes/15-datetimes.html</loc>
@@ -145,16 +145,16 @@
     <lastmod>2026-01-12T15:30:02.795Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/27-shiny-dynamic/27-shiny-dynamic.html</loc>
-    <lastmod>2026-01-14T23:46:02.100Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/28-shiny-dynamic/28-shiny-dynamic.html</loc>
+    <lastmod>2026-01-21T19:45:54.071Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/01-intro-to-R/01-intro-to-R.html</loc>
-    <lastmod>2026-01-05T15:50:00.326Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/22-git-and-github/22-git-and-github.html</loc>
+    <lastmod>2026-01-20T22:55:43.171Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/05-data-tidying/05-data-tidying.html</loc>
-    <lastmod>2026-01-06T17:17:16.726Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/07-layers/07-layers.html</loc>
+    <lastmod>2026-01-06T22:28:04.013Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/slides/27-shiny-uploads/27-shiny-uploads.html</loc>
@@ -177,20 +177,20 @@
     <lastmod>2026-01-20T23:00:46.172Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/10-logicals/10-logicals.html</loc>
+    <loc>https://csci2025wi26.netlify.app/slides/16-missing-values/16-missing-values.html</loc>
+    <lastmod>2026-01-13T23:30:55.824Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/08-eda/08-eda.html</loc>
+    <lastmod>2026-01-07T14:09:57.392Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/17-joins/17-joins.html</loc>
+    <lastmod>2026-01-14T14:40:55.371Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/11-numbers/11-numbers.html</loc>
     <lastmod>2026-01-08T15:58:00.966Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/14-factors/14-factors.html</loc>
-    <lastmod>2026-01-13T14:51:40.072Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/06-importing/06-importing-data.html</loc>
-    <lastmod>2026-01-06T17:17:16.726Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/28-shiny-bookmarking/28-shiny-bookmarking.html</loc>
-    <lastmod>2026-01-14T23:46:26.294Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/course-faq.html</loc>
@@ -203,17 +203,5 @@
   <url>
     <loc>https://csci2025wi26.netlify.app/GEMINI.html</loc>
     <lastmod>2026-01-05T14:19:29.307Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/28-shiny-dynamic/28-shiny-dynamic.html</loc>
-    <lastmod>2026-01-21T19:44:49.531Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/29-shiny-bookmarking/29-shiny-bookmarking.html</loc>
-    <lastmod>2026-01-21T20:51:51.060Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html</loc>
-    <lastmod>2026-01-21T21:00:16.476Z</lastmod>
   </url>
 </urlset>
