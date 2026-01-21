@@ -195,7 +195,7 @@
 
 <section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
   <h1 class="title">Bookmarking</h1>
-  <p class="subtitle">Lecture 28</p>
+  <p class="subtitle">Lecture 29</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -241,7 +241,8 @@ Dr.&nbsp;Eric Friedlander
 <li><strong>UI</strong>: Add a <code>bookmarkButton()</code>.</li>
 <li><strong>ShinyApp</strong>: Set <code>enableBookmarking = "url"</code>.</li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>ui <span class="ot">&lt;-</span> <span class="cf">function</span>(request) {</span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>ui <span class="ot">&lt;-</span> <span class="cf">function</span>(request) {</span>
 <span id="cb1-2"><a></a>  <span class="fu">fluidPage</span>(</span>
 <span id="cb1-3"><a></a>    <span class="fu">textInput</span>(<span class="st">"txt"</span>, <span class="st">"Text"</span>),</span>
 <span id="cb1-4"><a></a>    <span class="fu">bookmarkButton</span>()</span>
@@ -251,6 +252,7 @@ Dr.&nbsp;Eric Friedlander
 <span id="cb1-8"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) { }</span>
 <span id="cb1-9"><a></a></span>
 <span id="cb1-10"><a></a><span class="fu">shinyApp</span>(ui, server, <span class="at">enableBookmarking =</span> <span class="st">"url"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p><strong>Note</strong>: <code>ui</code> must be a function that takes <code>request</code> as an argument.</p>
 </section></section>
 <section>
@@ -269,7 +271,8 @@ Dr.&nbsp;Eric Friedlander
 <li>Use <code>onBookmarked</code> to update the query string.</li>
 </ol></li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
 <span id="cb2-2"><a></a>  <span class="co"># Trigger bookmarking on input change</span></span>
 <span id="cb2-3"><a></a>  <span class="fu">observe</span>({</span>
 <span id="cb2-4"><a></a>    <span class="fu">reactiveValuesToList</span>(input)</span>
@@ -279,6 +282,7 @@ Dr.&nbsp;Eric Friedlander
 <span id="cb2-8"><a></a>  <span class="co"># Update URL in browser</span></span>
 <span id="cb2-9"><a></a>  <span class="fu">onBookmarked</span>(updateQueryString)</span>
 <span id="cb2-10"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="storing-state-on-server" class="slide level2">
 <h2>Storing State on Server</h2>
@@ -323,7 +327,7 @@ Dr.&nbsp;Eric Friedlander
 <li>Read <a href="https://mastering-shiny.org/action-bookmark.html">Chapter 11: Bookmarking</a> from Mastering Shiny.</li>
 <li>There’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.</li>
 <li>I reommend working through the Exercises in the textbook.</li>
-<li>Move on to Lecture 30!</li>
+<li>That’s it for tonight!</li>
 </ol>
 
 
@@ -546,6 +550,44 @@ Dr.&nbsp;Eric Friedlander
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

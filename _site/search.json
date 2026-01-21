@@ -149,158 +149,207 @@
     "text": "Data Dictionary\n\nID : Participant identifier\nCondition: TRAD or CLU (traditional or cluster)\nTime: PRE or POST (before or after exercise)\nHR: Heart Rate (in beats per minute)"
   },
   {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#basic-ui-overview",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#basic-ui-overview",
-    "title": "Basic UI",
-    "section": "Basic UI Overview",
-    "text": "Basic UI Overview\n\nGoal: detailed exploration of the inputs and outputs that make up the Shiny UI.\nInputs: allow users to provide values.\nOutputs: display results to users.\nSeparation of Concerns:\n\nUI defined in fluidPage().\nLogic defined in server()."
+    "objectID": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#several-ways-to-deploy-an-app",
+    "href": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#several-ways-to-deploy-an-app",
+    "title": "Bookmarking",
+    "section": "Several ways to deploy an app",
+    "text": "Several ways to deploy an app\n\nOption 1: shinyapps.io (has a free tier)\nOption 2: shinylive\nOption 3+: Ad-hoc deployment (e.g. AWS, a server you have, some other hosting service)"
   },
   {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#common-structure",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#common-structure",
-    "title": "Basic UI",
-    "section": "Common Structure",
-    "text": "Common Structure\n\nAll input functions start with inputId and label.\ninputId: Unique identifier for accessing the input in the server (e.g., input$name).\n\nMust be a simple string (letters, numbers, underscores).\nMust be unique within the app.\n\nlabel: Human-readable label for the control.\nvalue: (Optional) Default value."
+    "objectID": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#the-problem",
+    "href": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#the-problem",
+    "title": "Bookmarking",
+    "section": "The Problem",
+    "text": "The Problem\n\nState: Shiny apps are dynamic. Users change inputs to explore data.\nIssue: If you copy the URL, it points to the initial state, not the current state.\nSolution: Bookmarking encodes the current state (inputs) into the URL."
   },
   {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example",
-    "title": "Basic UI",
-    "section": "Example",
-    "text": "Example\nsliderInput(\n  inputId = \"min\", \n  label = \"Limit (minimum)\", \n  value = 50, \n  min = 0, \n  max = 100\n)"
+    "objectID": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#enabling-bookmarking",
+    "href": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#enabling-bookmarking",
+    "title": "Bookmarking",
+    "section": "Enabling Bookmarking",
+    "text": "Enabling Bookmarking\n\nUI: Add a bookmarkButton().\nShinyApp: Set enableBookmarking = \"url\".\n\n\nui &lt;- function(request) {\n  fluidPage(\n    textInput(\"txt\", \"Text\"),\n    bookmarkButton()\n  )\n}\n\nserver &lt;- function(input, output, session) { }\n\nshinyApp(ui, server, enableBookmarking = \"url\")\n\nNote: ui must be a function that takes request as an argument."
   },
   {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#free-text-inputs",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#free-text-inputs",
-    "title": "Basic UI",
-    "section": "Free Text Inputs",
-    "text": "Free Text Inputs\n\nCollect small amounts of text.\ntextInput(): Simple text box.\npasswordInput(): Text box with masked characters.\ntextAreaInput(): Multi-line text box."
+    "objectID": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#automatic-url-update",
+    "href": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#automatic-url-update",
+    "title": "Bookmarking",
+    "section": "Automatic URL Update",
+    "text": "Automatic URL Update\n\nGoal: Update the URL bar automatically as inputs change (no button needed).\nServer Logic:\n\nObserve changes to input.\nCall session$doBookmark().\nUse onBookmarked to update the query string.\n\n\n\nserver &lt;- function(input, output, session) {\n  # Trigger bookmarking on input change\n  observe({\n    reactiveValuesToList(input)\n    session$doBookmark()\n  })\n  \n  # Update URL in browser\n  onBookmarked(updateQueryString)\n}"
   },
   {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-1",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-1",
-    "title": "Basic UI",
-    "section": "Example",
-    "text": "Example\nui &lt;- fluidPage(\n  textInput(\"name\", \"What's your name?\"),\n  passwordInput(\"password\", \"What's your password?\"),\n  textAreaInput(\"story\", \"Tell me about yourself\", rows = 3)\n)"
+    "objectID": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#storing-state-on-server",
+    "href": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#storing-state-on-server",
+    "title": "Bookmarking",
+    "section": "Storing State on Server",
+    "text": "Storing State on Server\n\nenableBookmarking = \"server\":\n\nSaves state to a file on the server.\nURL becomes short (e.g., ?_state_id=123).\nUseful when state is too large for a URL."
   },
   {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#numeric-inputs",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#numeric-inputs",
-    "title": "Basic UI",
-    "section": "Numeric Inputs",
-    "text": "Numeric Inputs\n\nnumericInput(): Text box allowing only numbers.\nsliderInput(): Slider for selecting a single value or a range."
+    "objectID": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#storing-custom-state",
+    "href": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#storing-custom-state",
+    "title": "Bookmarking",
+    "section": "Storing Custom State",
+    "text": "Storing Custom State\n\nSometimes input isn’t enough (e.g., you have reactiveValues to save).\nonBookmark(function(state) { ... }): Save extra data to state$values.\nonRestore(function(state) { ... }): Read data from state$values and restore reactiveValues."
   },
   {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-2",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-2",
-    "title": "Basic UI",
-    "section": "Example",
-    "text": "Example\nui &lt;- fluidPage(\n  numericInput(\"num\", \"Number one\", value = 0, min = 0, max = 100),\n  sliderInput(\"num2\", \"Number two\", value = 50, min = 0, max = 100),\n  sliderInput(\"rng\", \"Range\", value = c(10, 20), min = 0, max = 100)\n)"
+    "objectID": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#takeaways",
+    "href": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#takeaways",
+    "title": "Bookmarking",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nBookmarking makes apps shareable.\nFunction UI: ui &lt;- function(request) { ... } is required.\nModes:\n\n\"url\": State in URL (portable, limited size).\n\"server\": State on server (short URL, requires storage).\n\nAutomation: Use onBookmarked(updateQueryString) for seamless experience."
   },
   {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#date-inputs",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#date-inputs",
-    "title": "Basic UI",
-    "section": "Date Inputs",
-    "text": "Date Inputs\n\ndateInput(): Select a single date.\ndateRangeInput(): Select a range of dates.\nDates are returned as standard R Date objects."
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-3",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-3",
-    "title": "Basic UI",
-    "section": "Example",
-    "text": "Example\nui &lt;- fluidPage(\n  dateInput(\"dob\", \"When were you born?\"),\n  dateRangeInput(\"holiday\", \"When do you want to go on vacation?\")\n)"
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#limited-choices",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#limited-choices",
-    "title": "Basic UI",
-    "section": "Limited Choices",
-    "text": "Limited Choices\n\nLet users choose from a pre-defined set of options.\nselectInput(): Dropdown menu (single or multiple selection).\nradioButtons(): Radio buttons (single selection).\ncheckboxGroupInput(): Checkboxes (multiple selection)."
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-4",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-4",
-    "title": "Basic UI",
-    "section": "Example",
-    "text": "Example\nanimals &lt;- c(\"dog\", \"cat\", \"mouse\", \"bird\", \"other\", \"I hate animals\")\nui &lt;- fluidPage(\n  selectInput(\"state\", \"What's your favourite state?\", state.name),\n  radioButtons(\"animal\", \"What's your favourite animal?\", animals)\n)"
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#other-inputs",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#other-inputs",
-    "title": "Basic UI",
-    "section": "Other Inputs",
-    "text": "Other Inputs\n\nfileInput(): Upload files (Chapter 9).\nactionButton() / actionLink(): Trigger an action (e.g., reset, calculate).\ncheckboxInput(): Single checkbox (TRUE/FALSE)."
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#common-structure-1",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#common-structure-1",
-    "title": "Basic UI",
-    "section": "Common Structure",
-    "text": "Common Structure\n\nUI: *Output(outputId)\n\nPlaceholders in the HTML.\n\nServer: output$ID &lt;- render*({ code })\n\nLogic to generate the output.\n\nMatching: render* function must match the *Output function."
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#text-outputs",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#text-outputs",
-    "title": "Basic UI",
-    "section": "Text Outputs",
-    "text": "Text Outputs\n\ntextOutput(): pairs with renderText().\n\nCombines result into a single string.\n\nverbatimTextOutput(): pairs with renderPrint().\n\nPrints the result as if it were in the R console."
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-5",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-5",
-    "title": "Basic UI",
-    "section": "Example",
-    "text": "Example\nui &lt;- fluidPage(\n  textOutput(\"text\"),\n  verbatimTextOutput(\"code\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$text &lt;- renderText(\"Hello Friend!\")\n  output$code &lt;- renderPrint(summary(1:10))\n}"
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#table-outputs",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#table-outputs",
-    "title": "Basic UI",
-    "section": "Table Outputs",
-    "text": "Table Outputs\n\ntableOutput(): pairs with renderTable().\n\nStatic table (renders all data at once).\n\ndataTableOutput(): pairs with renderDataTable().\n\nInteractive table (pagination, search, sorting).\nFrom the DT package (often used instead of shiny::dataTableOutput)."
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-6",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-6",
-    "title": "Basic UI",
-    "section": "Example",
-    "text": "Example\nui &lt;- fluidPage(\n  tableOutput(\"static\"),\n  dataTableOutput(\"dynamic\")\n)\nserver &lt;- function(input, output, session) {\n  output$static &lt;- renderTable(head(mtcars))\n  output$dynamic &lt;- renderDataTable(mtcars, options = list(pageLength = 5))\n}"
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#plot-outputs",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#plot-outputs",
-    "title": "Basic UI",
-    "section": "Plot Outputs",
-    "text": "Plot Outputs\n\nplotOutput(): pairs with renderPlot().\n\nDisplays any R graphic (base, ggplot2).\n\nResolution: res = 96 in renderPlot() is a good default."
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-7",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-7",
-    "title": "Basic UI",
-    "section": "Example",
-    "text": "Example\nui &lt;- fluidPage(\n  plotOutput(\"plot\", width = \"400px\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$plot &lt;- renderPlot(plot(1:5), res = 96)\n}"
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#practice",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#practice",
-    "title": "Basic UI",
-    "section": "Practice!",
-    "text": "Practice!\nLet’s do some practice!"
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#recap",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#recap",
-    "title": "Basic UI",
-    "section": "Recap",
-    "text": "Recap\n\nInputs: textInput, numericInput, sliderInput, selectInput, etc.\n\nAlways have inputId and label.\n\nOutputs: textOutput, tableOutput, plotOutput.\n\nUI: *Output(\"ID\").\nServer: output$ID &lt;- render*({ ... })."
-  },
-  {
-    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#do-next",
-    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#do-next",
-    "title": "Basic UI",
+    "objectID": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#do-next",
+    "href": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#do-next",
+    "title": "Bookmarking",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 2: Basic UI from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 20!"
+    "text": "Do Next\n\nRead Chapter 11: Bookmarking from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nThat’s it for tonight!"
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#working-with-numbers",
+    "href": "slides/11-numbers/11-numbers.html#working-with-numbers",
+    "title": "Numbers",
+    "section": "Working with Numbers",
+    "text": "Working with Numbers\n\nNumeric data is the most common type of data you’ll work with.\nThis lecture covers creating, transforming, and summarizing numeric vectors.\nWe’ll use functions from base R and dplyr."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#parsing-numbers",
+    "href": "slides/11-numbers/11-numbers.html#parsing-numbers",
+    "title": "Numbers",
+    "section": "Parsing Numbers",
+    "text": "Parsing Numbers\n\nSometimes numbers are stored as text (strings).\nreadr::parse_double() converts strings to numbers, assuming they are just numbers.\nreadr::parse_number() is more flexible and can extract numbers from strings with other text."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#example",
+    "href": "slides/11-numbers/11-numbers.html#example",
+    "title": "Numbers",
+    "section": "Example",
+    "text": "Example\nLet’s work with the parks dataset."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#count",
+    "href": "slides/11-numbers/11-numbers.html#count",
+    "title": "Numbers",
+    "section": "count()",
+    "text": "count()\n\ndplyr::count() is a quick way to count the number of rows for each unique value of a variable.\nIt’s a shortcut for group_by() and summarize(n = n())."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#example-1",
+    "href": "slides/11-numbers/11-numbers.html#example-1",
+    "title": "Numbers",
+    "section": "Example",
+    "text": "Example\nWhat cities appear in the parks dataset most frequently?"
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#weighted-counts",
+    "href": "slides/11-numbers/11-numbers.html#weighted-counts",
+    "title": "Numbers",
+    "section": "Weighted Counts",
+    "text": "Weighted Counts\n\nYou can provide a weight to count() to sum up a variable instead of just counting rows.\nThis is useful for summarizing pre-counted data."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#example-2",
+    "href": "slides/11-numbers/11-numbers.html#example-2",
+    "title": "Numbers",
+    "section": "Example",
+    "text": "Example\nLet’s create a new metric: best city for parks since this was created."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#practice",
+    "href": "slides/11-numbers/11-numbers.html#practice",
+    "title": "Numbers",
+    "section": "Practice",
+    "text": "Practice\nLet’s do some practice!"
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#basic-operators",
+    "href": "slides/11-numbers/11-numbers.html#basic-operators",
+    "title": "Numbers",
+    "section": "Basic Operators",
+    "text": "Basic Operators\n\nR provides the standard arithmetic operators: +, -, *, /, ^.\n%% (remainder) and %/% (integer division) are useful for modular arithmetic."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#example-3",
+    "href": "slides/11-numbers/11-numbers.html#example-3",
+    "title": "Numbers",
+    "section": "Example",
+    "text": "Example\n\nFrom the flights dataset, create new columns for the departure hour and minute."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#logarithms",
+    "href": "slides/11-numbers/11-numbers.html#logarithms",
+    "title": "Numbers",
+    "section": "Logarithms",
+    "text": "Logarithms\n\nLogarithms (log(), log2(), log10()) are useful for data that spans multiple orders of magnitude.\nThey help turn exponential growth into linear growth, which is often easier to model"
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#rounding",
+    "href": "slides/11-numbers/11-numbers.html#rounding",
+    "title": "Numbers",
+    "section": "Rounding",
+    "text": "Rounding\n\nround(x): rounds to the nearest integer, can specify number of digits.\nfloor(x): always rounds down.\nceiling(x): always rounds up."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#cutting",
+    "href": "slides/11-numbers/11-numbers.html#cutting",
+    "title": "Numbers",
+    "section": "Cutting",
+    "text": "Cutting\n\ncut() divides a numeric vector into a set of discrete bins (a factor).\nYou can specify the breaks for the bins."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#practice-1",
+    "href": "slides/11-numbers/11-numbers.html#practice-1",
+    "title": "Numbers",
+    "section": "Practice!",
+    "text": "Practice!\nCompute the average rank of each city, rounding to 2 decimal places."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#ranks",
+    "href": "slides/11-numbers/11-numbers.html#ranks",
+    "title": "Numbers",
+    "section": "Ranks",
+    "text": "Ranks\n\ndplyr::min_rank() gives ranks, handling ties by giving them the same rank.\nUse desc() to rank from highest to lowest.\nrow_number() is similar but gives each row a unique rank."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#offsets",
+    "href": "slides/11-numbers/11-numbers.html#offsets",
+    "title": "Numbers",
+    "section": "Offsets",
+    "text": "Offsets\n\ndplyr::lag() gets the previous value in a vector.\ndplyr::lead() gets the next value.\nUseful for computing differences or finding changes."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#center",
+    "href": "slides/11-numbers/11-numbers.html#center",
+    "title": "Numbers",
+    "section": "Center",
+    "text": "Center\n\nmean(): the average value. Can be sensitive to outliers.\nmedian(): the middle value. More robust to outliers."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#spread",
+    "href": "slides/11-numbers/11-numbers.html#spread",
+    "title": "Numbers",
+    "section": "Spread",
+    "text": "Spread\n\nsd(): standard deviation, measures how spread out the data is around the mean.\nIQR(): interquartile range (Q3 - Q1), measures the spread of the middle 50% of the data."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#position",
+    "href": "slides/11-numbers/11-numbers.html#position",
+    "title": "Numbers",
+    "section": "Position",
+    "text": "Position\n\nmin() and max(): the minimum and maximum values.\nquantile(x, p): finds the value that is greater than p% of the data.\n\nquantile(x, 0.25) is the 25th percentile (Q1).\nmedian(x) is a shortcut for quantile(x, 0.5)."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#numbers",
+    "href": "slides/11-numbers/11-numbers.html#numbers",
+    "title": "Numbers",
+    "section": "Numbers",
+    "text": "Numbers\n\nCreate with parse_number().\nTransform with arithmetic, logs, rounding, and cut().\ncount() is a powerful tool for quick exploration.\nUse ranks (min_rank) and offsets (lag, lead) for more complex analysis.\nSummarize with measures of center (mean, median), spread (sd, IQR), and position (min, max, quantile)."
+  },
+  {
+    "objectID": "slides/11-numbers/11-numbers.html#do-next",
+    "href": "slides/11-numbers/11-numbers.html#do-next",
+    "title": "Numbers",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 13: Numbers from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 13” or work through some of the exercises in the text.\nThat’s it! See you Monday!"
   },
   {
     "objectID": "slides/06-importing/06-importing-data.html#this-lesson",
@@ -1077,7 +1126,7 @@
     "href": "slides/28-shiny-tidy-eval/28-shiny-tidy-eval.html#do-next",
     "title": "Tidy Evaluation",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 12: Tidy Evaluation from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nThat’s it for tonight!"
+    "text": "Do Next\n\nRead Chapter 12: Tidy Evaluation from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to lecture 29!"
   },
   {
     "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#overview",
@@ -1302,62 +1351,6 @@
     "title": "R Basics",
     "section": "Do Next",
     "text": "Do Next\n\nRead the Introduction of R for Data Science\nPost any question you have to the HW channel in our Team.\nMove on to Lecture 02."
-  },
-  {
-    "objectID": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#several-ways-to-deploy-an-app",
-    "href": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#several-ways-to-deploy-an-app",
-    "title": "Bookmarking",
-    "section": "Several ways to deploy an app",
-    "text": "Several ways to deploy an app\n\nOption 1: shinyapps.io (has a free tier)\nOption 2: shinylive\nOption 3+: Ad-hoc deployment (e.g. AWS, a server you have, some other hosting service)"
-  },
-  {
-    "objectID": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#the-problem",
-    "href": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#the-problem",
-    "title": "Bookmarking",
-    "section": "The Problem",
-    "text": "The Problem\n\nState: Shiny apps are dynamic. Users change inputs to explore data.\nIssue: If you copy the URL, it points to the initial state, not the current state.\nSolution: Bookmarking encodes the current state (inputs) into the URL."
-  },
-  {
-    "objectID": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#enabling-bookmarking",
-    "href": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#enabling-bookmarking",
-    "title": "Bookmarking",
-    "section": "Enabling Bookmarking",
-    "text": "Enabling Bookmarking\n\nUI: Add a bookmarkButton().\nShinyApp: Set enableBookmarking = \"url\".\n\nui &lt;- function(request) {\n  fluidPage(\n    textInput(\"txt\", \"Text\"),\n    bookmarkButton()\n  )\n}\n\nserver &lt;- function(input, output, session) { }\n\nshinyApp(ui, server, enableBookmarking = \"url\")\nNote: ui must be a function that takes request as an argument."
-  },
-  {
-    "objectID": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#automatic-url-update",
-    "href": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#automatic-url-update",
-    "title": "Bookmarking",
-    "section": "Automatic URL Update",
-    "text": "Automatic URL Update\n\nGoal: Update the URL bar automatically as inputs change (no button needed).\nServer Logic:\n\nObserve changes to input.\nCall session$doBookmark().\nUse onBookmarked to update the query string.\n\n\nserver &lt;- function(input, output, session) {\n  # Trigger bookmarking on input change\n  observe({\n    reactiveValuesToList(input)\n    session$doBookmark()\n  })\n  \n  # Update URL in browser\n  onBookmarked(updateQueryString)\n}"
-  },
-  {
-    "objectID": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#storing-state-on-server",
-    "href": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#storing-state-on-server",
-    "title": "Bookmarking",
-    "section": "Storing State on Server",
-    "text": "Storing State on Server\n\nenableBookmarking = \"server\":\n\nSaves state to a file on the server.\nURL becomes short (e.g., ?_state_id=123).\nUseful when state is too large for a URL."
-  },
-  {
-    "objectID": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#storing-custom-state",
-    "href": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#storing-custom-state",
-    "title": "Bookmarking",
-    "section": "Storing Custom State",
-    "text": "Storing Custom State\n\nSometimes input isn’t enough (e.g., you have reactiveValues to save).\nonBookmark(function(state) { ... }): Save extra data to state$values.\nonRestore(function(state) { ... }): Read data from state$values and restore reactiveValues."
-  },
-  {
-    "objectID": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#takeaways",
-    "href": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#takeaways",
-    "title": "Bookmarking",
-    "section": "Takeaways",
-    "text": "Takeaways\n\nBookmarking makes apps shareable.\nFunction UI: ui &lt;- function(request) { ... } is required.\nModes:\n\n\"url\": State in URL (portable, limited size).\n\"server\": State on server (short URL, requires storage).\n\nAutomation: Use onBookmarked(updateQueryString) for seamless experience."
-  },
-  {
-    "objectID": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#do-next",
-    "href": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#do-next",
-    "title": "Bookmarking",
-    "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 11: Bookmarking from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 30!"
   },
   {
     "objectID": "slides/15-datetimes/15-datetimes.html#working-with-dates-and-times",
@@ -3222,55 +3215,6 @@
     "text": "Do Next\n\nRead Chapter 14: Strings from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 14” or work through some of the exercises in the text.\nMove on the Lecture 13."
   },
   {
-    "objectID": "slides/28-shiny-dynamic/28-shiny-dynamic.html#the-update-family",
-    "href": "slides/28-shiny-dynamic/28-shiny-dynamic.html#the-update-family",
-    "title": "Dynamic UI",
-    "section": "The update* Family",
-    "text": "The update* Family\n\nGoal: Change an input’s state (value, choices, label) from the server.\nFunctions: updateTextInput(), updateSliderInput(), updateSelectInput(), etc.\nMechanism:\n\nUser action triggers an observeEvent().\nServer sends a message to the browser to update the specific control.\n\n\n\nobserveEvent(input$reset, {\n  updateSliderInput(inputId = \"s1\", value = 0)\n})"
-  },
-  {
-    "objectID": "slides/28-shiny-dynamic/28-shiny-dynamic.html#hierarchical-selects",
-    "href": "slides/28-shiny-dynamic/28-shiny-dynamic.html#hierarchical-selects",
-    "title": "Dynamic UI",
-    "section": "Hierarchical Selects",
-    "text": "Hierarchical Selects\nConsider this scenario from Chapter 9 of the textbook.\n\nCreate an app that lets the user upload a csv file, select one variable, draw a histogram, and then download the histogram. For an additional challenge, allow the user to select from .png, .pdf, and .svg output formats."
-  },
-  {
-    "objectID": "slides/28-shiny-dynamic/28-shiny-dynamic.html#hiding-and-showing",
-    "href": "slides/28-shiny-dynamic/28-shiny-dynamic.html#hiding-and-showing",
-    "title": "Dynamic UI",
-    "section": "Hiding and Showing",
-    "text": "Hiding and Showing\n\nGoal: Show different UI elements based on user actions.\nTechnique: Hidden Tabsets.\n\ntabsetPanel(id = \"wizard\", type = \"hidden\", ...)\nupdateTabsetPanel(inputId = \"wizard\", selected = \"panel2\")\n\n\n\nui &lt;- fluidPage(\n  actionButton(\"go_next\", \"Next\"),\n  tabsetPanel(id = \"wizard\", type = \"hidden\",\n    tabPanel(\"page1\", \"First step content...\"),\n    tabPanel(\"page2\", \"Second step content...\")\n  )\n)\n\nserver &lt;- function(input, output, session) {\n  observeEvent(input$go_next, {\n    updateTabsetPanel(inputId = \"wizard\", selected = \"page2\")\n  })\n}"
-  },
-  {
-    "objectID": "slides/28-shiny-dynamic/28-shiny-dynamic.html#uioutput-and-renderui",
-    "href": "slides/28-shiny-dynamic/28-shiny-dynamic.html#uioutput-and-renderui",
-    "title": "Dynamic UI",
-    "section": "uiOutput and renderUI",
-    "text": "uiOutput and renderUI\n\nGoal: Generate HTML or Inputs entirely from Python/R code.\nUsage:\n\nUI: Place uiOutput(\"id\") where you want the content.\nServer: Assign renderUI({ ... }) to output$id.\nReturn: The renderUI block must return Shiny tags (e.g., tagList, div, inputs)."
-  },
-  {
-    "objectID": "slides/28-shiny-dynamic/28-shiny-dynamic.html#circular-references",
-    "href": "slides/28-shiny-dynamic/28-shiny-dynamic.html#circular-references",
-    "title": "Dynamic UI",
-    "section": "Circular References",
-    "text": "Circular References\n\nWarning: Be careful when creating inputs that trigger the same code that created them.\nLoop: renderUI -&gt; creates input -&gt; input changes -&gt; triggers renderUI -&gt; re-creates input.\nRate limiting or logic checks are often needed."
-  },
-  {
-    "objectID": "slides/28-shiny-dynamic/28-shiny-dynamic.html#levels-of-dynamism",
-    "href": "slides/28-shiny-dynamic/28-shiny-dynamic.html#levels-of-dynamism",
-    "title": "Dynamic UI",
-    "section": "Levels of Dynamism",
-    "text": "Levels of Dynamism\n\nUpdate: Modify existing inputs (update*Input).\nVisibility: Show/Hide pre-defined sections (tabsetPanel).\nGeneration: Create new UI from scratch (uiOutput/renderUI)."
-  },
-  {
-    "objectID": "slides/28-shiny-dynamic/28-shiny-dynamic.html#do-next",
-    "href": "slides/28-shiny-dynamic/28-shiny-dynamic.html#do-next",
-    "title": "Dynamic UI",
-    "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 10: Dynamic UI from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 29!"
-  },
-  {
     "objectID": "slides/22-git-and-github/22-git-and-github.html#what-is-version-control",
     "href": "slides/22-git-and-github/22-git-and-github.html#what-is-version-control",
     "title": "Git and GitHub for Version Control",
@@ -4293,151 +4237,207 @@
     "text": "Do Next\n\nRead Chapter 19: Joins from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 19” or work through some of the exercises in the text.\nThat’s it for tonight!"
   },
   {
-    "objectID": "slides/11-numbers/11-numbers.html#working-with-numbers",
-    "href": "slides/11-numbers/11-numbers.html#working-with-numbers",
-    "title": "Numbers",
-    "section": "Working with Numbers",
-    "text": "Working with Numbers\n\nNumeric data is the most common type of data you’ll work with.\nThis lecture covers creating, transforming, and summarizing numeric vectors.\nWe’ll use functions from base R and dplyr."
+    "objectID": "slides/29-shiny-dynamic/29-shiny-dynamic.html#the-update-family",
+    "href": "slides/29-shiny-dynamic/29-shiny-dynamic.html#the-update-family",
+    "title": "Dynamic UI",
+    "section": "The update* Family",
+    "text": "The update* Family\n\nGoal: Change an input’s state (value, choices, label) from the server.\nFunctions: updateTextInput(), updateSliderInput(), updateSelectInput(), etc.\nMechanism:\n\nUser action triggers an observeEvent().\nServer sends a message to the browser to update the specific control.\n\n\n\nobserveEvent(input$reset, {\n  updateSliderInput(inputId = \"s1\", value = 0)\n})"
   },
   {
-    "objectID": "slides/11-numbers/11-numbers.html#parsing-numbers",
-    "href": "slides/11-numbers/11-numbers.html#parsing-numbers",
-    "title": "Numbers",
-    "section": "Parsing Numbers",
-    "text": "Parsing Numbers\n\nSometimes numbers are stored as text (strings).\nreadr::parse_double() converts strings to numbers, assuming they are just numbers.\nreadr::parse_number() is more flexible and can extract numbers from strings with other text."
+    "objectID": "slides/29-shiny-dynamic/29-shiny-dynamic.html#hierarchical-selects",
+    "href": "slides/29-shiny-dynamic/29-shiny-dynamic.html#hierarchical-selects",
+    "title": "Dynamic UI",
+    "section": "Hierarchical Selects",
+    "text": "Hierarchical Selects\nConsider this scenario from Chapter 9 of the textbook.\n\nCreate an app that lets the user upload a csv file, select one variable, draw a histogram, and then download the histogram. For an additional challenge, allow the user to select from .png, .pdf, and .svg output formats."
   },
   {
-    "objectID": "slides/11-numbers/11-numbers.html#example",
-    "href": "slides/11-numbers/11-numbers.html#example",
-    "title": "Numbers",
-    "section": "Example",
-    "text": "Example\nLet’s work with the parks dataset."
+    "objectID": "slides/29-shiny-dynamic/29-shiny-dynamic.html#hiding-and-showing",
+    "href": "slides/29-shiny-dynamic/29-shiny-dynamic.html#hiding-and-showing",
+    "title": "Dynamic UI",
+    "section": "Hiding and Showing",
+    "text": "Hiding and Showing\n\nGoal: Show different UI elements based on user actions.\nTechnique: Hidden Tabsets.\n\ntabsetPanel(id = \"wizard\", type = \"hidden\", ...)\nupdateTabsetPanel(inputId = \"wizard\", selected = \"panel2\")\n\n\n\nui &lt;- fluidPage(\n  actionButton(\"go_next\", \"Next\"),\n  tabsetPanel(id = \"wizard\", type = \"hidden\",\n    tabPanel(\"page1\", \"First step content...\"),\n    tabPanel(\"page2\", \"Second step content...\")\n  )\n)\n\nserver &lt;- function(input, output, session) {\n  observeEvent(input$go_next, {\n    updateTabsetPanel(inputId = \"wizard\", selected = \"page2\")\n  })\n}"
   },
   {
-    "objectID": "slides/11-numbers/11-numbers.html#count",
-    "href": "slides/11-numbers/11-numbers.html#count",
-    "title": "Numbers",
-    "section": "count()",
-    "text": "count()\n\ndplyr::count() is a quick way to count the number of rows for each unique value of a variable.\nIt’s a shortcut for group_by() and summarize(n = n())."
+    "objectID": "slides/29-shiny-dynamic/29-shiny-dynamic.html#uioutput-and-renderui",
+    "href": "slides/29-shiny-dynamic/29-shiny-dynamic.html#uioutput-and-renderui",
+    "title": "Dynamic UI",
+    "section": "uiOutput and renderUI",
+    "text": "uiOutput and renderUI\n\nGoal: Generate HTML or Inputs entirely from Python/R code.\nUsage:\n\nUI: Place uiOutput(\"id\") where you want the content.\nServer: Assign renderUI({ ... }) to output$id.\nReturn: The renderUI block must return Shiny tags (e.g., tagList, div, inputs)."
   },
   {
-    "objectID": "slides/11-numbers/11-numbers.html#example-1",
-    "href": "slides/11-numbers/11-numbers.html#example-1",
-    "title": "Numbers",
-    "section": "Example",
-    "text": "Example\nWhat cities appear in the parks dataset most frequently?"
+    "objectID": "slides/29-shiny-dynamic/29-shiny-dynamic.html#circular-references",
+    "href": "slides/29-shiny-dynamic/29-shiny-dynamic.html#circular-references",
+    "title": "Dynamic UI",
+    "section": "Circular References",
+    "text": "Circular References\n\nWarning: Be careful when creating inputs that trigger the same code that created them.\nLoop: renderUI -&gt; creates input -&gt; input changes -&gt; triggers renderUI -&gt; re-creates input.\nRate limiting or logic checks are often needed."
   },
   {
-    "objectID": "slides/11-numbers/11-numbers.html#weighted-counts",
-    "href": "slides/11-numbers/11-numbers.html#weighted-counts",
-    "title": "Numbers",
-    "section": "Weighted Counts",
-    "text": "Weighted Counts\n\nYou can provide a weight to count() to sum up a variable instead of just counting rows.\nThis is useful for summarizing pre-counted data."
+    "objectID": "slides/29-shiny-dynamic/29-shiny-dynamic.html#levels-of-dynamism",
+    "href": "slides/29-shiny-dynamic/29-shiny-dynamic.html#levels-of-dynamism",
+    "title": "Dynamic UI",
+    "section": "Levels of Dynamism",
+    "text": "Levels of Dynamism\n\nUpdate: Modify existing inputs (update*Input).\nVisibility: Show/Hide pre-defined sections (tabsetPanel).\nGeneration: Create new UI from scratch (uiOutput/renderUI)."
   },
   {
-    "objectID": "slides/11-numbers/11-numbers.html#example-2",
-    "href": "slides/11-numbers/11-numbers.html#example-2",
-    "title": "Numbers",
-    "section": "Example",
-    "text": "Example\nLet’s create a new metric: best city for parks since this was created."
-  },
-  {
-    "objectID": "slides/11-numbers/11-numbers.html#practice",
-    "href": "slides/11-numbers/11-numbers.html#practice",
-    "title": "Numbers",
-    "section": "Practice",
-    "text": "Practice\nLet’s do some practice!"
-  },
-  {
-    "objectID": "slides/11-numbers/11-numbers.html#basic-operators",
-    "href": "slides/11-numbers/11-numbers.html#basic-operators",
-    "title": "Numbers",
-    "section": "Basic Operators",
-    "text": "Basic Operators\n\nR provides the standard arithmetic operators: +, -, *, /, ^.\n%% (remainder) and %/% (integer division) are useful for modular arithmetic."
-  },
-  {
-    "objectID": "slides/11-numbers/11-numbers.html#example-3",
-    "href": "slides/11-numbers/11-numbers.html#example-3",
-    "title": "Numbers",
-    "section": "Example",
-    "text": "Example\n\nFrom the flights dataset, create new columns for the departure hour and minute."
-  },
-  {
-    "objectID": "slides/11-numbers/11-numbers.html#logarithms",
-    "href": "slides/11-numbers/11-numbers.html#logarithms",
-    "title": "Numbers",
-    "section": "Logarithms",
-    "text": "Logarithms\n\nLogarithms (log(), log2(), log10()) are useful for data that spans multiple orders of magnitude.\nThey help turn exponential growth into linear growth, which is often easier to model"
-  },
-  {
-    "objectID": "slides/11-numbers/11-numbers.html#rounding",
-    "href": "slides/11-numbers/11-numbers.html#rounding",
-    "title": "Numbers",
-    "section": "Rounding",
-    "text": "Rounding\n\nround(x): rounds to the nearest integer, can specify number of digits.\nfloor(x): always rounds down.\nceiling(x): always rounds up."
-  },
-  {
-    "objectID": "slides/11-numbers/11-numbers.html#cutting",
-    "href": "slides/11-numbers/11-numbers.html#cutting",
-    "title": "Numbers",
-    "section": "Cutting",
-    "text": "Cutting\n\ncut() divides a numeric vector into a set of discrete bins (a factor).\nYou can specify the breaks for the bins."
-  },
-  {
-    "objectID": "slides/11-numbers/11-numbers.html#practice-1",
-    "href": "slides/11-numbers/11-numbers.html#practice-1",
-    "title": "Numbers",
-    "section": "Practice!",
-    "text": "Practice!\nCompute the average rank of each city, rounding to 2 decimal places."
-  },
-  {
-    "objectID": "slides/11-numbers/11-numbers.html#ranks",
-    "href": "slides/11-numbers/11-numbers.html#ranks",
-    "title": "Numbers",
-    "section": "Ranks",
-    "text": "Ranks\n\ndplyr::min_rank() gives ranks, handling ties by giving them the same rank.\nUse desc() to rank from highest to lowest.\nrow_number() is similar but gives each row a unique rank."
-  },
-  {
-    "objectID": "slides/11-numbers/11-numbers.html#offsets",
-    "href": "slides/11-numbers/11-numbers.html#offsets",
-    "title": "Numbers",
-    "section": "Offsets",
-    "text": "Offsets\n\ndplyr::lag() gets the previous value in a vector.\ndplyr::lead() gets the next value.\nUseful for computing differences or finding changes."
-  },
-  {
-    "objectID": "slides/11-numbers/11-numbers.html#center",
-    "href": "slides/11-numbers/11-numbers.html#center",
-    "title": "Numbers",
-    "section": "Center",
-    "text": "Center\n\nmean(): the average value. Can be sensitive to outliers.\nmedian(): the middle value. More robust to outliers."
-  },
-  {
-    "objectID": "slides/11-numbers/11-numbers.html#spread",
-    "href": "slides/11-numbers/11-numbers.html#spread",
-    "title": "Numbers",
-    "section": "Spread",
-    "text": "Spread\n\nsd(): standard deviation, measures how spread out the data is around the mean.\nIQR(): interquartile range (Q3 - Q1), measures the spread of the middle 50% of the data."
-  },
-  {
-    "objectID": "slides/11-numbers/11-numbers.html#position",
-    "href": "slides/11-numbers/11-numbers.html#position",
-    "title": "Numbers",
-    "section": "Position",
-    "text": "Position\n\nmin() and max(): the minimum and maximum values.\nquantile(x, p): finds the value that is greater than p% of the data.\n\nquantile(x, 0.25) is the 25th percentile (Q1).\nmedian(x) is a shortcut for quantile(x, 0.5)."
-  },
-  {
-    "objectID": "slides/11-numbers/11-numbers.html#numbers",
-    "href": "slides/11-numbers/11-numbers.html#numbers",
-    "title": "Numbers",
-    "section": "Numbers",
-    "text": "Numbers\n\nCreate with parse_number().\nTransform with arithmetic, logs, rounding, and cut().\ncount() is a powerful tool for quick exploration.\nUse ranks (min_rank) and offsets (lag, lead) for more complex analysis.\nSummarize with measures of center (mean, median), spread (sd, IQR), and position (min, max, quantile)."
-  },
-  {
-    "objectID": "slides/11-numbers/11-numbers.html#do-next",
-    "href": "slides/11-numbers/11-numbers.html#do-next",
-    "title": "Numbers",
+    "objectID": "slides/29-shiny-dynamic/29-shiny-dynamic.html#do-next",
+    "href": "slides/29-shiny-dynamic/29-shiny-dynamic.html#do-next",
+    "title": "Dynamic UI",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 13: Numbers from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 13” or work through some of the exercises in the text.\nThat’s it! See you Monday!"
+    "text": "Do Next\n\nRead Chapter 10: Dynamic UI from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 30!"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#basic-ui-overview",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#basic-ui-overview",
+    "title": "Basic UI",
+    "section": "Basic UI Overview",
+    "text": "Basic UI Overview\n\nGoal: detailed exploration of the inputs and outputs that make up the Shiny UI.\nInputs: allow users to provide values.\nOutputs: display results to users.\nSeparation of Concerns:\n\nUI defined in fluidPage().\nLogic defined in server()."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#common-structure",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#common-structure",
+    "title": "Basic UI",
+    "section": "Common Structure",
+    "text": "Common Structure\n\nAll input functions start with inputId and label.\ninputId: Unique identifier for accessing the input in the server (e.g., input$name).\n\nMust be a simple string (letters, numbers, underscores).\nMust be unique within the app.\n\nlabel: Human-readable label for the control.\nvalue: (Optional) Default value."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nsliderInput(\n  inputId = \"min\", \n  label = \"Limit (minimum)\", \n  value = 50, \n  min = 0, \n  max = 100\n)"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#free-text-inputs",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#free-text-inputs",
+    "title": "Basic UI",
+    "section": "Free Text Inputs",
+    "text": "Free Text Inputs\n\nCollect small amounts of text.\ntextInput(): Simple text box.\npasswordInput(): Text box with masked characters.\ntextAreaInput(): Multi-line text box."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-1",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-1",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  textInput(\"name\", \"What's your name?\"),\n  passwordInput(\"password\", \"What's your password?\"),\n  textAreaInput(\"story\", \"Tell me about yourself\", rows = 3)\n)"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#numeric-inputs",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#numeric-inputs",
+    "title": "Basic UI",
+    "section": "Numeric Inputs",
+    "text": "Numeric Inputs\n\nnumericInput(): Text box allowing only numbers.\nsliderInput(): Slider for selecting a single value or a range."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-2",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-2",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  numericInput(\"num\", \"Number one\", value = 0, min = 0, max = 100),\n  sliderInput(\"num2\", \"Number two\", value = 50, min = 0, max = 100),\n  sliderInput(\"rng\", \"Range\", value = c(10, 20), min = 0, max = 100)\n)"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#date-inputs",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#date-inputs",
+    "title": "Basic UI",
+    "section": "Date Inputs",
+    "text": "Date Inputs\n\ndateInput(): Select a single date.\ndateRangeInput(): Select a range of dates.\nDates are returned as standard R Date objects."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-3",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-3",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  dateInput(\"dob\", \"When were you born?\"),\n  dateRangeInput(\"holiday\", \"When do you want to go on vacation?\")\n)"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#limited-choices",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#limited-choices",
+    "title": "Basic UI",
+    "section": "Limited Choices",
+    "text": "Limited Choices\n\nLet users choose from a pre-defined set of options.\nselectInput(): Dropdown menu (single or multiple selection).\nradioButtons(): Radio buttons (single selection).\ncheckboxGroupInput(): Checkboxes (multiple selection)."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-4",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-4",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nanimals &lt;- c(\"dog\", \"cat\", \"mouse\", \"bird\", \"other\", \"I hate animals\")\nui &lt;- fluidPage(\n  selectInput(\"state\", \"What's your favourite state?\", state.name),\n  radioButtons(\"animal\", \"What's your favourite animal?\", animals)\n)"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#other-inputs",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#other-inputs",
+    "title": "Basic UI",
+    "section": "Other Inputs",
+    "text": "Other Inputs\n\nfileInput(): Upload files (Chapter 9).\nactionButton() / actionLink(): Trigger an action (e.g., reset, calculate).\ncheckboxInput(): Single checkbox (TRUE/FALSE)."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#common-structure-1",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#common-structure-1",
+    "title": "Basic UI",
+    "section": "Common Structure",
+    "text": "Common Structure\n\nUI: *Output(outputId)\n\nPlaceholders in the HTML.\n\nServer: output$ID &lt;- render*({ code })\n\nLogic to generate the output.\n\nMatching: render* function must match the *Output function."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#text-outputs",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#text-outputs",
+    "title": "Basic UI",
+    "section": "Text Outputs",
+    "text": "Text Outputs\n\ntextOutput(): pairs with renderText().\n\nCombines result into a single string.\n\nverbatimTextOutput(): pairs with renderPrint().\n\nPrints the result as if it were in the R console."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-5",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-5",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  textOutput(\"text\"),\n  verbatimTextOutput(\"code\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$text &lt;- renderText(\"Hello Friend!\")\n  output$code &lt;- renderPrint(summary(1:10))\n}"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#table-outputs",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#table-outputs",
+    "title": "Basic UI",
+    "section": "Table Outputs",
+    "text": "Table Outputs\n\ntableOutput(): pairs with renderTable().\n\nStatic table (renders all data at once).\n\ndataTableOutput(): pairs with renderDataTable().\n\nInteractive table (pagination, search, sorting).\nFrom the DT package (often used instead of shiny::dataTableOutput)."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-6",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-6",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  tableOutput(\"static\"),\n  dataTableOutput(\"dynamic\")\n)\nserver &lt;- function(input, output, session) {\n  output$static &lt;- renderTable(head(mtcars))\n  output$dynamic &lt;- renderDataTable(mtcars, options = list(pageLength = 5))\n}"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#plot-outputs",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#plot-outputs",
+    "title": "Basic UI",
+    "section": "Plot Outputs",
+    "text": "Plot Outputs\n\nplotOutput(): pairs with renderPlot().\n\nDisplays any R graphic (base, ggplot2).\n\nResolution: res = 96 in renderPlot() is a good default."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-7",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#example-7",
+    "title": "Basic UI",
+    "section": "Example",
+    "text": "Example\nui &lt;- fluidPage(\n  plotOutput(\"plot\", width = \"400px\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$plot &lt;- renderPlot(plot(1:5), res = 96)\n}"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#practice",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#practice",
+    "title": "Basic UI",
+    "section": "Practice!",
+    "text": "Practice!\nLet’s do some practice!"
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#recap",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#recap",
+    "title": "Basic UI",
+    "section": "Recap",
+    "text": "Recap\n\nInputs: textInput, numericInput, sliderInput, selectInput, etc.\n\nAlways have inputId and label.\n\nOutputs: textOutput, tableOutput, plotOutput.\n\nUI: *Output(\"ID\").\nServer: output$ID &lt;- render*({ ... })."
+  },
+  {
+    "objectID": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#do-next",
+    "href": "slides/19-shiny-basic-ui/19-shiny-basic-ui.html#do-next",
+    "title": "Basic UI",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 2: Basic UI from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 20!"
   },
   {
     "objectID": "course-faq.html",

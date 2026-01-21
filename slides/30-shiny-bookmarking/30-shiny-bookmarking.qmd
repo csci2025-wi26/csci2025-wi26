@@ -1,6 +1,6 @@
 ---
 title: Bookmarking
-subtitle: Lecture 28
+subtitle: Lecture 29
 ---
 
 # Deploying
@@ -24,7 +24,8 @@ subtitle: Lecture 28
 1.  **UI**: Add a `bookmarkButton()`.
 2.  **ShinyApp**: Set `enableBookmarking = "url"`.
 
-```r
+```{r}
+#| eval: false
 ui <- function(request) {
   fluidPage(
     textInput("txt", "Text"),
@@ -49,7 +50,8 @@ shinyApp(ui, server, enableBookmarking = "url")
     2.  Call `session$doBookmark()`.
     3.  Use `onBookmarked` to update the query string.
 
-```r
+```{r}
+#| eval: false
 server <- function(input, output, session) {
   # Trigger bookmarking on input change
   observe({
@@ -91,4 +93,4 @@ server <- function(input, output, session) {
 1. Read [Chapter 11: Bookmarking](https://mastering-shiny.org/action-bookmark.html) from Mastering Shiny.
 2. There's NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.
 3. I reommend working through the Exercises in the textbook.
-4. Move on to Lecture 30!
+4. That's it for tonight!
