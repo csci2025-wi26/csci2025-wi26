@@ -1,6 +1,6 @@
 ---
 title: Tidy Evaluation
-subtitle: Lecture 29
+subtitle: Lecture 30
 ---
 
 # The Problem

@@ -4516,5 +4516,54 @@
     "title": "Dynamic UI",
     "section": "Levels of Dynamism",
     "text": "Levels of Dynamism\n\nUpdate: Modify existing inputs (update*Input).\nVisibility: Show/Hide pre-defined sections (tabsetPanel).\nGeneration: Create new UI from scratch (uiOutput/renderUI)."
+  },
+  {
+    "objectID": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#the-problem",
+    "href": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#the-problem",
+    "title": "Bookmarking",
+    "section": "The Problem",
+    "text": "The Problem\n\nState: Shiny apps are dynamic. Users change inputs to explore data.\nIssue: If you copy the URL, it points to the initial state, not the current state.\nSolution: Bookmarking encodes the current state (inputs) into the URL."
+  },
+  {
+    "objectID": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#enabling-bookmarking",
+    "href": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#enabling-bookmarking",
+    "title": "Bookmarking",
+    "section": "Enabling Bookmarking",
+    "text": "Enabling Bookmarking\n\nUI: Add a bookmarkButton().\nShinyApp: Set enableBookmarking = \"url\".\n\nui &lt;- function(request) {\n  fluidPage(\n    textInput(\"txt\", \"Text\"),\n    bookmarkButton()\n  )\n}\n\nserver &lt;- function(input, output, session) { }\n\nshinyApp(ui, server, enableBookmarking = \"url\")\nNote: ui must be a function that takes request as an argument."
+  },
+  {
+    "objectID": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#automatic-url-update",
+    "href": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#automatic-url-update",
+    "title": "Bookmarking",
+    "section": "Automatic URL Update",
+    "text": "Automatic URL Update\n\nGoal: Update the URL bar automatically as inputs change (no button needed).\nServer Logic:\n\nObserve changes to input.\nCall session$doBookmark().\nUse onBookmarked to update the query string.\n\n\nserver &lt;- function(input, output, session) {\n  # Trigger bookmarking on input change\n  observe({\n    reactiveValuesToList(input)\n    session$doBookmark()\n  })\n  \n  # Update URL in browser\n  onBookmarked(updateQueryString)\n}"
+  },
+  {
+    "objectID": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#storing-state-on-server",
+    "href": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#storing-state-on-server",
+    "title": "Bookmarking",
+    "section": "Storing State on Server",
+    "text": "Storing State on Server\n\nenableBookmarking = \"server\":\n\nSaves state to a file on the server.\nURL becomes short (e.g., ?_state_id=123).\nUseful when state is too large for a URL."
+  },
+  {
+    "objectID": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#storing-custom-state",
+    "href": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#storing-custom-state",
+    "title": "Bookmarking",
+    "section": "Storing Custom State",
+    "text": "Storing Custom State\n\nSometimes input isn’t enough (e.g., you have reactiveValues to save).\nonBookmark(function(state) { ... }): Save extra data to state$values.\nonRestore(function(state) { ... }): Read data from state$values and restore reactiveValues."
+  },
+  {
+    "objectID": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#takeaways",
+    "href": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#takeaways",
+    "title": "Bookmarking",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nBookmarking makes apps shareable.\nFunction UI: ui &lt;- function(request) { ... } is required.\nModes:\n\n\"url\": State in URL (portable, limited size).\n\"server\": State on server (short URL, requires storage).\n\nAutomation: Use onBookmarked(updateQueryString) for seamless experience."
+  },
+  {
+    "objectID": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#do-next",
+    "href": "slides/29-shiny-bookmarking/29-shiny-bookmarking.html#do-next",
+    "title": "Bookmarking",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 11: Bookmarking from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 30!"
   }
 ]

@@ -67,7 +67,7 @@ server <- function(input, output, session) {
 -   **`onBookmark(function(state) { ... })`**: Save extra data to `state$values`.
 -   **`onRestore(function(state) { ... })`**: Read data from `state$values` and restore `reactiveValues`.
 
-# Summary
+# Wrap-Up
 
 ## Takeaways
 
@@ -77,3 +77,10 @@ server <- function(input, output, session) {
     -   `"url"`: State in URL (portable, limited size).
     -   `"server"`: State on server (short URL, requires storage).
 -   **Automation**: Use `onBookmarked(updateQueryString)` for seamless experience.
+
+## Do Next
+
+1. Read [Chapter 11: Bookmarking](https://mastering-shiny.org/action-bookmark.html) from Mastering Shiny.
+2. There's NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.
+3. I reommend working through the Exercises in the textbook.
+4. Move on to Lecture 30!
