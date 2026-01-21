@@ -29,20 +29,20 @@
     <lastmod>2026-01-08T15:58:00.966Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html</loc>
+    <loc>https://csci2025wi26.netlify.app/slides/24-shiny-layout/24-shiny-layout.html</loc>
+    <lastmod>2026-01-20T23:00:46.172Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/18-shiny-intro/18-shiny-intro.html</loc>
+    <lastmod>2026-01-15T15:03:32.618Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/00-welcome/00-welcome.html</loc>
+    <lastmod>2026-01-05T19:38:33.397Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csci2025wi26.netlify.app/slides/28-shiny-tidy-eval/28-shiny-tidy-eval.html</loc>
     <lastmod>2026-01-21T23:27:16.168Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/25-shiny-graphics/25-shiny-graphics.html</loc>
-    <lastmod>2026-01-21T00:02:39.835Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/26-shiny-feedback/26-shiny-feedback.html</loc>
-    <lastmod>2026-01-21T16:36:37.253Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csci2025wi26.netlify.app/slides/02-first-viz/02-first-viz.html</loc>
-    <lastmod>2026-01-05T14:19:31.511Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/slides/20-shiny-reactivity/20-shiny-reactivity.html</loc>
@@ -146,7 +146,7 @@
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/slides/28-shiny-dynamic/28-shiny-dynamic.html</loc>
-    <lastmod>2026-01-21T19:45:54.071Z</lastmod>
+    <lastmod>2026-01-21T23:32:55.344Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/slides/22-git-and-github/22-git-and-github.html</loc>
@@ -165,16 +165,16 @@
     <lastmod>2026-01-08T15:58:00.966Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/00-welcome/00-welcome.html</loc>
-    <lastmod>2026-01-05T19:38:33.397Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/02-first-viz/02-first-viz.html</loc>
+    <lastmod>2026-01-05T14:19:31.511Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/18-shiny-intro/18-shiny-intro.html</loc>
-    <lastmod>2026-01-15T15:03:32.618Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/26-shiny-feedback/26-shiny-feedback.html</loc>
+    <lastmod>2026-01-21T16:36:37.253Z</lastmod>
   </url>
   <url>
-    <loc>https://csci2025wi26.netlify.app/slides/24-shiny-layout/24-shiny-layout.html</loc>
-    <lastmod>2026-01-20T23:00:46.172Z</lastmod>
+    <loc>https://csci2025wi26.netlify.app/slides/25-shiny-graphics/25-shiny-graphics.html</loc>
+    <lastmod>2026-01-21T00:02:39.835Z</lastmod>
   </url>
   <url>
     <loc>https://csci2025wi26.netlify.app/slides/16-missing-values/16-missing-values.html</loc>

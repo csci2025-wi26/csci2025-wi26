@@ -660,249 +660,424 @@
     "text": "Do Next\n\nRead Chapter 12: Logicals from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 12” or work through some of the exercises in the text.\nMove on the Lecture 11!"
   },
   {
-    "objectID": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#indirection",
-    "href": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#indirection",
+    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#fluidpage",
+    "href": "slides/24-shiny-layout/24-shiny-layout.html#fluidpage",
+    "title": "Page Layout",
+    "section": "fluidPage()",
+    "text": "fluidPage()\n\nThe foundation of most Shiny app layouts.\nCreates a “fluid” page that automatically adjusts to the browser window size.\nAll UI elements are typically placed inside fluidPage().\n\n\nui &lt;- fluidPage(\n  \"Hello, world!\"\n)"
+  },
+  {
+    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#titlepanel",
+    "href": "slides/24-shiny-layout/24-shiny-layout.html#titlepanel",
+    "title": "Page Layout",
+    "section": "titlePanel()",
+    "text": "titlePanel()\n\nA common first element in fluidPage() is titlePanel().\nIt creates a large heading, suitable for the app’s title.\nIt also sets the window title of the browser.\n\n\nui &lt;- fluidPage(\n  titlePanel(\"My Shiny App\")\n)"
+  },
+  {
+    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#sidebarlayout",
+    "href": "slides/24-shiny-layout/24-shiny-layout.html#sidebarlayout",
+    "title": "Page Layout",
+    "section": "sidebarLayout()",
+    "text": "sidebarLayout()\n\nA classic two-column layout.\nConsists of sidebarPanel() (for inputs) and mainPanel() (for outputs).\nsidebarPanel() is typically placed on the left.\n\n\nui &lt;- fluidPage(\n  titlePanel(\"My App\"),\n  sidebarLayout(\n    sidebarPanel(\n      # inputs\n    ),\n    mainPanel(\n      # outputs\n    )\n  )\n)"
+  },
+  {
+    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#sidebarlayout-positions",
+    "href": "slides/24-shiny-layout/24-shiny-layout.html#sidebarlayout-positions",
+    "title": "Page Layout",
+    "section": "sidebarLayout() positions",
+    "text": "sidebarLayout() positions\n\nYou can control the position of the sidebar with the position argument.\nposition = \"left\" (default)\nposition = \"right\"\n\n\nsidebarLayout(\n  sidebarPanel(\n    # inputs\n  ),\n  mainPanel(\n    # outputs\n  ),\n  position = \"right\"\n)"
+  },
+  {
+    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#multi-row-layouts-with-fluidrow",
+    "href": "slides/24-shiny-layout/24-shiny-layout.html#multi-row-layouts-with-fluidrow",
+    "title": "Page Layout",
+    "section": "Multi-row Layouts with fluidRow()",
+    "text": "Multi-row Layouts with fluidRow()\n\nFor more complex layouts, you can build your own grid.\nfluidRow() creates a row.\ncolumn() creates columns within a row.\nThe total width of columns in a row must be 12.\n\n\nfluidPage(\n  fluidRow(\n    column(4, \n      \"First column\"\n    ),\n    column(8, \n      \"Second column\"\n    )\n  ),\n  fluidRow(\n    column(6, \n      \"Third column\"\n    ),\n    column(6, \n      \"Fourth column\"\n    )\n  )\n)"
+  },
+  {
+    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#nesting-layouts",
+    "href": "slides/24-shiny-layout/24-shiny-layout.html#nesting-layouts",
+    "title": "Page Layout",
+    "section": "Nesting Layouts",
+    "text": "Nesting Layouts\n\nYou can nest fluidRow() and column() to create more complex layouts.\nYou can also nest sidebarLayout() inside a column()."
+  },
+  {
+    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#tabsetpanel",
+    "href": "slides/24-shiny-layout/24-shiny-layout.html#tabsetpanel",
+    "title": "Page Layout",
+    "section": "tabsetPanel()",
+    "text": "tabsetPanel()\n\nUseful for breaking down a complex app into smaller pieces.\nCreates a set of tabs.\nEach tab is created with tabPanel().\n\n\nmainPanel(\n  tabsetPanel(\n    tabPanel(\"Plot\", plotOutput(\"plot\")), \n    tabPanel(\"Summary\", verbatimTextOutput(\"summary\")), \n    tabPanel(\"Table\", tableOutput(\"table\"))\n  )\n)"
+  },
+  {
+    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#tabsetpanel-options",
+    "href": "slides/24-shiny-layout/24-shiny-layout.html#tabsetpanel-options",
+    "title": "Page Layout",
+    "section": "tabsetPanel() options",
+    "text": "tabsetPanel() options\n\nid: Assign an ID to get the currently selected tab in the server.\nselected: Set the initially selected tab.\ntype: Change the appearance of the tabs (e.g., “tabs”, “pills”).\nposition: Place tabs on “top”, “bottom”, “left”, or “right”."
+  },
+  {
+    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#navlistpanel",
+    "href": "slides/24-shiny-layout/24-shiny-layout.html#navlistpanel",
+    "title": "Page Layout",
+    "section": "navlistPanel()",
+    "text": "navlistPanel()\n\nAn alternative to tabsetPanel().\nRenders tabs as a sidebar navigation list.\nWell-suited for a sequence of linear steps.\nCannot be used inside sidebarLayout.\n\n\nnavlistPanel(\n  \"Header\",\n  tabPanel(\"First\", \"First content\"),\n  tabPanel(\"Second\", \"Second content\"),\n  tabPanel(\"Third\", \"Third content\")\n)"
+  },
+  {
+    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#page-level-navigation",
+    "href": "slides/24-shiny-layout/24-shiny-layout.html#page-level-navigation",
+    "title": "Page Layout",
+    "section": "Page-level navigation",
+    "text": "Page-level navigation\n\nFor multi-page apps, navbarPage() is the tool of choice.\nIt creates a navigation bar at the top of the page.\nIt replaces fluidPage() as the top-level UI function.\nEach tabPanel becomes a “page”.\n\n\nui &lt;- navbarPage(\n  \"My App\",\n  tabPanel(\"Page 1\", \"Content for page 1\"),\n  tabPanel(\"Page 2\", \"Content for page 2\")\n)"
+  },
+  {
+    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#menus-in-navbarpage",
+    "href": "slides/24-shiny-layout/24-shiny-layout.html#menus-in-navbarpage",
+    "title": "Page Layout",
+    "section": "Menus in navbarPage()",
+    "text": "Menus in navbarPage()\n\nYou can group related pages into a menu using navbarMenu().\nThis is useful for organizing a large number of pages.\n\n\nnavbarPage(\n  \"My App\",\n  tabPanel(\"Page 1\", ),\n  tabPanel(\"Page 2\", ),\n  navbarMenu(\"More\",\n    tabPanel(\"Sub-page A\", ),\n    tabPanel(\"Sub-page B\", )\n  )\n)"
+  },
+  {
+    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#navbarpage-options",
+    "href": "slides/24-shiny-layout/24-shiny-layout.html#navbarpage-options",
+    "title": "Page Layout",
+    "section": "navbarPage() options",
+    "text": "navbarPage() options\n\ntitle: The title of the app, shown in the navbar.\nid: To access the selected tab from the server.\ncollapsible = TRUE: The navbar collapses on small screens.\ntheme: To apply a custom theme."
+  },
+  {
+    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#getting-started-with-bslib",
+    "href": "slides/24-shiny-layout/24-shiny-layout.html#getting-started-with-bslib",
+    "title": "Page Layout",
+    "section": "Getting started with bslib",
+    "text": "Getting started with bslib\n\nShiny’s appearance is controlled by the Bootstrap CSS framework.\nThe bslib package makes it easy to customize Bootstrap themes.\nUse bs_theme() to create a theme and pass it to the theme argument of the page layout function.\n\n\nui &lt;- fluidPage(\n  theme = bslib::bs_theme(bootswatch = \"darkly\"),\n)"
+  },
+  {
+    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#real-time-theming",
+    "href": "slides/24-shiny-layout/24-shiny-layout.html#real-time-theming",
+    "title": "Page Layout",
+    "section": "Real-time theming",
+    "text": "Real-time theming\n\nbslib offers an interactive theming tool.\nRun bs_theme_preview() on your UI to launch a special version of your app where you can tweak theme settings in real-time.\n\n\n# In the R console\nmy_ui &lt;- fluidPage()\nbslib::bs_theme_preview(my_ui)"
+  },
+  {
+    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#customizing-components",
+    "href": "slides/24-shiny-layout/24-shiny-layout.html#customizing-components",
+    "title": "Page Layout",
+    "section": "Customizing components",
+    "text": "Customizing components\n\nbs_theme() allows you to customize many aspects of the theme.\n\nbg, fg: Background and foreground colors.\nprimary, secondary: Accent colors.\nbase_font, heading_font, code_font: Fonts.\n\n\n\nmy_theme &lt;- bslib::bs_theme(\n  bg = \"#202123\",\n  fg = \"#B8BCC2\",\n  primary = \"#EA80FC\",\n  base_font = bslib::font_google(\"Inter\"),\n  \"font-size-base\" = \"1.1rem\"\n)"
+  },
+  {
+    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#you-can-use-raw-html-and-css",
+    "href": "slides/24-shiny-layout/24-shiny-layout.html#you-can-use-raw-html-and-css",
+    "title": "Page Layout",
+    "section": "You can use Raw HTML and CSS",
+    "text": "You can use Raw HTML and CSS\n\nWhen you need a tag that Shiny doesn’t provide a function for.\nFor minor tweaks to the UI.\nTo integrate with other JavaScript libraries that require a specific HTML structure.\nBut for major style changes, prefer bslib."
+  },
+  {
+    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#do-next",
+    "href": "slides/24-shiny-layout/24-shiny-layout.html#do-next",
+    "title": "Page Layout",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 6: Layouts, Themes, and HTML from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 24!"
+  },
+  {
+    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#what-is-shiny",
+    "href": "slides/18-shiny-intro/18-shiny-intro.html#what-is-shiny",
+    "title": "Your First Shiny App",
+    "section": "What is Shiny?",
+    "text": "What is Shiny?\n\nShiny is an R package that makes it easy to build interactive web apps straight from R.\nAllows you to create standalone apps on a webpage or embed them in Quarto documents.\nKey Components:\n\nUI (User Interface): Defines how your app looks.\nServer: Defines how your app works."
+  },
+  {
+    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#installation",
+    "href": "slides/18-shiny-intro/18-shiny-intro.html#installation",
+    "title": "Your First Shiny App",
+    "section": "Installation",
+    "text": "Installation\n\nIf you haven’t installed it yet:\n\n\ninstall.packages(\"shiny\")\n\n\nLoad it in your R session:\n\n\nlibrary(shiny)"
+  },
+  {
+    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#app-structure-app.r",
+    "href": "slides/18-shiny-intro/18-shiny-intro.html#app-structure-app.r",
+    "title": "Your First Shiny App",
+    "section": "App Structure (app.R)",
+    "text": "App Structure (app.R)\n\nThe simplest way to create an app is a single file named app.R.\nIt contains three main parts:\n\n\nUI object: The HTML webpage humans interact with.\nServer function: The logic that tells the app what to do.\nshinyApp call: Combines UI and server to run the app."
+  },
+  {
+    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#example",
+    "href": "slides/18-shiny-intro/18-shiny-intro.html#example",
+    "title": "Your First Shiny App",
+    "section": "Example",
+    "text": "Example\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  \"Hello, world!\"\n)\n\nserver &lt;- function(input, output, session) {\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#running-the-app",
+    "href": "slides/18-shiny-intro/18-shiny-intro.html#running-the-app",
+    "title": "Your First Shiny App",
+    "section": "Running the App",
+    "text": "Running the App\n\nIn RStudio/Positron:\n\nClick the Run App button (play icon) in the toolbar.\n\nStopping:\n\nClick the Stop sign in the console."
+  },
+  {
+    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#adding-ui-controls",
+    "href": "slides/18-shiny-intro/18-shiny-intro.html#adding-ui-controls",
+    "title": "Your First Shiny App",
+    "section": "Adding UI Controls",
+    "text": "Adding UI Controls\n\nUse Layout Functions to structure the page (e.g., fluidPage).\nUse Inputs to let users provide values.\nUse Outputs to show results.\n\n\nlibrary(shiny)\nui &lt;- fluidPage(\n  selectInput(\"dataset\", label = \"Dataset\", choices = ls(\"package:datasets\")),\n  verbatimTextOutput(\"summary\"),\n  tableOutput(\"table\")\n)\n\n\nselectInput(): A dropdown menu.\nverbatimTextOutput(): Placeholder for code/text output.\ntableOutput(): Placeholder for a table."
+  },
+  {
+    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#the-server-function",
+    "href": "slides/18-shiny-intro/18-shiny-intro.html#the-server-function",
+    "title": "Your First Shiny App",
+    "section": "The Server Function",
+    "text": "The Server Function\n\nTells Shiny how to build the outputs from the inputs.\nRules:\n\nSave objects to output$ID.\nBuild objects with render{Type}().\nAccess inputs with input$ID."
+  },
+  {
+    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#connecting-inputs-to-outputs",
+    "href": "slides/18-shiny-intro/18-shiny-intro.html#connecting-inputs-to-outputs",
+    "title": "Your First Shiny App",
+    "section": "Connecting Inputs to Outputs",
+    "text": "Connecting Inputs to Outputs\n\nserver &lt;- function(input, output, session) {\n  output$summary &lt;- renderPrint({\n    dataset &lt;- get(input$dataset, \"package:datasets\")\n    summary(dataset)\n  })\n\n  output$table &lt;- renderTable({\n    dataset &lt;- get(input$dataset, \"package:datasets\")\n    dataset\n  })\n}\n\n\nrenderPrint() pairs with verbatimTextOutput().\nrenderTable() pairs with tableOutput().\nReactivity: Outputs automatically update when input$dataset changes."
+  },
+  {
+    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#reducing-duplication",
+    "href": "slides/18-shiny-intro/18-shiny-intro.html#reducing-duplication",
+    "title": "Your First Shiny App",
+    "section": "Reducing Duplication",
+    "text": "Reducing Duplication\n\nIn the previous example, we fetched the dataset twice:\n\ndataset &lt;- get(input$dataset, \"package:datasets\")\n\nDon’t use regular variables or functions to solve this (they won’t work as expected in the reactive graph).\nDo use Reactive Expressions."
+  },
+  {
+    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#reactive-expressions",
+    "href": "slides/18-shiny-intro/18-shiny-intro.html#reactive-expressions",
+    "title": "Your First Shiny App",
+    "section": "Reactive Expressions",
+    "text": "Reactive Expressions\n\nWrap code in reactive({...}).\nCall it like a function: my_reactive().\nBenefits:\n\nUpdates only when inputs change.\nCaches the result (lazy evaluation) - efficient!\n\n\n\nserver &lt;- function(input, output, session) {\n  # Create a reactive expression\n  dataset &lt;- reactive({\n    get(input$dataset, \"package:datasets\")\n  })\n\n  output$summary &lt;- renderPrint({\n    # Call it like a function\n    summary(dataset())\n  })\n\n  output$table &lt;- renderTable({\n    dataset()\n  })\n}"
+  },
+  {
+    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#recap",
+    "href": "slides/18-shiny-intro/18-shiny-intro.html#recap",
+    "title": "Your First Shiny App",
+    "section": "Recap",
+    "text": "Recap\n\nUI: fluidPage(), input*(), *Output().\nServer: function(input, output, session).\nWiring:\n\noutput$ID &lt;- render*({ code using input$ID })\n\nReactivity:\n\nreactive() calculates values and caches them.\nOutputs automatically “react” to input changes.\n\nNext Steps: Basic UI, Basic Reactivity (Chapters 2 & 3)."
+  },
+  {
+    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#do-next",
+    "href": "slides/18-shiny-intro/18-shiny-intro.html#do-next",
+    "title": "Your First Shiny App",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 1: Your First Shiny App from Mastering Shiny.\nThere’s NO recitation Gem for this textbook. I recommend doing the following:\n\n\nCreate your own NotebookLM for this text book. Upload the Chapters as we go along and the slides we use (don’t forget to use presse before imputting the link to the slides).\nUse the NotebookLM as a tutor!\nYou can also use the NotebookLM as context within your Gemini chats.\n\n\nMove on to Lecture 19!"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#instructor",
+    "href": "slides/00-welcome/00-welcome.html#instructor",
+    "title": "Welcome to CSCI 2025",
+    "section": "Instructor",
+    "text": "Instructor\nDr. Eric Friedlander\nBoone 126B\nefriedlander@collegeofidaho.edu"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#timetable",
+    "href": "slides/00-welcome/00-welcome.html#timetable",
+    "title": "Welcome to CSCI 2025",
+    "section": "Timetable",
+    "text": "Timetable\n\nLectures\n\nM-TH 1-3pm - CML 105\n\nOffice Hours\n\nM-TH 10-11am - Boone 126B\nOr by appointment\n\nTutor Hours\n\nT 3-5pm - Jewett Tutoring Center (I think)"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#tutor-rabin-kalikote",
+    "href": "slides/00-welcome/00-welcome.html#tutor-rabin-kalikote",
+    "title": "Welcome to CSCI 2025",
+    "section": "Tutor: Rabin Kalikote",
+    "text": "Tutor: Rabin Kalikote"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#section",
+    "href": "slides/00-welcome/00-welcome.html#section",
+    "title": "Welcome to CSCI 2025",
+    "section": "",
+    "text": "Source: R for Data Science with additions from The Art of Statistics: How to Learn from Data."
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#section-1",
+    "href": "slides/00-welcome/00-welcome.html#section-1",
+    "title": "Welcome to CSCI 2025",
+    "section": "",
+    "text": "Source: R for Data Science"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#data-analysis-lifecycle",
+    "href": "slides/00-welcome/00-welcome.html#data-analysis-lifecycle",
+    "title": "Welcome to CSCI 2025",
+    "section": "Data Analysis Lifecycle",
+    "text": "Data Analysis Lifecycle\n\nImporting data: how do we get data into R\nWrangling data: how do we clean and prepare data\n\nTidying data: how do we structure data for analysis\nTransforming data: how do we manipulate and summarize data\n\nVisualization: how do we explore data and communicate results\nModeling: how do we quantify relationships in data (not a focus of this course)\nCommunication: how do we share results with others"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#course-website",
+    "href": "slides/00-welcome/00-welcome.html#course-website",
+    "title": "Welcome to CSCI 2025",
+    "section": "Course website",
+    "text": "Course website\n\ncsci2025wi25.netlify.app"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#class",
+    "href": "slides/00-welcome/00-welcome.html#class",
+    "title": "Welcome to CSCI 2025",
+    "section": "Class",
+    "text": "Class\n\nIn person\nAttendance is required\nA little bit of everything:\n\nMostly active learning\n\nRecordings will be posted before class – you are expected to watch ahead of time"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#overview-of-the-class",
+    "href": "slides/00-welcome/00-welcome.html#overview-of-the-class",
+    "title": "Welcome to CSCI 2025",
+    "section": "Overview of the class",
+    "text": "Overview of the class\n\nWeeks 1 + 2: R, Tidyverse, building visualizations\nWeek 3: Dashboards and shiny (tentative)\nWeek 4: Cool s***: (AI, dimensionality reduction, etc…)"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#announcements",
+    "href": "slides/00-welcome/00-welcome.html#announcements",
+    "title": "Welcome to CSCI 2025",
+    "section": "Announcements",
+    "text": "Announcements\n\nPosted on Teams and sent via email, be sure to check both regularly\nI’ll assume that you’ve read an announcement by the next “business” day"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#attendance",
+    "href": "slides/00-welcome/00-welcome.html#attendance",
+    "title": "Welcome to CSCI 2025",
+    "section": "Attendance",
+    "text": "Attendance\n\nRequired throughout the semester\nIf you miss more than 3 classes without a university-excused absence, you will fail this class\nIf you are more than 15 minutes late to class, this will count as an absence"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#lectures-readings",
+    "href": "slides/00-welcome/00-welcome.html#lectures-readings",
+    "title": "Welcome to CSCI 2025",
+    "section": "Lectures + Readings",
+    "text": "Lectures + Readings\n\nSeveral readings will be assigned before each class period, most with videos\nYou are expected to complete readings before class"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#pop-quizzes",
+    "href": "slides/00-welcome/00-welcome.html#pop-quizzes",
+    "title": "Welcome to CSCI 2025",
+    "section": "(Pop) Quizzes",
+    "text": "(Pop) Quizzes\n\nShort quizzes will be held periodically throughout the semester to assess your understanding of the course material\nThey will take place at the beginning of class, will not be announced in advance\nThe purpose of these quizzes is to encourage you to keep up with the course material\nIf you are late to class or have an unexcused absence on a quiz day, you will not be able to make up the quiz unless you notify me beforehand"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#projects",
+    "href": "slides/00-welcome/00-welcome.html#projects",
+    "title": "Welcome to CSCI 2025",
+    "section": "Projects",
+    "text": "Projects\n\nTwo projects:\n\nTeam Project: Building a Data Visualization Dashboard for Mark Heidrick\nIndividual Project: Your choice!"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#teamwork",
+    "href": "slides/00-welcome/00-welcome.html#teamwork",
+    "title": "Welcome to CSCI 2025",
+    "section": "Teamwork",
+    "text": "Teamwork\n\nYou will frequently work in teams of 2-4 students in class\nI will assign teams and roles\nI expect that:\n\nEveryone contributes\nEveryone learns\nEveryone is respectful"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#ungrading",
+    "href": "slides/00-welcome/00-welcome.html#ungrading",
+    "title": "Welcome to CSCI 2025",
+    "section": "(Un)Grading",
+    "text": "(Un)Grading\n\nYou will (mostly) be in charge of determining your own grade\nAfter each class period, you will reflect on your learning and participation and assign yourself a grade\nYou will also self assess your projects\nAt the end of the semester, your final grade will be 50% based on your daily reflections, 25% based on your team project, and 25% based on your individual project\n\n\n\nHOWEVER:\n\n\n\n\nYou can fail\nIf I feel that you aren’t being honest with your self assessments, I will adjust your grade accordingly"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#ways-to-fail-this-class-or-get-a-d",
+    "href": "slides/00-welcome/00-welcome.html#ways-to-fail-this-class-or-get-a-d",
+    "title": "Welcome to CSCI 2025",
+    "section": "Ways to fail this class (or get a D)",
+    "text": "Ways to fail this class (or get a D)\n\nReceiving less than a 50% (F) or 60% (D) average on the quizzes.\nFailing to achieve a minimum level of quality on either of your projects.\nMissing more than 3 class periods without a valid excuse.\n\nArriving more than 15-minutes late to class will be considered an absence.\n\nFailing to turn in more than 3 self-evaluations."
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#self-evaluations",
+    "href": "slides/00-welcome/00-welcome.html#self-evaluations",
+    "title": "Welcome to CSCI 2025",
+    "section": "Self-Evaluations",
+    "text": "Self-Evaluations\nStarting tomorrow, at the end of each class period, you will answer the following questions and assign yourself a grade for your work since the last class period:\n\nHow well do I understand the material covered in lectures and readings for today’s class?\nDid I put in a good faith effort to prepare for and participate in today’s class?\nHow would I rate my level of engagement during today’s class?\nHow well did I perform on the in-class activities?\nHow did I learn and grow from the readings, lectures, and in-class activities today?\nWhat overall grade would I give myself for the work I completed since the end of the last class period?"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#late-work-policy",
+    "href": "slides/00-welcome/00-welcome.html#late-work-policy",
+    "title": "Welcome to CSCI 2025",
+    "section": "Late work policy",
+    "text": "Late work policy\n\nQuizzes: not accepted late without university-excused absence\nProject presentations: Late submissions not accepted\nProject write-ups: Late submissions not accepted"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#academic-integrity-ai-collaboration",
+    "href": "slides/00-welcome/00-welcome.html#academic-integrity-ai-collaboration",
+    "title": "Welcome to CSCI 2025",
+    "section": "Academic integrity, AI, Collaboration",
+    "text": "Academic integrity, AI, Collaboration\n\nI’ve structured this course so that you will be presenting your work in front of the class frequently\nThe purpose of this course is to learn\nI will frequently be asking you to explain your code and your reasoning in front of the class\nFeel free to use any resources you want… just make sure you can explain things to the class"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#office-hours",
+    "href": "slides/00-welcome/00-welcome.html#office-hours",
+    "title": "Welcome to CSCI 2025",
+    "section": "Office hours",
+    "text": "Office hours\n\nTutor: Rabin Kalikote\nT: 3-5PM\nLots of resources on the website"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#course-technology",
+    "href": "slides/00-welcome/00-welcome.html#course-technology",
+    "title": "Welcome to CSCI 2025",
+    "section": "Course Technology",
+    "text": "Course Technology\n\nMicrosoft Teams (install now)\nR and Positron (install by tomorrow)\nGit and Github (later)\nGoogle AI Pro Subscription (free for students for a year)\n\nNotebookLM\nCustom Recitation Gem\nMore AI later in the semester"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#getting-to-know-you",
+    "href": "slides/00-welcome/00-welcome.html#getting-to-know-you",
+    "title": "Welcome to CSCI 2025",
+    "section": "Getting to Know You",
+    "text": "Getting to Know You\nIn Teams, send me a Chat with answers to the following questions:\n\nWhat do you prefer to be called?\nWhy are you taking this course?\nWhat is your experience with R or programming in general?\nHow are you with group work?\nIs there anything you want me to know about you (e.g. accommodations, sports, preferred pronouns, etc.)?\nWe’ll be using a lot of data sets in this class. Are there any topics you find interesting that you’d like to look at data on?\nGive me some songs for the class playlist?"
+  },
+  {
+    "objectID": "slides/00-welcome/00-welcome.html#for-tomorrow",
+    "href": "slides/00-welcome/00-welcome.html#for-tomorrow",
+    "title": "Welcome to CSCI 2025",
+    "section": "For Tomorrow",
+    "text": "For Tomorrow\n\nInstall R and Positron\nSign-up for a Google AI Pro Account\nCreate a Github Account and activate your Education benefits\nRead the syllabus\nComplete Lectures 1-4 readings and videos"
+  },
+  {
+    "objectID": "slides/28-shiny-tidy-eval/28-shiny-tidy-eval.html#indirection",
+    "href": "slides/28-shiny-tidy-eval/28-shiny-tidy-eval.html#indirection",
     "title": "Tidy Evaluation",
     "section": "Indirection",
     "text": "Indirection\n\nInteractive R: We type diamonds |&gt; filter(carat &gt; 1).\n\ncarat is a data-variable (lives in the dataframe).\n\nShiny R: We have input$var which contains the string \"carat\".\n\ninput$var is an env-variable (lives in the environment).\n\nIssue: filter(diamonds, input$var &gt; 1) tries to compare the string \"carat\" to 1, which fails or does weird things."
   },
   {
-    "objectID": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#the-.data-pronoun",
-    "href": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#the-.data-pronoun",
+    "objectID": "slides/28-shiny-tidy-eval/28-shiny-tidy-eval.html#the-.data-pronoun",
+    "href": "slides/28-shiny-tidy-eval/28-shiny-tidy-eval.html#the-.data-pronoun",
     "title": "Tidy Evaluation",
     "section": "The .data Pronoun",
     "text": "The .data Pronoun\n\nSolution: Tell dplyr or ggplot2 exactly where to look.\n.data[[ string ]]: Look up the column named string in the data frame.\n.env$var: Look up the variable var in the environment (safer than implicit lookup)."
   },
   {
-    "objectID": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#example-filtering",
-    "href": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#example-filtering",
+    "objectID": "slides/28-shiny-tidy-eval/28-shiny-tidy-eval.html#example-filtering",
+    "href": "slides/28-shiny-tidy-eval/28-shiny-tidy-eval.html#example-filtering",
     "title": "Tidy Evaluation",
     "section": "Example: Filtering",
     "text": "Example: Filtering\n\nserver &lt;- function(input, output, session) {\n  \n  filtered_data &lt;- reactive({\n    # OLD/WRONG: filter(df, input$var &gt; input$min)\n    \n    # CORRECT:\n    df |&gt; filter(.data[[input$var]] &gt; .env$input$min)\n  })\n  \n}"
   },
   {
-    "objectID": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#example-plotting",
-    "href": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#example-plotting",
+    "objectID": "slides/28-shiny-tidy-eval/28-shiny-tidy-eval.html#example-plotting",
+    "href": "slides/28-shiny-tidy-eval/28-shiny-tidy-eval.html#example-plotting",
     "title": "Tidy Evaluation",
     "section": "Example: Plotting",
     "text": "Example: Plotting\n\naes() also uses data masking.\nUse .data[[ ]] to map inputs to aesthetics.\n\n\noutput$plot &lt;- renderPlot({\n  ggplot(df, aes(.data[[input$x]], .data[[input$y]])) +\n    geom_point()\n})"
   },
   {
-    "objectID": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#tidy-selectors",
-    "href": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#tidy-selectors",
+    "objectID": "slides/28-shiny-tidy-eval/28-shiny-tidy-eval.html#tidy-selectors",
+    "href": "slides/28-shiny-tidy-eval/28-shiny-tidy-eval.html#tidy-selectors",
     "title": "Tidy Evaluation",
     "section": "Tidy Selectors",
     "text": "Tidy Selectors\n\nFunctions like select(), pivot_longer(), across() use tidy selection.\nInteractive: select(df, carat, price).\nProgrammatic: select(df, all_of(input$cols)).\n\nall_of(): Errors if any column is missing (strict).\nany_of(): Ignores missing columns (lenient).\n\n\n\n# If input$cols is c(\"carat\", \"price\")\nselected_data &lt;- reactive({\n  df |&gt; select(all_of(input$cols))\n})"
   },
   {
-    "objectID": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#rules-of-thumb",
-    "href": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#rules-of-thumb",
+    "objectID": "slides/28-shiny-tidy-eval/28-shiny-tidy-eval.html#rules-of-thumb",
+    "href": "slides/28-shiny-tidy-eval/28-shiny-tidy-eval.html#rules-of-thumb",
     "title": "Tidy Evaluation",
     "section": "Rules of Thumb",
     "text": "Rules of Thumb\n\nData Masking (filter, mutate, aes, arrange):\n\nUse .data[[input$name]] to refer to a column by string.\n\nTidy Selection (select, pivot_, across):\n\nUse all_of(input$names) to refer to columns by a vector of strings."
   },
   {
-    "objectID": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#do-next",
-    "href": "slides/30-shiny-tidy-eval/30-shiny-tidy-eval.html#do-next",
+    "objectID": "slides/28-shiny-tidy-eval/28-shiny-tidy-eval.html#do-next",
+    "href": "slides/28-shiny-tidy-eval/28-shiny-tidy-eval.html#do-next",
     "title": "Tidy Evaluation",
     "section": "Do Next",
     "text": "Do Next\n\nRead Chapter 12: Tidy Evaluation from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nThat’s it for tonight!"
-  },
-  {
-    "objectID": "slides/25-shiny-graphics/25-shiny-graphics.html#the-concept",
-    "href": "slides/25-shiny-graphics/25-shiny-graphics.html#the-concept",
-    "title": "Interactive Graphics",
-    "section": "The Concept",
-    "text": "The Concept\n\nStatic Plots: Display data (output).\nInteractive Plots: Display data AND accept user input (output + input).\nMechanism:\n\nplotOutput() can accept pointer events (clicks, double clicks, hovers, brushes).\nSends these events to the server as input$ID."
-  },
-  {
-    "objectID": "slides/25-shiny-graphics/25-shiny-graphics.html#clicking",
-    "href": "slides/25-shiny-graphics/25-shiny-graphics.html#clicking",
-    "title": "Interactive Graphics",
-    "section": "Clicking",
-    "text": "Clicking\n\nUI: Add click = \"ID\" to plotOutput().\nServer: Access input$ID (contains x, y coordinates).\nHelper: nearPoints() returns rows from the dataframe near the click.\n\n\nui &lt;- fluidPage(\n  plotOutput(\"plot\", click = \"plot_click\"),\n  tableOutput(\"data\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$plot &lt;- renderPlot({\n    ggplot(mtcars, aes(wt, mpg)) + geom_point()\n  }, res = 96)\n  \n  output$data &lt;- renderTable({\n    nearPoints(mtcars, input$plot_click)\n  })\n}"
-  },
-  {
-    "objectID": "slides/25-shiny-graphics/25-shiny-graphics.html#brushing",
-    "href": "slides/25-shiny-graphics/25-shiny-graphics.html#brushing",
-    "title": "Interactive Graphics",
-    "section": "Brushing",
-    "text": "Brushing\n\nBrush: A rectangular selection tool.\nUI: Add brush = \"ID\" to plotOutput().\nHelper: brushedPoints() returns rows inside the brush.\n\n\nui &lt;- fluidPage(\n  plotOutput(\"plot\", brush = \"plot_brush\"),\n  tableOutput(\"data\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$data &lt;- renderTable({\n    brushedPoints(mtcars, input$plot_brush)\n  })\n}"
-  },
-  {
-    "objectID": "slides/25-shiny-graphics/25-shiny-graphics.html#plot-options",
-    "href": "slides/25-shiny-graphics/25-shiny-graphics.html#plot-options",
-    "title": "Interactive Graphics",
-    "section": "Plot Options",
-    "text": "Plot Options\n\nclick: Single click.\ndblclick: Double click.\nhover: Mouse hover (triggers frequently).\nbrush: Drag-to-select rectangle.\n\nCan constrain to x or y axis: brush = brushOpts(direction = \"x\")."
-  },
-  {
-    "objectID": "slides/25-shiny-graphics/25-shiny-graphics.html#linked-plots",
-    "href": "slides/25-shiny-graphics/25-shiny-graphics.html#linked-plots",
-    "title": "Interactive Graphics",
-    "section": "Linked Plots",
-    "text": "Linked Plots\n\nGoal: interacting with one plot changes another.\nPattern:\n\nCreate a plot with a brush.\nUse brushedPoints() to filter the data.\nCreate a second plot (or table) based on the filtered data.\n\nResult: Highlighting or zooming into data subsets."
-  },
-  {
-    "objectID": "slides/25-shiny-graphics/25-shiny-graphics.html#mechanics",
-    "href": "slides/25-shiny-graphics/25-shiny-graphics.html#mechanics",
-    "title": "Interactive Graphics",
-    "section": "Mechanics",
-    "text": "Mechanics\n\nUI: plotOutput(..., click = \"click_id\", brush = \"brush_id\").\nServer Helpers:\n\nnearPoints(df, input$click_id): Find single point.\nbrushedPoints(df, input$brush_id): Find multiple points.\n\nPower: Enables “drill-down” data exploration."
-  },
-  {
-    "objectID": "slides/25-shiny-graphics/25-shiny-graphics.html#do-next",
-    "href": "slides/25-shiny-graphics/25-shiny-graphics.html#do-next",
-    "title": "Interactive Graphics",
-    "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 7: Graphics from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 25!"
-  },
-  {
-    "objectID": "slides/26-shiny-feedback/26-shiny-feedback.html#cancelling-execution",
-    "href": "slides/26-shiny-feedback/26-shiny-feedback.html#cancelling-execution",
-    "title": "User Feedback",
-    "section": "Cancelling Execution",
-    "text": "Cancelling Execution\n\nProblem: Missing inputs often cause ugly R errors.\nSolution 1: req() (Require).\n\nreq(input$id) stops execution silently if input$id is missing, NULL, FALSE, or empty.\nDownstream outputs remain blank (or keep old value) instead of crashing.\n\n\n\noutput$plot &lt;- renderPlot({\n  req(input$x) # Stop here if input$x is missing\n  plot(input$x)\n})"
-  },
-  {
-    "objectID": "slides/26-shiny-feedback/26-shiny-feedback.html#explicit-validation",
-    "href": "slides/26-shiny-feedback/26-shiny-feedback.html#explicit-validation",
-    "title": "User Feedback",
-    "section": "Explicit Validation",
-    "text": "Explicit Validation\n\nSolution 2: validate() and need().\n\nChecks a condition and displays a specific error message if unsatisfied.\n\n\n\noutput$table &lt;- renderTable({\n  validate(\n    need(input$nrows &gt; 0, \"Number of rows must be positive\")\n  )\n  head(mtcars, input$nrows)\n})"
-  },
-  {
-    "objectID": "slides/26-shiny-feedback/26-shiny-feedback.html#sending-messages",
-    "href": "slides/26-shiny-feedback/26-shiny-feedback.html#sending-messages",
-    "title": "User Feedback",
-    "section": "Sending Messages",
-    "text": "Sending Messages\n\nshowNotification(): Displays a temporary message in the corner.\nUsage:\n\nConfirmation (“Saved successfully”).\nWarnings.\nErrors.\n\n\n\nobserveEvent(input$save, {\n  saveData(data())\n  showNotification(\"Data saved successfully!\", type = \"message\")\n})"
-  },
-  {
-    "objectID": "slides/26-shiny-feedback/26-shiny-feedback.html#long-running-tasks",
-    "href": "slides/26-shiny-feedback/26-shiny-feedback.html#long-running-tasks",
-    "title": "User Feedback",
-    "section": "Long-Running Tasks",
-    "text": "Long-Running Tasks\n\nFeedback is critical for slow operations.\nwithProgress(): Wraps a code block.\nincProgress(): Increments the bar.\n\n\noutput$plot &lt;- renderPlot({\n  withProgress(message = 'Making plot', value = 0, {\n    \n    incProgress(0.1, detail = \"Part 1\")\n    Sys.sleep(0.5) # Simulate work\n    \n    incProgress(0.5, detail = \"Part 2\")\n    Sys.sleep(0.5)\n    \n    plot(rnorm(100))\n  })\n})"
-  },
-  {
-    "objectID": "slides/26-shiny-feedback/26-shiny-feedback.html#spinners",
-    "href": "slides/26-shiny-feedback/26-shiny-feedback.html#spinners",
-    "title": "User Feedback",
-    "section": "Spinners",
-    "text": "Spinners\n\nThe shinycssloaders package is a simpler way to add spinners.\nSetup: Wrap an output with withSpinner() in the UI.\nNo server-side changes are needed.\n\n\n# In UI\nlibrary(shinycssloaders)\nwithSpinner(plotOutput(\"plot\"))\n\n# In server\noutput$plot &lt;- renderPlot({\n  Sys.sleep(2) # Simulate work\n  plot(rnorm(100))\n})"
-  },
-  {
-    "objectID": "slides/26-shiny-feedback/26-shiny-feedback.html#modals",
-    "href": "slides/26-shiny-feedback/26-shiny-feedback.html#modals",
-    "title": "User Feedback",
-    "section": "Modals",
-    "text": "Modals\n\nUse modalDialog() for actions that require explicit confirmation (e.g., deleting data).\nTrigger with showModal().\n\n\nobserveEvent(input$delete, {\n  showModal(modalDialog(\n    title = \"Delete Data?\",\n    \"Are you sure you want to delete this?\",\n    footer = tagList(\n      modalButton(\"Cancel\"),\n      actionButton(\"confirm_delete\", \"Delete\", class = \"btn-danger\")\n    )\n  ))\n})"
-  },
-  {
-    "objectID": "slides/26-shiny-feedback/26-shiny-feedback.html#feedback-loops",
-    "href": "slides/26-shiny-feedback/26-shiny-feedback.html#feedback-loops",
-    "title": "User Feedback",
-    "section": "Feedback Loops",
-    "text": "Feedback Loops\n\nSilent Rejection: req() (Best for missing inputs).\nExplicit Error: validate(need()) (Best for wrong inputs).\nStatus Update: showNotification() (Best for success/info).\nWaiting: withProgress() (Best for slow tasks).\nConfirmation: modalDialog() (Best for dangerous actions)."
-  },
-  {
-    "objectID": "slides/26-shiny-feedback/26-shiny-feedback.html#do-next",
-    "href": "slides/26-shiny-feedback/26-shiny-feedback.html#do-next",
-    "title": "User Feedback",
-    "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 8: User feedback from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 27!"
-  },
-  {
-    "objectID": "slides/02-first-viz/02-first-viz.html#data-visualization",
-    "href": "slides/02-first-viz/02-first-viz.html#data-visualization",
-    "title": "Visualization Basics",
-    "section": "Data visualization",
-    "text": "Data visualization\n\n“The simple graph has brought more information to the data analyst’s mind than any other device.” — John Tukey\n\n\nData visualization is the creation and study of the visual representation of data\nMany tools for visualizing data – R is one of them\nMany approaches/systems within R for making data visualizations – ggplot2 is one of them, and that’s what we’re going to use"
-  },
-  {
-    "objectID": "slides/02-first-viz/02-first-viz.html#ggplot2-tidyverse",
-    "href": "slides/02-first-viz/02-first-viz.html#ggplot2-tidyverse",
-    "title": "Visualization Basics",
-    "section": "ggplot2 ∈ tidyverse",
-    "text": "ggplot2 ∈ tidyverse\n\n\n\n\n\n\n\n\n\nggplot2 is tidyverse’s data visualization package\ngg in “ggplot2” stands for Grammar of Graphics\nInspired by the book Grammar of Graphics by Leland Wilkinson"
-  },
-  {
-    "objectID": "slides/02-first-viz/02-first-viz.html#grammar-of-graphics-1",
-    "href": "slides/02-first-viz/02-first-viz.html#grammar-of-graphics-1",
-    "title": "Visualization Basics",
-    "section": "Grammar of Graphics",
-    "text": "Grammar of Graphics\n\n\nA grammar of graphics is a tool that enables us to concisely describe the components of a graphic\n\n\n\n\n\n\n\n\n\nSource: BloggoType"
-  },
-  {
-    "objectID": "slides/02-first-viz/02-first-viz.html#hello-ggplot2",
-    "href": "slides/02-first-viz/02-first-viz.html#hello-ggplot2",
-    "title": "Visualization Basics",
-    "section": "Hello ggplot2!",
-    "text": "Hello ggplot2!\n\nggplot() is the main function in ggplot2\nPlots are constructed in layers\nStructure of the code for plots can be summarized as\n\n\nggplot(data = [dataset], \n       mapping = aes(x = [x-variable], y = [y-variable])) +\n   geom_xxx() +\n   other options\n\n\nThe ggplot2 package comes with the tidyverse\n\n\nlibrary(tidyverse)\n\n\nFor help with ggplot2, see ggplot2.tidyverse.org"
-  },
-  {
-    "objectID": "slides/02-first-viz/02-first-viz.html#data-palmer-penguins",
-    "href": "slides/02-first-viz/02-first-viz.html#data-palmer-penguins",
-    "title": "Visualization Basics",
-    "section": "Data: Palmer Penguins",
-    "text": "Data: Palmer Penguins\n\n\nMeasurements for penguin species, island in Palmer Archipelago, size (flipper length, body mass, bill dimensions), and sex.\n\nlibrary(palmerpenguins)\n\n\nAttaching package: 'palmerpenguins'\n\n\nThe following objects are masked from 'package:datasets':\n\n    penguins, penguins_raw\n\nglimpse(penguins)\n\nRows: 344\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
-  },
-  {
-    "objectID": "slides/02-first-viz/02-first-viz.html#categorical-vs.-numerical-a-fuzzy-line",
-    "href": "slides/02-first-viz/02-first-viz.html#categorical-vs.-numerical-a-fuzzy-line",
-    "title": "Visualization Basics",
-    "section": "Categorical vs. Numerical: A fuzzy line",
-    "text": "Categorical vs. Numerical: A fuzzy line\n\nMany times: categorical vs. numerical is NOT clear-cut\n\nNumber \\(\\neq\\) Numerical:\n\ne.g., ZIP codes, phone numbers, student ID numbers\n\nOrdinal variables are commonly treated as numerical when they aren’t\n\ne.g., Likert scale responses (Strongly Disagree to Strongly Agree)\n\n\n\nType of variable will depend on type of analysis and visualization\nSometimes: better to treat numerical as categorical (e.g. if you have a very small number of distinct values)"
-  },
-  {
-    "objectID": "slides/02-first-viz/02-first-viz.html#visualizing-univariate-data",
-    "href": "slides/02-first-viz/02-first-viz.html#visualizing-univariate-data",
-    "title": "Visualization Basics",
-    "section": "Visualizing Univariate Data",
-    "text": "Visualizing Univariate Data\n\nDifferent types of plots for different types of variables\n\nCategorical variables: bar charts, pie charts (ew!)\nNumerical variables: histograms, boxplots, density plots (many options)\n\nLet’s visualize univariate data from the penguins data frame\n\nspecies\nbill_length_mm\nyear"
-  },
-  {
-    "objectID": "slides/02-first-viz/02-first-viz.html#bivariate-plots-visualizing-relationships",
-    "href": "slides/02-first-viz/02-first-viz.html#bivariate-plots-visualizing-relationships",
-    "title": "Visualization Basics",
-    "section": "Bivariate Plots: Visualizing Relationships",
-    "text": "Bivariate Plots: Visualizing Relationships\n\nVisualizing relationships between two variables\n\nCategorical vs. Numerical: boxplots\nNumerical vs. Numerical: scatterplots\nCategorical vs. Categorical: bar charts"
-  },
-  {
-    "objectID": "slides/02-first-viz/02-first-viz.html#more-than-two-variables",
-    "href": "slides/02-first-viz/02-first-viz.html#more-than-two-variables",
-    "title": "Visualization Basics",
-    "section": "More than two variables",
-    "text": "More than two variables\n\nVisualizing relationships among more than two variables\n\nUse aesthetics like color, shape, and size to represent additional variables\nFaceting to create multiple plots based on the values of one or more categorical variables"
-  },
-  {
-    "objectID": "slides/02-first-viz/02-first-viz.html#goal-lets-create-this-plot",
-    "href": "slides/02-first-viz/02-first-viz.html#goal-lets-create-this-plot",
-    "title": "Visualization Basics",
-    "section": "Goal: Let’s create this plot!",
-    "text": "Goal: Let’s create this plot!\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`)."
-  },
-  {
-    "objectID": "slides/02-first-viz/02-first-viz.html#an-improved-goal",
-    "href": "slides/02-first-viz/02-first-viz.html#an-improved-goal",
-    "title": "Visualization Basics",
-    "section": "An improved goal",
-    "text": "An improved goal\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`)."
-  },
-  {
-    "objectID": "slides/02-first-viz/02-first-viz.html#narrative",
-    "href": "slides/02-first-viz/02-first-viz.html#narrative",
-    "title": "Visualization Basics",
-    "section": "Narrative",
-    "text": "Narrative\n\nStart with the penguins data frame, map bill depth to the x-axis and map bill length to the y-axis.\nRepresent each observation with a point and map species to the color and shape of each point.\nTitle the plot “Bill depth and length”, add the subtitle “Dimensions for Adelie, Chinstrap, and Gentoo Penguins”, label the x and y axes as “Bill depth (mm)” and “Bill length (mm)”, respectively, label the legend “Species”, and add a caption for the data source.\nFinally, use a discrete color scale that is designed to be perceived by viewers with common forms of color blindness."
-  },
-  {
-    "objectID": "slides/02-first-viz/02-first-viz.html#do-next",
-    "href": "slides/02-first-viz/02-first-viz.html#do-next",
-    "title": "Visualization Basics",
-    "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 1: Data Visualization from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 1” or work through some of the exercises in the text.\n\nNote that you can say “This is too hard. Give me some easier problems.”\n\nMove on to Lecture 03."
   },
   {
     "objectID": "slides/20-shiny-reactivity/20-shiny-reactivity.html#overview",
@@ -3579,375 +3754,200 @@
     "text": "Do Next\n\nRead Chapter 11: Communication from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 11” or work through some of the exercises in the text.\nMove on the Lecture 10!"
   },
   {
-    "objectID": "slides/00-welcome/00-welcome.html#instructor",
-    "href": "slides/00-welcome/00-welcome.html#instructor",
-    "title": "Welcome to CSCI 2025",
-    "section": "Instructor",
-    "text": "Instructor\nDr. Eric Friedlander\nBoone 126B\nefriedlander@collegeofidaho.edu"
+    "objectID": "slides/02-first-viz/02-first-viz.html#data-visualization",
+    "href": "slides/02-first-viz/02-first-viz.html#data-visualization",
+    "title": "Visualization Basics",
+    "section": "Data visualization",
+    "text": "Data visualization\n\n“The simple graph has brought more information to the data analyst’s mind than any other device.” — John Tukey\n\n\nData visualization is the creation and study of the visual representation of data\nMany tools for visualizing data – R is one of them\nMany approaches/systems within R for making data visualizations – ggplot2 is one of them, and that’s what we’re going to use"
   },
   {
-    "objectID": "slides/00-welcome/00-welcome.html#timetable",
-    "href": "slides/00-welcome/00-welcome.html#timetable",
-    "title": "Welcome to CSCI 2025",
-    "section": "Timetable",
-    "text": "Timetable\n\nLectures\n\nM-TH 1-3pm - CML 105\n\nOffice Hours\n\nM-TH 10-11am - Boone 126B\nOr by appointment\n\nTutor Hours\n\nT 3-5pm - Jewett Tutoring Center (I think)"
+    "objectID": "slides/02-first-viz/02-first-viz.html#ggplot2-tidyverse",
+    "href": "slides/02-first-viz/02-first-viz.html#ggplot2-tidyverse",
+    "title": "Visualization Basics",
+    "section": "ggplot2 ∈ tidyverse",
+    "text": "ggplot2 ∈ tidyverse\n\n\n\n\n\n\n\n\n\nggplot2 is tidyverse’s data visualization package\ngg in “ggplot2” stands for Grammar of Graphics\nInspired by the book Grammar of Graphics by Leland Wilkinson"
   },
   {
-    "objectID": "slides/00-welcome/00-welcome.html#tutor-rabin-kalikote",
-    "href": "slides/00-welcome/00-welcome.html#tutor-rabin-kalikote",
-    "title": "Welcome to CSCI 2025",
-    "section": "Tutor: Rabin Kalikote",
-    "text": "Tutor: Rabin Kalikote"
+    "objectID": "slides/02-first-viz/02-first-viz.html#grammar-of-graphics-1",
+    "href": "slides/02-first-viz/02-first-viz.html#grammar-of-graphics-1",
+    "title": "Visualization Basics",
+    "section": "Grammar of Graphics",
+    "text": "Grammar of Graphics\n\n\nA grammar of graphics is a tool that enables us to concisely describe the components of a graphic\n\n\n\n\n\n\n\n\n\nSource: BloggoType"
   },
   {
-    "objectID": "slides/00-welcome/00-welcome.html#section",
-    "href": "slides/00-welcome/00-welcome.html#section",
-    "title": "Welcome to CSCI 2025",
-    "section": "",
-    "text": "Source: R for Data Science with additions from The Art of Statistics: How to Learn from Data."
+    "objectID": "slides/02-first-viz/02-first-viz.html#hello-ggplot2",
+    "href": "slides/02-first-viz/02-first-viz.html#hello-ggplot2",
+    "title": "Visualization Basics",
+    "section": "Hello ggplot2!",
+    "text": "Hello ggplot2!\n\nggplot() is the main function in ggplot2\nPlots are constructed in layers\nStructure of the code for plots can be summarized as\n\n\nggplot(data = [dataset], \n       mapping = aes(x = [x-variable], y = [y-variable])) +\n   geom_xxx() +\n   other options\n\n\nThe ggplot2 package comes with the tidyverse\n\n\nlibrary(tidyverse)\n\n\nFor help with ggplot2, see ggplot2.tidyverse.org"
   },
   {
-    "objectID": "slides/00-welcome/00-welcome.html#section-1",
-    "href": "slides/00-welcome/00-welcome.html#section-1",
-    "title": "Welcome to CSCI 2025",
-    "section": "",
-    "text": "Source: R for Data Science"
+    "objectID": "slides/02-first-viz/02-first-viz.html#data-palmer-penguins",
+    "href": "slides/02-first-viz/02-first-viz.html#data-palmer-penguins",
+    "title": "Visualization Basics",
+    "section": "Data: Palmer Penguins",
+    "text": "Data: Palmer Penguins\n\n\nMeasurements for penguin species, island in Palmer Archipelago, size (flipper length, body mass, bill dimensions), and sex.\n\nlibrary(palmerpenguins)\n\n\nAttaching package: 'palmerpenguins'\n\n\nThe following objects are masked from 'package:datasets':\n\n    penguins, penguins_raw\n\nglimpse(penguins)\n\nRows: 344\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
   },
   {
-    "objectID": "slides/00-welcome/00-welcome.html#data-analysis-lifecycle",
-    "href": "slides/00-welcome/00-welcome.html#data-analysis-lifecycle",
-    "title": "Welcome to CSCI 2025",
-    "section": "Data Analysis Lifecycle",
-    "text": "Data Analysis Lifecycle\n\nImporting data: how do we get data into R\nWrangling data: how do we clean and prepare data\n\nTidying data: how do we structure data for analysis\nTransforming data: how do we manipulate and summarize data\n\nVisualization: how do we explore data and communicate results\nModeling: how do we quantify relationships in data (not a focus of this course)\nCommunication: how do we share results with others"
+    "objectID": "slides/02-first-viz/02-first-viz.html#categorical-vs.-numerical-a-fuzzy-line",
+    "href": "slides/02-first-viz/02-first-viz.html#categorical-vs.-numerical-a-fuzzy-line",
+    "title": "Visualization Basics",
+    "section": "Categorical vs. Numerical: A fuzzy line",
+    "text": "Categorical vs. Numerical: A fuzzy line\n\nMany times: categorical vs. numerical is NOT clear-cut\n\nNumber \\(\\neq\\) Numerical:\n\ne.g., ZIP codes, phone numbers, student ID numbers\n\nOrdinal variables are commonly treated as numerical when they aren’t\n\ne.g., Likert scale responses (Strongly Disagree to Strongly Agree)\n\n\n\nType of variable will depend on type of analysis and visualization\nSometimes: better to treat numerical as categorical (e.g. if you have a very small number of distinct values)"
   },
   {
-    "objectID": "slides/00-welcome/00-welcome.html#course-website",
-    "href": "slides/00-welcome/00-welcome.html#course-website",
-    "title": "Welcome to CSCI 2025",
-    "section": "Course website",
-    "text": "Course website\n\ncsci2025wi25.netlify.app"
+    "objectID": "slides/02-first-viz/02-first-viz.html#visualizing-univariate-data",
+    "href": "slides/02-first-viz/02-first-viz.html#visualizing-univariate-data",
+    "title": "Visualization Basics",
+    "section": "Visualizing Univariate Data",
+    "text": "Visualizing Univariate Data\n\nDifferent types of plots for different types of variables\n\nCategorical variables: bar charts, pie charts (ew!)\nNumerical variables: histograms, boxplots, density plots (many options)\n\nLet’s visualize univariate data from the penguins data frame\n\nspecies\nbill_length_mm\nyear"
   },
   {
-    "objectID": "slides/00-welcome/00-welcome.html#class",
-    "href": "slides/00-welcome/00-welcome.html#class",
-    "title": "Welcome to CSCI 2025",
-    "section": "Class",
-    "text": "Class\n\nIn person\nAttendance is required\nA little bit of everything:\n\nMostly active learning\n\nRecordings will be posted before class – you are expected to watch ahead of time"
+    "objectID": "slides/02-first-viz/02-first-viz.html#bivariate-plots-visualizing-relationships",
+    "href": "slides/02-first-viz/02-first-viz.html#bivariate-plots-visualizing-relationships",
+    "title": "Visualization Basics",
+    "section": "Bivariate Plots: Visualizing Relationships",
+    "text": "Bivariate Plots: Visualizing Relationships\n\nVisualizing relationships between two variables\n\nCategorical vs. Numerical: boxplots\nNumerical vs. Numerical: scatterplots\nCategorical vs. Categorical: bar charts"
   },
   {
-    "objectID": "slides/00-welcome/00-welcome.html#overview-of-the-class",
-    "href": "slides/00-welcome/00-welcome.html#overview-of-the-class",
-    "title": "Welcome to CSCI 2025",
-    "section": "Overview of the class",
-    "text": "Overview of the class\n\nWeeks 1 + 2: R, Tidyverse, building visualizations\nWeek 3: Dashboards and shiny (tentative)\nWeek 4: Cool s***: (AI, dimensionality reduction, etc…)"
+    "objectID": "slides/02-first-viz/02-first-viz.html#more-than-two-variables",
+    "href": "slides/02-first-viz/02-first-viz.html#more-than-two-variables",
+    "title": "Visualization Basics",
+    "section": "More than two variables",
+    "text": "More than two variables\n\nVisualizing relationships among more than two variables\n\nUse aesthetics like color, shape, and size to represent additional variables\nFaceting to create multiple plots based on the values of one or more categorical variables"
   },
   {
-    "objectID": "slides/00-welcome/00-welcome.html#announcements",
-    "href": "slides/00-welcome/00-welcome.html#announcements",
-    "title": "Welcome to CSCI 2025",
-    "section": "Announcements",
-    "text": "Announcements\n\nPosted on Teams and sent via email, be sure to check both regularly\nI’ll assume that you’ve read an announcement by the next “business” day"
+    "objectID": "slides/02-first-viz/02-first-viz.html#goal-lets-create-this-plot",
+    "href": "slides/02-first-viz/02-first-viz.html#goal-lets-create-this-plot",
+    "title": "Visualization Basics",
+    "section": "Goal: Let’s create this plot!",
+    "text": "Goal: Let’s create this plot!\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`)."
   },
   {
-    "objectID": "slides/00-welcome/00-welcome.html#attendance",
-    "href": "slides/00-welcome/00-welcome.html#attendance",
-    "title": "Welcome to CSCI 2025",
-    "section": "Attendance",
-    "text": "Attendance\n\nRequired throughout the semester\nIf you miss more than 3 classes without a university-excused absence, you will fail this class\nIf you are more than 15 minutes late to class, this will count as an absence"
+    "objectID": "slides/02-first-viz/02-first-viz.html#an-improved-goal",
+    "href": "slides/02-first-viz/02-first-viz.html#an-improved-goal",
+    "title": "Visualization Basics",
+    "section": "An improved goal",
+    "text": "An improved goal\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`)."
   },
   {
-    "objectID": "slides/00-welcome/00-welcome.html#lectures-readings",
-    "href": "slides/00-welcome/00-welcome.html#lectures-readings",
-    "title": "Welcome to CSCI 2025",
-    "section": "Lectures + Readings",
-    "text": "Lectures + Readings\n\nSeveral readings will be assigned before each class period, most with videos\nYou are expected to complete readings before class"
+    "objectID": "slides/02-first-viz/02-first-viz.html#narrative",
+    "href": "slides/02-first-viz/02-first-viz.html#narrative",
+    "title": "Visualization Basics",
+    "section": "Narrative",
+    "text": "Narrative\n\nStart with the penguins data frame, map bill depth to the x-axis and map bill length to the y-axis.\nRepresent each observation with a point and map species to the color and shape of each point.\nTitle the plot “Bill depth and length”, add the subtitle “Dimensions for Adelie, Chinstrap, and Gentoo Penguins”, label the x and y axes as “Bill depth (mm)” and “Bill length (mm)”, respectively, label the legend “Species”, and add a caption for the data source.\nFinally, use a discrete color scale that is designed to be perceived by viewers with common forms of color blindness."
   },
   {
-    "objectID": "slides/00-welcome/00-welcome.html#pop-quizzes",
-    "href": "slides/00-welcome/00-welcome.html#pop-quizzes",
-    "title": "Welcome to CSCI 2025",
-    "section": "(Pop) Quizzes",
-    "text": "(Pop) Quizzes\n\nShort quizzes will be held periodically throughout the semester to assess your understanding of the course material\nThey will take place at the beginning of class, will not be announced in advance\nThe purpose of these quizzes is to encourage you to keep up with the course material\nIf you are late to class or have an unexcused absence on a quiz day, you will not be able to make up the quiz unless you notify me beforehand"
-  },
-  {
-    "objectID": "slides/00-welcome/00-welcome.html#projects",
-    "href": "slides/00-welcome/00-welcome.html#projects",
-    "title": "Welcome to CSCI 2025",
-    "section": "Projects",
-    "text": "Projects\n\nTwo projects:\n\nTeam Project: Building a Data Visualization Dashboard for Mark Heidrick\nIndividual Project: Your choice!"
-  },
-  {
-    "objectID": "slides/00-welcome/00-welcome.html#teamwork",
-    "href": "slides/00-welcome/00-welcome.html#teamwork",
-    "title": "Welcome to CSCI 2025",
-    "section": "Teamwork",
-    "text": "Teamwork\n\nYou will frequently work in teams of 2-4 students in class\nI will assign teams and roles\nI expect that:\n\nEveryone contributes\nEveryone learns\nEveryone is respectful"
-  },
-  {
-    "objectID": "slides/00-welcome/00-welcome.html#ungrading",
-    "href": "slides/00-welcome/00-welcome.html#ungrading",
-    "title": "Welcome to CSCI 2025",
-    "section": "(Un)Grading",
-    "text": "(Un)Grading\n\nYou will (mostly) be in charge of determining your own grade\nAfter each class period, you will reflect on your learning and participation and assign yourself a grade\nYou will also self assess your projects\nAt the end of the semester, your final grade will be 50% based on your daily reflections, 25% based on your team project, and 25% based on your individual project\n\n\n\nHOWEVER:\n\n\n\n\nYou can fail\nIf I feel that you aren’t being honest with your self assessments, I will adjust your grade accordingly"
-  },
-  {
-    "objectID": "slides/00-welcome/00-welcome.html#ways-to-fail-this-class-or-get-a-d",
-    "href": "slides/00-welcome/00-welcome.html#ways-to-fail-this-class-or-get-a-d",
-    "title": "Welcome to CSCI 2025",
-    "section": "Ways to fail this class (or get a D)",
-    "text": "Ways to fail this class (or get a D)\n\nReceiving less than a 50% (F) or 60% (D) average on the quizzes.\nFailing to achieve a minimum level of quality on either of your projects.\nMissing more than 3 class periods without a valid excuse.\n\nArriving more than 15-minutes late to class will be considered an absence.\n\nFailing to turn in more than 3 self-evaluations."
-  },
-  {
-    "objectID": "slides/00-welcome/00-welcome.html#self-evaluations",
-    "href": "slides/00-welcome/00-welcome.html#self-evaluations",
-    "title": "Welcome to CSCI 2025",
-    "section": "Self-Evaluations",
-    "text": "Self-Evaluations\nStarting tomorrow, at the end of each class period, you will answer the following questions and assign yourself a grade for your work since the last class period:\n\nHow well do I understand the material covered in lectures and readings for today’s class?\nDid I put in a good faith effort to prepare for and participate in today’s class?\nHow would I rate my level of engagement during today’s class?\nHow well did I perform on the in-class activities?\nHow did I learn and grow from the readings, lectures, and in-class activities today?\nWhat overall grade would I give myself for the work I completed since the end of the last class period?"
-  },
-  {
-    "objectID": "slides/00-welcome/00-welcome.html#late-work-policy",
-    "href": "slides/00-welcome/00-welcome.html#late-work-policy",
-    "title": "Welcome to CSCI 2025",
-    "section": "Late work policy",
-    "text": "Late work policy\n\nQuizzes: not accepted late without university-excused absence\nProject presentations: Late submissions not accepted\nProject write-ups: Late submissions not accepted"
-  },
-  {
-    "objectID": "slides/00-welcome/00-welcome.html#academic-integrity-ai-collaboration",
-    "href": "slides/00-welcome/00-welcome.html#academic-integrity-ai-collaboration",
-    "title": "Welcome to CSCI 2025",
-    "section": "Academic integrity, AI, Collaboration",
-    "text": "Academic integrity, AI, Collaboration\n\nI’ve structured this course so that you will be presenting your work in front of the class frequently\nThe purpose of this course is to learn\nI will frequently be asking you to explain your code and your reasoning in front of the class\nFeel free to use any resources you want… just make sure you can explain things to the class"
-  },
-  {
-    "objectID": "slides/00-welcome/00-welcome.html#office-hours",
-    "href": "slides/00-welcome/00-welcome.html#office-hours",
-    "title": "Welcome to CSCI 2025",
-    "section": "Office hours",
-    "text": "Office hours\n\nTutor: Rabin Kalikote\nT: 3-5PM\nLots of resources on the website"
-  },
-  {
-    "objectID": "slides/00-welcome/00-welcome.html#course-technology",
-    "href": "slides/00-welcome/00-welcome.html#course-technology",
-    "title": "Welcome to CSCI 2025",
-    "section": "Course Technology",
-    "text": "Course Technology\n\nMicrosoft Teams (install now)\nR and Positron (install by tomorrow)\nGit and Github (later)\nGoogle AI Pro Subscription (free for students for a year)\n\nNotebookLM\nCustom Recitation Gem\nMore AI later in the semester"
-  },
-  {
-    "objectID": "slides/00-welcome/00-welcome.html#getting-to-know-you",
-    "href": "slides/00-welcome/00-welcome.html#getting-to-know-you",
-    "title": "Welcome to CSCI 2025",
-    "section": "Getting to Know You",
-    "text": "Getting to Know You\nIn Teams, send me a Chat with answers to the following questions:\n\nWhat do you prefer to be called?\nWhy are you taking this course?\nWhat is your experience with R or programming in general?\nHow are you with group work?\nIs there anything you want me to know about you (e.g. accommodations, sports, preferred pronouns, etc.)?\nWe’ll be using a lot of data sets in this class. Are there any topics you find interesting that you’d like to look at data on?\nGive me some songs for the class playlist?"
-  },
-  {
-    "objectID": "slides/00-welcome/00-welcome.html#for-tomorrow",
-    "href": "slides/00-welcome/00-welcome.html#for-tomorrow",
-    "title": "Welcome to CSCI 2025",
-    "section": "For Tomorrow",
-    "text": "For Tomorrow\n\nInstall R and Positron\nSign-up for a Google AI Pro Account\nCreate a Github Account and activate your Education benefits\nRead the syllabus\nComplete Lectures 1-4 readings and videos"
-  },
-  {
-    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#what-is-shiny",
-    "href": "slides/18-shiny-intro/18-shiny-intro.html#what-is-shiny",
-    "title": "Your First Shiny App",
-    "section": "What is Shiny?",
-    "text": "What is Shiny?\n\nShiny is an R package that makes it easy to build interactive web apps straight from R.\nAllows you to create standalone apps on a webpage or embed them in Quarto documents.\nKey Components:\n\nUI (User Interface): Defines how your app looks.\nServer: Defines how your app works."
-  },
-  {
-    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#installation",
-    "href": "slides/18-shiny-intro/18-shiny-intro.html#installation",
-    "title": "Your First Shiny App",
-    "section": "Installation",
-    "text": "Installation\n\nIf you haven’t installed it yet:\n\n\ninstall.packages(\"shiny\")\n\n\nLoad it in your R session:\n\n\nlibrary(shiny)"
-  },
-  {
-    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#app-structure-app.r",
-    "href": "slides/18-shiny-intro/18-shiny-intro.html#app-structure-app.r",
-    "title": "Your First Shiny App",
-    "section": "App Structure (app.R)",
-    "text": "App Structure (app.R)\n\nThe simplest way to create an app is a single file named app.R.\nIt contains three main parts:\n\n\nUI object: The HTML webpage humans interact with.\nServer function: The logic that tells the app what to do.\nshinyApp call: Combines UI and server to run the app."
-  },
-  {
-    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#example",
-    "href": "slides/18-shiny-intro/18-shiny-intro.html#example",
-    "title": "Your First Shiny App",
-    "section": "Example",
-    "text": "Example\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  \"Hello, world!\"\n)\n\nserver &lt;- function(input, output, session) {\n}\n\nshinyApp(ui, server)"
-  },
-  {
-    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#running-the-app",
-    "href": "slides/18-shiny-intro/18-shiny-intro.html#running-the-app",
-    "title": "Your First Shiny App",
-    "section": "Running the App",
-    "text": "Running the App\n\nIn RStudio/Positron:\n\nClick the Run App button (play icon) in the toolbar.\n\nStopping:\n\nClick the Stop sign in the console."
-  },
-  {
-    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#adding-ui-controls",
-    "href": "slides/18-shiny-intro/18-shiny-intro.html#adding-ui-controls",
-    "title": "Your First Shiny App",
-    "section": "Adding UI Controls",
-    "text": "Adding UI Controls\n\nUse Layout Functions to structure the page (e.g., fluidPage).\nUse Inputs to let users provide values.\nUse Outputs to show results.\n\n\nlibrary(shiny)\nui &lt;- fluidPage(\n  selectInput(\"dataset\", label = \"Dataset\", choices = ls(\"package:datasets\")),\n  verbatimTextOutput(\"summary\"),\n  tableOutput(\"table\")\n)\n\n\nselectInput(): A dropdown menu.\nverbatimTextOutput(): Placeholder for code/text output.\ntableOutput(): Placeholder for a table."
-  },
-  {
-    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#the-server-function",
-    "href": "slides/18-shiny-intro/18-shiny-intro.html#the-server-function",
-    "title": "Your First Shiny App",
-    "section": "The Server Function",
-    "text": "The Server Function\n\nTells Shiny how to build the outputs from the inputs.\nRules:\n\nSave objects to output$ID.\nBuild objects with render{Type}().\nAccess inputs with input$ID."
-  },
-  {
-    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#connecting-inputs-to-outputs",
-    "href": "slides/18-shiny-intro/18-shiny-intro.html#connecting-inputs-to-outputs",
-    "title": "Your First Shiny App",
-    "section": "Connecting Inputs to Outputs",
-    "text": "Connecting Inputs to Outputs\n\nserver &lt;- function(input, output, session) {\n  output$summary &lt;- renderPrint({\n    dataset &lt;- get(input$dataset, \"package:datasets\")\n    summary(dataset)\n  })\n\n  output$table &lt;- renderTable({\n    dataset &lt;- get(input$dataset, \"package:datasets\")\n    dataset\n  })\n}\n\n\nrenderPrint() pairs with verbatimTextOutput().\nrenderTable() pairs with tableOutput().\nReactivity: Outputs automatically update when input$dataset changes."
-  },
-  {
-    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#reducing-duplication",
-    "href": "slides/18-shiny-intro/18-shiny-intro.html#reducing-duplication",
-    "title": "Your First Shiny App",
-    "section": "Reducing Duplication",
-    "text": "Reducing Duplication\n\nIn the previous example, we fetched the dataset twice:\n\ndataset &lt;- get(input$dataset, \"package:datasets\")\n\nDon’t use regular variables or functions to solve this (they won’t work as expected in the reactive graph).\nDo use Reactive Expressions."
-  },
-  {
-    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#reactive-expressions",
-    "href": "slides/18-shiny-intro/18-shiny-intro.html#reactive-expressions",
-    "title": "Your First Shiny App",
-    "section": "Reactive Expressions",
-    "text": "Reactive Expressions\n\nWrap code in reactive({...}).\nCall it like a function: my_reactive().\nBenefits:\n\nUpdates only when inputs change.\nCaches the result (lazy evaluation) - efficient!\n\n\n\nserver &lt;- function(input, output, session) {\n  # Create a reactive expression\n  dataset &lt;- reactive({\n    get(input$dataset, \"package:datasets\")\n  })\n\n  output$summary &lt;- renderPrint({\n    # Call it like a function\n    summary(dataset())\n  })\n\n  output$table &lt;- renderTable({\n    dataset()\n  })\n}"
-  },
-  {
-    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#recap",
-    "href": "slides/18-shiny-intro/18-shiny-intro.html#recap",
-    "title": "Your First Shiny App",
-    "section": "Recap",
-    "text": "Recap\n\nUI: fluidPage(), input*(), *Output().\nServer: function(input, output, session).\nWiring:\n\noutput$ID &lt;- render*({ code using input$ID })\n\nReactivity:\n\nreactive() calculates values and caches them.\nOutputs automatically “react” to input changes.\n\nNext Steps: Basic UI, Basic Reactivity (Chapters 2 & 3)."
-  },
-  {
-    "objectID": "slides/18-shiny-intro/18-shiny-intro.html#do-next",
-    "href": "slides/18-shiny-intro/18-shiny-intro.html#do-next",
-    "title": "Your First Shiny App",
+    "objectID": "slides/02-first-viz/02-first-viz.html#do-next",
+    "href": "slides/02-first-viz/02-first-viz.html#do-next",
+    "title": "Visualization Basics",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 1: Your First Shiny App from Mastering Shiny.\nThere’s NO recitation Gem for this textbook. I recommend doing the following:\n\n\nCreate your own NotebookLM for this text book. Upload the Chapters as we go along and the slides we use (don’t forget to use presse before imputting the link to the slides).\nUse the NotebookLM as a tutor!\nYou can also use the NotebookLM as context within your Gemini chats.\n\n\nMove on to Lecture 19!"
+    "text": "Do Next\n\nRead Chapter 1: Data Visualization from r4ds.\nOpen the Recitation Gem and say “Provide me practice problems for Chapter 1” or work through some of the exercises in the text.\n\nNote that you can say “This is too hard. Give me some easier problems.”\n\nMove on to Lecture 03."
   },
   {
-    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#fluidpage",
-    "href": "slides/24-shiny-layout/24-shiny-layout.html#fluidpage",
-    "title": "Page Layout",
-    "section": "fluidPage()",
-    "text": "fluidPage()\n\nThe foundation of most Shiny app layouts.\nCreates a “fluid” page that automatically adjusts to the browser window size.\nAll UI elements are typically placed inside fluidPage().\n\n\nui &lt;- fluidPage(\n  \"Hello, world!\"\n)"
+    "objectID": "slides/26-shiny-feedback/26-shiny-feedback.html#cancelling-execution",
+    "href": "slides/26-shiny-feedback/26-shiny-feedback.html#cancelling-execution",
+    "title": "User Feedback",
+    "section": "Cancelling Execution",
+    "text": "Cancelling Execution\n\nProblem: Missing inputs often cause ugly R errors.\nSolution 1: req() (Require).\n\nreq(input$id) stops execution silently if input$id is missing, NULL, FALSE, or empty.\nDownstream outputs remain blank (or keep old value) instead of crashing.\n\n\n\noutput$plot &lt;- renderPlot({\n  req(input$x) # Stop here if input$x is missing\n  plot(input$x)\n})"
   },
   {
-    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#titlepanel",
-    "href": "slides/24-shiny-layout/24-shiny-layout.html#titlepanel",
-    "title": "Page Layout",
-    "section": "titlePanel()",
-    "text": "titlePanel()\n\nA common first element in fluidPage() is titlePanel().\nIt creates a large heading, suitable for the app’s title.\nIt also sets the window title of the browser.\n\n\nui &lt;- fluidPage(\n  titlePanel(\"My Shiny App\")\n)"
+    "objectID": "slides/26-shiny-feedback/26-shiny-feedback.html#explicit-validation",
+    "href": "slides/26-shiny-feedback/26-shiny-feedback.html#explicit-validation",
+    "title": "User Feedback",
+    "section": "Explicit Validation",
+    "text": "Explicit Validation\n\nSolution 2: validate() and need().\n\nChecks a condition and displays a specific error message if unsatisfied.\n\n\n\noutput$table &lt;- renderTable({\n  validate(\n    need(input$nrows &gt; 0, \"Number of rows must be positive\")\n  )\n  head(mtcars, input$nrows)\n})"
   },
   {
-    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#sidebarlayout",
-    "href": "slides/24-shiny-layout/24-shiny-layout.html#sidebarlayout",
-    "title": "Page Layout",
-    "section": "sidebarLayout()",
-    "text": "sidebarLayout()\n\nA classic two-column layout.\nConsists of sidebarPanel() (for inputs) and mainPanel() (for outputs).\nsidebarPanel() is typically placed on the left.\n\n\nui &lt;- fluidPage(\n  titlePanel(\"My App\"),\n  sidebarLayout(\n    sidebarPanel(\n      # inputs\n    ),\n    mainPanel(\n      # outputs\n    )\n  )\n)"
+    "objectID": "slides/26-shiny-feedback/26-shiny-feedback.html#sending-messages",
+    "href": "slides/26-shiny-feedback/26-shiny-feedback.html#sending-messages",
+    "title": "User Feedback",
+    "section": "Sending Messages",
+    "text": "Sending Messages\n\nshowNotification(): Displays a temporary message in the corner.\nUsage:\n\nConfirmation (“Saved successfully”).\nWarnings.\nErrors.\n\n\n\nobserveEvent(input$save, {\n  saveData(data())\n  showNotification(\"Data saved successfully!\", type = \"message\")\n})"
   },
   {
-    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#sidebarlayout-positions",
-    "href": "slides/24-shiny-layout/24-shiny-layout.html#sidebarlayout-positions",
-    "title": "Page Layout",
-    "section": "sidebarLayout() positions",
-    "text": "sidebarLayout() positions\n\nYou can control the position of the sidebar with the position argument.\nposition = \"left\" (default)\nposition = \"right\"\n\n\nsidebarLayout(\n  sidebarPanel(\n    # inputs\n  ),\n  mainPanel(\n    # outputs\n  ),\n  position = \"right\"\n)"
+    "objectID": "slides/26-shiny-feedback/26-shiny-feedback.html#long-running-tasks",
+    "href": "slides/26-shiny-feedback/26-shiny-feedback.html#long-running-tasks",
+    "title": "User Feedback",
+    "section": "Long-Running Tasks",
+    "text": "Long-Running Tasks\n\nFeedback is critical for slow operations.\nwithProgress(): Wraps a code block.\nincProgress(): Increments the bar.\n\n\noutput$plot &lt;- renderPlot({\n  withProgress(message = 'Making plot', value = 0, {\n    \n    incProgress(0.1, detail = \"Part 1\")\n    Sys.sleep(0.5) # Simulate work\n    \n    incProgress(0.5, detail = \"Part 2\")\n    Sys.sleep(0.5)\n    \n    plot(rnorm(100))\n  })\n})"
   },
   {
-    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#multi-row-layouts-with-fluidrow",
-    "href": "slides/24-shiny-layout/24-shiny-layout.html#multi-row-layouts-with-fluidrow",
-    "title": "Page Layout",
-    "section": "Multi-row Layouts with fluidRow()",
-    "text": "Multi-row Layouts with fluidRow()\n\nFor more complex layouts, you can build your own grid.\nfluidRow() creates a row.\ncolumn() creates columns within a row.\nThe total width of columns in a row must be 12.\n\n\nfluidPage(\n  fluidRow(\n    column(4, \n      \"First column\"\n    ),\n    column(8, \n      \"Second column\"\n    )\n  ),\n  fluidRow(\n    column(6, \n      \"Third column\"\n    ),\n    column(6, \n      \"Fourth column\"\n    )\n  )\n)"
+    "objectID": "slides/26-shiny-feedback/26-shiny-feedback.html#spinners",
+    "href": "slides/26-shiny-feedback/26-shiny-feedback.html#spinners",
+    "title": "User Feedback",
+    "section": "Spinners",
+    "text": "Spinners\n\nThe shinycssloaders package is a simpler way to add spinners.\nSetup: Wrap an output with withSpinner() in the UI.\nNo server-side changes are needed.\n\n\n# In UI\nlibrary(shinycssloaders)\nwithSpinner(plotOutput(\"plot\"))\n\n# In server\noutput$plot &lt;- renderPlot({\n  Sys.sleep(2) # Simulate work\n  plot(rnorm(100))\n})"
   },
   {
-    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#nesting-layouts",
-    "href": "slides/24-shiny-layout/24-shiny-layout.html#nesting-layouts",
-    "title": "Page Layout",
-    "section": "Nesting Layouts",
-    "text": "Nesting Layouts\n\nYou can nest fluidRow() and column() to create more complex layouts.\nYou can also nest sidebarLayout() inside a column()."
+    "objectID": "slides/26-shiny-feedback/26-shiny-feedback.html#modals",
+    "href": "slides/26-shiny-feedback/26-shiny-feedback.html#modals",
+    "title": "User Feedback",
+    "section": "Modals",
+    "text": "Modals\n\nUse modalDialog() for actions that require explicit confirmation (e.g., deleting data).\nTrigger with showModal().\n\n\nobserveEvent(input$delete, {\n  showModal(modalDialog(\n    title = \"Delete Data?\",\n    \"Are you sure you want to delete this?\",\n    footer = tagList(\n      modalButton(\"Cancel\"),\n      actionButton(\"confirm_delete\", \"Delete\", class = \"btn-danger\")\n    )\n  ))\n})"
   },
   {
-    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#tabsetpanel",
-    "href": "slides/24-shiny-layout/24-shiny-layout.html#tabsetpanel",
-    "title": "Page Layout",
-    "section": "tabsetPanel()",
-    "text": "tabsetPanel()\n\nUseful for breaking down a complex app into smaller pieces.\nCreates a set of tabs.\nEach tab is created with tabPanel().\n\n\nmainPanel(\n  tabsetPanel(\n    tabPanel(\"Plot\", plotOutput(\"plot\")), \n    tabPanel(\"Summary\", verbatimTextOutput(\"summary\")), \n    tabPanel(\"Table\", tableOutput(\"table\"))\n  )\n)"
+    "objectID": "slides/26-shiny-feedback/26-shiny-feedback.html#feedback-loops",
+    "href": "slides/26-shiny-feedback/26-shiny-feedback.html#feedback-loops",
+    "title": "User Feedback",
+    "section": "Feedback Loops",
+    "text": "Feedback Loops\n\nSilent Rejection: req() (Best for missing inputs).\nExplicit Error: validate(need()) (Best for wrong inputs).\nStatus Update: showNotification() (Best for success/info).\nWaiting: withProgress() (Best for slow tasks).\nConfirmation: modalDialog() (Best for dangerous actions)."
   },
   {
-    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#tabsetpanel-options",
-    "href": "slides/24-shiny-layout/24-shiny-layout.html#tabsetpanel-options",
-    "title": "Page Layout",
-    "section": "tabsetPanel() options",
-    "text": "tabsetPanel() options\n\nid: Assign an ID to get the currently selected tab in the server.\nselected: Set the initially selected tab.\ntype: Change the appearance of the tabs (e.g., “tabs”, “pills”).\nposition: Place tabs on “top”, “bottom”, “left”, or “right”."
-  },
-  {
-    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#navlistpanel",
-    "href": "slides/24-shiny-layout/24-shiny-layout.html#navlistpanel",
-    "title": "Page Layout",
-    "section": "navlistPanel()",
-    "text": "navlistPanel()\n\nAn alternative to tabsetPanel().\nRenders tabs as a sidebar navigation list.\nWell-suited for a sequence of linear steps.\nCannot be used inside sidebarLayout.\n\n\nnavlistPanel(\n  \"Header\",\n  tabPanel(\"First\", \"First content\"),\n  tabPanel(\"Second\", \"Second content\"),\n  tabPanel(\"Third\", \"Third content\")\n)"
-  },
-  {
-    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#page-level-navigation",
-    "href": "slides/24-shiny-layout/24-shiny-layout.html#page-level-navigation",
-    "title": "Page Layout",
-    "section": "Page-level navigation",
-    "text": "Page-level navigation\n\nFor multi-page apps, navbarPage() is the tool of choice.\nIt creates a navigation bar at the top of the page.\nIt replaces fluidPage() as the top-level UI function.\nEach tabPanel becomes a “page”.\n\n\nui &lt;- navbarPage(\n  \"My App\",\n  tabPanel(\"Page 1\", \"Content for page 1\"),\n  tabPanel(\"Page 2\", \"Content for page 2\")\n)"
-  },
-  {
-    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#menus-in-navbarpage",
-    "href": "slides/24-shiny-layout/24-shiny-layout.html#menus-in-navbarpage",
-    "title": "Page Layout",
-    "section": "Menus in navbarPage()",
-    "text": "Menus in navbarPage()\n\nYou can group related pages into a menu using navbarMenu().\nThis is useful for organizing a large number of pages.\n\n\nnavbarPage(\n  \"My App\",\n  tabPanel(\"Page 1\", ),\n  tabPanel(\"Page 2\", ),\n  navbarMenu(\"More\",\n    tabPanel(\"Sub-page A\", ),\n    tabPanel(\"Sub-page B\", )\n  )\n)"
-  },
-  {
-    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#navbarpage-options",
-    "href": "slides/24-shiny-layout/24-shiny-layout.html#navbarpage-options",
-    "title": "Page Layout",
-    "section": "navbarPage() options",
-    "text": "navbarPage() options\n\ntitle: The title of the app, shown in the navbar.\nid: To access the selected tab from the server.\ncollapsible = TRUE: The navbar collapses on small screens.\ntheme: To apply a custom theme."
-  },
-  {
-    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#getting-started-with-bslib",
-    "href": "slides/24-shiny-layout/24-shiny-layout.html#getting-started-with-bslib",
-    "title": "Page Layout",
-    "section": "Getting started with bslib",
-    "text": "Getting started with bslib\n\nShiny’s appearance is controlled by the Bootstrap CSS framework.\nThe bslib package makes it easy to customize Bootstrap themes.\nUse bs_theme() to create a theme and pass it to the theme argument of the page layout function.\n\n\nui &lt;- fluidPage(\n  theme = bslib::bs_theme(bootswatch = \"darkly\"),\n)"
-  },
-  {
-    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#real-time-theming",
-    "href": "slides/24-shiny-layout/24-shiny-layout.html#real-time-theming",
-    "title": "Page Layout",
-    "section": "Real-time theming",
-    "text": "Real-time theming\n\nbslib offers an interactive theming tool.\nRun bs_theme_preview() on your UI to launch a special version of your app where you can tweak theme settings in real-time.\n\n\n# In the R console\nmy_ui &lt;- fluidPage()\nbslib::bs_theme_preview(my_ui)"
-  },
-  {
-    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#customizing-components",
-    "href": "slides/24-shiny-layout/24-shiny-layout.html#customizing-components",
-    "title": "Page Layout",
-    "section": "Customizing components",
-    "text": "Customizing components\n\nbs_theme() allows you to customize many aspects of the theme.\n\nbg, fg: Background and foreground colors.\nprimary, secondary: Accent colors.\nbase_font, heading_font, code_font: Fonts.\n\n\n\nmy_theme &lt;- bslib::bs_theme(\n  bg = \"#202123\",\n  fg = \"#B8BCC2\",\n  primary = \"#EA80FC\",\n  base_font = bslib::font_google(\"Inter\"),\n  \"font-size-base\" = \"1.1rem\"\n)"
-  },
-  {
-    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#you-can-use-raw-html-and-css",
-    "href": "slides/24-shiny-layout/24-shiny-layout.html#you-can-use-raw-html-and-css",
-    "title": "Page Layout",
-    "section": "You can use Raw HTML and CSS",
-    "text": "You can use Raw HTML and CSS\n\nWhen you need a tag that Shiny doesn’t provide a function for.\nFor minor tweaks to the UI.\nTo integrate with other JavaScript libraries that require a specific HTML structure.\nBut for major style changes, prefer bslib."
-  },
-  {
-    "objectID": "slides/24-shiny-layout/24-shiny-layout.html#do-next",
-    "href": "slides/24-shiny-layout/24-shiny-layout.html#do-next",
-    "title": "Page Layout",
+    "objectID": "slides/26-shiny-feedback/26-shiny-feedback.html#do-next",
+    "href": "slides/26-shiny-feedback/26-shiny-feedback.html#do-next",
+    "title": "User Feedback",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 6: Layouts, Themes, and HTML from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 24!"
+    "text": "Do Next\n\nRead Chapter 8: User feedback from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 27!"
+  },
+  {
+    "objectID": "slides/25-shiny-graphics/25-shiny-graphics.html#the-concept",
+    "href": "slides/25-shiny-graphics/25-shiny-graphics.html#the-concept",
+    "title": "Interactive Graphics",
+    "section": "The Concept",
+    "text": "The Concept\n\nStatic Plots: Display data (output).\nInteractive Plots: Display data AND accept user input (output + input).\nMechanism:\n\nplotOutput() can accept pointer events (clicks, double clicks, hovers, brushes).\nSends these events to the server as input$ID."
+  },
+  {
+    "objectID": "slides/25-shiny-graphics/25-shiny-graphics.html#clicking",
+    "href": "slides/25-shiny-graphics/25-shiny-graphics.html#clicking",
+    "title": "Interactive Graphics",
+    "section": "Clicking",
+    "text": "Clicking\n\nUI: Add click = \"ID\" to plotOutput().\nServer: Access input$ID (contains x, y coordinates).\nHelper: nearPoints() returns rows from the dataframe near the click.\n\n\nui &lt;- fluidPage(\n  plotOutput(\"plot\", click = \"plot_click\"),\n  tableOutput(\"data\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$plot &lt;- renderPlot({\n    ggplot(mtcars, aes(wt, mpg)) + geom_point()\n  }, res = 96)\n  \n  output$data &lt;- renderTable({\n    nearPoints(mtcars, input$plot_click)\n  })\n}"
+  },
+  {
+    "objectID": "slides/25-shiny-graphics/25-shiny-graphics.html#brushing",
+    "href": "slides/25-shiny-graphics/25-shiny-graphics.html#brushing",
+    "title": "Interactive Graphics",
+    "section": "Brushing",
+    "text": "Brushing\n\nBrush: A rectangular selection tool.\nUI: Add brush = \"ID\" to plotOutput().\nHelper: brushedPoints() returns rows inside the brush.\n\n\nui &lt;- fluidPage(\n  plotOutput(\"plot\", brush = \"plot_brush\"),\n  tableOutput(\"data\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$data &lt;- renderTable({\n    brushedPoints(mtcars, input$plot_brush)\n  })\n}"
+  },
+  {
+    "objectID": "slides/25-shiny-graphics/25-shiny-graphics.html#plot-options",
+    "href": "slides/25-shiny-graphics/25-shiny-graphics.html#plot-options",
+    "title": "Interactive Graphics",
+    "section": "Plot Options",
+    "text": "Plot Options\n\nclick: Single click.\ndblclick: Double click.\nhover: Mouse hover (triggers frequently).\nbrush: Drag-to-select rectangle.\n\nCan constrain to x or y axis: brush = brushOpts(direction = \"x\")."
+  },
+  {
+    "objectID": "slides/25-shiny-graphics/25-shiny-graphics.html#linked-plots",
+    "href": "slides/25-shiny-graphics/25-shiny-graphics.html#linked-plots",
+    "title": "Interactive Graphics",
+    "section": "Linked Plots",
+    "text": "Linked Plots\n\nGoal: interacting with one plot changes another.\nPattern:\n\nCreate a plot with a brush.\nUse brushedPoints() to filter the data.\nCreate a second plot (or table) based on the filtered data.\n\nResult: Highlighting or zooming into data subsets."
+  },
+  {
+    "objectID": "slides/25-shiny-graphics/25-shiny-graphics.html#mechanics",
+    "href": "slides/25-shiny-graphics/25-shiny-graphics.html#mechanics",
+    "title": "Interactive Graphics",
+    "section": "Mechanics",
+    "text": "Mechanics\n\nUI: plotOutput(..., click = \"click_id\", brush = \"brush_id\").\nServer Helpers:\n\nnearPoints(df, input$click_id): Find single point.\nbrushedPoints(df, input$brush_id): Find multiple points.\n\nPower: Enables “drill-down” data exploration."
+  },
+  {
+    "objectID": "slides/25-shiny-graphics/25-shiny-graphics.html#do-next",
+    "href": "slides/25-shiny-graphics/25-shiny-graphics.html#do-next",
+    "title": "Interactive Graphics",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 7: Graphics from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to Lecture 25!"
   },
   {
     "objectID": "slides/16-missing-values/16-missing-values.html#missing-values",
@@ -4455,7 +4455,7 @@
     "href": "index.html",
     "title": "CSCI-2025: Data Manipulation and Visualization",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\nvideo-15\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\nslides-16\nvideo-16\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins\n\nslides-17\nvideo-17\n\n\n3\nTue, Jan 20\nLec\nYour first Shiny app\n📚 ms - first-app\n\nslides-18\nvideo-18\n\n\n3\nTue, Jan 20\nLec\nBasic UI\n📚 ms - basic-ui\n\nslides-19\nvideo-19\n\n\n3\nTue, Jan 20\nLec\nBasic reactivity\n📚 ms - basic-reactivity\n\nslides-20\nvideo-20\n\n\n3\nTue, Jan 20\nLec\nCase Study: ER\n📚 ms - case-study-er\n\n\nvideo-21\n\n\n3\nWed, Jan 21\nLec\nGit and Github\n\nslides-22\nvideo-22\n\n\n3\nWed, Jan 21\nLec\nWorkflow\n📚 ms - workflow\n\nslides-23\nvideo-23\n\n\n3\nWed, Jan 21\nLec\nLayout, Themes, and HTML\n📚 ms - layout\n\nslides-24\nvideo-24\n\n\n3\nThu, Jan 22\nLec\nGraphics\n📚 ms - graphics\n\nslides-25\nvideo-25\n\n\n3\nThu, Jan 22\nLec\nUser Feedback\n📚 ms - user-input\n\nslides-26\nvideo-26\n\n\n3\nThu, Jan 22\nLec\nUpload and Downloads\n📚 ms - upload-download\n\nslides-27\nvideo-27\n\n\n4\nMon, Jan 26\nLec\nDynamic UI\n📚 ms - dynamic-ui\n\nslides-28\n\n\n\n4\nMon, Jan 26\nLec\nBookmarking\n📚 ms - bookmarking\n\n\n\n\n\n4\nMon, Jan 26\nLec\nTidy Evaluation\n📚 ms - tidy-eval",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\nvideo-15\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\nslides-16\nvideo-16\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins\n\nslides-17\nvideo-17\n\n\n3\nTue, Jan 20\nLec\nYour first Shiny app\n📚 ms - first-app\n\nslides-18\nvideo-18\n\n\n3\nTue, Jan 20\nLec\nBasic UI\n📚 ms - basic-ui\n\nslides-19\nvideo-19\n\n\n3\nTue, Jan 20\nLec\nBasic reactivity\n📚 ms - basic-reactivity\n\nslides-20\nvideo-20\n\n\n3\nTue, Jan 20\nLec\nCase Study: ER\n📚 ms - case-study-er\n\n\nvideo-21\n\n\n3\nWed, Jan 21\nLec\nGit and Github\n\nslides-22\nvideo-22\n\n\n3\nWed, Jan 21\nLec\nWorkflow\n📚 ms - workflow\n\nslides-23\nvideo-23\n\n\n3\nWed, Jan 21\nLec\nLayout, Themes, and HTML\n📚 ms - layout\n\nslides-24\nvideo-24\n\n\n3\nThu, Jan 22\nLec\nGraphics\n📚 ms - graphics\n\nslides-25\nvideo-25\n\n\n3\nThu, Jan 22\nLec\nUser Feedback\n📚 ms - user-input\n\nslides-26\nvideo-26\n\n\n3\nThu, Jan 22\nLec\nUpload and Downloads\n📚 ms - upload-download\n\nslides-27\nvideo-27\n\n\n4\nMon, Jan 26\nLec\nTidy Evaluation\n📚 ms - tidy-eval\n\nslides-28\n\n\n\n4\nMon, Jan 26\nLec\nDynamic UI\n📚 ms - dynamic-ui\n\n\n\n\n\n4\nMon, Jan 26\nLec\nBookmarking\n📚 ms - bookmarking",
     "crumbs": [
       "Course information",
       "Schedule"
