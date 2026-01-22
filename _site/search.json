@@ -4241,7 +4241,7 @@
     "href": "slides/29-shiny-dynamic/29-shiny-dynamic.html#the-update-family",
     "title": "Dynamic UI",
     "section": "The update* Family",
-    "text": "The update* Family\n\nGoal: Change an input’s state (value, choices, label) from the server.\nFunctions: updateTextInput(), updateSliderInput(), updateSelectInput(), etc.\nMechanism:\n\nUser action triggers an observeEvent().\nServer sends a message to the browser to update the specific control.\n\n\n\nobserveEvent(input$reset, {\n  updateSliderInput(inputId = \"s1\", value = 0)\n})"
+    "text": "The update* Family\n\nGoal: Change an input’s state (value, choices, label) from the server.\nFunctions: updateTextInput(), updateSliderInput(), updateSelectInput(), etc.\nMechanism:\n\nUser action triggers an observeEvent().\nServer sends a message to the browser to update the specific control.\n\n\n\nobserveEvent(input$reset, {\n  updateSliderInput(inputId = \"s1\", value = 0, session = session)\n})"
   },
   {
     "objectID": "slides/29-shiny-dynamic/29-shiny-dynamic.html#hierarchical-selects",
@@ -4255,7 +4255,7 @@
     "href": "slides/29-shiny-dynamic/29-shiny-dynamic.html#hiding-and-showing",
     "title": "Dynamic UI",
     "section": "Hiding and Showing",
-    "text": "Hiding and Showing\n\nGoal: Show different UI elements based on user actions.\nTechnique: Hidden Tabsets.\n\ntabsetPanel(id = \"wizard\", type = \"hidden\", ...)\nupdateTabsetPanel(inputId = \"wizard\", selected = \"panel2\")\n\n\n\nui &lt;- fluidPage(\n  actionButton(\"go_next\", \"Next\"),\n  tabsetPanel(id = \"wizard\", type = \"hidden\",\n    tabPanel(\"page1\", \"First step content...\"),\n    tabPanel(\"page2\", \"Second step content...\")\n  )\n)\n\nserver &lt;- function(input, output, session) {\n  observeEvent(input$go_next, {\n    updateTabsetPanel(inputId = \"wizard\", selected = \"page2\")\n  })\n}"
+    "text": "Hiding and Showing\n\nGoal: Show different UI elements based on user actions.\nTechnique: Hidden Tabsets.\n\ntabsetPanel(id = \"wizard\", type = \"hidden\", ...)\nupdateTabsetPanel(inputId = \"wizard\", selected = \"panel2\", session = session)\n\n\n\nui &lt;- fluidPage(\n  actionButton(\"go_next\", \"Next\"),\n  tabsetPanel(id = \"wizard\", type = \"hidden\",\n    tabPanel(\"page1\", \"First step content...\"),\n    tabPanel(\"page2\", \"Second step content...\")\n  )\n)\n\nserver &lt;- function(input, output, session) {\n  observeEvent(input$go_next, {\n    updateTabsetPanel(inputId = \"wizard\", selected = \"page2\", session = session)\n  })\n}"
   },
   {
     "objectID": "slides/29-shiny-dynamic/29-shiny-dynamic.html#uioutput-and-renderui",

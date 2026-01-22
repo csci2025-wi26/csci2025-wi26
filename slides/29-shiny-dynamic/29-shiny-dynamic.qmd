@@ -16,7 +16,7 @@ subtitle: Lecture 29
 ```{r}
 #| eval: false
 observeEvent(input$reset, {
-  updateSliderInput(inputId = "s1", value = 0)
+  updateSliderInput(inputId = "s1", value = 0, session = session)
 })
 ```
 
@@ -33,7 +33,7 @@ Consider this scenario from Chapter 9 of the textbook.
 -   **Goal**: Show different UI elements based on user actions.
 -   **Technique**: Hidden Tabsets.
     -   `tabsetPanel(id = "wizard", type = "hidden", ...)`
-    -   `updateTabsetPanel(inputId = "wizard", selected = "panel2")`
+    -   `updateTabsetPanel(inputId = "wizard", selected = "panel2", session = session)`
 
 ```{r}
 #| eval: false
@@ -47,7 +47,7 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   observeEvent(input$go_next, {
-    updateTabsetPanel(inputId = "wizard", selected = "page2")
+    updateTabsetPanel(inputId = "wizard", selected = "page2", session = session)
   })
 }
 ```
