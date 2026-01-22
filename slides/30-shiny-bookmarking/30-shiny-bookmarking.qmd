@@ -11,7 +11,7 @@ subtitle: Lecture 30
 - Option 2: [shinyapps.io](https://www.shinyapps.io/) (has a free tier)
 - Option 3: [shinylive](https://posit-dev.github.io/r-shinylive/)
 - Option 4+: Ad-hoc deployment (e.g. AWS, a server you have, some other hosting service)
-  + General rule of thumb: Cheaper = More Effect
+  + General rule of thumb: Cheaper = More Effort
 
 # The Basics
 

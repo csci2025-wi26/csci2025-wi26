@@ -153,7 +153,7 @@
     "href": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#several-ways-to-deploy-an-app",
     "title": "Bookmarking",
     "section": "Several ways to deploy an app",
-    "text": "Several ways to deploy an app\n\nOption 1: Posit Connect Cloud\nOption 2: shinyapps.io (has a free tier)\nOption 3: shinylive\nOption 4+: Ad-hoc deployment (e.g. AWS, a server you have, some other hosting service)\n\nGeneral rule of thumb: Cheaper = More Effect"
+    "text": "Several ways to deploy an app\n\nOption 1: Posit Connect Cloud\nOption 2: shinyapps.io (has a free tier)\nOption 3: shinylive\nOption 4+: Ad-hoc deployment (e.g. AWS, a server you have, some other hosting service)\n\nGeneral rule of thumb: Cheaper = More Effort"
   },
   {
     "objectID": "slides/30-shiny-bookmarking/30-shiny-bookmarking.html#the-problem",
