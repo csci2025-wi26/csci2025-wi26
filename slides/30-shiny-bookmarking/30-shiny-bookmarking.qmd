@@ -7,9 +7,11 @@ subtitle: Lecture 30
 
 ## Several ways to deploy an app
 
-- Option 1: [shinyapps.io](https://www.shinyapps.io/) (has a free tier)
-- Option 2: [shinylive](https://posit-dev.github.io/r-shinylive/)
-- Option 3+: Ad-hoc deployment (e.g. AWS, a server you have, some other hosting service)
+- Option 1: [Posit Connect Cloud](https://connect.posit.cloud/)
+- Option 2: [shinyapps.io](https://www.shinyapps.io/) (has a free tier)
+- Option 3: [shinylive](https://posit-dev.github.io/r-shinylive/)
+- Option 4+: Ad-hoc deployment (e.g. AWS, a server you have, some other hosting service)
+  + General rule of thumb: Cheaper = More Effect
 
 # The Basics
 
