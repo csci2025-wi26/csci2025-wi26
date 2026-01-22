@@ -44,7 +44,7 @@ shinyApp(ui, server, enableBookmarking = "url")
 
 # Advanced Bookmarking
 
-## Automatic URL Update
+## Automatic URL Update {.smaller}
 
 -   **Goal**: Update the URL bar *automatically* as inputs change (no button needed).
 -   **Server Logic**:
