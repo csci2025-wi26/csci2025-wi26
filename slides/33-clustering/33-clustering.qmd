@@ -1,0 +1,157 @@
+---
+title: Clustering with Tidyclust
+subtitle: Lecture 33
+---
+
+# Unsupervised Learning
+
+## Finding Groups
+
+- **Supervised Learning**: We have a target variable (Y) to predict (Regression, Classification).
+- **Unsupervised Learning**: No target. We want to find *structure* in the data.
+- **Clustering**: Grouping similar observations together.
+- **Techniques**:
+  -   K-Means Clustering
+  -   Hierarchical Clustering
+
+## The `tidyclust` Package
+
+- Builds on `tidymodels`.
+- Provides a consistent interface for clustering models.
+- **Workflow**:
+  1.  Specification: `k_means()` or `hier_clust()`.
+  2.  Engine: `set_engine()`.
+  3.  Fit: `fit()`.
+
+```{r}
+library(tidymodels)
+library(tidyclust)
+library(tidyverse)
+library(palmerpenguins)
+
+# Prepare Data (Numeric, Scaled, No NA)
+penguins_clean <- penguins |>
+  drop_na() |>
+  select(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g) |>
+  scale() |>
+  as_tibble()
+```
+
+# K-Means Clustering
+
+## Intuition
+
+- **Goal**: Partition data into $K$ clusters.
+- **Algorithm**:
+  1.  Initialize $K$ centroids randomly.
+  2.  Assign each point to the closest centroid.
+  3.  Update centroids (mean of assigned points).
+  4.  Repeat until convergence.
+
+## Fitting K-Means
+
+```{r}
+# 1. Specification (Assume K=3)
+kmeans_spec <- k_means(num_clusters = 3) |>
+  set_engine("stats")
+
+# 2. Fit
+kmeans_fit <- kmeans_spec |>
+    fit(~ ., data = penguins_clean)
+
+
+kmeans_fit
+```
+
+## Visualizing Clusters
+
+- We can explore the cluster assignments.
+
+```{r}
+# Extract Assignments
+# extract_cluster_assignment(kmeans_fit) # This extracts just the vector
+
+# Visualize
+kmeans_fit |>
+  extract_cluster_assignment(penguins_clean) |>
+  bind_cols(penguins_clean) |>
+  ggplot(aes(x = flipper_length_mm, y = bill_length_mm, color = .cluster)) +
+  geom_point(size = 3) +
+  labs(title = "K-Means Clustering (K=3)") +
+  theme_minimal()
+```
+
+## Choosing K (Elbow Method)
+
+- How do we know K=3 is best?
+- **Total Within-Cluster Sum of Squares (WSS)**: Measure of compactness (lower is better).
+- Look for the "Elbow" in the WSS vs K plot.
+
+```{r}
+#| eval: false
+# Note: tune_cluster() supports tuning K, but for simplicity:
+# Iterate manually or use standard loop for elbow plot
+# (tidyclust makes simple fitting easy, tuning is advanced workflow)
+```
+
+# Hierarchical Clustering
+
+## Intuition
+
+- Builds a hierarchy of clusters.
+- **Dendrogram**: Tree diagram showing relationships.
+- No need to pre-specify K!
+- **Linkage**: How to define distance between clusters (Complete, Single, Average).
+
+## Fitting Hierarchical Clustering
+
+```{r}
+hc_spec <- hier_clust(linkage_method = "complete") |>
+  set_engine("stats")
+
+hc_fit <- hc_spec |>
+  fit(~ ., data = penguins_clean)
+
+hc_fit
+```
+
+## Visualizing Dendrograms
+
+- `tidyclust` (and `dendextend` underneath) makes plotting easy.
+
+```{r}
+# In tidyclust 0.2.0+, plotting might need specific helper or extraction
+# Standard plot method often works on the engine object
+# plot(hc_fit$fit)
+
+# Using as.dendrogram if needed
+# hc_fit$fit |> as.dendrogram() |> plot()
+```
+
+*(Note: Simple base R plot of the underlying `hclust` object is often easiest for slides)*
+
+```{r}
+plot(hc_fit$fit, main = "Dendrogram of Penguins", labels = FALSE, xlab = "")
+rect.hclust(hc_fit$fit, k = 3, border = "red")
+```
+
+## Cutting the Tree
+
+- We can "cut" the tree to get $K$ clusters.
+
+```{r}
+# Re-fit with num_clusters if we want prediction-like behavior or use cutree on engine
+# tidyclust handles this via prediction usually.
+```
+
+# Summary
+
+## Summary
+
+- **Clustering**: Finding groups without labels.
+- **K-Means**: Partition into K groups. Good for spherical clusters.
+- **Hierarchical**: Tree structure. Good for visualizing relationships.
+- **Tidyclust**: Brings tidy syntax to clustering (`k_means()`, `hier_clust()`, `fit()`).
+- **Visualization**:
+  -   Scatterplots colored by Cluster.
+  -   Dendrograms.

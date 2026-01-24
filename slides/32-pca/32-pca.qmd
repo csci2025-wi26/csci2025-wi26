@@ -1,0 +1,360 @@
+---
+title: Dimensionality Reduction & PCA
+subtitle: Lecture 32
+---
+
+```{r setup}
+#| echo: false
+library(tidyverse)
+```
+
+# Dimensionality
+
+## The Problem with High Dimensions
+
+- **Big Data** can mean lots of observations (big $n$) or lots of variables (big $p$).
+- **Big $p$ Problems:**
+  - **Visualization**: Hard to plot > 3 dimensions.
+  - **Curse of Dimensionality**:
+    -   Data becomes sparse.
+    -   Distance metrics (Euclidean) lose meaning.
+    -   Models can overfit.
+
+## Dimensionality Reduction
+
+-   Goal phrasing 1: Reduce the number of columns, while losing as little information as possible
+-   Goal phrasing 2: Extract lower-dimensional structure from our data
+-   Analogy: file compression
+
+## Which One is Compressed?
+
+::: {layout-ncol=2}
+
+![](images/Duck-Hires.png)
+
+![](images/Duck-Lores.png)
+
+:::
+
+## Which One is Compressed?
+
+::: {layout-ncol=2}
+
+![1,330 KB](images/Duck-Hires.png)
+
+![396 KB](images/Duck-Lores.png)
+
+:::
+
+## Idea
+
+-   We managed to:
+    +   Reduce file size by 70%
+    +   Not lose much information
+    +   Extract underlying structure (a duck)
+
+## Thinking about structure in tabular data
+
+```{r}
+#| echo: FALSE
+
+# Load necessary libraries
+library(plotly)
+
+# Generate sample data
+set.seed(123)
+n <- 1000
+x <- rnorm(n)
+y <- rnorm(n)
+z <- x + y
+
+data1 <- tibble(x = x, y = y, z = z)
+
+# Create 3D scatter plot
+plot_ly(x = ~x, y = ~y, z = ~z, type = "scatter3d", mode = "markers",
+        marker = list(size = 3, color = 'blue')) |>
+  plotly::layout(scene = list(xaxis = list(title = "X-axis"),
+                      yaxis = list(title = "Y-axis"),
+                      zaxis = list(title = "Z-axis")))
+
+
+```
+
+## Underlying Structure
+
+::: incremental
+-   What dimension is our data in?
+-   What is the underlying structure here?
+-   What is the dimension of a plane?
+:::
+
+## Visualizing Plane
+
+```{r}
+#| echo: false
+
+data1 <- data1 |> 
+  mutate(new_x = x + y +  2*z, new_y = x - y)
+
+data1 |> ggplot(aes(x = new_x, y = new_y)) +
+  geom_point()
+```
+
+## Thinking about structure in tabular data
+
+```{r}
+#| echo: FALSE
+
+# Load necessary libraries
+library(plotly)
+
+# Generate sample data
+set.seed(123)
+n <- 1000
+x <- rnorm(n)
+y <- x
+z <- 0.5*x + 0.5*y
+
+data2 <- tibble(x = x, y = y, z = z)
+
+# Create 3D scatter plot
+plot_ly(x = ~x, y = ~y, z = ~z, type = "scatter3d", mode = "markers",
+        marker = list(size = 3, color = 'blue')) |>
+  plotly::layout(scene = list(xaxis = list(title = "X-axis"),
+                      yaxis = list(title = "Y-axis"),
+                      zaxis = list(title = "Z-axis")))
+
+
+```
+
+## Underlying Structure
+
+::: incremental
+-   What dimension is our data in?
+-   What is the underlying structure here?
+-   What is the dimension of a line?
+:::
+
+## Visualizing 2D
+
+```{r}
+#| echo: false
+
+data2 <- data2 |> 
+  mutate(new_x = x + y + z, new_y = x + y)
+
+data2 |> ggplot(aes(x = new_x, y = new_y)) +
+  geom_point()
+```
+
+## Visualizing 1D
+
+```{r}
+#| echo: false
+data2 |> ggplot(aes(x = new_x, y = "")) +
+  geom_point()
+```
+
+## Visualizing 1D Data
+
+```{r}
+#| echo: false
+
+library(ggforce)
+
+data2 <- data2 |> 
+  mutate(new_x = x + y + z, new_y = x + y)
+
+data2 |> ggplot(aes(x = new_x, y = "")) +
+  geom_sina()
+```
+
+## Thinking about structure in tabular data
+
+```{r}
+#| echo: FALSE
+
+# Load necessary libraries
+library(plotly)
+
+# Generate sample data
+set.seed(123)
+n <- 1000
+x <- rnorm(n)
+y <- rnorm(n)
+z <- 0.5*x + 0.5*y + rnorm(n, 0, sd = 0.25)
+
+data3 <- tibble(x = x, y = y, z = z)
+
+# Create 3D scatter plot
+plot_ly(x = ~x, y = ~y, z = ~z, type = "scatter3d", mode = "markers",
+        marker = list(size = 3, color = 'blue')) |>
+  plotly::layout(scene = list(xaxis = list(title = "X-axis"),
+                      yaxis = list(title = "Y-axis"),
+                      zaxis = list(title = "Z-axis")))
+
+
+```
+
+## Underlying Structure
+
+::: incremental
+-   What dimension is our data in?
+-   What is the underlying structure here?
+-   What is the dimension of a plane?
+:::
+
+## Visualizing Plane
+
+```{r}
+#| echo: false
+
+data3 <- data3 |> 
+  mutate(new_x = x + z, new_y = y - z)
+
+data3 |> ggplot(aes(x = new_x, y = new_y)) +
+  geom_point()
+```
+
+## Discussion
+
+-   What's the difference between the first two scenario's and the third scenario?
+    +   How much have we reduced the dimension?
+    +   How much information have we lost?
+
+
+# Principal Component Analysis
+
+## Intuition
+
+- **PCA** finds new axes (Principal Components) that capture the maximum variance in the data.
+- **PC1**: Direction of maximum variance.
+- **PC2**: Orthogonal to PC1, next maximum variance.
+- ...
+- We can project our data onto these 2-3 new axes to visualize it!
+
+## PCA with Recipes
+
+- **`step_pca()`**: Computes principal components.
+- **Pre-requisites**:
+  -   **Numeric only**: Use `step_dummy()` for categorical.
+  -   **Scaled**: Use `step_normalize()` (Variance depends on scale!).
+
+## Example: Palmer Penguins
+
+- Let's visualize the 4 numeric body measurements in 2 dimensions.
+
+```{r}
+#| code-fold: true
+library(tidymodels)
+library(palmerpenguins)
+library(tidyverse)
+
+# Define Recipe
+pca_rec <- recipe(~ ., data = penguins) |>
+  step_rm(year, sex, island) |>        # Remove non-measurements
+  step_naomit(all_predictors()) |>
+  step_normalize(all_numeric_predictors()) |>
+  step_pca(all_numeric_predictors()) # Keep top 2 PCs
+
+# Prep and Bake
+pca_prep <- prep(pca_rec)
+pca_data <- bake(pca_prep, new_data = NULL)
+
+head(pca_data)
+```
+
+# Visualizing PCA
+
+## Scatterplot of PC1 vs PC2
+
+- The most common PCA plot.
+- Points close together are "similar" in the original high-dimensional space.
+
+```{r}
+#| code-fold: true
+# Since we removed 'species' in the recipe to avoid using it in PCA,
+# we might want to bind it back for plotting coloring.
+# A better workflow is to keep it as an ID/Role but not utilize it in step_pca.
+
+pca_rec_2 <- recipe(species ~ ., data = penguins) |>
+  step_rm(year, sex, island) |>
+  step_naomit(all_predictors()) |>
+  step_normalize(all_numeric_predictors()) |>
+  step_pca(all_numeric_predictors(), num_comp = 2) 
+  # Default behavior: step_pca ignores 'outcome' variables, which is handy!
+
+pca_prep_2 <- prep(pca_rec_2)
+pca_juice <- juice(pca_prep_2) # juice() is a shortcut for bake(prep, new_data=NULL)
+
+ggplot(pca_juice, aes(x = PC1, y = PC2, color = species)) +
+  geom_point(size = 3, alpha = 0.8) +
+  theme_minimal() +
+  labs(title = "Penguins PCA", subtitle = "Species separate well in PC space")
+```
+
+## Loadings: What do the PCs mean?
+
+- **Loadings**: The contribution of each original variable to the PC.
+- We can extract them from the prepped recipe using `tidy()`.
+
+```{r}
+#| code-fold: true
+pca_comps <- tidy(pca_prep_2, number = 2, type = "coef") # number=2 refers to the step number index if unknown, typically easier to look up.
+# Better way: ID the step
+pca_rec_named <- recipe(species ~ ., data = penguins) |>
+  step_naomit(all_predictors()) |>
+  step_normalize(all_numeric_predictors()) |>
+  step_pca(all_numeric_predictors(), id = "pca")
+
+pca_prep_named <- prep(pca_rec_named)
+pca_comps <- tidy(pca_prep_named, id = "pca")
+
+pca_comps |>
+  filter(component %in% c("PC1", "PC2")) |>
+  ggplot(aes(x = value, y = terms, fill = terms)) +
+  geom_col() +
+  facet_wrap(~component) +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  labs(title = "PCA Loadings: Contribution of variables")
+
+```
+
+## Scree Plot: How many PCs?
+
+- How much variance is explained by each component?
+
+```{r}
+#| code-fold: true
+# Extract variance explained
+pca_var <- tidy(pca_prep_named, id = "pca", type = "variance")
+
+pca_var |>
+  filter(terms == "percent variance") |>
+  ggplot(aes(x = component, y = value)) +
+  geom_col(fill = "steelblue") +
+  geom_line(group = 1) +
+  geom_point() +
+  labs(title = "Scree Plot", y = "% Variance Explained") +
+  theme_minimal()
+```
+
+# Wrap-Up
+
+## Recap
+
+- **Dimensionality Reduction**: Visualizing high-D data in 2D/3D.
+- **Steps**:
+  1.  `step_normalize()` (Crucial!)
+  2.  `step_pca()`
+- **Visualization**:
+  -   **Score Plot**: PC1 vs PC2 (Where are the data points?)
+  -   **Loadings Plot**: Terms contribution (What do the axes mean?)
+  -   **Scree Plot**: Variance explained (How much info is kept?)
+
+## Do Next
+
+1. Read [Chapter 16: Dimensionality Reduction](https://www.tmwr.org/recipes) from Tidy Modeling with R.
+2. There's NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.
+3. Move on to Lecture 33!

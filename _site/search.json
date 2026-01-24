@@ -4502,5 +4502,362 @@
     "title": "GEMINI.md: Project Overview and Contributor Guide",
     "section": "",
     "text": "To work on this project, you will need to have Quarto installed. You can download it from the Quarto website.\n\n\nTo render and preview the website locally, run the following command in your terminal from the project’s root directory:\nquarto preview\nThis will start a local web server and open the site in your browser. The site will automatically refresh when you save changes to any of the source files.\n\n\n\nTo render the entire website without previewing it, use the following command:\nquarto render\nThis will generate all the static files and place them in the _site/ directory. This is typically done for deployment."
+  },
+  {
+    "objectID": "slides/31-recipes/31-recipes.html#preprocessing-data",
+    "href": "slides/31-recipes/31-recipes.html#preprocessing-data",
+    "title": "Feature Engineering with Recipes",
+    "section": "Preprocessing Data",
+    "text": "Preprocessing Data\n\nFeature Engineering: transforming variables to make them more suitable for a model (or visualization!).\nCommon tasks:\n\nConverting categorical data to numeric (Dummy variables).\nCentering and Scaling (Normalization).\nHandling missing data.\nTransforming skewed distributions (Log).\n\nThe recipes package: A tidy interface for data preprocessing."
+  },
+  {
+    "objectID": "slides/31-recipes/31-recipes.html#the-recipe-concept",
+    "href": "slides/31-recipes/31-recipes.html#the-recipe-concept",
+    "title": "Feature Engineering with Recipes",
+    "section": "The recipe Concept",
+    "text": "The recipe Concept\n\nA recipe is a blueprint for data processing.\nIt defines what you want to do, not when to do it.\nWorkflow:\n\nrecipe(): Define the formula and data.\nstep_*(): Add processing steps.\nprep(): Train the recipe (calculate means, SDs, levels, etc.).\nbake(): Apply the recipe to new data."
+  },
+  {
+    "objectID": "slides/31-recipes/31-recipes.html#load-packages",
+    "href": "slides/31-recipes/31-recipes.html#load-packages",
+    "title": "Feature Engineering with Recipes",
+    "section": "Load Packages",
+    "text": "Load Packages\n\nlibrary(tidymodels)\nlibrary(palmerpenguins)\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "slides/31-recipes/31-recipes.html#the-basics",
+    "href": "slides/31-recipes/31-recipes.html#the-basics",
+    "title": "Feature Engineering with Recipes",
+    "section": "The Basics",
+    "text": "The Basics\n\nStart with recipe(formula, data).\nRole: outcome (LHS) vs predictor (RHS).\nData: Used only to check variable names and types (not for training yet).\n\n\nsimple_rec &lt;- recipe(species ~ ., data = penguins)\nsimple_rec"
+  },
+  {
+    "objectID": "slides/31-recipes/31-recipes.html#adding-steps",
+    "href": "slides/31-recipes/31-recipes.html#adding-steps",
+    "title": "Feature Engineering with Recipes",
+    "section": "Adding Steps",
+    "text": "Adding Steps\n\nSteps are added using pipes (|&gt;).\nExamples (order matters!):\n\nImpute missing data first.\nIndividual transformations (log).\nDiscretization / Dummy Variables.\nNormalization (Center/Scale).\nMultivariate transformations (PCA)."
+  },
+  {
+    "objectID": "slides/31-recipes/31-recipes.html#imputation-transformations",
+    "href": "slides/31-recipes/31-recipes.html#imputation-transformations",
+    "title": "Feature Engineering with Recipes",
+    "section": "Imputation & Transformations",
+    "text": "Imputation & Transformations\n\nstep_naomit(): Remove rows with NA (simple).\nstep_impute_*(): Impute missing values (mean, median, knn).\nstep_log(): Log transform skewed variables.\nstep_mutate(): General mutations (similar to dplyr::mutate).\n\n\n# Example: Log transform body mass\nrec_log &lt;- recipe(species ~ body_mass_g, data = penguins) |&gt;\n  step_log(body_mass_g)"
+  },
+  {
+    "objectID": "slides/31-recipes/31-recipes.html#numeric-scaling",
+    "href": "slides/31-recipes/31-recipes.html#numeric-scaling",
+    "title": "Feature Engineering with Recipes",
+    "section": "Numeric Scaling",
+    "text": "Numeric Scaling\n\nCentering: Subtract the mean (mean = 0).\nScaling: Divide by standard deviation (sd = 1).\nMany important for algorithms sensitive to scale.\nUse step_normalize() (does both center and scale).\n\n\nrec_norm &lt;- recipe(species ~ bill_length_mm, data = penguins) |&gt;\n  step_normalize(bill_length_mm)"
+  },
+  {
+    "objectID": "slides/31-recipes/31-recipes.html#categorical-data-dummy-variables",
+    "href": "slides/31-recipes/31-recipes.html#categorical-data-dummy-variables",
+    "title": "Feature Engineering with Recipes",
+    "section": "Categorical Data (Dummy Variables)",
+    "text": "Categorical Data (Dummy Variables)\n\nMany algorithms requires numeric input (PCA, K-Means, Linear Regression).\nDummy Variables: Convert categories into binary 0/1 columns.\nstep_dummy(all_nominal_predictors()).\n\n\nrec_dummy &lt;- recipe(body_mass_g ~ species + island, data = penguins) |&gt;\n  step_dummy(all_nominal_predictors())\n\n\nWatch out for the “dummy trap” (multicollinearity), usually handled by default (one level is reference)."
+  },
+  {
+    "objectID": "slides/31-recipes/31-recipes.html#prep-estimating-parameters",
+    "href": "slides/31-recipes/31-recipes.html#prep-estimating-parameters",
+    "title": "Feature Engineering with Recipes",
+    "section": "prep(): Estimating Parameters",
+    "text": "prep(): Estimating Parameters\n\nprep() executes the recipe on the training data.\nIt calculates necessary statistics (means, SDs, factor levels).\n\n\n# Define the full recipe\nfinal_rec &lt;- recipe(species ~ ., data = penguins) |&gt;\n  step_naomit(all_predictors()) |&gt;\n  step_dummy(all_nominal_predictors()) |&gt;\n  step_normalize(all_numeric_predictors())\n\n# Train it\nprepped_rec &lt;- prep(final_rec, training = penguins)\nprepped_rec"
+  },
+  {
+    "objectID": "slides/31-recipes/31-recipes.html#bake-applying-to-data",
+    "href": "slides/31-recipes/31-recipes.html#bake-applying-to-data",
+    "title": "Feature Engineering with Recipes",
+    "section": "bake(): Applying to Data",
+    "text": "bake(): Applying to Data\n\nbake() applies the transformations to data.\nUse new_data = NULL to get the processed data you used to prep the recipe.\n\n\n# Process the data\nprocessed_data &lt;- bake(prepped_rec, new_data = NULL)\n\nprocessed_data |&gt; head()\n\n# A tibble: 6 × 9\n  bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year species\n           &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  \n1         -0.895         0.780            -1.42       -0.568 -1.28 Adelie \n2         -0.822         0.119            -1.07       -0.506 -1.28 Adelie \n3         -0.675         0.424            -0.426      -1.19  -1.28 Adelie \n4         -1.33          1.08             -0.568      -0.940 -1.28 Adelie \n5         -0.858         1.74             -0.782      -0.692 -1.28 Adelie \n6         -0.931         0.323            -1.42       -0.723 -1.28 Adelie \n# ℹ 3 more variables: island_Dream &lt;dbl&gt;, island_Torgersen &lt;dbl&gt;,\n#   sex_male &lt;dbl&gt;"
+  },
+  {
+    "objectID": "slides/31-recipes/31-recipes.html#why-prep-and-bake",
+    "href": "slides/31-recipes/31-recipes.html#why-prep-and-bake",
+    "title": "Feature Engineering with Recipes",
+    "section": "Why prep and bake?",
+    "text": "Why prep and bake?\n\nSeparation of concerns: You define the steps once, then apply them to:\n\nTraining data (data you use to create your model)\nTesting data (data you use to evaluate your model)\nNew data in production\n\nEnsures Data Leakage prevention:\n\nMeans/SDs are calculated on training data only.\nApplied to test data."
+  },
+  {
+    "objectID": "slides/31-recipes/31-recipes.html#getting-ready-for-pca-and-clustering",
+    "href": "slides/31-recipes/31-recipes.html#getting-ready-for-pca-and-clustering",
+    "title": "Feature Engineering with Recipes",
+    "section": "Getting ready for PCA and Clustering",
+    "text": "Getting ready for PCA and Clustering\n\nFor PCA and Clustering:\n\nUse step_normalize() (Variable scale influences distance).\nUse step_dummy() (Must be numeric).\nOften drop unwanted variables.\n\n\n\nclustering_rec &lt;- recipe(~ ., data = penguins) |&gt;\n  step_rm(species, year, sex) |&gt; # Remove non-predictive/outcome vars\n  step_naomit(all_predictors()) |&gt;\n  step_dummy(all_nominal_predictors()) |&gt;\n  step_normalize(all_numeric_predictors())\n\nclustering_rec"
+  },
+  {
+    "objectID": "slides/31-recipes/31-recipes.html#recap",
+    "href": "slides/31-recipes/31-recipes.html#recap",
+    "title": "Feature Engineering with Recipes",
+    "section": "Recap",
+    "text": "Recap\n\nRecipe: A plan for data processing.\nSteps:\n\nstep_dummy(): Categorical -&gt; Numeric.\nstep_normalize(): Center and Scale.\n\nProcess:\n\nDefine recipe().\nAdd step_*().\nprep() on training data.\nbake() to get the result.\n\nNext Time: Using this for Dimensionality Reduction (PCA)!"
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#finding-groups",
+    "href": "slides/33-clustering/33-clustering.html#finding-groups",
+    "title": "Clustering with Tidyclust",
+    "section": "Finding Groups",
+    "text": "Finding Groups\n\nSupervised Learning: We have a target variable (Y) to predict (Regression, Classification).\nUnsupervised Learning: No target. We want to find structure in the data.\nClustering: Grouping similar observations together.\nTechniques:\n\nK-Means Clustering\nHierarchical Clustering"
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#the-tidyclust-package",
+    "href": "slides/33-clustering/33-clustering.html#the-tidyclust-package",
+    "title": "Clustering with Tidyclust",
+    "section": "The tidyclust Package",
+    "text": "The tidyclust Package\n\nBuilds on tidymodels.\nProvides a consistent interface for clustering models.\nWorkflow:\n\nSpecification: k_means() or hier_clust().\nEngine: set_engine().\nFit: fit().\n\n\n\nlibrary(tidymodels)\nlibrary(tidyclust)\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\n# Prepare Data (Numeric, Scaled, No NA)\npenguins_clean &lt;- penguins |&gt;\n  drop_na() |&gt;\n  select(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g) |&gt;\n  scale() |&gt;\n  as_tibble()"
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#intuition",
+    "href": "slides/33-clustering/33-clustering.html#intuition",
+    "title": "Clustering with Tidyclust",
+    "section": "Intuition",
+    "text": "Intuition\n\nGoal: Partition data into \\(K\\) clusters.\nAlgorithm:\n\nInitialize \\(K\\) centroids randomly.\nAssign each point to the closest centroid.\nUpdate centroids (mean of assigned points).\nRepeat until convergence."
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#fitting-k-means",
+    "href": "slides/33-clustering/33-clustering.html#fitting-k-means",
+    "title": "Clustering with Tidyclust",
+    "section": "Fitting K-Means",
+    "text": "Fitting K-Means\n\n# 1. Specification (Assume K=3)\nkmeans_spec &lt;- k_means(num_clusters = 3) |&gt;\n  set_engine(\"stats\")\n\n# 2. Fit\nkmeans_fit &lt;- kmeans_spec |&gt;\n    fit(~ ., data = penguins_clean)\n\n\nkmeans_fit\n\ntidyclust cluster object\n\nK-means clustering with 3 clusters of sizes 129, 85, 119\n\nCluster means:\n  bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n2     -1.0452359     0.4858944        -0.8803701  -0.7616078\n3      0.6710153     0.8040534        -0.2889118  -0.3835267\n1      0.6537742    -1.1010497         1.1607163   1.0995561\n\nClustering vector:\n  1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20 \n  1   1   1   1   1   1   1   1   1   1   1   1   2   1   2   1   1   1   1   1 \n 21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  40 \n  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   2   1 \n 41  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60 \n  1   1   1   2   1   1   1   2   1   1   1   1   1   1   1   2   1   1   1   1 \n 61  62  63  64  65  66  67  68  69  70  71  72  73  74  75  76  77  78  79  80 \n  1   1   1   2   1   1   1   2   1   2   1   1   1   2   1   2   1   1   1   1 \n 81  82  83  84  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100 \n  1   1   1   1   1   2   1   1   1   2   1   1   1   2   1   2   1   1   1   1 \n101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 \n  1   1   1   2   1   2   1   2   1   2   1   1   1   1   1   1   1   1   1   1 \n121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 \n  1   1   1   2   1   2   1   1   1   1   1   1   1   1   1   1   1   1   1   1 \n141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 \n  1   1   1   1   1   2   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 \n  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 \n  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 \n  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 \n  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 \n  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n261 262 263 264 265 266 267 268 269 270 271 272 273 274 275 276 277 278 279 280 \n  3   3   3   3   3   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2 \n281 282 283 284 285 286 287 288 289 290 291 292 293 294 295 296 297 298 299 300 \n  2   2   2   2   2   1   2   1   2   2   2   2   2   2   2   1   2   1   2   2 \n301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317 318 319 320 \n  2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   1 \n321 322 323 324 325 326 327 328 329 330 331 332 333 \n  2   2   2   2   2   2   2   2   2   2   2   2   2 \n\nWithin cluster sum of squares by cluster:\n[1] 120.7030 109.4813 139.4684\n (between_SS / total_SS =  72.2 %)\n\nAvailable components:\n\n[1] \"cluster\"      \"centers\"      \"totss\"        \"withinss\"     \"tot.withinss\"\n[6] \"betweenss\"    \"size\"         \"iter\"         \"ifault\""
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#visualizing-clusters",
+    "href": "slides/33-clustering/33-clustering.html#visualizing-clusters",
+    "title": "Clustering with Tidyclust",
+    "section": "Visualizing Clusters",
+    "text": "Visualizing Clusters\n\nWe can explore the cluster assignments.\n\n\n# Extract Assignments\n# extract_cluster_assignment(kmeans_fit) # This extracts just the vector\n\n# Visualize\nkmeans_fit |&gt;\n  extract_cluster_assignment(penguins_clean) |&gt;\n  bind_cols(penguins_clean) |&gt;\n  ggplot(aes(x = flipper_length_mm, y = bill_length_mm, color = .cluster)) +\n  geom_point(size = 3) +\n  labs(title = \"K-Means Clustering (K=3)\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#choosing-k-elbow-method",
+    "href": "slides/33-clustering/33-clustering.html#choosing-k-elbow-method",
+    "title": "Clustering with Tidyclust",
+    "section": "Choosing K (Elbow Method)",
+    "text": "Choosing K (Elbow Method)\n\nHow do we know K=3 is best?\nTotal Within-Cluster Sum of Squares (WSS): Measure of compactness (lower is better).\nLook for the “Elbow” in the WSS vs K plot.\n\n\n# Note: tune_cluster() supports tuning K, but for simplicity:\n# Iterate manually or use standard loop for elbow plot\n# (tidyclust makes simple fitting easy, tuning is advanced workflow)"
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#intuition-1",
+    "href": "slides/33-clustering/33-clustering.html#intuition-1",
+    "title": "Clustering with Tidyclust",
+    "section": "Intuition",
+    "text": "Intuition\n\nBuilds a hierarchy of clusters.\nDendrogram: Tree diagram showing relationships.\nNo need to pre-specify K!\nLinkage: How to define distance between clusters (Complete, Single, Average)."
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#fitting-hierarchical-clustering",
+    "href": "slides/33-clustering/33-clustering.html#fitting-hierarchical-clustering",
+    "title": "Clustering with Tidyclust",
+    "section": "Fitting Hierarchical Clustering",
+    "text": "Fitting Hierarchical Clustering\n\nhc_spec &lt;- hier_clust(linkage_method = \"complete\") |&gt;\n  set_engine(\"stats\")\n\nhc_fit &lt;- hc_spec |&gt;\n  fit(~ ., data = penguins_clean)\n\nhc_fit\n\ntidyclust cluster object\n\n\nCall:\nstats::hclust(d = stats::as.dist(dmat), method = linkage_method)\n\nCluster method   : complete \nNumber of objects: 333"
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#visualizing-dendrograms",
+    "href": "slides/33-clustering/33-clustering.html#visualizing-dendrograms",
+    "title": "Clustering with Tidyclust",
+    "section": "Visualizing Dendrograms",
+    "text": "Visualizing Dendrograms\n\ntidyclust (and dendextend underneath) makes plotting easy.\n\n\n# In tidyclust 0.2.0+, plotting might need specific helper or extraction\n# Standard plot method often works on the engine object\n# plot(hc_fit$fit)\n\n# Using as.dendrogram if needed\n# hc_fit$fit |&gt; as.dendrogram() |&gt; plot()\n\n(Note: Simple base R plot of the underlying hclust object is often easiest for slides)\n\nplot(hc_fit$fit, main = \"Dendrogram of Penguins\", labels = FALSE, xlab = \"\")\nrect.hclust(hc_fit$fit, k = 3, border = \"red\")"
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#cutting-the-tree",
+    "href": "slides/33-clustering/33-clustering.html#cutting-the-tree",
+    "title": "Clustering with Tidyclust",
+    "section": "Cutting the Tree",
+    "text": "Cutting the Tree\n\nWe can “cut” the tree to get \\(K\\) clusters.\n\n\n# Re-fit with num_clusters if we want prediction-like behavior or use cutree on engine\n# tidyclust handles this via prediction usually."
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#summary-1",
+    "href": "slides/33-clustering/33-clustering.html#summary-1",
+    "title": "Clustering with Tidyclust",
+    "section": "Summary",
+    "text": "Summary\n\nClustering: Finding groups without labels.\nK-Means: Partition into K groups. Good for spherical clusters.\nHierarchical: Tree structure. Good for visualizing relationships.\nTidyclust: Brings tidy syntax to clustering (k_means(), hier_clust(), fit()).\nVisualization:\n\nScatterplots colored by Cluster.\nDendrograms."
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#the-problem-with-high-dimensions",
+    "href": "slides/32-pca/32-pca.html#the-problem-with-high-dimensions",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "The Problem with High Dimensions",
+    "text": "The Problem with High Dimensions\n\nBig Data can mean lots of observations (big \\(n\\)) or lots of variables (big \\(p\\)).\nBig \\(p\\) Problems:\n\nVisualization: Hard to plot &gt; 3 dimensions.\nCurse of Dimensionality:\n\nData becomes sparse.\nDistance metrics (Euclidean) lose meaning.\nModels can overfit."
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#goal-dimensionality-reduction",
+    "href": "slides/32-pca/32-pca.html#goal-dimensionality-reduction",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Goal: Dimensionality Reduction",
+    "text": "Goal: Dimensionality Reduction\n\nCompress data into fewer dimensions.\nRetain as much “information” (variance) as possible.\nPrincipal Component Analysis (PCA) is the most common linear technique."
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#intuition",
+    "href": "slides/32-pca/32-pca.html#intuition",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Intuition",
+    "text": "Intuition\n\nPCA finds new axes (Principal Components) that capture the maximum variance in the data.\nPC1: Direction of maximum variance.\nPC2: Orthogonal to PC1, next maximum variance.\n…\nWe can project our data onto these 2-3 new axes to visualize it!"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#pca-with-recipes",
+    "href": "slides/32-pca/32-pca.html#pca-with-recipes",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "PCA with Recipes",
+    "text": "PCA with Recipes\n\nstep_pca(): Computes principal components.\nPre-requisites:\n\nNumeric only: Use step_dummy() for categorical.\nScaled: Use step_normalize() (Variance depends on scale!)."
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#example-palmer-penguins",
+    "href": "slides/32-pca/32-pca.html#example-palmer-penguins",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Example: Palmer Penguins",
+    "text": "Example: Palmer Penguins\n\nLet’s visualize the 4 numeric body measurements in 2 dimensions.\n\n\n\nCode\nlibrary(tidymodels)\nlibrary(palmerpenguins)\nlibrary(tidyverse)\n\n# Define Recipe\npca_rec &lt;- recipe(~ ., data = penguins) |&gt;\n  step_rm(year, sex, island) |&gt;        # Remove non-measurements\n  step_naomit(all_predictors()) |&gt;\n  step_normalize(all_numeric_predictors()) |&gt;\n  step_pca(all_numeric_predictors()) # Keep top 2 PCs\n\n# Prep and Bake\npca_prep &lt;- prep(pca_rec)\npca_data &lt;- bake(pca_prep, new_data = NULL)\n\nhead(pca_data)\n\n\n# A tibble: 6 × 5\n  species   PC1      PC2     PC3    PC4\n  &lt;fct&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;\n1 Adelie  -1.84 -0.0476   0.232   0.523\n2 Adelie  -1.30  0.428    0.0295  0.402\n3 Adelie  -1.37  0.154   -0.198  -0.527\n4 Adelie  -1.88  0.00205  0.618  -0.478\n5 Adelie  -1.91 -0.828    0.686  -0.207\n6 Adelie  -1.76  0.351   -0.0276  0.504"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#scatterplot-of-pc1-vs-pc2",
+    "href": "slides/32-pca/32-pca.html#scatterplot-of-pc1-vs-pc2",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Scatterplot of PC1 vs PC2",
+    "text": "Scatterplot of PC1 vs PC2\n\nThe most common PCA plot.\nPoints close together are “similar” in the original high-dimensional space.\n\n\n\nCode\n# Since we removed 'species' in the recipe to avoid using it in PCA,\n# we might want to bind it back for plotting coloring.\n# A better workflow is to keep it as an ID/Role but not utilize it in step_pca.\n\npca_rec_2 &lt;- recipe(species ~ ., data = penguins) |&gt;\n  step_rm(year, sex, island) |&gt;\n  step_naomit(all_predictors()) |&gt;\n  step_normalize(all_numeric_predictors()) |&gt;\n  step_pca(all_numeric_predictors(), num_comp = 2) \n  # Default behavior: step_pca ignores 'outcome' variables, which is handy!\n\npca_prep_2 &lt;- prep(pca_rec_2)\npca_juice &lt;- juice(pca_prep_2) # juice() is a shortcut for bake(prep, new_data=NULL)\n\nggplot(pca_juice, aes(x = PC1, y = PC2, color = species)) +\n  geom_point(size = 3, alpha = 0.8) +\n  theme_minimal() +\n  labs(title = \"Penguins PCA\", subtitle = \"Species separate well in PC space\")"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#loadings-what-do-the-pcs-mean",
+    "href": "slides/32-pca/32-pca.html#loadings-what-do-the-pcs-mean",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Loadings: What do the PCs mean?",
+    "text": "Loadings: What do the PCs mean?\n\nLoadings: The contribution of each original variable to the PC.\nWe can extract them from the prepped recipe using tidy().\n\n\n\nCode\npca_comps &lt;- tidy(pca_prep_2, number = 2, type = \"coef\") # number=2 refers to the step number index if unknown, typically easier to look up.\n# Better way: ID the step\npca_rec_named &lt;- recipe(species ~ ., data = penguins) |&gt;\n  step_naomit(all_predictors()) |&gt;\n  step_normalize(all_numeric_predictors()) |&gt;\n  step_pca(all_numeric_predictors(), id = \"pca\")\n\npca_prep_named &lt;- prep(pca_rec_named)\npca_comps &lt;- tidy(pca_prep_named, id = \"pca\")\n\npca_comps |&gt;\n  filter(component %in% c(\"PC1\", \"PC2\")) |&gt;\n  ggplot(aes(x = value, y = terms, fill = terms)) +\n  geom_col() +\n  facet_wrap(~component) +\n  theme_minimal() +\n  theme(legend.position = \"none\") +\n  labs(title = \"PCA Loadings: Contribution of variables\")"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#scree-plot-how-many-pcs",
+    "href": "slides/32-pca/32-pca.html#scree-plot-how-many-pcs",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Scree Plot: How many PCs?",
+    "text": "Scree Plot: How many PCs?\n\nHow much variance is explained by each component?\n\n\n\nCode\n# Extract variance explained\npca_var &lt;- tidy(pca_prep_named, id = \"pca\", type = \"variance\")\n\npca_var |&gt;\n  filter(terms == \"percent variance\") |&gt;\n  ggplot(aes(x = component, y = value)) +\n  geom_col(fill = \"steelblue\") +\n  geom_line(group = 1) +\n  geom_point() +\n  labs(title = \"Scree Plot\", y = \"% Variance Explained\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#recap",
+    "href": "slides/32-pca/32-pca.html#recap",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Recap",
+    "text": "Recap\n\nDimensionality Reduction: Visualizing high-D data in 2D/3D.\nSteps:\n\nstep_normalize() (Crucial!)\nstep_pca()\n\nVisualization:\n\nScore Plot: PC1 vs PC2 (Where are the data points?)\nLoadings Plot: Terms contribution (What do the axes mean?)\nScree Plot: Variance explained (How much info is kept?)"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#next-time",
+    "href": "slides/32-pca/32-pca.html#next-time",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Next Time",
+    "text": "Next Time\n\nFinding groups in data automatically: Clustering."
+  },
+  {
+    "objectID": "slides/31-recipes/31-recipes.html#do-next",
+    "href": "slides/31-recipes/31-recipes.html#do-next",
+    "title": "Feature Engineering with Recipes",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 8: Feature engineering with recipes from Tidy Modeling with R.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nMove on to Lecture 32!"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#dimensionality-reduction",
+    "href": "slides/32-pca/32-pca.html#dimensionality-reduction",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Dimensionality Reduction",
+    "text": "Dimensionality Reduction\n\nGoal phrasing 1: Reduce the number of columns, while losing as little information as possible\nGoal phrasing 2: Extract lower-dimensional structure from our data\nAnalogy: file compression"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#which-one-is-compressed",
+    "href": "slides/32-pca/32-pca.html#which-one-is-compressed",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Which One is Compressed?",
+    "text": "Which One is Compressed?"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#which-one-is-compressed-1",
+    "href": "slides/32-pca/32-pca.html#which-one-is-compressed-1",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Which One is Compressed?",
+    "text": "Which One is Compressed?\n\n\n\n\n\n\n\n\n\n1,330 KB\n\n\n\n\n\n\n\n396 KB"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#idea",
+    "href": "slides/32-pca/32-pca.html#idea",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Idea",
+    "text": "Idea\n\nWe managed to:\n\nReduce file size by 70%\nNot lose much information\nExtract underlying structure (a duck)"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#thinking-about-structure-in-tabular-data",
+    "href": "slides/32-pca/32-pca.html#thinking-about-structure-in-tabular-data",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Thinking about structure in tabular data",
+    "text": "Thinking about structure in tabular data"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#underlying-structure",
+    "href": "slides/32-pca/32-pca.html#underlying-structure",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Underlying Structure",
+    "text": "Underlying Structure\n\n\nWhat dimension is our data in?\nWhat is the underlying structure here?\nWhat is the dimension of a plane?"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#visualizing-plane",
+    "href": "slides/32-pca/32-pca.html#visualizing-plane",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Visualizing Plane",
+    "text": "Visualizing Plane"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#thinking-about-structure-in-tabular-data-1",
+    "href": "slides/32-pca/32-pca.html#thinking-about-structure-in-tabular-data-1",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Thinking about structure in tabular data",
+    "text": "Thinking about structure in tabular data"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#underlying-structure-1",
+    "href": "slides/32-pca/32-pca.html#underlying-structure-1",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Underlying Structure",
+    "text": "Underlying Structure\n\n\nWhat dimension is our data in?\nWhat is the underlying structure here?\nWhat is the dimension of a line?"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#visualizing-2d",
+    "href": "slides/32-pca/32-pca.html#visualizing-2d",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Visualizing 2D",
+    "text": "Visualizing 2D"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#visualizing-1d",
+    "href": "slides/32-pca/32-pca.html#visualizing-1d",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Visualizing 1D",
+    "text": "Visualizing 1D"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#visualizing-1d-data",
+    "href": "slides/32-pca/32-pca.html#visualizing-1d-data",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Visualizing 1D Data",
+    "text": "Visualizing 1D Data"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#thinking-about-structure-in-tabular-data-2",
+    "href": "slides/32-pca/32-pca.html#thinking-about-structure-in-tabular-data-2",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Thinking about structure in tabular data",
+    "text": "Thinking about structure in tabular data"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#underlying-structure-2",
+    "href": "slides/32-pca/32-pca.html#underlying-structure-2",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Underlying Structure",
+    "text": "Underlying Structure\n\n\nWhat dimension is our data in?\nWhat is the underlying structure here?\nWhat is the dimension of a plane?"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#visualizing-plane-1",
+    "href": "slides/32-pca/32-pca.html#visualizing-plane-1",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Visualizing Plane",
+    "text": "Visualizing Plane"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#discussion",
+    "href": "slides/32-pca/32-pca.html#discussion",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Discussion",
+    "text": "Discussion\n\nWhat’s the difference between the first two scenario’s and the third scenario?\n\nHow much have we reduced the dimension?\nHow much information have we lost?"
   }
 ]

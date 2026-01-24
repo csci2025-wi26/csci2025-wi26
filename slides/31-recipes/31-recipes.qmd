@@ -1,0 +1,177 @@
+---
+title: Feature Engineering with Recipes
+subtitle: Lecture 31
+---
+
+# Introduction
+
+## Preprocessing Data
+
+- **Feature Engineering**: transforming variables to make them more suitable for a model (or visualization!).
+- Common tasks:
+  -   Converting categorical data to numeric (Dummy variables).
+  -   Centering and Scaling (Normalization).
+  -   Handling missing data.
+  -   Transforming skewed distributions (Log).
+- **The `recipes` package**: A tidy interface for data preprocessing.
+
+## The `recipe` Concept
+
+- A recipe is a blueprint for data processing.
+- It defines **what** you want to do, not **when** to do it.
+- **Workflow**:
+  1.  `recipe()`: Define the formula and data.
+  2.  `step_*()`: Add processing steps.
+  3.  `prep()`: Train the recipe (calculate means, SDs, levels, etc.).
+  4.  `bake()`: Apply the recipe to new data.
+
+## Load Packages
+
+```{r}
+library(tidymodels)
+library(palmerpenguins)
+library(tidyverse)
+```
+
+# Defining a Recipe
+
+## The Basics
+
+- Start with `recipe(formula, data)`.
+- **Role**: `outcome` (LHS) vs `predictor` (RHS).
+- **Data**: Used only to check variable names and types (not for training yet).
+
+```{r}
+simple_rec <- recipe(species ~ ., data = penguins)
+simple_rec
+```
+
+## Adding Steps
+
+- Steps are added using pipes (`|>`).
+- Examples (order matters!):
+  -   Impute missing data first.
+  -   Individual transformations (log).
+  -   Discretization / Dummy Variables.
+  -   Normalization (Center/Scale).
+  -   Multivariate transformations (PCA).
+
+# Common Steps
+
+## Imputation & Transformations
+
+- `step_naomit()`: Remove rows with NA (simple).
+- `step_impute_*()`: Impute missing values (mean, median, knn).
+- `step_log()`: Log transform skewed variables.
+- `step_mutate()`: General mutations (similar to `dplyr::mutate`).
+
+```{r}
+# Example: Log transform body mass
+rec_log <- recipe(species ~ body_mass_g, data = penguins) |>
+  step_log(body_mass_g)
+```
+
+## Numeric Scaling
+
+- **Centering**: Subtract the mean (mean = 0).
+- **Scaling**: Divide by standard deviation (sd = 1).
+- Many important for algorithms sensitive to scale.
+- Use `step_normalize()` (does both center and scale).
+
+```{r}
+rec_norm <- recipe(species ~ bill_length_mm, data = penguins) |>
+  step_normalize(bill_length_mm)
+```
+
+## Categorical Data (Dummy Variables)
+
+- Many algorithms requires numeric input (PCA, K-Means, Linear Regression).
+- **Dummy Variables**: Convert categories into binary 0/1 columns.
+- `step_dummy(all_nominal_predictors())`.
+
+```{r}
+rec_dummy <- recipe(body_mass_g ~ species + island, data = penguins) |>
+  step_dummy(all_nominal_predictors())
+```
+
+- Watch out for the "dummy trap" (multicollinearity), usually handled by default (one level is reference).
+
+# The Lifecycle: Prep & Bake
+
+## `prep()`: Estimating Parameters
+
+- `prep()` executes the recipe on the training data.
+- It calculates necessary statistics (means, SDs, factor levels).
+
+```{r}
+# Define the full recipe
+final_rec <- recipe(species ~ ., data = penguins) |>
+  step_naomit(all_predictors()) |>
+  step_dummy(all_nominal_predictors()) |>
+  step_normalize(all_numeric_predictors())
+
+# Train it
+prepped_rec <- prep(final_rec, training = penguins)
+prepped_rec
+```
+
+## `bake()`: Applying to Data {.smaller}
+
+- `bake()` applies the transformations to data.
+- Use `new_data = NULL` to get the processed data you used to `prep` the recipe.
+
+```{r}
+# Process the data
+processed_data <- bake(prepped_rec, new_data = NULL)
+
+processed_data |> head()
+```
+
+## Why `prep` and `bake`?
+
+- **Separation of concerns**: You define the steps once, then apply them to:
+  -   Training data (data you use to create your model)
+  -   Testing data (data you use to evaluate your model)
+  -   New data in production
+- Ensures **Data Leakage** prevention:
+  -   Means/SDs are calculated on *training* data only.
+  -   Applied to test data.
+
+## Getting ready for PCA and Clustering
+
+- For **PCA** and **Clustering**:
+  -   Use `step_normalize()` (Variable scale influences distance).
+  -   Use `step_dummy()` (Must be numeric).
+  -   Often drop unwanted variables.
+
+```{r}
+clustering_rec <- recipe(~ ., data = penguins) |>
+  step_rm(species, year, sex) |> # Remove non-predictive/outcome vars
+  step_naomit(all_predictors()) |>
+  step_dummy(all_nominal_predictors()) |>
+  step_normalize(all_numeric_predictors())
+
+clustering_rec
+```
+
+# Wrap-Up
+
+## Recap
+
+- **Recipe**: A plan for data processing.
+- **Steps**:
+  -   `step_dummy()`: Categorical -> Numeric.
+  -   `step_normalize()`: Center and Scale.
+- **Process**:
+  1.  Define `recipe()`.
+  2.  Add `step_*()`.
+  3.  `prep()` on training data.
+  4.  `bake()` to get the result.
+- **Next Time**: Using this for Dimensionality Reduction (PCA)!
+
+
+## Do Next
+
+1. Read [Chapter 8: Feature engineering with `recipes`](https://www.tmwr.org/recipes) from Tidy Modeling with R.
+2. There's NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.
+3. Move on to Lecture 32!
