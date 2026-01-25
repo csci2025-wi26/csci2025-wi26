@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de8274a4d1ecc1e6aaeaf6e5564b5074.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
   <title>CSCI 2025 – Basic UI</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-19712d0536fb4af57e0e6d790f4cb4d1.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ed2e4e4ddc4d9168fc867cf473780ab9.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -248,13 +248,13 @@ Dr.&nbsp;Eric Friedlander
 </section>
 <section id="example" class="slide level2">
 <h2>Example</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">sliderInput</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">sliderInput</span>(</span>
 <span id="cb1-2"><a></a>  <span class="at">inputId =</span> <span class="st">"min"</span>, </span>
 <span id="cb1-3"><a></a>  <span class="at">label =</span> <span class="st">"Limit (minimum)"</span>, </span>
 <span id="cb1-4"><a></a>  <span class="at">value =</span> <span class="dv">50</span>, </span>
 <span id="cb1-5"><a></a>  <span class="at">min =</span> <span class="dv">0</span>, </span>
 <span id="cb1-6"><a></a>  <span class="at">max =</span> <span class="dv">100</span></span>
-<span id="cb1-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="free-text-inputs" class="slide level2">
 <h2>Free Text Inputs</h2>
@@ -267,11 +267,11 @@ Dr.&nbsp;Eric Friedlander
 </section>
 <section id="example-1" class="slide level2">
 <h2>Example</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb2-2"><a></a>  <span class="fu">textInput</span>(<span class="st">"name"</span>, <span class="st">"What's your name?"</span>),</span>
 <span id="cb2-3"><a></a>  <span class="fu">passwordInput</span>(<span class="st">"password"</span>, <span class="st">"What's your password?"</span>),</span>
 <span id="cb2-4"><a></a>  <span class="fu">textAreaInput</span>(<span class="st">"story"</span>, <span class="st">"Tell me about yourself"</span>, <span class="at">rows =</span> <span class="dv">3</span>)</span>
-<span id="cb2-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="numeric-inputs" class="slide level2">
 <h2>Numeric Inputs</h2>
@@ -282,11 +282,11 @@ Dr.&nbsp;Eric Friedlander
 </section>
 <section id="example-2" class="slide level2">
 <h2>Example</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb3-2"><a></a>  <span class="fu">numericInput</span>(<span class="st">"num"</span>, <span class="st">"Number one"</span>, <span class="at">value =</span> <span class="dv">0</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>),</span>
 <span id="cb3-3"><a></a>  <span class="fu">sliderInput</span>(<span class="st">"num2"</span>, <span class="st">"Number two"</span>, <span class="at">value =</span> <span class="dv">50</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>),</span>
 <span id="cb3-4"><a></a>  <span class="fu">sliderInput</span>(<span class="st">"rng"</span>, <span class="st">"Range"</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>), <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>)</span>
-<span id="cb3-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="date-inputs" class="slide level2">
 <h2>Date Inputs</h2>
@@ -298,10 +298,10 @@ Dr.&nbsp;Eric Friedlander
 </section>
 <section id="example-3" class="slide level2">
 <h2>Example</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb4-2"><a></a>  <span class="fu">dateInput</span>(<span class="st">"dob"</span>, <span class="st">"When were you born?"</span>),</span>
 <span id="cb4-3"><a></a>  <span class="fu">dateRangeInput</span>(<span class="st">"holiday"</span>, <span class="st">"When do you want to go on vacation?"</span>)</span>
-<span id="cb4-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="limited-choices" class="slide level2">
 <h2>Limited Choices</h2>
@@ -314,11 +314,11 @@ Dr.&nbsp;Eric Friedlander
 </section>
 <section id="example-4" class="slide level2">
 <h2>Example</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dog"</span>, <span class="st">"cat"</span>, <span class="st">"mouse"</span>, <span class="st">"bird"</span>, <span class="st">"other"</span>, <span class="st">"I hate animals"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dog"</span>, <span class="st">"cat"</span>, <span class="st">"mouse"</span>, <span class="st">"bird"</span>, <span class="st">"other"</span>, <span class="st">"I hate animals"</span>)</span>
 <span id="cb5-2"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb5-3"><a></a>  <span class="fu">selectInput</span>(<span class="st">"state"</span>, <span class="st">"What's your favourite state?"</span>, state.name),</span>
 <span id="cb5-4"><a></a>  <span class="fu">radioButtons</span>(<span class="st">"animal"</span>, <span class="st">"What's your favourite animal?"</span>, animals)</span>
-<span id="cb5-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-5"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="other-inputs" class="slide level2">
 <h2>Other Inputs</h2>
@@ -362,7 +362,7 @@ Dr.&nbsp;Eric Friedlander
 </section>
 <section id="example-5" class="slide level2">
 <h2>Example</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb6-2"><a></a>  <span class="fu">textOutput</span>(<span class="st">"text"</span>),</span>
 <span id="cb6-3"><a></a>  <span class="fu">verbatimTextOutput</span>(<span class="st">"code"</span>)</span>
 <span id="cb6-4"><a></a>)</span>
@@ -370,7 +370,7 @@ Dr.&nbsp;Eric Friedlander
 <span id="cb6-6"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
 <span id="cb6-7"><a></a>  output<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">renderText</span>(<span class="st">"Hello Friend!"</span>)</span>
 <span id="cb6-8"><a></a>  output<span class="sc">$</span>code <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>(<span class="fu">summary</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span>
-<span id="cb6-9"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-9"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="table-outputs" class="slide level2">
 <h2>Table Outputs</h2>
@@ -388,14 +388,14 @@ Dr.&nbsp;Eric Friedlander
 </section>
 <section id="example-6" class="slide level2">
 <h2>Example</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb7-2"><a></a>  <span class="fu">tableOutput</span>(<span class="st">"static"</span>),</span>
 <span id="cb7-3"><a></a>  <span class="fu">dataTableOutput</span>(<span class="st">"dynamic"</span>)</span>
 <span id="cb7-4"><a></a>)</span>
 <span id="cb7-5"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
 <span id="cb7-6"><a></a>  output<span class="sc">$</span>static <span class="ot">&lt;-</span> <span class="fu">renderTable</span>(<span class="fu">head</span>(mtcars))</span>
 <span id="cb7-7"><a></a>  output<span class="sc">$</span>dynamic <span class="ot">&lt;-</span> <span class="fu">renderDataTable</span>(mtcars, <span class="at">options =</span> <span class="fu">list</span>(<span class="at">pageLength =</span> <span class="dv">5</span>))</span>
-<span id="cb7-8"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-8"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="plot-outputs" class="slide level2">
 <h2>Plot Outputs</h2>
@@ -409,13 +409,13 @@ Dr.&nbsp;Eric Friedlander
 </section>
 <section id="example-7" class="slide level2">
 <h2>Example</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb8-2"><a></a>  <span class="fu">plotOutput</span>(<span class="st">"plot"</span>, <span class="at">width =</span> <span class="st">"400px"</span>)</span>
 <span id="cb8-3"><a></a>)</span>
 <span id="cb8-4"><a></a></span>
 <span id="cb8-5"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
 <span id="cb8-6"><a></a>  output<span class="sc">$</span>plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>(<span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), <span class="at">res =</span> <span class="dv">96</span>)</span>
-<span id="cb8-7"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-7"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section></section>
 <section>
 <section id="summary" class="title-slide slide level1 center">
@@ -643,7 +643,7 @@ Dr.&nbsp;Eric Friedlander
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -717,13 +717,14 @@ Dr.&nbsp;Eric Friedlander
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

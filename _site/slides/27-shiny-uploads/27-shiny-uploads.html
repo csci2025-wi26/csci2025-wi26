@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de8274a4d1ecc1e6aaeaf6e5564b5074.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
   <title>CSCI 2025 – Uploads and Downloads</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-19712d0536fb4af57e0e6d790f4cb4d1.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ed2e4e4ddc4d9168fc867cf473780ab9.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -222,7 +222,7 @@ Dr.&nbsp;Eric Friedlander
 <li>Let’s look at the documentation with <code>?fileInput</code>.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">fileInput</span>(<span class="st">"upload"</span>, <span class="st">"Upload a file"</span>, <span class="at">multiple =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">fileInput</span>(<span class="st">"upload"</span>, <span class="st">"Upload a file"</span>, <span class="at">multiple =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="server-inputupload" class="slide level2 smaller">
@@ -238,10 +238,10 @@ Dr.&nbsp;Eric Friedlander
 <li><strong>Note</strong>: <code>datapath</code> is temporary. Read the data from there immediately.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>output<span class="sc">$</span>contents <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>output<span class="sc">$</span>contents <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
 <span id="cb2-2"><a></a>  <span class="fu">req</span>(input<span class="sc">$</span>upload)</span>
 <span id="cb2-3"><a></a>  <span class="fu">read_csv</span>(input<span class="sc">$</span>upload<span class="sc">$</span>datapath)</span>
-<span id="cb2-4"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="file-size-limits" class="slide level2">
@@ -251,7 +251,7 @@ Dr.&nbsp;Eric Friedlander
 <li>Increase it by setting an option (usually at the top of <code>app.R</code> or <code>server.R</code>):</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">options</span>(<span class="at">shiny.maxRequestSize =</span> <span class="dv">30</span> <span class="sc">*</span> <span class="dv">1024</span><span class="sc">^</span><span class="dv">2</span>) <span class="co"># 30 MB</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">options</span>(<span class="at">shiny.maxRequestSize =</span> <span class="dv">30</span> <span class="sc">*</span> <span class="dv">1024</span><span class="sc">^</span><span class="dv">2</span>) <span class="co"># 30 MB</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>
@@ -266,7 +266,7 @@ Dr.&nbsp;Eric Friedlander
 <li><strong><code>downloadLink(outputId, label)</code></strong>: A link to initiate a download.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">downloadButton</span>(<span class="st">"downloadData"</span>, <span class="st">"Download CSV"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">downloadButton</span>(<span class="st">"downloadData"</span>, <span class="st">"Download CSV"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="server-downloadhandler" class="slide level2">
@@ -280,14 +280,14 @@ Dr.&nbsp;Eric Friedlander
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>output<span class="sc">$</span>downloadData <span class="ot">&lt;-</span> <span class="fu">downloadHandler</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>output<span class="sc">$</span>downloadData <span class="ot">&lt;-</span> <span class="fu">downloadHandler</span>(</span>
 <span id="cb5-2"><a></a>  <span class="at">filename =</span> <span class="cf">function</span>() {</span>
 <span id="cb5-3"><a></a>    <span class="fu">paste</span>(<span class="st">"data-"</span>, <span class="fu">Sys.Date</span>(), <span class="st">".csv"</span>, <span class="at">sep=</span><span class="st">""</span>)</span>
 <span id="cb5-4"><a></a>  },</span>
 <span id="cb5-5"><a></a>  <span class="at">content =</span> <span class="cf">function</span>(file) {</span>
 <span id="cb5-6"><a></a>    <span class="fu">write.csv</span>(<span class="fu">data</span>(), file)</span>
 <span id="cb5-7"><a></a>  }</span>
-<span id="cb5-8"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-8"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="downloading-reports" class="slide level2">
@@ -520,7 +520,7 @@ Dr.&nbsp;Eric Friedlander
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -632,13 +632,14 @@ Dr.&nbsp;Eric Friedlander
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

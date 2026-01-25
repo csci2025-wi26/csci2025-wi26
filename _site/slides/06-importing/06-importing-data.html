@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de8274a4d1ecc1e6aaeaf6e5564b5074.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
   <title>CSCI 2025 – Importing Data</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-19712d0536fb4af57e0e6d790f4cb4d1.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ed2e4e4ddc4d9168fc867cf473780ab9.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -231,15 +231,15 @@ Dr.&nbsp;Eric Friedlander
 <h2>Setup</h2>
 <p>We’ll use functions from <code>readr</code>, which is loaded with the <code>tidyverse</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="reading-delimited-data" class="slide level2">
 <h2>Reading delimited data</h2>
 <p>The most common function is <code>read_csv()</code> for comma-separated values.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>students <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"path-to-file.csv"</span>)</span>
-<span id="cb2-2"><a></a>students</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>students <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"path-to-file.csv"</span>)</span>
+<span id="cb2-2"><a></a>students</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>read_csv()</code> prints the column specification, which is its guess for each column’s type.</p>
 </section>
@@ -252,7 +252,7 @@ Dr.&nbsp;Eric Friedlander
 </section>
 <section id="example" class="slide level2">
 <h2>Example</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a></a>project-name/</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a></a>project-name/</span>
 <span id="cb3-2"><a></a>├── project-name.code-workspace</span>
 <span id="cb3-3"><a></a>├── README.md             &lt;- Overview of the project and how to run it.</span>
 <span id="cb3-4"><a></a>├── data/</span>
@@ -261,7 +261,7 @@ Dr.&nbsp;Eric Friedlander
 <span id="cb3-7"><a></a>├── R/                    &lt;- Folder for reusable functions and source code.</span>
 <span id="cb3-8"><a></a>├── scripts/              &lt;- Analysis scripts (e.g., 01_cleanup.R, 02_model.R).</span>
 <span id="cb3-9"><a></a>├── output/               &lt;- Plots, tables, and exported results.</span>
-<span id="cb3-10"><a></a>└── docs/                 &lt;- Quarto or RMarkdown reports.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-10"><a></a>└── docs/                 &lt;- Quarto or RMarkdown reports.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="where-to-put-this" class="slide level2">
 <h2>Where to put this</h2>
@@ -280,7 +280,7 @@ Dr.&nbsp;Eric Friedlander
 <li>Create a new folder on your computer called StarFormation (don’t put it in your Downloads folder)</li>
 <li>Create the following folder structure</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a></a>StarFormation/</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a></a>StarFormation/</span>
 <span id="cb4-2"><a></a>├── project-name.code-workspace </span>
 <span id="cb4-3"><a></a>├── README.md             </span>
 <span id="cb4-4"><a></a>├── data/</span>
@@ -293,7 +293,7 @@ Dr.&nbsp;Eric Friedlander
 <span id="cb4-11"><a></a>│   └── loading_the_data.R</span>
 <span id="cb4-12"><a></a>├── output/               </span>
 <span id="cb4-13"><a></a>└── docs/                 </span>
-<span id="cb4-14"><a></a>    └── Tables-for-CSCI2040.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-14"><a></a>    └── Tables-for-CSCI2040.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="paths" class="slide level2 smaller">
 <h2>Paths</h2>
@@ -369,12 +369,12 @@ Dr.&nbsp;Eric Friedlander
 <section id="example-with-skip" class="slide level2 smaller">
 <h2>Example with <code>skip</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">read_csv</span>(<span class="st">"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">read_csv</span>(<span class="st">"</span></span>
 <span id="cb5-2"><a></a><span class="st">  This is metadata</span></span>
 <span id="cb5-3"><a></a><span class="st">  That we want to skip</span></span>
 <span id="cb5-4"><a></a><span class="st">  x,y</span></span>
 <span id="cb5-5"><a></a><span class="st">  1,2</span></span>
-<span id="cb5-6"><a></a><span class="st">"</span>, <span class="at">skip =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a></a><span class="st">"</span>, <span class="at">skip =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 1 Columns: 2
 ── Column specification ────────────────────────────────────────────────────────
@@ -396,7 +396,7 @@ dbl (2): x, y
 <h2>Writing to a file</h2>
 <p>To save a data frame back to a file, use <code>write_csv()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">write_csv</span>(file<span class="sc">-</span>name, <span class="st">"path-to-file.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">write_csv</span>(file<span class="sc">-</span>name, <span class="st">"path-to-file.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="practice-with-reading-and-writing" class="slide level2">
@@ -412,8 +412,8 @@ dbl (2): x, y
 <p>For saving intermediate R objects, <code>write_csv()</code> is not ideal because it loses type information (e.g., factors become characters).</p>
 <p>It’s better to use <code>write_rds()</code> and <code>read_rds()</code> to save and load a single R object in R’s native RDS format.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">write_rds</span>(file, <span class="st">"path-to-file.rds"</span>)</span>
-<span id="cb9-2"><a></a>restored_file <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"path-to-file.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">write_rds</span>(file, <span class="st">"path-to-file.rds"</span>)</span>
+<span id="cb9-2"><a></a>restored_file <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"path-to-file.rds"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="other-data-sources" class="slide level2">
@@ -641,7 +641,7 @@ dbl (2): x, y
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -753,13 +753,14 @@ dbl (2): x, y
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

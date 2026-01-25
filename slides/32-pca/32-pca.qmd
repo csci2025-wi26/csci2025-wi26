@@ -357,4 +357,4 @@ pca_var |>
 
 1. Read [Chapter 16: Dimensionality Reduction](https://www.tmwr.org/recipes) from Tidy Modeling with R.
 2. There's NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.
-3. Move on to Lecture 33!
+3. That's it for tonight!

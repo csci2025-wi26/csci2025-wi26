@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de8274a4d1ecc1e6aaeaf6e5564b5074.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
   <title>CSCI 2025 – Page Layout</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-19712d0536fb4af57e0e6d790f4cb4d1.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ed2e4e4ddc4d9168fc867cf473780ab9.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -223,9 +223,9 @@ Dr.&nbsp;Eric Friedlander
 <li>All UI elements are typically placed inside <code>fluidPage()</code>.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb1-2"><a></a>  <span class="st">"Hello, world!"</span></span>
-<span id="cb1-3"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="titlepanel" class="slide level2">
@@ -236,9 +236,9 @@ Dr.&nbsp;Eric Friedlander
 <li>It also sets the window title of the browser.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb2-2"><a></a>  <span class="fu">titlePanel</span>(<span class="st">"My Shiny App"</span>)</span>
-<span id="cb2-3"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="sidebarlayout" class="slide level2">
@@ -249,7 +249,7 @@ Dr.&nbsp;Eric Friedlander
 <li><code>sidebarPanel()</code> is typically placed on the left.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb3-2"><a></a>  <span class="fu">titlePanel</span>(<span class="st">"My App"</span>),</span>
 <span id="cb3-3"><a></a>  <span class="fu">sidebarLayout</span>(</span>
 <span id="cb3-4"><a></a>    <span class="fu">sidebarPanel</span>(</span>
@@ -259,7 +259,7 @@ Dr.&nbsp;Eric Friedlander
 <span id="cb3-8"><a></a>      <span class="co"># outputs</span></span>
 <span id="cb3-9"><a></a>    )</span>
 <span id="cb3-10"><a></a>  )</span>
-<span id="cb3-11"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-11"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="sidebarlayout-positions" class="slide level2">
@@ -270,7 +270,7 @@ Dr.&nbsp;Eric Friedlander
 <li><code>position = "right"</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">sidebarLayout</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">sidebarLayout</span>(</span>
 <span id="cb4-2"><a></a>  <span class="fu">sidebarPanel</span>(</span>
 <span id="cb4-3"><a></a>    <span class="co"># inputs</span></span>
 <span id="cb4-4"><a></a>  ),</span>
@@ -278,7 +278,7 @@ Dr.&nbsp;Eric Friedlander
 <span id="cb4-6"><a></a>    <span class="co"># outputs</span></span>
 <span id="cb4-7"><a></a>  ),</span>
 <span id="cb4-8"><a></a>  <span class="at">position =</span> <span class="st">"right"</span></span>
-<span id="cb4-9"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-9"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="multi-row-layouts-with-fluidrow" class="slide level2 smaller">
@@ -290,7 +290,7 @@ Dr.&nbsp;Eric Friedlander
 <li>The total width of columns in a row must be 12.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">fluidPage</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">fluidPage</span>(</span>
 <span id="cb5-2"><a></a>  <span class="fu">fluidRow</span>(</span>
 <span id="cb5-3"><a></a>    <span class="fu">column</span>(<span class="dv">4</span>, </span>
 <span id="cb5-4"><a></a>      <span class="st">"First column"</span></span>
@@ -307,7 +307,7 @@ Dr.&nbsp;Eric Friedlander
 <span id="cb5-15"><a></a>      <span class="st">"Fourth column"</span></span>
 <span id="cb5-16"><a></a>    )</span>
 <span id="cb5-17"><a></a>  )</span>
-<span id="cb5-18"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-18"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="nesting-layouts" class="slide level2">
@@ -330,13 +330,13 @@ Dr.&nbsp;Eric Friedlander
 <li>Each tab is created with <code>tabPanel()</code>.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">mainPanel</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">mainPanel</span>(</span>
 <span id="cb6-2"><a></a>  <span class="fu">tabsetPanel</span>(</span>
 <span id="cb6-3"><a></a>    <span class="fu">tabPanel</span>(<span class="st">"Plot"</span>, <span class="fu">plotOutput</span>(<span class="st">"plot"</span>)), </span>
 <span id="cb6-4"><a></a>    <span class="fu">tabPanel</span>(<span class="st">"Summary"</span>, <span class="fu">verbatimTextOutput</span>(<span class="st">"summary"</span>)), </span>
 <span id="cb6-5"><a></a>    <span class="fu">tabPanel</span>(<span class="st">"Table"</span>, <span class="fu">tableOutput</span>(<span class="st">"table"</span>))</span>
 <span id="cb6-6"><a></a>  )</span>
-<span id="cb6-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-7"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="tabsetpanel-options" class="slide level2">
@@ -357,12 +357,12 @@ Dr.&nbsp;Eric Friedlander
 <li>Cannot be used inside <code>sidebarLayout</code>.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">navlistPanel</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">navlistPanel</span>(</span>
 <span id="cb7-2"><a></a>  <span class="st">"Header"</span>,</span>
 <span id="cb7-3"><a></a>  <span class="fu">tabPanel</span>(<span class="st">"First"</span>, <span class="st">"First content"</span>),</span>
 <span id="cb7-4"><a></a>  <span class="fu">tabPanel</span>(<span class="st">"Second"</span>, <span class="st">"Second content"</span>),</span>
 <span id="cb7-5"><a></a>  <span class="fu">tabPanel</span>(<span class="st">"Third"</span>, <span class="st">"Third content"</span>)</span>
-<span id="cb7-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-6"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>
@@ -379,11 +379,11 @@ Dr.&nbsp;Eric Friedlander
 <li>Each <code>tabPanel</code> becomes a “page”.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(</span>
 <span id="cb8-2"><a></a>  <span class="st">"My App"</span>,</span>
 <span id="cb8-3"><a></a>  <span class="fu">tabPanel</span>(<span class="st">"Page 1"</span>, <span class="st">"Content for page 1"</span>),</span>
 <span id="cb8-4"><a></a>  <span class="fu">tabPanel</span>(<span class="st">"Page 2"</span>, <span class="st">"Content for page 2"</span>)</span>
-<span id="cb8-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-5"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="menus-in-navbarpage" class="slide level2">
@@ -393,7 +393,7 @@ Dr.&nbsp;Eric Friedlander
 <li>This is useful for organizing a large number of pages.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">navbarPage</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">navbarPage</span>(</span>
 <span id="cb9-2"><a></a>  <span class="st">"My App"</span>,</span>
 <span id="cb9-3"><a></a>  <span class="fu">tabPanel</span>(<span class="st">"Page 1"</span>, ),</span>
 <span id="cb9-4"><a></a>  <span class="fu">tabPanel</span>(<span class="st">"Page 2"</span>, ),</span>
@@ -401,7 +401,7 @@ Dr.&nbsp;Eric Friedlander
 <span id="cb9-6"><a></a>    <span class="fu">tabPanel</span>(<span class="st">"Sub-page A"</span>, ),</span>
 <span id="cb9-7"><a></a>    <span class="fu">tabPanel</span>(<span class="st">"Sub-page B"</span>, )</span>
 <span id="cb9-8"><a></a>  )</span>
-<span id="cb9-9"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-9"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="navbarpage-options" class="slide level2">
@@ -426,9 +426,9 @@ Dr.&nbsp;Eric Friedlander
 <li>Use <code>bs_theme()</code> to create a theme and pass it to the <code>theme</code> argument of the page layout function.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb10-2"><a></a>  <span class="at">theme =</span> bslib<span class="sc">::</span><span class="fu">bs_theme</span>(<span class="at">bootswatch =</span> <span class="st">"darkly"</span>),</span>
-<span id="cb10-3"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="real-time-theming" class="slide level2">
@@ -438,9 +438,9 @@ Dr.&nbsp;Eric Friedlander
 <li>Run <code>bs_theme_preview()</code> on your UI to launch a special version of your app where you can tweak theme settings in real-time.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># In the R console</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># In the R console</span></span>
 <span id="cb11-2"><a></a>my_ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>()</span>
-<span id="cb11-3"><a></a>bslib<span class="sc">::</span><span class="fu">bs_theme_preview</span>(my_ui)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-3"><a></a>bslib<span class="sc">::</span><span class="fu">bs_theme_preview</span>(my_ui)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="customizing-components" class="slide level2">
@@ -454,13 +454,13 @@ Dr.&nbsp;Eric Friedlander
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>my_theme <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">bs_theme</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>my_theme <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">bs_theme</span>(</span>
 <span id="cb12-2"><a></a>  <span class="at">bg =</span> <span class="st">"#202123"</span>,</span>
 <span id="cb12-3"><a></a>  <span class="at">fg =</span> <span class="st">"#B8BCC2"</span>,</span>
 <span id="cb12-4"><a></a>  <span class="at">primary =</span> <span class="st">"#EA80FC"</span>,</span>
 <span id="cb12-5"><a></a>  <span class="at">base_font =</span> bslib<span class="sc">::</span><span class="fu">font_google</span>(<span class="st">"Inter"</span>),</span>
 <span id="cb12-6"><a></a>  <span class="st">"font-size-base"</span> <span class="ot">=</span> <span class="st">"1.1rem"</span></span>
-<span id="cb12-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-7"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="you-can-use-raw-html-and-css" class="slide level2">
@@ -680,7 +680,7 @@ Dr.&nbsp;Eric Friedlander
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -792,13 +792,14 @@ Dr.&nbsp;Eric Friedlander
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

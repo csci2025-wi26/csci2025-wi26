@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de8274a4d1ecc1e6aaeaf6e5564b5074.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
   <title>CSCI 2025 – Feature Engineering with Recipes</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-19712d0536fb4af57e0e6d790f4cb4d1.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ed2e4e4ddc4d9168fc867cf473780ab9.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -246,9 +246,9 @@ Dr.&nbsp;Eric Friedlander
 <section id="load-packages" class="slide level2">
 <h2>Load Packages</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidymodels)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidymodels)</span>
 <span id="cb1-2"><a></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-3"><a></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>
@@ -264,8 +264,8 @@ Dr.&nbsp;Eric Friedlander
 <li><strong>Data</strong>: Used only to check variable names and types (not for training yet).</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>simple_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(species <span class="sc">~</span> ., <span class="at">data =</span> penguins)</span>
-<span id="cb2-2"><a></a>simple_rec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>simple_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(species <span class="sc">~</span> ., <span class="at">data =</span> penguins)</span>
+<span id="cb2-2"><a></a>simple_rec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="adding-steps" class="slide level2">
@@ -294,7 +294,7 @@ Dr.&nbsp;Eric Friedlander
 <li>It calculates necessary statistics (means, SDs, factor levels).</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Define the full recipe</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Define the full recipe</span></span>
 <span id="cb3-2"><a></a>final_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(species <span class="sc">~</span> ., <span class="at">data =</span> penguins) <span class="sc">|&gt;</span></span>
 <span id="cb3-3"><a></a>  <span class="fu">step_naomit</span>(<span class="fu">all_predictors</span>()) <span class="sc">|&gt;</span></span>
 <span id="cb3-4"><a></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">|&gt;</span></span>
@@ -302,7 +302,7 @@ Dr.&nbsp;Eric Friedlander
 <span id="cb3-6"><a></a></span>
 <span id="cb3-7"><a></a><span class="co"># Train it</span></span>
 <span id="cb3-8"><a></a>prepped_rec <span class="ot">&lt;-</span> <span class="fu">prep</span>(final_rec, <span class="at">training =</span> penguins)</span>
-<span id="cb3-9"><a></a>prepped_rec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-9"><a></a>prepped_rec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="bake-applying-to-data" class="slide level2 smaller">
@@ -312,10 +312,10 @@ Dr.&nbsp;Eric Friedlander
 <li>Use <code>new_data = NULL</code> to get the processed data you used to <code>prep</code> the recipe.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Process the data</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Process the data</span></span>
 <span id="cb4-2"><a></a>processed_data <span class="ot">&lt;-</span> <span class="fu">bake</span>(prepped_rec, <span class="at">new_data =</span> <span class="cn">NULL</span>)</span>
 <span id="cb4-3"><a></a></span>
-<span id="cb4-4"><a></a>processed_data <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a></a>processed_data <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 9
   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year species
@@ -361,9 +361,9 @@ Dr.&nbsp;Eric Friedlander
 <li><code>step_mutate()</code>: General mutations (similar to <code>dplyr::mutate</code>).</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># Example: Log transform body mass</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># Example: Log transform body mass</span></span>
 <span id="cb6-2"><a></a>rec_log <span class="ot">&lt;-</span> <span class="fu">recipe</span>(species <span class="sc">~</span> body_mass_g, <span class="at">data =</span> penguins) <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a></a>  <span class="fu">step_log</span>(body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a></a>  <span class="fu">step_log</span>(body_mass_g)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="numeric-scaling" class="slide level2">
@@ -375,8 +375,8 @@ Dr.&nbsp;Eric Friedlander
 <li>Use <code>step_normalize()</code> (does both center and scale).</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>rec_norm <span class="ot">&lt;-</span> <span class="fu">recipe</span>(species <span class="sc">~</span> bill_length_mm, <span class="at">data =</span> penguins) <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a></a>  <span class="fu">step_normalize</span>(bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>rec_norm <span class="ot">&lt;-</span> <span class="fu">recipe</span>(species <span class="sc">~</span> bill_length_mm, <span class="at">data =</span> penguins) <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">step_normalize</span>(bill_length_mm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="categorical-data-dummy-variables" class="slide level2">
@@ -387,8 +387,8 @@ Dr.&nbsp;Eric Friedlander
 <li><code>step_dummy(all_nominal_predictors())</code>.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>rec_dummy <span class="ot">&lt;-</span> <span class="fu">recipe</span>(body_mass_g <span class="sc">~</span> species <span class="sc">+</span> island, <span class="at">data =</span> penguins) <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>rec_dummy <span class="ot">&lt;-</span> <span class="fu">recipe</span>(body_mass_g <span class="sc">~</span> species <span class="sc">+</span> island, <span class="at">data =</span> penguins) <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Watch out for the “dummy trap” (multicollinearity), usually handled by default (one level is reference).</li>
@@ -405,13 +405,13 @@ Dr.&nbsp;Eric Friedlander
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>clustering_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(<span class="sc">~</span> ., <span class="at">data =</span> penguins) <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>clustering_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(<span class="sc">~</span> ., <span class="at">data =</span> penguins) <span class="sc">|&gt;</span></span>
 <span id="cb9-2"><a></a>  <span class="fu">step_rm</span>(species, year, sex) <span class="sc">|&gt;</span> <span class="co"># Remove non-predictive/outcome vars</span></span>
 <span id="cb9-3"><a></a>  <span class="fu">step_naomit</span>(<span class="fu">all_predictors</span>()) <span class="sc">|&gt;</span></span>
 <span id="cb9-4"><a></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">|&gt;</span></span>
 <span id="cb9-5"><a></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>())</span>
 <span id="cb9-6"><a></a></span>
-<span id="cb9-7"><a></a>clustering_rec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-7"><a></a>clustering_rec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>
@@ -640,7 +640,7 @@ Dr.&nbsp;Eric Friedlander
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -752,13 +752,14 @@ Dr.&nbsp;Eric Friedlander
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

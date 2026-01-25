@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de8274a4d1ecc1e6aaeaf6e5564b5074.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
   <title>CSCI 2025 – Basic Reactivity</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-19712d0536fb4af57e0e6d790f4cb4d1.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ed2e4e4ddc4d9168fc867cf473780ab9.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -226,9 +226,9 @@ Dr.&nbsp;Eric Friedlander
 <li>Isolates variables between sessions.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
 <span id="cb1-2"><a></a>  <span class="co"># Logic goes here</span></span>
-<span id="cb1-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="input" class="slide level2">
 <h2>Input</h2>
@@ -237,11 +237,11 @@ Dr.&nbsp;Eric Friedlander
 <li><strong>Read-only</strong>: Can’t modify it directly (e.g., <code>input$x &lt;- 5</code> throws an error).</li>
 <li><strong>Selective access</strong>: Can only read <code>input</code> inside a <strong>reactive context</strong> (e.g., <code>render*</code> functions or <code>reactive()</code>).</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># Error: Can't access reactive value 'count' outside of reactive consumer</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># Error: Can't access reactive value 'count' outside of reactive consumer</span></span>
 <span id="cb2-2"><a></a><span class="fu">message</span>(input<span class="sc">$</span>count) </span>
 <span id="cb2-3"><a></a></span>
 <span id="cb2-4"><a></a><span class="co"># OK</span></span>
-<span id="cb2-5"><a></a><span class="fu">renderText</span>({ <span class="fu">message</span>(input<span class="sc">$</span>count) })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a></a><span class="fu">renderText</span>({ <span class="fu">message</span>(input<span class="sc">$</span>count) })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="output" class="slide level2">
 <h2>Output</h2>
@@ -290,7 +290,7 @@ Dr.&nbsp;Eric Friedlander
 </section>
 <section id="example" class="slide level2">
 <h2>Example</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
 <span id="cb3-2"><a></a>  <span class="co"># Calculate once</span></span>
 <span id="cb3-3"><a></a>  x_sq <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
 <span id="cb3-4"><a></a>    input<span class="sc">$</span>x <span class="sc">^</span> <span class="dv">2</span></span>
@@ -299,7 +299,7 @@ Dr.&nbsp;Eric Friedlander
 <span id="cb3-7"><a></a>  <span class="co"># Use twice</span></span>
 <span id="cb3-8"><a></a>  output<span class="sc">$</span>txt <span class="ot">&lt;-</span> <span class="fu">renderText</span>(<span class="fu">x_sq</span>())</span>
 <span id="cb3-9"><a></a>  output<span class="sc">$</span>plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>(<span class="fu">plot</span>(<span class="fu">x_sq</span>()))</span>
-<span id="cb3-10"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-10"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="timing" class="slide level2">
 <h2>Timing</h2>
@@ -319,9 +319,9 @@ Dr.&nbsp;Eric Friedlander
 <li>doesn’t return a value.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">observeEvent</span>(input<span class="sc">$</span>save, {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">observeEvent</span>(input<span class="sc">$</span>save, {</span>
 <span id="cb4-2"><a></a>  <span class="fu">write.csv</span>(<span class="fu">data</span>(), <span class="st">"data.csv"</span>)</span>
-<span id="cb4-3"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="reactive-graph" class="slide level2">
 <h2>Reactive Graph</h2>
@@ -548,7 +548,7 @@ Dr.&nbsp;Eric Friedlander
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -622,13 +622,14 @@ Dr.&nbsp;Eric Friedlander
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

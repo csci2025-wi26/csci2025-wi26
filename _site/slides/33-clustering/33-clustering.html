@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de8274a4d1ecc1e6aaeaf6e5564b5074.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
   <title>CSCI 2025 – Clustering with Tidyclust</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-19712d0536fb4af57e0e6d790f4cb4d1.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ed2e4e4ddc4d9168fc867cf473780ab9.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -241,7 +241,7 @@ Dr.&nbsp;Eric Friedlander
 </ol></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidymodels)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidymodels)</span>
 <span id="cb1-2"><a></a><span class="fu">library</span>(tidyclust)</span>
 <span id="cb1-3"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-4"><a></a><span class="fu">library</span>(palmerpenguins)</span>
@@ -251,7 +251,7 @@ Dr.&nbsp;Eric Friedlander
 <span id="cb1-8"><a></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span></span>
 <span id="cb1-9"><a></a>  <span class="fu">select</span>(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g) <span class="sc">|&gt;</span></span>
 <span id="cb1-10"><a></a>  <span class="fu">scale</span>() <span class="sc">|&gt;</span></span>
-<span id="cb1-11"><a></a>  <span class="fu">as_tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-11"><a></a>  <span class="fu">as_tibble</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>
@@ -275,7 +275,7 @@ Dr.&nbsp;Eric Friedlander
 <section id="fitting-k-means" class="slide level2">
 <h2>Fitting K-Means</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># 1. Specification (Assume K=3)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># 1. Specification (Assume K=3)</span></span>
 <span id="cb2-2"><a></a>kmeans_spec <span class="ot">&lt;-</span> <span class="fu">k_means</span>(<span class="at">num_clusters =</span> <span class="dv">3</span>) <span class="sc">|&gt;</span></span>
 <span id="cb2-3"><a></a>  <span class="fu">set_engine</span>(<span class="st">"stats"</span>)</span>
 <span id="cb2-4"><a></a></span>
@@ -284,7 +284,7 @@ Dr.&nbsp;Eric Friedlander
 <span id="cb2-7"><a></a>    <span class="fu">fit</span>(<span class="sc">~</span> ., <span class="at">data =</span> penguins_clean)</span>
 <span id="cb2-8"><a></a></span>
 <span id="cb2-9"><a></a></span>
-<span id="cb2-10"><a></a>kmeans_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-10"><a></a>kmeans_fit</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tidyclust cluster object
 
@@ -349,7 +349,7 @@ Available components:
 <li>We can explore the cluster assignments.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Extract Assignments</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Extract Assignments</span></span>
 <span id="cb4-2"><a></a><span class="co"># extract_cluster_assignment(kmeans_fit) # This extracts just the vector</span></span>
 <span id="cb4-3"><a></a></span>
 <span id="cb4-4"><a></a><span class="co"># Visualize</span></span>
@@ -359,7 +359,7 @@ Available components:
 <span id="cb4-8"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm, <span class="at">color =</span> .cluster)) <span class="sc">+</span></span>
 <span id="cb4-9"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb4-10"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"K-Means Clustering (K=3)"</span>) <span class="sc">+</span></span>
-<span id="cb4-11"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-11"><a></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="33-clustering_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
@@ -371,9 +371,9 @@ Available components:
 <li>Look for the “Elbow” in the WSS vs K plot.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Note: tune_cluster() supports tuning K, but for simplicity:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Note: tune_cluster() supports tuning K, but for simplicity:</span></span>
 <span id="cb5-2"><a></a><span class="co"># Iterate manually or use standard loop for elbow plot</span></span>
-<span id="cb5-3"><a></a><span class="co"># (tidyclust makes simple fitting easy, tuning is advanced workflow)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a></a><span class="co"># (tidyclust makes simple fitting easy, tuning is advanced workflow)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>
@@ -393,13 +393,13 @@ Available components:
 <section id="fitting-hierarchical-clustering" class="slide level2">
 <h2>Fitting Hierarchical Clustering</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>hc_spec <span class="ot">&lt;-</span> <span class="fu">hier_clust</span>(<span class="at">linkage_method =</span> <span class="st">"complete"</span>) <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>hc_spec <span class="ot">&lt;-</span> <span class="fu">hier_clust</span>(<span class="at">linkage_method =</span> <span class="st">"complete"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb6-2"><a></a>  <span class="fu">set_engine</span>(<span class="st">"stats"</span>)</span>
 <span id="cb6-3"><a></a></span>
 <span id="cb6-4"><a></a>hc_fit <span class="ot">&lt;-</span> hc_spec <span class="sc">|&gt;</span></span>
 <span id="cb6-5"><a></a>  <span class="fu">fit</span>(<span class="sc">~</span> ., <span class="at">data =</span> penguins_clean)</span>
 <span id="cb6-6"><a></a></span>
-<span id="cb6-7"><a></a>hc_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-7"><a></a>hc_fit</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tidyclust cluster object
 
@@ -418,17 +418,17 @@ Number of objects: 333 </code></pre>
 <li><code>tidyclust</code> (and <code>dendextend</code> underneath) makes plotting easy.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># In tidyclust 0.2.0+, plotting might need specific helper or extraction</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># In tidyclust 0.2.0+, plotting might need specific helper or extraction</span></span>
 <span id="cb8-2"><a></a><span class="co"># Standard plot method often works on the engine object</span></span>
 <span id="cb8-3"><a></a><span class="co"># plot(hc_fit$fit)</span></span>
 <span id="cb8-4"><a></a></span>
 <span id="cb8-5"><a></a><span class="co"># Using as.dendrogram if needed</span></span>
-<span id="cb8-6"><a></a><span class="co"># hc_fit$fit |&gt; as.dendrogram() |&gt; plot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-6"><a></a><span class="co"># hc_fit$fit |&gt; as.dendrogram() |&gt; plot()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><em>(Note: Simple base R plot of the underlying <code>hclust</code> object is often easiest for slides)</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">plot</span>(hc_fit<span class="sc">$</span>fit, <span class="at">main =</span> <span class="st">"Dendrogram of Penguins"</span>, <span class="at">labels =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">""</span>)</span>
-<span id="cb9-2"><a></a><span class="fu">rect.hclust</span>(hc_fit<span class="sc">$</span>fit, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">border =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">plot</span>(hc_fit<span class="sc">$</span>fit, <span class="at">main =</span> <span class="st">"Dendrogram of Penguins"</span>, <span class="at">labels =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">""</span>)</span>
+<span id="cb9-2"><a></a><span class="fu">rect.hclust</span>(hc_fit<span class="sc">$</span>fit, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">border =</span> <span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="33-clustering_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
@@ -438,8 +438,8 @@ Number of objects: 333 </code></pre>
 <li>We can “cut” the tree to get <span class="math inline">\(K\)</span> clusters.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># Re-fit with num_clusters if we want prediction-like behavior or use cutree on engine</span></span>
-<span id="cb10-2"><a></a><span class="co"># tidyclust handles this via prediction usually.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># Re-fit with num_clusters if we want prediction-like behavior or use cutree on engine</span></span>
+<span id="cb10-2"><a></a><span class="co"># tidyclust handles this via prediction usually.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>
@@ -655,7 +655,7 @@ Number of objects: 333 </code></pre>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -767,13 +767,14 @@ Number of objects: 333 </code></pre>
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
