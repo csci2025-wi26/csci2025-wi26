@@ -4852,5 +4852,103 @@
     "title": "Individual Project Introduction",
     "section": "Today: Soft Launch",
     "text": "Today: Soft Launch\n\nHard launch: next week\nToday: brainstorm project ideas and datasets"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#vectors-and-projections",
+    "href": "slides/32-pca/32-pca.html#vectors-and-projections",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Vector’s and Projections",
+    "text": "Vector’s and Projections"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#basis-vectors-and-new-coordinates",
+    "href": "slides/32-pca/32-pca.html#basis-vectors-and-new-coordinates",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Basis Vectors and New Coordinates",
+    "text": "Basis Vectors and New Coordinates\n\nPlane above: \\(z = x + y\\)\nNew Directions:\n\nNew Direction 1: \\(\\vec{d}_1 = \\langle 1, 1, 2\\rangle\\)\nNew Direction 2: \\(\\vec{d}_1 = \\langle 1, -1, 0\\rangle\\)\n\nNew data:\n\nNew \\(x\\): \\(1\\times x_{old} + 1\\times y_{old} + 2\\times z_{old}\\)\nNew \\(y\\): \\(1\\times x_{old} - 1\\times y_{old} + 0\\times z_{old}\\)\n\nNote: Not quite correct, need to re-normalize"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#new-data",
+    "href": "slides/32-pca/32-pca.html#new-data",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "New Data",
+    "text": "New Data\n\nnew_data &lt;- data |&gt; \n  mutate(new_x = x + y + 2*z,\n         new_y = x - y,\n         new_x = new_x/6, #re-normalizing\n         new_y = new_y/2)\n\nnew_data |&gt; head() |&gt; kable()\n\n\n\n\nx\ny\nz\nnew_x\nnew_y\n\n\n\n\n-0.5604756\n-0.9957987\n-1.5562744\n-0.7781372\n0.2176615\n\n\n-0.2301775\n-1.0399550\n-1.2701325\n-0.6350663\n0.4048888\n\n\n1.5587083\n-0.0179802\n1.5407281\n0.7703640\n0.7883443\n\n\n0.0705084\n-0.1321751\n-0.0616667\n-0.0308334\n0.1013418\n\n\n0.1292877\n-2.5493428\n-2.4200550\n-1.2100275\n1.3393153\n\n\n1.7150650\n1.0405735\n2.7556384\n1.3778192\n0.3372458"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#whats-actually-happening",
+    "href": "slides/32-pca/32-pca.html#whats-actually-happening",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "What’s actually happening",
+    "text": "What’s actually happening\n\nWe are projecting each observation onto our new directions \\(\\vec{d}_1\\) and \\(\\vec{d}_2\\)\nVisualization"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#projecting-our-data",
+    "href": "slides/32-pca/32-pca.html#projecting-our-data",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Projecting our data",
+    "text": "Projecting our data"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#plotting-these",
+    "href": "slides/32-pca/32-pca.html#plotting-these",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Plotting these",
+    "text": "Plotting these\n\nnew_data |&gt; \n  ggplot(aes(x = new_x, y = new_y)) +\n           geom_point()"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#pca-vocabulary",
+    "href": "slides/32-pca/32-pca.html#pca-vocabulary",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "PCA Vocabulary",
+    "text": "PCA Vocabulary\n\nPrincipal Component (PC1): direction in \\(p\\)-dimensional space (e.g. \\(\\langle 1, 1, 2\\rangle\\))\nScores: our new variables (e.g. \\((-0.56\\times 1 + -0.996\\times 1 + -1.56\\times 2)/6 = -0.778\\))\nLoadings: For direction above’\n\nLoading on \\(x\\) is 1\nLoading on \\(y\\) is 1\nLoading on \\(z\\) is 2"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#recall-variance",
+    "href": "slides/32-pca/32-pca.html#recall-variance",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Recall: Variance",
+    "text": "Recall: Variance\n\nWhat is variance?\nIntuitively: what does variance measure?\nVariance: \\(\\frac{1}{n-1}\\sum_{i=1}^n(x_i - \\bar{x})^2\\)\n\nAverage of the squared distance from zero of each observation"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#idea-behind-pca",
+    "href": "slides/32-pca/32-pca.html#idea-behind-pca",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Idea behind PCA",
+    "text": "Idea behind PCA\n\nSelect first PC so variance of scores is the maximum\nIteratively:\n\nSelect next PC so variance of scores is maximize AND new PC is orthogonal to all other PCs\n\n\n\n\nWhat does orthogonal mean?"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#easy-example",
+    "href": "slides/32-pca/32-pca.html#easy-example",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Easy Example",
+    "text": "Easy Example\n\nExercise: What should the first and second PCs be?"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#how-much-variance-is-explained-by-each-of-the-pcs",
+    "href": "slides/32-pca/32-pca.html#how-much-variance-is-explained-by-each-of-the-pcs",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "How much variance is explained by each of the PC’s?",
+    "text": "How much variance is explained by each of the PC’s?\n\nvar_exp &lt;- easy_ex |&gt; \n  mutate(PC1 = x,\n         PC2 = y) |&gt; \n  summarize(var1 = var(PC1), \n            var2 = var(PC2))\n\nvar_exp |&gt; kable()\n\n\n\n\nvar1\nvar2\n\n\n\n\n0.9834589\n0.0637151"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#what-proportion-of-variance-is-explained-by-each-of-the-pcs",
+    "href": "slides/32-pca/32-pca.html#what-proportion-of-variance-is-explained-by-each-of-the-pcs",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "What proportion of variance is explained by each of the PC’s?",
+    "text": "What proportion of variance is explained by each of the PC’s?\n\nvar_exp |&gt; \n  pivot_longer(everything()) |&gt; \n  mutate(proportion = value/sum(value)) |&gt; \n  kable()\n\n\n\n\nname\nvalue\nproportion\n\n\n\n\nvar1\n0.9834589\n0.9391552\n\n\nvar2\n0.0637151\n0.0608448\n\n\n\n\n\n\n93% of our variance (information) is contained in our first PC"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#harder-example",
+    "href": "slides/32-pca/32-pca.html#harder-example",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "Harder Example",
+    "text": "Harder Example\n\nExercise: What should the first and second PCs be?"
+  },
+  {
+    "objectID": "slides/32-pca/32-pca.html#how-much-variance-is-explained-by-each-of-the-pcs-1",
+    "href": "slides/32-pca/32-pca.html#how-much-variance-is-explained-by-each-of-the-pcs-1",
+    "title": "Dimensionality Reduction & PCA",
+    "section": "How much variance is explained by each of the PC’s?",
+    "text": "How much variance is explained by each of the PC’s?\n\nvar_exp &lt;- harder_ex |&gt; \n  mutate(PC1 = (x + y)/2,\n         PC2 = (x-y)/2) |&gt; \n  summarize(var1 = var(PC1), \n            var2 = var(PC2))\n\nvar_exp |&gt; kable()\n\n\n\n\nvar1\nvar2\n\n\n\n\n1.021035\n0.0159288"
   }
 ]
