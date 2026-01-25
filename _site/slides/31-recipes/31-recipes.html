@@ -283,53 +283,6 @@ Dr.&nbsp;Eric Friedlander
 </ul>
 </section></section>
 <section>
-<section id="common-steps" class="title-slide slide level1 center">
-<h1>Common Steps</h1>
-
-</section>
-<section id="imputation-transformations" class="slide level2">
-<h2>Imputation &amp; Transformations</h2>
-<ul>
-<li><code>step_naomit()</code>: Remove rows with NA (simple).</li>
-<li><code>step_impute_*()</code>: Impute missing values (mean, median, knn).</li>
-<li><code>step_log()</code>: Log transform skewed variables.</li>
-<li><code>step_mutate()</code>: General mutations (similar to <code>dplyr::mutate</code>).</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Example: Log transform body mass</span></span>
-<span id="cb3-2"><a></a>rec_log <span class="ot">&lt;-</span> <span class="fu">recipe</span>(species <span class="sc">~</span> body_mass_g, <span class="at">data =</span> penguins) <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a></a>  <span class="fu">step_log</span>(body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="numeric-scaling" class="slide level2">
-<h2>Numeric Scaling</h2>
-<ul>
-<li><strong>Centering</strong>: Subtract the mean (mean = 0).</li>
-<li><strong>Scaling</strong>: Divide by standard deviation (sd = 1).</li>
-<li>Many important for algorithms sensitive to scale.</li>
-<li>Use <code>step_normalize()</code> (does both center and scale).</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>rec_norm <span class="ot">&lt;-</span> <span class="fu">recipe</span>(species <span class="sc">~</span> bill_length_mm, <span class="at">data =</span> penguins) <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a></a>  <span class="fu">step_normalize</span>(bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="categorical-data-dummy-variables" class="slide level2">
-<h2>Categorical Data (Dummy Variables)</h2>
-<ul>
-<li>Many algorithms requires numeric input (PCA, K-Means, Linear Regression).</li>
-<li><strong>Dummy Variables</strong>: Convert categories into binary 0/1 columns.</li>
-<li><code>step_dummy(all_nominal_predictors())</code>.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>rec_dummy <span class="ot">&lt;-</span> <span class="fu">recipe</span>(body_mass_g <span class="sc">~</span> species <span class="sc">+</span> island, <span class="at">data =</span> penguins) <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Watch out for the “dummy trap” (multicollinearity), usually handled by default (one level is reference).</li>
-</ul>
-</section></section>
-<section>
 <section id="the-lifecycle-prep-bake" class="title-slide slide level1 center">
 <h1>The Lifecycle: Prep &amp; Bake</h1>
 
@@ -341,15 +294,15 @@ Dr.&nbsp;Eric Friedlander
 <li>It calculates necessary statistics (means, SDs, factor levels).</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># Define the full recipe</span></span>
-<span id="cb6-2"><a></a>final_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(species <span class="sc">~</span> ., <span class="at">data =</span> penguins) <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a></a>  <span class="fu">step_naomit</span>(<span class="fu">all_predictors</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb6-4"><a></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb6-5"><a></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>())</span>
-<span id="cb6-6"><a></a></span>
-<span id="cb6-7"><a></a><span class="co"># Train it</span></span>
-<span id="cb6-8"><a></a>prepped_rec <span class="ot">&lt;-</span> <span class="fu">prep</span>(final_rec, <span class="at">training =</span> penguins)</span>
-<span id="cb6-9"><a></a>prepped_rec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Define the full recipe</span></span>
+<span id="cb3-2"><a></a>final_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(species <span class="sc">~</span> ., <span class="at">data =</span> penguins) <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a></a>  <span class="fu">step_naomit</span>(<span class="fu">all_predictors</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb3-5"><a></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>())</span>
+<span id="cb3-6"><a></a></span>
+<span id="cb3-7"><a></a><span class="co"># Train it</span></span>
+<span id="cb3-8"><a></a>prepped_rec <span class="ot">&lt;-</span> <span class="fu">prep</span>(final_rec, <span class="at">training =</span> penguins)</span>
+<span id="cb3-9"><a></a>prepped_rec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="bake-applying-to-data" class="slide level2 smaller">
@@ -359,10 +312,10 @@ Dr.&nbsp;Eric Friedlander
 <li>Use <code>new_data = NULL</code> to get the processed data you used to <code>prep</code> the recipe.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Process the data</span></span>
-<span id="cb7-2"><a></a>processed_data <span class="ot">&lt;-</span> <span class="fu">bake</span>(prepped_rec, <span class="at">new_data =</span> <span class="cn">NULL</span>)</span>
-<span id="cb7-3"><a></a></span>
-<span id="cb7-4"><a></a>processed_data <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Process the data</span></span>
+<span id="cb4-2"><a></a>processed_data <span class="ot">&lt;-</span> <span class="fu">bake</span>(prepped_rec, <span class="at">new_data =</span> <span class="cn">NULL</span>)</span>
+<span id="cb4-3"><a></a></span>
+<span id="cb4-4"><a></a>processed_data <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 9
   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year species
@@ -392,6 +345,53 @@ Dr.&nbsp;Eric Friedlander
 <li>Means/SDs are calculated on <em>training</em> data only.</li>
 <li>Applied to test data.</li>
 </ul></li>
+</ul>
+</section></section>
+<section>
+<section id="common-steps" class="title-slide slide level1 center">
+<h1>Common Steps</h1>
+
+</section>
+<section id="imputation-transformations" class="slide level2">
+<h2>Imputation &amp; Transformations</h2>
+<ul>
+<li><code>step_naomit()</code>: Remove rows with NA (simple).</li>
+<li><code>step_impute_*()</code>: Impute missing values (mean, median, knn).</li>
+<li><code>step_log()</code>: Log transform skewed variables.</li>
+<li><code>step_mutate()</code>: General mutations (similar to <code>dplyr::mutate</code>).</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># Example: Log transform body mass</span></span>
+<span id="cb6-2"><a></a>rec_log <span class="ot">&lt;-</span> <span class="fu">recipe</span>(species <span class="sc">~</span> body_mass_g, <span class="at">data =</span> penguins) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a></a>  <span class="fu">step_log</span>(body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="numeric-scaling" class="slide level2">
+<h2>Numeric Scaling</h2>
+<ul>
+<li><strong>Centering</strong>: Subtract the mean (mean = 0).</li>
+<li><strong>Scaling</strong>: Divide by standard deviation (sd = 1).</li>
+<li>Many important for algorithms sensitive to scale.</li>
+<li>Use <code>step_normalize()</code> (does both center and scale).</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>rec_norm <span class="ot">&lt;-</span> <span class="fu">recipe</span>(species <span class="sc">~</span> bill_length_mm, <span class="at">data =</span> penguins) <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">step_normalize</span>(bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="categorical-data-dummy-variables" class="slide level2">
+<h2>Categorical Data (Dummy Variables)</h2>
+<ul>
+<li>Many algorithms requires numeric input (PCA, K-Means, Linear Regression).</li>
+<li><strong>Dummy Variables</strong>: Convert categories into binary 0/1 columns.</li>
+<li><code>step_dummy(all_nominal_predictors())</code>.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>rec_dummy <span class="ot">&lt;-</span> <span class="fu">recipe</span>(body_mass_g <span class="sc">~</span> species <span class="sc">+</span> island, <span class="at">data =</span> penguins) <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Watch out for the “dummy trap” (multicollinearity), usually handled by default (one level is reference).</li>
 </ul>
 </section>
 <section id="getting-ready-for-pca-and-clustering" class="slide level2">
