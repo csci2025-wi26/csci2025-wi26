@@ -16,6 +16,10 @@ title: "Useful links"
 |                            | 🔗 [Mastering Shiny](https://mastering-shiny.org/)                        |
 |                            |                                                                           |
 |                            | 🔗 [Happy Git and Github for the useR](https://happygitwithr.com/)        |
+|                            |                                                                           |
+|                            | 🔗 [Tidy Modeling with R](https://www.tmwr.org/)                          |
+|                            |                                                                           |
+|                            | 🔗 [Introduction to Statistical Learning](https://www.statlearning.com/)  |
 +----------------------------+---------------------------------------------------------------------------+
 | Package documentation      | 🔗 ggplot2: [ggplot2.tidyverse.org](https://ggplot2.tidyverse.org/)       |
 |                            |                                                                           |
