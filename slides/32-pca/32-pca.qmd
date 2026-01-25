@@ -265,7 +265,7 @@ plot_ly(x = ~x, y = ~y, z = ~z, type = "scatter3d", mode = "markers",
 -   Plane above: $z = x + y$
 -   New Directions:
     -   New Direction 1: $\vec{d}_1 = \langle 1, 1, 2\rangle$
-    -   New Direction 2: $\vec{d}_1 = \langle 1, -1, 0\rangle$
+    -   New Direction 2: $\vec{d}_2 = \langle 1, -1, 0\rangle$
 -   New data:
     -   New $x$: $1\times x_{old} + 1\times y_{old} + 2\times z_{old}$
     -   New $y$: $1\times x_{old} - 1\times y_{old} + 0\times z_{old}$

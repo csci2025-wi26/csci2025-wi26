@@ -4865,7 +4865,7 @@
     "href": "slides/32-pca/32-pca.html#basis-vectors-and-new-coordinates",
     "title": "Dimensionality Reduction & PCA",
     "section": "Basis Vectors and New Coordinates",
-    "text": "Basis Vectors and New Coordinates\n\nPlane above: \\(z = x + y\\)\nNew Directions:\n\nNew Direction 1: \\(\\vec{d}_1 = \\langle 1, 1, 2\\rangle\\)\nNew Direction 2: \\(\\vec{d}_1 = \\langle 1, -1, 0\\rangle\\)\n\nNew data:\n\nNew \\(x\\): \\(1\\times x_{old} + 1\\times y_{old} + 2\\times z_{old}\\)\nNew \\(y\\): \\(1\\times x_{old} - 1\\times y_{old} + 0\\times z_{old}\\)\n\nNote: Not quite correct, need to re-normalize"
+    "text": "Basis Vectors and New Coordinates\n\nPlane above: \\(z = x + y\\)\nNew Directions:\n\nNew Direction 1: \\(\\vec{d}_1 = \\langle 1, 1, 2\\rangle\\)\nNew Direction 2: \\(\\vec{d}_2 = \\langle 1, -1, 0\\rangle\\)\n\nNew data:\n\nNew \\(x\\): \\(1\\times x_{old} + 1\\times y_{old} + 2\\times z_{old}\\)\nNew \\(y\\): \\(1\\times x_{old} - 1\\times y_{old} + 0\\times z_{old}\\)\n\nNote: Not quite correct, need to re-normalize"
   },
   {
     "objectID": "slides/32-pca/32-pca.html#new-data",
