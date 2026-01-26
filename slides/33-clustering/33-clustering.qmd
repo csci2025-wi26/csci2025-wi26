@@ -7,15 +7,26 @@ subtitle: "Lecture 33"
 
 -   **Machine Learning**: using computers and algorithms to learn from data.
 -   Two types of machine learning problems are:
-  -   **Supervised Learning**: you have a **target** variable that you're trying to predict
-  -   **Unsupervised Learning**: you don't have a target variables and you're trying to extract patterns from data  
-  -   Two common types of unsupervised learning are:
+    -   **Supervised Learning**: you have a **target** variable that you're trying to predict
+    -   **Unsupervised Learning**: you don't have a target variables and you're trying to extract patterns from data
+-   Two common types of unsupervised learning are:
     -   **Dimensionality reduction**: find a lower-dimensional representation of the data that captures most of the variation (PCA)
     -   **Clustering**: find subgroups of observations that are similar to each other
 
 ## K-means Clustering
 
-K-means clustering is a simple and popular clustering method. It works by partitioning the data into K distinct, non-overlapping clusters.
+-   A simple and popular clustering method.
+-   **Goal**: Partition data into $K$ distinct, non-overlapping clusters.
+
+## How it Works
+
+-   An iterative algorithm:
+    1.  **Initialize**: Randomly select $K$ data points as initial cluster centroids.
+    2.  **Assign**: Assign each data point to the *nearest* centroid, forming K clusters.
+    3.  **Update**: Recalculate the centroid of each cluster (the mean of all points in the cluster).
+    4.  **Repeat**: Repeat "Assign" and "Update" steps until cluster assignments stop changing.
+
+## `tidyclust`
 
 The `tidyclust` package provides a `tidymodels`-like interface for clustering.
 
@@ -26,15 +37,21 @@ library(tidyclust)
 library(tidyverse)
 ```
 
-We will use the `USArrests` dataset. It contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973. It also gives the percent of the population living in urban areas.
+## The Data: `USArrests`
+
+-   Contains statistics for the 50 US states in 1973:
+    -   Arrests per 100,000 residents for Assault, Murder, and Rape.
+    -   Percent of the population living in urban areas.
 
 ```{r}
-USArrests |>  head()
+USArrests |> head()
 ```
 
-## K-means with tidyclust
+## K-means with `tidyclust`
 
-Let's do a K-means clustering with 2 clusters. We create a `k_means()` model specification and set the engine.
+-   Create a `k_means()` model specification.
+-   Set the number of clusters (`k=2` for this example).
+-   Set the engine to `"stats"`.
 
 ```{r}
 kmeans_spec <- k_means(num_clusters = 2) |>
@@ -43,33 +60,38 @@ kmeans_spec <- k_means(num_clusters = 2) |>
 kmeans_spec
 ```
 
-Then we can fit the specification. We are using a formula `~ .` to specify that we want to use all variables.
+## K-means with `tidyclust`
+
+-   Then we can fit the specification.
+-   We are using a formula `~ .` to specify that we want to use all variables.
 
 ```{r}
-kmeans_fit <- kmeans_spec |> 
-  fit(~ ., data = USArrests)
+kmeans_fit <- kmeans_spec |>
+  fit(~., data = USArrests)
 
 kmeans_fit
 ```
 
-## Understanding the result
+## Understanding the result {.smaller}
 
-We can use `tidy()` to get a tibble with information about each of the clusters. This includes the size of each cluster, the location of the cluster centroid, and the within-cluster sum of squares.
+-   `tidy()` gives information about each cluster:
+    -   size of each cluster
+    -   cluster centroid locations
+    -   within-cluster sum of squares
+-   `augment()` gives the cluster assignment for each observation.
 
 ```{r}
 tidy(kmeans_fit)
 ```
 
-We can also use `augment()` to get the cluster assignment for each observation.
-
 ```{r}
 augment(kmeans_fit, USArrests) |>
-  slice(1:5)
+  head()
 ```
 
 ## Visualizing Clusters
 
-With the cluster assignments, we can now visualize the clusters.
+-   With the cluster assignments, we can now visualize the clusters.
 
 ```{r}
 #| code-fold: true
@@ -83,20 +105,20 @@ kmeans_fit |>
 
 ## Visualizing Clusters PCA
 
-With the cluster assignments, we can now visualize the clusters.
+-   We can also visualize the clusters in the PCA space.
 
 ```{r}
 #| code-fold: true
-pca_rec <- recipe(~ ., data = USArrests) |>
+pca_rec <- recipe(~., data = USArrests) |>
   step_normalize(all_numeric_predictors()) |>
-  step_pca(all_numeric_predictors(), num_comp = 2) |> 
+  step_pca(all_numeric_predictors(), num_comp = 2) |>
   prep()
 
 US_Arrests_PCA <- bake(pca_rec, new_data = USArrests)
 
 kmeans_fit |>
   augment(USArrests) |>
-  bind_cols(US_Arrests_PCA) |> 
+  bind_cols(US_Arrests_PCA) |>
   ggplot(aes(x = PC1, y = PC2, color = .pred_cluster)) +
   geom_point(size = 3) +
   labs(title = "K-Means Clustering (K=2)") +
@@ -105,14 +127,26 @@ kmeans_fit |>
 
 ## Tuning the number of clusters
 
-A common question in K-means clustering is how to choose the number of clusters K. A common way to do this is to try different values of K and see which one gives the best result.
-
-We can use `tune_cluster()` to do this. We first create a `k_means()` specification with a `num_clusters` argument that we want to tune.
-
+-   How to choose the number of clusters K?
+-   A common way is to try different values of K and see which one gives the best result.
+-   We can use `tune_cluster()` to do this. Not this class.
 
 # Hierarchical Clustering
 
-Hierarchical clustering is another popular clustering method. It creates a hierarchy of clusters that can be visualized as a dendrogram.
+## Hierarchical Clustering
+
+-   Another popular clustering method.
+-   Creates a hierarchy of clusters, often visualized as a dendrogram.
+
+## How it Works (Agglomerative)
+
+-   It's a "bottom-up" approach:
+    1.  **Start**: Each data point begins in its own cluster.
+    2.  **Merge**: Find the two "closest" clusters and merge them into a single cluster.
+    3.  **Repeat**: Repeat the "Merge" step until all data points are in a single cluster.
+-   The history of merges forms the hierarchy.
+
+## Using `tidyclust`
 
 Let's do a hierarchical clustering with `tidyclust`.
 
@@ -120,14 +154,15 @@ Let's do a hierarchical clustering with `tidyclust`.
 hc_spec <- hier_clust() |>
   set_engine("stats")
 
-hc_fit <- fit(hc_spec, ~ ., data = USArrests)
+hc_fit <- fit(hc_spec, ~., data = USArrests)
 
 hc_fit
 ```
 
 ## Dendrogram
 
-The result of hierarchical clustering is often visualized as a dendrogram. We can use the `factoextra` package to do this.
+-   The result of hierarchical clustering is often visualized as a dendrogram.
+-   We can use the `factoextra` package to do this.
 
 ```{r}
 #| message: false
@@ -138,11 +173,11 @@ fviz_dend(hc_fit$fit)
 
 ## Linkage
 
-In hierarchical clustering, we need to specify a linkage method, which determines how the distance between clusters is calculated. Common linkage methods are:
-
--   `complete`: The distance between two clusters is the maximum distance between any two points in the two clusters.
--   `average`: The distance between two clusters is the average distance between all pairs of points in the two clusters.
--   `single`: The distance between two clusters is the minimum distance between any two points in the two clusters.
+-   In hierarchical clustering, we need to specify a linkage method, which determines how the distance between clusters is calculated.
+-   Common linkage methods are:
+    -   `complete`: The distance between two clusters is the maximum distance between any two points in the two clusters.
+    -   `average`: The distance between two clusters is the average distance between all pairs of points in the two clusters.
+    -   `single`: The distance between two clusters is the minimum distance between any two points in the two clusters.
 
 We can specify the linkage method in `hier_clust()`.
 
@@ -153,8 +188,8 @@ hier_clust(linkage_method = "average")
 
 # Summary
 
-- **Clustering**: Finding groups in data.
-- **K-Means**: Partitions data into K clusters. Need to choose K.
-- **Hierarchical Clustering**: Creates a hierarchy of clusters.
-- **`tidyclust`**: A `tidymodels`-like interface for clustering.
-- `tune_cluster()` can be used to tune the number of clusters.
+-   **Clustering**: Finding groups in data.
+-   **K-Means**: Partitions data into K clusters. Need to choose K.
+-   **Hierarchical Clustering**: Creates a hierarchy of clusters.
+-   **`tidyclust`**: A `tidymodels`-like interface for clustering.
+-   `tune_cluster()` can be used to tune the number of clusters.

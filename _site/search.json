@@ -510,63 +510,63 @@
     "href": "slides/33-clustering/33-clustering.html#unsupervised-learning",
     "title": "Unsupervised Learning",
     "section": "Unsupervised Learning",
-    "text": "Unsupervised Learning\n\nMachine Learning: using computers and algorithms to learn from data.\nTwo types of machine learning problems are:\nSupervised Learning: you have a target variable that you’re trying to predict\nUnsupervised Learning: you don’t have a target variables and you’re trying to extract patterns from data\n\nTwo common types of unsupervised learning are: - Dimensionality reduction: find a lower-dimensional representation of the data that captures most of the variation (PCA) - Clustering: find subgroups of observations that are similar to each other"
+    "text": "Unsupervised Learning\n\nMachine Learning: using computers and algorithms to learn from data.\nTwo types of machine learning problems are:\n\nSupervised Learning: you have a target variable that you’re trying to predict\nUnsupervised Learning: you don’t have a target variables and you’re trying to extract patterns from data\n\nTwo common types of unsupervised learning are:\n\nDimensionality reduction: find a lower-dimensional representation of the data that captures most of the variation (PCA)\nClustering: find subgroups of observations that are similar to each other"
   },
   {
     "objectID": "slides/33-clustering/33-clustering.html#k-means-clustering",
     "href": "slides/33-clustering/33-clustering.html#k-means-clustering",
     "title": "Unsupervised Learning",
     "section": "K-means Clustering",
-    "text": "K-means Clustering\nK-means clustering is a simple and popular clustering method. It works by partitioning the data into K distinct, non-overlapping clusters.\nThe tidyclust package provides a tidymodels-like interface for clustering.\n\nlibrary(tidymodels)\nlibrary(tidyclust)\nlibrary(tidyverse)\n\nWe will use the USArrests dataset. It contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973. It also gives the percent of the population living in urban areas.\n\nUSArrests |&gt;  head()\n\n           Murder Assault UrbanPop Rape\nAlabama      13.2     236       58 21.2\nAlaska       10.0     263       48 44.5\nArizona       8.1     294       80 31.0\nArkansas      8.8     190       50 19.5\nCalifornia    9.0     276       91 40.6\nColorado      7.9     204       78 38.7"
+    "text": "K-means Clustering\n\nA simple and popular clustering method.\nGoal: Partition data into \\(K\\) distinct, non-overlapping clusters."
   },
   {
     "objectID": "slides/33-clustering/33-clustering.html#k-means-with-tidyclust",
     "href": "slides/33-clustering/33-clustering.html#k-means-with-tidyclust",
     "title": "Unsupervised Learning",
     "section": "K-means with tidyclust",
-    "text": "K-means with tidyclust\nLet’s do a K-means clustering with 2 clusters. We create a k_means() model specification and set the engine.\n\nkmeans_spec &lt;- k_means(num_clusters = 2) |&gt;\n  set_engine(\"stats\")\n\nkmeans_spec\n\nK Means Cluster Specification (partition)\n\nMain Arguments:\n  num_clusters = 2\n\nComputational engine: stats \n\n\nThen we can fit the specification. We are using a formula ~ . to specify that we want to use all variables.\n\nkmeans_fit &lt;- kmeans_spec |&gt; \n  fit(~ ., data = USArrests)\n\nkmeans_fit\n\ntidyclust cluster object\n\nK-means clustering with 2 clusters of sizes 21, 29\n\nCluster means:\n     Murder  Assault UrbanPop     Rape\n1 11.857143 255.0000 67.61905 28.11429\n2  4.841379 109.7586 64.03448 16.24828\n\nClustering vector:\n       Alabama         Alaska        Arizona       Arkansas     California \n             1              1              1              1              1 \n      Colorado    Connecticut       Delaware        Florida        Georgia \n             1              2              1              1              1 \n        Hawaii          Idaho       Illinois        Indiana           Iowa \n             2              2              1              2              2 \n        Kansas       Kentucky      Louisiana          Maine       Maryland \n             2              2              1              2              1 \n Massachusetts       Michigan      Minnesota    Mississippi       Missouri \n             2              1              2              1              2 \n       Montana       Nebraska         Nevada  New Hampshire     New Jersey \n             2              2              1              2              2 \n    New Mexico       New York North Carolina   North Dakota           Ohio \n             1              1              1              2              2 \n      Oklahoma         Oregon   Pennsylvania   Rhode Island South Carolina \n             2              2              2              2              1 \n  South Dakota      Tennessee          Texas           Utah        Vermont \n             2              1              1              2              2 \n      Virginia     Washington  West Virginia      Wisconsin        Wyoming \n             2              2              2              2              2 \n\nWithin cluster sum of squares by cluster:\n[1] 41636.73 54762.30\n (between_SS / total_SS =  72.9 %)\n\nAvailable components:\n\n[1] \"cluster\"      \"centers\"      \"totss\"        \"withinss\"     \"tot.withinss\"\n[6] \"betweenss\"    \"size\"         \"iter\"         \"ifault\""
+    "text": "K-means with tidyclust\n\nCreate a k_means() model specification.\nSet the number of clusters (k=2 for this example).\nSet the engine to \"stats\".\n\n\nkmeans_spec &lt;- k_means(num_clusters = 2) |&gt;\n  set_engine(\"stats\")\n\nkmeans_spec\n\nK Means Cluster Specification (partition)\n\nMain Arguments:\n  num_clusters = 2\n\nComputational engine: stats"
   },
   {
     "objectID": "slides/33-clustering/33-clustering.html#understanding-the-result",
     "href": "slides/33-clustering/33-clustering.html#understanding-the-result",
     "title": "Unsupervised Learning",
     "section": "Understanding the result",
-    "text": "Understanding the result\nWe can use tidy() to get a tibble with information about each of the clusters. This includes the size of each cluster, the location of the cluster centroid, and the within-cluster sum of squares.\n\ntidy(kmeans_fit)\n\n# A tibble: 2 × 7\n  Murder Assault UrbanPop  Rape  size withinss cluster\n   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;fct&gt;  \n1  11.9     255      67.6  28.1    21   41637. 1      \n2   4.84    110.     64.0  16.2    29   54762. 2      \n\n\nWe can also use augment() to get the cluster assignment for each observation.\n\naugment(kmeans_fit, USArrests) |&gt;\n  slice(1:5)\n\n# A tibble: 5 × 5\n  Murder Assault UrbanPop  Rape .pred_cluster\n   &lt;dbl&gt;   &lt;int&gt;    &lt;int&gt; &lt;dbl&gt; &lt;fct&gt;        \n1   13.2     236       58  21.2 Cluster_1    \n2   10       263       48  44.5 Cluster_1    \n3    8.1     294       80  31   Cluster_1    \n4    8.8     190       50  19.5 Cluster_1    \n5    9       276       91  40.6 Cluster_1"
+    "text": "Understanding the result\n\ntidy() gives information about each cluster:\n\nsize of each cluster\ncluster centroid locations\nwithin-cluster sum of squares\n\naugment() gives the cluster assignment for each observation.\n\n\ntidy(kmeans_fit)\n\n# A tibble: 2 × 7\n  Murder Assault UrbanPop  Rape  size withinss cluster\n   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;fct&gt;  \n1  11.9     255      67.6  28.1    21   41637. 1      \n2   4.84    110.     64.0  16.2    29   54762. 2      \n\n\n\naugment(kmeans_fit, USArrests) |&gt;\n  head()\n\n# A tibble: 6 × 5\n  Murder Assault UrbanPop  Rape .pred_cluster\n   &lt;dbl&gt;   &lt;int&gt;    &lt;int&gt; &lt;dbl&gt; &lt;fct&gt;        \n1   13.2     236       58  21.2 Cluster_1    \n2   10       263       48  44.5 Cluster_1    \n3    8.1     294       80  31   Cluster_1    \n4    8.8     190       50  19.5 Cluster_1    \n5    9       276       91  40.6 Cluster_1    \n6    7.9     204       78  38.7 Cluster_1"
   },
   {
     "objectID": "slides/33-clustering/33-clustering.html#visualizing-clusters",
     "href": "slides/33-clustering/33-clustering.html#visualizing-clusters",
     "title": "Unsupervised Learning",
     "section": "Visualizing Clusters",
-    "text": "Visualizing Clusters\nWith the cluster assignments, we can now visualize the clusters.\n\n\nCode\nkmeans_fit |&gt;\n  augment(USArrests) |&gt;\n  ggplot(aes(x = Murder, y = Assault, color = .pred_cluster)) +\n  geom_point(size = 3) +\n  labs(title = \"K-Means Clustering (K=2)\") +\n  theme_minimal()"
+    "text": "Visualizing Clusters\n\nWith the cluster assignments, we can now visualize the clusters.\n\n\n\nCode\nkmeans_fit |&gt;\n  augment(USArrests) |&gt;\n  ggplot(aes(x = Murder, y = Assault, color = .pred_cluster)) +\n  geom_point(size = 3) +\n  labs(title = \"K-Means Clustering (K=2)\") +\n  theme_minimal()"
   },
   {
     "objectID": "slides/33-clustering/33-clustering.html#visualizing-clusters-pca",
     "href": "slides/33-clustering/33-clustering.html#visualizing-clusters-pca",
     "title": "Unsupervised Learning",
     "section": "Visualizing Clusters PCA",
-    "text": "Visualizing Clusters PCA\nWith the cluster assignments, we can now visualize the clusters.\n\n\nCode\npca_rec &lt;- recipe(~ ., data = USArrests) |&gt;\n  step_normalize(all_numeric_predictors()) |&gt;\n  step_pca(all_numeric_predictors(), num_comp = 2) |&gt; \n  prep()\n\nUS_Arrests_PCA &lt;- bake(pca_rec, new_data = USArrests)\n\nkmeans_fit |&gt;\n  augment(USArrests) |&gt;\n  bind_cols(US_Arrests_PCA) |&gt; \n  ggplot(aes(x = PC1, y = PC2, color = .pred_cluster)) +\n  geom_point(size = 3) +\n  labs(title = \"K-Means Clustering (K=2)\") +\n  theme_minimal()"
+    "text": "Visualizing Clusters PCA\n\nWe can also visualize the clusters in the PCA space.\n\n\n\nCode\npca_rec &lt;- recipe(~., data = USArrests) |&gt;\n  step_normalize(all_numeric_predictors()) |&gt;\n  step_pca(all_numeric_predictors(), num_comp = 2) |&gt;\n  prep()\n\nUS_Arrests_PCA &lt;- bake(pca_rec, new_data = USArrests)\n\nkmeans_fit |&gt;\n  augment(USArrests) |&gt;\n  bind_cols(US_Arrests_PCA) |&gt;\n  ggplot(aes(x = PC1, y = PC2, color = .pred_cluster)) +\n  geom_point(size = 3) +\n  labs(title = \"K-Means Clustering (K=2)\") +\n  theme_minimal()"
   },
   {
     "objectID": "slides/33-clustering/33-clustering.html#tuning-the-number-of-clusters",
     "href": "slides/33-clustering/33-clustering.html#tuning-the-number-of-clusters",
     "title": "Unsupervised Learning",
     "section": "Tuning the number of clusters",
-    "text": "Tuning the number of clusters\nA common question in K-means clustering is how to choose the number of clusters K. A common way to do this is to try different values of K and see which one gives the best result.\nWe can use tune_cluster() to do this. We first create a k_means() specification with a num_clusters argument that we want to tune."
+    "text": "Tuning the number of clusters\n\nHow to choose the number of clusters K?\nA common way is to try different values of K and see which one gives the best result.\nWe can use tune_cluster() to do this. Not this class."
   },
   {
     "objectID": "slides/33-clustering/33-clustering.html#dendrogram",
     "href": "slides/33-clustering/33-clustering.html#dendrogram",
     "title": "Unsupervised Learning",
     "section": "Dendrogram",
-    "text": "Dendrogram\nThe result of hierarchical clustering is often visualized as a dendrogram. We can use the factoextra package to do this.\n\nlibrary(factoextra)\n\nfviz_dend(hc_fit$fit)"
+    "text": "Dendrogram\n\nThe result of hierarchical clustering is often visualized as a dendrogram.\nWe can use the factoextra package to do this.\n\n\nlibrary(factoextra)\n\nfviz_dend(hc_fit$fit)"
   },
   {
     "objectID": "slides/33-clustering/33-clustering.html#linkage",
     "href": "slides/33-clustering/33-clustering.html#linkage",
     "title": "Unsupervised Learning",
     "section": "Linkage",
-    "text": "Linkage\nIn hierarchical clustering, we need to specify a linkage method, which determines how the distance between clusters is calculated. Common linkage methods are:\n\ncomplete: The distance between two clusters is the maximum distance between any two points in the two clusters.\naverage: The distance between two clusters is the average distance between all pairs of points in the two clusters.\nsingle: The distance between two clusters is the minimum distance between any two points in the two clusters.\n\nWe can specify the linkage method in hier_clust().\n\nhier_clust(linkage_method = \"average\")"
+    "text": "Linkage\n\nIn hierarchical clustering, we need to specify a linkage method, which determines how the distance between clusters is calculated.\nCommon linkage methods are:\n\ncomplete: The distance between two clusters is the maximum distance between any two points in the two clusters.\naverage: The distance between two clusters is the average distance between all pairs of points in the two clusters.\nsingle: The distance between two clusters is the minimum distance between any two points in the two clusters.\n\n\nWe can specify the linkage method in hier_clust().\n\nhier_clust(linkage_method = \"average\")"
   },
   {
     "objectID": "slides/31-recipes/31-recipes.html#preprocessing-data",
@@ -5006,5 +5006,54 @@
     "title": "GEMINI.md: Project Overview and Contributor Guide",
     "section": "",
     "text": "To work on this project, you will need to have Quarto installed. You can download it from the Quarto website.\n\n\nTo render and preview the website locally, run the following command in your terminal from the project’s root directory:\nquarto preview\nThis will start a local web server and open the site in your browser. The site will automatically refresh when you save changes to any of the source files.\n\n\n\nTo render the entire website without previewing it, use the following command:\nquarto render\nThis will generate all the static files and place them in the _site/ directory. This is typically done for deployment."
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#the-data-usarrests",
+    "href": "slides/33-clustering/33-clustering.html#the-data-usarrests",
+    "title": "Unsupervised Learning",
+    "section": "The Data: USArrests",
+    "text": "The Data: USArrests\n\nContains statistics for the 50 US states in 1973:\n\nArrests per 100,000 residents for Assault, Murder, and Rape.\nPercent of the population living in urban areas.\n\n\n\nUSArrests |&gt; head()\n\n           Murder Assault UrbanPop Rape\nAlabama      13.2     236       58 21.2\nAlaska       10.0     263       48 44.5\nArizona       8.1     294       80 31.0\nArkansas      8.8     190       50 19.5\nCalifornia    9.0     276       91 40.6\nColorado      7.9     204       78 38.7"
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#how-it-works",
+    "href": "slides/33-clustering/33-clustering.html#how-it-works",
+    "title": "Unsupervised Learning",
+    "section": "How it Works",
+    "text": "How it Works\n\nAn iterative algorithm:\n\nInitialize: Randomly select \\(K\\) data points as initial cluster centroids.\nAssign: Assign each data point to the nearest centroid, forming K clusters.\nUpdate: Recalculate the centroid of each cluster (the mean of all points in the cluster).\nRepeat: Repeat “Assign” and “Update” steps until cluster assignments stop changing."
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#tidyclust",
+    "href": "slides/33-clustering/33-clustering.html#tidyclust",
+    "title": "Unsupervised Learning",
+    "section": "tidyclust",
+    "text": "tidyclust\nThe tidyclust package provides a tidymodels-like interface for clustering.\n\nlibrary(tidymodels)\nlibrary(tidyclust)\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#k-means-with-tidyclust-1",
+    "href": "slides/33-clustering/33-clustering.html#k-means-with-tidyclust-1",
+    "title": "Unsupervised Learning",
+    "section": "K-means with tidyclust",
+    "text": "K-means with tidyclust\n\nThen we can fit the specification.\nWe are using a formula ~ . to specify that we want to use all variables.\n\n\nkmeans_fit &lt;- kmeans_spec |&gt;\n  fit(~., data = USArrests)\n\nkmeans_fit\n\ntidyclust cluster object\n\nK-means clustering with 2 clusters of sizes 21, 29\n\nCluster means:\n     Murder  Assault UrbanPop     Rape\n2 11.857143 255.0000 67.61905 28.11429\n1  4.841379 109.7586 64.03448 16.24828\n\nClustering vector:\n       Alabama         Alaska        Arizona       Arkansas     California \n             1              1              1              1              1 \n      Colorado    Connecticut       Delaware        Florida        Georgia \n             1              2              1              1              1 \n        Hawaii          Idaho       Illinois        Indiana           Iowa \n             2              2              1              2              2 \n        Kansas       Kentucky      Louisiana          Maine       Maryland \n             2              2              1              2              1 \n Massachusetts       Michigan      Minnesota    Mississippi       Missouri \n             2              1              2              1              2 \n       Montana       Nebraska         Nevada  New Hampshire     New Jersey \n             2              2              1              2              2 \n    New Mexico       New York North Carolina   North Dakota           Ohio \n             1              1              1              2              2 \n      Oklahoma         Oregon   Pennsylvania   Rhode Island South Carolina \n             2              2              2              2              1 \n  South Dakota      Tennessee          Texas           Utah        Vermont \n             2              1              1              2              2 \n      Virginia     Washington  West Virginia      Wisconsin        Wyoming \n             2              2              2              2              2 \n\nWithin cluster sum of squares by cluster:\n[1] 41636.73 54762.30\n (between_SS / total_SS =  72.9 %)\n\nAvailable components:\n\n[1] \"cluster\"      \"centers\"      \"totss\"        \"withinss\"     \"tot.withinss\"\n[6] \"betweenss\"    \"size\"         \"iter\"         \"ifault\""
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#hierarchical-clustering-1",
+    "href": "slides/33-clustering/33-clustering.html#hierarchical-clustering-1",
+    "title": "Unsupervised Learning",
+    "section": "Hierarchical Clustering",
+    "text": "Hierarchical Clustering\n\nAnother popular clustering method.\nCreates a hierarchy of clusters, often visualized as a dendrogram."
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#how-it-works-agglomerative",
+    "href": "slides/33-clustering/33-clustering.html#how-it-works-agglomerative",
+    "title": "Unsupervised Learning",
+    "section": "How it Works (Agglomerative)",
+    "text": "How it Works (Agglomerative)\n\nIt’s a “bottom-up” approach:\n\nStart: Each data point begins in its own cluster.\nMerge: Find the two “closest” clusters and merge them into a single cluster.\nRepeat: Repeat the “Merge” step until all data points are in a single cluster.\n\nThe history of merges forms the hierarchy."
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#using-tidyclust",
+    "href": "slides/33-clustering/33-clustering.html#using-tidyclust",
+    "title": "Unsupervised Learning",
+    "section": "Using tidyclust",
+    "text": "Using tidyclust\nLet’s do a hierarchical clustering with tidyclust.\n\nhc_spec &lt;- hier_clust() |&gt;\n  set_engine(\"stats\")\n\nhc_fit &lt;- fit(hc_spec, ~., data = USArrests)\n\nhc_fit\n\ntidyclust cluster object\n\n\nCall:\nstats::hclust(d = stats::as.dist(dmat), method = linkage_method)\n\nCluster method   : complete \nNumber of objects: 50"
   }
 ]

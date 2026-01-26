@@ -213,25 +213,57 @@ Dr.&nbsp;Eric Friedlander
 <h2>Unsupervised Learning</h2>
 <ul>
 <li><strong>Machine Learning</strong>: using computers and algorithms to learn from data.</li>
-<li>Two types of machine learning problems are:</li>
+<li>Two types of machine learning problems are:
+<ul>
 <li><strong>Supervised Learning</strong>: you have a <strong>target</strong> variable that you’re trying to predict</li>
-<li><strong>Unsupervised Learning</strong>: you don’t have a target variables and you’re trying to extract patterns from data<br>
-</li>
-<li>Two common types of unsupervised learning are: - <strong>Dimensionality reduction</strong>: find a lower-dimensional representation of the data that captures most of the variation (PCA) - <strong>Clustering</strong>: find subgroups of observations that are similar to each other</li>
+<li><strong>Unsupervised Learning</strong>: you don’t have a target variables and you’re trying to extract patterns from data</li>
+</ul></li>
+<li>Two common types of unsupervised learning are:
+<ul>
+<li><strong>Dimensionality reduction</strong>: find a lower-dimensional representation of the data that captures most of the variation (PCA)</li>
+<li><strong>Clustering</strong>: find subgroups of observations that are similar to each other</li>
+</ul></li>
 </ul>
 </section>
 <section id="k-means-clustering" class="slide level2">
 <h2>K-means Clustering</h2>
-<p>K-means clustering is a simple and popular clustering method. It works by partitioning the data into K distinct, non-overlapping clusters.</p>
+<ul>
+<li>A simple and popular clustering method.</li>
+<li><strong>Goal</strong>: Partition data into <span class="math inline">\(K\)</span> distinct, non-overlapping clusters.</li>
+</ul>
+</section>
+<section id="how-it-works" class="slide level2">
+<h2>How it Works</h2>
+<ul>
+<li>An iterative algorithm:
+<ol type="1">
+<li><strong>Initialize</strong>: Randomly select <span class="math inline">\(K\)</span> data points as initial cluster centroids.</li>
+<li><strong>Assign</strong>: Assign each data point to the <em>nearest</em> centroid, forming K clusters.</li>
+<li><strong>Update</strong>: Recalculate the centroid of each cluster (the mean of all points in the cluster).</li>
+<li><strong>Repeat</strong>: Repeat “Assign” and “Update” steps until cluster assignments stop changing.</li>
+</ol></li>
+</ul>
+</section>
+<section id="tidyclust" class="slide level2">
+<h2><code>tidyclust</code></h2>
 <p>The <code>tidyclust</code> package provides a <code>tidymodels</code>-like interface for clustering.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidymodels)</span>
 <span id="cb1-2"><a></a><span class="fu">library</span>(tidyclust)</span>
 <span id="cb1-3"><a></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We will use the <code>USArrests</code> dataset. It contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973. It also gives the percent of the population living in urban areas.</p>
+</section>
+<section id="the-data-usarrests" class="slide level2">
+<h2>The Data: <code>USArrests</code></h2>
+<ul>
+<li>Contains statistics for the 50 US states in 1973:
+<ul>
+<li>Arrests per 100,000 residents for Assault, Murder, and Rape.</li>
+<li>Percent of the population living in urban areas.</li>
+</ul></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>USArrests <span class="sc">|&gt;</span>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>USArrests <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Murder Assault UrbanPop Rape
 Alabama      13.2     236       58 21.2
@@ -244,8 +276,12 @@ Colorado      7.9     204       78 38.7</code></pre>
 </div>
 </section>
 <section id="k-means-with-tidyclust" class="slide level2">
-<h2>K-means with tidyclust</h2>
-<p>Let’s do a K-means clustering with 2 clusters. We create a <code>k_means()</code> model specification and set the engine.</p>
+<h2>K-means with <code>tidyclust</code></h2>
+<ul>
+<li>Create a <code>k_means()</code> model specification.</li>
+<li>Set the number of clusters (<code>k=2</code> for this example).</li>
+<li>Set the engine to <code>"stats"</code>.</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>kmeans_spec <span class="ot">&lt;-</span> <span class="fu">k_means</span>(<span class="at">num_clusters =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
 <span id="cb4-2"><a></a>  <span class="fu">set_engine</span>(<span class="st">"stats"</span>)</span>
@@ -260,10 +296,16 @@ Main Arguments:
 Computational engine: stats </code></pre>
 </div>
 </div>
-<p>Then we can fit the specification. We are using a formula <code>~ .</code> to specify that we want to use all variables.</p>
+</section>
+<section id="k-means-with-tidyclust-1" class="slide level2">
+<h2>K-means with <code>tidyclust</code></h2>
+<ul>
+<li>Then we can fit the specification.</li>
+<li>We are using a formula <code>~ .</code> to specify that we want to use all variables.</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>kmeans_fit <span class="ot">&lt;-</span> kmeans_spec <span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a></a>  <span class="fu">fit</span>(<span class="sc">~</span> ., <span class="at">data =</span> USArrests)</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>kmeans_fit <span class="ot">&lt;-</span> kmeans_spec <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a></a>  <span class="fu">fit</span>(<span class="sc">~</span>., <span class="at">data =</span> USArrests)</span>
 <span id="cb6-3"><a></a></span>
 <span id="cb6-4"><a></a>kmeans_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -273,8 +315,8 @@ K-means clustering with 2 clusters of sizes 21, 29
 
 Cluster means:
      Murder  Assault UrbanPop     Rape
-1 11.857143 255.0000 67.61905 28.11429
-2  4.841379 109.7586 64.03448 16.24828
+2 11.857143 255.0000 67.61905 28.11429
+1  4.841379 109.7586 64.03448 16.24828
 
 Clustering vector:
        Alabama         Alaska        Arizona       Arkansas     California 
@@ -309,9 +351,17 @@ Available components:
 </div>
 </div>
 </section>
-<section id="understanding-the-result" class="slide level2">
+<section id="understanding-the-result" class="slide level2 smaller">
 <h2>Understanding the result</h2>
-<p>We can use <code>tidy()</code> to get a tibble with information about each of the clusters. This includes the size of each cluster, the location of the cluster centroid, and the within-cluster sum of squares.</p>
+<ul>
+<li><code>tidy()</code> gives information about each cluster:
+<ul>
+<li>size of each cluster</li>
+<li>cluster centroid locations</li>
+<li>within-cluster sum of squares</li>
+</ul></li>
+<li><code>augment()</code> gives the cluster assignment for each observation.</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">tidy</span>(kmeans_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -322,25 +372,27 @@ Available components:
 2   4.84    110.     64.0  16.2    29   54762. 2      </code></pre>
 </div>
 </div>
-<p>We can also use <code>augment()</code> to get the cluster assignment for each observation.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">augment</span>(kmeans_fit, USArrests) <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-2"><a></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 5
+<pre><code># A tibble: 6 × 5
   Murder Assault UrbanPop  Rape .pred_cluster
    &lt;dbl&gt;   &lt;int&gt;    &lt;int&gt; &lt;dbl&gt; &lt;fct&gt;        
 1   13.2     236       58  21.2 Cluster_1    
 2   10       263       48  44.5 Cluster_1    
 3    8.1     294       80  31   Cluster_1    
 4    8.8     190       50  19.5 Cluster_1    
-5    9       276       91  40.6 Cluster_1    </code></pre>
+5    9       276       91  40.6 Cluster_1    
+6    7.9     204       78  38.7 Cluster_1    </code></pre>
 </div>
 </div>
 </section>
 <section id="visualizing-clusters" class="slide level2">
 <h2>Visualizing Clusters</h2>
-<p>With the cluster assignments, we can now visualize the clusters.</p>
+<ul>
+<li>With the cluster assignments, we can now visualize the clusters.</li>
+</ul>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -356,20 +408,22 @@ Available components:
 <img data-src="33-clustering_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 <section id="visualizing-clusters-pca" class="slide level2">
 <h2>Visualizing Clusters PCA</h2>
-<p>With the cluster assignments, we can now visualize the clusters.</p>
+<ul>
+<li>We can also visualize the clusters in the PCA space.</li>
+</ul>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>pca_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(<span class="sc">~</span> ., <span class="at">data =</span> USArrests) <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>pca_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(<span class="sc">~</span>., <span class="at">data =</span> USArrests) <span class="sc">|&gt;</span></span>
 <span id="cb13-2"><a></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb13-3"><a></a>  <span class="fu">step_pca</span>(<span class="fu">all_numeric_predictors</span>(), <span class="at">num_comp =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a></a>  <span class="fu">step_pca</span>(<span class="fu">all_numeric_predictors</span>(), <span class="at">num_comp =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
 <span id="cb13-4"><a></a>  <span class="fu">prep</span>()</span>
 <span id="cb13-5"><a></a></span>
 <span id="cb13-6"><a></a>US_Arrests_PCA <span class="ot">&lt;-</span> <span class="fu">bake</span>(pca_rec, <span class="at">new_data =</span> USArrests)</span>
 <span id="cb13-7"><a></a></span>
 <span id="cb13-8"><a></a>kmeans_fit <span class="sc">|&gt;</span></span>
 <span id="cb13-9"><a></a>  <span class="fu">augment</span>(USArrests) <span class="sc">|&gt;</span></span>
-<span id="cb13-10"><a></a>  <span class="fu">bind_cols</span>(US_Arrests_PCA) <span class="sc">|&gt;</span> </span>
+<span id="cb13-10"><a></a>  <span class="fu">bind_cols</span>(US_Arrests_PCA) <span class="sc">|&gt;</span></span>
 <span id="cb13-11"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> PC1, <span class="at">y =</span> PC2, <span class="at">color =</span> .pred_cluster)) <span class="sc">+</span></span>
 <span id="cb13-12"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb13-13"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"K-Means Clustering (K=2)"</span>) <span class="sc">+</span></span>
@@ -380,19 +434,44 @@ Available components:
 <img data-src="33-clustering_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
 <section id="tuning-the-number-of-clusters" class="slide level2">
 <h2>Tuning the number of clusters</h2>
-<p>A common question in K-means clustering is how to choose the number of clusters K. A common way to do this is to try different values of K and see which one gives the best result.</p>
-<p>We can use <code>tune_cluster()</code> to do this. We first create a <code>k_means()</code> specification with a <code>num_clusters</code> argument that we want to tune.</p>
+<ul>
+<li>How to choose the number of clusters K?</li>
+<li>A common way is to try different values of K and see which one gives the best result.</li>
+<li>We can use <code>tune_cluster()</code> to do this. Not this class.</li>
+</ul>
 </section>
 <section>
 <section id="hierarchical-clustering" class="title-slide slide level1 center">
 <h1>Hierarchical Clustering</h1>
-<p>Hierarchical clustering is another popular clustering method. It creates a hierarchy of clusters that can be visualized as a dendrogram.</p>
+
+</section>
+<section id="hierarchical-clustering-1" class="slide level2">
+<h2>Hierarchical Clustering</h2>
+<ul>
+<li>Another popular clustering method.</li>
+<li>Creates a hierarchy of clusters, often visualized as a dendrogram.</li>
+</ul>
+</section>
+<section id="how-it-works-agglomerative" class="slide level2">
+<h2>How it Works (Agglomerative)</h2>
+<ul>
+<li>It’s a “bottom-up” approach:
+<ol type="1">
+<li><strong>Start</strong>: Each data point begins in its own cluster.</li>
+<li><strong>Merge</strong>: Find the two “closest” clusters and merge them into a single cluster.</li>
+<li><strong>Repeat</strong>: Repeat the “Merge” step until all data points are in a single cluster.</li>
+</ol></li>
+<li>The history of merges forms the hierarchy.</li>
+</ul>
+</section>
+<section id="using-tidyclust" class="slide level2">
+<h2>Using <code>tidyclust</code></h2>
 <p>Let’s do a hierarchical clustering with <code>tidyclust</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>hc_spec <span class="ot">&lt;-</span> <span class="fu">hier_clust</span>() <span class="sc">|&gt;</span></span>
 <span id="cb14-2"><a></a>  <span class="fu">set_engine</span>(<span class="st">"stats"</span>)</span>
 <span id="cb14-3"><a></a></span>
-<span id="cb14-4"><a></a>hc_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(hc_spec, <span class="sc">~</span> ., <span class="at">data =</span> USArrests)</span>
+<span id="cb14-4"><a></a>hc_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(hc_spec, <span class="sc">~</span>., <span class="at">data =</span> USArrests)</span>
 <span id="cb14-5"><a></a></span>
 <span id="cb14-6"><a></a>hc_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -409,7 +488,10 @@ Number of objects: 50 </code></pre>
 </section>
 <section id="dendrogram" class="slide level2">
 <h2>Dendrogram</h2>
-<p>The result of hierarchical clustering is often visualized as a dendrogram. We can use the <code>factoextra</code> package to do this.</p>
+<ul>
+<li>The result of hierarchical clustering is often visualized as a dendrogram.</li>
+<li>We can use the <code>factoextra</code> package to do this.</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">library</span>(factoextra)</span>
 <span id="cb16-2"><a></a></span>
@@ -419,11 +501,14 @@ Number of objects: 50 </code></pre>
 <img data-src="33-clustering_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
 <section id="linkage" class="slide level2">
 <h2>Linkage</h2>
-<p>In hierarchical clustering, we need to specify a linkage method, which determines how the distance between clusters is calculated. Common linkage methods are:</p>
+<ul>
+<li>In hierarchical clustering, we need to specify a linkage method, which determines how the distance between clusters is calculated.</li>
+<li>Common linkage methods are:
 <ul>
 <li><code>complete</code>: The distance between two clusters is the maximum distance between any two points in the two clusters.</li>
 <li><code>average</code>: The distance between two clusters is the average distance between all pairs of points in the two clusters.</li>
 <li><code>single</code>: The distance between two clusters is the minimum distance between any two points in the two clusters.</li>
+</ul></li>
 </ul>
 <p>We can specify the linkage method in <code>hier_clust()</code>.</p>
 <div class="cell">
