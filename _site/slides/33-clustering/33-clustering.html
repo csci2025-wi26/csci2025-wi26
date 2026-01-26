@@ -6,11 +6,11 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d3043699f4f525e226433170f63674df.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.39">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
-  <title>CSCI 2025 – Clustering with Tidyclust</title>
+  <title>CSCI 2025 – Unsupervised Learning</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -29,9 +29,8 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -42,7 +41,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -82,7 +81,7 @@
     code span.ex { color: #ffd700; } /* Extension */
     code span.fl { color: #f5ab35; } /* Float */
     code span.fu { color: #ffd700; } /* Function */
-    code span.im { } /* Import */
+    code span.im { color: #f8f8f2; } /* Import */
     code span.in { color: #d4d0ab; } /* Information */
     code span.kw { color: #ffa07a; } /* Keyword */
     code span.op { color: #00e0e0; } /* Operator */
@@ -95,7 +94,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-19712d0536fb4af57e0e6d790f4cb4d1.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-6bc72f35e3949519886edeb5d3945a02.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -195,7 +194,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Clustering with Tidyclust</h1>
+  <h1 class="title">Unsupervised Learning</h1>
   <p class="subtitle">Lecture 33</p>
 
 <div class="quarto-title-authors">
@@ -210,131 +209,98 @@ Dr.&nbsp;Eric Friedlander
 </div>
 
 </section>
-<section>
-<section id="unsupervised-learning" class="title-slide slide level1 center">
-<h1>Unsupervised Learning</h1>
-
-</section>
-<section id="finding-groups" class="slide level2">
-<h2>Finding Groups</h2>
+<section id="unsupervised-learning" class="slide level2 smaller">
+<h2>Unsupervised Learning</h2>
 <ul>
-<li><strong>Supervised Learning</strong>: We have a target variable (Y) to predict (Regression, Classification).</li>
-<li><strong>Unsupervised Learning</strong>: No target. We want to find <em>structure</em> in the data.</li>
-<li><strong>Clustering</strong>: Grouping similar observations together.</li>
-<li><strong>Techniques</strong>:
-<ul>
-<li>K-Means Clustering</li>
-<li>Hierarchical Clustering</li>
-</ul></li>
+<li><strong>Machine Learning</strong>: using computers and algorithms to learn from data.</li>
+<li>Two types of machine learning problems are:</li>
+<li><strong>Supervised Learning</strong>: you have a <strong>target</strong> variable that you’re trying to predict</li>
+<li><strong>Unsupervised Learning</strong>: you don’t have a target variables and you’re trying to extract patterns from data<br>
+</li>
+<li>Two common types of unsupervised learning are: - <strong>Dimensionality reduction</strong>: find a lower-dimensional representation of the data that captures most of the variation (PCA) - <strong>Clustering</strong>: find subgroups of observations that are similar to each other</li>
 </ul>
 </section>
-<section id="the-tidyclust-package" class="slide level2">
-<h2>The <code>tidyclust</code> Package</h2>
-<ul>
-<li>Builds on <code>tidymodels</code>.</li>
-<li>Provides a consistent interface for clustering models.</li>
-<li><strong>Workflow</strong>:
-<ol type="1">
-<li>Specification: <code>k_means()</code> or <code>hier_clust()</code>.</li>
-<li>Engine: <code>set_engine()</code>.</li>
-<li>Fit: <code>fit()</code>.</li>
-</ol></li>
-</ul>
+<section id="k-means-clustering" class="slide level2">
+<h2>K-means Clustering</h2>
+<p>K-means clustering is a simple and popular clustering method. It works by partitioning the data into K distinct, non-overlapping clusters.</p>
+<p>The <code>tidyclust</code> package provides a <code>tidymodels</code>-like interface for clustering.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidymodels)</span>
 <span id="cb1-2"><a></a><span class="fu">library</span>(tidyclust)</span>
-<span id="cb1-3"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-4"><a></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-5"><a></a></span>
-<span id="cb1-6"><a></a><span class="co"># Prepare Data (Numeric, Scaled, No NA)</span></span>
-<span id="cb1-7"><a></a>penguins_clean <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
-<span id="cb1-8"><a></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span></span>
-<span id="cb1-9"><a></a>  <span class="fu">select</span>(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g) <span class="sc">|&gt;</span></span>
-<span id="cb1-10"><a></a>  <span class="fu">scale</span>() <span class="sc">|&gt;</span></span>
-<span id="cb1-11"><a></a>  <span class="fu">as_tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section>
-<section>
-<section id="k-means-clustering" class="title-slide slide level1 center">
-<h1>K-Means Clustering</h1>
-
-</section>
-<section id="intuition" class="slide level2">
-<h2>Intuition</h2>
-<ul>
-<li><strong>Goal</strong>: Partition data into <span class="math inline">\(K\)</span> clusters.</li>
-<li><strong>Algorithm</strong>:
-<ol type="1">
-<li>Initialize <span class="math inline">\(K\)</span> centroids randomly.</li>
-<li>Assign each point to the closest centroid.</li>
-<li>Update centroids (mean of assigned points).</li>
-<li>Repeat until convergence.</li>
-</ol></li>
-</ul>
-</section>
-<section id="fitting-k-means" class="slide level2">
-<h2>Fitting K-Means</h2>
+<p>We will use the <code>USArrests</code> dataset. It contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973. It also gives the percent of the population living in urban areas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># 1. Specification (Assume K=3)</span></span>
-<span id="cb2-2"><a></a>kmeans_spec <span class="ot">&lt;-</span> <span class="fu">k_means</span>(<span class="at">num_clusters =</span> <span class="dv">3</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a></a>  <span class="fu">set_engine</span>(<span class="st">"stats"</span>)</span>
-<span id="cb2-4"><a></a></span>
-<span id="cb2-5"><a></a><span class="co"># 2. Fit</span></span>
-<span id="cb2-6"><a></a>kmeans_fit <span class="ot">&lt;-</span> kmeans_spec <span class="sc">|&gt;</span></span>
-<span id="cb2-7"><a></a>    <span class="fu">fit</span>(<span class="sc">~</span> ., <span class="at">data =</span> penguins_clean)</span>
-<span id="cb2-8"><a></a></span>
-<span id="cb2-9"><a></a></span>
-<span id="cb2-10"><a></a>kmeans_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>USArrests <span class="sc">|&gt;</span>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Murder Assault UrbanPop Rape
+Alabama      13.2     236       58 21.2
+Alaska       10.0     263       48 44.5
+Arizona       8.1     294       80 31.0
+Arkansas      8.8     190       50 19.5
+California    9.0     276       91 40.6
+Colorado      7.9     204       78 38.7</code></pre>
+</div>
+</div>
+</section>
+<section id="k-means-with-tidyclust" class="slide level2">
+<h2>K-means with tidyclust</h2>
+<p>Let’s do a K-means clustering with 2 clusters. We create a <code>k_means()</code> model specification and set the engine.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>kmeans_spec <span class="ot">&lt;-</span> <span class="fu">k_means</span>(<span class="at">num_clusters =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a></a>  <span class="fu">set_engine</span>(<span class="st">"stats"</span>)</span>
+<span id="cb4-3"><a></a></span>
+<span id="cb4-4"><a></a>kmeans_spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>K Means Cluster Specification (partition)
+
+Main Arguments:
+  num_clusters = 2
+
+Computational engine: stats </code></pre>
+</div>
+</div>
+<p>Then we can fit the specification. We are using a formula <code>~ .</code> to specify that we want to use all variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>kmeans_fit <span class="ot">&lt;-</span> kmeans_spec <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a></a>  <span class="fu">fit</span>(<span class="sc">~</span> ., <span class="at">data =</span> USArrests)</span>
+<span id="cb6-3"><a></a></span>
+<span id="cb6-4"><a></a>kmeans_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tidyclust cluster object
 
-K-means clustering with 3 clusters of sizes 144, 70, 119
+K-means clustering with 2 clusters of sizes 21, 29
 
 Cluster means:
-  bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-3     -0.9732998     0.5408171        -0.8112111  -0.6808149
-1      0.8908006     0.7592465        -0.3044405  -0.4687119
-2      0.6537742    -1.1010497         1.1607163   1.0995561
+     Murder  Assault UrbanPop     Rape
+1 11.857143 255.0000 67.61905 28.11429
+2  4.841379 109.7586 64.03448 16.24828
 
 Clustering vector:
-  1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20 
-  1   1   1   1   1   1   1   1   1   1   1   1   2   1   2   1   1   1   1   1 
- 21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  40 
-  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   2   1 
- 41  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60 
-  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
- 61  62  63  64  65  66  67  68  69  70  71  72  73  74  75  76  77  78  79  80 
-  1   1   1   1   1   1   1   2   1   1   1   1   1   1   1   1   1   1   1   1 
- 81  82  83  84  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100 
-  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
-101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 
-  1   1   1   2   1   2   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
-121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 
-  1   1   1   2   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
-141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 
-  1   1   1   1   1   1   3   3   3   3   3   3   3   3   3   3   3   3   3   3 
-161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 
-  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 
-181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 
-  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 
-201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 
-  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 
-221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 
-  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 
-241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 
-  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 
-261 262 263 264 265 266 267 268 269 270 271 272 273 274 275 276 277 278 279 280 
-  3   3   3   3   3   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2 
-281 282 283 284 285 286 287 288 289 290 291 292 293 294 295 296 297 298 299 300 
-  2   2   2   2   2   1   2   1   2   2   2   2   2   2   2   1   2   1   2   2 
-301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317 318 319 320 
-  2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   1 
-321 322 323 324 325 326 327 328 329 330 331 332 333 
-  2   2   2   2   2   2   2   2   2   2   2   2   2 
+       Alabama         Alaska        Arizona       Arkansas     California 
+             1              1              1              1              1 
+      Colorado    Connecticut       Delaware        Florida        Georgia 
+             1              2              1              1              1 
+        Hawaii          Idaho       Illinois        Indiana           Iowa 
+             2              2              1              2              2 
+        Kansas       Kentucky      Louisiana          Maine       Maryland 
+             2              2              1              2              1 
+ Massachusetts       Michigan      Minnesota    Mississippi       Missouri 
+             2              1              2              1              2 
+       Montana       Nebraska         Nevada  New Hampshire     New Jersey 
+             2              2              1              2              2 
+    New Mexico       New York North Carolina   North Dakota           Ohio 
+             1              1              1              2              2 
+      Oklahoma         Oregon   Pennsylvania   Rhode Island South Carolina 
+             2              2              2              2              1 
+  South Dakota      Tennessee          Texas           Utah        Vermont 
+             2              1              1              2              2 
+      Virginia     Washington  West Virginia      Wisconsin        Wyoming 
+             2              2              2              2              2 
 
 Within cluster sum of squares by cluster:
-[1] 152.44363  78.96005 139.46837
- (between_SS / total_SS =  72.1 %)
+[1] 41636.73 54762.30
+ (between_SS / total_SS =  72.9 %)
 
 Available components:
 
@@ -343,53 +309,92 @@ Available components:
 </div>
 </div>
 </section>
+<section id="understanding-the-result" class="slide level2">
+<h2>Understanding the result</h2>
+<p>We can use <code>tidy()</code> to get a tibble with information about each of the clusters. This includes the size of each cluster, the location of the cluster centroid, and the within-cluster sum of squares.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">tidy</span>(kmeans_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+  Murder Assault UrbanPop  Rape  size withinss cluster
+   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;fct&gt;  
+1  11.9     255      67.6  28.1    21   41637. 1      
+2   4.84    110.     64.0  16.2    29   54762. 2      </code></pre>
+</div>
+</div>
+<p>We can also use <code>augment()</code> to get the cluster assignment for each observation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">augment</span>(kmeans_fit, USArrests) <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 5
+  Murder Assault UrbanPop  Rape .pred_cluster
+   &lt;dbl&gt;   &lt;int&gt;    &lt;int&gt; &lt;dbl&gt; &lt;fct&gt;        
+1   13.2     236       58  21.2 Cluster_1    
+2   10       263       48  44.5 Cluster_1    
+3    8.1     294       80  31   Cluster_1    
+4    8.8     190       50  19.5 Cluster_1    
+5    9       276       91  40.6 Cluster_1    </code></pre>
+</div>
+</div>
+</section>
 <section id="visualizing-clusters" class="slide level2">
 <h2>Visualizing Clusters</h2>
-<ul>
-<li>We can explore the cluster assignments.</li>
-</ul>
+<p>With the cluster assignments, we can now visualize the clusters.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Extract Assignments</span></span>
-<span id="cb4-2"><a></a><span class="co"># extract_cluster_assignment(kmeans_fit) # This extracts just the vector</span></span>
-<span id="cb4-3"><a></a></span>
-<span id="cb4-4"><a></a><span class="co"># Visualize</span></span>
-<span id="cb4-5"><a></a>kmeans_fit <span class="sc">|&gt;</span></span>
-<span id="cb4-6"><a></a>  <span class="fu">extract_cluster_assignment</span>(penguins_clean) <span class="sc">|&gt;</span></span>
-<span id="cb4-7"><a></a>  <span class="fu">bind_cols</span>(penguins_clean) <span class="sc">|&gt;</span></span>
-<span id="cb4-8"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm, <span class="at">color =</span> .cluster)) <span class="sc">+</span></span>
-<span id="cb4-9"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb4-10"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"K-Means Clustering (K=3)"</span>) <span class="sc">+</span></span>
-<span id="cb4-11"><a></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>kmeans_fit <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a></a>  <span class="fu">augment</span>(USArrests) <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Murder, <span class="at">y =</span> Assault, <span class="at">color =</span> .pred_cluster)) <span class="sc">+</span></span>
+<span id="cb12-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb12-5"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"K-Means Clustering (K=2)"</span>) <span class="sc">+</span></span>
+<span id="cb12-6"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="33-clustering_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section></section>
+<img data-src="33-clustering_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<section id="visualizing-clusters-pca" class="slide level2">
+<h2>Visualizing Clusters PCA</h2>
+<p>With the cluster assignments, we can now visualize the clusters.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>pca_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(<span class="sc">~</span> ., <span class="at">data =</span> USArrests) <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a></a>  <span class="fu">step_pca</span>(<span class="fu">all_numeric_predictors</span>(), <span class="at">num_comp =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb13-4"><a></a>  <span class="fu">prep</span>()</span>
+<span id="cb13-5"><a></a></span>
+<span id="cb13-6"><a></a>US_Arrests_PCA <span class="ot">&lt;-</span> <span class="fu">bake</span>(pca_rec, <span class="at">new_data =</span> USArrests)</span>
+<span id="cb13-7"><a></a></span>
+<span id="cb13-8"><a></a>kmeans_fit <span class="sc">|&gt;</span></span>
+<span id="cb13-9"><a></a>  <span class="fu">augment</span>(USArrests) <span class="sc">|&gt;</span></span>
+<span id="cb13-10"><a></a>  <span class="fu">bind_cols</span>(US_Arrests_PCA) <span class="sc">|&gt;</span> </span>
+<span id="cb13-11"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> PC1, <span class="at">y =</span> PC2, <span class="at">color =</span> .pred_cluster)) <span class="sc">+</span></span>
+<span id="cb13-12"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb13-13"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"K-Means Clustering (K=2)"</span>) <span class="sc">+</span></span>
+<span id="cb13-14"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="33-clustering_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="tuning-the-number-of-clusters" class="slide level2">
+<h2>Tuning the number of clusters</h2>
+<p>A common question in K-means clustering is how to choose the number of clusters K. A common way to do this is to try different values of K and see which one gives the best result.</p>
+<p>We can use <code>tune_cluster()</code> to do this. We first create a <code>k_means()</code> specification with a <code>num_clusters</code> argument that we want to tune.</p>
+</section>
 <section>
 <section id="hierarchical-clustering" class="title-slide slide level1 center">
 <h1>Hierarchical Clustering</h1>
-
-</section>
-<section id="intuition-1" class="slide level2">
-<h2>Intuition</h2>
-<ul>
-<li>Builds a hierarchy of clusters.</li>
-<li><strong>Dendrogram</strong>: Tree diagram showing relationships.</li>
-<li>No need to pre-specify K!</li>
-<li><strong>Linkage</strong>: How to define distance between clusters (Complete, Single, Average).</li>
-</ul>
-</section>
-<section id="fitting-hierarchical-clustering" class="slide level2">
-<h2>Fitting Hierarchical Clustering</h2>
+<p>Hierarchical clustering is another popular clustering method. It creates a hierarchy of clusters that can be visualized as a dendrogram.</p>
+<p>Let’s do a hierarchical clustering with <code>tidyclust</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>hc_spec <span class="ot">&lt;-</span> <span class="fu">hier_clust</span>(<span class="at">linkage_method =</span> <span class="st">"complete"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">set_engine</span>(<span class="st">"stats"</span>)</span>
-<span id="cb5-3"><a></a></span>
-<span id="cb5-4"><a></a>hc_fit <span class="ot">&lt;-</span> hc_spec <span class="sc">|&gt;</span></span>
-<span id="cb5-5"><a></a>  <span class="fu">fit</span>(<span class="sc">~</span> ., <span class="at">data =</span> penguins_clean)</span>
-<span id="cb5-6"><a></a></span>
-<span id="cb5-7"><a></a>hc_fit</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>hc_spec <span class="ot">&lt;-</span> <span class="fu">hier_clust</span>() <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a></a>  <span class="fu">set_engine</span>(<span class="st">"stats"</span>)</span>
+<span id="cb14-3"><a></a></span>
+<span id="cb14-4"><a></a>hc_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(hc_spec, <span class="sc">~</span> ., <span class="at">data =</span> USArrests)</span>
+<span id="cb14-5"><a></a></span>
+<span id="cb14-6"><a></a>hc_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tidyclust cluster object
 
@@ -398,48 +403,45 @@ Call:
 stats::hclust(d = stats::as.dist(dmat), method = linkage_method)
 
 Cluster method   : complete 
-Number of objects: 333 </code></pre>
+Number of objects: 50 </code></pre>
 </div>
 </div>
 </section>
-<section id="visualizing-dendrograms" class="slide level2">
-<h2>Visualizing Dendrograms</h2>
-<ul>
-<li><code>tidyclust</code> (and <code>dendextend</code> underneath) makes plotting easy.</li>
-</ul>
+<section id="dendrogram" class="slide level2">
+<h2>Dendrogram</h2>
+<p>The result of hierarchical clustering is often visualized as a dendrogram. We can use the <code>factoextra</code> package to do this.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Using as.dendrogram if needed</span></span>
-<span id="cb7-2"><a></a>hc_fit<span class="sc">$</span>fit <span class="sc">|&gt;</span> <span class="fu">as.dendrogram</span>() <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">library</span>(factoextra)</span>
+<span id="cb16-2"><a></a></span>
+<span id="cb16-3"><a></a><span class="fu">fviz_dend</span>(hc_fit<span class="sc">$</span>fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="33-clustering_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
-<section id="cutting-the-tree" class="slide level2">
-<h2>Cutting the Tree</h2>
+<img data-src="33-clustering_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<section id="linkage" class="slide level2">
+<h2>Linkage</h2>
+<p>In hierarchical clustering, we need to specify a linkage method, which determines how the distance between clusters is calculated. Common linkage methods are:</p>
 <ul>
-<li>We can “cut” the tree to get <span class="math inline">\(K\)</span> clusters.</li>
+<li><code>complete</code>: The distance between two clusters is the maximum distance between any two points in the two clusters.</li>
+<li><code>average</code>: The distance between two clusters is the average distance between all pairs of points in the two clusters.</li>
+<li><code>single</code>: The distance between two clusters is the minimum distance between any two points in the two clusters.</li>
 </ul>
+<p>We can specify the linkage method in <code>hier_clust()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">hier_clust</span>(<span class="at">linkage_method =</span> <span class="st">"average"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section></section>
-<section>
 <section id="summary" class="title-slide slide level1 center">
 <h1>Summary</h1>
-
-</section>
-<section id="summary-1" class="slide level2">
-<h2>Summary</h2>
 <ul>
-<li><strong>Clustering</strong>: Finding groups without labels.</li>
-<li><strong>K-Means</strong>: Partition into K groups. Good for spherical clusters.</li>
-<li><strong>Hierarchical</strong>: Tree structure. Good for visualizing relationships.</li>
-<li><strong>Tidyclust</strong>: Brings tidy syntax to clustering (<code>k_means()</code>, <code>hier_clust()</code>, <code>fit()</code>).</li>
-<li><strong>Visualization</strong>:
-<ul>
-<li>Scatterplots colored by Cluster.</li>
-<li>Dendrograms.</li>
-</ul></li>
+<li><strong>Clustering</strong>: Finding groups in data.</li>
+<li><strong>K-Means</strong>: Partitions data into K clusters. Need to choose K.</li>
+<li><strong>Hierarchical Clustering</strong>: Creates a hierarchy of clusters.</li>
+<li><strong><code>tidyclust</code></strong>: A <code>tidymodels</code>-like interface for clustering.</li>
+<li><code>tune_cluster()</code> can be used to tune the number of clusters.</li>
 </ul>
 
 
-</section></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../logo.png" class="slide-logo"></p>
@@ -697,172 +699,190 @@ Number of objects: 333 </code></pre>
     </script>
 
     <script id="quarto-html-after-body" type="application/javascript">
-      window.document.addEventListener("DOMContentLoaded", function (event) {
-        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-        tabsets.forEach(function(tabset) {
-          const tabby = new Tabby('#' + tabset.id);
-        });
-        const isCodeAnnotation = (el) => {
-          for (const clz of el.classList) {
-            if (clz.startsWith('code-annotation-')) {                     
-              return true;
-            }
-          }
-          return false;
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
         }
-        const onCopySuccess = function(e) {
-          // button target
-          const button = e.trigger;
-          // don't keep focus
-          button.blur();
-          // flash "checked"
-          button.classList.add('code-copy-button-checked');
-          var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
-          let tooltip;
-          if (window.bootstrap) {
-            button.setAttribute("data-bs-toggle", "tooltip");
-            button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
-            tooltip = new bootstrap.Tooltip(button, 
-              { trigger: "manual", 
-                customClass: "code-copy-button-tooltip",
-                offset: [0, -8]});
-            tooltip.show();    
-          }
-          setTimeout(function() {
-            if (tooltip) {
-              tooltip.hide();
-              button.removeAttribute("data-bs-title");
-              button.removeAttribute("data-bs-toggle");
-              button.removeAttribute("data-bs-placement");
-            }
-            button.setAttribute("title", currentTitle);
-            button.classList.remove('code-copy-button-checked');
-          }, 1000);
-          // clear code selection
-          e.clearSelection();
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
         }
-        const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
-            }
-            return codeEl.innerText;
-        }
-        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-          text: getTextToCopy
-        });
-        clipboard.on('success', onCopySuccess);
-        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-            text: getTextToCopy,
-            container: window.document.getElementById('quarto-embedded-source-code-modal')
-          });
-          clipboardModal.on('success', onCopySuccess);
-        }
-          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/csci2025wi26\.netlify\.app\/");
-          var isInternal = (href) => {
-              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-          }
-          // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-          for (var i=0; i<links.length; i++) {
-            const link = links[i];
-            if (!isInternal(link.href)) {
-              // undo the damage that might have been done by quarto-nav.js in the case of
-              // links that we want to consider external
-              if (link.dataset.originalHref !== undefined) {
-                link.href = link.dataset.originalHref;
-              }
-            }
-          }
-        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-          const config = {
-            allowHTML: true,
-            maxWidth: 500,
-            delay: 100,
-            arrow: false,
-            appendTo: function(el) {
-                return el.closest('section.slide') || el.parentElement;
-            },
-            interactive: true,
-            interactiveBorder: 10,
-            theme: 'light-border',
-            placement: 'bottom-start',
-          };
-          if (contentFn) {
-            config.content = contentFn;
-          }
-          if (onTriggerFn) {
-            config.onTrigger = onTriggerFn;
-          }
-          if (onUntriggerFn) {
-            config.onUntrigger = onUntriggerFn;
-          }
-            config['offset'] = [0,0];
-            config['maxWidth'] = 700;
-          window.tippy(el, config); 
-        }
-        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-        for (var i=0; i<noterefs.length; i++) {
-          const ref = noterefs[i];
-          tippyHover(ref, function() {
-            // use id or data attribute instead here
-            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-            try { href = new URL(href).hash; } catch {}
-            const id = href.replace(/^#\/?/, "");
-            const note = window.document.getElementById(id);
-            if (note) {
-              return note.innerHTML;
-            } else {
-              return "";
-            }
-          });
-        }
-        const findCites = (el) => {
-          const parentEl = el.parentElement;
-          if (parentEl) {
-            const cites = parentEl.dataset.cites;
-            if (cites) {
-              return {
-                el,
-                cites: cites.split(' ')
-              };
-            } else {
-              return findCites(el.parentElement)
-            }
-          } else {
-            return undefined;
-          }
-        };
-        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-        for (var i=0; i<bibliorefs.length; i++) {
-          const ref = bibliorefs[i];
-          const citeInfo = findCites(ref);
-          if (citeInfo) {
-            tippyHover(citeInfo.el, function() {
-              var popup = window.document.createElement('div');
-              citeInfo.cites.forEach(function(cite) {
-                var citeDiv = window.document.createElement('div');
-                citeDiv.classList.add('hanging-indent');
-                citeDiv.classList.add('csl-entry');
-                var biblioDiv = window.document.getElementById('ref-' + cite);
-                if (biblioDiv) {
-                  citeDiv.innerHTML = biblioDiv.innerHTML;
-                }
-                popup.appendChild(citeDiv);
-              });
-              return popup.innerHTML;
-            });
-          }
-        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
       });
-      </script>
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/csci2025wi26\.netlify\.app\/");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
     
 
 </body></html>
