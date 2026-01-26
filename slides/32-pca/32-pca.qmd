@@ -6,6 +6,7 @@ subtitle: Lecture 32
 ```{r setup}
 #| echo: false
 library(tidyverse)
+library(knitr)
 ```
 
 # Dimensionality
@@ -222,6 +223,219 @@ data3 |> ggplot(aes(x = new_x, y = new_y)) +
     +   How much have we reduced the dimension?
     +   How much information have we lost?
 
+# Principal Component Analysis (PCA)
+
+## Vector's and Projections
+
+```{r}
+#| echo: FALSE
+
+# Load necessary libraries
+library(plotly)
+
+# Generate sample data
+set.seed(123)
+n <- 1000
+x <- rnorm(n)
+y <- rnorm(n)
+z <- x + y
+
+vector_x1 <- c(0, 1)
+vector_y1 <- c(0, 1)
+vector_z1 <- c(0, 2)
+vector_x2 <- c(0, 1)
+vector_y2 <- c(0, -1)
+vector_z2 <- c(0, 0)
+
+data <- tibble(x=x, y=y, z=z)
+
+# Create 3D scatter plot
+plot_ly(x = ~x, y = ~y, z = ~z, type = "scatter3d", mode = "markers",
+        marker = list(size = 3, color = 'blue', opacity = 0.25)) |>
+  plotly::layout(scene = list(xaxis = list(title = "X-axis"),
+                      yaxis = list(title = "Y-axis"),
+                      zaxis = list(title = "Z-axis")),
+                 showlegend = FALSE) |> 
+  add_trace(x = ~vector_x1, y = ~vector_y1, z = ~vector_z1, type = "scatter3d", mode = 'lines+markers', line = list(color = 'red')) |> 
+  add_trace(x = ~vector_x2, y = ~vector_y2, z = ~vector_z2, type = "scatter3d", mode = 'lines+markers', line = list(color = 'red'))
+```
+
+## Basis Vectors and New Coordinates
+
+-   Plane above: $z = x + y$
+-   New Directions:
+    -   New Direction 1: $\vec{d}_1 = \langle 1, 1, 2\rangle$
+    -   New Direction 2: $\vec{d}_2 = \langle 1, -1, 0\rangle$
+-   New data:
+    -   New $x$: $1\times x_{old} + 1\times y_{old} + 2\times z_{old}$
+    -   New $y$: $1\times x_{old} - 1\times y_{old} + 0\times z_{old}$
+-   Note: Not quite correct, need to re-normalize
+    
+## New Data {.smaller}
+
+```{r}
+new_data <- data |> 
+  mutate(new_x = x + y + 2*z,
+         new_y = x - y,
+         new_x = new_x/6, #re-normalizing
+         new_y = new_y/2)
+
+new_data |> head() |> kable()
+```
+
+## What's actually happening
+
+-   We are **projecting** each observation onto our new directions $\vec{d}_1$ and $\vec{d}_2$
+-   [Visualization](https://xaktly.com/VectorProjections.html)
+
+## Projecting our data
+
+```{r}
+#| echo: FALSE
+
+# Load necessary libraries
+library(plotly)
+
+# Generate sample data
+set.seed(123)
+n <- 1000
+x <- rnorm(n)
+y <- rnorm(n)
+z <- x + y
+new_x <- (x + y + 2*z)/6
+new_y <- (x - y)/2
+
+vector_x1 <- c(0, 1)
+vector_y1 <- c(0, 1)
+vector_z1 <- c(0, 2)
+vector_x2 <- c(0, 1)
+vector_y2 <- c(0, -1)
+vector_z2 <- c(0, 0)
+
+data <- tibble(x=x, y=y, z=z)
+
+# Create 3D scatter plot
+plot_ly(x = ~x, y = ~y, z = ~z, type = "scatter3d", mode = "markers",
+        marker = list(size = 3, color = 'blue', opacity = 0.25)) |>
+  plotly::layout(scene = list(xaxis = list(title = "X-axis"),
+                      yaxis = list(title = "Y-axis"),
+                      zaxis = list(title = "Z-axis")),
+                 showlegend = FALSE) |> 
+  add_trace(x = ~vector_x1, y = ~vector_y1, z = ~vector_z1, type = "scatter3d", mode = 'lines+markers', line = list(color = 'red')) |> 
+  add_trace(x = ~vector_x2, y = ~vector_y2, z = ~vector_z2, type = "scatter3d", mode = 'lines+markers', line = list(color = 'red')) |> 
+  add_trace(x = ~new_x, y = ~new_x, z = ~2*new_x, type = "scatter3d", mode = 'markers', marker = list(size = 3, color = 'purple')) |> 
+  add_trace(x = ~new_y, y = ~-new_y, z = ~0, type = "scatter3d", mode = 'markers', marker = list(size = 3, color = 'purple'))
+```
+
+## Plotting these
+
+```{r}
+new_data |> 
+  ggplot(aes(x = new_x, y = new_y)) +
+           geom_point()
+```
+
+# Principal Component Analysis (PCA)
+
+## PCA Vocabulary
+
+-   **Principal Component (PC1)**: direction in $p$-dimensional space (e.g. $\langle 1, 1, 2\rangle$)
+-   **Scores**: our new variables (e.g. $(-0.56\times 1 + -0.996\times 1 + -1.56\times 2)/6 = -0.778$)
+-   **Loadings**: For direction above'
+    +   Loading on $x$ is 1
+    +   Loading on $y$ is 1
+    +   Loading on $z$ is 2
+
+## Recall: Variance
+
+::: incremental
+-   What is variance?
+-   Intuitively: what does variance measure?
+-   Variance: $\frac{1}{n-1}\sum_{i=1}^n(x_i - \bar{x})^2$
+    +   Average of the squared distance from zero of each observation
+:::
+
+## Idea behind PCA
+
+-   Select first PC so variance of scores is the maximum
+-   Iteratively:
+    +   Select next PC so variance of scores is maximize AND new PC is *orthogonal* to all other PCs
+
+. . .
+
+-   What does orthogonal mean?
+
+## Easy Example
+
+-   Exercise: What should the first and second PCs be?
+
+```{r}
+#| echo: false
+#| code-fold: true
+
+set.seed(123)
+n = 1000
+easy_ex <- tibble(x = rnorm(n), y = rnorm(n, sd = 0.25))
+
+ggplot(easy_ex, aes(x=x, y=y)) +
+  geom_point() +
+  xlim(-4, 4)+
+  ylim(-4,4)
+```
+
+## How much variance is explained by each of the PC's?
+
+```{r}
+var_exp <- easy_ex |> 
+  mutate(PC1 = x,
+         PC2 = y) |> 
+  summarize(var1 = var(PC1), 
+            var2 = var(PC2))
+
+var_exp |> kable()
+```
+
+## What proportion of variance is explained by each of the PC's?
+
+```{r}
+var_exp |> 
+  pivot_longer(everything()) |> 
+  mutate(proportion = value/sum(value)) |> 
+  kable()
+```
+
+-   93% of our variance (information) is contained in our first PC
+
+## Harder Example
+
+-   Exercise: What should the first and second PCs be?
+
+```{r}
+#| echo: false
+#| code-fold: true
+
+set.seed(123)
+n = 1000
+harder_ex <- tibble(x = rnorm(n), y = x + rnorm(n, sd = 0.25))
+
+ggplot(harder_ex, aes(x=x, y=y)) +
+  geom_point() +
+  xlim(-4, 4)+
+  ylim(-4,4)
+```
+
+## How much variance is explained by each of the PC's?
+
+```{r}
+var_exp <- harder_ex |> 
+  mutate(PC1 = (x + y)/2,
+         PC2 = (x-y)/2) |> 
+  summarize(var1 = var(PC1), 
+            var2 = var(PC2))
+
+var_exp |> kable()
+```
+
 
 # Principal Component Analysis
 
@@ -263,6 +477,8 @@ pca_data <- bake(pca_prep, new_data = NULL)
 
 head(pca_data)
 ```
+
+
 
 # Visualizing PCA
 
