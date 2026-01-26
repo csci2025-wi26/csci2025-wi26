@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Dr.&nbsp;Eric Friedlander">
-  <title>CSCI 2025 – Clustering with Tidyclust</title>
+  <title>CSCI 2025 – Functions and Iteration</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -195,8 +195,8 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="../title-bg.png" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Clustering with Tidyclust</h1>
-  <p class="subtitle">Lecture 33</p>
+  <h1 class="title">Functions and Iteration</h1>
+  <p class="subtitle">Lecture 34</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -211,231 +211,171 @@ Dr.&nbsp;Eric Friedlander
 
 </section>
 <section>
-<section id="unsupervised-learning" class="title-slide slide level1 center">
-<h1>Unsupervised Learning</h1>
+<section id="introduction" class="title-slide slide level1 center">
+<h1>Introduction</h1>
 
 </section>
-<section id="finding-groups" class="slide level2">
-<h2>Finding Groups</h2>
+<section id="the-motivation" class="slide level2">
+<h2>The Motivation</h2>
 <ul>
-<li><strong>Supervised Learning</strong>: We have a target variable (Y) to predict (Regression, Classification).</li>
-<li><strong>Unsupervised Learning</strong>: No target. We want to find <em>structure</em> in the data.</li>
-<li><strong>Clustering</strong>: Grouping similar observations together.</li>
-<li><strong>Techniques</strong>:
+<li><strong>DRY Principle</strong>: Don’t Repeat Yourself.</li>
+<li><strong>Copy-pasting</strong> is dangerous:
 <ul>
-<li>K-Means Clustering</li>
-<li>Hierarchical Clustering</li>
+<li>It’s easy to make mistakes (copying the wrong variable).</li>
+<li>It’s hard to update (you have to change code in multiple places).</li>
+</ul></li>
+<li><strong>Solution</strong>:
+<ol type="1">
+<li><strong>Functions</strong>: Automate common tasks.</li>
+<li><strong>Iteration</strong>: Apply functions to multiple inputs.</li>
+</ol></li>
+</ul>
+</section></section>
+<section>
+<section id="functions" class="title-slide slide level1 center">
+<h1>Functions</h1>
+
+</section>
+<section id="when-to-write-a-function" class="slide level2">
+<h2>When to write a function?</h2>
+<ul>
+<li><strong>Rule of Three</strong>:
+<ul>
+<li>If you’ve copied and pasted a block of code more than twice, write a function.</li>
+</ul></li>
+<li><strong>Advantages</strong>:
+<ul>
+<li>Given a name that makes it easier to understand.</li>
+<li>As requirements change, you only need to update code in one place.</li>
+<li>Eliminates the chance of making incidental mistakes when copying and pasting.</li>
 </ul></li>
 </ul>
 </section>
-<section id="the-tidyclust-package" class="slide level2">
-<h2>The <code>tidyclust</code> Package</h2>
+<section id="anatomy-of-a-function" class="slide level2">
+<h2>Anatomy of a Function</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2) {</span>
+<span id="cb1-2"><a></a>  <span class="co"># Body of the function</span></span>
+<span id="cb1-3"><a></a>  result <span class="ot">&lt;-</span> arg1 <span class="sc">+</span> arg2</span>
+<span id="cb1-4"><a></a>  <span class="fu">return</span>(result)</span>
+<span id="cb1-5"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <ul>
-<li>Builds on <code>tidymodels</code>.</li>
-<li>Provides a consistent interface for clustering models.</li>
-<li><strong>Workflow</strong>:
+<li><strong>Name</strong>: Should be descriptive (use verbs).</li>
+<li><strong>Arguments</strong>: Inputs to the function (can have defaults).</li>
+<li><strong>Body</strong>: The code that executes.</li>
+<li><strong>Return</strong>: The output of the function (implicit or explicit).</li>
+</ul>
+</section>
+<section id="types-of-functions" class="slide level2">
+<h2>Types of Functions</h2>
 <ol type="1">
-<li>Specification: <code>k_means()</code> or <code>hier_clust()</code>.</li>
-<li>Engine: <code>set_engine()</code>.</li>
-<li>Fit: <code>fit()</code>.</li>
-</ol></li>
+<li><strong>Vector Functions</strong>:
+<ul>
+<li>Input: Vector.</li>
+<li>Output: Vector.</li>
+<li>Example: <code>rescale01 &lt;- function(x) { (x - min(x)) / (max(x) - min(x)) }</code></li>
+</ul></li>
+<li><strong>Data Frame Functions</strong>:
+<ul>
+<li>Input: Data Frame.</li>
+<li>Output: Data Frame (usually).</li>
+<li>Example: Wrapping a complex <code>dplyr</code> pipeline.</li>
+</ul></li>
+<li><strong>Plot Functions</strong>:
+<ul>
+<li>Input: Data Frame + Parameters.</li>
+<li>Output: ggplot object.</li>
+</ul></li>
+</ol>
+</section></section>
+<section>
+<section id="iteration" class="title-slide slide level1 center">
+<h1>Iteration</h1>
+
+</section>
+<section id="the-r-way-vectorization" class="slide level2">
+<h2>The “R” Way: Vectorization</h2>
+<p>R is designed for iteration. Many functions work on vectors automatically.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb2-2"><a></a>x <span class="sc">*</span> <span class="dv">2</span>  <span class="co"># No loop needed!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  2  4  6  8 10</code></pre>
+</div>
+</div>
+<p><strong>Implicit Iteration</strong> should be your first choice.</p>
+</section>
+<section id="column-iteration-across" class="slide level2">
+<h2>Column Iteration: <code>across()</code></h2>
+<p>Apply a function to multiple columns in a data frame.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-5"><a></a>    <span class="fu">across</span>(<span class="fu">c</span>(x, y, z), <span class="sc">~</span> .x <span class="sc">*</span> <span class="dv">2</span>)</span>
+<span id="cb4-6"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li><strong>Selection</strong>: Select columns by name, type (<code>where(is.numeric)</code>), etc.</li>
+<li><strong>Function</strong>: Pass the function to apply.</li>
+</ul>
+</section>
+<section id="list-iteration-purrrmap" class="slide level2">
+<h2>List Iteration: <code>purrr::map()</code></h2>
+<p>When you need to iterate over a list or a vector and implicit iteration isn’t enough.</p>
+<ul>
+<li><code>map()</code>: Returns a list.</li>
+<li><code>map_lgl()</code>, <code>map_int()</code>, <code>map_dbl()</code>, <code>map_chr()</code>: Return an atomic vector.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(tidyclust)</span>
-<span id="cb1-3"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-4"><a></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-5"><a></a></span>
-<span id="cb1-6"><a></a><span class="co"># Prepare Data (Numeric, Scaled, No NA)</span></span>
-<span id="cb1-7"><a></a>penguins_clean <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
-<span id="cb1-8"><a></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span></span>
-<span id="cb1-9"><a></a>  <span class="fu">select</span>(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g) <span class="sc">|&gt;</span></span>
-<span id="cb1-10"><a></a>  <span class="fu">scale</span>() <span class="sc">|&gt;</span></span>
-<span id="cb1-11"><a></a>  <span class="fu">as_tibble</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(purrr)</span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a>path_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"data/file1.csv"</span>, <span class="st">"data/file2.csv"</span>)</span>
+<span id="cb5-4"><a></a>data_list <span class="ot">&lt;-</span> <span class="fu">map</span>(path_list, read_csv)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="reading-multiple-files" class="slide level2">
+<h2>Reading Multiple Files</h2>
+<p>A common data science task:</p>
+<ol type="1">
+<li>List files in a directory (<code>list.files()</code>).</li>
+<li>Read each file (<code>map()</code>).</li>
+<li>Combine into one data frame (<code>list_rbind()</code>).</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">"data/"</span>, <span class="at">pattern =</span> <span class="st">"*.csv"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a>combined_data <span class="ot">&lt;-</span> files <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a></a>  <span class="fu">map</span>(read_csv) <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a></a>  <span class="fu">list_rbind</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>
-<section id="k-means-clustering" class="title-slide slide level1 center">
-<h1>K-Means Clustering</h1>
+<section id="wrap-up" class="title-slide slide level1 center">
+<h1>Wrap Up</h1>
 
 </section>
-<section id="intuition" class="slide level2">
-<h2>Intuition</h2>
-<ul>
-<li><strong>Goal</strong>: Partition data into <span class="math inline">\(K\)</span> clusters.</li>
-<li><strong>Algorithm</strong>:
-<ol type="1">
-<li>Initialize <span class="math inline">\(K\)</span> centroids randomly.</li>
-<li>Assign each point to the closest centroid.</li>
-<li>Update centroids (mean of assigned points).</li>
-<li>Repeat until convergence.</li>
-</ol></li>
-</ul>
-</section>
-<section id="fitting-k-means" class="slide level2">
-<h2>Fitting K-Means</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># 1. Specification (Assume K=3)</span></span>
-<span id="cb2-2"><a></a>kmeans_spec <span class="ot">&lt;-</span> <span class="fu">k_means</span>(<span class="at">num_clusters =</span> <span class="dv">3</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a></a>  <span class="fu">set_engine</span>(<span class="st">"stats"</span>)</span>
-<span id="cb2-4"><a></a></span>
-<span id="cb2-5"><a></a><span class="co"># 2. Fit</span></span>
-<span id="cb2-6"><a></a>kmeans_fit <span class="ot">&lt;-</span> kmeans_spec <span class="sc">|&gt;</span></span>
-<span id="cb2-7"><a></a>    <span class="fu">fit</span>(<span class="sc">~</span> ., <span class="at">data =</span> penguins_clean)</span>
-<span id="cb2-8"><a></a></span>
-<span id="cb2-9"><a></a></span>
-<span id="cb2-10"><a></a>kmeans_fit</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>tidyclust cluster object
-
-K-means clustering with 3 clusters of sizes 144, 70, 119
-
-Cluster means:
-  bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-3     -0.9732998     0.5408171        -0.8112111  -0.6808149
-1      0.8908006     0.7592465        -0.3044405  -0.4687119
-2      0.6537742    -1.1010497         1.1607163   1.0995561
-
-Clustering vector:
-  1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20 
-  1   1   1   1   1   1   1   1   1   1   1   1   2   1   2   1   1   1   1   1 
- 21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  40 
-  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   2   1 
- 41  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60 
-  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
- 61  62  63  64  65  66  67  68  69  70  71  72  73  74  75  76  77  78  79  80 
-  1   1   1   1   1   1   1   2   1   1   1   1   1   1   1   1   1   1   1   1 
- 81  82  83  84  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100 
-  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
-101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 
-  1   1   1   2   1   2   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
-121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 
-  1   1   1   2   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
-141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 
-  1   1   1   1   1   1   3   3   3   3   3   3   3   3   3   3   3   3   3   3 
-161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 
-  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 
-181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 
-  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 
-201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 
-  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 
-221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 
-  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 
-241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 
-  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 
-261 262 263 264 265 266 267 268 269 270 271 272 273 274 275 276 277 278 279 280 
-  3   3   3   3   3   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2 
-281 282 283 284 285 286 287 288 289 290 291 292 293 294 295 296 297 298 299 300 
-  2   2   2   2   2   1   2   1   2   2   2   2   2   2   2   1   2   1   2   2 
-301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317 318 319 320 
-  2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   1 
-321 322 323 324 325 326 327 328 329 330 331 332 333 
-  2   2   2   2   2   2   2   2   2   2   2   2   2 
-
-Within cluster sum of squares by cluster:
-[1] 152.44363  78.96005 139.46837
- (between_SS / total_SS =  72.1 %)
-
-Available components:
-
-[1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss"
-[6] "betweenss"    "size"         "iter"         "ifault"      </code></pre>
-</div>
-</div>
-</section>
-<section id="visualizing-clusters" class="slide level2">
-<h2>Visualizing Clusters</h2>
-<ul>
-<li>We can explore the cluster assignments.</li>
-</ul>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Extract Assignments</span></span>
-<span id="cb4-2"><a></a><span class="co"># extract_cluster_assignment(kmeans_fit) # This extracts just the vector</span></span>
-<span id="cb4-3"><a></a></span>
-<span id="cb4-4"><a></a><span class="co"># Visualize</span></span>
-<span id="cb4-5"><a></a>kmeans_fit <span class="sc">|&gt;</span></span>
-<span id="cb4-6"><a></a>  <span class="fu">extract_cluster_assignment</span>(penguins_clean) <span class="sc">|&gt;</span></span>
-<span id="cb4-7"><a></a>  <span class="fu">bind_cols</span>(penguins_clean) <span class="sc">|&gt;</span></span>
-<span id="cb4-8"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm, <span class="at">color =</span> .cluster)) <span class="sc">+</span></span>
-<span id="cb4-9"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb4-10"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"K-Means Clustering (K=3)"</span>) <span class="sc">+</span></span>
-<span id="cb4-11"><a></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-
-</div>
-<img data-src="33-clustering_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section></section>
-<section>
-<section id="hierarchical-clustering" class="title-slide slide level1 center">
-<h1>Hierarchical Clustering</h1>
-
-</section>
-<section id="intuition-1" class="slide level2">
-<h2>Intuition</h2>
-<ul>
-<li>Builds a hierarchy of clusters.</li>
-<li><strong>Dendrogram</strong>: Tree diagram showing relationships.</li>
-<li>No need to pre-specify K!</li>
-<li><strong>Linkage</strong>: How to define distance between clusters (Complete, Single, Average).</li>
-</ul>
-</section>
-<section id="fitting-hierarchical-clustering" class="slide level2">
-<h2>Fitting Hierarchical Clustering</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>hc_spec <span class="ot">&lt;-</span> <span class="fu">hier_clust</span>(<span class="at">linkage_method =</span> <span class="st">"complete"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">set_engine</span>(<span class="st">"stats"</span>)</span>
-<span id="cb5-3"><a></a></span>
-<span id="cb5-4"><a></a>hc_fit <span class="ot">&lt;-</span> hc_spec <span class="sc">|&gt;</span></span>
-<span id="cb5-5"><a></a>  <span class="fu">fit</span>(<span class="sc">~</span> ., <span class="at">data =</span> penguins_clean)</span>
-<span id="cb5-6"><a></a></span>
-<span id="cb5-7"><a></a>hc_fit</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>tidyclust cluster object
-
-
-Call:
-stats::hclust(d = stats::as.dist(dmat), method = linkage_method)
-
-Cluster method   : complete 
-Number of objects: 333 </code></pre>
-</div>
-</div>
-</section>
-<section id="visualizing-dendrograms" class="slide level2">
-<h2>Visualizing Dendrograms</h2>
-<ul>
-<li><code>tidyclust</code> (and <code>dendextend</code> underneath) makes plotting easy.</li>
-</ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Using as.dendrogram if needed</span></span>
-<span id="cb7-2"><a></a>hc_fit<span class="sc">$</span>fit <span class="sc">|&gt;</span> <span class="fu">as.dendrogram</span>() <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-
-</div>
-<img data-src="33-clustering_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
-<section id="cutting-the-tree" class="slide level2">
-<h2>Cutting the Tree</h2>
-<ul>
-<li>We can “cut” the tree to get <span class="math inline">\(K\)</span> clusters.</li>
-</ul>
-</section></section>
-<section>
-<section id="summary" class="title-slide slide level1 center">
-<h1>Summary</h1>
-
-</section>
-<section id="summary-1" class="slide level2">
+<section id="summary" class="slide level2">
 <h2>Summary</h2>
 <ul>
-<li><strong>Clustering</strong>: Finding groups without labels.</li>
-<li><strong>K-Means</strong>: Partition into K groups. Good for spherical clusters.</li>
-<li><strong>Hierarchical</strong>: Tree structure. Good for visualizing relationships.</li>
-<li><strong>Tidyclust</strong>: Brings tidy syntax to clustering (<code>k_means()</code>, <code>hier_clust()</code>, <code>fit()</code>).</li>
-<li><strong>Visualization</strong>:
+<li><strong>Functions</strong> allow you to reuse code logic and avoid copy-paste errors.</li>
+<li><strong>Iteration</strong> allows you to apply that logic to many inputs efficiently.</li>
+<li><strong>Toolkit</strong>:
 <ul>
-<li>Scatterplots colored by Cluster.</li>
-<li>Dendrograms.</li>
+<li><code>function()</code> for creating tools.</li>
+<li><code>dplyr::across()</code> for data frame columns.</li>
+<li><code>purrr::map()</code> for lists and general iteration.</li>
 </ul></li>
+</ul>
+</section>
+<section id="do-next" class="slide level2">
+<h2>Do Next</h2>
+<ul>
+<li>Read <strong>Chapter 25 (Functions)</strong> and <strong>Chapter 26 (Iteration)</strong> in <em>R for Data Science (2e)</em>.</li>
+<li>Practice writing a simple function for a repetitive task in your assignments.</li>
+<li>Try using <code>map()</code> next time you need to read multiple similar files.</li>
 </ul>
 
 
@@ -471,7 +411,7 @@ Number of objects: 333 </code></pre>
       // https://revealjs.com/config/
       Reveal.initialize({
 'controlsAuto': true,
-'previewLinksAuto': false,
+'previewLinksAuto': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,

@@ -1,157 +1,160 @@
 ---
-title: Clustering with Tidyclust
-subtitle: Lecture 33
+title: "Unsupervised Learning"
+subtitle: "Lecture 33"
 ---
 
-# Unsupervised Learning
+## Unsupervised Learning {.smaller}
 
-## Finding Groups
+-   **Machine Learning**: using computers and algorithms to learn from data.
+-   Two types of machine learning problems are:
+  -   **Supervised Learning**: you have a **target** variable that you're trying to predict
+  -   **Unsupervised Learning**: you don't have a target variables and you're trying to extract patterns from data  
+  -   Two common types of unsupervised learning are:
+    -   **Dimensionality reduction**: find a lower-dimensional representation of the data that captures most of the variation (PCA)
+    -   **Clustering**: find subgroups of observations that are similar to each other
 
-- **Supervised Learning**: We have a target variable (Y) to predict (Regression, Classification).
-- **Unsupervised Learning**: No target. We want to find *structure* in the data.
-- **Clustering**: Grouping similar observations together.
-- **Techniques**:
-  -   K-Means Clustering
-  -   Hierarchical Clustering
+## K-means Clustering
 
-## The `tidyclust` Package
+K-means clustering is a simple and popular clustering method. It works by partitioning the data into K distinct, non-overlapping clusters.
 
-- Builds on `tidymodels`.
-- Provides a consistent interface for clustering models.
-- **Workflow**:
-  1.  Specification: `k_means()` or `hier_clust()`.
-  2.  Engine: `set_engine()`.
-  3.  Fit: `fit()`.
+The `tidyclust` package provides a `tidymodels`-like interface for clustering.
 
 ```{r}
+#| message: false
 library(tidymodels)
 library(tidyclust)
 library(tidyverse)
-library(palmerpenguins)
-
-# Prepare Data (Numeric, Scaled, No NA)
-penguins_clean <- penguins |>
-  drop_na() |>
-  select(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g) |>
-  scale() |>
-  as_tibble()
 ```
 
-# K-Means Clustering
-
-## Intuition
-
-- **Goal**: Partition data into $K$ clusters.
-- **Algorithm**:
-  1.  Initialize $K$ centroids randomly.
-  2.  Assign each point to the closest centroid.
-  3.  Update centroids (mean of assigned points).
-  4.  Repeat until convergence.
-
-## Fitting K-Means
+We will use the `USArrests` dataset. It contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973. It also gives the percent of the population living in urban areas.
 
 ```{r}
-# 1. Specification (Assume K=3)
-kmeans_spec <- k_means(num_clusters = 3) |>
+USArrests |>  head()
+```
+
+## K-means with tidyclust
+
+Let's do a K-means clustering with 2 clusters. We create a `k_means()` model specification and set the engine.
+
+```{r}
+kmeans_spec <- k_means(num_clusters = 2) |>
   set_engine("stats")
 
-# 2. Fit
-kmeans_fit <- kmeans_spec |>
-    fit(~ ., data = penguins_clean)
+kmeans_spec
+```
 
+Then we can fit the specification. We are using a formula `~ .` to specify that we want to use all variables.
+
+```{r}
+kmeans_fit <- kmeans_spec |> 
+  fit(~ ., data = USArrests)
 
 kmeans_fit
 ```
 
-## Visualizing Clusters
+## Understanding the result
 
-- We can explore the cluster assignments.
+We can use `tidy()` to get a tibble with information about each of the clusters. This includes the size of each cluster, the location of the cluster centroid, and the within-cluster sum of squares.
 
 ```{r}
-# Extract Assignments
-# extract_cluster_assignment(kmeans_fit) # This extracts just the vector
+tidy(kmeans_fit)
+```
 
-# Visualize
+We can also use `augment()` to get the cluster assignment for each observation.
+
+```{r}
+augment(kmeans_fit, USArrests) |>
+  slice(1:5)
+```
+
+## Visualizing Clusters
+
+With the cluster assignments, we can now visualize the clusters.
+
+```{r}
+#| code-fold: true
 kmeans_fit |>
-  extract_cluster_assignment(penguins_clean) |>
-  bind_cols(penguins_clean) |>
-  ggplot(aes(x = flipper_length_mm, y = bill_length_mm, color = .cluster)) +
+  augment(USArrests) |>
+  ggplot(aes(x = Murder, y = Assault, color = .pred_cluster)) +
   geom_point(size = 3) +
-  labs(title = "K-Means Clustering (K=3)") +
+  labs(title = "K-Means Clustering (K=2)") +
   theme_minimal()
 ```
 
-## Choosing K (Elbow Method)
+## Visualizing Clusters PCA
 
-- How do we know K=3 is best?
-- **Total Within-Cluster Sum of Squares (WSS)**: Measure of compactness (lower is better).
-- Look for the "Elbow" in the WSS vs K plot.
+With the cluster assignments, we can now visualize the clusters.
 
 ```{r}
-#| eval: false
-# Note: tune_cluster() supports tuning K, but for simplicity:
-# Iterate manually or use standard loop for elbow plot
-# (tidyclust makes simple fitting easy, tuning is advanced workflow)
+#| code-fold: true
+pca_rec <- recipe(~ ., data = USArrests) |>
+  step_normalize(all_numeric_predictors()) |>
+  step_pca(all_numeric_predictors(), num_comp = 2) |> 
+  prep()
+
+US_Arrests_PCA <- bake(pca_rec, new_data = USArrests)
+
+kmeans_fit |>
+  augment(USArrests) |>
+  bind_cols(US_Arrests_PCA) |> 
+  ggplot(aes(x = PC1, y = PC2, color = .pred_cluster)) +
+  geom_point(size = 3) +
+  labs(title = "K-Means Clustering (K=2)") +
+  theme_minimal()
 ```
+
+## Tuning the number of clusters
+
+A common question in K-means clustering is how to choose the number of clusters K. A common way to do this is to try different values of K and see which one gives the best result.
+
+We can use `tune_cluster()` to do this. We first create a `k_means()` specification with a `num_clusters` argument that we want to tune.
+
 
 # Hierarchical Clustering
 
-## Intuition
+Hierarchical clustering is another popular clustering method. It creates a hierarchy of clusters that can be visualized as a dendrogram.
 
-- Builds a hierarchy of clusters.
-- **Dendrogram**: Tree diagram showing relationships.
-- No need to pre-specify K!
-- **Linkage**: How to define distance between clusters (Complete, Single, Average).
-
-## Fitting Hierarchical Clustering
+Let's do a hierarchical clustering with `tidyclust`.
 
 ```{r}
-hc_spec <- hier_clust(linkage_method = "complete") |>
+hc_spec <- hier_clust() |>
   set_engine("stats")
 
-hc_fit <- hc_spec |>
-  fit(~ ., data = penguins_clean)
+hc_fit <- fit(hc_spec, ~ ., data = USArrests)
 
 hc_fit
 ```
 
-## Visualizing Dendrograms
+## Dendrogram
 
-- `tidyclust` (and `dendextend` underneath) makes plotting easy.
+The result of hierarchical clustering is often visualized as a dendrogram. We can use the `factoextra` package to do this.
 
 ```{r}
-# In tidyclust 0.2.0+, plotting might need specific helper or extraction
-# Standard plot method often works on the engine object
-# plot(hc_fit$fit)
+#| message: false
+library(factoextra)
 
-# Using as.dendrogram if needed
-# hc_fit$fit |> as.dendrogram() |> plot()
+fviz_dend(hc_fit$fit)
 ```
 
-*(Note: Simple base R plot of the underlying `hclust` object is often easiest for slides)*
+## Linkage
+
+In hierarchical clustering, we need to specify a linkage method, which determines how the distance between clusters is calculated. Common linkage methods are:
+
+-   `complete`: The distance between two clusters is the maximum distance between any two points in the two clusters.
+-   `average`: The distance between two clusters is the average distance between all pairs of points in the two clusters.
+-   `single`: The distance between two clusters is the minimum distance between any two points in the two clusters.
+
+We can specify the linkage method in `hier_clust()`.
 
 ```{r}
-plot(hc_fit$fit, main = "Dendrogram of Penguins", labels = FALSE, xlab = "")
-rect.hclust(hc_fit$fit, k = 3, border = "red")
-```
-
-## Cutting the Tree
-
-- We can "cut" the tree to get $K$ clusters.
-
-```{r}
-# Re-fit with num_clusters if we want prediction-like behavior or use cutree on engine
-# tidyclust handles this via prediction usually.
+#| eval: false
+hier_clust(linkage_method = "average")
 ```
 
 # Summary
 
-## Summary
-
-- **Clustering**: Finding groups without labels.
-- **K-Means**: Partition into K groups. Good for spherical clusters.
-- **Hierarchical**: Tree structure. Good for visualizing relationships.
-- **Tidyclust**: Brings tidy syntax to clustering (`k_means()`, `hier_clust()`, `fit()`).
-- **Visualization**:
-  -   Scatterplots colored by Cluster.
-  -   Dendrograms.
+- **Clustering**: Finding groups in data.
+- **K-Means**: Partitions data into K clusters. Need to choose K.
+- **Hierarchical Clustering**: Creates a hierarchy of clusters.
+- **`tidyclust`**: A `tidymodels`-like interface for clustering.
+- `tune_cluster()` can be used to tune the number of clusters.

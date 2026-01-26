@@ -1,0 +1,144 @@
+---
+title: Functions and Iteration
+subtitle: Lecture 34
+format:
+  revealjs: 
+    slide-number: true
+    preview-links: auto
+    theme: [default, ../slides.scss]
+editor: visual
+---
+
+# Introduction
+
+## The Motivation
+
+-   **DRY Principle**: Don't Repeat Yourself.
+-   **Copy-pasting** is dangerous:
+    -   It's easy to make mistakes (copying the wrong variable).
+    -   It's hard to update (you have to change code in multiple places).
+-   **Solution**:
+    1.  **Functions**: Automate common tasks.
+    2.  **Iteration**: Apply functions to multiple inputs.
+
+# Functions
+
+## When to write a function?
+
+-   **Rule of Three**:
+    -   If you've copied and pasted a block of code more than twice, write a function.
+-   **Advantages**:
+    -   Given a name that makes it easier to understand.
+    -   As requirements change, you only need to update code in one place.
+    -   Eliminates the chance of making incidental mistakes when copying and pasting.
+
+## Anatomy of a Function
+
+```{r}
+#| eval: false
+my_function <- function(arg1, arg2) {
+  # Body of the function
+  result <- arg1 + arg2
+  return(result)
+}
+```
+
+-   **Name**: Should be descriptive (use verbs).
+-   **Arguments**: Inputs to the function (can have defaults).
+-   **Body**: The code that executes.
+-   **Return**: The output of the function (implicit or explicit).
+
+## Types of Functions
+
+1.  **Vector Functions**:
+    -   Input: Vector.
+    -   Output: Vector.
+    -   Example: `rescale01 <- function(x) { (x - min(x)) / (max(x) - min(x)) }`
+
+2.  **Data Frame Functions**:
+    -   Input: Data Frame.
+    -   Output: Data Frame (usually).
+    -   Example: Wrapping a complex `dplyr` pipeline.
+
+3.  **Plot Functions**:
+    -   Input: Data Frame + Parameters.
+    -   Output: ggplot object.
+
+# Iteration
+
+## The "R" Way: Vectorization
+
+R is designed for iteration. Many functions work on vectors automatically.
+
+```{r}
+x <- 1:5
+x * 2  # No loop needed!
+```
+
+**Implicit Iteration** should be your first choice.
+
+## Column Iteration: `across()`
+
+Apply a function to multiple columns in a data frame.
+
+```{r}
+#| eval: false
+library(dplyr)
+
+df %>%
+  mutate(
+    across(c(x, y, z), ~ .x * 2)
+  )
+```
+
+-   **Selection**: Select columns by name, type (`where(is.numeric)`), etc.
+-   **Function**: Pass the function to apply.
+
+## List Iteration: `purrr::map()`
+
+When you need to iterate over a list or a vector and implicit iteration isn't enough.
+
+-   `map()`: Returns a list.
+-   `map_lgl()`, `map_int()`, `map_dbl()`, `map_chr()`: Return an atomic vector.
+
+```{r}
+#| eval: false
+library(purrr)
+
+path_list <- list("data/file1.csv", "data/file2.csv")
+data_list <- map(path_list, read_csv)
+```
+
+## Reading Multiple Files
+
+A common data science task:
+
+1.  List files in a directory (`list.files()`).
+2.  Read each file (`map()`).
+3.  Combine into one data frame (`list_rbind()`).
+
+```{r}
+#| eval: false
+files <- list.files("data/", pattern = "*.csv", full.names = TRUE)
+
+combined_data <- files %>%
+  map(read_csv) %>%
+  list_rbind()
+```
+
+# Wrap Up
+
+## Summary
+
+-   **Functions** allow you to reuse code logic and avoid copy-paste errors.
+-   **Iteration** allows you to apply that logic to many inputs efficiently.
+-   **Toolkit**:
+    -   `function()` for creating tools.
+    -   `dplyr::across()` for data frame columns.
+    -   `purrr::map()` for lists and general iteration.
+
+## Do Next
+
+-   Read **Chapter 25 (Functions)** and **Chapter 26 (Iteration)** in *R for Data Science (2e)*.
+-   Practice writing a simple function for a repetitive task in your assignments.
+-   Try using `map()` next time you need to read multiple similar files.

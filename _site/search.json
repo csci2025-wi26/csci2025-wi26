@@ -1507,14 +1507,14 @@
     "href": "slides/33-clustering/33-clustering.html#fitting-k-means",
     "title": "Clustering with Tidyclust",
     "section": "Fitting K-Means",
-    "text": "Fitting K-Means\n\n# 1. Specification (Assume K=3)\nkmeans_spec &lt;- k_means(num_clusters = 3) |&gt;\n  set_engine(\"stats\")\n\n# 2. Fit\nkmeans_fit &lt;- kmeans_spec |&gt;\n    fit(~ ., data = penguins_clean)\n\n\nkmeans_fit\n\ntidyclust cluster object\n\nK-means clustering with 3 clusters of sizes 129, 85, 119\n\nCluster means:\n  bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n2     -1.0452359     0.4858944        -0.8803701  -0.7616078\n3      0.6710153     0.8040534        -0.2889118  -0.3835267\n1      0.6537742    -1.1010497         1.1607163   1.0995561\n\nClustering vector:\n  1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20 \n  1   1   1   1   1   1   1   1   1   1   1   1   2   1   2   1   1   1   1   1 \n 21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  40 \n  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   2   1 \n 41  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60 \n  1   1   1   2   1   1   1   2   1   1   1   1   1   1   1   2   1   1   1   1 \n 61  62  63  64  65  66  67  68  69  70  71  72  73  74  75  76  77  78  79  80 \n  1   1   1   2   1   1   1   2   1   2   1   1   1   2   1   2   1   1   1   1 \n 81  82  83  84  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100 \n  1   1   1   1   1   2   1   1   1   2   1   1   1   2   1   2   1   1   1   1 \n101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 \n  1   1   1   2   1   2   1   2   1   2   1   1   1   1   1   1   1   1   1   1 \n121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 \n  1   1   1   2   1   2   1   1   1   1   1   1   1   1   1   1   1   1   1   1 \n141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 \n  1   1   1   1   1   2   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 \n  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 \n  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 \n  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 \n  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 \n  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n261 262 263 264 265 266 267 268 269 270 271 272 273 274 275 276 277 278 279 280 \n  3   3   3   3   3   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2 \n281 282 283 284 285 286 287 288 289 290 291 292 293 294 295 296 297 298 299 300 \n  2   2   2   2   2   1   2   1   2   2   2   2   2   2   2   1   2   1   2   2 \n301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317 318 319 320 \n  2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   1 \n321 322 323 324 325 326 327 328 329 330 331 332 333 \n  2   2   2   2   2   2   2   2   2   2   2   2   2 \n\nWithin cluster sum of squares by cluster:\n[1] 120.7030 109.4813 139.4684\n (between_SS / total_SS =  72.2 %)\n\nAvailable components:\n\n[1] \"cluster\"      \"centers\"      \"totss\"        \"withinss\"     \"tot.withinss\"\n[6] \"betweenss\"    \"size\"         \"iter\"         \"ifault\""
+    "text": "Fitting K-Means\n\n# 1. Specification (Assume K=3)\nkmeans_spec &lt;- k_means(num_clusters = 3) |&gt;\n  set_engine(\"stats\")\n\n# 2. Fit\nkmeans_fit &lt;- kmeans_spec |&gt;\n    fit(~ ., data = penguins_clean)\n\n\nkmeans_fit\n\ntidyclust cluster object\n\nK-means clustering with 3 clusters of sizes 144, 70, 119\n\nCluster means:\n  bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n3     -0.9732998     0.5408171        -0.8112111  -0.6808149\n1      0.8908006     0.7592465        -0.3044405  -0.4687119\n2      0.6537742    -1.1010497         1.1607163   1.0995561\n\nClustering vector:\n  1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20 \n  1   1   1   1   1   1   1   1   1   1   1   1   2   1   2   1   1   1   1   1 \n 21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  40 \n  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   2   1 \n 41  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60 \n  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 \n 61  62  63  64  65  66  67  68  69  70  71  72  73  74  75  76  77  78  79  80 \n  1   1   1   1   1   1   1   2   1   1   1   1   1   1   1   1   1   1   1   1 \n 81  82  83  84  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100 \n  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 \n101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 \n  1   1   1   2   1   2   1   1   1   1   1   1   1   1   1   1   1   1   1   1 \n121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 \n  1   1   1   2   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 \n141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 \n  1   1   1   1   1   1   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 \n  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 \n  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 \n  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 \n  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 \n  3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3   3 \n261 262 263 264 265 266 267 268 269 270 271 272 273 274 275 276 277 278 279 280 \n  3   3   3   3   3   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2 \n281 282 283 284 285 286 287 288 289 290 291 292 293 294 295 296 297 298 299 300 \n  2   2   2   2   2   1   2   1   2   2   2   2   2   2   2   1   2   1   2   2 \n301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317 318 319 320 \n  2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   1 \n321 322 323 324 325 326 327 328 329 330 331 332 333 \n  2   2   2   2   2   2   2   2   2   2   2   2   2 \n\nWithin cluster sum of squares by cluster:\n[1] 152.44363  78.96005 139.46837\n (between_SS / total_SS =  72.1 %)\n\nAvailable components:\n\n[1] \"cluster\"      \"centers\"      \"totss\"        \"withinss\"     \"tot.withinss\"\n[6] \"betweenss\"    \"size\"         \"iter\"         \"ifault\""
   },
   {
     "objectID": "slides/33-clustering/33-clustering.html#visualizing-clusters",
     "href": "slides/33-clustering/33-clustering.html#visualizing-clusters",
     "title": "Clustering with Tidyclust",
     "section": "Visualizing Clusters",
-    "text": "Visualizing Clusters\n\nWe can explore the cluster assignments.\n\n\n# Extract Assignments\n# extract_cluster_assignment(kmeans_fit) # This extracts just the vector\n\n# Visualize\nkmeans_fit |&gt;\n  extract_cluster_assignment(penguins_clean) |&gt;\n  bind_cols(penguins_clean) |&gt;\n  ggplot(aes(x = flipper_length_mm, y = bill_length_mm, color = .cluster)) +\n  geom_point(size = 3) +\n  labs(title = \"K-Means Clustering (K=3)\") +\n  theme_minimal()"
+    "text": "Visualizing Clusters\n\nWe can explore the cluster assignments.\n\n\n\nCode\n# Extract Assignments\n# extract_cluster_assignment(kmeans_fit) # This extracts just the vector\n\n# Visualize\nkmeans_fit |&gt;\n  extract_cluster_assignment(penguins_clean) |&gt;\n  bind_cols(penguins_clean) |&gt;\n  ggplot(aes(x = flipper_length_mm, y = bill_length_mm, color = .cluster)) +\n  geom_point(size = 3) +\n  labs(title = \"K-Means Clustering (K=3)\") +\n  theme_minimal()"
   },
   {
     "objectID": "slides/33-clustering/33-clustering.html#choosing-k-elbow-method",
@@ -1542,14 +1542,14 @@
     "href": "slides/33-clustering/33-clustering.html#visualizing-dendrograms",
     "title": "Clustering with Tidyclust",
     "section": "Visualizing Dendrograms",
-    "text": "Visualizing Dendrograms\n\ntidyclust (and dendextend underneath) makes plotting easy.\n\n\n# In tidyclust 0.2.0+, plotting might need specific helper or extraction\n# Standard plot method often works on the engine object\n# plot(hc_fit$fit)\n\n# Using as.dendrogram if needed\n# hc_fit$fit |&gt; as.dendrogram() |&gt; plot()\n\n(Note: Simple base R plot of the underlying hclust object is often easiest for slides)\n\nplot(hc_fit$fit, main = \"Dendrogram of Penguins\", labels = FALSE, xlab = \"\")\nrect.hclust(hc_fit$fit, k = 3, border = \"red\")"
+    "text": "Visualizing Dendrograms\n\ntidyclust (and dendextend underneath) makes plotting easy.\n\n\n# Using as.dendrogram if needed\nhc_fit$fit |&gt; as.dendrogram() |&gt; plot()"
   },
   {
     "objectID": "slides/33-clustering/33-clustering.html#cutting-the-tree",
     "href": "slides/33-clustering/33-clustering.html#cutting-the-tree",
     "title": "Clustering with Tidyclust",
     "section": "Cutting the Tree",
-    "text": "Cutting the Tree\n\nWe can “cut” the tree to get \\(K\\) clusters.\n\n\n# Re-fit with num_clusters if we want prediction-like behavior or use cutree on engine\n# tidyclust handles this via prediction usually."
+    "text": "Cutting the Tree\n\nWe can “cut” the tree to get \\(K\\) clusters."
   },
   {
     "objectID": "slides/33-clustering/33-clustering.html#summary-1",
@@ -4852,5 +4852,75 @@
     "title": "Individual Project Introduction",
     "section": "Today: Soft Launch",
     "text": "Today: Soft Launch\n\nHard launch: next week\nToday: brainstorm project ideas and datasets"
+  },
+  {
+    "objectID": "slides/34-functions-iteration/index.html#the-motivation",
+    "href": "slides/34-functions-iteration/index.html#the-motivation",
+    "title": "Functions and Iteration",
+    "section": "The Motivation",
+    "text": "The Motivation\n\nDRY Principle: Don’t Repeat Yourself.\nCopy-pasting is dangerous:\n\nIt’s easy to make mistakes (copying the wrong variable).\nIt’s hard to update (you have to change code in multiple places).\n\nSolution:\n\nFunctions: Automate common tasks.\nIteration: Apply functions to multiple inputs."
+  },
+  {
+    "objectID": "slides/34-functions-iteration/index.html#when-to-write-a-function",
+    "href": "slides/34-functions-iteration/index.html#when-to-write-a-function",
+    "title": "Functions and Iteration",
+    "section": "When to write a function?",
+    "text": "When to write a function?\n\nRule of Three:\n\nIf you’ve copied and pasted a block of code more than twice, write a function.\n\nAdvantages:\n\nGiven a name that makes it easier to understand.\nAs requirements change, you only need to update code in one place.\nEliminates the chance of making incidental mistakes when copying and pasting."
+  },
+  {
+    "objectID": "slides/34-functions-iteration/index.html#anatomy-of-a-function",
+    "href": "slides/34-functions-iteration/index.html#anatomy-of-a-function",
+    "title": "Functions and Iteration",
+    "section": "Anatomy of a Function",
+    "text": "Anatomy of a Function\n\nmy_function &lt;- function(arg1, arg2) {\n  # Body of the function\n  result &lt;- arg1 + arg2\n  return(result)\n}\n\n\nName: Should be descriptive (use verbs).\nArguments: Inputs to the function (can have defaults).\nBody: The code that executes.\nReturn: The output of the function (implicit or explicit)."
+  },
+  {
+    "objectID": "slides/34-functions-iteration/index.html#types-of-functions",
+    "href": "slides/34-functions-iteration/index.html#types-of-functions",
+    "title": "Functions and Iteration",
+    "section": "Types of Functions",
+    "text": "Types of Functions\n\nVector Functions:\n\nInput: Vector.\nOutput: Vector.\nExample: rescale01 &lt;- function(x) { (x - min(x)) / (max(x) - min(x)) }\n\nData Frame Functions:\n\nInput: Data Frame.\nOutput: Data Frame (usually).\nExample: Wrapping a complex dplyr pipeline.\n\nPlot Functions:\n\nInput: Data Frame + Parameters.\nOutput: ggplot object."
+  },
+  {
+    "objectID": "slides/34-functions-iteration/index.html#the-r-way-vectorization",
+    "href": "slides/34-functions-iteration/index.html#the-r-way-vectorization",
+    "title": "Functions and Iteration",
+    "section": "The “R” Way: Vectorization",
+    "text": "The “R” Way: Vectorization\nR is designed for iteration. Many functions work on vectors automatically.\n\nx &lt;- 1:5\nx * 2  # No loop needed!\n\n[1]  2  4  6  8 10\n\n\nImplicit Iteration should be your first choice."
+  },
+  {
+    "objectID": "slides/34-functions-iteration/index.html#column-iteration-across",
+    "href": "slides/34-functions-iteration/index.html#column-iteration-across",
+    "title": "Functions and Iteration",
+    "section": "Column Iteration: across()",
+    "text": "Column Iteration: across()\nApply a function to multiple columns in a data frame.\n\nlibrary(dplyr)\n\ndf %&gt;%\n  mutate(\n    across(c(x, y, z), ~ .x * 2)\n  )\n\n\nSelection: Select columns by name, type (where(is.numeric)), etc.\nFunction: Pass the function to apply."
+  },
+  {
+    "objectID": "slides/34-functions-iteration/index.html#list-iteration-purrrmap",
+    "href": "slides/34-functions-iteration/index.html#list-iteration-purrrmap",
+    "title": "Functions and Iteration",
+    "section": "List Iteration: purrr::map()",
+    "text": "List Iteration: purrr::map()\nWhen you need to iterate over a list or a vector and implicit iteration isn’t enough.\n\nmap(): Returns a list.\nmap_lgl(), map_int(), map_dbl(), map_chr(): Return an atomic vector.\n\n\nlibrary(purrr)\n\npath_list &lt;- list(\"data/file1.csv\", \"data/file2.csv\")\ndata_list &lt;- map(path_list, read_csv)"
+  },
+  {
+    "objectID": "slides/34-functions-iteration/index.html#reading-multiple-files",
+    "href": "slides/34-functions-iteration/index.html#reading-multiple-files",
+    "title": "Functions and Iteration",
+    "section": "Reading Multiple Files",
+    "text": "Reading Multiple Files\nA common data science task:\n\nList files in a directory (list.files()).\nRead each file (map()).\nCombine into one data frame (list_rbind()).\n\n\nfiles &lt;- list.files(\"data/\", pattern = \"*.csv\", full.names = TRUE)\n\ncombined_data &lt;- files %&gt;%\n  map(read_csv) %&gt;%\n  list_rbind()"
+  },
+  {
+    "objectID": "slides/34-functions-iteration/index.html#summary",
+    "href": "slides/34-functions-iteration/index.html#summary",
+    "title": "Functions and Iteration",
+    "section": "Summary",
+    "text": "Summary\n\nFunctions allow you to reuse code logic and avoid copy-paste errors.\nIteration allows you to apply that logic to many inputs efficiently.\nToolkit:\n\nfunction() for creating tools.\ndplyr::across() for data frame columns.\npurrr::map() for lists and general iteration."
+  },
+  {
+    "objectID": "slides/34-functions-iteration/index.html#do-next",
+    "href": "slides/34-functions-iteration/index.html#do-next",
+    "title": "Functions and Iteration",
+    "section": "Do Next",
+    "text": "Do Next\n\nRead Chapter 25 (Functions) and Chapter 26 (Iteration) in R for Data Science (2e).\nPractice writing a simple function for a repetitive task in your assignments.\nTry using map() next time you need to read multiple similar files."
   }
 ]
