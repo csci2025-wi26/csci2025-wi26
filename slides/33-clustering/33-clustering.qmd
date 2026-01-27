@@ -186,10 +186,18 @@ We can specify the linkage method in `hier_clust()`.
 hier_clust(linkage_method = "average")
 ```
 
-# Summary
+# Wrap-Up
+
+## Summary
 
 -   **Clustering**: Finding groups in data.
 -   **K-Means**: Partitions data into K clusters. Need to choose K.
 -   **Hierarchical Clustering**: Creates a hierarchy of clusters.
 -   **`tidyclust`**: A `tidymodels`-like interface for clustering.
 -   `tune_cluster()` can be used to tune the number of clusters.
+
+## Do Next
+
+1. (Optional)Read [Chapter 12: Unsupervised Learning](https://emilhvitfeldt.github.io/ISLR-tidymodels-labs/12-unsupervised-learning.html) from [ISLR](https://www.statlearning.com/).
+2. There's NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.
+3. Move on to Lecture 34!
