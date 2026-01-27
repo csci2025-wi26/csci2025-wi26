@@ -20,7 +20,7 @@ subtitle: "Lecture 33"
 
 ## How it Works
 
--   An iterative algorithm:
+-   [An iterative algorithm](https://019bffe2-edb8-4bc6-f8aa-0d38338bc8a1.share.connect.posit.cloud/) :
     1.  **Initialize**: Randomly select $K$ data points as initial cluster centroids.
     2.  **Assign**: Assign each data point to the *nearest* centroid, forming K clusters.
     3.  **Update**: Recalculate the centroid of each cluster (the mean of all points in the cluster).
@@ -140,7 +140,7 @@ kmeans_fit |>
 
 ## How it Works (Agglomerative)
 
--   It's a "bottom-up" approach:
+-   [It's a "bottom-up" approach](https://019bffe2-edb8-4bc6-f8aa-0d38338bc8a1.share.connect.posit.cloud/):
     1.  **Start**: Each data point begins in its own cluster.
     2.  **Merge**: Find the two "closest" clusters and merge them into a single cluster.
     3.  **Repeat**: Repeat the "Merge" step until all data points are in a single cluster.
