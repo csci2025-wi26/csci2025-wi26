@@ -42,7 +42,7 @@ my_function <- function(arg1, arg2) {
 -   **Body**: The code that executes.
 -   **Return**: The output of the function (implicit or explicit).
 
-## Types of Functions
+## Types of Functions {.smaller}
 
 1.  **Vector Functions**:
     -   Input: Vector.
