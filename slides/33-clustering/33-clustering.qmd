@@ -171,7 +171,7 @@ library(factoextra)
 fviz_dend(hc_fit$fit)
 ```
 
-## Linkage
+## Linkage {.smaller}
 
 -   In hierarchical clustering, we need to specify a linkage method, which determines how the distance between clusters is calculated.
 -   Common linkage methods are:
