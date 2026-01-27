@@ -520,11 +520,39 @@
     "text": "K-means Clustering\n\nA simple and popular clustering method.\nGoal: Partition data into \\(K\\) distinct, non-overlapping clusters."
   },
   {
+    "objectID": "slides/33-clustering/33-clustering.html#how-it-works",
+    "href": "slides/33-clustering/33-clustering.html#how-it-works",
+    "title": "Unsupervised Learning",
+    "section": "How it Works",
+    "text": "How it Works\n\nAn iterative algorithm:\n\nInitialize: Randomly select \\(K\\) data points as initial cluster centroids.\nAssign: Assign each data point to the nearest centroid, forming K clusters.\nUpdate: Recalculate the centroid of each cluster (the mean of all points in the cluster).\nRepeat: Repeat “Assign” and “Update” steps until cluster assignments stop changing."
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#tidyclust",
+    "href": "slides/33-clustering/33-clustering.html#tidyclust",
+    "title": "Unsupervised Learning",
+    "section": "tidyclust",
+    "text": "tidyclust\nThe tidyclust package provides a tidymodels-like interface for clustering.\n\nlibrary(tidymodels)\nlibrary(tidyclust)\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#the-data-usarrests",
+    "href": "slides/33-clustering/33-clustering.html#the-data-usarrests",
+    "title": "Unsupervised Learning",
+    "section": "The Data: USArrests",
+    "text": "The Data: USArrests\n\nContains statistics for the 50 US states in 1973:\n\nArrests per 100,000 residents for Assault, Murder, and Rape.\nPercent of the population living in urban areas.\n\n\n\nUSArrests |&gt; head()\n\n           Murder Assault UrbanPop Rape\nAlabama      13.2     236       58 21.2\nAlaska       10.0     263       48 44.5\nArizona       8.1     294       80 31.0\nArkansas      8.8     190       50 19.5\nCalifornia    9.0     276       91 40.6\nColorado      7.9     204       78 38.7"
+  },
+  {
     "objectID": "slides/33-clustering/33-clustering.html#k-means-with-tidyclust",
     "href": "slides/33-clustering/33-clustering.html#k-means-with-tidyclust",
     "title": "Unsupervised Learning",
     "section": "K-means with tidyclust",
     "text": "K-means with tidyclust\n\nCreate a k_means() model specification.\nSet the number of clusters (k=2 for this example).\nSet the engine to \"stats\".\n\n\nkmeans_spec &lt;- k_means(num_clusters = 2) |&gt;\n  set_engine(\"stats\")\n\nkmeans_spec\n\nK Means Cluster Specification (partition)\n\nMain Arguments:\n  num_clusters = 2\n\nComputational engine: stats"
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#k-means-with-tidyclust-1",
+    "href": "slides/33-clustering/33-clustering.html#k-means-with-tidyclust-1",
+    "title": "Unsupervised Learning",
+    "section": "K-means with tidyclust",
+    "text": "K-means with tidyclust\n\nThen we can fit the specification.\nWe are using a formula ~ . to specify that we want to use all variables.\n\n\nkmeans_fit &lt;- kmeans_spec |&gt;\n  fit(~., data = USArrests)\n\nkmeans_fit\n\ntidyclust cluster object\n\nK-means clustering with 2 clusters of sizes 21, 29\n\nCluster means:\n     Murder  Assault UrbanPop     Rape\n2 11.857143 255.0000 67.61905 28.11429\n1  4.841379 109.7586 64.03448 16.24828\n\nClustering vector:\n       Alabama         Alaska        Arizona       Arkansas     California \n             1              1              1              1              1 \n      Colorado    Connecticut       Delaware        Florida        Georgia \n             1              2              1              1              1 \n        Hawaii          Idaho       Illinois        Indiana           Iowa \n             2              2              1              2              2 \n        Kansas       Kentucky      Louisiana          Maine       Maryland \n             2              2              1              2              1 \n Massachusetts       Michigan      Minnesota    Mississippi       Missouri \n             2              1              2              1              2 \n       Montana       Nebraska         Nevada  New Hampshire     New Jersey \n             2              2              1              2              2 \n    New Mexico       New York North Carolina   North Dakota           Ohio \n             1              1              1              2              2 \n      Oklahoma         Oregon   Pennsylvania   Rhode Island South Carolina \n             2              2              2              2              1 \n  South Dakota      Tennessee          Texas           Utah        Vermont \n             2              1              1              2              2 \n      Virginia     Washington  West Virginia      Wisconsin        Wyoming \n             2              2              2              2              2 \n\nWithin cluster sum of squares by cluster:\n[1] 41636.73 54762.30\n (between_SS / total_SS =  72.9 %)\n\nAvailable components:\n\n[1] \"cluster\"      \"centers\"      \"totss\"        \"withinss\"     \"tot.withinss\"\n[6] \"betweenss\"    \"size\"         \"iter\"         \"ifault\""
   },
   {
     "objectID": "slides/33-clustering/33-clustering.html#understanding-the-result",
@@ -555,6 +583,27 @@
     "text": "Tuning the number of clusters\n\nHow to choose the number of clusters K?\nA common way is to try different values of K and see which one gives the best result.\nWe can use tune_cluster() to do this. Not this class."
   },
   {
+    "objectID": "slides/33-clustering/33-clustering.html#hierarchical-clustering-1",
+    "href": "slides/33-clustering/33-clustering.html#hierarchical-clustering-1",
+    "title": "Unsupervised Learning",
+    "section": "Hierarchical Clustering",
+    "text": "Hierarchical Clustering\n\nAnother popular clustering method.\nCreates a hierarchy of clusters, often visualized as a dendrogram."
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#how-it-works-agglomerative",
+    "href": "slides/33-clustering/33-clustering.html#how-it-works-agglomerative",
+    "title": "Unsupervised Learning",
+    "section": "How it Works (Agglomerative)",
+    "text": "How it Works (Agglomerative)\n\nIt’s a “bottom-up” approach:\n\nStart: Each data point begins in its own cluster.\nMerge: Find the two “closest” clusters and merge them into a single cluster.\nRepeat: Repeat the “Merge” step until all data points are in a single cluster.\n\nThe history of merges forms the hierarchy."
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#using-tidyclust",
+    "href": "slides/33-clustering/33-clustering.html#using-tidyclust",
+    "title": "Unsupervised Learning",
+    "section": "Using tidyclust",
+    "text": "Using tidyclust\nLet’s do a hierarchical clustering with tidyclust.\n\nhc_spec &lt;- hier_clust() |&gt;\n  set_engine(\"stats\")\n\nhc_fit &lt;- fit(hc_spec, ~., data = USArrests)\n\nhc_fit\n\ntidyclust cluster object\n\n\nCall:\nstats::hclust(d = stats::as.dist(dmat), method = linkage_method)\n\nCluster method   : complete \nNumber of objects: 50"
+  },
+  {
     "objectID": "slides/33-clustering/33-clustering.html#dendrogram",
     "href": "slides/33-clustering/33-clustering.html#dendrogram",
     "title": "Unsupervised Learning",
@@ -567,6 +616,20 @@
     "title": "Unsupervised Learning",
     "section": "Linkage",
     "text": "Linkage\n\nIn hierarchical clustering, we need to specify a linkage method, which determines how the distance between clusters is calculated.\nCommon linkage methods are:\n\ncomplete: The distance between two clusters is the maximum distance between any two points in the two clusters.\naverage: The distance between two clusters is the average distance between all pairs of points in the two clusters.\nsingle: The distance between two clusters is the minimum distance between any two points in the two clusters.\n\n\nWe can specify the linkage method in hier_clust().\n\nhier_clust(linkage_method = \"average\")"
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#summary",
+    "href": "slides/33-clustering/33-clustering.html#summary",
+    "title": "Unsupervised Learning",
+    "section": "Summary",
+    "text": "Summary\n\nClustering: Finding groups in data.\nK-Means: Partitions data into K clusters. Need to choose K.\nHierarchical Clustering: Creates a hierarchy of clusters.\ntidyclust: A tidymodels-like interface for clustering.\ntune_cluster() can be used to tune the number of clusters."
+  },
+  {
+    "objectID": "slides/33-clustering/33-clustering.html#do-next",
+    "href": "slides/33-clustering/33-clustering.html#do-next",
+    "title": "Unsupervised Learning",
+    "section": "Do Next",
+    "text": "Do Next\n\n(Optional)Read Chapter 12: Unsupervised Learning from ISLR.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nMove on to Lecture 34!"
   },
   {
     "objectID": "slides/31-recipes/31-recipes.html#preprocessing-data",
@@ -4153,74 +4216,74 @@
     "text": "Do Next\n\nRead Chapter 12: Tidy Evaluation from Mastering Shiny.\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nI reommend working through the Exercises in the textbook.\nMove on to lecture 29!"
   },
   {
-    "objectID": "slides/34-functions-iteration/index.html#the-motivation",
-    "href": "slides/34-functions-iteration/index.html#the-motivation",
+    "objectID": "slides/34-functions-iteration/34-functions-iteration.html#the-motivation",
+    "href": "slides/34-functions-iteration/34-functions-iteration.html#the-motivation",
     "title": "Functions and Iteration",
     "section": "The Motivation",
     "text": "The Motivation\n\nDRY Principle: Don’t Repeat Yourself.\nCopy-pasting is dangerous:\n\nIt’s easy to make mistakes (copying the wrong variable).\nIt’s hard to update (you have to change code in multiple places).\n\nSolution:\n\nFunctions: Automate common tasks.\nIteration: Apply functions to multiple inputs."
   },
   {
-    "objectID": "slides/34-functions-iteration/index.html#when-to-write-a-function",
-    "href": "slides/34-functions-iteration/index.html#when-to-write-a-function",
+    "objectID": "slides/34-functions-iteration/34-functions-iteration.html#when-to-write-a-function",
+    "href": "slides/34-functions-iteration/34-functions-iteration.html#when-to-write-a-function",
     "title": "Functions and Iteration",
     "section": "When to write a function?",
     "text": "When to write a function?\n\nRule of Three:\n\nIf you’ve copied and pasted a block of code more than twice, write a function.\n\nAdvantages:\n\nGiven a name that makes it easier to understand.\nAs requirements change, you only need to update code in one place.\nEliminates the chance of making incidental mistakes when copying and pasting."
   },
   {
-    "objectID": "slides/34-functions-iteration/index.html#anatomy-of-a-function",
-    "href": "slides/34-functions-iteration/index.html#anatomy-of-a-function",
+    "objectID": "slides/34-functions-iteration/34-functions-iteration.html#anatomy-of-a-function",
+    "href": "slides/34-functions-iteration/34-functions-iteration.html#anatomy-of-a-function",
     "title": "Functions and Iteration",
     "section": "Anatomy of a Function",
     "text": "Anatomy of a Function\n\nmy_function &lt;- function(arg1, arg2) {\n  # Body of the function\n  result &lt;- arg1 + arg2\n  return(result)\n}\n\n\nName: Should be descriptive (use verbs).\nArguments: Inputs to the function (can have defaults).\nBody: The code that executes.\nReturn: The output of the function (implicit or explicit)."
   },
   {
-    "objectID": "slides/34-functions-iteration/index.html#types-of-functions",
-    "href": "slides/34-functions-iteration/index.html#types-of-functions",
+    "objectID": "slides/34-functions-iteration/34-functions-iteration.html#types-of-functions",
+    "href": "slides/34-functions-iteration/34-functions-iteration.html#types-of-functions",
     "title": "Functions and Iteration",
     "section": "Types of Functions",
     "text": "Types of Functions\n\nVector Functions:\n\nInput: Vector.\nOutput: Vector.\nExample: rescale01 &lt;- function(x) { (x - min(x)) / (max(x) - min(x)) }\n\nData Frame Functions:\n\nInput: Data Frame.\nOutput: Data Frame (usually).\nExample: Wrapping a complex dplyr pipeline.\n\nPlot Functions:\n\nInput: Data Frame + Parameters.\nOutput: ggplot object."
   },
   {
-    "objectID": "slides/34-functions-iteration/index.html#the-r-way-vectorization",
-    "href": "slides/34-functions-iteration/index.html#the-r-way-vectorization",
+    "objectID": "slides/34-functions-iteration/34-functions-iteration.html#the-r-way-vectorization",
+    "href": "slides/34-functions-iteration/34-functions-iteration.html#the-r-way-vectorization",
     "title": "Functions and Iteration",
     "section": "The “R” Way: Vectorization",
     "text": "The “R” Way: Vectorization\nR is designed for iteration. Many functions work on vectors automatically.\n\nx &lt;- 1:5\nx * 2  # No loop needed!\n\n[1]  2  4  6  8 10\n\n\nImplicit Iteration should be your first choice."
   },
   {
-    "objectID": "slides/34-functions-iteration/index.html#column-iteration-across",
-    "href": "slides/34-functions-iteration/index.html#column-iteration-across",
+    "objectID": "slides/34-functions-iteration/34-functions-iteration.html#column-iteration-across",
+    "href": "slides/34-functions-iteration/34-functions-iteration.html#column-iteration-across",
     "title": "Functions and Iteration",
     "section": "Column Iteration: across()",
     "text": "Column Iteration: across()\nApply a function to multiple columns in a data frame.\n\nlibrary(dplyr)\n\ndf %&gt;%\n  mutate(\n    across(c(x, y, z), ~ .x * 2)\n  )\n\n\nSelection: Select columns by name, type (where(is.numeric)), etc.\nFunction: Pass the function to apply."
   },
   {
-    "objectID": "slides/34-functions-iteration/index.html#list-iteration-purrrmap",
-    "href": "slides/34-functions-iteration/index.html#list-iteration-purrrmap",
+    "objectID": "slides/34-functions-iteration/34-functions-iteration.html#list-iteration-purrrmap",
+    "href": "slides/34-functions-iteration/34-functions-iteration.html#list-iteration-purrrmap",
     "title": "Functions and Iteration",
     "section": "List Iteration: purrr::map()",
     "text": "List Iteration: purrr::map()\nWhen you need to iterate over a list or a vector and implicit iteration isn’t enough.\n\nmap(): Returns a list.\nmap_lgl(), map_int(), map_dbl(), map_chr(): Return an atomic vector.\n\n\nlibrary(purrr)\n\npath_list &lt;- list(\"data/file1.csv\", \"data/file2.csv\")\ndata_list &lt;- map(path_list, read_csv)"
   },
   {
-    "objectID": "slides/34-functions-iteration/index.html#reading-multiple-files",
-    "href": "slides/34-functions-iteration/index.html#reading-multiple-files",
+    "objectID": "slides/34-functions-iteration/34-functions-iteration.html#reading-multiple-files",
+    "href": "slides/34-functions-iteration/34-functions-iteration.html#reading-multiple-files",
     "title": "Functions and Iteration",
     "section": "Reading Multiple Files",
     "text": "Reading Multiple Files\nA common data science task:\n\nList files in a directory (list.files()).\nRead each file (map()).\nCombine into one data frame (list_rbind()).\n\n\nfiles &lt;- list.files(\"data/\", pattern = \"*.csv\", full.names = TRUE)\n\ncombined_data &lt;- files %&gt;%\n  map(read_csv) %&gt;%\n  list_rbind()"
   },
   {
-    "objectID": "slides/34-functions-iteration/index.html#summary",
-    "href": "slides/34-functions-iteration/index.html#summary",
+    "objectID": "slides/34-functions-iteration/34-functions-iteration.html#summary",
+    "href": "slides/34-functions-iteration/34-functions-iteration.html#summary",
     "title": "Functions and Iteration",
     "section": "Summary",
     "text": "Summary\n\nFunctions allow you to reuse code logic and avoid copy-paste errors.\nIteration allows you to apply that logic to many inputs efficiently.\nToolkit:\n\nfunction() for creating tools.\ndplyr::across() for data frame columns.\npurrr::map() for lists and general iteration."
   },
   {
-    "objectID": "slides/34-functions-iteration/index.html#do-next",
-    "href": "slides/34-functions-iteration/index.html#do-next",
+    "objectID": "slides/34-functions-iteration/34-functions-iteration.html#do-next",
+    "href": "slides/34-functions-iteration/34-functions-iteration.html#do-next",
     "title": "Functions and Iteration",
     "section": "Do Next",
-    "text": "Do Next\n\nRead Chapter 25 (Functions) and Chapter 26 (Iteration) in R for Data Science (2e).\nPractice writing a simple function for a repetitive task in your assignments.\nTry using map() next time you need to read multiple similar files."
+    "text": "Do Next\n\nRead Chapter 25 (Functions) and Chapter 26 (Iteration) in r4ds..\nThere’s NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.\nThat’s it for tonight!"
   },
   {
     "objectID": "slides/26-shiny-feedback/26-shiny-feedback.html#cancelling-execution",
@@ -4959,7 +5022,7 @@
     "href": "index.html",
     "title": "CSCI-2025: Data Manipulation and Visualization",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\nvideo-15\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\nslides-16\nvideo-16\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins\n\nslides-17\nvideo-17\n\n\n3\nTue, Jan 20\nLec\nYour first Shiny app\n📚 ms - first-app\n\nslides-18\nvideo-18\n\n\n3\nTue, Jan 20\nLec\nBasic UI\n📚 ms - basic-ui\n\nslides-19\nvideo-19\n\n\n3\nTue, Jan 20\nLec\nBasic reactivity\n📚 ms - basic-reactivity\n\nslides-20\nvideo-20\n\n\n3\nTue, Jan 20\nLec\nCase Study: ER\n📚 ms - case-study-er\n\n\nvideo-21\n\n\n3\nWed, Jan 21\nLec\nGit and Github\n\nslides-22\nvideo-22\n\n\n3\nWed, Jan 21\nLec\nWorkflow\n📚 ms - workflow\n\nslides-23\nvideo-23\n\n\n3\nWed, Jan 21\nLec\nLayout, Themes, and HTML\n📚 ms - layout\n\nslides-24\nvideo-24\n\n\n3\nThu, Jan 22\nLec\nGraphics\n📚 ms - graphics\n\nslides-25\nvideo-25\n\n\n3\nThu, Jan 22\nLec\nUser Feedback\n📚 ms - user-input\n\nslides-26\nvideo-26\n\n\n3\nThu, Jan 22\nLec\nUpload and Downloads\n📚 ms - upload-download\n\nslides-27\nvideo-27\n\n\n4\nMon, Jan 26\nLec\nTidy Evaluation\n📚 ms - tidy-eval\n\nslides-28\nvideo-28\n\n\n4\nMon, Jan 26\nLec\nDynamic UI\n📚 ms - dynamic-ui\n\nslides-29\nvideo-29\n\n\n4\nMon, Jan 26\nLec\nBookmarking\n📚 ms - bookmarking\n\nslides-30\nvideo-30\n\n\n4\nTue, Jan 27\nLec\nRecipes\n📚 tmwr - recipes\n\nslides-31\nvideo-31\n\n\n4\nTue, Jan 27\nLec\nDimensionality Reduction (PCA)\n📚 tmwr - dimensionality\n\nslides-32\nvideo-32",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\nWEEK\nDUE\nTYPE\nTOPIC\nREADING\nSLIDES\nVIDEO\n\n\n\n1\nMon, Jan 5\nIn-Class\nWelcome\n\nslides-00\n\n\n\n1\nTue, Jan 6\nLec\nIntroduction to R\n📚 r4ds - intro\n\nslides-01\nvideo-01\n\n\n1\nTue, Jan 6\nLec\nFirst Visualizations\n📚 r4ds - data viz\n\nslides-02\nvideo-02\n\n\n1\nTue, Jan 6\nLec\nR Basics\n📚 r4ds - basics\n\nslides-03\nvideo-03\n\n\n1\nTue, Jan 6\nLec\nData Transformations\n📚 r4ds - data-trasformation\n\nslides-04\nvideo-04\n\n\n1\nWed, Jan 7\nLec\nData Tidying\n📚 r4ds - data-tidying\n\nslides-05\nvideo-05\n\n\n1\nWed, Jan 7\nLec\nData Importing\n📚 r4ds - data-import\n\nslides-06\nvideo-06\n\n\n1\nThu, Jan 8\nLec\nLayers\n📚 r4ds - layers\n\nslides-07\nvideo-07\n\n\n1\nThu, Jan 8\nLec\nEDA\n📚 r4ds - eda\n\nslides-08\nvideo-08\n\n\n2\nMon, Jan 12\nLec\nCommunication\n📚 r4ds - communication\n\nslides-09\nvideo-09\n\n\n2\nMon, Jan 12\nLec\nLogical Vectors\n📚 r4ds - logicals\n\nslides-10\nvideo-10\n\n\n2\nMon, Jan 12\nLec\nNumbers\n📚 r4ds - numbers\n\nslides-11\nvideo-11\n\n\n2\nTue, Jan 13\nLec\nStrings\n📚 r4ds - strings\n\nslides-12\nvideo-12\n\n\n2\nTue, Jan 13\nLec\nRegex\n📚 r4ds - regex\n\nslides-13\nvideo-13\n\n\n2\nWed, Jan 14\nLec\nFactors\n📚 r4ds - factors\n\nslides-14\nvideo-14\n\n\n2\nWed, Jan 14\nLec\nDate-Times\n📚 r4ds - date-times\n\nslides-15\nvideo-15\n\n\n2\nThu, Jan 15\nLec\nMissing Values\n📚 r4ds - missing-vals\n\nslides-16\nvideo-16\n\n\n2\nThu, Jan 15\nLec\nJoins\n📚 r4ds - joins\n\nslides-17\nvideo-17\n\n\n3\nTue, Jan 20\nLec\nYour first Shiny app\n📚 ms - first-app\n\nslides-18\nvideo-18\n\n\n3\nTue, Jan 20\nLec\nBasic UI\n📚 ms - basic-ui\n\nslides-19\nvideo-19\n\n\n3\nTue, Jan 20\nLec\nBasic reactivity\n📚 ms - basic-reactivity\n\nslides-20\nvideo-20\n\n\n3\nTue, Jan 20\nLec\nCase Study: ER\n📚 ms - case-study-er\n\n\nvideo-21\n\n\n3\nWed, Jan 21\nLec\nGit and Github\n\nslides-22\nvideo-22\n\n\n3\nWed, Jan 21\nLec\nWorkflow\n📚 ms - workflow\n\nslides-23\nvideo-23\n\n\n3\nWed, Jan 21\nLec\nLayout, Themes, and HTML\n📚 ms - layout\n\nslides-24\nvideo-24\n\n\n3\nThu, Jan 22\nLec\nGraphics\n📚 ms - graphics\n\nslides-25\nvideo-25\n\n\n3\nThu, Jan 22\nLec\nUser Feedback\n📚 ms - user-input\n\nslides-26\nvideo-26\n\n\n3\nThu, Jan 22\nLec\nUpload and Downloads\n📚 ms - upload-download\n\nslides-27\nvideo-27\n\n\n4\nMon, Jan 26\nLec\nTidy Evaluation\n📚 ms - tidy-eval\n\nslides-28\nvideo-28\n\n\n4\nMon, Jan 26\nLec\nDynamic UI\n📚 ms - dynamic-ui\n\nslides-29\nvideo-29\n\n\n4\nMon, Jan 26\nLec\nBookmarking\n📚 ms - bookmarking\n\nslides-30\nvideo-30\n\n\n4\nTue, Jan 27\nLec\nRecipes\n📚 tmwr - recipes\n\nslides-31\nvideo-31\n\n\n4\nTue, Jan 27\nLec\nDimensionality Reduction (PCA)\n📚 tmwr - dimensionality\n\nslides-32\nvideo-32\n\n\n4\nWed, Jan 28\nLec\nClustering\n📚 ISLR2 - unsupervised-learning  📚 ISLR2 - unsupervised-learning",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -5006,54 +5069,5 @@
     "title": "GEMINI.md: Project Overview and Contributor Guide",
     "section": "",
     "text": "To work on this project, you will need to have Quarto installed. You can download it from the Quarto website.\n\n\nTo render and preview the website locally, run the following command in your terminal from the project’s root directory:\nquarto preview\nThis will start a local web server and open the site in your browser. The site will automatically refresh when you save changes to any of the source files.\n\n\n\nTo render the entire website without previewing it, use the following command:\nquarto render\nThis will generate all the static files and place them in the _site/ directory. This is typically done for deployment."
-  },
-  {
-    "objectID": "slides/33-clustering/33-clustering.html#the-data-usarrests",
-    "href": "slides/33-clustering/33-clustering.html#the-data-usarrests",
-    "title": "Unsupervised Learning",
-    "section": "The Data: USArrests",
-    "text": "The Data: USArrests\n\nContains statistics for the 50 US states in 1973:\n\nArrests per 100,000 residents for Assault, Murder, and Rape.\nPercent of the population living in urban areas.\n\n\n\nUSArrests |&gt; head()\n\n           Murder Assault UrbanPop Rape\nAlabama      13.2     236       58 21.2\nAlaska       10.0     263       48 44.5\nArizona       8.1     294       80 31.0\nArkansas      8.8     190       50 19.5\nCalifornia    9.0     276       91 40.6\nColorado      7.9     204       78 38.7"
-  },
-  {
-    "objectID": "slides/33-clustering/33-clustering.html#how-it-works",
-    "href": "slides/33-clustering/33-clustering.html#how-it-works",
-    "title": "Unsupervised Learning",
-    "section": "How it Works",
-    "text": "How it Works\n\nAn iterative algorithm:\n\nInitialize: Randomly select \\(K\\) data points as initial cluster centroids.\nAssign: Assign each data point to the nearest centroid, forming K clusters.\nUpdate: Recalculate the centroid of each cluster (the mean of all points in the cluster).\nRepeat: Repeat “Assign” and “Update” steps until cluster assignments stop changing."
-  },
-  {
-    "objectID": "slides/33-clustering/33-clustering.html#tidyclust",
-    "href": "slides/33-clustering/33-clustering.html#tidyclust",
-    "title": "Unsupervised Learning",
-    "section": "tidyclust",
-    "text": "tidyclust\nThe tidyclust package provides a tidymodels-like interface for clustering.\n\nlibrary(tidymodels)\nlibrary(tidyclust)\nlibrary(tidyverse)"
-  },
-  {
-    "objectID": "slides/33-clustering/33-clustering.html#k-means-with-tidyclust-1",
-    "href": "slides/33-clustering/33-clustering.html#k-means-with-tidyclust-1",
-    "title": "Unsupervised Learning",
-    "section": "K-means with tidyclust",
-    "text": "K-means with tidyclust\n\nThen we can fit the specification.\nWe are using a formula ~ . to specify that we want to use all variables.\n\n\nkmeans_fit &lt;- kmeans_spec |&gt;\n  fit(~., data = USArrests)\n\nkmeans_fit\n\ntidyclust cluster object\n\nK-means clustering with 2 clusters of sizes 21, 29\n\nCluster means:\n     Murder  Assault UrbanPop     Rape\n1 11.857143 255.0000 67.61905 28.11429\n2  4.841379 109.7586 64.03448 16.24828\n\nClustering vector:\n       Alabama         Alaska        Arizona       Arkansas     California \n             1              1              1              1              1 \n      Colorado    Connecticut       Delaware        Florida        Georgia \n             1              2              1              1              1 \n        Hawaii          Idaho       Illinois        Indiana           Iowa \n             2              2              1              2              2 \n        Kansas       Kentucky      Louisiana          Maine       Maryland \n             2              2              1              2              1 \n Massachusetts       Michigan      Minnesota    Mississippi       Missouri \n             2              1              2              1              2 \n       Montana       Nebraska         Nevada  New Hampshire     New Jersey \n             2              2              1              2              2 \n    New Mexico       New York North Carolina   North Dakota           Ohio \n             1              1              1              2              2 \n      Oklahoma         Oregon   Pennsylvania   Rhode Island South Carolina \n             2              2              2              2              1 \n  South Dakota      Tennessee          Texas           Utah        Vermont \n             2              1              1              2              2 \n      Virginia     Washington  West Virginia      Wisconsin        Wyoming \n             2              2              2              2              2 \n\nWithin cluster sum of squares by cluster:\n[1] 41636.73 54762.30\n (between_SS / total_SS =  72.9 %)\n\nAvailable components:\n\n[1] \"cluster\"      \"centers\"      \"totss\"        \"withinss\"     \"tot.withinss\"\n[6] \"betweenss\"    \"size\"         \"iter\"         \"ifault\""
-  },
-  {
-    "objectID": "slides/33-clustering/33-clustering.html#hierarchical-clustering-1",
-    "href": "slides/33-clustering/33-clustering.html#hierarchical-clustering-1",
-    "title": "Unsupervised Learning",
-    "section": "Hierarchical Clustering",
-    "text": "Hierarchical Clustering\n\nAnother popular clustering method.\nCreates a hierarchy of clusters, often visualized as a dendrogram."
-  },
-  {
-    "objectID": "slides/33-clustering/33-clustering.html#how-it-works-agglomerative",
-    "href": "slides/33-clustering/33-clustering.html#how-it-works-agglomerative",
-    "title": "Unsupervised Learning",
-    "section": "How it Works (Agglomerative)",
-    "text": "How it Works (Agglomerative)\n\nIt’s a “bottom-up” approach:\n\nStart: Each data point begins in its own cluster.\nMerge: Find the two “closest” clusters and merge them into a single cluster.\nRepeat: Repeat the “Merge” step until all data points are in a single cluster.\n\nThe history of merges forms the hierarchy."
-  },
-  {
-    "objectID": "slides/33-clustering/33-clustering.html#using-tidyclust",
-    "href": "slides/33-clustering/33-clustering.html#using-tidyclust",
-    "title": "Unsupervised Learning",
-    "section": "Using tidyclust",
-    "text": "Using tidyclust\nLet’s do a hierarchical clustering with tidyclust.\n\nhc_spec &lt;- hier_clust() |&gt;\n  set_engine(\"stats\")\n\nhc_fit &lt;- fit(hc_spec, ~., data = USArrests)\n\nhc_fit\n\ntidyclust cluster object\n\n\nCall:\nstats::hclust(d = stats::as.dist(dmat), method = linkage_method)\n\nCluster method   : complete \nNumber of objects: 50"
   }
 ]

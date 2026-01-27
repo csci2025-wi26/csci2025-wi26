@@ -1,12 +1,6 @@
 ---
 title: Functions and Iteration
 subtitle: Lecture 34
-format:
-  revealjs: 
-    slide-number: true
-    preview-links: auto
-    theme: [default, ../slides.scss]
-editor: visual
 ---
 
 # Introduction
@@ -54,12 +48,10 @@ my_function <- function(arg1, arg2) {
     -   Input: Vector.
     -   Output: Vector.
     -   Example: `rescale01 <- function(x) { (x - min(x)) / (max(x) - min(x)) }`
-
 2.  **Data Frame Functions**:
     -   Input: Data Frame.
     -   Output: Data Frame (usually).
     -   Example: Wrapping a complex `dplyr` pipeline.
-
 3.  **Plot Functions**:
     -   Input: Data Frame + Parameters.
     -   Output: ggplot object.
@@ -139,6 +131,6 @@ combined_data <- files %>%
 
 ## Do Next
 
--   Read **Chapter 25 (Functions)** and **Chapter 26 (Iteration)** in *R for Data Science (2e)*.
--   Practice writing a simple function for a repetitive task in your assignments.
--   Try using `map()` next time you need to read multiple similar files.
+1. Read [Chapter 25 (Functions)](https://r4ds.hadley.nz/functions.html) and [Chapter 26 (Iteration)](https://r4ds.hadley.nz/functions.html) in r4ds..
+2. There's NO recitation Gem for this textbook but I recommend creating your own and adding the textbook chapter and these slides.
+3. That's it for tonight!
